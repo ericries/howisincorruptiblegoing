@@ -13,104 +13,39 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-python@v5
         with:
-          node-version: 23
-          cache: npm
+          python-version: '3.12'
 
-      - run: npm ci
+      - name: Install Python dependencies
+        run: pip install requests
 
-      - name: Schema validation
-        run: npx tsx scripts/lint-entries.ts
+      - name: Schema validation & injection detection
+        run: python scripts/review_bot/validate_entries.py
 
       - name: Check for duplicate entries
         run: |
-          CHANGED=$(git diff --name-only origin/main...HEAD -- 'content/entries/*.json')
-          if [ -z "$CHANGED" ]; then
+          CHANGED=$(git diff --name-only origin/main...HEAD -- 'content/entries/*.json' || echo "")
+          if [ -n "$CHANGED" ]; then
+            python scripts/review_bot/check_duplicates.py $CHANGED
+          else
             echo "No entry files changed."
-            exit 0
           fi
-
-          for file in $CHANGED; do
-            if [ ! -f "$file" ]; then
-              continue
-            fi
-            SOURCE_URL=$(node -e "console.log(JSON.parse(require('fs').readFileSync('$file','utf8')).source_url)")
-            DUPES=$(grep -rl "\"source_url\": \"$SOURCE_URL\"" content/entries/ | grep -v "$file" || true)
-            if [ -n "$DUPES" ]; then
-              echo "❌ Duplicate source_url in $file: $SOURCE_URL"
-              echo "   Also found in: $DUPES"
-              exit 1
-            fi
-          done
-          echo "✓ No duplicate source_urls found."
 
       - name: Quote verification
         run: |
-          CHANGED=$(git diff --name-only origin/main...HEAD -- 'content/entries/*.json')
-          if [ -z "$CHANGED" ]; then
+          CHANGED=$(git diff --name-only origin/main...HEAD -- 'content/entries/*.json' || echo "")
+          if [ -n "$CHANGED" ]; then
+            python scripts/review_bot/verify_quotes.py $CHANGED
+          else
             echo "No entry files changed."
-            exit 0
           fi
-
-          FAILED=0
-          for file in $CHANGED; do
-            if [ ! -f "$file" ]; then
-              continue
-            fi
-            SOURCE_URL=$(node -e "console.log(JSON.parse(require('fs').readFileSync('$file','utf8')).source_url)")
-            BLOCKQUOTE=$(node -e "console.log(JSON.parse(require('fs').readFileSync('$file','utf8')).blockquote)")
-
-            PAGE_CONTENT=$(curl -sL --max-time 15 "$SOURCE_URL" 2>/dev/null || echo "")
-
-            if [ -z "$PAGE_CONTENT" ]; then
-              echo "⚠️  Could not fetch $SOURCE_URL for $file — skipping quote check"
-              continue
-            fi
-
-            NORMALIZED_QUOTE=$(echo "$BLOCKQUOTE" | tr '[:upper:]' '[:lower:]' | tr -s '[:space:]' ' ')
-            NORMALIZED_PAGE=$(echo "$PAGE_CONTENT" | tr '[:upper:]' '[:lower:]' | tr -s '[:space:]' ' ')
-
-            if echo "$NORMALIZED_PAGE" | grep -qF "$NORMALIZED_QUOTE"; then
-              echo "✓ Quote verified in $file"
-            else
-              echo "❌ Quote not found at source URL for $file"
-              echo "   URL: $SOURCE_URL"
-              echo "   Quote: $BLOCKQUOTE"
-              FAILED=1
-            fi
-          done
-
-          exit $FAILED
 
       - name: Image validation
         run: |
-          CHANGED=$(git diff --name-only origin/main...HEAD -- 'content/entries/*.json')
-          if [ -z "$CHANGED" ]; then
-            exit 0
+          CHANGED=$(git diff --name-only origin/main...HEAD -- 'content/entries/*.json' || echo "")
+          if [ -n "$CHANGED" ]; then
+            python scripts/review_bot/check_images.py $CHANGED
+          else
+            echo "No entry files changed."
           fi
-
-          FAILED=0
-          for file in $CHANGED; do
-            if [ ! -f "$file" ]; then
-              continue
-            fi
-            IMAGE=$(node -e "const d=JSON.parse(require('fs').readFileSync('$file','utf8')); console.log(d.image||'')")
-            if [ -n "$IMAGE" ]; then
-              IMAGE_PATH="content/$IMAGE"
-              if [ ! -f "$IMAGE_PATH" ]; then
-                echo "❌ Image not found: $IMAGE_PATH (referenced in $file)"
-                FAILED=1
-              else
-                SIZE=$(wc -c < "$IMAGE_PATH")
-                if [ "$SIZE" -gt 5242880 ]; then
-                  echo "❌ Image too large: $IMAGE_PATH (${SIZE} bytes, max 5MB)"
-                  FAILED=1
-                else
-                  echo "✓ Image OK: $IMAGE_PATH"
-                fi
-              fi
-            fi
-          done
-
-          exit $FAILED
