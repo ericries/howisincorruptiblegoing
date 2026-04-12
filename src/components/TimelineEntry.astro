@@ -13,7 +13,6 @@ const month = dateObj.toLocaleString('en-US', { month: 'short', timeZone: 'UTC' 
 const day = dateObj.getUTCDate();
 const year = dateObj.getUTCFullYear();
 
-// Color accent based on type
 const accentColors: Record<string, string> = {
   event: 'var(--color-red)',
   endorsement: 'var(--color-blue)',
@@ -25,7 +24,6 @@ const accentColors: Record<string, string> = {
 };
 const accent = accentColors[entry.type] || 'var(--color-navy)';
 
-// Source domain for link display
 const sourceDomain = (() => {
   try {
     return new URL(entry.source_url).hostname.replace('www.', '');
@@ -49,60 +47,72 @@ const hasPhoto = isEndorsement && entry.attribution_image;
     <div class="timeline-rail__dot" style={`background: ${accent};`}></div>
   </div>
 
-  <article class={`timeline-card ${isEndorsement ? 'timeline-card--endorsement' : ''} ${hasPhoto ? 'timeline-card--has-photo' : ''}`}>
-    {/* Accent stripe */}
-    <div class="timeline-card__accent" style={`background: ${accent};`}></div>
-
-    {isEndorsement ? (
-      /* ── ENDORSEMENT LAYOUT ── */
-      <div class="endorsement">
-        {hasPhoto && (
-          <div class="endorsement__photo-wrap">
-            <img
-              class="endorsement__photo"
-              src={entry.attribution_image!}
-              alt={entry.attribution!}
-              loading="lazy"
-            />
-          </div>
-        )}
-        <div class="endorsement__content">
-          <blockquote class="endorsement__quote">
-            {entry.blockquote}
-          </blockquote>
-          <div class="endorsement__attribution">
-            <strong class="endorsement__name">{entry.attribution}</strong>
-            {entry.attribution_title && (
-              <span class="endorsement__role">{entry.attribution_title}</span>
-            )}
-          </div>
-          <a class="timeline-card__source" href={entry.source_url} target="_blank" rel="noopener">
-            {sourceDomain}
-          </a>
-        </div>
+  {hasPhoto ? (
+    /* ── ENDORSEMENT WITH PHOTO: cinematic card ── */
+    <article class="card card--cinematic">
+      <div class="cinematic__photo-col">
+        <img
+          class="cinematic__photo"
+          src={entry.attribution_image!}
+          alt={entry.attribution!}
+          loading="lazy"
+        />
+        <div class="cinematic__photo-fade"></div>
       </div>
-    ) : (
-      /* ── STANDARD LAYOUT ── */
-      <div class="standard">
-        {entry.image && (
-          <img class="standard__image" src={entry.image} alt={entry.title} loading="lazy" />
-        )}
+      <div class="cinematic__content">
+        <blockquote class="cinematic__quote">
+          {entry.blockquote}
+        </blockquote>
+        <div class="cinematic__who">
+          <strong class="cinematic__name">{entry.attribution}</strong>
+          {entry.attribution_title && (
+            <span class="cinematic__role">{entry.attribution_title}</span>
+          )}
+        </div>
+        <a class="card__source" href={entry.source_url} target="_blank" rel="noopener">{sourceDomain}</a>
+      </div>
+    </article>
+  ) : isEndorsement ? (
+    /* ── ENDORSEMENT WITHOUT PHOTO ── */
+    <article class="card card--quote-only">
+      <div class="quote-only__accent" style={`background: ${accent};`}></div>
+      <div class="quote-only__inner">
+        <blockquote class="quote-only__quote">
+          {entry.blockquote}
+        </blockquote>
+        <div class="quote-only__who">
+          <strong class="quote-only__name">{entry.attribution}</strong>
+          {entry.attribution_title && (
+            <span class="quote-only__role">{entry.attribution_title}</span>
+          )}
+        </div>
+        <a class="card__source" href={entry.source_url} target="_blank" rel="noopener">{sourceDomain}</a>
+      </div>
+    </article>
+  ) : (
+    /* ── STANDARD ENTRY ── */
+    <article class="card card--standard">
+      <div class="standard__accent" style={`background: ${accent};`}></div>
+      {entry.image && (
+        <img class="standard__image" src={entry.image} alt={entry.title} loading="lazy" />
+      )}
+      <div class="standard__inner">
         <h3 class="standard__title">{entry.title}</h3>
         <p class="standard__summary">{entry.summary}</p>
         <blockquote class="standard__quote">
           {entry.blockquote}
           <cite class="standard__cite">{entry.blockquote_source}</cite>
         </blockquote>
-        <a class="timeline-card__source" href={entry.source_url} target="_blank" rel="noopener">
-          {sourceDomain}
-        </a>
+        <a class="card__source" href={entry.source_url} target="_blank" rel="noopener">{sourceDomain}</a>
       </div>
-    )}
-  </article>
+    </article>
+  )}
 </div>
 
 <style>
-  /* ── ROW ── */
+  /* ═══════════════════════════════
+     ROW, DATE, RAIL
+     ═══════════════════════════════ */
   .timeline-row {
     display: flex;
     gap: 20px;
@@ -110,7 +120,6 @@ const hasPhoto = isEndorsement && entry.attribution_image;
     animation: cardEnter 0.5s ease both;
   }
 
-  /* ── DATE ── */
   .timeline-date {
     width: var(--date-col-width);
     flex-shrink: 0;
@@ -144,7 +153,6 @@ const hasPhoto = isEndorsement && entry.attribution_image;
     font-weight: 500;
   }
 
-  /* ── RAIL ── */
   .timeline-rail {
     width: var(--rail-width);
     background: linear-gradient(to bottom, rgba(26, 30, 58, 0.2), rgba(26, 30, 58, 0.05));
@@ -167,61 +175,163 @@ const hasPhoto = isEndorsement && entry.attribution_image;
     transform: scale(1.5);
   }
 
-  /* ── CARD BASE ── */
-  .timeline-card {
+  /* ═══════════════════════════════
+     CARD BASE
+     ═══════════════════════════════ */
+  .card {
     flex: 1;
-    background: var(--color-card);
     border-radius: 16px;
     overflow: hidden;
-    box-shadow:
-      0 2px 4px var(--color-shadow),
-      0 8px 24px var(--color-shadow);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    transition: box-shadow 0.35s ease, transform 0.35s ease;
     position: relative;
   }
 
-  .timeline-card:hover {
-    box-shadow:
-      0 4px 8px var(--color-shadow),
-      0 16px 48px var(--color-shadow-lg);
+  .card:hover {
     transform: translateY(-3px);
   }
 
-  .timeline-card__accent {
-    height: 4px;
-  }
-
-  /* ── ENDORSEMENT ── */
-  .endorsement {
+  /* ═══════════════════════════════
+     CINEMATIC ENDORSEMENT (with photo)
+     The photo takes the full left side
+     and bleeds/fades into the quote area
+     ═══════════════════════════════ */
+  .card--cinematic {
     display: flex;
-    align-items: stretch;
+    background: var(--color-navy-deep);
+    min-height: 220px;
+    box-shadow:
+      0 4px 12px rgba(26, 30, 58, 0.15),
+      0 12px 40px rgba(26, 30, 58, 0.12);
   }
 
-  .endorsement__photo-wrap {
-    width: 140px;
+  .card--cinematic:hover {
+    box-shadow:
+      0 8px 20px rgba(26, 30, 58, 0.2),
+      0 24px 60px rgba(26, 30, 58, 0.18);
+  }
+
+  .cinematic__photo-col {
+    width: 200px;
     flex-shrink: 0;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(145deg, var(--color-navy), #2a3060);
   }
 
-  .endorsement__photo {
+  .cinematic__photo {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    min-height: 160px;
+    filter: contrast(1.05) brightness(0.95);
   }
 
-  .endorsement__content {
+  /* Gradient that fades the photo into the dark background */
+  .cinematic__photo-fade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      transparent 40%,
+      var(--color-navy-deep) 100%
+    );
+  }
+
+  /* Top-to-bottom vignette */
+  .cinematic__photo-col::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 50%,
+      rgba(17, 20, 40, 0.4) 100%
+    );
+  }
+
+  .cinematic__content {
     flex: 1;
-    padding: 1.75rem;
+    padding: 2rem 2rem 1.75rem 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
   }
 
-  .endorsement__quote {
+  .cinematic__quote {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.55;
+    margin-bottom: 1.25rem;
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  .cinematic__quote::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    bottom: 4px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--color-blue), transparent);
+    border-radius: 1px;
+  }
+
+  .cinematic__who {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .cinematic__name {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-white);
+  }
+
+  .cinematic__role {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: 500;
+  }
+
+  .card--cinematic .card__source {
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  .card--cinematic .card__source:hover {
+    color: var(--color-blue);
+  }
+
+  /* ═══════════════════════════════
+     QUOTE-ONLY ENDORSEMENT (no photo)
+     ═══════════════════════════════ */
+  .card--quote-only {
+    background: var(--color-card);
+    box-shadow:
+      0 2px 4px var(--color-shadow),
+      0 8px 24px var(--color-shadow);
+  }
+
+  .card--quote-only:hover {
+    box-shadow:
+      0 4px 8px var(--color-shadow),
+      0 16px 48px var(--color-shadow-lg);
+  }
+
+  .quote-only__accent {
+    height: 4px;
+  }
+
+  .quote-only__inner {
+    padding: 1.75rem;
+  }
+
+  .quote-only__quote {
     font-family: var(--font-display);
     font-size: 1.2rem;
     font-style: italic;
@@ -229,43 +339,63 @@ const hasPhoto = isEndorsement && entry.attribution_image;
     line-height: 1.55;
     margin-bottom: 1rem;
     position: relative;
+    padding-left: 2rem;
   }
 
-  .endorsement__quote::before {
+  .quote-only__quote::before {
     content: '\201C';
     font-family: var(--font-display);
-    font-size: 4rem;
+    font-size: 5rem;
     color: var(--color-blue);
-    opacity: 0.15;
+    opacity: 0.1;
     position: absolute;
-    top: -20px;
-    left: -8px;
+    top: -24px;
+    left: -4px;
     line-height: 1;
     font-style: normal;
   }
 
-  .endorsement__attribution {
+  .quote-only__who {
     display: flex;
     flex-direction: column;
     gap: 2px;
   }
 
-  .endorsement__name {
+  .quote-only__name {
     font-family: var(--font-body);
     font-size: 0.95rem;
     font-weight: 700;
     color: var(--color-navy);
   }
 
-  .endorsement__role {
+  .quote-only__role {
     font-family: var(--font-body);
     font-size: 0.78rem;
     color: var(--color-text-muted);
     font-weight: 500;
   }
 
-  /* ── STANDARD ── */
-  .standard {
+  /* ═══════════════════════════════
+     STANDARD ENTRY
+     ═══════════════════════════════ */
+  .card--standard {
+    background: var(--color-card);
+    box-shadow:
+      0 2px 4px var(--color-shadow),
+      0 8px 24px var(--color-shadow);
+  }
+
+  .card--standard:hover {
+    box-shadow:
+      0 4px 8px var(--color-shadow),
+      0 16px 48px var(--color-shadow-lg);
+  }
+
+  .standard__accent {
+    height: 4px;
+  }
+
+  .standard__inner {
     padding: 1.75rem;
   }
 
@@ -305,9 +435,9 @@ const hasPhoto = isEndorsement && entry.attribution_image;
     font-family: var(--font-display);
     font-size: 4rem;
     color: var(--color-blue);
-    opacity: 0.12;
+    opacity: 0.1;
     position: absolute;
-    top: -16px;
+    top: -14px;
     left: 8px;
     line-height: 1;
     font-style: normal;
@@ -329,52 +459,63 @@ const hasPhoto = isEndorsement && entry.attribution_image;
 
   .standard__image {
     width: 100%;
-    border-radius: 8px;
-    margin-bottom: 1.25rem;
   }
 
-  /* ── SOURCE LINK ── */
-  .timeline-card__source {
+  /* ═══════════════════════════════
+     SOURCE LINK (shared)
+     ═══════════════════════════════ */
+  .card__source {
     display: inline-block;
     font-family: var(--font-body);
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 500;
     color: var(--color-text-muted);
     margin-top: 0.75rem;
     transition: color 0.2s ease;
   }
 
-  .timeline-card__source:hover {
+  .card__source:hover {
     color: var(--color-blue);
     text-decoration: none;
   }
 
-  /* ── RESPONSIVE ── */
+  /* ═══════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════ */
   @media (max-width: 640px) {
-    .endorsement {
+    .card--cinematic {
       flex-direction: column;
+      min-height: auto;
     }
 
-    .endorsement__photo-wrap {
+    .cinematic__photo-col {
       width: 100%;
-      height: 180px;
+      height: 200px;
     }
 
-    .endorsement__content {
-      padding: 1.25rem;
+    .cinematic__photo-fade {
+      background: linear-gradient(
+        to bottom,
+        transparent 40%,
+        var(--color-navy-deep) 100%
+      );
     }
 
-    .standard {
+    .cinematic__content {
+      padding: 1.5rem;
+    }
+
+    .cinematic__quote {
+      font-size: 1.05rem;
+    }
+
+    .standard__inner,
+    .quote-only__inner {
       padding: 1.25rem;
     }
 
     .standard__title {
       font-size: 1.25rem;
-    }
-
-    .endorsement__quote,
-    .standard__quote {
-      font-size: 1rem;
     }
   }
 </style>
