@@ -9,9 +9,19 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint:entries": "npx tsx scripts/lint-entries.ts",
+    "prepare": "husky"
   },
   "dependencies": {
     "astro": "^6.1.5"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^4.1.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "vitest": "^3.2.4"
   }
 }
