@@ -1,0 +1,45 @@
+---
+interface Props {
+  totalEntries: number;
+  totalEndorsements: number;
+}
+
+const { totalEntries, totalEndorsements } = Astro.props;
+
+const LAUNCH_DATE = new Date('2026-05-26T00:00:00Z');
+const now = new Date();
+const daysToLaunch = Math.max(
+  0,
+  Math.ceil((LAUNCH_DATE.getTime() - now.getTime()) / (1000 * 60 * 60 * 24))
+);
+---
+
+<div class="stats">
+  <span class="stats__item stats__item--red">{daysToLaunch} days to launch</span>
+  <span class="stats__divider">·</span>
+  <span class="stats__item stats__item--blue">{totalEntries} entries</span>
+  <span class="stats__divider">·</span>
+  <span class="stats__item stats__item--white">{totalEndorsements} endorsements</span>
+</div>
+
+<style>
+  .stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.65rem 1rem;
+    background: var(--color-navy-dark);
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-top: 1px solid rgba(108, 184, 214, 0.15);
+  }
+
+  .stats__divider {
+    color: rgba(255, 255, 255, 0.15);
+  }
+
+  .stats__item--red { color: var(--color-red); }
+  .stats__item--blue { color: var(--color-blue); }
+  .stats__item--white { color: var(--color-white); }
+</style>
