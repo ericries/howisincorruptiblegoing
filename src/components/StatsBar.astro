@@ -22,13 +22,13 @@ const daysToLaunch = Math.max(
     </div>
     <div class="stats__divider"></div>
     <div class="stats__item">
-      <span class="stats__number stats__number--blue">{totalEntries}</span>
-      <span class="stats__label">entries</span>
+      <span class="stats__number stats__number--white">{totalEntries}</span>
+      <span class="stats__label">moments</span>
     </div>
     <div class="stats__divider"></div>
     <div class="stats__item">
-      <span class="stats__number stats__number--white">{totalEndorsements}</span>
-      <span class="stats__label">endorsements</span>
+      <span class="stats__number stats__number--blue">{totalEndorsements}</span>
+      <span class="stats__label">voices</span>
     </div>
   </div>
 </div>
@@ -36,15 +36,14 @@ const daysToLaunch = Math.max(
 <style>
   .stats {
     background: var(--color-navy);
-    padding: 1.1rem 1rem;
-    border-bottom: 1px solid rgba(108, 184, 214, 0.08);
+    padding: 1.5rem 1.5rem;
   }
 
   .stats__inner {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 3rem;
     max-width: var(--max-width);
     margin: 0 auto;
   }
@@ -53,12 +52,12 @@ const daysToLaunch = Math.max(
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2px;
+    gap: 4px;
   }
 
   .stats__number {
     font-family: var(--font-display);
-    font-size: 1.6rem;
+    font-size: 2.4rem;
     font-weight: 700;
     line-height: 1;
   }
@@ -69,26 +68,21 @@ const daysToLaunch = Math.max(
 
   .stats__label {
     font-family: var(--font-body);
-    font-size: 0.6rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--color-text-muted);
+    color: rgba(255,255,255,0.35);
   }
 
   .stats__divider {
     width: 1px;
-    height: 28px;
+    height: 36px;
     background: rgba(108, 184, 214, 0.12);
   }
 
   @media (max-width: 640px) {
-    .stats__inner {
-      gap: 1.25rem;
-    }
-
-    .stats__number {
-      font-size: 1.3rem;
-    }
+    .stats__inner { gap: 1.5rem; }
+    .stats__number { font-size: 1.8rem; }
   }
 </style>

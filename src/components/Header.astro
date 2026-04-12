@@ -4,14 +4,12 @@
 <header class="header">
   <div class="header__bg">
     <div class="header__shimmer"></div>
-    <div class="header__grid"></div>
   </div>
   <div class="header__content">
     <div class="header__pre">How is</div>
     <div class="header__title-wrap">
       <div class="header__echo header__echo--1" aria-hidden="true">INCORRUPTIBLE</div>
       <div class="header__echo header__echo--2" aria-hidden="true">INCORRUPTIBLE</div>
-      <div class="header__echo header__echo--3" aria-hidden="true">INCORRUPTIBLE</div>
       <h1 class="header__title">INCORRUPTIBLE</h1>
     </div>
     <div class="header__post">going?</div>
@@ -19,12 +17,13 @@
       The new book by <span class="header__author">Eric Ries</span> · May 26, 2026
     </p>
   </div>
+  <div class="header__edge"></div>
 </header>
 
 <style>
   .header {
     background: var(--color-navy-dark);
-    padding: 3.5rem 1rem 3rem;
+    padding: 4rem 1.5rem 3.5rem;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -35,33 +34,20 @@
     inset: 0;
   }
 
-  /* Animated iridescent shimmer */
   .header__shimmer {
     position: absolute;
     inset: 0;
     background: linear-gradient(
-      105deg,
+      110deg,
       transparent 20%,
-      var(--iridescent-1) 30%,
-      var(--iridescent-3) 40%,
-      var(--iridescent-2) 50%,
-      var(--iridescent-1) 60%,
+      rgba(108, 184, 214, 0.07) 35%,
+      rgba(180, 140, 220, 0.05) 45%,
+      rgba(232, 64, 64, 0.04) 55%,
+      rgba(108, 184, 214, 0.06) 65%,
       transparent 80%
     );
     background-size: 200% 100%;
-    animation: shimmer 8s ease-in-out infinite;
-    pointer-events: none;
-  }
-
-  /* Subtle geometric grid overlay */
-  .header__grid {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(108, 184, 214, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(108, 184, 214, 0.03) 1px, transparent 1px);
-    background-size: 48px 48px;
-    pointer-events: none;
+    animation: shimmer 7s ease-in-out infinite;
   }
 
   .header__content {
@@ -72,22 +58,16 @@
   .header__pre,
   .header__post {
     font-family: var(--font-body);
-    font-size: 0.7rem;
-    letter-spacing: 0.35em;
+    font-size: 0.85rem;
+    letter-spacing: 0.4em;
     color: var(--color-blue);
     text-transform: uppercase;
     font-weight: 500;
   }
 
-  .header__pre {
-    margin-bottom: 0.75rem;
-  }
+  .header__pre { margin-bottom: 1rem; }
+  .header__post { margin-top: 1rem; }
 
-  .header__post {
-    margin-top: 0.75rem;
-  }
-
-  /* The cascading echo effect from the book cover */
   .header__title-wrap {
     position: relative;
     display: inline-block;
@@ -95,89 +75,97 @@
 
   .header__echo {
     font-family: var(--font-title);
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: 800;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.18em;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
     user-select: none;
+    color: transparent;
   }
 
   .header__echo--1 {
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(108, 184, 214, 0.12);
-    top: 6px;
+    -webkit-text-stroke: 1px rgba(108, 184, 214, 0.1);
+    top: 8px;
   }
 
   .header__echo--2 {
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(160, 120, 220, 0.08);
-    top: 12px;
-  }
-
-  .header__echo--3 {
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(232, 64, 64, 0.06);
-    top: 18px;
+    -webkit-text-stroke: 1px rgba(232, 64, 64, 0.05);
+    top: 16px;
   }
 
   .header__title {
     font-family: var(--font-title);
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: 800;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.18em;
     color: var(--color-white);
     position: relative;
-    text-shadow: 0 0 60px rgba(108, 184, 214, 0.15);
+    text-shadow: 0 0 80px rgba(108, 184, 214, 0.12);
   }
 
   .header__subtitle {
     font-family: var(--font-body);
-    font-size: 0.78rem;
+    font-size: 0.9rem;
     color: var(--color-text-muted);
-    margin-top: 1.25rem;
-    letter-spacing: 0.02em;
+    margin-top: 1.5rem;
+    letter-spacing: 0.03em;
   }
 
   .header__author {
     color: var(--color-red);
-    font-weight: 600;
+    font-weight: 700;
   }
 
-  /* Iridescent bottom edge */
+  /* Angled bottom edge */
+  .header__edge {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: var(--color-gray-bg);
+    clip-path: polygon(0 100%, 100% 100%, 100% 0);
+  }
+
+  /* Iridescent line */
   .header::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: 39px;
     left: 0;
     right: 0;
-    height: 1px;
+    height: 2px;
     background: linear-gradient(
       90deg,
       transparent,
       var(--color-blue),
-      rgba(160, 120, 220, 0.5),
+      rgba(180, 140, 220, 0.6),
       var(--color-red),
-      rgba(160, 120, 220, 0.5),
+      rgba(180, 140, 220, 0.6),
       var(--color-blue),
       transparent
     );
+    z-index: 2;
   }
 
   @media (max-width: 640px) {
     .header {
-      padding: 2.5rem 1rem 2rem;
+      padding: 3rem 1rem 2.5rem;
     }
 
     .header__title,
     .header__echo {
-      font-size: 2rem;
+      font-size: 2.2rem;
+      letter-spacing: 0.12em;
     }
 
-    .header__echo--1 { top: 4px; }
-    .header__echo--2 { top: 8px; }
-    .header__echo--3 { top: 12px; }
+    .header__echo--1 { top: 5px; }
+    .header__echo--2 { top: 10px; }
+
+    .header__edge { height: 24px; }
+    .header::after { bottom: 23px; }
   }
 </style>
