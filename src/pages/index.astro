@@ -1,17 +1,30 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import StatsBar from '../components/StatsBar.astro';
+import TimelineEntry from '../components/TimelineEntry.astro';
+import { loadEntries } from '../lib/entries';
+import * as path from 'path';
 
+const entriesDir = path.join(process.cwd(), 'content', 'entries');
+const entries = loadEntries(entriesDir);
+const totalEndorsements = entries.filter((e) => e.type === 'endorsement').length;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="How Is Incorruptible Going?">
+  <Header />
+  <StatsBar totalEntries={entries.length} totalEndorsements={totalEndorsements} />
+  <main class="timeline">
+    {entries.map((entry) => (
+      <TimelineEntry entry={entry} />
+    ))}
+  </main>
+</Layout>
+
+<style>
+  .timeline {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
+  }
+</style>
