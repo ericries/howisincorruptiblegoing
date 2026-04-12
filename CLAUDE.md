@@ -2,6 +2,10 @@
 
 Timeline website tracking momentum for Eric Ries's book *Incorruptible* (May 26, 2026).
 
+## Environment
+
+- **Node.js:** Requires >=22.12 (Astro 6). Use `/opt/homebrew/opt/node@23/bin` — set `export PATH="/opt/homebrew/opt/node@23/bin:$PATH"` before running npm/npx commands. System default node (v18) is too old.
+
 ## Project Overview
 
 - **Spec:** `docs/superpowers/specs/2026-04-12-incorruptible-timeline-design.md`
