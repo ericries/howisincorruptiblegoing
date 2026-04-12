@@ -111,7 +111,7 @@ describe('validateEntry rejects invalid entries', () => {
   });
 
   it('rejects summary exceeding max length', () => {
-    const result = validateEntry(entryWith({ summary: 'x'.repeat(501) }));
+    const result = validateEntry(entryWith({ summary: 'x'.repeat(1001) }));
     expect(result.valid).toBe(false);
     expect(result.errors[0]).toContain('"summary" exceeds');
   });

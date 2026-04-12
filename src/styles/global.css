@@ -1,26 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@700;800;900&display=swap');
+
 :root {
   --color-navy: #1a1e3a;
-  --color-navy-dark: #151833;
+  --color-navy-deep: #111428;
+  --color-navy-dark: #0d0f1e;
   --color-red: #e84040;
+  --color-red-glow: rgba(232, 64, 64, 0.15);
   --color-blue: #6cb8d6;
+  --color-blue-glow: rgba(108, 184, 214, 0.12);
   --color-white: #ffffff;
-  --color-gray-bg: #f3f4f6;
-  --color-text: #333333;
-  --color-text-light: #666666;
-  --color-shadow: rgba(26, 30, 58, 0.08);
-  --iridescent-gradient: linear-gradient(
-    135deg,
-    rgba(108, 184, 214, 0.06),
-    rgba(255, 255, 255, 0.03),
-    rgba(232, 64, 64, 0.04),
-    rgba(108, 184, 214, 0.06)
-  );
+  --color-gray-bg: #f0f1f5;
+  --color-card: #ffffff;
+  --color-text: #2a2d3e;
+  --color-text-light: #6b7094;
+  --color-text-muted: #9498b3;
+  --color-shadow: rgba(26, 30, 58, 0.06);
+  --color-shadow-lg: rgba(26, 30, 58, 0.1);
+  --color-border: rgba(26, 30, 58, 0.06);
+  --iridescent-1: rgba(108, 184, 214, 0.08);
+  --iridescent-2: rgba(232, 64, 64, 0.05);
+  --iridescent-3: rgba(160, 120, 220, 0.06);
 
-  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
-  --max-width: 800px;
-  --date-col-width: 72px;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-title: 'Outfit', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --max-width: 820px;
+  --date-col-width: 100px;
   --rail-width: 2px;
-  --dot-size: 10px;
+  --dot-size: 12px;
+  --radius: 12px;
+  --radius-sm: 8px;
 }
 
 *,
@@ -31,31 +40,51 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   background: var(--color-gray-bg);
   color: var(--color-text);
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* Subtle grain texture on body */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  z-index: 9999;
 }
 
 a {
   color: var(--color-blue);
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 a:hover {
-  text-decoration: underline;
+  color: var(--color-red);
 }
 
+/* Badge styles */
 .badge {
   display: inline-block;
-  font-size: 0.65rem;
+  font-family: var(--font-body);
+  font-size: 0.6rem;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 2px 10px;
-  border-radius: 999px;
+  padding: 3px 10px;
+  border-radius: 4px;
   color: var(--color-white);
 }
 
@@ -65,25 +94,54 @@ a:hover {
 .badge--social { background: var(--color-navy); }
 .badge--podcast { background: var(--color-red); }
 .badge--media { background: var(--color-blue); }
-.badge--milestone { background: var(--color-red); }
+.badge--milestone { background: linear-gradient(135deg, var(--color-red), #c03060); }
 
+/* Timeline dot colors */
 .dot--event,
-.dot--social { background: var(--color-red); }
+.dot--social { background: var(--color-red); box-shadow: 0 0 8px var(--color-red-glow); }
 .dot--endorsement,
-.dot--media { background: var(--color-blue); }
+.dot--media { background: var(--color-blue); box-shadow: 0 0 8px var(--color-blue-glow); }
 .dot--review,
 .dot--podcast,
-.dot--milestone { background: var(--color-red); }
+.dot--milestone { background: var(--color-red); box-shadow: 0 0 8px var(--color-red-glow); }
 
-@media (max-width: 600px) {
+/* Card entrance animation */
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Shimmer animation for header */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Pulse for the timeline rail */
+@keyframes railPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
   :root {
     --date-col-width: 0px;
+    --max-width: 100%;
   }
 
   .timeline-date {
     width: auto !important;
     text-align: left !important;
-    padding: 0 0 4px 0 !important;
+    padding: 0 0 2px 0 !important;
+    flex-direction: row !important;
+    gap: 6px !important;
   }
 
   .timeline-rail {

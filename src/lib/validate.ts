@@ -8,7 +8,7 @@ const ID_PATTERN = /^\d{4}-\d{2}-\d{2}-[a-z0-9-]+$/;
 const ISO_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 const ISO_DATETIME_PATTERN = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z$/;
 const URL_PATTERN = /^https?:\/\/.+/;
-const MAX_SUMMARY_LENGTH = 500;
+const MAX_SUMMARY_LENGTH = 1000;
 const MAX_TITLE_LENGTH = 200;
 const MAX_BLOCKQUOTE_LENGTH = 1000;
 

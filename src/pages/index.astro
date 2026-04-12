@@ -15,16 +15,39 @@ const totalEndorsements = entries.filter((e) => e.type === 'endorsement').length
   <Header />
   <StatsBar totalEntries={entries.length} totalEndorsements={totalEndorsements} />
   <main class="timeline">
-    {entries.map((entry) => (
-      <TimelineEntry entry={entry} />
-    ))}
+    <div class="timeline__inner">
+      {entries.map((entry, i) => (
+        <TimelineEntry entry={entry} index={i} />
+      ))}
+    </div>
   </main>
+  <footer class="footer">
+    <p>Tracking the momentum of <a href="https://incorruptible.co" target="_blank" rel="noopener">Incorruptible</a> by Eric Ries</p>
+  </footer>
 </Layout>
 
 <style>
   .timeline {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 1.5rem 1rem;
+    padding: 2rem 1.25rem;
+  }
+
+  .timeline__inner {
+    position: relative;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 2rem 1rem 3rem;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.01em;
+  }
+
+  .footer a {
+    color: var(--color-blue);
+    font-weight: 600;
   }
 </style>
