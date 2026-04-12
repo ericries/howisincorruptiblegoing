@@ -1,0 +1,197 @@
+---
+import type { TimelineEntry } from '../lib/schema';
+
+interface Props {
+  entry: TimelineEntry;
+}
+
+const { entry } = Astro.props;
+
+const dateObj = new Date(entry.date + 'T00:00:00Z');
+const month = dateObj.toLocaleString('en-US', { month: 'short', timeZone: 'UTC' }).toUpperCase();
+const day = dateObj.getUTCDate();
+const year = dateObj.getUTCFullYear();
+
+const typeLabel = entry.type.charAt(0).toUpperCase() + entry.type.slice(1);
+
+const sourceLabel = `→ Read full ${entry.type === 'endorsement' ? 'endorsement' : 'source'}`;
+---
+
+<div class="timeline-row">
+  <div class="timeline-date">
+    <div class="timeline-date__day">{month} {day}</div>
+    <div class="timeline-date__year">{year}</div>
+  </div>
+
+  <div class="timeline-rail">
+    <div class={`timeline-rail__dot dot--${entry.type}`}></div>
+  </div>
+
+  <div class="timeline-card">
+    {entry.type === 'endorsement' && entry.attribution ? (
+      <div class="timeline-card__endorsement">
+        <div class="timeline-card__avatar">
+          {entry.attribution_image ? (
+            <img src={entry.attribution_image} alt={entry.attribution} />
+          ) : (
+            <span>{entry.attribution.split(' ').map(n => n[0]).join('').slice(0, 2)}</span>
+          )}
+        </div>
+        <div class="timeline-card__body">
+          <span class={`badge badge--${entry.type}`}>{typeLabel}</span>
+          <h3 class="timeline-card__title">{entry.attribution}</h3>
+          {entry.attribution_title && (
+            <div class="timeline-card__role">{entry.attribution_title}</div>
+          )}
+          <blockquote class="timeline-card__quote">"{entry.blockquote}"</blockquote>
+        </div>
+      </div>
+    ) : (
+      <div class="timeline-card__body">
+        <span class={`badge badge--${entry.type}`}>{typeLabel}</span>
+        <h3 class="timeline-card__title">{entry.title}</h3>
+        <p class="timeline-card__summary">{entry.summary}</p>
+        <blockquote class="timeline-card__quote">
+          "{entry.blockquote}"
+          <cite class="timeline-card__cite">— {entry.blockquote_source}</cite>
+        </blockquote>
+        {entry.image && (
+          <img class="timeline-card__image" src={entry.image} alt={entry.title} />
+        )}
+      </div>
+    )}
+    <a class="timeline-card__link" href={entry.source_url} target="_blank" rel="noopener">
+      {sourceLabel}
+    </a>
+  </div>
+</div>
+
+<style>
+  .timeline-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 1rem;
+  }
+
+  .timeline-date {
+    width: var(--date-col-width);
+    flex-shrink: 0;
+    text-align: right;
+    padding-top: 0.6rem;
+  }
+
+  .timeline-date__day {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--color-navy);
+  }
+
+  .timeline-date__year {
+    font-size: 0.6rem;
+    color: #999;
+  }
+
+  .timeline-rail {
+    width: var(--rail-width);
+    background: var(--color-navy);
+    border-radius: 1px;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .timeline-rail__dot {
+    width: var(--dot-size);
+    height: var(--dot-size);
+    border-radius: 50%;
+    position: absolute;
+    top: 0.75rem;
+    left: calc(-1 * (var(--dot-size) - var(--rail-width)) / 2);
+  }
+
+  .timeline-card {
+    flex: 1;
+    background: var(--color-white);
+    border-radius: 8px;
+    padding: 0.85rem;
+    box-shadow: 0 1px 3px var(--color-shadow);
+  }
+
+  .timeline-card__endorsement {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .timeline-card__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-navy);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: var(--color-white);
+    font-weight: 700;
+    overflow: hidden;
+  }
+
+  .timeline-card__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .timeline-card__title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-navy);
+    margin: 0.35rem 0 0.2rem;
+  }
+
+  .timeline-card__role {
+    font-size: 0.7rem;
+    color: var(--color-text-light);
+    margin-bottom: 0.3rem;
+  }
+
+  .timeline-card__summary {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    line-height: 1.5;
+    margin: 0.3rem 0;
+  }
+
+  .timeline-card__quote {
+    font-size: 0.8rem;
+    color: var(--color-text);
+    font-style: italic;
+    line-height: 1.5;
+    margin: 0.4rem 0;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--color-blue);
+  }
+
+  .timeline-card__cite {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--color-text-light);
+    font-style: normal;
+    margin-top: 0.25rem;
+  }
+
+  .timeline-card__image {
+    width: 100%;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+  }
+
+  .timeline-card__link {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-blue);
+    margin-top: 0.5rem;
+    font-weight: 500;
+  }
+</style>
