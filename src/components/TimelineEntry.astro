@@ -330,6 +330,24 @@ const youtubeEmbedUrl = (() => {
     line-height: 1.6;
     margin-bottom: 1.25rem;
     position: relative;
+    padding-left: 1.25rem;
+    border-left: 3px solid rgba(108, 184, 214, 0.4);
+  }
+
+  .cinematic__quote::before {
+    content: '\201C';
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    color: var(--color-blue);
+    opacity: 0.35;
+    position: absolute;
+    top: -10px;
+    left: -4px;
+    line-height: 1;
+  }
+
+  .cinematic__quote::after {
+    content: '\201D';
   }
 
   .cinematic__who {
@@ -392,6 +410,24 @@ const youtubeEmbedUrl = (() => {
     line-height: 1.6;
     margin-bottom: 1rem;
     position: relative;
+    padding-left: 1.25rem;
+    border-left: 3px solid var(--color-blue);
+  }
+
+  .quote-only__quote::before {
+    content: '\201C';
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    color: var(--color-blue);
+    opacity: 0.2;
+    position: absolute;
+    top: -10px;
+    left: -4px;
+    line-height: 1;
+  }
+
+  .quote-only__quote::after {
+    content: '\201D';
   }
 
   .quote-only__who {
@@ -470,8 +506,25 @@ const youtubeEmbedUrl = (() => {
     font-style: normal;
     line-height: 1.65;
     margin: 0.75rem 0;
-    padding: 0;
+    padding-left: 1.25rem;
+    border-left: 3px solid var(--color-blue);
     position: relative;
+  }
+
+  .standard__quote::before {
+    content: '\201C';
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    color: var(--color-blue);
+    opacity: 0.2;
+    position: absolute;
+    top: -10px;
+    left: -4px;
+    line-height: 1;
+  }
+
+  .standard__quote::after {
+    content: '\201D';
   }
 
   .standard__cite {
