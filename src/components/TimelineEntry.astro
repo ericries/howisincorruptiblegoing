@@ -33,6 +33,7 @@ const sourceDomain = (() => {
 })();
 
 const isEndorsement = entry.type === 'endorsement' && entry.attribution;
+const isReaderReview = isEndorsement && entry.blockquote_source === 'Reader review';
 const hasPhoto = isEndorsement && entry.attribution_image;
 const details = (entry.type_metadata as Record<string, unknown>)?.details as string | undefined;
 
@@ -65,7 +66,28 @@ const youtubeEmbedUrl = (() => {
     <div class="timeline-rail__dot" style={`background: ${accent};`}></div>
   </div>
 
-  {hasPhoto ? (
+  {isReaderReview ? (
+    /* ── READER REVIEW: lighter, smaller treatment ── */
+    <article class="card card--reader">
+      <div class="reader">
+        {entry.attribution_image && (
+          <img class="reader__photo" src={entry.attribution_image} alt={entry.attribution || ''} loading="lazy" />
+        )}
+        <div class="reader__content">
+          <blockquote class="reader__quote">
+            &ldquo;{entry.blockquote}&rdquo;
+          </blockquote>
+          <div class="reader__who">
+            <strong class="reader__name">{entry.attribution}</strong>
+            {entry.attribution_title && (
+              <span class="reader__role">{entry.attribution_title}</span>
+            )}
+            <span class="reader__label">Reader review</span>
+          </div>
+        </div>
+      </div>
+    </article>
+  ) : hasPhoto ? (
     /* ── ENDORSEMENT WITH PHOTO: cinematic card ── */
     <article class="card card--cinematic">
       <div class="cinematic__photo-col">
@@ -253,6 +275,86 @@ const youtubeEmbedUrl = (() => {
 
   .card:hover {
     transform: translateY(-3px);
+  }
+
+  /* ═══════════════════════════════
+     READER REVIEW (lighter treatment)
+     ═══════════════════════════════ */
+  .card--reader {
+    background: var(--color-card);
+    box-shadow:
+      0 1px 3px var(--color-shadow),
+      0 4px 12px var(--color-shadow);
+    border: 1px solid var(--color-border);
+  }
+
+  .card--reader:hover {
+    box-shadow:
+      0 2px 6px var(--color-shadow),
+      0 8px 24px var(--color-shadow-lg);
+  }
+
+  .reader {
+    display: flex;
+    gap: 1rem;
+    padding: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .reader__photo {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 2px solid var(--color-border);
+  }
+
+  .reader__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .reader__quote {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-style: normal;
+    color: var(--color-text);
+    line-height: 1.55;
+    margin-bottom: 0.75rem;
+  }
+
+  .reader__who {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem;
+  }
+
+  .reader__name {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-navy);
+  }
+
+  .reader__role {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+  }
+
+  .reader__label {
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    background: var(--color-gray-bg);
+    padding: 2px 8px;
+    border-radius: 4px;
   }
 
   /* ═══════════════════════════════
