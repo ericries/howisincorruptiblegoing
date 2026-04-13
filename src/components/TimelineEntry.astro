@@ -53,6 +53,14 @@ const youtubeEmbedUrl = (() => {
   if (match) return `https://www.youtube.com/embed/${match[1]}`;
   return null;
 })();
+
+// TikTok embed data from video_url
+const tiktokEmbed = (() => {
+  if (!entry.video_url) return null;
+  const match = entry.video_url.match(/tiktok\.com\/@([^/]+)\/video\/(\d+)/);
+  if (match) return { username: match[1], videoId: match[2], url: entry.video_url };
+  return null;
+})();
 ---
 
 <div class="timeline-row" id={entry.id} data-date={entry.date} data-type={entry.type} style={`animation-delay: ${index * 0.06}s`}>
@@ -159,6 +167,15 @@ const youtubeEmbedUrl = (() => {
                 <iframe src={youtubeEmbedUrl} title={entry.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             )}
+            {tiktokEmbed && (
+              <div class="tiktok-embed-wrap">
+                <blockquote class="tiktok-embed" cite={tiktokEmbed.url} data-video-id={tiktokEmbed.videoId} style="max-width:605px;min-width:325px;">
+                  <section>
+                    <a target="_blank" title={`@${tiktokEmbed.username}`} href={`https://www.tiktok.com/@${tiktokEmbed.username}?refer=embed`}>@{tiktokEmbed.username}</a>
+                  </section>
+                </blockquote>
+              </div>
+            )}
             {details && <p class="standard__details">{details}</p>}
             <div class="card__links">
               {allLinks.map(link => (
@@ -181,6 +198,15 @@ const youtubeEmbedUrl = (() => {
             {youtubeEmbedUrl && (
               <div class="video-embed">
                 <iframe src={youtubeEmbedUrl} title={entry.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            )}
+            {tiktokEmbed && (
+              <div class="tiktok-embed-wrap">
+                <blockquote class="tiktok-embed" cite={tiktokEmbed.url} data-video-id={tiktokEmbed.videoId} style="max-width:605px;min-width:325px;">
+                  <section>
+                    <a target="_blank" title={`@${tiktokEmbed.username}`} href={`https://www.tiktok.com/@${tiktokEmbed.username}?refer=embed`}>@{tiktokEmbed.username}</a>
+                  </section>
+                </blockquote>
               </div>
             )}
             {details && <p class="standard__details">{details}</p>}
@@ -679,6 +705,16 @@ const youtubeEmbedUrl = (() => {
     inset: 0;
     width: 100%;
     height: 100%;
+    border: none;
+  }
+
+  .tiktok-embed-wrap {
+    margin: 1rem 0;
+  }
+
+  .tiktok-embed-wrap :global(.tiktok-embed) {
+    margin: 0 auto;
+  }
     border: none;
   }
 
