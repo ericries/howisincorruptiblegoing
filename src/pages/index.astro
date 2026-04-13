@@ -9,24 +9,192 @@ import * as path from 'path';
 const entriesDir = path.join(process.cwd(), 'content', 'entries');
 const entries = loadEntries(entriesDir);
 const totalEndorsements = entries.filter((e) => e.type === 'endorsement').length;
+
+const today = new Date().toISOString().slice(0, 10);
+
+// Split entries into future (upcoming) and past
+const futureEntries = entries.filter(e => e.date > today);
+const pastEntries = entries.filter(e => e.date <= today);
 ---
 
 <Layout title="How Is Incorruptible Going?">
   <Header />
   <StatsBar totalEntries={entries.length} totalEndorsements={totalEndorsements} />
+
+  <nav class="timeline-nav" id="timeline-nav">
+    <div class="timeline-nav__inner">
+      <button class="nav-btn nav-btn--active" data-filter="all">All</button>
+      <button class="nav-btn" data-filter="event">Events</button>
+      <button class="nav-btn" data-filter="endorsement">Endorsements</button>
+      <button class="nav-btn" data-filter="review,media,social">Coverage</button>
+      <button class="nav-btn" data-filter="podcast">Podcasts</button>
+      <div class="nav-sep"></div>
+      <button class="nav-btn nav-btn--jump" id="jump-today" title="Jump to today">Today</button>
+      <button class="nav-btn nav-btn--jump" id="jump-prev" title="Previous entry">&uarr;</button>
+      <button class="nav-btn nav-btn--jump" id="jump-next" title="Next entry">&darr;</button>
+    </div>
+  </nav>
+
   <main class="timeline">
     <div class="timeline__inner">
-      {entries.map((entry, i) => (
-        <TimelineEntry entry={entry} index={i} />
-      ))}
+      {/* Future / upcoming entries */}
+      {futureEntries.length > 0 && (
+        <div class="timeline-section">
+          <div class="timeline-section__label timeline-section__label--upcoming">Upcoming</div>
+          {futureEntries.map((entry, i) => (
+            <TimelineEntry entry={entry} index={i} />
+          ))}
+        </div>
+      )}
+
+      {/* TODAY marker */}
+      <div class="today-marker" id="today-marker">
+        <div class="today-marker__line"></div>
+        <div class="today-marker__label">Today</div>
+        <div class="today-marker__line"></div>
+      </div>
+
+      {/* Past entries */}
+      {pastEntries.length > 0 && (
+        <div class="timeline-section">
+          {pastEntries.map((entry, i) => (
+            <TimelineEntry entry={entry} index={futureEntries.length + i} />
+          ))}
+        </div>
+      )}
     </div>
   </main>
+
   <footer class="footer">
     <p>Tracking the momentum of <a href="https://incorruptible.co" target="_blank" rel="noopener">Incorruptible</a> by Eric Ries</p>
   </footer>
 </Layout>
 
 <style>
+  /* ── STICKY NAV ── */
+  .timeline-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: 0 2px 8px rgba(26, 30, 58, 0.06);
+  }
+
+  .timeline-nav__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0.6rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav-btn {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    border: 1.5px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+  }
+
+  .nav-btn:hover {
+    border-color: var(--color-navy);
+    color: var(--color-navy);
+  }
+
+  .nav-btn--active {
+    background: var(--color-navy);
+    border-color: var(--color-navy);
+    color: var(--color-white);
+  }
+
+  .nav-btn--jump {
+    border-color: var(--color-blue);
+    color: var(--color-blue);
+  }
+
+  .nav-btn--jump:hover {
+    background: var(--color-blue);
+    color: var(--color-white);
+  }
+
+  .nav-sep {
+    width: 1px;
+    height: 20px;
+    background: var(--color-border);
+    margin: 0 0.25rem;
+    flex-shrink: 0;
+  }
+
+  /* ── TODAY MARKER ── */
+  .today-marker {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    padding-left: var(--date-col-width);
+    margin-left: calc(var(--date-col-width) > 0px ? 20px : 0px);
+  }
+
+  .today-marker__line {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-red), rgba(232, 64, 64, 0.2));
+  }
+
+  .today-marker__line:first-child {
+    background: linear-gradient(90deg, rgba(232, 64, 64, 0.2), var(--color-red));
+  }
+
+  .today-marker__label {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-red);
+    padding: 0.25rem 0.75rem;
+    border: 1.5px solid var(--color-red);
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  /* ── SECTION LABELS ── */
+  .timeline-section__label {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    padding: 0 0 0.75rem;
+    margin-left: calc(var(--date-col-width) + 20px + var(--rail-width) + 20px);
+  }
+
+  .timeline-section__label--upcoming {
+    color: var(--color-blue);
+  }
+
+  /* ── FUTURE ENTRIES: subtle opacity ── */
+  .timeline-section:first-child .timeline-row {
+    opacity: 0.7;
+  }
+
+  .timeline-section:first-child .timeline-row:hover {
+    opacity: 1;
+  }
+
+  /* ── TIMELINE ── */
   .timeline {
     max-width: var(--max-width);
     margin: 0 auto;
@@ -35,6 +203,11 @@ const totalEndorsements = entries.filter((e) => e.type === 'endorsement').length
 
   .timeline__inner {
     position: relative;
+  }
+
+  /* Hidden by filter */
+  .timeline-row.hidden {
+    display: none;
   }
 
   .footer {
@@ -50,4 +223,63 @@ const totalEndorsements = entries.filter((e) => e.type === 'endorsement').length
     color: var(--color-blue);
     font-weight: 600;
   }
+
+  @media (max-width: 640px) {
+    .today-marker {
+      padding-left: 0;
+      margin-left: 0;
+    }
+
+    .timeline-section__label {
+      margin-left: 0;
+    }
+  }
 </style>
+
+<script>
+  // Filter buttons
+  const filterBtns = document.querySelectorAll('.nav-btn[data-filter]');
+  const rows = document.querySelectorAll('.timeline-row');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('nav-btn--active'));
+      btn.classList.add('nav-btn--active');
+
+      const filter = btn.getAttribute('data-filter')!;
+      const types = filter.split(',');
+
+      rows.forEach(row => {
+        const type = row.getAttribute('data-type') || '';
+        if (filter === 'all' || types.includes(type)) {
+          row.classList.remove('hidden');
+        } else {
+          row.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  // Jump to today
+  document.getElementById('jump-today')?.addEventListener('click', () => {
+    document.getElementById('today-marker')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  // Jump prev/next through visible entries
+  let currentIndex = -1;
+  const getVisible = () => Array.from(rows).filter(r => !r.classList.contains('hidden'));
+
+  document.getElementById('jump-prev')?.addEventListener('click', () => {
+    const visible = getVisible();
+    if (visible.length === 0) return;
+    currentIndex = Math.max(0, currentIndex - 1);
+    visible[currentIndex]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  document.getElementById('jump-next')?.addEventListener('click', () => {
+    const visible = getVisible();
+    if (visible.length === 0) return;
+    currentIndex = Math.min(visible.length - 1, currentIndex + 1);
+    visible[currentIndex]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+</script>

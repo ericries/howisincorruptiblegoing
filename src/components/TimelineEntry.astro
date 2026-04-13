@@ -54,7 +54,7 @@ const youtubeEmbedUrl = (() => {
 })();
 ---
 
-<div class="timeline-row" style={`animation-delay: ${index * 0.06}s`}>
+<div class="timeline-row" data-date={entry.date} data-type={entry.type} style={`animation-delay: ${index * 0.06}s`}>
   <div class="timeline-date">
     <span class="timeline-date__month">{month}</span>
     <span class="timeline-date__day">{day}</span>
