@@ -36,6 +36,8 @@ Layout: left-rail feed (dates left, content cards right).
 
 - Every entry has an LLM-written `summary` (concise, 1-2 sentences) and a `blockquote` pulled directly from the source material.
 - **CRITICAL: Blockquotes must be EXACT text from the source page.** Never paraphrase, composite, or summarize — copy the exact words. Run `npx tsx scripts/verify-quotes.ts` before committing any new entries. Never trust LLM-reported "quotes" without fetching the source and confirming the text exists.
+- **CRITICAL: Never create an entry if you cannot read the source page.** If a page is JS-rendered, behind auth, or otherwise unreadable, do NOT create an entry based on search result snippets or assumptions. An unverifiable entry is worse than no entry.
+- **CRITICAL: Search result snippets are not evidence.** A search result mentioning "Eric Ries" on a page does not mean the page is about Incorruptible. Always fetch and read the actual page before creating an entry.
 - The review bot must verify that `blockquote` text actually appears at `source_url`.
 - Prompt injection defense on all scraped content.
 - Fully automated — no human review queue.

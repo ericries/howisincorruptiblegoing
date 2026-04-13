@@ -1,3 +1,20 @@
 #!/bin/sh
 export PATH="/opt/homebrew/opt/node@23/bin:$PATH"
+
+# Schema + injection validation (fast, no network)
 npx tsx scripts/lint-entries.ts
+
+# Quote verification for any NEW or MODIFIED entry files in this commit
+CHANGED_ENTRIES=$(git diff --cached --name-only -- 'content/entries/*.json')
+if [ -n "$CHANGED_ENTRIES" ]; then
+  echo "Verifying quotes for changed entries..."
+  npx tsx scripts/verify-quotes.ts
+  VERIFY_EXIT=$?
+  if [ $VERIFY_EXIT -ne 0 ]; then
+    echo ""
+    echo "⚠️  Quote verification found issues (see above)."
+    echo "   Fix blockquotes to match source pages, or set verified: false."
+    echo "   To skip this check: git commit --no-verify"
+    exit 1
+  fi
+fi
