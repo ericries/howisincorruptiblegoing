@@ -12,8 +12,12 @@
   "image": null,
   "attribution": "Janice Fraser",
   "attribution_title": "Author of Farther, Faster and Far Less Drama",
-  "attribution_image": "/images/readers/janice-fraser.jpg",
-  "tags": ["endorsement", "reader", "author"],
+  "attribution_image": null,
+  "tags": [
+    "endorsement",
+    "reader",
+    "author"
+  ],
   "type_metadata": {},
   "scanner_source": "manual",
   "verified": true,
