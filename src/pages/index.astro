@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import StatsBar from '../components/StatsBar.astro';
 import TimelineEntry from '../components/TimelineEntry.astro';
+import Highlights from '../components/Highlights.astro';
 import { loadEntries } from '../lib/entries';
 import * as path from 'path';
 
@@ -20,6 +21,7 @@ const pastEntries = entries.filter(e => e.date <= today);
 <Layout title="How Is Incorruptible Going?">
   <Header />
   <StatsBar totalEntries={entries.length} totalEndorsements={totalEndorsements} />
+  <Highlights entries={entries} />
 
   <nav class="timeline-nav" id="timeline-nav">
     <div class="timeline-nav__inner">

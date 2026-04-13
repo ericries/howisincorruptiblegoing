@@ -1,0 +1,155 @@
+---
+import type { TimelineEntry } from '../lib/schema';
+
+interface Props {
+  entries: TimelineEntry[];
+}
+
+const { entries } = Astro.props;
+
+// Curated highlights — entries with a highlight teaser in type_metadata
+interface Highlight {
+  id: string;
+  teaser: string;
+  image: string | null;
+  name: string | null;
+}
+
+const highlights: Highlight[] = entries
+  .filter(e => (e.type_metadata as any)?.highlight)
+  .map(e => ({
+    id: e.id,
+    teaser: (e.type_metadata as any).highlight as string,
+    image: e.attribution_image || e.image || null,
+    name: e.attribution || null,
+  }));
+
+if (highlights.length === 0) return;
+---
+
+<div class="highlights" id="highlights">
+  <div class="highlights__track" id="highlights-track">
+    {highlights.map(h => (
+      <button class="highlight-card" data-scroll-to={h.id}>
+        {h.image && (
+          <img class="highlight-card__img" src={h.image} alt={h.name || ''} loading="lazy" />
+        )}
+        <span class="highlight-card__teaser">{h.teaser}</span>
+      </button>
+    ))}
+  </div>
+</div>
+
+<style>
+  .highlights {
+    background: var(--color-navy);
+    padding: 1rem 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .highlights::before,
+  .highlights::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .highlights::before {
+    left: 0;
+    background: linear-gradient(to right, var(--color-navy), transparent);
+  }
+
+  .highlights::after {
+    right: 0;
+    background: linear-gradient(to left, var(--color-navy), transparent);
+  }
+
+  .highlights__track {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0 2rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .highlights__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .highlight-card {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    font-family: var(--font-body);
+  }
+
+  .highlight-card:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(108, 184, 214, 0.3);
+  }
+
+  .highlight-card__img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .highlight-card__teaser {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+    white-space: nowrap;
+  }
+</style>
+
+<script>
+  // Click to scroll to entry by ID
+  document.querySelectorAll('.highlight-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const id = card.getAttribute('data-scroll-to');
+      if (!id) return;
+      const target = document.getElementById(id);
+      if (target) {
+        // Make sure it's visible (clear any active filter)
+        target.classList.remove('hidden');
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Brief highlight flash
+        const article = target.querySelector('article');
+        if (article) {
+          article.style.transition = 'box-shadow 0.3s ease';
+          article.style.boxShadow = '0 0 0 3px rgba(108, 184, 214, 0.5)';
+          setTimeout(() => { article.style.boxShadow = ''; }, 2000);
+        }
+      }
+    });
+  });
+
+  // Auto-scroll the highlight strip
+  const track = document.getElementById('highlights-track');
+  if (track && track.children.length > 3) {
+    let scrollPos = 0;
+    setInterval(() => {
+      scrollPos += 200;
+      if (scrollPos >= track.scrollWidth - track.clientWidth) {
+        scrollPos = 0;
+      }
+      track.scrollTo({ left: scrollPos, behavior: 'smooth' });
+    }, 4000);
+  }
+</script>
