@@ -117,7 +117,7 @@ describe('validateEntry rejects invalid entries', () => {
   });
 
   it('rejects blockquote exceeding max length', () => {
-    const result = validateEntry(entryWith({ blockquote: 'x'.repeat(1001) }));
+    const result = validateEntry(entryWith({ blockquote: 'x'.repeat(2001) }));
     expect(result.valid).toBe(false);
     expect(result.errors[0]).toContain('"blockquote" exceeds');
   });

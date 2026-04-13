@@ -32,7 +32,7 @@ SOURCE_URL_RE = re.compile(r"^https?://")
 MAX_LENGTHS = {
     "title": 200,
     "summary": 1000,
-    "blockquote": 1000,
+    "blockquote": 2000,
 }
 
 # ---------------------------------------------------------------------------
