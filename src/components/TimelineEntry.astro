@@ -34,6 +34,23 @@ const sourceDomain = (() => {
 
 const isEndorsement = entry.type === 'endorsement' && entry.attribution;
 const hasPhoto = isEndorsement && entry.attribution_image;
+
+// Build links array: primary source + any additional source_urls
+const allLinks: { url: string; label: string }[] = [];
+allLinks.push({ url: entry.source_url, label: sourceDomain });
+if (entry.source_urls) {
+  for (const s of entry.source_urls) {
+    allLinks.push(s);
+  }
+}
+
+// YouTube embed URL from video_url
+const youtubeEmbedUrl = (() => {
+  if (!entry.video_url) return null;
+  const match = entry.video_url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/);
+  if (match) return `https://www.youtube.com/embed/${match[1]}`;
+  return null;
+})();
 ---
 
 <div class="timeline-row" style={`animation-delay: ${index * 0.06}s`}>
@@ -69,7 +86,11 @@ const hasPhoto = isEndorsement && entry.attribution_image;
             <span class="cinematic__role">{entry.attribution_title}</span>
           )}
         </div>
-        <a class="card__source" href={entry.source_url} target="_blank" rel="noopener">{sourceDomain}</a>
+        <div class="card__links">
+          {allLinks.map(link => (
+            <a class="card__source" href={link.url} target="_blank" rel="noopener">{link.label}</a>
+          ))}
+        </div>
       </div>
     </article>
   ) : isEndorsement ? (
@@ -86,7 +107,11 @@ const hasPhoto = isEndorsement && entry.attribution_image;
             <span class="quote-only__role">{entry.attribution_title}</span>
           )}
         </div>
-        <a class="card__source" href={entry.source_url} target="_blank" rel="noopener">{sourceDomain}</a>
+        <div class="card__links">
+          {allLinks.map(link => (
+            <a class="card__source" href={link.url} target="_blank" rel="noopener">{link.label}</a>
+          ))}
+        </div>
       </div>
     </article>
   ) : (
@@ -101,12 +126,21 @@ const hasPhoto = isEndorsement && entry.attribution_image;
             <h3 class="hero__title">{entry.title}</h3>
           </div>
           <div class="standard__inner">
-            <p class="standard__summary">{entry.summary}</p>
             <blockquote class="standard__quote">
               {entry.blockquote}
               <cite class="standard__cite">{entry.blockquote_source}</cite>
             </blockquote>
-            <a class="card__source" href={entry.source_url} target="_blank" rel="noopener">{sourceDomain}</a>
+            {youtubeEmbedUrl && (
+              <div class="video-embed">
+                <iframe src={youtubeEmbedUrl} title={entry.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            )}
+            <p class="standard__summary">{entry.summary}</p>
+            <div class="card__links">
+              {allLinks.map(link => (
+                <a class="card__source" href={link.url} target="_blank" rel="noopener">{link.label}</a>
+              ))}
+            </div>
           </div>
         </Fragment>
       ) : (
@@ -115,12 +149,21 @@ const hasPhoto = isEndorsement && entry.attribution_image;
           <div class="standard__accent" style={`background: ${accent};`}></div>
           <div class="standard__inner">
             <h3 class="standard__title">{entry.title}</h3>
-            <p class="standard__summary">{entry.summary}</p>
             <blockquote class="standard__quote">
               {entry.blockquote}
               <cite class="standard__cite">{entry.blockquote_source}</cite>
             </blockquote>
-            <a class="card__source" href={entry.source_url} target="_blank" rel="noopener">{sourceDomain}</a>
+            {youtubeEmbedUrl && (
+              <div class="video-embed">
+                <iframe src={youtubeEmbedUrl} title={entry.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            )}
+            <p class="standard__summary">{entry.summary}</p>
+            <div class="card__links">
+              {allLinks.map(link => (
+                <a class="card__source" href={link.url} target="_blank" rel="noopener">{link.label}</a>
+              ))}
+            </div>
           </div>
         </Fragment>
       )}
@@ -278,7 +321,7 @@ const hasPhoto = isEndorsement && entry.attribution_image;
 
   .cinematic__quote {
     font-family: var(--font-display);
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     font-style: italic;
     color: rgba(255, 255, 255, 0.92);
     line-height: 1.55;
@@ -420,7 +463,7 @@ const hasPhoto = isEndorsement && entry.attribution_image;
 
   .standard__title {
     font-family: var(--font-display);
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: 700;
     color: var(--color-navy);
     line-height: 1.25;
@@ -437,7 +480,7 @@ const hasPhoto = isEndorsement && entry.attribution_image;
 
   .standard__quote {
     font-family: var(--font-display);
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     color: var(--color-text);
     font-style: italic;
     line-height: 1.6;
@@ -531,6 +574,36 @@ const hasPhoto = isEndorsement && entry.attribution_image;
   .card__source:hover {
     color: var(--color-blue);
     text-decoration: none;
+  }
+
+  .card__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+  }
+
+  .card__links .card__source::before {
+    content: '↗ ';
+    font-size: 0.65rem;
+  }
+
+  /* ── VIDEO EMBED ── */
+  .video-embed {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    margin: 1rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  }
+
+  .video-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
   }
 
   /* ═══════════════════════════════

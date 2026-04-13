@@ -92,6 +92,27 @@ export function validateEntry(data: unknown): ValidationResult {
     errors.push(`"blockquote" exceeds ${MAX_BLOCKQUOTE_LENGTH} chars (got ${blockquote.length})`);
   }
 
+  // source_urls: optional array of {url, label} objects
+  if (entry.source_urls !== undefined && entry.source_urls !== null) {
+    if (!Array.isArray(entry.source_urls)) {
+      errors.push(`"source_urls" must be an array or null`);
+    } else {
+      for (const item of entry.source_urls) {
+        if (typeof item !== 'object' || item === null || typeof (item as any).url !== 'string' || typeof (item as any).label !== 'string') {
+          errors.push(`"source_urls" items must have "url" and "label" strings`);
+          break;
+        }
+      }
+    }
+  }
+
+  // video_url: optional string
+  if (entry.video_url !== undefined && entry.video_url !== null) {
+    if (typeof entry.video_url !== 'string' || !URL_PATTERN.test(entry.video_url)) {
+      errors.push(`"video_url" must be a valid HTTP(S) URL or null`);
+    }
+  }
+
   // Nullable string fields
   const nullableStrings = ['image', 'attribution', 'attribution_title', 'attribution_image'];
   for (const field of nullableStrings) {

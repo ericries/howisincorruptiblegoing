@@ -28,6 +28,8 @@ export interface TimelineEntry {
   blockquote: string;
   blockquote_source: string;
   source_url: string;
+  source_urls: { url: string; label: string }[] | null;
+  video_url: string | null;
   image: string | null;
   attribution: string | null;
   attribution_title: string | null;
