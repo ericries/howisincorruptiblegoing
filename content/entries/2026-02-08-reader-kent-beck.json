@@ -1,0 +1,21 @@
+{
+  "id": "2026-02-08-reader-kent-beck",
+  "date": "2026-02-08",
+  "type": "endorsement",
+  "title": "Kent Beck endorses Incorruptible",
+  "summary": "Kent Beck read an advance copy.",
+  "blockquote": "Reviewing Incorruptible got me thinking about the connection between my purpose ('help geeks feel safe in the world') and Eric's mission to make companies safe for their missions.",
+  "blockquote_source": "Book endorsement",
+  "source_url": "https://incorruptible.co",
+  "source_urls": null,
+  "video_url": null,
+  "image": null,
+  "attribution": "Kent Beck",
+  "attribution_title": "Creator of Extreme Programming",
+  "attribution_image": null,
+  "tags": ["endorsement", "reader", "engineering", "xp"],
+  "type_metadata": {},
+  "scanner_source": "manual",
+  "verified": true,
+  "created_at": "2026-04-12T23:00:00Z"
+}
