@@ -34,6 +34,7 @@ const sourceDomain = (() => {
 
 const isEndorsement = entry.type === 'endorsement' && entry.attribution;
 const hasPhoto = isEndorsement && entry.attribution_image;
+const details = (entry.type_metadata as Record<string, unknown>)?.details as string | undefined;
 
 // Build links array: primary source + any additional source_urls
 const allLinks: { url: string; label: string }[] = [];
@@ -126,6 +127,7 @@ const youtubeEmbedUrl = (() => {
             <h3 class="hero__title">{entry.title}</h3>
           </div>
           <div class="standard__inner">
+            <p class="standard__intro">{entry.summary}</p>
             <blockquote class="standard__quote">
               {entry.blockquote}
               <cite class="standard__cite">{entry.blockquote_source}</cite>
@@ -135,7 +137,7 @@ const youtubeEmbedUrl = (() => {
                 <iframe src={youtubeEmbedUrl} title={entry.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             )}
-            <p class="standard__summary">{entry.summary}</p>
+            {details && <p class="standard__details">{details}</p>}
             <div class="card__links">
               {allLinks.map(link => (
                 <a class="card__source" href={link.url} target="_blank" rel="noopener">{link.label}</a>
@@ -149,6 +151,7 @@ const youtubeEmbedUrl = (() => {
           <div class="standard__accent" style={`background: ${accent};`}></div>
           <div class="standard__inner">
             <h3 class="standard__title">{entry.title}</h3>
+            <p class="standard__intro">{entry.summary}</p>
             <blockquote class="standard__quote">
               {entry.blockquote}
               <cite class="standard__cite">{entry.blockquote_source}</cite>
@@ -158,7 +161,7 @@ const youtubeEmbedUrl = (() => {
                 <iframe src={youtubeEmbedUrl} title={entry.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             )}
-            <p class="standard__summary">{entry.summary}</p>
+            {details && <p class="standard__details">{details}</p>}
             <div class="card__links">
               {allLinks.map(link => (
                 <a class="card__source" href={link.url} target="_blank" rel="noopener">{link.label}</a>
@@ -444,11 +447,19 @@ const youtubeEmbedUrl = (() => {
     margin-bottom: 0.75rem;
   }
 
-  .standard__summary {
+  .standard__intro {
     font-family: var(--font-body);
-    font-size: 0.82rem;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+
+  .standard__details {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
     color: var(--color-text-muted);
-    line-height: 1.65;
+    line-height: 1.7;
     margin-bottom: 0.75rem;
   }
 
