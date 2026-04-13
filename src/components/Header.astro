@@ -2,9 +2,7 @@
 ---
 
 <header class="header">
-  <div class="header__bg">
-    <div class="header__shimmer"></div>
-  </div>
+  <div class="header__shimmer"></div>
   <div class="header__content">
     <div class="header__pre">How is</div>
     <div class="header__title-wrap">
@@ -17,21 +15,15 @@
       The new book by <span class="header__author">Eric Ries</span> · May 26, 2026
     </p>
   </div>
-  <div class="header__edge"></div>
 </header>
 
 <style>
   .header {
     background: var(--color-navy-dark);
-    padding: 4rem 1.5rem 3.5rem;
+    padding: 5rem 1.5rem 4.5rem;
     text-align: center;
     position: relative;
     overflow: hidden;
-  }
-
-  .header__bg {
-    position: absolute;
-    inset: 0;
   }
 
   .header__shimmer {
@@ -48,6 +40,7 @@
     );
     background-size: 200% 100%;
     animation: shimmer 7s ease-in-out infinite;
+    pointer-events: none;
   }
 
   .header__content {
@@ -58,8 +51,8 @@
   .header__pre,
   .header__post {
     font-family: var(--font-body);
-    font-size: 0.85rem;
-    letter-spacing: 0.4em;
+    font-size: 1rem;
+    letter-spacing: 0.45em;
     color: var(--color-blue);
     text-transform: uppercase;
     font-weight: 500;
@@ -75,7 +68,7 @@
 
   .header__echo {
     font-family: var(--font-title);
-    font-size: 4rem;
+    font-size: 4.5rem;
     font-weight: 800;
     letter-spacing: 0.18em;
     position: absolute;
@@ -98,7 +91,7 @@
 
   .header__title {
     font-family: var(--font-title);
-    font-size: 4rem;
+    font-size: 4.5rem;
     font-weight: 800;
     letter-spacing: 0.18em;
     color: var(--color-white);
@@ -108,9 +101,9 @@
 
   .header__subtitle {
     font-family: var(--font-body);
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--color-text-muted);
-    margin-top: 1.5rem;
+    margin-top: 1.75rem;
     letter-spacing: 0.03em;
   }
 
@@ -119,25 +112,14 @@
     font-weight: 700;
   }
 
-  /* Angled bottom edge */
-  .header__edge {
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    right: 0;
-    height: 40px;
-    background: var(--color-gray-bg);
-    clip-path: polygon(0 100%, 100% 100%, 100% 0);
-  }
-
-  /* Iridescent line */
+  /* Clean bottom edge — iridescent gradient border only */
   .header::after {
     content: '';
     position: absolute;
-    bottom: 39px;
+    bottom: 0;
     left: 0;
     right: 0;
-    height: 2px;
+    height: 3px;
     background: linear-gradient(
       90deg,
       transparent,
@@ -148,7 +130,6 @@
       var(--color-blue),
       transparent
     );
-    z-index: 2;
   }
 
   @media (max-width: 640px) {
@@ -165,7 +146,9 @@
     .header__echo--1 { top: 5px; }
     .header__echo--2 { top: 10px; }
 
-    .header__edge { height: 24px; }
-    .header::after { bottom: 23px; }
+    .header__pre,
+    .header__post {
+      font-size: 0.8rem;
+    }
   }
 </style>

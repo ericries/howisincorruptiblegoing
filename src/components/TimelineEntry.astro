@@ -91,20 +91,39 @@ const hasPhoto = isEndorsement && entry.attribution_image;
     </article>
   ) : (
     /* ── STANDARD ENTRY ── */
-    <article class="card card--standard">
-      <div class="standard__accent" style={`background: ${accent};`}></div>
-      {entry.image && (
-        <img class="standard__image" src={entry.image} alt={entry.title} loading="lazy" />
+    <article class={`card card--standard ${entry.image ? 'card--has-hero' : ''}`}>
+      {entry.image ? (
+        /* Entry with hero image */
+        <Fragment>
+          <div class="hero">
+            <img class="hero__img" src={entry.image} alt={entry.title} loading="lazy" />
+            <div class="hero__overlay"></div>
+            <h3 class="hero__title">{entry.title}</h3>
+          </div>
+          <div class="standard__inner">
+            <p class="standard__summary">{entry.summary}</p>
+            <blockquote class="standard__quote">
+              {entry.blockquote}
+              <cite class="standard__cite">{entry.blockquote_source}</cite>
+            </blockquote>
+            <a class="card__source" href={entry.source_url} target="_blank" rel="noopener">{sourceDomain}</a>
+          </div>
+        </Fragment>
+      ) : (
+        /* Entry without image */
+        <Fragment>
+          <div class="standard__accent" style={`background: ${accent};`}></div>
+          <div class="standard__inner">
+            <h3 class="standard__title">{entry.title}</h3>
+            <p class="standard__summary">{entry.summary}</p>
+            <blockquote class="standard__quote">
+              {entry.blockquote}
+              <cite class="standard__cite">{entry.blockquote_source}</cite>
+            </blockquote>
+            <a class="card__source" href={entry.source_url} target="_blank" rel="noopener">{sourceDomain}</a>
+          </div>
+        </Fragment>
       )}
-      <div class="standard__inner">
-        <h3 class="standard__title">{entry.title}</h3>
-        <p class="standard__summary">{entry.summary}</p>
-        <blockquote class="standard__quote">
-          {entry.blockquote}
-          <cite class="standard__cite">{entry.blockquote_source}</cite>
-        </blockquote>
-        <a class="card__source" href={entry.source_url} target="_blank" rel="noopener">{sourceDomain}</a>
-      </div>
     </article>
   )}
 </div>
@@ -457,8 +476,43 @@ const hasPhoto = isEndorsement && entry.attribution_image;
     content: '— ';
   }
 
-  .standard__image {
+  /* ── HERO IMAGE ── */
+  .hero {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+  }
+
+  .hero__img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 30%,
+      rgba(26, 30, 58, 0.7) 80%,
+      rgba(26, 30, 58, 0.95) 100%
+    );
+  }
+
+  .hero__title {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.75rem;
+    right: 1.75rem;
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-white);
+    line-height: 1.25;
+    z-index: 1;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
   }
 
   /* ═══════════════════════════════
