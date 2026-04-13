@@ -86,6 +86,13 @@ async function main() {
   for (const file of files.sort()) {
     const entry: Entry = JSON.parse(fs.readFileSync(path.join(entriesDir, file), 'utf-8'));
 
+    // Skip entries marked as unverified
+    if ((entry as any).verified === false) {
+      console.log(`⏭  ${file} — marked verified:false (skip)`);
+      skips++;
+      continue;
+    }
+
     // Skip endorsements that link to incorruptible.co — blurbs won't be on the homepage
     if (entry.type === 'endorsement' && entry.source_url === 'https://incorruptible.co') {
       console.log(`⏭  ${file} — endorsement blurb (skip, not on homepage)`);
