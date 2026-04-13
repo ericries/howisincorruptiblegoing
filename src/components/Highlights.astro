@@ -7,7 +7,6 @@ interface Props {
 
 const { entries } = Astro.props;
 
-// Curated highlights — entries with a highlight teaser in type_metadata
 interface Highlight {
   id: string;
   teaser: string;
@@ -28,6 +27,7 @@ if (highlights.length === 0) return;
 ---
 
 <div class="highlights" id="highlights">
+  <button class="highlights__arrow highlights__arrow--left" id="hl-prev" aria-label="Previous">&lsaquo;</button>
   <div class="highlights__track" id="highlights-track">
     {highlights.map(h => (
       <button class="highlight-card" data-scroll-to={h.id}>
@@ -38,23 +38,25 @@ if (highlights.length === 0) return;
       </button>
     ))}
   </div>
+  <button class="highlights__arrow highlights__arrow--right" id="hl-next" aria-label="Next">&rsaquo;</button>
 </div>
 
 <style>
   .highlights {
     background: var(--color-navy);
-    padding: 1rem 0;
+    padding: 0.85rem 0;
     overflow: hidden;
     position: relative;
   }
 
+  /* Fade edges */
   .highlights::before,
   .highlights::after {
     content: '';
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 40px;
+    width: 48px;
     z-index: 2;
     pointer-events: none;
   }
@@ -69,12 +71,42 @@ if (highlights.length === 0) return;
     background: linear-gradient(to left, var(--color-navy), transparent);
   }
 
+  /* Arrow buttons */
+  .highlights__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+
+  .highlights__arrow:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--color-white);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .highlights__arrow--left { left: 6px; }
+  .highlights__arrow--right { right: 6px; }
+
+  /* Track */
   .highlights__track {
     display: flex;
     gap: 0.75rem;
-    padding: 0 2rem;
-    overflow-x: auto;
-    scroll-behavior: smooth;
+    padding: 0 2.5rem;
+    overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
@@ -83,6 +115,7 @@ if (highlights.length === 0) return;
     display: none;
   }
 
+  /* Cards */
   .highlight-card {
     flex-shrink: 0;
     display: flex;
@@ -119,17 +152,49 @@ if (highlights.length === 0) return;
 </style>
 
 <script>
-  // Click to scroll to entry by ID
-  document.querySelectorAll('.highlight-card').forEach(card => {
+  const track = document.getElementById('highlights-track');
+  const cards = track ? Array.from(track.querySelectorAll('.highlight-card')) : [];
+  let currentCard = 0;
+  let autoTimer: ReturnType<typeof setInterval> | null = null;
+
+  function scrollToCard(index: number) {
+    if (!track || cards.length === 0) return;
+    currentCard = ((index % cards.length) + cards.length) % cards.length;
+    const card = cards[currentCard] as HTMLElement;
+    const trackRect = track.getBoundingClientRect();
+    const cardRect = card.getBoundingClientRect();
+    const offset = cardRect.left - trackRect.left - 40; // 40px padding
+    track.scrollBy({ left: offset, behavior: 'smooth' });
+  }
+
+  function nextCard() { scrollToCard(currentCard + 1); }
+  function prevCard() { scrollToCard(currentCard - 1); }
+
+  function resetAuto() {
+    if (autoTimer) clearInterval(autoTimer);
+    autoTimer = setInterval(nextCard, 6000);
+  }
+
+  // Arrow buttons
+  document.getElementById('hl-prev')?.addEventListener('click', () => {
+    prevCard();
+    resetAuto();
+  });
+
+  document.getElementById('hl-next')?.addEventListener('click', () => {
+    nextCard();
+    resetAuto();
+  });
+
+  // Click card to scroll to entry
+  cards.forEach(card => {
     card.addEventListener('click', () => {
       const id = card.getAttribute('data-scroll-to');
       if (!id) return;
       const target = document.getElementById(id);
       if (target) {
-        // Make sure it's visible (clear any active filter)
         target.classList.remove('hidden');
         target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        // Brief highlight flash
         const article = target.querySelector('article');
         if (article) {
           article.style.transition = 'box-shadow 0.3s ease';
@@ -140,16 +205,8 @@ if (highlights.length === 0) return;
     });
   });
 
-  // Auto-scroll the highlight strip
-  const track = document.getElementById('highlights-track');
-  if (track && track.children.length > 3) {
-    let scrollPos = 0;
-    setInterval(() => {
-      scrollPos += 200;
-      if (scrollPos >= track.scrollWidth - track.clientWidth) {
-        scrollPos = 0;
-      }
-      track.scrollTo({ left: scrollPos, behavior: 'smooth' });
-    }, 4000);
+  // Start auto-advance (slow — every 6 seconds, one card at a time)
+  if (cards.length > 3) {
+    resetAuto();
   }
 </script>
