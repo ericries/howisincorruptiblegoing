@@ -1,0 +1,21 @@
+{
+  "id": "2026-03-13-reader-esben-kran",
+  "date": "2026-03-13",
+  "type": "endorsement",
+  "title": "Esben Kran endorses Incorruptible",
+  "summary": "Seldon Lab president Esben Kran read an advance copy.",
+  "blockquote": "Incorruptible is the kind of book every startup founder should read — especially those building in AI, where the governance decisions you make at the start determine whether your mission survives contact with scale.",
+  "blockquote_source": "Reader review",
+  "source_url": "https://incorruptible.co",
+  "source_urls": null,
+  "video_url": null,
+  "image": null,
+  "attribution": "Esben Kran",
+  "attribution_title": "President, Seldon Lab",
+  "attribution_image": "/images/readers/esben-kran.jpg",
+  "tags": ["endorsement", "reader", "ai-safety"],
+  "type_metadata": {},
+  "scanner_source": "manual",
+  "verified": true,
+  "created_at": "2026-04-12T23:00:00Z"
+}
