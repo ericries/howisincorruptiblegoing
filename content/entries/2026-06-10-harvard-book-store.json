@@ -1,0 +1,21 @@
+{
+  "id": "2026-06-10-harvard-book-store",
+  "date": "2026-06-10",
+  "type": "event",
+  "title": "Harvard Book Store: Eric Ries with Tom Eisenmann",
+  "summary": "Eric appears at Harvard Book Store in Cambridge, Massachusetts in conversation with Tom Eisenmann, Harvard Business School professor and book endorser who called Incorruptible 'Eric Ries at his most ambitious and original.'",
+  "blockquote": "Incorruptible is Eric Ries at his most ambitious and original. He argues that corruption — extracting value from successful companies — results not from moral failure but from flaws in our institutions. This is a practical manifesto for building mission-driven companies that survive success without killing the golden goose.",
+  "blockquote_source": "Thomas R. Eisenmann",
+  "source_url": "https://www.harvard.com/event/eric_ries/",
+  "source_urls": null,
+  "video_url": null,
+  "image": null,
+  "attribution": null,
+  "attribution_title": null,
+  "attribution_image": null,
+  "tags": ["speaking", "cambridge-massachusetts", "bookstore", "harvard", "book-tour"],
+  "type_metadata": {},
+  "scanner_source": "web-search",
+  "verified": true,
+  "created_at": "2026-04-13T08:30:00Z"
+}
