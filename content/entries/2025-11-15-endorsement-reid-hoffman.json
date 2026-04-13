@@ -1,6 +1,6 @@
 {
-  "id": "2025-12-05-endorsement-reid-hoffman",
-  "date": "2025-12-05",
+  "id": "2025-11-15-endorsement-reid-hoffman",
+  "date": "2025-11-15",
   "type": "endorsement",
   "title": "Reid Hoffman endorses Incorruptible",
   "summary": "LinkedIn co-founder Reid Hoffman calls Incorruptible a must-read for anyone who recognizes the importance of trustworthy institutions for a thriving democracy.",
@@ -11,8 +11,13 @@
   "attribution": "Reid Hoffman",
   "attribution_title": "Co-Founder of LinkedIn, bestselling author of Superagency",
   "attribution_image": "/images/people/reid-hoffman.png",
-  "tags": ["endorsement", "tech-leader"],
-  "type_metadata": {"highlight": "What does Reid Hoffman think?"},
+  "tags": [
+    "endorsement",
+    "tech-leader"
+  ],
+  "type_metadata": {
+    "highlight": "What does Reid Hoffman think?"
+  },
   "scanner_source": "web-search",
   "verified": true,
   "created_at": "2026-04-12T23:00:00Z"

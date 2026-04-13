@@ -1,18 +1,23 @@
 {
-  "id": "2026-01-25-endorsement-kim-scott",
-  "date": "2026-01-25",
+  "id": "2026-01-15-endorsement-kim-scott",
+  "date": "2026-01-15",
   "type": "endorsement",
   "title": "Kim Scott endorses Incorruptible",
   "summary": "Radical Candor author Kim Scott endorses Incorruptible as essential for founders building companies that will last a hundred years.",
-  "blockquote": "If you want to build a company that will be making the world better a hundred years from now, it's not enough to be a great person with good intentions — you need to consciously build incorruptible governance. Ries shows you how. Indispensable!",
+  "blockquote": "If you want to build a company that will be making the world a better place a hundred years from now, it's not enough to be a great person with good intentions—you need to consciously build incorruptible governance. Ries shows you how. Indispensable!",
   "blockquote_source": "Book endorsement",
   "source_url": "https://incorruptible.co",
   "image": null,
   "attribution": "Kim Scott",
   "attribution_title": "Bestselling author of Radical Candor",
   "attribution_image": "/images/people/kim-scott.png",
-  "tags": ["endorsement", "author"],
-  "type_metadata": {"highlight": "Why Kim Scott called it 'indispensable'"},
+  "tags": [
+    "endorsement",
+    "author"
+  ],
+  "type_metadata": {
+    "highlight": "Why Kim Scott called it 'indispensable'"
+  },
   "scanner_source": "web-search",
   "verified": true,
   "created_at": "2026-04-12T23:00:00Z"

@@ -1,6 +1,6 @@
 {
-  "id": "2026-01-10-endorsement-seth-godin",
-  "date": "2026-01-10",
+  "id": "2025-12-15-endorsement-seth-godin",
+  "date": "2025-12-15",
   "type": "endorsement",
   "title": "Seth Godin endorses Incorruptible",
   "summary": "Seth Godin says Incorruptible will first inform and infuriate you, then help you see a path forward — and that it should be required reading for anyone who manages or has a manager.",
@@ -11,7 +11,11 @@
   "attribution": "Seth Godin",
   "attribution_title": "Bestselling author of twenty-one books, including This Is Strategy",
   "attribution_image": "/images/people/seth-godin.jpg",
-  "tags": ["endorsement", "author", "marketing"],
+  "tags": [
+    "endorsement",
+    "author",
+    "marketing"
+  ],
   "type_metadata": {},
   "scanner_source": "web-search",
   "verified": true,

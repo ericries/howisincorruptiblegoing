@@ -1,6 +1,6 @@
 {
-  "id": "2026-03-08-endorsement-leah-solivan",
-  "date": "2026-03-08",
+  "id": "2026-04-30-endorsement-leah-solivan",
+  "date": "2026-04-30",
   "type": "endorsement",
   "title": "Leah Solivan endorses Incorruptible",
   "summary": "TaskRabbit founder Leah Solivan calls the book the one she wishes she'd had while building her company.",
@@ -11,7 +11,10 @@
   "attribution": "Leah Solivan",
   "attribution_title": "Founder of TaskRabbit",
   "attribution_image": "/images/people/leah-solivan.png",
-  "tags": ["endorsement", "founder"],
+  "tags": [
+    "endorsement",
+    "founder"
+  ],
   "type_metadata": {},
   "scanner_source": "web-search",
   "verified": true,

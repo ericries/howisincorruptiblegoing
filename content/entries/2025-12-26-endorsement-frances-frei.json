@@ -1,6 +1,6 @@
 {
-  "id": "2026-01-15-endorsement-frances-frei",
-  "date": "2026-01-15",
+  "id": "2025-12-26-endorsement-frances-frei",
+  "date": "2025-12-26",
   "type": "endorsement",
   "title": "Frances Frei endorses Incorruptible",
   "summary": "Harvard Business School professor Frances Frei calls the book both a moral compass and a practical playbook.",
@@ -11,7 +11,10 @@
   "attribution": "Frances Frei",
   "attribution_title": "UPS Foundation Professor, Harvard Business School",
   "attribution_image": "/images/people/frances-frei.png",
-  "tags": ["endorsement", "academia"],
+  "tags": [
+    "endorsement",
+    "academia"
+  ],
   "type_metadata": {},
   "scanner_source": "web-search",
   "verified": true,

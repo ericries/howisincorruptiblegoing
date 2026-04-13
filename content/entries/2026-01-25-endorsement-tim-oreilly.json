@@ -1,6 +1,6 @@
 {
-  "id": "2026-01-30-endorsement-tim-oreilly",
-  "date": "2026-01-30",
+  "id": "2026-01-25-endorsement-tim-oreilly",
+  "date": "2026-01-25",
   "type": "endorsement",
   "title": "Tim O'Reilly endorses Incorruptible",
   "summary": "O'Reilly Media founder Tim O'Reilly calls the book a good place to start if you want the world to be a better place.",
@@ -11,7 +11,10 @@
   "attribution": "Tim O'Reilly",
   "attribution_title": "Founder of O'Reilly Media",
   "attribution_image": "/images/people/tim-oreilly.jpg",
-  "tags": ["endorsement", "tech-leader"],
+  "tags": [
+    "endorsement",
+    "tech-leader"
+  ],
   "type_metadata": {},
   "scanner_source": "web-search",
   "verified": true,

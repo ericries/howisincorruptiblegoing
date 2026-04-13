@@ -1,6 +1,6 @@
 {
-  "id": "2026-03-18-endorsement-seth-levine",
-  "date": "2026-03-18",
+  "id": "2026-05-24-endorsement-seth-levine",
+  "date": "2026-05-24",
   "type": "endorsement",
   "title": "Seth Levine endorses Incorruptible",
   "summary": "VC Seth Levine says Ries does a masterful job of outlining an even bolder view for the future of business beyond shareholder primacy.",
@@ -11,7 +11,11 @@
   "attribution": "Seth Levine",
   "attribution_title": "Partner, Foundry VC; author of Capital Evolution and The New Builders",
   "attribution_image": "/images/people/seth-levine.jpg",
-  "tags": ["endorsement", "venture-capital", "investor"],
+  "tags": [
+    "endorsement",
+    "venture-capital",
+    "investor"
+  ],
   "type_metadata": {},
   "scanner_source": "web-search",
   "verified": true,

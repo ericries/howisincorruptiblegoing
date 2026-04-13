@@ -1,6 +1,6 @@
 {
-  "id": "2026-02-20-endorsement-matt-blumberg",
-  "date": "2026-02-20",
+  "id": "2026-04-17-endorsement-matt-blumberg",
+  "date": "2026-04-17",
   "type": "endorsement",
   "title": "Matt Blumberg endorses Incorruptible",
   "summary": "Matt Blumberg says every founder eventually faces the board meeting where the mission is on the table, and this book helps you walk out with your soul intact.",
@@ -11,7 +11,11 @@
   "attribution": "Matt Blumberg",
   "attribution_title": "Author of Startup CEO and Startup Boards",
   "attribution_image": "/images/people/matt-blumberg.jpg",
-  "tags": ["endorsement", "founder", "boards"],
+  "tags": [
+    "endorsement",
+    "founder",
+    "boards"
+  ],
   "type_metadata": {},
   "scanner_source": "web-search",
   "verified": true,
