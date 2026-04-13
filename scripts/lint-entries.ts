@@ -79,5 +79,33 @@ if (isMainModule) {
     }
   }
 
+  // Check endorsement adjacency — no two endorsements should be adjacent in sorted order
+  const allEntries = files
+    .map((f) => {
+      const data = JSON.parse(fs.readFileSync(path.join(entriesDir, f), 'utf-8'));
+      return { file: f, type: data.type, date: data.date, id: data.id };
+    })
+    .sort((a, b) => {
+      // Sort by date, then by filename for same-date entries
+      const dateCompare = a.date.localeCompare(b.date);
+      if (dateCompare !== 0) return dateCompare;
+      return a.file.localeCompare(b.file);
+    });
+
+  let lastEndorsementIndex = -999;
+  for (let i = 0; i < allEntries.length; i++) {
+    const entry = allEntries[i];
+    const isEndorsement = entry.type === 'endorsement' && entry.file.includes('-endorsement-');
+    if (isEndorsement) {
+      const gap = i - lastEndorsementIndex - 1;
+      if (gap < 2 && lastEndorsementIndex >= 0) {
+        hasErrors = true;
+        const prevEndorsement = allEntries[lastEndorsementIndex];
+        console.error(`\n❌ ADJACENCY: ${entry.file} is only ${gap} entries after ${prevEndorsement.file} (need at least 2 non-endorsement entries between endorsements)`);
+      }
+      lastEndorsementIndex = i;
+    }
+  }
+
   process.exit(hasErrors ? 1 : 0);
 }

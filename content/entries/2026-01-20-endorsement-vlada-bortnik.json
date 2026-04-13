@@ -1,9 +1,9 @@
 {
-  "id": "2026-03-29-endorsement-vlada-bortnik",
-  "date": "2026-03-29",
+  "id": "2026-01-20-endorsement-vlada-bortnik",
+  "date": "2026-01-20",
   "type": "endorsement",
   "title": "Vlada Bortnik endorses Incorruptible",
-  "summary": "Marco Polo founder Vlada Bortnik says the book had her in tears — not from sadness but because it gave her hope and proof that building something wildly successful and deeply good is possible.",
+  "summary": "Marco Polo founder Vlada Bortnik says the book had her in tears \u2014 not from sadness but because it gave her hope and proof that building something wildly successful and deeply good is possible.",
   "blockquote": "I've read countless business books, but this is the first that had me in tears not out of sadness, but because it gave me hope. Incorruptible is not just a book. It's permission. It's a blueprint. And it's proof that you're not crazy for wanting to build something that's both wildly successful and deeply good, something that lasts. For any founder who truly wants to make a difference, this is a must read.",
   "blockquote_source": "Book endorsement",
   "source_url": "https://incorruptible.co",
@@ -11,8 +11,14 @@
   "attribution": "Vlada Bortnik",
   "attribution_title": "Founder and CEO of Marco Polo",
   "attribution_image": "/images/people/vlada-bortnik.png",
-  "tags": ["endorsement", "founder", "social-media"],
-  "type_metadata": {"highlight": "'The first business book that made me cry'"},
+  "tags": [
+    "endorsement",
+    "founder",
+    "social-media"
+  ],
+  "type_metadata": {
+    "highlight": "'The first business book that made me cry'"
+  },
   "scanner_source": "web-search",
   "verified": true,
   "created_at": "2026-04-12T23:00:00Z"
