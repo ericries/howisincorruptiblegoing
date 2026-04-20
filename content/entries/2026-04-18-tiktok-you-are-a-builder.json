@@ -16,6 +16,6 @@
   "tags": ["social", "tiktok", "video"],
   "type_metadata": {},
   "scanner_source": "social-scan",
-  "verified": true,
+  "verified": false,
   "created_at": "2026-04-18T22:00:00Z"
 }
