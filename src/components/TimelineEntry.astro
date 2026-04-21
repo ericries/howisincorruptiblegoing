@@ -32,9 +32,12 @@ const sourceDomain = (() => {
   }
 })();
 
+const isFeatured = !!(entry.type_metadata as Record<string, unknown>)?.featured;
 const isEndorsement = entry.type === 'endorsement' && entry.attribution;
 const isReaderReview = isEndorsement && entry.blockquote_source === 'Reader review';
 const hasPhoto = isEndorsement && entry.attribution_image;
+// Featured reviews/entries with attribution_image get cinematic treatment too
+const isCinematic = (hasPhoto && !isReaderReview) || (isFeatured && entry.attribution_image && entry.attribution);
 const details = (entry.type_metadata as Record<string, unknown>)?.details as string | undefined;
 
 // LinkedIn post detection
@@ -121,8 +124,8 @@ const tiktokEmbed = (() => {
         </div>
       </div>
     </article>
-  ) : hasPhoto ? (
-    /* ── ENDORSEMENT WITH PHOTO: cinematic card ── */
+  ) : isCinematic ? (
+    /* ── CINEMATIC CARD: endorsements with photo OR featured entries ── */
     <article class="card card--cinematic">
       <div class="cinematic__photo-col">
         <img
