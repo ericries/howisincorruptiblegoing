@@ -12,7 +12,7 @@
   "attribution_title": null,
   "attribution_image": null,
   "tags": ["speaking", "menlo-park-california", "bookstore", "book-tour"],
-  "type_metadata": {},
+  "type_metadata": { "city": "Menlo Park, CA" },
   "scanner_source": "web-search",
   "verified": true,
   "created_at": "2026-04-12T23:00:00Z"

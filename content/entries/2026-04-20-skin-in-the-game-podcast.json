@@ -14,7 +14,7 @@
   "attribution_title": "VC firm; hosts Skin in the Game podcast",
   "attribution_image": "/images/people/florida-funders.jpg",
   "tags": ["podcast", "linkedin"],
-  "type_metadata": {},
+  "type_metadata": {"featured": true},
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-04-20T16:00:00Z"

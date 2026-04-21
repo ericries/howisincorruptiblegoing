@@ -12,7 +12,7 @@
   "attribution_title": null,
   "attribution_image": null,
   "tags": ["speaking", "seattle-washington", "conference", "keynote"],
-  "type_metadata": {},
+  "type_metadata": { "city": "Seattle" },
   "scanner_source": "web-search",
   "verified": true,
   "created_at": "2026-04-12T23:00:00Z"

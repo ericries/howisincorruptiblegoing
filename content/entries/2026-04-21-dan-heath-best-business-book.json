@@ -14,7 +14,7 @@
   "attribution_title": "NYT bestselling co-author of Made to Stick, Switch, and Upstream",
   "attribution_image": null,
   "tags": ["review", "newsletter", "dan-heath"],
-  "type_metadata": {"highlight": "Dan Heath: 'The best business book of the year'"},
+  "type_metadata": {"highlight": "Dan Heath: 'The best business book of the year'", "featured": true, "sidebar_quote": "If you're a founder, top executive, or board member, it's downright negligent not to read this book."},
   "scanner_source": "manual",
   "verified": false,
   "created_at": "2026-04-21T18:00:00Z"

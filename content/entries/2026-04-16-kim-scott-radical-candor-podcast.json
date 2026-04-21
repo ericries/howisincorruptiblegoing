@@ -14,7 +14,7 @@
   "attribution_title": "Co-founder of Radical Candor; NYT Bestselling Author",
   "attribution_image": "/images/people/kim-scott.jpg",
   "tags": ["podcast", "linkedin", "radical-candor"],
-  "type_metadata": {},
+  "type_metadata": {"featured": true, "sidebar_quote": "It's one of the most important books I've read in the last decade. Companies don't fail their missions because of bad people. They fail because of bad structures."},
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-04-16T22:00:00Z"

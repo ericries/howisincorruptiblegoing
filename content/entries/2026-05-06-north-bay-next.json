@@ -14,7 +14,7 @@
   "attribution_title": null,
   "attribution_image": null,
   "tags": ["event", "novato-california", "marin-county", "conference"],
-  "type_metadata": {},
+  "type_metadata": { "city": "Novato, CA" },
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-04-13T18:00:00Z"
