@@ -33,11 +33,13 @@ const sourceDomain = (() => {
 })();
 
 const isFeatured = !!(entry.type_metadata as Record<string, unknown>)?.featured;
+const weight = ((entry.type_metadata as Record<string, unknown>)?.weight as number) || 2;
+const isCompact = weight === 1;
 const isEndorsement = entry.type === 'endorsement' && entry.attribution;
 const isReaderReview = isEndorsement && entry.blockquote_source === 'Reader review';
 const hasPhoto = isEndorsement && entry.attribution_image;
-// Featured reviews/entries with attribution_image get cinematic treatment too
-const isCinematic = (hasPhoto && !isReaderReview) || (isFeatured && entry.attribution_image && entry.attribution);
+// Featured non-endorsement entries with attribution get a special "featured review" card
+const isFeaturedReview = isFeatured && !isEndorsement && entry.attribution && entry.attribution_image;
 const details = (entry.type_metadata as Record<string, unknown>)?.details as string | undefined;
 
 // LinkedIn post detection
@@ -124,8 +126,8 @@ const tiktokEmbed = (() => {
         </div>
       </div>
     </article>
-  ) : isCinematic ? (
-    /* ── CINEMATIC CARD: endorsements with photo OR featured entries ── */
+  ) : hasPhoto ? (
+    /* ── ENDORSEMENT WITH PHOTO: cinematic card ── */
     <article class="card card--cinematic">
       <div class="cinematic__photo-col">
         <img
@@ -174,9 +176,34 @@ const tiktokEmbed = (() => {
         </div>
       </div>
     </article>
+  ) : isFeaturedReview ? (
+    /* ── FEATURED REVIEW: title + quote + person photo ── */
+    <article class="card card--featured-review">
+      <div class="featured-review__inner">
+        <h3 class="featured-review__title">{entry.title}</h3>
+        <p class="featured-review__summary">{entry.summary}</p>
+        <blockquote class="featured-review__quote">
+          &ldquo;{entry.blockquote}&rdquo;
+        </blockquote>
+        <div class="featured-review__who">
+          <img class="featured-review__photo" src={entry.attribution_image!} alt={entry.attribution!} loading="lazy" />
+          <div class="featured-review__info">
+            <strong class="featured-review__name">{entry.attribution}</strong>
+            {entry.attribution_title && (
+              <span class="featured-review__role">{entry.attribution_title}</span>
+            )}
+          </div>
+        </div>
+        <div class="card__links">
+          {allLinks.map(link => (
+            <a class="card__source" href={link.url} target="_blank" rel="noopener">{link.label}</a>
+          ))}
+        </div>
+      </div>
+    </article>
   ) : (
     /* ── STANDARD ENTRY ── */
-    <article class={`card card--standard ${entry.image ? 'card--has-hero' : ''}`}>
+    <article class={`card card--standard ${entry.image ? 'card--has-hero' : ''} ${isCompact ? 'card--compact' : ''}`}>
       {entry.image ? (
         /* Entry with hero image */
         <Fragment>
@@ -206,26 +233,61 @@ const tiktokEmbed = (() => {
                 </svg>
               </div>
             )}
-            <p class="standard__intro">{entry.summary}</p>
-            <blockquote class="standard__quote">
-              &ldquo;{entry.blockquote}&rdquo;
-              <cite class="standard__cite">{entry.blockquote_source}</cite>
-            </blockquote>
-            {youtubeEmbedUrl && (
-              <div class="video-embed">
-                <iframe src={youtubeEmbedUrl} title={entry.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-            )}
-            {tiktokEmbed && (
-              <div class="tiktok-embed-wrap">
-                <blockquote class="tiktok-embed" cite={tiktokEmbed.url} data-video-id={tiktokEmbed.videoId} style="max-width:605px;min-width:325px;">
-                  <section>
-                    <a target="_blank" title={`@${tiktokEmbed.username}`} href={`https://www.tiktok.com/@${tiktokEmbed.username}?refer=embed`}>@{tiktokEmbed.username}</a>
-                  </section>
+            {isCompact ? (
+              <Fragment>
+                {youtubeEmbedUrl && (
+                  <div class="video-embed">
+                    <iframe src={youtubeEmbedUrl} title={entry.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+                )}
+                {tiktokEmbed && (
+                  <div class="tiktok-embed-wrap">
+                    <blockquote class="tiktok-embed" cite={tiktokEmbed.url} data-video-id={tiktokEmbed.videoId} style="max-width:605px;min-width:325px;">
+                      <section>
+                        <a target="_blank" title={`@${tiktokEmbed.username}`} href={`https://www.tiktok.com/@${tiktokEmbed.username}?refer=embed`}>@{tiktokEmbed.username}</a>
+                      </section>
+                    </blockquote>
+                  </div>
+                )}
+                <div class="compact__expandable" data-collapsed>
+                  <button class="compact__toggle" aria-label="Show more">
+                    <span class="compact__toggle-text">Show more</span>
+                    <span class="compact__toggle-icon">&#9662;</span>
+                  </button>
+                  <div class="compact__content">
+                    <p class="standard__intro">{entry.summary}</p>
+                    <blockquote class="standard__quote">
+                      &ldquo;{entry.blockquote}&rdquo;
+                      <cite class="standard__cite">{entry.blockquote_source}</cite>
+                    </blockquote>
+                    {details && <p class="standard__details">{details}</p>}
+                  </div>
+                </div>
+              </Fragment>
+            ) : (
+              <Fragment>
+                <p class="standard__intro">{entry.summary}</p>
+                <blockquote class="standard__quote">
+                  &ldquo;{entry.blockquote}&rdquo;
+                  <cite class="standard__cite">{entry.blockquote_source}</cite>
                 </blockquote>
-              </div>
+                {youtubeEmbedUrl && (
+                  <div class="video-embed">
+                    <iframe src={youtubeEmbedUrl} title={entry.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+                )}
+                {tiktokEmbed && (
+                  <div class="tiktok-embed-wrap">
+                    <blockquote class="tiktok-embed" cite={tiktokEmbed.url} data-video-id={tiktokEmbed.videoId} style="max-width:605px;min-width:325px;">
+                      <section>
+                        <a target="_blank" title={`@${tiktokEmbed.username}`} href={`https://www.tiktok.com/@${tiktokEmbed.username}?refer=embed`}>@{tiktokEmbed.username}</a>
+                      </section>
+                    </blockquote>
+                  </div>
+                )}
+                {details && <p class="standard__details">{details}</p>}
+              </Fragment>
             )}
-            {details && <p class="standard__details">{details}</p>}
             <div class="card__links">
               {allLinks.map(link => (
                 <a class="card__source" href={link.url} target="_blank" rel="noopener">{link.label}</a>
@@ -276,26 +338,61 @@ const tiktokEmbed = (() => {
               </div>
             )}
             <h3 class="standard__title">{entry.title}</h3>
-            <p class="standard__intro">{entry.summary}</p>
-            <blockquote class="standard__quote">
-              &ldquo;{entry.blockquote}&rdquo;
-              <cite class="standard__cite">{entry.blockquote_source}</cite>
-            </blockquote>
-            {youtubeEmbedUrl && (
-              <div class="video-embed">
-                <iframe src={youtubeEmbedUrl} title={entry.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-            )}
-            {tiktokEmbed && (
-              <div class="tiktok-embed-wrap">
-                <blockquote class="tiktok-embed" cite={tiktokEmbed.url} data-video-id={tiktokEmbed.videoId} style="max-width:605px;min-width:325px;">
-                  <section>
-                    <a target="_blank" title={`@${tiktokEmbed.username}`} href={`https://www.tiktok.com/@${tiktokEmbed.username}?refer=embed`}>@{tiktokEmbed.username}</a>
-                  </section>
+            {isCompact ? (
+              <Fragment>
+                {youtubeEmbedUrl && (
+                  <div class="video-embed">
+                    <iframe src={youtubeEmbedUrl} title={entry.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+                )}
+                {tiktokEmbed && (
+                  <div class="tiktok-embed-wrap">
+                    <blockquote class="tiktok-embed" cite={tiktokEmbed.url} data-video-id={tiktokEmbed.videoId} style="max-width:605px;min-width:325px;">
+                      <section>
+                        <a target="_blank" title={`@${tiktokEmbed.username}`} href={`https://www.tiktok.com/@${tiktokEmbed.username}?refer=embed`}>@{tiktokEmbed.username}</a>
+                      </section>
+                    </blockquote>
+                  </div>
+                )}
+                <div class="compact__expandable" data-collapsed>
+                  <button class="compact__toggle" aria-label="Show more">
+                    <span class="compact__toggle-text">Show more</span>
+                    <span class="compact__toggle-icon">&#9662;</span>
+                  </button>
+                  <div class="compact__content">
+                    <p class="standard__intro">{entry.summary}</p>
+                    <blockquote class="standard__quote">
+                      &ldquo;{entry.blockquote}&rdquo;
+                      <cite class="standard__cite">{entry.blockquote_source}</cite>
+                    </blockquote>
+                    {details && <p class="standard__details">{details}</p>}
+                  </div>
+                </div>
+              </Fragment>
+            ) : (
+              <Fragment>
+                <p class="standard__intro">{entry.summary}</p>
+                <blockquote class="standard__quote">
+                  &ldquo;{entry.blockquote}&rdquo;
+                  <cite class="standard__cite">{entry.blockquote_source}</cite>
                 </blockquote>
-              </div>
+                {youtubeEmbedUrl && (
+                  <div class="video-embed">
+                    <iframe src={youtubeEmbedUrl} title={entry.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+                )}
+                {tiktokEmbed && (
+                  <div class="tiktok-embed-wrap">
+                    <blockquote class="tiktok-embed" cite={tiktokEmbed.url} data-video-id={tiktokEmbed.videoId} style="max-width:605px;min-width:325px;">
+                      <section>
+                        <a target="_blank" title={`@${tiktokEmbed.username}`} href={`https://www.tiktok.com/@${tiktokEmbed.username}?refer=embed`}>@{tiktokEmbed.username}</a>
+                      </section>
+                    </blockquote>
+                  </div>
+                )}
+                {details && <p class="standard__details">{details}</p>}
+              </Fragment>
             )}
-            {details && <p class="standard__details">{details}</p>}
             <div class="card__links">
               {allLinks.map(link => (
                 <a class="card__source" href={link.url} target="_blank" rel="noopener">{link.label}</a>
@@ -574,6 +671,106 @@ const tiktokEmbed = (() => {
 
   .card--cinematic .card__source:hover {
     color: var(--color-blue);
+  }
+
+  /* ═══════════════════════════════
+     FEATURED REVIEW
+     (title + large quote + person)
+     ═══════════════════════════════ */
+  .card--featured-review {
+    background: var(--color-card);
+    border: 2px solid var(--color-blue);
+    box-shadow:
+      0 4px 12px rgba(108, 184, 214, 0.1),
+      0 12px 40px rgba(108, 184, 214, 0.08);
+  }
+
+  .card--featured-review:hover {
+    box-shadow:
+      0 8px 20px rgba(108, 184, 214, 0.15),
+      0 24px 60px rgba(108, 184, 214, 0.12);
+  }
+
+  .featured-review__inner {
+    padding: 2rem;
+  }
+
+  .featured-review__title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    line-height: 1.25;
+    margin-bottom: 0.6rem;
+  }
+
+  .featured-review__summary {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .featured-review__quote {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 600;
+    font-style: normal;
+    color: var(--color-text);
+    line-height: 1.55;
+    margin-bottom: 1.25rem;
+    padding-left: 1.25rem;
+    border-left: 3px solid var(--color-blue);
+  }
+
+  .featured-review__who {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .featured-review__photo {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-blue);
+  }
+
+  .featured-review__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .featured-review__name {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-navy);
+  }
+
+  .featured-review__role {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+  }
+
+  @media (max-width: 640px) {
+    .featured-review__inner {
+      padding: 1.5rem;
+    }
+
+    .featured-review__title {
+      font-size: 1.25rem;
+    }
+
+    .featured-review__quote {
+      font-size: 1.05rem;
+    }
   }
 
   /* ═══════════════════════════════
@@ -911,6 +1108,71 @@ const tiktokEmbed = (() => {
   }
 
   /* ═══════════════════════════════
+     COMPACT CARD (weight: 1)
+     ═══════════════════════════════ */
+  .card--compact .standard__inner {
+    padding: 1rem 1.25rem;
+  }
+
+  .card--compact .standard__title {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .card--compact .hero {
+    height: 140px;
+  }
+
+  .card--compact .hero__title {
+    font-size: 1.1rem;
+  }
+
+  .compact__expandable {
+    margin-top: 0.25rem;
+  }
+
+  .compact__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--color-blue);
+    padding: 0.2rem 0;
+    transition: color 0.15s ease;
+  }
+
+  .compact__toggle:hover {
+    color: var(--color-navy);
+  }
+
+  .compact__toggle-icon {
+    font-size: 0.6rem;
+    transition: transform 0.2s ease;
+  }
+
+  .compact__expandable:not([data-collapsed]) .compact__toggle-icon {
+    transform: rotate(180deg);
+  }
+
+  .compact__content {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.2s ease;
+  }
+
+  .compact__expandable:not([data-collapsed]) .compact__content {
+    max-height: 600px;
+    opacity: 1;
+    margin-top: 0.5rem;
+  }
+
+  /* ═══════════════════════════════
      RESPONSIVE
      ═══════════════════════════════ */
   @media (max-width: 640px) {
@@ -950,3 +1212,20 @@ const tiktokEmbed = (() => {
     }
   }
 </style>
+
+<script>
+  document.querySelectorAll('.compact__toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const wrapper = btn.closest('.compact__expandable');
+      if (!wrapper) return;
+      const isCollapsed = wrapper.hasAttribute('data-collapsed');
+      if (isCollapsed) {
+        wrapper.removeAttribute('data-collapsed');
+        (btn.querySelector('.compact__toggle-text') as HTMLElement).textContent = 'Show less';
+      } else {
+        wrapper.setAttribute('data-collapsed', '');
+        (btn.querySelector('.compact__toggle-text') as HTMLElement).textContent = 'Show more';
+      }
+    });
+  });
+</script>

@@ -2,7 +2,7 @@
   "id": "2026-05-28-awarepreneurs-podcast",
   "date": "2026-05-28",
   "type": "podcast",
-  "title": "Awarepreneurs Podcast: Eric Ries on Incorruptible",
+  "title": "Awarepreneurs Podcast Returns May 28 with Eric Ries on Incorruptible",
   "summary": "The Awarepreneurs podcast returns from a 6-week creative pause with Eric Ries discussing Incorruptible for episode 400.",
   "blockquote": "The show returns May 28 with Eric Ries discussing his new book, Incorruptible.",
   "blockquote_source": "Paul Zelizer on LinkedIn",
@@ -14,7 +14,7 @@
   "attribution_title": "Host, Awarepreneurs; Business coach for social entrepreneurs",
   "attribution_image": "/images/people/paul-zelizer.jpg",
   "tags": ["podcast", "linkedin", "upcoming"],
-  "type_metadata": {},
+  "type_metadata": { "weight": 1 },
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-04-14T16:40:00Z"

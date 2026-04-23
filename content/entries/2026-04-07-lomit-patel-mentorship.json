@@ -14,7 +14,7 @@
   "attribution_title": "Author, Lean AI",
   "attribution_image": "/images/people/lomit-patel.jpg",
   "tags": ["social", "linkedin", "lean-startup"],
-  "type_metadata": {},
+  "type_metadata": { "weight": 1 },
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-04-13T18:00:00Z"

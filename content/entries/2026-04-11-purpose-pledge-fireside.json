@@ -14,7 +14,7 @@
   "attribution_title": "Director at Sustainable Herbs Program",
   "attribution_image": null,
   "tags": ["event", "purpose-pledge", "trust"],
-  "type_metadata": {},
+  "type_metadata": { "weight": 1 },
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-04-13T18:00:00Z"

@@ -2,7 +2,7 @@
   "id": "2026-04-16-textbook-ventures-fireside",
   "date": "2026-04-16",
   "type": "event",
-  "title": "Textbook Ventures: Virtual Fireside Chat with Eric Ries",
+  "title": "Textbook Ventures Virtual Fireside Chat: 'Latest Thinking from the Lean Startup Guru'",
   "summary": "Textbook Ventures hosts a virtual fireside chat with Eric Ries to discuss Incorruptible, moderated by Jeremy Kagan.",
   "blockquote": "It's an amazing opportunity to see the latest thinking from the Lean Startup guru and get his insights on what's next.",
   "blockquote_source": "Textbook Ventures on LinkedIn",
@@ -14,7 +14,7 @@
   "attribution_title": "VC community",
   "attribution_image": "/images/people/textbook-ventures.jpg",
   "tags": ["event", "linkedin", "virtual", "fireside-chat"],
-  "type_metadata": {},
+  "type_metadata": { "weight": 1 },
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-04-15T22:00:00Z"

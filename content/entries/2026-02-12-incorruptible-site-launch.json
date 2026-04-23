@@ -12,7 +12,7 @@
   "attribution_title": null,
   "attribution_image": null,
   "tags": ["linkedin", "website-launch"],
-  "type_metadata": {},
+  "type_metadata": { "weight": 1 },
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-04-12T23:00:00Z"

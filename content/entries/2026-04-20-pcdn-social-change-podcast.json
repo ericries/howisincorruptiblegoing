@@ -2,7 +2,7 @@
   "id": "2026-04-20-pcdn-social-change-podcast",
   "date": "2026-04-20",
   "type": "podcast",
-  "title": "PCDN Social Change Career Podcast: Eric Ries on Incorruptible",
+  "title": "PCDN Social Change Career Podcast Livestream: Financial Gravity and Governance",
   "summary": "Eric Ries joins the PCDN Social Change Career Podcast for a livestream discussion on structural corruption, financial gravity, the Long-Term Stock Exchange, and how to become an incorruptible force for good.",
   "blockquote": "Success itself becomes a form of financial gravity, bending companies away from their original purpose. Eric reframes corporate governance not as bureaucracy or compliance, but as a creative and strategic act at the heart of building enduring, mission-controlled companies.",
   "blockquote_source": "Craig Zelizer on LinkedIn",
@@ -14,7 +14,7 @@
   "attribution_title": "Professor, Social Entrepreneur; Host, PCDN Social Change Career Podcast",
   "attribution_image": "/images/people/craig-zelizer.jpg",
   "tags": ["podcast", "linkedin", "livestream", "social-change"],
-  "type_metadata": {},
+  "type_metadata": { "weight": 1 },
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-04-15T16:00:00Z"

@@ -14,7 +14,7 @@
   "attribution_title": null,
   "attribution_image": "/images/people/silicon-prairie-news.jpg",
   "tags": ["media", "linkedin", "io2026", "lincoln-nebraska"],
-  "type_metadata": {},
+  "type_metadata": { "weight": 1 },
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-04-13T17:30:00Z"
