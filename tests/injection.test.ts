@@ -42,6 +42,16 @@ describe('detectInjection', () => {
     expect(result.reasons[0]).toContain('base64');
   });
 
+  it('does not flag short-form URL paths as base64 (regression: forms.gle short codes)', () => {
+    const result = detectInjection('Sign up here: https://forms.gle/586NN1eqQFJDxSAx8');
+    expect(result.detected).toBe(false);
+  });
+
+  it('does not flag long URL paths as base64 (regression: substack/youtube IDs)', () => {
+    const result = detectInjection('Watch: https://youtu.be/dQw4w9WgXcQ?si=AbCdEfGhIjKlMnOp');
+    expect(result.detected).toBe(false);
+  });
+
   it('detects anomalously long field values', () => {
     const result = detectInjection('x'.repeat(5001));
     expect(result.detected).toBe(true);

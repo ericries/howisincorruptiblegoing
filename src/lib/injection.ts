@@ -17,7 +17,11 @@ const INJECTION_PATTERNS = [
 const HTML_PATTERN = /<\s*(script|iframe|object|embed|form|input|link|meta|style)\b/i;
 const ZERO_WIDTH_PATTERN = /[\u200B\u200C\u200D\u2060\uFEFF]/;
 const RTL_OVERRIDE_PATTERN = /[\u202A-\u202E\u2066-\u2069]/;
-const BASE64_PATTERN = /[A-Za-z0-9+/]{20,}={0,2}/;
+// Standard base64 alphabet is A-Za-z0-9+/= but we exclude `/` from the run because
+// URL path components (forms.gle/abc123, youtu.be/xyz789) match it as a 20+ char run
+// and trip the false positive. Real attack payloads of length 20+ in pure A-Za-z0-9+
+// (with optional `=` padding) are still caught.
+const BASE64_PATTERN = /[A-Za-z0-9+]{20,}={0,2}/;
 const MAX_FIELD_LENGTH = 5000;
 
 export function detectInjection(text: string): InjectionResult {
