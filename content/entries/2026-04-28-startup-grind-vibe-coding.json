@@ -1,0 +1,21 @@
+{
+  "id": "2026-04-28-startup-grind-vibe-coding",
+  "date": "2026-04-28",
+  "type": "event",
+  "title": "Startup Grind: 'What's Next After Vibe Coding'",
+  "summary": "Eric joins Bubble Co-CEO Emmanuel Straschnov on the Breakout Stage at Startup Grind 2026 (Fox Theater, Redwood City) for a panel on closing the gap between AI-generated prototypes and production-ready systems. The panel runs 10:00–10:30 AM at Club Fox.",
+  "blockquote": "AI can generate code faster than ever, but most of it is not built to survive real users, real data, and real failure conditions. In this session, Eric Ries, best-selling author of The Lean Startup, and Bubble CEO Emmanuel Straschnov explore the growing gap between AI-generated prototypes and production-ready systems, and what founders need to consider regarding reliability, security, maintainability, and scale when turning AI-built code into real products.",
+  "blockquote_source": "Startup Grind Conference Agenda",
+  "source_url": "https://www.startupgrind.tech/agenda",
+  "source_urls": null,
+  "video_url": null,
+  "image": null,
+  "attribution": null,
+  "attribution_title": null,
+  "attribution_image": null,
+  "tags": ["speaking", "redwood-city-california", "conference", "panel", "ai"],
+  "type_metadata": { "city": "Redwood City" },
+  "scanner_source": "manual",
+  "verified": false,
+  "created_at": "2026-04-27T19:30:00Z"
+}
