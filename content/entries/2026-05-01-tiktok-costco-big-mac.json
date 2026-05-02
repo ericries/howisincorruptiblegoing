@@ -1,0 +1,21 @@
+{
+  "id": "2026-05-01-tiktok-costco-big-mac",
+  "date": "2026-05-01",
+  "type": "social",
+  "title": "Eric Ries on TikTok: 'A McDonald's Big Mac Costs $7 Today. Costco Still Sells a Hot Dog and Soda Combo for $1.50.'",
+  "summary": "Eric posts the longer-form video (151 sec) of the Costco hot-dog-price story — building out the case study with the Big Mac price comparison and explicitly framing it as a clip from Incorruptible.",
+  "blockquote": "A McDonald's Big Mac costs $7 today.\nCostco still sells a hot dog and soda combo for $1.50.\nWhy? Because of what happened the day the COO said they had to raise the price.\nFrom INCORRUPTIBLE — out May 26",
+  "blockquote_source": "Eric Ries on TikTok",
+  "source_url": "https://www.tiktok.com/@ericriesactual/video/7635092933099687181",
+  "source_urls": null,
+  "video_url": "https://www.tiktok.com/@ericriesactual/video/7635092933099687181",
+  "image": "/images/social/tiktok-costco-big-mac.jpg",
+  "attribution": null,
+  "attribution_title": null,
+  "attribution_image": null,
+  "tags": ["social", "tiktok", "video", "costco", "case-study"],
+  "type_metadata": { "weight": 1 },
+  "scanner_source": "social-scan",
+  "verified": true,
+  "created_at": "2026-05-02T01:30:00Z"
+}
