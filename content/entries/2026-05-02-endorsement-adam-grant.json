@@ -16,7 +16,7 @@
   "attribution_title": "Organizational Psychologist, Wharton; #1 NYT Bestselling Author of Think Again",
   "attribution_image": null,
   "tags": ["endorsement", "substack", "wharton", "reading-list"],
-  "type_metadata": {},
+  "type_metadata": {"featured": true, "highlight": "Adam Grant: 'A road map to preventing people and organizations from making unethical decisions'", "sidebar_quote": "A road map to preventing people and organizations from making unethical decisions."},
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-05-02T15:30:00Z"

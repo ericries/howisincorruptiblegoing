@@ -16,7 +16,7 @@
   "attribution_title": "Stanford Professor; Author of The No Asshole Rule and Good Boss, Bad Boss",
   "attribution_image": null,
   "tags": ["event", "san-francisco-california", "fireside", "in-person"],
-  "type_metadata": { "city": "San Francisco" },
+  "type_metadata": { "city": "San Francisco", "featured": true },
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-05-01T22:30:00Z"
