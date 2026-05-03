@@ -1,0 +1,23 @@
+{
+  "id": "2026-04-30-eva-zemberi-unusual-failure",
+  "date": "2026-04-30",
+  "type": "social",
+  "title": "Eva Zemberi Applies 'Unusual Failure' to Digital Health: 'Their Own Success Destroys Them'",
+  "summary": "Digital health operator Eva Zemberi takes Eric's 'unusual failure' concept from Incorruptible and shows how it plays out in healthcare product scaling — a pattern Eric reposted as 'the concept in the wild.'",
+  "blockquote": "Some companies don't fail because they're wrong.\n\nThey fail because their own success destroys them.\n\nI heard Eric Ries describe this as \"unusual failure\" in a recent conversation about his upcoming book \"Incorruptible\".\n\nIn digital health, I see a version of this over and over:\nEarly success gives teams permission—and pressure—to make the wrong decisions.",
+  "blockquote_source": "Eva Zemberi on LinkedIn",
+  "source_url": "https://www.linkedin.com/posts/eva-zemberi_some-companies-dont-fail-because-theyre-activity-7455620743062609920-tXeJ",
+  "source_urls": [
+    {"url": "https://www.linkedin.com/posts/eries_some-companies-dont-fail-because-theyre-activity-7456387923957960705-RRHB", "label": "Eric's repost: 'the concept in the wild'"}
+  ],
+  "video_url": null,
+  "image": null,
+  "attribution": "Eva Zemberi",
+  "attribution_title": "Digital health operator; Clinical-to-Commercial Orchestration",
+  "attribution_image": null,
+  "tags": ["social", "linkedin", "digital-health", "concept-application"],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": true,
+  "created_at": "2026-05-03T13:00:00Z"
+}
