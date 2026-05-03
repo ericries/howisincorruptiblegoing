@@ -1,0 +1,24 @@
+{
+  "id": "2026-04-21-interintellect-anna-gat-salon",
+  "date": "2026-04-21",
+  "type": "podcast",
+  "title": "Anna Gát Hosts Eric Ries at Interintellect: 'A Wrong Turn in How We Build Companies'",
+  "summary": "Interintellect founder Anna Gát hosts Eric for a salon discussion of Incorruptible, framing the book as an argument that mission abandonment is structural, not ethical.",
+  "blockquote": "We've made a wrong turn in how we build companies, and it's time to unmake it. Last week, @ericries joined @TheAnnaGat to discuss his new book, Incorruptible, and why the current obsession with short-term extraction has hollowed out our best institutions from the inside.",
+  "blockquote_source": "Interintellect on X",
+  "source_url": "https://x.com/interintellect_/status/2048930262659006975",
+  "source_urls": [
+    {"url": "https://x.com/TheAnnaGat/status/2046647678029676671", "label": "Anna Gát's day-of announcement"},
+    {"url": "https://x.com/TheAnnaGat/status/2046647676490412171", "label": "Anna Gát: 'warmly recommended'"}
+  ],
+  "video_url": null,
+  "image": null,
+  "attribution": "Interintellect / Anna Gát",
+  "attribution_title": "Curated salon series; Founder-CEO of Interintellect",
+  "attribution_image": null,
+  "tags": ["podcast", "twitter", "interintellect", "salon", "anna-gat"],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-05-03T01:30:00Z"
+}

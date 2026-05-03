@@ -1,0 +1,21 @@
+{
+  "id": "2026-05-02-garry-tan-book-mirror",
+  "date": "2026-05-02",
+  "type": "social",
+  "title": "Garry Tan Picks Incorruptible as the Flagship Demo for His New Book-Analysis Tool",
+  "summary": "Y Combinator president Garry Tan launches 'book-mirror,' an AI tool that maps a book's ideas to your own life, and uses Eric's still-unreleased Incorruptible as the inaugural example.",
+  "blockquote": "book-mirror is the flagship.\n\nHand it a book, get a personalized two-column analysis. Left shows the author's idea. Right maps every idea to your actual life using your own words from the brain.\n\nHere's the example based on a yet-unreleased book by @ericries Incorruptible",
+  "blockquote_source": "Garry Tan on X",
+  "source_url": "https://x.com/garrytan/status/2050602968526020843",
+  "source_urls": null,
+  "video_url": null,
+  "image": null,
+  "attribution": "Garry Tan",
+  "attribution_title": "President & CEO, Y Combinator",
+  "attribution_image": null,
+  "tags": ["social", "twitter", "garry-tan", "yc", "ai-tool"],
+  "type_metadata": {"featured": true},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-05-03T01:30:00Z"
+}
