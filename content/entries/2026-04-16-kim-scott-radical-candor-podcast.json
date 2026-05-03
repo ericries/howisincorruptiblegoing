@@ -7,7 +7,10 @@
   "blockquote": "Eric Ries has a new book coming out, and I've been thinking about it since I read it. It's one of the most important books I've read in the last decade. The argument is deceptively simple: companies don't fail their missions because of bad people. They fail because of bad structures.",
   "blockquote_source": "Kim Scott on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/kimm4_eric-ries-has-a-new-book-coming-out-and-activity-7450566182153396224-wrst",
-  "source_urls": null,
+  "source_urls": [
+    {"url": "https://www.radicalcandor.com/podcast/incorruptible-eric-ries-8-12", "label": "Full episode on Radical Candor"},
+    {"url": "https://www.youtube.com/watch?v=JgOfO8V0zaE", "label": "Full episode on YouTube"}
+  ],
   "video_url": "https://www.youtube.com/watch?v=JgOfO8V0zaE",
   "image": null,
   "attribution": "Kim Scott",
