@@ -14,7 +14,7 @@
   "attribution_title": null,
   "attribution_image": null,
   "tags": ["social", "tiktok", "video", "costco", "case-study"],
-  "type_metadata": { "weight": 1, "featured": true },
+  "type_metadata": { "weight": 1 },
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-05-02T01:30:00Z"

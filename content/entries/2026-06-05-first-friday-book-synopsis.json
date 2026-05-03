@@ -1,9 +1,9 @@
 {
   "id": "2026-06-05-first-friday-book-synopsis",
   "date": "2026-06-05",
-  "type": "event",
-  "title": "First Friday Book Synopsis (Dallas): Incorruptible",
-  "summary": "Incorruptible is one of two books featured at the June 5 First Friday Book Synopsis in Dallas, alongside David Epstein's Inside the Box.",
+  "type": "media",
+  "title": "First Friday Book Synopsis (Dallas) Picks Incorruptible for June 5 Coverage",
+  "summary": "Randy Mayeux's First Friday Book Synopsis program in Dallas chooses Incorruptible (alongside David Epstein's Inside the Box) for its June 5 session.",
   "blockquote": "Two really good, brand new books by David Epstein and Eric Ries. Join us at the June 5 First Friday Book Synopsis. -- \nInside the Box by David Epstein and Incorruptible by Eric Ries",
   "blockquote_source": "Randy Mayeux on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/randymayeux_inside-the-box-by-david-epstein-and-incorruptible-activity-7456039714408542208-mS8R",
@@ -15,8 +15,8 @@
   "attribution": "Randy Mayeux",
   "attribution_title": "First Friday Book Synopsis",
   "attribution_image": null,
-  "tags": ["event", "dallas-texas", "book-synopsis"],
-  "type_metadata": { "city": "Dallas" },
+  "tags": ["media", "dallas-texas", "book-synopsis"],
+  "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-05-02T17:00:00Z"

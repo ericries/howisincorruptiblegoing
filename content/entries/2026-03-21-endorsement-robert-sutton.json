@@ -12,7 +12,9 @@
   "attribution_title": "Professor Emeritus at Stanford, bestselling author of The No Asshole Rule",
   "attribution_image": "/images/people/robert-sutton.jpg",
   "tags": ["endorsement", "academia", "stanford"],
-  "type_metadata": {},
+  "type_metadata": {
+    "highlight": "Bob Sutton: 'Destroys the myth that only sleazy founders get rich'"
+  },
   "scanner_source": "web-search",
   "verified": true,
   "created_at": "2026-04-12T23:00:00Z"

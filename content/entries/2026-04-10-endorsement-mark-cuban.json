@@ -15,7 +15,9 @@
     "endorsement",
     "investor"
   ],
-  "type_metadata": {},
+  "type_metadata": {
+    "highlight": "Mark Cuban: 'A playbook to help avoid the inevitable pitfalls'"
+  },
   "scanner_source": "web-search",
   "verified": true,
   "created_at": "2026-04-12T23:00:00Z"

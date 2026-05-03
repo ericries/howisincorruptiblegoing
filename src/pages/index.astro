@@ -18,10 +18,13 @@ const futureEntries = entries.filter(e => e.date > today);
 const pastEntries = entries.filter(e => e.date <= today);
 
 // Sidebar: What's New (curated via type_metadata.featured)
+// Excludes Eric's own posts — "What's New" is for third-party momentum
+// (events, endorsements, real news), not self-amplification.
 const featuredEntries = entries
   .filter(e => (e.type_metadata as Record<string, unknown>)?.featured)
+  .filter(e => !(e.blockquote_source || '').startsWith('Eric Ries'))
   .sort((a, b) => b.date.localeCompare(a.date))
-  .slice(0, 4);
+  .slice(0, 8);
 
 // Sidebar: Upcoming — split into book tour (has city) vs virtual
 const allUpcoming = futureEntries
