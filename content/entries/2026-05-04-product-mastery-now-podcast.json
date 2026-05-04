@@ -1,0 +1,23 @@
+{
+  "id": "2026-05-04-product-mastery-now-podcast",
+  "date": "2026-05-04",
+  "type": "podcast",
+  "title": "Eric Ries on Product Mastery Now: 'You're Telling Me There's People in This World Who Make Forecasts of Things and Then the Forecast Comes True?'",
+  "summary": "Product Mastery Now host Chad McAllister releases a 48-minute interview with Eric on why traditional management tools (variation-reducing) collide with entrepreneurship (variation-increasing) — and why Incorruptible's blueprint matters for product leaders.",
+  "blockquote": "There's a fundamental misalignment between the basic tools of management that most companies embrace and entrepreneurship. A lot of our management tools are variation reducing — which is good in a factory, very important. But entrepreneurship is variability increasing — positive variability, what Paul Graham calls black swan farming. People who are traditional managers find that hard to believe.",
+  "blockquote_source": "Eric Ries on Product Mastery Now (YouTube)",
+  "source_url": "https://www.youtube.com/watch?v=8b-DoAETHhc",
+  "source_urls": [
+    {"url": "https://productmasterynow.com/590", "label": "Show notes"}
+  ],
+  "video_url": "https://www.youtube.com/watch?v=8b-DoAETHhc",
+  "image": null,
+  "attribution": "Chad McAllister, Product Mastery Now",
+  "attribution_title": "Host, Product Mastery Now podcast",
+  "attribution_image": null,
+  "tags": ["podcast", "youtube", "product-management", "lean-startup"],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-05-04T16:30:00Z"
+}
