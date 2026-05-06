@@ -8,15 +8,16 @@
   "blockquote_source": "Interintellect on X",
   "source_url": "https://x.com/interintellect_/status/2048930262659006975",
   "source_urls": [
+    {"url": "https://www.youtube.com/watch?v=vpcY6LJHzy8", "label": "Full salon recording on YouTube"},
     {"url": "https://x.com/TheAnnaGat/status/2046647678029676671", "label": "Anna Gát's day-of announcement"},
     {"url": "https://x.com/TheAnnaGat/status/2046647676490412171", "label": "Anna Gát: 'warmly recommended'"}
   ],
-  "video_url": null,
+  "video_url": "https://www.youtube.com/watch?v=vpcY6LJHzy8",
   "image": null,
   "attribution": "Interintellect / Anna Gát",
   "attribution_title": "Curated salon series; Founder-CEO of Interintellect",
   "attribution_image": null,
-  "tags": ["podcast", "twitter", "interintellect", "salon", "anna-gat"],
+  "tags": ["podcast", "youtube", "twitter", "interintellect", "salon", "anna-gat"],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,
