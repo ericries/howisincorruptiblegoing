@@ -14,7 +14,7 @@
   "attribution_title": "Founder, Responsive Conference; author of Responsive; host of Snafu",
   "attribution_image": null,
   "tags": ["podcast", "youtube", "snafu", "responsive", "organizational-design"],
-  "type_metadata": {},
+  "type_metadata": {"featured": true},
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-05-06T16:00:00Z"
