@@ -26,16 +26,20 @@ const featuredEntries = entries
   .sort((a, b) => b.date.localeCompare(a.date))
   .slice(0, 8);
 
-// Sidebar: Upcoming — split into book tour (has city) vs virtual
-const allUpcoming = futureEntries
-  .filter(e => e.type === 'event' || e.type === 'podcast')
-  .sort((a, b) => a.date.localeCompare(b.date))
-  .map(e => {
-    const meta = e.type_metadata as Record<string, unknown>;
-    return { ...e, city: (meta?.city as string) || null };
-  });
-const bookTourStops = allUpcoming.filter(e => e.city);
-const virtualEvents = allUpcoming.filter(e => !e.city);
+// Sidebar: Book Tour (in-person events, past + future) and Upcoming Virtual.
+// Book tour keeps past stops so the full tour is visible. Sort upcoming asc
+// (closest first), then past desc (most-recent past below upcoming).
+const eventsWithCity = entries
+  .filter(e => (e.type === 'event' || e.type === 'podcast') && (e.type_metadata as Record<string, unknown>)?.city)
+  .map(e => ({ ...e, city: (e.type_metadata as Record<string, unknown>).city as string, isPast: e.date <= today }));
+const bookTourStops = [
+  ...eventsWithCity.filter(e => !e.isPast).sort((a, b) => a.date.localeCompare(b.date)),
+  ...eventsWithCity.filter(e => e.isPast).sort((a, b) => b.date.localeCompare(a.date)),
+];
+
+const virtualEvents = futureEntries
+  .filter(e => (e.type === 'event' || e.type === 'podcast') && !(e.type_metadata as Record<string, unknown>)?.city)
+  .sort((a, b) => a.date.localeCompare(b.date));
 
 // Sidebar: Highlights (curated pull quotes via type_metadata.sidebar_quote)
 const sidebarQuotes = entries
@@ -152,16 +156,16 @@ const sidebarQuotes = entries
           </div>
         )}
 
-        {/* ── UPCOMING EVENTS (in-person) ── */}
+        {/* ── BOOK TOUR (in-person, past + future) ── */}
         {bookTourStops.length > 0 && (
           <div class="sidebar__section">
-            <h3 class="sidebar__heading sidebar__heading--navy">Upcoming Events</h3>
+            <h3 class="sidebar__heading sidebar__heading--navy">Book Tour</h3>
             <ul class="sidebar__list">
               {bookTourStops.map(entry => {
                 const dateObj = new Date(entry.date + 'T00:00:00Z');
                 const dateStr = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
                 return (
-                  <li class="sidebar__item">
+                  <li class={`sidebar__item${entry.isPast ? ' sidebar__item--past' : ''}`}>
                     <a href={`#${entry.id}`} class="sidebar__link sidebar__link--event">
                       <span class="sidebar__link-text">{entry.title}</span>
                       <span class="sidebar__event-meta">{entry.city} &middot; {dateStr}</span>
@@ -406,6 +410,14 @@ const sidebarQuotes = entries
 
   .sidebar__item {
     border-bottom: 1px solid var(--color-border);
+  }
+
+  .sidebar__item--past {
+    opacity: 0.55;
+  }
+
+  .sidebar__item--past:hover {
+    opacity: 1;
   }
 
   .sidebar__link {
