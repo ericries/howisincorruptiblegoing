@@ -1,0 +1,24 @@
+{
+  "id": "2026-05-18-best-bookstore-sf-launch",
+  "date": "2026-05-18",
+  "type": "event",
+  "title": "Best Bookstore SF: Eric Ries with Sarah Lacy — first Incorruptible launch event, anywhere",
+  "summary": "Tech journalist Sarah Lacy (formerly TechCrunch, founder of Pando) hosts the first official Incorruptible launch event at Best Bookstore in Union Square, San Francisco — a week ahead of the May 26 release. $32 ticket includes a signed copy of the book.",
+  "blockquote": "It is not hyperbole to call \"the Lean Startup\" the most important startup book in history (or one of them). @ericries new book \"Incorruptible\" will be the most important startup book of the next decade. And the first event will be at our store in downtown San Francisco.",
+  "blockquote_source": "Sarah Lacy on X",
+  "source_url": "https://x.com/sarahcuda/status/2052165417897251225",
+  "source_urls": [
+    {"url": "https://www.citizenbookseller.com/p/eric-ries-is-launching-his-brand", "label": "Event details and tickets"},
+    {"url": "https://www.linkedin.com/posts/sarahcuda_if-anyone-would-have-told-me-this-would-activity-7457927532323983360-A18q", "label": "Sarah Lacy's full announcement on LinkedIn"}
+  ],
+  "video_url": null,
+  "image": null,
+  "attribution": "Sarah Lacy",
+  "attribution_title": "Co-Founder, Best Bookstore Corp; former TechCrunch journalist; founder of Pando",
+  "attribution_image": null,
+  "tags": ["event", "san-francisco-california", "in-person", "launch-event", "best-bookstore"],
+  "type_metadata": {"city": "San Francisco", "featured": true},
+  "scanner_source": "social-scan",
+  "verified": true,
+  "created_at": "2026-05-06T18:00:00Z"
+}
