@@ -1,0 +1,23 @@
+{
+  "id": "2026-05-08-relayto-shevelenko-podcast",
+  "date": "2026-05-08",
+  "type": "podcast",
+  "title": "RELAYTO AI's Alex Shevelenko on Eric's framing: ''Sounds good' are the two most dangerous words in entrepreneurship'",
+  "summary": "Alex Shevelenko (CEO, RELAYTO AI) drops his Eric Ries interview — episode titled 'Surgically Deboned: How Modern Finance Kills Great Companies.' Eric on why evidence beats plausibility, why trust is underrated, and on the difference between ethos and integrity.",
+  "blockquote": "Too many companies still run on opinions that \"sound good.\" But as Eric puts it: \"'Sounds good' are the two most dangerous words in entrepreneurship.\"",
+  "blockquote_source": "Eric Ries on RELAYTO AI's Surgically Deboned podcast (via Gaurav S. on LinkedIn)",
+  "source_url": "https://www.linkedin.com/posts/gaurav-sanganee_there-are-books-that-change-the-world-activity-7458425897981812737-yNPU",
+  "source_urls": [
+    {"url": "https://www.youtube.com/watch?v=Izz2sSDDxoo", "label": "Full episode on YouTube"}
+  ],
+  "video_url": "https://www.youtube.com/watch?v=Izz2sSDDxoo",
+  "image": null,
+  "attribution": "Alex Shevelenko / RELAYTO AI",
+  "attribution_title": "CEO of RELAYTO AI; host of the Surgically Deboned podcast",
+  "attribution_image": null,
+  "tags": ["podcast", "youtube", "linkedin", "relayto"],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-05-08T16:35:00Z"
+}
