@@ -1,0 +1,24 @@
+{
+  "id": "2026-05-29-sdsu-san-diego-angel-conference",
+  "date": "2026-05-29",
+  "type": "event",
+  "title": "SDSU San Diego Angel Conference: Eric Ries Keynote and Book Signing",
+  "summary": "SDAC VIII Finale at San Diego State University — Eric headlines the keynote and joins an intimate fireside chat, followed by a book signing for Incorruptible. Six finalist startups pitch the SDAC Fund VIII investors for a $200K+ investment that same afternoon.",
+  "blockquote": "SDSU 2026 SDAC Finale with keynote speaker Eric Ries, author of The Lean Startup",
+  "blockquote_source": "Lavin Entrepreneurship Center, SDSU",
+  "source_url": "https://sdac.sdsu.edu",
+  "source_urls": [
+    {"url": "https://www.eventbrite.com/e/sdsu-2026-sdsu-san-diego-angel-conference-sdac-tickets-1984572309200", "label": "Tickets (Friday May 29, 2–6pm PT)"},
+    {"url": "https://www.linkedin.com/posts/briandirkmaat_congratulations-to-the-top-6-companies-they-activity-7458659379513540608-bJlQ", "label": "Brian Dirkmaat (Rimon Law) on the agenda"}
+  ],
+  "video_url": null,
+  "image": null,
+  "attribution": "SDSU Lavin Entrepreneurship Center",
+  "attribution_title": "Host of the San Diego Angel Conference; SDAC VIII Fund finale on May 29, 2026",
+  "attribution_image": null,
+  "tags": ["event", "san-diego-california", "in-person", "keynote", "book-signing", "sdac"],
+  "type_metadata": {"city": "San Diego"},
+  "scanner_source": "social-scan",
+  "verified": true,
+  "created_at": "2026-05-09T16:30:00Z"
+}
