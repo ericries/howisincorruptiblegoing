@@ -31,7 +31,15 @@ const featuredEntries = entries
 // (closest first), then past desc (most-recent past below upcoming).
 const eventsWithCity = entries
   .filter(e => (e.type === 'event' || e.type === 'podcast') && (e.type_metadata as Record<string, unknown>)?.city)
-  .map(e => ({ ...e, city: (e.type_metadata as Record<string, unknown>).city as string, isPast: e.date <= today }));
+  .map(e => {
+    const meta = e.type_metadata as Record<string, unknown>;
+    return {
+      ...e,
+      city: meta.city as string,
+      isPast: e.date <= today,
+      signupUrl: typeof meta.signup_url === 'string' ? meta.signup_url : undefined,
+    };
+  });
 const bookTourStops = [
   ...eventsWithCity.filter(e => !e.isPast).sort((a, b) => a.date.localeCompare(b.date)),
   ...eventsWithCity.filter(e => e.isPast).sort((a, b) => b.date.localeCompare(a.date)),
@@ -164,11 +172,20 @@ const sidebarQuotes = entries
               {bookTourStops.map(entry => {
                 const dateObj = new Date(entry.date + 'T00:00:00Z');
                 const dateStr = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+                // Future stops with a signup_url link out to the RSVP page (new tab).
+                // Past stops and stops without a signup_url scroll to the entry card.
+                const signupUrl = entry.signupUrl;
+                const useExternal = !entry.isPast && !!signupUrl;
+                const href = useExternal && signupUrl ? signupUrl : `#${entry.id}`;
                 return (
                   <li class={`sidebar__item${entry.isPast ? ' sidebar__item--past' : ''}`}>
-                    <a href={`#${entry.id}`} class="sidebar__link sidebar__link--event">
+                    <a
+                      href={href}
+                      class="sidebar__link sidebar__link--event"
+                      {...(useExternal ? { target: '_blank', rel: 'noopener' } : {})}
+                    >
                       <span class="sidebar__link-text">{entry.title}</span>
-                      <span class="sidebar__event-meta">{entry.city} &middot; {dateStr}</span>
+                      <span class="sidebar__event-meta">{entry.city} &middot; {dateStr}{useExternal ? ' · RSVP ↗' : ''}</span>
                     </a>
                   </li>
                 );

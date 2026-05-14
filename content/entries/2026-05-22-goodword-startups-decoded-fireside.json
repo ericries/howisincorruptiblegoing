@@ -7,14 +7,16 @@
   "blockquote": "Most founders don't set out to compromise their values.\n\nThey just don't build systems to protect them.\n\nThat's the argument at the center of Eric Ries' new book, Incorruptible.\n\nNot that companies go bad because of bad people. But that success itself creates structural forces that pull even principled leaders off course.",
   "blockquote_source": "Caroline Dell on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/caroline-dell_most-founders-dont-set-out-to-compromise-activity-7457066538408493056-eDb6",
-  "source_urls": null,
+  "source_urls": [
+    {"url": "https://luma.com/iery7b9j", "label": "RSVP on Luma"}
+  ],
   "video_url": null,
   "image": null,
   "attribution": "Caroline Dell",
   "attribution_title": "Co-Founder & CEO, Goodword (ex-Bain, Chief, LOLA)",
   "attribution_image": null,
   "tags": ["event", "linkedin", "new-york", "fireside", "goodword", "startups-decoded"],
-  "type_metadata": {"city": "New York"},
+  "type_metadata": {"city": "New York", "signup_url": "https://luma.com/iery7b9j"},
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-05-04T16:00:00Z"
