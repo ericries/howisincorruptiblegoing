@@ -1,7 +1,8 @@
 {
   "id": "2026-05-01-stripe-sessions-melissa-recap",
   "date": "2026-05-01",
-  "type": "review",
+  "type": "reaction",
+  "parent_id": "2026-05-04-stripe-public-sector-summit-jp-farmer",
   "title": "Stripe Sessions Recap: 'the highlight of the event was a fireside chat with Eric Ries'",
   "summary": "California Child Support Services Chief Deputy Director Melissa S. recaps her Stripe Sessions experience — confirming that Eric appeared on the program for an Incorruptible fireside chat at the fintech conference, alongside John Collison's keynote on indexing the economy.",
   "blockquote": "On a personal level, the highlight of the event was a fireside chat with author Eric Ries about his book, Incorruptible that's coming out next month, and the keynote by John Collison on Indexing the Economy.   My mind is definitely pinging with new ideas that I can't wait to explore further!",
@@ -14,7 +15,7 @@
   "attribution_title": "Chief Deputy Director, California Child Support Services",
   "attribution_image": null,
   "tags": ["review", "linkedin", "stripe-sessions", "san-francisco-california", "attendee-reaction"],
-  "type_metadata": { "weight": 1 },
+  "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-05-01T22:30:00Z"
