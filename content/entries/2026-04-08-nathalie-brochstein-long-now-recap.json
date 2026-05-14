@@ -1,7 +1,8 @@
 {
   "id": "2026-04-08-nathalie-brochstein-long-now-recap",
   "date": "2026-04-08",
-  "type": "review",
+  "type": "reaction",
+  "parent_id": "2026-04-07-long-now-talk",
   "title": "Nathalie Brochstein: 'Mission drift is a structural failure, not an ethical one'",
   "summary": "Nathalie Brochstein attended the Long Now talk and wrote a detailed recap covering financial gravity, steward ownership, Novo Nordisk, and Anthropic. 51 likes.",
   "blockquote": "Mission drift is a structural failure, not an ethical one. Ries defines Financial Gravity as the systemic pressure that pulls successful companies away from their purpose. The more successful a company becomes, the more vulnerable its mission is to extraction. Founders often wait until after product-market fit to address governance, but by then, the target is too large to protect. Protective structures must be built into the corporate charter from day one. Success alone will not protect your mission. If you do not design for human flourishing in your legal architecture today, the system will design you out of your mission tomorrow.",
@@ -14,7 +15,7 @@
   "attribution_title": "Founder, Karibu.ai",
   "attribution_image": "/images/people/nathalie-brochstein.jpg",
   "tags": ["review", "linkedin", "long-now", "attendee-reaction", "governance"],
-  "type_metadata": { "weight": 1 },
+  "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-04-13T18:00:00Z"

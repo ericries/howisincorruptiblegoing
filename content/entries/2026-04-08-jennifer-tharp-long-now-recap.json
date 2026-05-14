@@ -1,7 +1,8 @@
 {
   "id": "2026-04-08-jennifer-tharp-long-now-recap",
   "date": "2026-04-08",
-  "type": "review",
+  "type": "reaction",
+  "parent_id": "2026-04-07-long-now-talk",
   "title": "Jennifer Tharp: 'corporate corruption is not a moral failure. It's structural.'",
   "summary": "Jennifer Tharp attended the Long Now talk and wrote a detailed recap on LinkedIn. 54 likes.",
   "blockquote": "Eric believes that corporate corruption is not a moral failure. It's structural. He calls it 'financial gravity' — the same way a bridge doesn't collapse because it's evil, companies don't betray their missions because their founders are bad people. Their governance structures and financial incentives bend them that way. Some of the 'best practices' we teach in business school actually destroy value. Shareholder primacy? An idea none of us voted on, that we simply inherited — and one that he argues is no longer even good for investors.",
@@ -14,7 +15,7 @@
   "attribution_title": "Board Chair & Governance Consultant",
   "attribution_image": "/images/people/jennifer-tharp.jpg",
   "tags": ["review", "linkedin", "long-now", "attendee-reaction"],
-  "type_metadata": { "weight": 1 },
+  "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-04-13T18:00:00Z"

@@ -4,27 +4,11 @@ import Header from '../components/Header.astro';
 import StatsBar from '../components/StatsBar.astro';
 import TimelineEntry from '../components/TimelineEntry.astro';
 import Highlights from '../components/Highlights.astro';
-import { loadEntries } from '../lib/entries';
+import { loadEntries, partitionReactions } from '../lib/entries';
 import * as path from 'path';
 
 const entriesDir = path.join(process.cwd(), 'content', 'entries');
-const allEntries = loadEntries(entriesDir);
-
-// Reactions live under their parent — they never render as standalone timeline rows.
-// Build a parent_id → reactions[] map (sorted by date asc within each cluster).
-const reactionsByParent = new Map<string, typeof allEntries>();
-for (const e of allEntries) {
-  if (e.type !== 'reaction' || !e.parent_id) continue;
-  const list = reactionsByParent.get(e.parent_id) ?? [];
-  list.push(e);
-  reactionsByParent.set(e.parent_id, list);
-}
-for (const list of reactionsByParent.values()) {
-  list.sort((a, b) => a.date.localeCompare(b.date));
-}
-
-// Main timeline excludes reactions (they're rendered inside their parent).
-const entries = allEntries.filter(e => e.type !== 'reaction');
+const { main: entries, reactionsByParent } = partitionReactions(loadEntries(entriesDir));
 const totalEndorsements = entries.filter((e) => e.type === 'endorsement').length;
 
 const today = new Date().toISOString().slice(0, 10);
