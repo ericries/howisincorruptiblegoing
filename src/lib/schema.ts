@@ -6,6 +6,7 @@ export const ENTRY_TYPES = [
   'podcast',
   'media',
   'milestone',
+  'reaction',
 ] as const;
 
 export type EntryType = (typeof ENTRY_TYPES)[number];
@@ -39,6 +40,7 @@ export interface TimelineEntry {
   scanner_source: ScannerSource;
   verified: boolean;
   created_at: string;
+  parent_id?: string | null;
 }
 
 export interface ValidationResult {

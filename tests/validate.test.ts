@@ -29,6 +29,66 @@ describe('validateEntry', () => {
   });
 });
 
+describe('validateEntry — reaction type', () => {
+  const validReaction = {
+    id: '2026-04-22-davide-ritorto-corporate-venturing-reaction',
+    date: '2026-04-22',
+    type: 'reaction',
+    parent_id: '2026-04-14-boardy-fireside-dsouza',
+    title: 'Davide Ritorto on the Boardy/D’Souza fireside',
+    summary: 'Davide reacts to the AI-moderated fireside.',
+    blockquote: 'Fighting gravity every day, inside a machine optimized to resist you.',
+    blockquote_source: 'Davide Ritorto on LinkedIn',
+    source_url: 'https://www.linkedin.com/posts/example',
+    image: null,
+    attribution: 'Davide Ritorto',
+    attribution_title: 'Lamborghini',
+    attribution_image: null,
+    tags: ['reaction', 'linkedin'],
+    type_metadata: {},
+    scanner_source: 'social-scan',
+    verified: false,
+    created_at: '2026-04-22T12:00:00Z',
+  };
+
+  it('accepts a valid reaction with parent_id', () => {
+    const result = validateEntry(validReaction);
+    expect(result.valid).toBe(true);
+    expect(result.errors).toEqual([]);
+  });
+
+  it('rejects a reaction missing parent_id', () => {
+    const { parent_id: _omitted, ...withoutParent } = validReaction;
+    const result = validateEntry(withoutParent);
+    expect(result.valid).toBe(false);
+    expect(result.errors.some(e => e.includes('parent_id'))).toBe(true);
+  });
+
+  it('rejects a reaction with parent_id that does not match id format', () => {
+    const result = validateEntry({ ...validReaction, parent_id: 'not-a-valid-id' });
+    expect(result.valid).toBe(false);
+    expect(result.errors.some(e => e.includes('parent_id'))).toBe(true);
+  });
+
+  it('rejects a non-reaction entry that sets parent_id', () => {
+    const result = validateEntry({ ...validEntry, parent_id: '2026-04-14-boardy-fireside-dsouza' });
+    expect(result.valid).toBe(false);
+    expect(result.errors.some(e => e.includes('parent_id'))).toBe(true);
+  });
+
+  it('rejects a reaction with featured flag', () => {
+    const result = validateEntry({ ...validReaction, type_metadata: { featured: true } });
+    expect(result.valid).toBe(false);
+    expect(result.errors.some(e => e.includes('featured') || e.includes('sidebar'))).toBe(true);
+  });
+
+  it('rejects a reaction with highlight flag', () => {
+    const result = validateEntry({ ...validReaction, type_metadata: { highlight: 'X: \'quote\'' } });
+    expect(result.valid).toBe(false);
+    expect(result.errors.some(e => e.includes('highlight') || e.includes('sidebar'))).toBe(true);
+  });
+});
+
 describe('validateEntry rejects invalid entries', () => {
   // Helper: clone valid entry and override fields
   function entryWith(overrides: Record<string, unknown>) {

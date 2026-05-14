@@ -139,5 +139,24 @@ export function validateEntry(data: unknown): ValidationResult {
     errors.push(`"verified" must be a boolean`);
   }
 
+  // parent_id: required for reaction, forbidden for other types
+  const parentId = entry.parent_id;
+  if (type === 'reaction') {
+    if (typeof parentId !== 'string' || parentId === '') {
+      errors.push(`"parent_id" is required for type=reaction`);
+    } else if (!ID_PATTERN.test(parentId)) {
+      errors.push(`"parent_id" must match entry id format, got "${parentId}"`);
+    }
+    // Reactions cannot carry sidebar flags — they live under their parent
+    const meta = entry.type_metadata as Record<string, unknown> | undefined;
+    if (meta && typeof meta === 'object') {
+      if (meta.featured) errors.push(`"type_metadata.featured" is not allowed on reactions (sidebar flag belongs on the parent)`);
+      if (meta.highlight) errors.push(`"type_metadata.highlight" is not allowed on reactions (sidebar flag belongs on the parent)`);
+      if (meta.sidebar_quote) errors.push(`"type_metadata.sidebar_quote" is not allowed on reactions (sidebar flag belongs on the parent)`);
+    }
+  } else if (parentId !== undefined && parentId !== null) {
+    errors.push(`"parent_id" is only allowed when type=reaction`);
+  }
+
   return { valid: errors.length === 0, errors };
 }

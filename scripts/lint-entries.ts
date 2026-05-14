@@ -83,7 +83,7 @@ if (isMainModule) {
   const allEntries = files
     .map((f) => {
       const data = JSON.parse(fs.readFileSync(path.join(entriesDir, f), 'utf-8'));
-      return { file: f, type: data.type, date: data.date, id: data.id };
+      return { file: f, type: data.type, date: data.date, id: data.id, parent_id: data.parent_id ?? null };
     })
     .sort((a, b) => {
       // Sort by date, then by filename for same-date entries
@@ -91,6 +91,21 @@ if (isMainModule) {
       if (dateCompare !== 0) return dateCompare;
       return a.file.localeCompare(b.file);
     });
+
+  // Reaction parent_id must resolve to a non-reaction entry (no nesting, no orphans)
+  const idToEntry = new Map(allEntries.map((e) => [e.id, e]));
+  for (const e of allEntries) {
+    if (e.type !== 'reaction') continue;
+    if (!e.parent_id) continue; // validateEntry already caught this
+    const parent = idToEntry.get(e.parent_id);
+    if (!parent) {
+      hasErrors = true;
+      console.error(`\n❌ ORPHAN REACTION: ${e.file} parent_id "${e.parent_id}" does not resolve to any entry`);
+    } else if (parent.type === 'reaction') {
+      hasErrors = true;
+      console.error(`\n❌ NESTED REACTION: ${e.file} parent_id "${e.parent_id}" is itself a reaction; reactions cannot nest`);
+    }
+  }
 
   let lastEndorsementIndex = -999;
   for (let i = 0; i < allEntries.length; i++) {

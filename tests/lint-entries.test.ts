@@ -55,3 +55,32 @@ describe('lintEntryFile', () => {
     expect(result.errors[0]).toContain('filename');
   });
 });
+
+describe('lintEntryFile — reaction parent resolution', () => {
+  const reactionJson = JSON.stringify({
+    id: '2026-04-22-davide-ritorto-reaction',
+    date: '2026-04-22',
+    type: 'reaction',
+    parent_id: '2026-04-14-boardy-fireside-dsouza',
+    title: 'Davide on Boardy fireside',
+    summary: 'Reaction.',
+    blockquote: 'Fighting gravity every day.',
+    blockquote_source: 'Davide Ritorto on LinkedIn',
+    source_url: 'https://www.linkedin.com/posts/example',
+    image: null,
+    attribution: 'Davide Ritorto',
+    attribution_title: 'Lamborghini',
+    attribution_image: null,
+    tags: ['reaction', 'linkedin'],
+    type_metadata: {},
+    scanner_source: 'social-scan',
+    verified: false,
+    created_at: '2026-04-22T12:00:00Z',
+  }, null, 2);
+
+  it('returns success when the reaction passes per-entry validation (cross-entry check runs in CLI mode)', () => {
+    const result = lintEntryFile(reactionJson, '2026-04-22-davide-ritorto-reaction.json');
+    expect(result.valid).toBe(true);
+    expect(result.errors).toEqual([]);
+  });
+});

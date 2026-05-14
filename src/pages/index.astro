@@ -8,7 +8,23 @@ import { loadEntries } from '../lib/entries';
 import * as path from 'path';
 
 const entriesDir = path.join(process.cwd(), 'content', 'entries');
-const entries = loadEntries(entriesDir);
+const allEntries = loadEntries(entriesDir);
+
+// Reactions live under their parent — they never render as standalone timeline rows.
+// Build a parent_id → reactions[] map (sorted by date asc within each cluster).
+const reactionsByParent = new Map<string, typeof allEntries>();
+for (const e of allEntries) {
+  if (e.type !== 'reaction' || !e.parent_id) continue;
+  const list = reactionsByParent.get(e.parent_id) ?? [];
+  list.push(e);
+  reactionsByParent.set(e.parent_id, list);
+}
+for (const list of reactionsByParent.values()) {
+  list.sort((a, b) => a.date.localeCompare(b.date));
+}
+
+// Main timeline excludes reactions (they're rendered inside their parent).
+const entries = allEntries.filter(e => e.type !== 'reaction');
 const totalEndorsements = entries.filter((e) => e.type === 'endorsement').length;
 
 const today = new Date().toISOString().slice(0, 10);
@@ -82,7 +98,7 @@ const sidebarQuotes = entries
           <div class="timeline-section">
             <div class="timeline-section__label timeline-section__label--upcoming">Upcoming</div>
             {futureEntries.map((entry, i) => (
-              <TimelineEntry entry={entry} index={i} />
+              <TimelineEntry entry={entry} index={i} reactions={reactionsByParent.get(entry.id) ?? []} />
             ))}
           </div>
         )}
@@ -98,7 +114,7 @@ const sidebarQuotes = entries
         {pastEntries.length > 0 && (
           <div class="timeline-section">
             {pastEntries.map((entry, i) => (
-              <TimelineEntry entry={entry} index={futureEntries.length + i} />
+              <TimelineEntry entry={entry} index={futureEntries.length + i} reactions={reactionsByParent.get(entry.id) ?? []} />
             ))}
           </div>
         )}
