@@ -1,0 +1,23 @@
+{
+  "id": "2026-05-19-james-birchler-nicer-case-study",
+  "date": "2026-05-19",
+  "type": "review",
+  "title": "James Birchler (NICER, IMVU alum): 'NICER became the proof of concept' for the Incorruptible manuscript",
+  "summary": "James Birchler — environmental scientist turned founder, Eric's IMVU-era colleague, and member of NICER's Advisory Board with Eric himself on it — publishes a long-form LinkedIn post documenting how he built NICER chapter-by-chapter against the Incorruptible manuscript as a real-world founder's-guide stress test.",
+  "blockquote": "Eric Ries has a new book out May 26 called Incorruptible. It's about why good companies go bad, and how to design ones that don't. I've been building NICER on those ideas for years, working through them with Eric the whole way. He asked me to test whether his manuscript could work as a founder's guide in time to share findings before publication. NICER became the proof of concept.\n\nA bodycare company built on the precautionary principle, with the wrong ownership structure, abandons that principle within a few years. The same way a chemical drifts through an ecosystem, mission drifts through a company. Eric calls the force \"financial gravity.\" It bends every company toward extraction unless the architecture stops it.\n\nSo I worked through the manuscript chapter by chapter. NICER is a Delaware Public Benefit Corporation with 10x founder voting, Class FF stock, mission pledges for directors and officers, and an equity reservation for a future mission-controlled foundation. Eric likes to say: \"It is always too early to protect your company. Until it's too late.\" The window is at incorporation, before investor constraints make it impossible.",
+  "blockquote_source": "James Birchler on LinkedIn",
+  "source_url": "https://www.linkedin.com/posts/jamesbirchler_incorruptible-publicbenefitcorporation-activity-7462506120952332288-7Ejc",
+  "source_urls": [
+    {"url": "https://feelnicer.com", "label": "NICER (feelnicer.com)"}
+  ],
+  "video_url": null,
+  "image": null,
+  "attribution": "James Birchler",
+  "attribution_title": "Founder & Chief Scientist, NICER; environmental scientist; IMVU alum with Eric Ries",
+  "attribution_image": null,
+  "tags": ["review", "linkedin", "case-study", "nicer", "public-benefit-corporation"],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-05-19T17:01:00Z"
+}
