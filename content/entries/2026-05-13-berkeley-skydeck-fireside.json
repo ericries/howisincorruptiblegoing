@@ -14,7 +14,7 @@
   "attribution_title": "UC Berkeley's premier startup accelerator",
   "attribution_image": null,
   "tags": ["event", "linkedin", "berkeley", "fireside", "skydeck"],
-  "type_metadata": {"city": "Berkeley", "featured": true},
+  "type_metadata": {"city": "Berkeley"},
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-05-15T17:30:00Z"
