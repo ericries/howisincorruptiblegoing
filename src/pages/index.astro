@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import StatsBar from '../components/StatsBar.astro';
 import TimelineEntry from '../components/TimelineEntry.astro';
-import Highlights from '../components/Highlights.astro';
 import UpcomingStrip from '../components/UpcomingStrip.astro';
 import { loadEntries, partitionReactions } from '../lib/entries';
 import * as path from 'path';
@@ -66,7 +65,6 @@ const sidebarQuotes = entries
   <Header />
   <StatsBar totalEntries={entries.length} totalEndorsements={totalEndorsements} />
   <UpcomingStrip entries={entries} />
-  <Highlights entries={entries} />
 
   <nav class="timeline-nav" id="timeline-nav">
     <div class="timeline-nav__inner">

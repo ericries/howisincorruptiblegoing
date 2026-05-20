@@ -9,6 +9,42 @@ const { entries } = Astro.props;
 
 const today = new Date().toISOString().slice(0, 10);
 
+interface QuoteCard {
+  id: string;
+  name: string;
+  quote: string;
+  image: string | null;
+}
+
+function parseHighlight(raw: string): { name: string; quote: string } | null {
+  // Expected format: "Name: 'quote text'" — split on the first colon and strip surrounding quotes.
+  const colon = raw.indexOf(':');
+  if (colon === -1) return null;
+  const name = raw.slice(0, colon).trim();
+  let quote = raw.slice(colon + 1).trim();
+  quote = quote.replace(/^['‘“"]+/, '').replace(/['’”"]+$/, '');
+  if (!name || !quote) return null;
+  return { name, quote };
+}
+
+const quoteCards: QuoteCard[] = entries
+  .map((e) => {
+    const meta = e.type_metadata as Record<string, unknown> | undefined;
+    const raw = meta && typeof meta.highlight === 'string' ? (meta.highlight as string) : null;
+    if (!raw) return null;
+    const parsed = parseHighlight(raw);
+    if (!parsed) return null;
+    return {
+      id: e.id,
+      name: parsed.name,
+      quote: parsed.quote,
+      image: e.attribution_image || e.image || null,
+      date: e.date,
+    };
+  })
+  .filter((q): q is QuoteCard & { date: string } => q !== null)
+  .sort((a, b) => b.date.localeCompare(a.date));
+
 interface Stop {
   id: string;
   title: string;
@@ -21,7 +57,7 @@ interface Stop {
 const upcoming: Stop[] = entries
   .filter((e) => (e.type === 'event' || e.type === 'podcast') && e.date >= today)
   .sort((a, b) => a.date.localeCompare(b.date))
-  .slice(0, 3)
+  .slice(0, 6)
   .map((e) => {
     const meta = (e.type_metadata ?? {}) as Record<string, unknown>;
     const city = typeof meta.city === 'string' ? meta.city : null;
@@ -35,45 +71,78 @@ const upcoming: Stop[] = entries
     return { id: e.id, title: e.title, date: e.date, dateLabel, city, signupUrl };
   });
 
-if (upcoming.length === 0) return;
+if (quoteCards.length === 0 && upcoming.length === 0) return;
 ---
 
-<section class="upcoming" aria-label="Upcoming book-tour stops">
-  <div class="upcoming__inner">
-    <div class="upcoming__heading-col">
-      <h2 class="upcoming__heading">Coming up</h2>
-      <p class="upcoming__sub">Book tour stops &amp; podcast drops</p>
+<section class="orient" aria-label="What people are saying and what's coming up">
+  {quoteCards.length > 0 && (
+    <div class="orient__band orient__band--quotes">
+      <div class="orient__inner">
+        <div class="orient__heading-col">
+          <h2 class="orient__heading">What people are saying</h2>
+          <p class="orient__sub">Endorsements from the launch tour</p>
+        </div>
+        <div class="orient__quote-track">
+          {quoteCards.map((q) => (
+            <a class="quote-card" href={`#${q.id}`}>
+              {q.image && (
+                <img class="quote-card__img" src={q.image} alt={q.name} loading="lazy" />
+              )}
+              <blockquote class="quote-card__text">&ldquo;{q.quote}&rdquo;</blockquote>
+              <cite class="quote-card__name">{q.name}</cite>
+            </a>
+          ))}
+        </div>
+      </div>
     </div>
-    <ul class="upcoming__list">
-      {upcoming.map((stop) => (
-        <li class="upcoming__item">
-          <a
-            class="upcoming__link"
-            href={stop.signupUrl ?? `#${stop.id}`}
-            {...(stop.signupUrl ? { target: '_blank', rel: 'noopener' } : {})}
-          >
-            <div class="upcoming__date">{stop.dateLabel}</div>
-            <div class="upcoming__title">{stop.title}</div>
-            <div class="upcoming__meta">
-              {stop.city ? <span>{stop.city}</span> : <span>Virtual</span>}
-              {stop.signupUrl && <span class="upcoming__rsvp">RSVP ↗</span>}
-            </div>
-          </a>
-        </li>
-      ))}
-    </ul>
-  </div>
+  )}
+
+  {upcoming.length > 0 && (
+    <div class="orient__band orient__band--events">
+      <div class="orient__inner">
+        <div class="orient__heading-col">
+          <h2 class="orient__heading">Coming up</h2>
+          <p class="orient__sub">Book tour stops &amp; podcast drops</p>
+        </div>
+        <ul class="orient__event-track">
+          {upcoming.map((stop) => (
+            <li class="event-card-wrap">
+              <a
+                class="event-card"
+                href={stop.signupUrl ?? `#${stop.id}`}
+                {...(stop.signupUrl ? { target: '_blank', rel: 'noopener' } : {})}
+              >
+                <div class="event-card__date">{stop.dateLabel}</div>
+                <div class="event-card__title">{stop.title}</div>
+                <div class="event-card__meta">
+                  {stop.city ? <span>{stop.city}</span> : <span>Virtual</span>}
+                  {stop.signupUrl && <span class="event-card__rsvp">RSVP ↗</span>}
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  )}
 </section>
 
 <style>
-  .upcoming {
+  .orient {
     background: linear-gradient(to bottom, var(--color-gray-bg) 0%, #fff 100%);
-    padding: 1.25rem 1.5rem 1.5rem;
     border-top: 1px solid rgba(26, 30, 58, 0.06);
     border-bottom: 1px solid rgba(26, 30, 58, 0.06);
   }
 
-  .upcoming__inner {
+  .orient__band {
+    padding: 1.4rem 1.5rem;
+  }
+
+  .orient__band + .orient__band {
+    border-top: 1px solid rgba(26, 30, 58, 0.06);
+  }
+
+  .orient__inner {
     max-width: var(--max-width);
     margin: 0 auto;
     display: grid;
@@ -82,11 +151,11 @@ if (upcoming.length === 0) return;
     align-items: start;
   }
 
-  .upcoming__heading-col {
+  .orient__heading-col {
     padding-top: 0.4rem;
   }
 
-  .upcoming__heading {
+  .orient__heading {
     font-family: var(--font-display);
     font-size: 1.05rem;
     font-weight: 700;
@@ -95,7 +164,7 @@ if (upcoming.length === 0) return;
     letter-spacing: -0.01em;
   }
 
-  .upcoming__sub {
+  .orient__sub {
     font-family: var(--font-body);
     font-size: 0.7rem;
     color: var(--color-text-muted);
@@ -103,18 +172,99 @@ if (upcoming.length === 0) return;
     letter-spacing: 0.02em;
   }
 
-  .upcoming__list {
+  /* ── QUOTES BAND ── */
+  .orient__quote-track {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.85rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .quote-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.55rem;
+    padding: 0.95rem 1rem 0.85rem;
+    background: #fff;
+    border: 1px solid rgba(26, 30, 58, 0.1);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--color-navy);
+    transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+    height: 100%;
+    position: relative;
+  }
+
+  .quote-card::before {
+    content: '\201C';
+    position: absolute;
+    top: 0.1rem;
+    left: 0.55rem;
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    line-height: 1;
+    color: var(--color-blue);
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  .quote-card:hover {
+    border-color: var(--color-blue);
+    box-shadow: 0 4px 14px rgba(26, 30, 58, 0.09);
+    transform: translateY(-1px);
+  }
+
+  .quote-card__img {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px rgba(26, 30, 58, 0.1);
+  }
+
+  .quote-card__text {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--color-navy);
+    margin: 0;
+    letter-spacing: -0.005em;
+  }
+
+  .quote-card__name {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 700;
+    font-style: normal;
+    color: var(--color-red);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .quote-card__name::before {
+    content: '— ';
+  }
+
+  /* ── EVENTS BAND ── */
+  .orient__event-track {
     list-style: none;
     margin: 0;
     padding: 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
+    gap: 0.7rem;
   }
 
-  .upcoming__item { margin: 0; }
+  .event-card-wrap {
+    margin: 0;
+  }
 
-  .upcoming__link {
+  .event-card {
     display: block;
     padding: 0.7rem 0.85rem;
     background: #fff;
@@ -126,13 +276,13 @@ if (upcoming.length === 0) return;
     height: 100%;
   }
 
-  .upcoming__link:hover {
+  .event-card:hover {
     border-color: var(--color-blue);
     box-shadow: 0 2px 8px rgba(26, 30, 58, 0.08);
     transform: translateY(-1px);
   }
 
-  .upcoming__date {
+  .event-card__date {
     font-family: var(--font-body);
     font-size: 0.65rem;
     font-weight: 700;
@@ -142,22 +292,21 @@ if (upcoming.length === 0) return;
     margin-bottom: 0.35rem;
   }
 
-  .upcoming__title {
+  .event-card__title {
     font-family: var(--font-body);
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 600;
     line-height: 1.35;
     margin-bottom: 0.4rem;
-    /* Clamp to 2 lines */
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
 
-  .upcoming__meta {
+  .event-card__meta {
     font-family: var(--font-body);
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     color: var(--color-text-muted);
     display: flex;
     justify-content: space-between;
@@ -165,39 +314,71 @@ if (upcoming.length === 0) return;
     gap: 0.5rem;
   }
 
-  .upcoming__rsvp {
+  .event-card__rsvp {
     color: var(--color-blue);
     font-weight: 600;
   }
 
+  /* ── TABLET ── */
+  @media (max-width: 1024px) {
+    .orient__quote-track,
+    .orient__event-track {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* ── MOBILE ── */
   @media (max-width: 767px) {
-    .upcoming {
+    .orient__band {
       padding: 1rem 1rem 1.1rem;
     }
-    .upcoming__inner {
+    .orient__inner {
       grid-template-columns: 1fr;
-      gap: 0.75rem;
+      gap: 0.85rem;
     }
-    .upcoming__heading-col {
+    .orient__heading-col {
       padding-top: 0;
     }
-    .upcoming__heading {
+    .orient__heading {
       font-size: 0.95rem;
     }
-    .upcoming__sub {
+    .orient__sub {
       display: inline;
       margin-left: 0.4rem;
     }
-    .upcoming__list {
+
+    /* Horizontal scroll on mobile for quotes */
+    .orient__quote-track {
+      grid-template-columns: none;
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      gap: 0.6rem;
+      margin: 0 -1rem;
+      padding: 0.25rem 1rem;
+    }
+    .orient__quote-track::-webkit-scrollbar { display: none; }
+    .quote-card {
+      flex: 0 0 78%;
+      scroll-snap-align: start;
+      padding: 0.8rem 0.85rem 0.75rem;
+    }
+    .quote-card__text {
+      font-size: 0.88rem;
+    }
+
+    /* Events stay stacked vertically on mobile (full list) */
+    .orient__event-track {
       grid-template-columns: 1fr;
       gap: 0.5rem;
     }
-    .upcoming__link {
+    .event-card {
       padding: 0.6rem 0.75rem;
     }
-    .upcoming__title {
+    .event-card__title {
       font-size: 0.8rem;
-      -webkit-line-clamp: 2;
     }
   }
 </style>
