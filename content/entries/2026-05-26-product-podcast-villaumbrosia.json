@@ -14,7 +14,7 @@
   "attribution_title": "CEO, Product School & Product Partners",
   "attribution_image": null,
   "tags": ["podcast", "linkedin", "product-school", "the-product-podcast"],
-  "type_metadata": {},
+  "type_metadata": {"featured": true},
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-05-18T17:31:00Z"
