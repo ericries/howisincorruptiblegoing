@@ -1,0 +1,24 @@
+{
+  "id": "2026-05-19-turing-post-inference-podcast",
+  "date": "2026-05-19",
+  "type": "podcast",
+  "title": "Turing Post 'Inference' with Ksenia Se: Eric on incorruptible companies, AI disruption, and the future of capitalism",
+  "summary": "Ksenia Se, founder of AI newsletter Turing Post, drops a 31-minute Inference podcast episode with Eric for an audience of ML engineers, data scientists, and AI builders — pulling the book's argument into the AI-builder frame.",
+  "blockquote": "What if the biggest threat to a great company isn't failure — but success? And why it becomes even more relevant now – when everyone becomes an AI builder?\n\nEric Ries, entrepreneur and author of The Lean Startup and Incorruptible, argues that the more valuable a company becomes, the more pressure it faces to make money without creating real value. In other words: corruption in business doesn't begin at the margins. It begins when builders stop protecting what made their company worth building in the first place.",
+  "blockquote_source": "Ksenia Se on Turing Post's YouTube channel",
+  "source_url": "https://www.youtube.com/watch?v=ypHhsCRWnWs",
+  "source_urls": [
+    {"url": "https://www.turingpost.com", "label": "Turing Post"},
+    {"url": "https://x.com/TheTuringPost/status/2057264513376821272", "label": "Turing Post launch tweet"}
+  ],
+  "video_url": "https://www.youtube.com/watch?v=ypHhsCRWnWs",
+  "image": null,
+  "attribution": "Ksenia Se",
+  "attribution_title": "Founder, Turing Post; publisher of the AI newsletter and Inference podcast",
+  "attribution_image": null,
+  "tags": ["podcast", "youtube", "turing-post", "ai", "ksenia-se", "inference"],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-05-21T13:15:00Z"
+}
