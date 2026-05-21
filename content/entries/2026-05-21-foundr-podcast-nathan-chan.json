@@ -1,0 +1,23 @@
+{
+  "id": "2026-05-21-foundr-podcast-nathan-chan",
+  "date": "2026-05-21",
+  "type": "podcast",
+  "title": "Foundr Podcast: 'The Man Who Wrote the Startup Bible Has a WARNING for Every Founder'",
+  "summary": "Nathan Chan's Foundr Podcast drops a 58-minute launch-week interview with Eric — covering IMVU's six-month pivot, the Saul Price/Costco story, Novo Nordisk's century-old governance design, and why corporate structure is the founder's most important product.",
+  "blockquote": "Eric Ries wrote the book that changed how the entire world builds startups. Now he's back with a more urgent argument: the way we're taught to build companies is quietly turning them against everything that made them worth building in the first place. The creator of The Lean Startup has spent years watching mission-driven founders get fired from their own companies, watching the spark that started everything get extinguished by the very success they worked so hard to create—and he's finally written the blueprint to stop it.",
+  "blockquote_source": "Foundr on YouTube",
+  "source_url": "https://www.youtube.com/watch?v=nN96nUEgfsI",
+  "source_urls": [
+    {"url": "https://www.foundr.com/podcast", "label": "Foundr Podcast"}
+  ],
+  "video_url": "https://www.youtube.com/watch?v=nN96nUEgfsI",
+  "image": null,
+  "attribution": "Nathan Chan",
+  "attribution_title": "Founder & CEO, Foundr; host of the Foundr Podcast",
+  "attribution_image": null,
+  "tags": ["podcast", "youtube", "foundr", "nathan-chan", "interview"],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-05-21T16:45:00Z"
+}
