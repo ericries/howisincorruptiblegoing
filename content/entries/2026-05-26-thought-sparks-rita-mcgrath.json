@@ -14,7 +14,7 @@
   "attribution_title": "C-Suite Strategist; Thinkers50 Top 10; bestselling author; Columbia Business School Professor",
   "attribution_image": null,
   "tags": ["podcast", "linkedin", "thought-sparks", "rita-mcgrath", "thinkers50"],
-  "type_metadata": {},
+  "type_metadata": {"featured": true},
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-05-22T16:45:00Z"

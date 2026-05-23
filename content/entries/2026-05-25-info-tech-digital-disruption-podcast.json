@@ -14,7 +14,7 @@
   "attribution_title": "Host, Digital Disruption Podcast (Info-Tech Research Group, 72k followers)",
   "attribution_image": null,
   "tags": ["podcast", "linkedin", "info-tech", "digital-disruption", "geoff-nielson"],
-  "type_metadata": {},
+  "type_metadata": {"featured": true},
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-05-23T00:45:00Z"
