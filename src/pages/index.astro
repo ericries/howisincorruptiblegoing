@@ -60,6 +60,23 @@ const sidebarQuotes = entries
     who: e.attribution || e.blockquote_source,
   }));
 
+// Amazon rankings — snapshot of the current pre-order chart positions.
+// Subtle strip below the subtitle in the header. Update by hand as positions shift.
+const amazonRanks = [
+  {
+    rank: '#1',
+    badge: 'New Release',
+    category: 'Business Management',
+    url: 'https://www.amazon.com/gp/new-releases/books/2675/',
+  },
+  {
+    rank: '#1',
+    badge: 'New Release',
+    category: 'Entrepreneurship',
+    url: 'https://www.amazon.com/gp/new-releases/books/2741/',
+  },
+];
+
 // Header awards (curated lists/best-of selections) — render as little laurels
 // in the navy header, top-right corner.
 const awards = entries
@@ -93,7 +110,7 @@ const heroQuotes = entries
 ---
 
 <Layout title="How Is Incorruptible Going?">
-  <Header awards={awards} heroQuotes={heroQuotes} />
+  <Header awards={awards} heroQuotes={heroQuotes} amazonRanks={amazonRanks} />
   <StatsBar totalEntries={entries.length} totalEndorsements={totalEndorsements} />
   <UpcomingStrip entries={entries} />
 

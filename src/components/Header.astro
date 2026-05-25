@@ -9,11 +9,18 @@ interface HeroQuote {
   label: string;
   author: string;
 }
+interface AmazonRank {
+  rank: string;   // e.g. "#1"
+  badge: string;  // e.g. "New Release"
+  category: string; // e.g. "Business Management"
+  url?: string;
+}
 interface Props {
   awards?: Award[];
   heroQuotes?: HeroQuote[];
+  amazonRanks?: AmazonRank[];
 }
-const { awards = [], heroQuotes = [] } = Astro.props;
+const { awards = [], heroQuotes = [], amazonRanks = [] } = Astro.props;
 ---
 
 <header class="header">
@@ -61,6 +68,25 @@ const { awards = [], heroQuotes = [] } = Astro.props;
     <p class="header__subtitle">
       The new book by <span class="header__author">Eric Ries</span> · May 26, 2026
     </p>
+    {amazonRanks.length > 0 && (
+      <ul class="header__amazon" aria-label="Amazon rankings">
+        {amazonRanks.map(r => (
+          <li class="header__amazon-item">
+            {r.url ? (
+              <a class="amazon-rank" href={r.url} target="_blank" rel="noopener">
+                <span class="amazon-rank__tag"><span class="amazon-rank__num">{r.rank}</span> {r.badge}</span>
+                <span class="amazon-rank__cat">in {r.category}</span>
+              </a>
+            ) : (
+              <span class="amazon-rank">
+                <span class="amazon-rank__tag"><span class="amazon-rank__num">{r.rank}</span> {r.badge}</span>
+                <span class="amazon-rank__cat">in {r.category}</span>
+              </span>
+            )}
+          </li>
+        ))}
+      </ul>
+    )}
   </div>
 </header>
 
@@ -152,6 +178,72 @@ const { awards = [], heroQuotes = [] } = Astro.props;
     color: var(--color-text-muted);
     margin-top: 1.75rem;
     letter-spacing: 0.03em;
+  }
+
+  /* Amazon rankings strip — subtle row beneath the subtitle. Tags echo
+     Amazon's own visual language (orange "best seller" pill + faint label)
+     without screaming for attention. */
+  .header__amazon {
+    list-style: none;
+    margin: 1.1rem 0 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+  }
+  .header__amazon-item { margin: 0; }
+  .amazon-rank {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.18s, opacity 0.18s;
+  }
+  .amazon-rank:hover {
+    transform: translateY(-1px);
+  }
+  .amazon-rank__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-family: var(--font-body);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(180deg, #f08804 0%, #c95a01 100%);
+    padding: 0.22rem 0.5rem 0.22rem 0.35rem;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    white-space: nowrap;
+  }
+  .amazon-rank__num {
+    font-weight: 800;
+    font-size: 0.7rem;
+    letter-spacing: 0;
+  }
+  .amazon-rank__cat {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.78);
+    letter-spacing: 0.01em;
+  }
+  .amazon-rank:hover .amazon-rank__cat {
+    color: var(--color-blue);
+  }
+
+  @media (max-width: 480px) {
+    .header__amazon {
+      gap: 0.5rem;
+    }
+    .amazon-rank__cat {
+      font-size: 0.65rem;
+    }
   }
 
   .header__author {
