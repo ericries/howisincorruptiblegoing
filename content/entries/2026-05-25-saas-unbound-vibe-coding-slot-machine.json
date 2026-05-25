@@ -1,0 +1,21 @@
+{
+  "id": "2026-05-25-saas-unbound-vibe-coding-slot-machine",
+  "date": "2026-05-25",
+  "type": "podcast",
+  "title": "SaaS Unbound (SaaS Group) — 'I taught people how to build something worth protecting but not how to protect it'",
+  "summary": "Anna at SaaS Group hosts Eric on SaaS Unbound for a 57-minute conversation pairing Incorruptible's governance argument with a sharp critique of vibe coding — including the METR study showing AI made developers 19% less productive while they felt 20% faster.",
+  "blockquote": "I taught people how to build something worth protecting but not how to protect it. And the sad reality like everything that is worth protecting will eventually need protection. It's always too early and then one day it's too late.",
+  "blockquote_source": "Eric Ries on SaaS Unbound",
+  "source_url": "https://www.youtube.com/watch?v=h6GHP2p5efQ",
+  "source_urls": null,
+  "video_url": "https://www.youtube.com/watch?v=h6GHP2p5efQ",
+  "image": null,
+  "attribution": "SaaS Group",
+  "attribution_title": "SaaS Unbound podcast (host: Anna)",
+  "attribution_image": null,
+  "tags": ["podcast", "youtube", "saas-group", "saas-unbound", "ai", "vibe-coding"],
+  "type_metadata": {"featured": true},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-05-25T17:10:00Z"
+}
