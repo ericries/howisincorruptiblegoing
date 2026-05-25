@@ -211,46 +211,47 @@ const { awards = [], heroQuotes = [] } = Astro.props;
     transform: translateY(-1px);
   }
 
+  /* Mirror the award laurel column on the right exactly: stacked author + label,
+     1-line nowrap on each, red chevron leaves on either side. Natural width
+     stagger comes from differing verbatim label lengths. */
   .quote-laurel__leaf {
     font-family: var(--font-display);
     font-size: 1.35rem;
     color: rgba(232, 64, 64, 0.75);
     line-height: 1;
     font-weight: 700;
-    align-self: center;
   }
 
   .quote-laurel__body {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 1px;
     align-items: center;
     text-align: center;
-    max-width: 200px;
   }
 
-  /* Author = small caps subtitle */
+  /* Reversed emphasis vs the awards on the right: the praise itself leads
+     (larger, white, prominent), with the attributing name shown small + muted
+     below — like a pull quote with byline. */
   .quote-laurel__author {
     font-family: var(--font-body);
-    font-size: 0.55rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
+    font-size: 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.55);
     white-space: nowrap;
+    order: 2;
   }
 
-  /* LABEL = the headline pull-quote, set in display font but kept compact
-     so it wraps across 2–3 lines and matches the right column visually. */
   .quote-laurel__label {
     font-family: var(--font-display);
-    font-size: 0.72rem;
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.005em;
-    color: #fff;
-    font-style: normal;
-    white-space: normal;
+    font-size: 0.78rem;
+    font-style: italic;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.95);
+    white-space: nowrap;
+    order: 1;
   }
 
   /* ── AWARDS (top-right laurels) ── */
