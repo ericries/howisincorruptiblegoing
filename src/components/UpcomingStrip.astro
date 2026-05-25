@@ -28,6 +28,21 @@ function parseHighlight(raw: string): { name: string; quote: string } | null {
   return { name, quote };
 }
 
+// Explicit tail order so the back half of the row alternates F/M instead of
+// clumping all the women together at the end. Entries NOT listed here stay
+// date-desc at the front; entries listed here appear in this exact order
+// after the front block. Tim O'Reilly is pinned last.
+const QUOTE_TAIL_ORDER = [
+  '2026-03-16-endorsement-leah-solivan',     // F
+  '2026-04-08-endorsement-daniel-pink',      // M
+  '2026-03-13-endorsement-kieran-snyder',    // F
+  '2026-04-06-endorsement-scott-cook',       // M
+  '2026-03-05-reader-denise-hearn',          // F
+  '2026-04-01-endorsement-ken-chenault',     // M
+  '2026-01-20-endorsement-vlada-bortnik',    // F
+  '2026-02-27-endorsement-tim-oreilly',      // M (last)
+];
+
 const quoteCards: QuoteCard[] = entries
   .map((e) => {
     const meta = e.type_metadata as Record<string, unknown> | undefined;
@@ -46,7 +61,16 @@ const quoteCards: QuoteCard[] = entries
     };
   })
   .filter((q): q is QuoteCard & { date: string } => q !== null)
-  .sort((a, b) => b.date.localeCompare(a.date));
+  .sort((a, b) => {
+    const aTail = QUOTE_TAIL_ORDER.indexOf(a.id);
+    const bTail = QUOTE_TAIL_ORDER.indexOf(b.id);
+    if (aTail !== -1 || bTail !== -1) {
+      if (aTail === -1) return -1;
+      if (bTail === -1) return 1;
+      return aTail - bTail;
+    }
+    return b.date.localeCompare(a.date);
+  });
 
 interface PosterCard {
   id: string;
