@@ -1,8 +1,55 @@
 ---
+interface Award {
+  id: string;
+  label: string;
+  curator: string;
+}
+interface HeroQuote {
+  id: string;
+  label: string;
+  author: string;
+}
+interface Props {
+  awards?: Award[];
+  heroQuotes?: HeroQuote[];
+}
+const { awards = [], heroQuotes = [] } = Astro.props;
 ---
 
 <header class="header">
   <div class="header__shimmer"></div>
+  {heroQuotes.length > 0 && (
+    <ul class="header__quotes" aria-label="Standout pull quotes">
+      {heroQuotes.map(q => (
+        <li class="header__quote">
+          <a class="quote-laurel" href={`#${q.id}`} title={`${q.author}: ${q.label}`}>
+            <span class="quote-laurel__leaf quote-laurel__leaf--left" aria-hidden="true">❮</span>
+            <span class="quote-laurel__body">
+              <span class="quote-laurel__author">{q.author}</span>
+              <span class="quote-laurel__label">&ldquo;{q.label}&rdquo;</span>
+            </span>
+            <span class="quote-laurel__leaf quote-laurel__leaf--right" aria-hidden="true">❯</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
+  {awards.length > 0 && (
+    <ul class="header__awards" aria-label="Curated picks and best-of lists">
+      {awards.map(a => (
+        <li class="header__award">
+          <a class="award-laurel" href={`#${a.id}`} title={`${a.curator}: ${a.label}`}>
+            <span class="award-laurel__leaf award-laurel__leaf--left" aria-hidden="true">❮</span>
+            <span class="award-laurel__body">
+              <span class="award-laurel__curator">{a.curator}</span>
+              <span class="award-laurel__label">{a.label}</span>
+            </span>
+            <span class="award-laurel__leaf award-laurel__leaf--right" aria-hidden="true">❯</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
   <div class="header__content">
     <div class="header__pre">How is</div>
     <div class="header__title-wrap">
@@ -130,6 +177,158 @@
       var(--color-blue),
       transparent
     );
+  }
+
+  /* ── HERO QUOTES (top-left laurels — symmetric mirror of awards on the right,
+     same red leaves, but the LABEL ("of the year/decade") is sized big & bold
+     like a movie poster headline) ── */
+  .header__quotes {
+    position: absolute;
+    top: 1.25rem;
+    left: 1.5rem;
+    z-index: 2;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    align-items: flex-start;
+  }
+  .header__quote { margin: 0; }
+
+  .quote-laurel {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1;
+    transition: color 0.18s, transform 0.18s;
+  }
+  .quote-laurel:hover {
+    color: #fff;
+    transform: translateY(-1px);
+  }
+
+  .quote-laurel__leaf {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    color: rgba(232, 64, 64, 0.75);
+    line-height: 1;
+    font-weight: 700;
+    align-self: center;
+  }
+
+  .quote-laurel__body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    align-items: center;
+    text-align: center;
+    max-width: 200px;
+  }
+
+  /* Author = small caps subtitle */
+  .quote-laurel__author {
+    font-family: var(--font-body);
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    white-space: nowrap;
+  }
+
+  /* LABEL = the headline pull-quote, set in display font but kept compact
+     so it wraps across 2–3 lines and matches the right column visually. */
+  .quote-laurel__label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    color: #fff;
+    font-style: normal;
+    white-space: normal;
+  }
+
+  /* ── AWARDS (top-right laurels) ── */
+  .header__awards {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.5rem;
+    z-index: 2;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    align-items: flex-end;
+  }
+  .header__award { margin: 0; }
+
+  .award-laurel {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1;
+    transition: color 0.18s, transform 0.18s;
+  }
+  .award-laurel:hover {
+    color: var(--color-blue);
+    transform: translateY(-1px);
+  }
+
+  .award-laurel__leaf {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    color: rgba(232, 64, 64, 0.75);
+    line-height: 1;
+    font-weight: 700;
+  }
+
+  .award-laurel__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .award-laurel__curator {
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: inherit;
+    white-space: nowrap;
+  }
+
+  .award-laurel__label {
+    font-family: var(--font-body);
+    font-size: 0.55rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.5);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    .header__awards,
+    .header__quotes {
+      position: static;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem 1rem;
+      margin: 0 auto 1.25rem;
+      padding: 0 1rem;
+      align-items: center;
+    }
   }
 
   @media (max-width: 640px) {

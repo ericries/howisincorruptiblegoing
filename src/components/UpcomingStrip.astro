@@ -45,6 +45,82 @@ const quoteCards: QuoteCard[] = entries
   .filter((q): q is QuoteCard & { date: string } => q !== null)
   .sort((a, b) => b.date.localeCompare(a.date));
 
+interface PosterCard {
+  id: string;
+  title: string;
+  date: string;
+  image: string;
+  videoUrl: string;
+  attribution: string | null;
+}
+
+function youtubeId(url: string): string | null {
+  const m = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/)([\w-]{6,})/);
+  return m ? m[1] : null;
+}
+
+// Now playing = third-party podcast appearances with YouTube video — no Eric-own
+// TikToks, no events without a podcast episode. Pinned leaders go first.
+const POSTER_PINS = [
+  '2026-05-10-lennys-podcast-rachitsky',          // 1. Lenny's
+  '2026-05-22-yc-main-function-garry-tan',        // 2. Y Combinator
+  '2026-04-07-david-meyer-ageless-warrior',       // 3. Ageless Warrior
+  '2026-05-24-learning-leader-ryan-hawk',         // 4. Ryan Hawk
+  '2026-04-16-kim-scott-radical-candor-podcast',  // 5. Kim Scott
+];
+// Short institutional labels for the pinned podcasts so the card credits the
+// show, not the host's personal name.
+const POSTER_LABELS: Record<string, string> = {
+  '2026-05-10-lennys-podcast-rachitsky': "Lenny's Podcast",
+  '2026-05-22-yc-main-function-garry-tan': 'Y Combinator',
+  '2026-04-07-david-meyer-ageless-warrior': 'Ageless Warrior',
+  '2026-05-24-learning-leader-ryan-hawk': 'Learning Leader',
+  '2026-04-16-kim-scott-radical-candor-podcast': 'Radical Candor',
+};
+const posterCards: PosterCard[] = entries
+  .map((e) => {
+    if (e.type !== 'podcast') return null;
+    const url = e.video_url ?? null;
+    if (!url) return null;
+    const isYouTube = url.includes('youtube.com') || url.includes('youtu.be');
+    if (!isYouTube) return null;
+    const id = youtubeId(url);
+    if (!id) return null;
+    const image = `https://i.ytimg.com/vi/${id}/mqdefault.jpg`;
+    return { id: e.id, title: e.title, date: e.date, image, videoUrl: url, attribution: e.attribution ?? null };
+  })
+  .filter((p): p is PosterCard => p !== null)
+  .sort((a, b) => {
+    const aPin = POSTER_PINS.indexOf(a.id);
+    const bPin = POSTER_PINS.indexOf(b.id);
+    if (aPin !== -1 || bPin !== -1) {
+      // Pinned items sort by their explicit order; pinned beats unpinned.
+      if (aPin === -1) return 1;
+      if (bPin === -1) return -1;
+      return aPin - bPin;
+    }
+    return b.date.localeCompare(a.date);
+  })
+  .slice(0, 40);
+
+interface AwardCard {
+  id: string;
+  label: string;
+  curator: string;
+}
+
+const awardCards: AwardCard[] = entries
+  .map((e) => {
+    const meta = e.type_metadata as Record<string, unknown> | undefined;
+    if (!meta || typeof meta.award_label !== 'string' || typeof meta.award_curator !== 'string') return null;
+    return {
+      id: e.id,
+      label: meta.award_label as string,
+      curator: meta.award_curator as string,
+    };
+  })
+  .filter((a): a is AwardCard => a !== null);
+
 interface Stop {
   id: string;
   title: string;
@@ -52,12 +128,21 @@ interface Stop {
   dateLabel: string;
   city: string | null;
   signupUrl: string | null;
+  isPast: boolean;
 }
 
+// Earliest past in-person event we want to surface in the events row.
+const EVENTS_PAST_FLOOR = '2026-05-05'; // Kapor Center Oakland launch
+
 const upcoming: Stop[] = entries
-  .filter((e) => (e.type === 'event' || e.type === 'podcast') && e.date >= today)
-  .sort((a, b) => a.date.localeCompare(b.date))
-  .slice(0, 6)
+  .filter((e) => {
+    if (e.type !== 'event' && e.type !== 'podcast') return false;
+    const meta = (e.type_metadata ?? {}) as Record<string, unknown>;
+    const hasCity = typeof meta.city === 'string' && meta.city.length > 0;
+    if (!hasCity) return false; // in-person only (must have a city)
+    if (e.date >= today) return true; // all future in-person events
+    return e.date >= EVENTS_PAST_FLOOR; // past in-person back to the floor
+  })
   .map((e) => {
     const meta = (e.type_metadata ?? {}) as Record<string, unknown>;
     const city = typeof meta.city === 'string' ? meta.city : null;
@@ -68,21 +153,32 @@ const upcoming: Stop[] = entries
       day: 'numeric',
       timeZone: 'UTC',
     });
-    return { id: e.id, title: e.title, date: e.date, dateLabel, city, signupUrl };
-  });
+    return { id: e.id, title: e.title, date: e.date, dateLabel, city, signupUrl, isPast: e.date < today };
+  })
+  // Chronological — past on the left (greyed), future on the right.
+  .sort((a, b) => a.date.localeCompare(b.date));
 
-if (quoteCards.length === 0 && upcoming.length === 0) return;
+// Index of the first future event — the row scrolls to center this card on load.
+// If everything in the row is already past, fall back to the Launch Day card.
+const LAUNCH_DAY = '2026-05-26';
+let scrollTargetIndex = upcoming.findIndex((s) => !s.isPast);
+if (scrollTargetIndex === -1) {
+  scrollTargetIndex = upcoming.findIndex((s) => s.date === LAUNCH_DAY);
+}
+if (scrollTargetIndex === -1) {
+  // Last resort: nearest event to launch day (or the very last card).
+  scrollTargetIndex = Math.max(0, upcoming.length - 1);
+}
+
+if (quoteCards.length === 0 && upcoming.length === 0 && posterCards.length === 0 && awardCards.length === 0) return;
 ---
 
 <section class="orient" aria-label="What people are saying and what's coming up">
   {quoteCards.length > 0 && (
     <div class="orient__band orient__band--quotes">
-      <div class="orient__inner">
-        <div class="orient__heading-col">
-          <h2 class="orient__heading">What people are saying</h2>
-          <p class="orient__sub">Endorsements from the launch tour</p>
-        </div>
-        <div class="orient__quote-track">
+      <div class="scroll-shell">
+        <button class="scroll-nav scroll-nav--prev" data-scroll="prev" aria-label="Scroll left">‹</button>
+        <div class="orient__quote-track" data-scrollable aria-label="Endorsements">
           {quoteCards.map((q) => (
             <a class="quote-card" href={`#${q.id}`}>
               {q.image && (
@@ -93,23 +189,52 @@ if (quoteCards.length === 0 && upcoming.length === 0) return;
             </a>
           ))}
         </div>
+        <button class="scroll-nav scroll-nav--next" data-scroll="next" aria-label="Scroll right">›</button>
+      </div>
+    </div>
+  )}
+
+  {posterCards.length > 0 && (
+    <div class="orient__band orient__band--posters">
+      <div class="scroll-shell scroll-shell--dark">
+        <button class="scroll-nav scroll-nav--prev scroll-nav--dark" data-scroll="prev" aria-label="Scroll left">‹</button>
+        <div class="orient__poster-scroll" data-scrollable aria-label="Podcast appearances">
+          <ul class="orient__poster-track">
+            {posterCards.map((p) => (
+            <li class="poster-card-wrap">
+              <a
+                class="poster-card"
+                href={p.videoUrl}
+                target="_blank"
+                rel="noopener"
+              >
+                <div class="poster-card__art">
+                  <img class="poster-card__img" src={p.image} alt={p.title} loading="lazy" />
+                  <span class="poster-card__play" aria-hidden="true">▶</span>
+                </div>
+                <div class="poster-card__title">{POSTER_LABELS[p.id] ?? p.attribution ?? p.title}</div>
+              </a>
+            </li>
+          ))}
+          </ul>
+        </div>
+        <button class="scroll-nav scroll-nav--next scroll-nav--dark" data-scroll="next" aria-label="Scroll right">›</button>
       </div>
     </div>
   )}
 
   {upcoming.length > 0 && (
     <div class="orient__band orient__band--events">
-      <div class="orient__inner">
-        <div class="orient__heading-col">
-          <h2 class="orient__heading">Coming up</h2>
-          <p class="orient__sub">Book tour stops &amp; podcast drops</p>
-        </div>
-        <ul class="orient__event-track">
-          {upcoming.map((stop) => (
-            <li class="event-card-wrap">
+      <div class="scroll-shell">
+        <button class="scroll-nav scroll-nav--prev" data-scroll="prev" aria-label="Scroll left">‹</button>
+        <div class="orient__event-scroll" data-event-scroll data-scrollable aria-label="Book tour timeline">
+          <ul class="orient__event-track">
+            {upcoming.map((stop, i) => (
+            <li class={`event-card-wrap${stop.isPast ? ' event-card-wrap--past' : ''}`}>
               <a
                 class="event-card"
                 href={stop.signupUrl ?? `#${stop.id}`}
+                data-first-future={i === scrollTargetIndex ? '' : undefined}
                 {...(stop.signupUrl ? { target: '_blank', rel: 'noopener' } : {})}
               >
                 <div class="event-card__date">{stop.dateLabel}</div>
@@ -121,7 +246,9 @@ if (quoteCards.length === 0 && upcoming.length === 0) return;
               </a>
             </li>
           ))}
-        </ul>
+          </ul>
+        </div>
+        <button class="scroll-nav scroll-nav--next" data-scroll="next" aria-label="Scroll right">›</button>
       </div>
     </div>
   )}
@@ -135,50 +262,75 @@ if (quoteCards.length === 0 && upcoming.length === 0) return;
   }
 
   .orient__band {
-    padding: 1.4rem 1.5rem;
+    padding: 0.7rem 0;
   }
 
   .orient__band + .orient__band {
     border-top: 1px solid rgba(26, 30, 58, 0.06);
   }
 
-  .orient__inner {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 1.5rem;
-    align-items: start;
+  /* ── SCROLL NAV BUTTONS (subtle prev/next chevrons) ── */
+  .scroll-shell {
+    position: relative;
   }
 
-  .orient__heading-col {
-    padding-top: 0.4rem;
-  }
-
-  .orient__heading {
-    font-family: var(--font-display);
-    font-size: 1.05rem;
-    font-weight: 700;
+  .scroll-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 4;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid rgba(26, 30, 58, 0.12);
+    background: rgba(255, 255, 255, 0.85);
     color: var(--color-navy);
-    margin: 0;
-    letter-spacing: -0.01em;
+    font-size: 1.4rem;
+    line-height: 1;
+    padding: 0 0 2px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.45;
+    transition: opacity 0.2s, background 0.2s, transform 0.2s;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  .scroll-nav:hover {
+    opacity: 1;
+    background: #fff;
+    transform: translateY(-50%) scale(1.06);
+  }
+  .scroll-nav--prev { left: 6px; }
+  .scroll-nav--next { right: 6px; }
+
+  .scroll-nav--dark {
+    background: rgba(13, 17, 48, 0.65);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .scroll-nav--dark:hover {
+    background: rgba(13, 17, 48, 0.95);
+    color: #fff;
   }
 
-  .orient__sub {
-    font-family: var(--font-body);
-    font-size: 0.7rem;
-    color: var(--color-text-muted);
-    margin: 0.15rem 0 0;
-    letter-spacing: 0.02em;
+  /* Hide on touch devices — they already know how to swipe. */
+  @media (hover: none) {
+    .scroll-nav { display: none; }
   }
 
-  /* ── QUOTES BAND ── */
+  /* ── QUOTES BAND (full-width scroll) ── */
+  .orient__band--quotes {
+    padding: 0.8rem 0;
+  }
+
   .orient__quote-track {
     display: flex;
-    gap: 0.85rem;
+    gap: 0.6rem;
     list-style: none;
-    padding: 0.2rem 0.1rem 0.5rem;
-    margin: 0 -0.1rem;
+    padding: 0.2rem 1.5rem 0.55rem;
+    margin: 0;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
@@ -200,13 +352,13 @@ if (quoteCards.length === 0 && upcoming.length === 0) return;
   }
 
   .quote-card {
-    flex: 0 0 calc((100% - 1.7rem) / 3);
+    flex: 0 0 152px;
     scroll-snap-align: start;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.55rem;
-    padding: 0.95rem 1rem 0.85rem;
+    gap: 0.4rem;
+    padding: 0.7rem 0.75rem 0.65rem;
     background: #fff;
     border: 1px solid rgba(26, 30, 58, 0.1);
     border-radius: 8px;
@@ -219,25 +371,25 @@ if (quoteCards.length === 0 && upcoming.length === 0) return;
   .quote-card::before {
     content: '\201C';
     position: absolute;
-    top: 0.1rem;
-    left: 0.55rem;
+    top: 0.05rem;
+    left: 0.4rem;
     font-family: var(--font-display);
-    font-size: 2.4rem;
+    font-size: 1.8rem;
     line-height: 1;
     color: var(--color-blue);
-    opacity: 0.35;
+    opacity: 0.3;
     pointer-events: none;
   }
 
   .quote-card:hover {
     border-color: var(--color-blue);
-    box-shadow: 0 4px 14px rgba(26, 30, 58, 0.09);
+    box-shadow: 0 3px 10px rgba(26, 30, 58, 0.08);
     transform: translateY(-1px);
   }
 
   .quote-card__img {
-    width: 38px;
-    height: 38px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid #fff;
@@ -246,21 +398,25 @@ if (quoteCards.length === 0 && upcoming.length === 0) return;
 
   .quote-card__text {
     font-family: var(--font-display);
-    font-size: 0.95rem;
+    font-size: 0.78rem;
     font-weight: 600;
-    line-height: 1.35;
+    line-height: 1.3;
     color: var(--color-navy);
     margin: 0;
     letter-spacing: -0.005em;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .quote-card__name {
     font-family: var(--font-body);
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     font-weight: 700;
     font-style: normal;
     color: var(--color-red);
-    letter-spacing: 0.03em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
   }
 
@@ -268,14 +424,50 @@ if (quoteCards.length === 0 && upcoming.length === 0) return;
     content: '— ';
   }
 
-  /* ── EVENTS BAND ── */
+  /* ── EVENTS BAND (timeline scroller, past greyed) ── */
+  .orient__band--events {
+    padding: 0.85rem 0 1rem;
+  }
+  .orient__event-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(26, 30, 58, 0.2) transparent;
+    /* Soft fade on both edges so cards drift in/out of the timeline. */
+    mask-image: linear-gradient(to right, transparent 0, #000 28px, #000 calc(100% - 60px), transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 28px, #000 calc(100% - 60px), transparent 100%);
+    -webkit-overflow-scrolling: touch;
+  }
+  .orient__event-scroll::-webkit-scrollbar { height: 6px; }
+  .orient__event-scroll::-webkit-scrollbar-thumb {
+    background: rgba(26, 30, 58, 0.18);
+    border-radius: 999px;
+  }
+  .orient__event-scroll::-webkit-scrollbar-track { background: transparent; }
+
   .orient__event-track {
     list-style: none;
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.2rem 1.5rem 0.45rem;
     margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.7rem;
+    width: max-content;
+  }
+
+  .event-card-wrap {
+    flex: 0 0 188px;
+    margin: 0;
+  }
+  .event-card-wrap--past .event-card {
+    opacity: 0.45;
+    filter: grayscale(0.4);
+  }
+  .event-card-wrap--past .event-card:hover {
+    opacity: 1;
+    filter: none;
+  }
+  .event-card-wrap--past .event-card__date {
+    color: var(--color-text-muted);
   }
 
   .event-card-wrap {
@@ -337,62 +529,240 @@ if (quoteCards.length === 0 && upcoming.length === 0) return;
     font-weight: 600;
   }
 
-  /* ── TABLET ── */
-  @media (max-width: 1024px) {
-    .quote-card {
-      flex: 0 0 calc((100% - 0.85rem) / 2);
-    }
-    .orient__event-track {
-      grid-template-columns: repeat(2, 1fr);
-    }
+  /* ── AWARDS STRIP (movie-poster laurels above the quotes) ── */
+  .orient__awards-strip {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0.15rem 1.5rem 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+  }
+
+  .award-strip__label {
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .award-strip__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.25rem;
+  }
+
+  .award-strip__item { margin: 0; }
+
+  .award-laurel {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    text-decoration: none;
+    color: var(--color-navy);
+    line-height: 1;
+    transition: color 0.18s, transform 0.18s;
+  }
+  .award-laurel:hover {
+    color: var(--color-red);
+    transform: translateY(-1px);
+  }
+
+  .award-laurel__leaf {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-red);
+    opacity: 0.7;
+    line-height: 1;
+    font-weight: 700;
+  }
+
+  .award-laurel__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .award-laurel__curator {
+    font-family: var(--font-body);
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: inherit;
+    white-space: nowrap;
+  }
+
+  .award-laurel__label {
+    font-family: var(--font-body);
+    font-size: 0.58rem;
+    font-style: italic;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+  }
+
+  /* ── POSTERS BAND ── */
+  .orient__band--posters {
+    background: var(--color-navy);
+    padding: 0.75rem 0 0.85rem;
+  }
+
+  .orient__poster-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+    /* Soft fade on the right edge so cards trail off into the navy. */
+    mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 70px), transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 70px), transparent 100%);
+    -webkit-overflow-scrolling: touch;
+  }
+  .orient__poster-scroll::-webkit-scrollbar { height: 6px; }
+  .orient__poster-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+  }
+  .orient__poster-scroll::-webkit-scrollbar-track { background: transparent; }
+
+  .orient__poster-track {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0.25rem 1.5rem 0.5rem;
+    margin: 0;
+    width: max-content;
+  }
+  .poster-card-wrap { margin: 0; }
+
+  .poster-card {
+    flex: 0 0 192px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.18s;
+  }
+  .poster-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .poster-card__art {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #0d1130;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  }
+  .poster-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .poster-card:hover .poster-card__img {
+    transform: scale(1.04);
+  }
+  .poster-card__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    padding-left: 3px;
+    backdrop-filter: blur(4px);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .poster-card:hover .poster-card__play {
+    background: var(--color-red);
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+  .poster-card__title {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: rgba(255, 255, 255, 0.9);
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   /* ── MOBILE ── */
   @media (max-width: 767px) {
-    .orient__band {
-      padding: 1rem 1rem 1.1rem;
+    .orient__poster-track,
+    .orient__event-track {
+      padding-left: 1rem;
+      padding-right: 1rem;
+      gap: 0.4rem;
     }
-    .orient__inner {
-      grid-template-columns: 1fr;
-      gap: 0.85rem;
-    }
-    .orient__heading-col {
-      padding-top: 0;
-    }
-    .orient__heading {
-      font-size: 0.95rem;
-    }
-    .orient__sub {
-      display: inline;
-      margin-left: 0.4rem;
-    }
-
-    /* Quotes: edge-bleed horizontal scroll on mobile */
+    .poster-card { flex: 0 0 156px; }
+    .event-card-wrap { flex: 0 0 168px; }
+    .quote-card { flex: 0 0 144px; }
     .orient__quote-track {
-      margin: 0 -1rem;
-      padding: 0.25rem 1rem;
-      gap: 0.6rem;
+      padding: 0.2rem 1rem 0.4rem;
+      gap: 0.5rem;
       scrollbar-width: none;
     }
     .orient__quote-track::-webkit-scrollbar { display: none; }
-    .quote-card {
-      flex: 0 0 78%;
-      padding: 0.8rem 0.85rem 0.75rem;
-    }
-    .quote-card__text {
-      font-size: 0.88rem;
-    }
-
-    /* Events stay stacked vertically on mobile (full list) */
-    .orient__event-track {
-      grid-template-columns: 1fr;
-      gap: 0.5rem;
-    }
-    .event-card {
-      padding: 0.6rem 0.75rem;
-    }
-    .event-card__title {
-      font-size: 0.8rem;
-    }
+    .event-card { padding: 0.55rem 0.65rem; }
+    .event-card__title { font-size: 0.75rem; }
   }
 </style>
+
+<script>
+  // Subtle left/right scroll buttons (one card length at a time, smooth scroll).
+  document.querySelectorAll<HTMLButtonElement>('.scroll-nav').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const shell = btn.closest('.scroll-shell');
+      if (!shell) return;
+      const scroller = shell.querySelector('[data-scrollable]') as HTMLElement | null;
+      if (!scroller) return;
+      // Card width = first visible card (which may be nested inside an inner track)
+      // plus the inter-card gap from the track's computed style.
+      const inner = (scroller.firstElementChild as HTMLElement | null) ?? scroller;
+      const card = (inner.firstElementChild as HTMLElement | null) ?? inner;
+      const cardWidth = card.getBoundingClientRect().width || 200;
+      const trackStyle = window.getComputedStyle(inner);
+      const gap = parseFloat(trackStyle.columnGap || trackStyle.gap || '0') || 8;
+      const step = cardWidth + gap;
+      const dir = btn.dataset.scroll === 'prev' ? -1 : 1;
+      scroller.scrollBy({ left: dir * step, behavior: 'smooth' });
+    });
+  });
+
+  // Scroll the events row so the first future event sits centered in the viewport
+  // on load (and on resize so the position survives viewport changes).
+  function centerEventScroll() {
+    const scroller = document.querySelector('[data-event-scroll]') as HTMLElement | null;
+    if (!scroller) return;
+    const target = scroller.querySelector('[data-first-future]') as HTMLElement | null;
+    if (!target) return;
+    const wrap = (target.closest('.event-card-wrap') as HTMLElement | null) ?? target;
+    const center = wrap.offsetLeft + wrap.offsetWidth / 2;
+    scroller.scrollLeft = Math.max(0, center - scroller.clientWidth / 2);
+  }
+  if (document.readyState === 'complete') centerEventScroll();
+  else window.addEventListener('load', centerEventScroll, { once: true });
+  window.addEventListener('resize', centerEventScroll);
+</script>

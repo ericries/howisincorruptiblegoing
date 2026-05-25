@@ -59,10 +59,41 @@ const sidebarQuotes = entries
     quote: (e.type_metadata as Record<string, unknown>).sidebar_quote as string,
     who: e.attribution || e.blockquote_source,
   }));
+
+// Header awards (curated lists/best-of selections) — render as little laurels
+// in the navy header, top-right corner.
+const awards = entries
+  .map(e => {
+    const meta = e.type_metadata as Record<string, unknown> | undefined;
+    if (!meta || typeof meta.award_label !== 'string' || typeof meta.award_curator !== 'string') return null;
+    return {
+      id: e.id,
+      label: meta.award_label as string,
+      curator: meta.award_curator as string,
+    };
+  })
+  .filter((a): a is { id: string; label: string; curator: string } => a !== null);
+
+// Hero pull-quotes ("book of the year/decade" type accolades) — render as
+// little laurels in the navy header, top-LEFT corner (mirror of awards).
+// Sort by label length descending so the cluster cascades from widest to
+// narrowest down the column.
+const heroQuotes = entries
+  .map(e => {
+    const meta = e.type_metadata as Record<string, unknown> | undefined;
+    if (!meta || typeof meta.hero_quote_label !== 'string' || typeof meta.hero_quote_author !== 'string') return null;
+    return {
+      id: e.id,
+      label: meta.hero_quote_label as string,
+      author: meta.hero_quote_author as string,
+    };
+  })
+  .filter((q): q is { id: string; label: string; author: string } => q !== null)
+  .sort((a, b) => b.label.length - a.label.length);
 ---
 
 <Layout title="How Is Incorruptible Going?">
-  <Header />
+  <Header awards={awards} heroQuotes={heroQuotes} />
   <StatsBar totalEntries={entries.length} totalEndorsements={totalEndorsements} />
   <UpcomingStrip entries={entries} />
 

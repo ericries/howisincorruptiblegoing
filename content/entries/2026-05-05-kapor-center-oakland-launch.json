@@ -16,7 +16,7 @@
   "attribution_title": "Tech inclusion non-profit founded by Mitch Kapor and Dr. Freada Kapor Klein",
   "attribution_image": null,
   "tags": ["event", "linkedin", "oakland-california", "in-person", "launch-event", "kapor-center"],
-  "type_metadata": {"weight": 1},
+  "type_metadata": {"weight": 1, "city": "Oakland"},
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-05-06T18:00:00Z"

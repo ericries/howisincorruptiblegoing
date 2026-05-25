@@ -14,7 +14,7 @@
   "attribution_title": "Premier global ranking of management thinkers; founded by Des Dearlove and Stuart Crainer",
   "attribution_image": null,
   "tags": ["endorsement", "linkedin", "thinkers50", "curation", "best-of-list"],
-  "type_metadata": {},
+  "type_metadata": {"award_label": "Best New Management Books of 2026", "award_curator": "Thinkers50"},
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-05-04T16:00:00Z"
