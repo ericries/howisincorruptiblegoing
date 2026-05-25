@@ -1,0 +1,23 @@
+{
+  "id": "2026-05-24-steve-brock-stevos-book-of-the-week",
+  "date": "2026-05-24",
+  "type": "review",
+  "title": "Goodreads reviewer Steve Brock picks Incorruptible as 'Stevo's Business Book of the Week'",
+  "summary": "Steve Brock, a prolific Goodreads reviewer (675+ reviews), selects Incorruptible as his Business Book of the Week for the week of 5/24, calling it ahead of other recently published books on the topic.",
+  "blockquote": "I have selected this book as Stevo's Business Book of the Week for the week of 5/24, as it stands heads above other recently published books on this topic.",
+  "blockquote_source": "Steve Brock on Goodreads",
+  "source_url": "https://www.goodreads.com/review/show/8628432105",
+  "source_urls": [
+    {"url": "https://www.goodreads.com/book/show/242970642-incorruptible", "label": "Goodreads book page"}
+  ],
+  "video_url": null,
+  "image": null,
+  "attribution": "Steve Brock",
+  "attribution_title": "Goodreads reviewer (675+ reviews)",
+  "attribution_image": null,
+  "tags": ["review", "goodreads", "book-of-the-week"],
+  "type_metadata": {"compact": true},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-05-25T18:10:00Z"
+}
