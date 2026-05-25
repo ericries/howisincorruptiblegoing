@@ -1,0 +1,21 @@
+{
+  "id": "2026-06-17-eo-la",
+  "date": "2026-06-17",
+  "type": "event",
+  "title": "EO Los Angeles: Incorruptible Fireside",
+  "summary": "Eric joins the Entrepreneurs' Organization Los Angeles chapter for a members fireside on Incorruptible.",
+  "blockquote": "Eric joins the Entrepreneurs' Organization Los Angeles chapter for a members fireside on Incorruptible.",
+  "blockquote_source": "Incorruptible book tour",
+  "source_url": "https://incorruptible.co",
+  "source_urls": null,
+  "video_url": null,
+  "image": null,
+  "attribution": "Entrepreneurs' Organization Los Angeles",
+  "attribution_title": "EO Los Angeles chapter",
+  "attribution_image": null,
+  "tags": ["event", "los-angeles-california", "in-person", "eo"],
+  "type_metadata": {"city": "Los Angeles"},
+  "scanner_source": "manual",
+  "verified": false,
+  "created_at": "2026-05-24T20:45:00Z"
+}

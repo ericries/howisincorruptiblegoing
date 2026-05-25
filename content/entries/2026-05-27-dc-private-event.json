@@ -1,0 +1,21 @@
+{
+  "id": "2026-05-27-dc-private-event",
+  "date": "2026-05-27",
+  "type": "event",
+  "title": "Washington DC: Private Incorruptible Gathering",
+  "summary": "Private DC gathering with Eric the day after launch — details by invitation.",
+  "blockquote": "Private DC gathering with Eric the day after launch — details by invitation.",
+  "blockquote_source": "Incorruptible book tour",
+  "source_url": "https://incorruptible.co",
+  "source_urls": null,
+  "video_url": null,
+  "image": null,
+  "attribution": null,
+  "attribution_title": null,
+  "attribution_image": null,
+  "tags": ["event", "washington-dc", "in-person", "private-event"],
+  "type_metadata": {"city": "Washington DC"},
+  "scanner_source": "manual",
+  "verified": false,
+  "created_at": "2026-05-24T20:45:00Z"
+}
