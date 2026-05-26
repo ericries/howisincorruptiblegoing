@@ -1,0 +1,23 @@
+{
+  "id": "2026-05-26-amazon-1-leadership-motivation",
+  "date": "2026-05-26",
+  "type": "milestone",
+  "title": "Incorruptible reaches #1 New Release in Leadership & Motivation on Amazon",
+  "summary": "On launch day, Incorruptible takes the top New Release slot in Amazon's Leadership & Motivation category — beating Jon Gordon's The Power of Positive Habits to the top spot.",
+  "blockquote": "#1 New Release in Leadership & Motivation",
+  "blockquote_source": "Amazon",
+  "source_url": "https://www.amazon.com/gp/new-releases/books/2682/ref=zg_b_hnr_2682_1",
+  "source_urls": [
+    {"url": "https://www.amazon.com/Incorruptible-Good-Companies-Great-Stay/dp/B0FWZZBPZB", "label": "Book page on Amazon"}
+  ],
+  "video_url": null,
+  "image": "/images/amazon/leadership-motivation-1.jpg",
+  "attribution": null,
+  "attribution_title": null,
+  "attribution_image": null,
+  "tags": ["milestone", "amazon", "rank", "new-release"],
+  "type_metadata": {"amazon_rank": "#1", "amazon_badge": "New Release", "amazon_category": "Leadership & Motivation", "amazon_url": "https://www.amazon.com/gp/new-releases/books/2682/ref=zg_b_hnr_2682_1"},
+  "scanner_source": "manual",
+  "verified": false,
+  "created_at": "2026-05-26T16:30:00Z"
+}

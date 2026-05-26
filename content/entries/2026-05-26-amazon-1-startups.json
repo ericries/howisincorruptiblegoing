@@ -1,0 +1,23 @@
+{
+  "id": "2026-05-26-amazon-1-startups",
+  "date": "2026-05-26",
+  "type": "milestone",
+  "title": "Incorruptible reaches #1 New Release in Startups (Kindle) on Amazon",
+  "summary": "On launch day, Incorruptible takes the top New Release slot in Amazon's Startups Kindle category — Eric's home category and the same chart where The Lean Startup launched 15 years earlier.",
+  "blockquote": "#1 New Release in Startups",
+  "blockquote_source": "Amazon",
+  "source_url": "https://www.amazon.com/gp/new-releases/digital-text/8493731011/ref=zg_bsnr_nav_digital-text_5_8493730011",
+  "source_urls": [
+    {"url": "https://www.amazon.com/Incorruptible-Good-Companies-Great-Stay/dp/B0FWZZBPZB", "label": "Book page on Amazon"}
+  ],
+  "video_url": null,
+  "image": "/images/amazon/startups-1.jpg",
+  "attribution": null,
+  "attribution_title": null,
+  "attribution_image": null,
+  "tags": ["milestone", "amazon", "rank", "new-release", "kindle"],
+  "type_metadata": {"amazon_rank": "#1", "amazon_badge": "New Release", "amazon_category": "Startups", "amazon_url": "https://www.amazon.com/gp/new-releases/digital-text/8493731011/ref=zg_bsnr_nav_digital-text_5_8493730011"},
+  "scanner_source": "manual",
+  "verified": false,
+  "created_at": "2026-05-26T16:35:00Z"
+}
