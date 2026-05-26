@@ -41,6 +41,20 @@ export function lintEntryFile(
     }
   }
 
+  // Local image refs must exist on disk (under public/)
+  if (typeof data === 'object' && data !== null) {
+    const entry = data as Record<string, unknown>;
+    for (const key of ['image', 'attribution_image']) {
+      const val = entry[key];
+      if (typeof val === 'string' && val.startsWith('/')) {
+        const diskPath = path.join(process.cwd(), 'public', val);
+        if (!fs.existsSync(diskPath)) {
+          errors.push(`${key} "${val}" does not exist on disk at public${val}`);
+        }
+      }
+    }
+  }
+
   return { valid: errors.length === 0, errors };
 }
 
