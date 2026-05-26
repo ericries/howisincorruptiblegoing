@@ -333,23 +333,35 @@ const { awards = [], heroQuotes = [] } = Astro.props;
     }
   }
 
+  /* Mobile (≤640px). Sized so 13-char "INCORRUPTIBLE" + 0.08em
+     tracking fits inside an iPhone-portrait viewport (~360px usable)
+     without clipping. Desktop (>640px) is unchanged. */
   @media (max-width: 640px) {
     .header {
-      padding: 3rem 1rem 2.5rem;
+      padding: 2.5rem 0.75rem 2rem;
     }
 
     .header__title,
     .header__echo {
-      font-size: 2.2rem;
-      letter-spacing: 0.12em;
+      font-size: 1.75rem;
+      letter-spacing: 0.08em;
     }
 
-    .header__echo--1 { top: 5px; }
-    .header__echo--2 { top: 10px; }
+    .header__echo--1 { top: 4px; }
+    .header__echo--2 { top: 8px; }
 
     .header__pre,
     .header__post {
-      font-size: 0.8rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.32em;
+    }
+    .header__pre { margin-bottom: 0.6rem; }
+    .header__post { margin-top: 0.6rem; }
+
+    .header__subtitle {
+      font-size: 0.82rem;
+      margin-top: 1.2rem;
+      line-height: 1.5;
     }
   }
 </style>

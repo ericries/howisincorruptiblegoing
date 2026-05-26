@@ -172,8 +172,18 @@ const rightRank = amazonRanks[1] ?? null;
     .stats__inner { justify-content: center; }
   }
 
+  /* Mobile (≤640px). Tighten gap and shrink number/label so that the
+     three stat blocks (DAYS TO LAUNCH / MOMENTS / VOICES) fit inside an
+     iPhone-portrait viewport without clipping "VOICES". Amazon flank
+     pills hide entirely. */
   @media (max-width: 640px) {
-    .stats__center { gap: 1.5rem; }
-    .stats__number { font-size: 1.8rem; }
+    .stats { padding: 1.25rem 0.75rem; }
+    .stats__center { gap: 0.9rem; }
+    .stats__divider { height: 28px; }
+    .stats__number { font-size: 1.45rem; }
+    .stats__label {
+      font-size: 0.55rem;
+      letter-spacing: 0.1em;
+    }
   }
 </style>

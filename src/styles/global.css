@@ -93,6 +93,20 @@ a:hover {
     --max-width: 100%;
   }
 
+  /* Mobile horizontal-overflow guard: clip the body so long content
+     (URLs, @-handles, embedded media) can't make the page scroll
+     sideways, and force text inside cards to wrap mid-word if needed.
+     The intentional horizontal scrollers (highlights carousel,
+     upcoming-strip) live inside their own overflow-x: auto wrappers
+     so they keep working. */
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+  p, blockquote, h1, h2, h3, h4, h5, h6, li {
+    overflow-wrap: anywhere;
+  }
+
   .timeline-date {
     width: auto !important;
     text-align: left !important;
