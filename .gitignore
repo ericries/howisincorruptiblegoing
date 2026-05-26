@@ -23,6 +23,9 @@ pnpm-debug.log*
 # brainstorm mockups
 .superpowers/
 
+# Claude Code session state
+.claude/
+
 # jetbrains setting folder
 .idea/
 *.csv
