@@ -3,6 +3,9 @@ interface AmazonRank {
   rank: string;
   badge: string;
   category: string;
+  /** Anchor link to the milestone entry that documents this ranking (preferred). */
+  entryId?: string;
+  /** Legacy direct-to-Amazon link (kept for back-compat). */
   url?: string;
 }
 interface Props {
@@ -28,7 +31,7 @@ const rightRank = amazonRanks[1] ?? null;
 <div class="stats">
   <div class="stats__inner">
     {leftRank && (
-      <a class="stats__amazon stats__amazon--left" href={leftRank.url} target="_blank" rel="noopener" aria-label={`Amazon ${leftRank.rank} ${leftRank.badge} in ${leftRank.category}`}>
+      <a class="stats__amazon stats__amazon--left" href={leftRank.entryId ? `#${leftRank.entryId}` : leftRank.url} aria-label={`Amazon ${leftRank.rank} ${leftRank.badge} in ${leftRank.category}`}>
         <span class="stats__amazon-pill"><span class="stats__amazon-num">{leftRank.rank}</span> {leftRank.badge}</span>
         <span class="stats__amazon-cat">in {leftRank.category}</span>
       </a>
@@ -50,7 +53,7 @@ const rightRank = amazonRanks[1] ?? null;
       </div>
     </div>
     {rightRank && (
-      <a class="stats__amazon stats__amazon--right" href={rightRank.url} target="_blank" rel="noopener" aria-label={`Amazon ${rightRank.rank} ${rightRank.badge} in ${rightRank.category}`}>
+      <a class="stats__amazon stats__amazon--right" href={rightRank.entryId ? `#${rightRank.entryId}` : rightRank.url} aria-label={`Amazon ${rightRank.rank} ${rightRank.badge} in ${rightRank.category}`}>
         <span class="stats__amazon-pill"><span class="stats__amazon-num">{rightRank.rank}</span> {rightRank.badge}</span>
         <span class="stats__amazon-cat">in {rightRank.category}</span>
       </a>

@@ -1,0 +1,23 @@
+{
+  "id": "2026-05-26-amazon-1-business-management",
+  "date": "2026-05-26",
+  "type": "milestone",
+  "title": "Incorruptible reaches #1 New Release in Business Management on Amazon",
+  "summary": "On launch day, Incorruptible takes the top New Release slot in Amazon's Business Management category — one of the largest and most contested business-book sub-charts.",
+  "blockquote": "#1 New Release in Business Management",
+  "blockquote_source": "Amazon",
+  "source_url": "https://www.amazon.com/gp/new-releases/books/2683/ref=zg_bsnr_nav_books_3_2675",
+  "source_urls": [
+    {"url": "https://www.amazon.com/Incorruptible-Good-Companies-Great-Stay/dp/B0FWZZBPZB", "label": "Book page on Amazon"}
+  ],
+  "video_url": null,
+  "image": null,
+  "attribution": null,
+  "attribution_title": null,
+  "attribution_image": null,
+  "tags": ["milestone", "amazon", "rank", "new-release"],
+  "type_metadata": {"amazon_rank": "#1", "amazon_badge": "New Release", "amazon_category": "Business Management", "amazon_url": "https://www.amazon.com/gp/new-releases/books/2683/ref=zg_bsnr_nav_books_3_2675"},
+  "scanner_source": "manual",
+  "verified": false,
+  "created_at": "2026-05-26T16:00:00Z"
+}

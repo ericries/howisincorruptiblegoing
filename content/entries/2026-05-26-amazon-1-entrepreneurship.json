@@ -1,0 +1,23 @@
+{
+  "id": "2026-05-26-amazon-1-entrepreneurship",
+  "date": "2026-05-26",
+  "type": "milestone",
+  "title": "Incorruptible reaches #1 New Release in Entrepreneurship on Amazon",
+  "summary": "On launch day, Incorruptible takes the top New Release slot in Amazon's Entrepreneurship category — Eric's home chart, alongside startup classics including the original Lean Startup.",
+  "blockquote": "#1 New Release in Entrepreneurship",
+  "blockquote_source": "Amazon",
+  "source_url": "https://www.amazon.com/gp/new-releases/books/2741/",
+  "source_urls": [
+    {"url": "https://www.amazon.com/Incorruptible-Good-Companies-Great-Stay/dp/B0FWZZBPZB", "label": "Book page on Amazon"}
+  ],
+  "video_url": null,
+  "image": null,
+  "attribution": null,
+  "attribution_title": null,
+  "attribution_image": null,
+  "tags": ["milestone", "amazon", "rank", "new-release"],
+  "type_metadata": {"amazon_rank": "#1", "amazon_badge": "New Release", "amazon_category": "Entrepreneurship", "amazon_url": "https://www.amazon.com/gp/new-releases/books/2741/"},
+  "scanner_source": "manual",
+  "verified": false,
+  "created_at": "2026-05-26T16:00:00Z"
+}
