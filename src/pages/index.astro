@@ -63,22 +63,26 @@ const sidebarQuotes = entries
 // Amazon rankings — sourced from milestone entries with type_metadata.amazon_rank.
 // Each ranking is its own historical entry; the StatsBar pills link to the entry
 // (which has the Amazon URL as source) instead of jumping straight to Amazon.
-// Sort most-recent first, then take the top 2 for the left/right flanks.
-const amazonRanks = entries
-  .map(e => {
-    const meta = e.type_metadata as Record<string, unknown> | undefined;
-    if (!meta || typeof meta.amazon_rank !== 'string' || typeof meta.amazon_category !== 'string') return null;
-    return {
-      entryId: e.id,
-      rank: meta.amazon_rank as string,
-      badge: (typeof meta.amazon_badge === 'string' ? meta.amazon_badge : 'New Release'),
-      category: meta.amazon_category as string,
-      date: e.date,
-    };
-  })
-  .filter((r): r is { entryId: string; rank: string; badge: string; category: string; date: string } => r !== null)
-  .sort((a, b) => b.date.localeCompare(a.date))
-  .slice(0, 2);
+// The StatsBar shows only two pills (left/right of the days/moments/voices stats),
+// so we pin them to the two flagship mainstream categories rather than reshuffling
+// every time a narrower sub-category #1 lands. Other #1s still appear on the
+// timeline as their own milestone entries.
+const PINNED_AMAZON_CATEGORIES = ['Business Management', 'Entrepreneurship'];
+const amazonRankByCategory = new Map<string, {entryId: string; rank: string; badge: string; category: string}>();
+for (const e of entries) {
+  const meta = e.type_metadata as Record<string, unknown> | undefined;
+  if (!meta || typeof meta.amazon_rank !== 'string' || typeof meta.amazon_category !== 'string') continue;
+  // Latest entry per category wins (entries iterate in date order — overwrite is fine).
+  amazonRankByCategory.set(meta.amazon_category as string, {
+    entryId: e.id,
+    rank: meta.amazon_rank as string,
+    badge: typeof meta.amazon_badge === 'string' ? meta.amazon_badge : 'New Release',
+    category: meta.amazon_category as string,
+  });
+}
+const amazonRanks = PINNED_AMAZON_CATEGORIES
+  .map(cat => amazonRankByCategory.get(cat))
+  .filter((r): r is {entryId: string; rank: string; badge: string; category: string} => !!r);
 
 // Header awards (curated lists/best-of selections) — render as little laurels
 // in the navy header, top-right corner.
