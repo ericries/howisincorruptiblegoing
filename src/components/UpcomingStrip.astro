@@ -86,35 +86,51 @@ function youtubeId(url: string): string | null {
   return m ? m[1] : null;
 }
 
-// Now playing = third-party podcast appearances with YouTube video — no Eric-own
-// TikToks, no events without a podcast episode. Pinned leaders go first.
+// Now playing = third-party podcast appearances. YouTube episodes use the
+// ytimg thumbnail; audio-only episodes (HBR, Awarepreneurs, etc.) need a
+// manually-set entry.image to show up here. Pinned leaders go first.
 const POSTER_PINS = [
-  '2026-05-10-lennys-podcast-rachitsky',          // 1. Lenny's
-  '2026-05-22-yc-main-function-garry-tan',        // 2. Y Combinator
-  '2026-04-07-david-meyer-ageless-warrior',       // 3. Ageless Warrior
-  '2026-05-24-learning-leader-ryan-hawk',         // 4. Ryan Hawk
-  '2026-04-16-kim-scott-radical-candor-podcast',  // 5. Kim Scott
+  '2026-05-10-lennys-podcast-rachitsky',                   // 1. Lenny's
+  '2026-05-26-hbr-ideacast-sophisticated-zombies',         // 2. HBR
+  '2026-05-22-yc-main-function-garry-tan',                 // 3. Y Combinator
+  '2026-04-07-david-meyer-ageless-warrior',                // 4. Ageless Warrior
+  '2026-05-24-learning-leader-ryan-hawk',                  // 5. Ryan Hawk
+  '2026-04-16-kim-scott-radical-candor-podcast',           // 6. Kim Scott
 ];
 // Short institutional labels for the pinned podcasts so the card credits the
 // show, not the host's personal name.
 const POSTER_LABELS: Record<string, string> = {
   '2026-05-10-lennys-podcast-rachitsky': "Lenny's Podcast",
+  '2026-05-26-hbr-ideacast-sophisticated-zombies': 'HBR IdeaCast',
   '2026-05-22-yc-main-function-garry-tan': 'Y Combinator',
   '2026-04-07-david-meyer-ageless-warrior': 'Ageless Warrior',
   '2026-05-24-learning-leader-ryan-hawk': 'Learning Leader',
   '2026-04-16-kim-scott-radical-candor-podcast': 'Radical Candor',
+  '2026-05-26-awarepreneurs-396-launch': 'Awarepreneurs',
+  '2026-05-26-leading-learning-jeff-cobb': 'Leading Learning',
+  '2026-05-26-inside-outside-brian-ardinger': 'Inside Outside',
+  '2026-05-26-startup-leap-founder-lost-control': 'The Startup Leap',
+  '2026-05-26-inverted-podcast-become-incorruptible': 'Inverted Podcast',
 };
 const posterCards: PosterCard[] = entries
   .map((e) => {
     if (e.type !== 'podcast') return null;
     const url = e.video_url ?? null;
-    if (!url) return null;
-    const isYouTube = url.includes('youtube.com') || url.includes('youtu.be');
-    if (!isYouTube) return null;
-    const id = youtubeId(url);
-    if (!id) return null;
-    const image = `https://i.ytimg.com/vi/${id}/mqdefault.jpg`;
-    return { id: e.id, title: e.title, date: e.date, image, videoUrl: url, attribution: e.attribution ?? null };
+    if (url) {
+      const isYouTube = url.includes('youtube.com') || url.includes('youtu.be');
+      if (isYouTube) {
+        const id = youtubeId(url);
+        if (!id) return null;
+        const image = `https://i.ytimg.com/vi/${id}/mqdefault.jpg`;
+        return { id: e.id, title: e.title, date: e.date, image, videoUrl: url, attribution: e.attribution ?? null };
+      }
+    }
+    // Audio-only podcast with manual cover art: use entry.image, link to
+    // the show notes page (source_url) since there's no video to open.
+    if (e.image && e.source_url) {
+      return { id: e.id, title: e.title, date: e.date, image: e.image, videoUrl: e.source_url, attribution: e.attribution ?? null };
+    }
+    return null;
   })
   .filter((p): p is PosterCard => p !== null)
   .sort((a, b) => {
