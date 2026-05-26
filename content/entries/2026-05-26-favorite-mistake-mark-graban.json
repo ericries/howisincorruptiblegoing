@@ -1,0 +1,23 @@
+{
+  "id": "2026-05-26-favorite-mistake-mark-graban",
+  "date": "2026-05-26",
+  "type": "podcast",
+  "title": "Mark Graban's My Favorite Mistake — Eric on the dorm-room 'category error' that became The Lean Startup",
+  "summary": "Mark Graban — Lean Hospitals author and long-running continuous-improvement podcaster — runs a launch-day episode of My Favorite Mistake, with Eric tracing the dorm-room startup failure that exposed the gap between writing a business plan and having a strategy. The conversation ends with Eric's Novo Nordisk industrial-foundation challenge: are best-practice consultants really smarter than a Nobel laureate?",
+  "blockquote": "Why are we building these extractive, weak-ass companies that are like addicted to quick, short-term growth, cutting costs, disregarding quality, and human lives? Like, why when we have a template for how to do it better?",
+  "blockquote_source": "Eric Ries on My Favorite Mistake with Mark Graban",
+  "source_url": "https://www.youtube.com/watch?v=UUcnFz7QKzE",
+  "source_urls": [
+    {"url": "http://markgraban.com/mistake353", "label": "Episode page on markgraban.com"}
+  ],
+  "video_url": "https://www.youtube.com/watch?v=UUcnFz7QKzE",
+  "image": "/images/podcasts/favorite-mistake.jpg",
+  "attribution": "My Favorite Mistake",
+  "attribution_title": "Podcast hosted by Mark Graban, author of Lean Hospitals",
+  "attribution_image": null,
+  "tags": ["podcast", "youtube", "launch-day"],
+  "type_metadata": {"featured": true},
+  "scanner_source": "manual",
+  "verified": false,
+  "created_at": "2026-05-26T20:41:00Z"
+}
