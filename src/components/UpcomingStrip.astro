@@ -91,9 +91,9 @@ function youtubeId(url: string): string | null {
 // manually-set entry.image to show up here. Pinned leaders go first.
 const POSTER_PINS = [
   '2026-05-10-lennys-podcast-rachitsky',                   // 1. Lenny's
-  '2026-05-26-hbr-ideacast-sophisticated-zombies',         // 2. HBR
-  '2026-05-22-yc-main-function-garry-tan',                 // 3. Y Combinator
-  '2026-04-07-david-meyer-ageless-warrior',                // 4. Ageless Warrior
+  '2026-05-22-yc-main-function-garry-tan',                 // 2. Y Combinator
+  '2026-04-07-david-meyer-ageless-warrior',                // 3. Ageless Warrior
+  '2026-05-26-hbr-ideacast-sophisticated-zombies',         // 4. HBR
   '2026-05-24-learning-leader-ryan-hawk',                  // 5. Ryan Hawk
   '2026-04-16-kim-scott-radical-candor-podcast',           // 6. Kim Scott
 ];
@@ -719,7 +719,7 @@ if (quoteCards.length === 0 && upcoming.length === 0 && posterCards.length === 0
   .poster-card__art {
     position: relative;
     width: 100%;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 1 / 1;
     border-radius: 6px;
     overflow: hidden;
     background: #0d1130;

@@ -4,6 +4,32 @@ import type { ValidationResult } from '../src/lib/schema';
 import * as fs from 'fs';
 import * as path from 'path';
 
+// Read PNG/JPEG dimensions from file header without external deps.
+function readImageDimensions(filePath: string): { width: number; height: number } | null {
+  const buf = fs.readFileSync(filePath);
+  // PNG: 8-byte signature, then IHDR width @ offset 16, height @ offset 20.
+  if (
+    buf.length >= 24 &&
+    buf[0] === 0x89 && buf[1] === 0x50 && buf[2] === 0x4e && buf[3] === 0x47
+  ) {
+    return { width: buf.readUInt32BE(16), height: buf.readUInt32BE(20) };
+  }
+  // JPEG: scan for SOFn marker (0xFFC0..0xFFCF, excl. 0xC4/0xC8/0xCC).
+  if (buf.length >= 4 && buf[0] === 0xff && buf[1] === 0xd8) {
+    let i = 2;
+    while (i + 8 < buf.length) {
+      if (buf[i] !== 0xff) return null;
+      const marker = buf[i + 1];
+      const segLen = buf.readUInt16BE(i + 2);
+      if (marker >= 0xc0 && marker <= 0xcf && marker !== 0xc4 && marker !== 0xc8 && marker !== 0xcc) {
+        return { height: buf.readUInt16BE(i + 5), width: buf.readUInt16BE(i + 7) };
+      }
+      i += 2 + segLen;
+    }
+  }
+  return null;
+}
+
 export function lintEntryFile(
   contents: string,
   filename: string,
@@ -50,6 +76,20 @@ export function lintEntryFile(
         const diskPath = path.join(process.cwd(), 'public', val);
         if (!fs.existsSync(diskPath)) {
           errors.push(`${key} "${val}" does not exist on disk at public${val}`);
+        } else if (val.startsWith('/images/podcasts/')) {
+          // Podcast covers render in the UpcomingStrip poster row at 1:1.
+          // Wide/banner images blow up oversized; require near-square.
+          const dims = readImageDimensions(diskPath);
+          if (dims) {
+            const ratio = dims.width / dims.height;
+            if (ratio < 0.9 || ratio > 1.1) {
+              errors.push(
+                `${key} "${val}" is ${dims.width}x${dims.height} (aspect ${ratio.toFixed(2)}); ` +
+                `podcast covers must be near-square (0.9–1.1) for the poster row. ` +
+                `Use the iTunes Search API artworkUrl600 (always 600x600) instead of show-site banners.`,
+              );
+            }
+          }
         }
       }
     }
