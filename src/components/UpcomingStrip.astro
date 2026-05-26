@@ -28,11 +28,22 @@ function parseHighlight(raw: string): { name: string; quote: string } | null {
   return { name, quote };
 }
 
-// Explicit tail order so the back half of the row alternates F/M instead of
-// clumping all the women together at the end. Entries NOT listed here stay
-// date-desc at the front; entries listed here appear in this exact order
-// after the front block. Tim O'Reilly is pinned last.
+// Curated front: heavy-hitter endorsers in this exact order. Anyone not in
+// the front/tail lists falls into the middle and sorts date-desc.
+const QUOTE_FRONT_ORDER = [
+  '2026-05-16-frances-frei-incorruptible-comment',    // 1. Frances Frei
+  '2026-05-02-endorsement-adam-grant',                // 2. Adam Grant
+  '2026-04-21-dan-heath-best-business-book',          // 3. Dan Heath
+  '2026-04-10-endorsement-mark-cuban',                // 4. Mark Cuban
+  '2026-04-12-endorsement-reid-hoffman',              // 5. Reid Hoffman
+  '2026-05-26-bob-sutton-launch-day-blurb',           // 6. Bob Sutton
+  '2026-04-16-kim-scott-radical-candor-podcast',      // 7. Kim Scott
+];
+// Tail order keeps F/M alternation in the back half. Entries listed here
+// appear in this exact order after the middle block. Nir Eyal sits at the
+// front of the tail (user moved him off the front). Tim O'Reilly is last.
 const QUOTE_TAIL_ORDER = [
+  '2026-05-26-nir-eyal-launch-day-tweet',    // M (was at front, demoted)
   '2026-03-16-endorsement-leah-solivan',     // F
   '2026-04-08-endorsement-daniel-pink',      // M
   '2026-03-13-endorsement-kieran-snyder',    // F
@@ -62,14 +73,17 @@ const quoteCards: QuoteCard[] = entries
   })
   .filter((q): q is QuoteCard & { date: string } => q !== null)
   .sort((a, b) => {
+    const aFront = QUOTE_FRONT_ORDER.indexOf(a.id);
+    const bFront = QUOTE_FRONT_ORDER.indexOf(b.id);
     const aTail = QUOTE_TAIL_ORDER.indexOf(a.id);
     const bTail = QUOTE_TAIL_ORDER.indexOf(b.id);
-    if (aTail !== -1 || bTail !== -1) {
-      if (aTail === -1) return -1;
-      if (bTail === -1) return 1;
-      return aTail - bTail;
-    }
-    return b.date.localeCompare(a.date);
+    // Bucket: front (0), middle (1), tail (2)
+    const aBucket = aFront !== -1 ? 0 : aTail !== -1 ? 2 : 1;
+    const bBucket = bFront !== -1 ? 0 : bTail !== -1 ? 2 : 1;
+    if (aBucket !== bBucket) return aBucket - bBucket;
+    if (aBucket === 0) return aFront - bFront;
+    if (aBucket === 2) return aTail - bTail;
+    return b.date.localeCompare(a.date); // middle = date desc
   });
 
 interface PosterCard {
@@ -79,6 +93,9 @@ interface PosterCard {
   image: string;
   videoUrl: string;
   attribution: string | null;
+  // 'cover' for native-16:9 YouTube thumbs (fill the frame); 'contain' for
+  // square iTunes covers (letterbox so the whole logo stays visible).
+  imageMode: 'cover' | 'contain';
 }
 
 function youtubeId(url: string): string | null {
@@ -122,13 +139,13 @@ const posterCards: PosterCard[] = entries
         const id = youtubeId(url);
         if (!id) return null;
         const image = `https://i.ytimg.com/vi/${id}/mqdefault.jpg`;
-        return { id: e.id, title: e.title, date: e.date, image, videoUrl: url, attribution: e.attribution ?? null };
+        return { id: e.id, title: e.title, date: e.date, image, videoUrl: url, attribution: e.attribution ?? null, imageMode: 'cover' };
       }
     }
-    // Audio-only podcast with manual cover art: use entry.image, link to
-    // the show notes page (source_url) since there's no video to open.
+    // Audio-only podcast with manual cover art (typically square iTunes
+    // artwork): letterbox in the 16:9 card so the whole logo stays visible.
     if (e.image && e.source_url) {
-      return { id: e.id, title: e.title, date: e.date, image: e.image, videoUrl: e.source_url, attribution: e.attribution ?? null };
+      return { id: e.id, title: e.title, date: e.date, image: e.image, videoUrl: e.source_url, attribution: e.attribution ?? null, imageMode: 'contain' };
     }
     return null;
   })
@@ -261,7 +278,7 @@ if (quoteCards.length === 0 && upcoming.length === 0 && posterCards.length === 0
                 rel="noopener"
               >
                 <div class="poster-card__art">
-                  <img class="poster-card__img" src={p.image} alt={p.title} loading="lazy" />
+                  <img class="poster-card__img" src={p.image} alt={p.title} loading="lazy" data-image-mode={p.imageMode} />
                   <span class="poster-card__play" aria-hidden="true">▶</span>
                 </div>
                 <div class="poster-card__title">{POSTER_LABELS[p.id] ?? p.attribution ?? p.title}</div>
@@ -724,7 +741,7 @@ if (quoteCards.length === 0 && upcoming.length === 0 && posterCards.length === 0
   .poster-card__art {
     position: relative;
     width: 100%;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 16 / 9;
     border-radius: 6px;
     overflow: hidden;
     background: #0d1130;
@@ -736,6 +753,10 @@ if (quoteCards.length === 0 && upcoming.length === 0 && posterCards.length === 0
     object-fit: cover;
     display: block;
     transition: transform 0.4s ease;
+  }
+  /* Square iTunes covers letterbox to keep the full logo visible. */
+  .poster-card__img[data-image-mode="contain"] {
+    object-fit: contain;
   }
   .poster-card:hover .poster-card__img {
     transform: scale(1.04);

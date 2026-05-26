@@ -4,6 +4,18 @@ export PATH="/opt/homebrew/opt/node@23/bin:$PATH"
 # Schema + injection validation (fast, no network)
 npx tsx scripts/lint-entries.ts
 
+# UI / component invariants (catch regressions like skinny poster cards
+# or row-of-faces reordering before they ship). Fast — no network.
+npx vitest run --reporter=dot
+TEST_EXIT=$?
+if [ $TEST_EXIT -ne 0 ]; then
+  echo ""
+  echo "⚠️  Vitest failed (see above)."
+  echo "   Fix the regression or edit tests/ if the design intentionally changed."
+  echo "   To skip this check: git commit --no-verify"
+  exit 1
+fi
+
 # Quote verification for any NEW or MODIFIED entry files in this commit
 CHANGED_ENTRIES=$(git diff --cached --name-only -- 'content/entries/*.json')
 if [ -n "$CHANGED_ENTRIES" ]; then
