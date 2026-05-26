@@ -705,6 +705,11 @@ if (quoteCards.length === 0 && upcoming.length === 0 && posterCards.length === 0
 
   .poster-card {
     flex: 0 0 192px;
+    /* Flex items default to min-width:auto, which lets the image's
+       intrinsic width (e.g. 600px for iTunes covers) override the
+       192px flex-basis. Pin both bounds. */
+    min-width: 0;
+    max-width: 192px;
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
