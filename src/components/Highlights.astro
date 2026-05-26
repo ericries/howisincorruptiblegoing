@@ -14,8 +14,34 @@ interface Highlight {
   name: string | null;
 }
 
+// Curated order for the row of faces. Heavy hitters first. Anyone not in
+// this list falls to the end and sorts by date desc among themselves.
+const HIGHLIGHT_PINS: string[] = [
+  '2026-05-16-frances-frei-incorruptible-comment',
+  '2026-05-02-endorsement-adam-grant',
+  '2026-04-21-dan-heath-best-business-book',
+  '2026-04-10-endorsement-mark-cuban',
+  '2026-04-12-endorsement-reid-hoffman',
+  '2026-05-26-bob-sutton-launch-day-blurb',
+  '2026-04-16-kim-scott-radical-candor-podcast',
+  '2026-04-06-endorsement-scott-cook',
+  '2026-04-08-endorsement-daniel-pink',
+  '2026-04-01-endorsement-ken-chenault',
+  '2026-02-27-endorsement-tim-oreilly',
+  '2026-04-09-endorsement-seth-godin',
+  '2026-05-26-nir-eyal-launch-day-tweet',
+];
+
 const highlights: Highlight[] = entries
   .filter(e => (e.type_metadata as any)?.highlight)
+  .sort((a, b) => {
+    const aPin = HIGHLIGHT_PINS.indexOf(a.id);
+    const bPin = HIGHLIGHT_PINS.indexOf(b.id);
+    if (aPin === -1 && bPin === -1) return b.date.localeCompare(a.date);
+    if (aPin === -1) return 1;
+    if (bPin === -1) return -1;
+    return aPin - bPin;
+  })
   .map(e => ({
     id: e.id,
     teaser: (e.type_metadata as any).highlight as string,
