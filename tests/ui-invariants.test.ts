@@ -100,4 +100,18 @@ describe('UpcomingStrip posterCards ordering', () => {
     expect(pins[2]).toBe('2026-04-07-david-meyer-ageless-warrior');
     expect(pins[3]).toBe('2026-05-26-hbr-ideacast-sophisticated-zombies');
   });
+
+  it('letterboxed iTunes covers (imageMode=contain) sort to the back, behind YouTube thumbs', () => {
+    // YouTube cover-mode thumbs are visually stronger (episode-specific
+    // artwork with Eric's face); iTunes square covers letterbox with
+    // navy bars. Keep the front of the row as wide YT thumbs by sorting
+    // contain-mode podcasts after cover-mode ones. The exception is
+    // HBR, which is in POSTER_PINS and sorts before bucket logic.
+    const sortBlock = stripSource.slice(
+      stripSource.indexOf('.sort((a, b) => {'),
+      stripSource.indexOf('.slice(0, 40)'),
+    );
+    expect(sortBlock).toMatch(/imageMode === 'cover' \? 1 : 2/);
+    expect(sortBlock).toMatch(/if \(aBucket !== bBucket\) return aBucket - bBucket/);
+  });
 });

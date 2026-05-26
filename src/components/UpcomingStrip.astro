@@ -153,12 +153,14 @@ const posterCards: PosterCard[] = entries
   .sort((a, b) => {
     const aPin = POSTER_PINS.indexOf(a.id);
     const bPin = POSTER_PINS.indexOf(b.id);
-    if (aPin !== -1 || bPin !== -1) {
-      // Pinned items sort by their explicit order; pinned beats unpinned.
-      if (aPin === -1) return 1;
-      if (bPin === -1) return -1;
-      return aPin - bPin;
-    }
+    // Bucket: 0 = pinned front, 1 = episode-specific YouTube thumbs,
+    // 2 = letterboxed iTunes covers (visually weaker — push to back).
+    const bucket = (p: PosterCard, pin: number) =>
+      pin !== -1 ? 0 : p.imageMode === 'cover' ? 1 : 2;
+    const aBucket = bucket(a, aPin);
+    const bBucket = bucket(b, bPin);
+    if (aBucket !== bBucket) return aBucket - bBucket;
+    if (aBucket === 0) return aPin - bPin;
     return b.date.localeCompare(a.date);
   })
   .slice(0, 40);
