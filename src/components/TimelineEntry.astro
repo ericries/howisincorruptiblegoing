@@ -281,16 +281,20 @@ const tiktokEmbed = (() => {
               <Fragment>
                 {youtubeEmbedUrl && (
                   <div class="video-embed">
-                    <iframe src={youtubeEmbedUrl} title={entry.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src={youtubeEmbedUrl} title={entry.title} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   </div>
                 )}
                 {tiktokEmbed && (
-                  <div class="tiktok-embed-wrap">
-                    <blockquote class="tiktok-embed" cite={tiktokEmbed.url} data-video-id={tiktokEmbed.videoId} style="max-width:605px;min-width:325px;">
-                      <section>
-                        <a target="_blank" title={`@${tiktokEmbed.username}`} href={`https://www.tiktok.com/@${tiktokEmbed.username}?refer=embed`}>@{tiktokEmbed.username}</a>
-                      </section>
-                    </blockquote>
+                  <div class="tiktok-facade" data-video-id={tiktokEmbed.videoId} data-tiktok-url={tiktokEmbed.url}>
+                    {entry.image ? (
+                      <img class="tiktok-facade__thumb" src={entry.image} alt={`TikTok by @${tiktokEmbed.username}`} loading="lazy" />
+                    ) : (
+                      <div class="tiktok-facade__placeholder"></div>
+                    )}
+                    <button class="tiktok-facade__play" type="button" aria-label="Play TikTok video">
+                      <svg viewBox="0 0 24 24" width="40" height="40" fill="white" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                    </button>
+                    <a class="tiktok-facade__handle" href={tiktokEmbed.url} target="_blank" rel="noopener">@{tiktokEmbed.username}</a>
                   </div>
                 )}
                 <div class="compact__expandable" data-collapsed>
@@ -317,16 +321,20 @@ const tiktokEmbed = (() => {
                 </blockquote>
                 {youtubeEmbedUrl && (
                   <div class="video-embed">
-                    <iframe src={youtubeEmbedUrl} title={entry.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src={youtubeEmbedUrl} title={entry.title} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   </div>
                 )}
                 {tiktokEmbed && (
-                  <div class="tiktok-embed-wrap">
-                    <blockquote class="tiktok-embed" cite={tiktokEmbed.url} data-video-id={tiktokEmbed.videoId} style="max-width:605px;min-width:325px;">
-                      <section>
-                        <a target="_blank" title={`@${tiktokEmbed.username}`} href={`https://www.tiktok.com/@${tiktokEmbed.username}?refer=embed`}>@{tiktokEmbed.username}</a>
-                      </section>
-                    </blockquote>
+                  <div class="tiktok-facade" data-video-id={tiktokEmbed.videoId} data-tiktok-url={tiktokEmbed.url}>
+                    {entry.image ? (
+                      <img class="tiktok-facade__thumb" src={entry.image} alt={`TikTok by @${tiktokEmbed.username}`} loading="lazy" />
+                    ) : (
+                      <div class="tiktok-facade__placeholder"></div>
+                    )}
+                    <button class="tiktok-facade__play" type="button" aria-label="Play TikTok video">
+                      <svg viewBox="0 0 24 24" width="40" height="40" fill="white" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                    </button>
+                    <a class="tiktok-facade__handle" href={tiktokEmbed.url} target="_blank" rel="noopener">@{tiktokEmbed.username}</a>
                   </div>
                 )}
                 {details && <p class="standard__details">{details}</p>}
@@ -386,16 +394,20 @@ const tiktokEmbed = (() => {
               <Fragment>
                 {youtubeEmbedUrl && (
                   <div class="video-embed">
-                    <iframe src={youtubeEmbedUrl} title={entry.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src={youtubeEmbedUrl} title={entry.title} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   </div>
                 )}
                 {tiktokEmbed && (
-                  <div class="tiktok-embed-wrap">
-                    <blockquote class="tiktok-embed" cite={tiktokEmbed.url} data-video-id={tiktokEmbed.videoId} style="max-width:605px;min-width:325px;">
-                      <section>
-                        <a target="_blank" title={`@${tiktokEmbed.username}`} href={`https://www.tiktok.com/@${tiktokEmbed.username}?refer=embed`}>@{tiktokEmbed.username}</a>
-                      </section>
-                    </blockquote>
+                  <div class="tiktok-facade" data-video-id={tiktokEmbed.videoId} data-tiktok-url={tiktokEmbed.url}>
+                    {entry.image ? (
+                      <img class="tiktok-facade__thumb" src={entry.image} alt={`TikTok by @${tiktokEmbed.username}`} loading="lazy" />
+                    ) : (
+                      <div class="tiktok-facade__placeholder"></div>
+                    )}
+                    <button class="tiktok-facade__play" type="button" aria-label="Play TikTok video">
+                      <svg viewBox="0 0 24 24" width="40" height="40" fill="white" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                    </button>
+                    <a class="tiktok-facade__handle" href={tiktokEmbed.url} target="_blank" rel="noopener">@{tiktokEmbed.username}</a>
                   </div>
                 )}
                 <div class="compact__expandable" data-collapsed>
@@ -422,16 +434,20 @@ const tiktokEmbed = (() => {
                 </blockquote>
                 {youtubeEmbedUrl && (
                   <div class="video-embed">
-                    <iframe src={youtubeEmbedUrl} title={entry.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src={youtubeEmbedUrl} title={entry.title} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   </div>
                 )}
                 {tiktokEmbed && (
-                  <div class="tiktok-embed-wrap">
-                    <blockquote class="tiktok-embed" cite={tiktokEmbed.url} data-video-id={tiktokEmbed.videoId} style="max-width:605px;min-width:325px;">
-                      <section>
-                        <a target="_blank" title={`@${tiktokEmbed.username}`} href={`https://www.tiktok.com/@${tiktokEmbed.username}?refer=embed`}>@{tiktokEmbed.username}</a>
-                      </section>
-                    </blockquote>
+                  <div class="tiktok-facade" data-video-id={tiktokEmbed.videoId} data-tiktok-url={tiktokEmbed.url}>
+                    {entry.image ? (
+                      <img class="tiktok-facade__thumb" src={entry.image} alt={`TikTok by @${tiktokEmbed.username}`} loading="lazy" />
+                    ) : (
+                      <div class="tiktok-facade__placeholder"></div>
+                    )}
+                    <button class="tiktok-facade__play" type="button" aria-label="Play TikTok video">
+                      <svg viewBox="0 0 24 24" width="40" height="40" fill="white" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                    </button>
+                    <a class="tiktok-facade__handle" href={tiktokEmbed.url} target="_blank" rel="noopener">@{tiktokEmbed.username}</a>
                   </div>
                 )}
                 {details && <p class="standard__details">{details}</p>}
@@ -1317,12 +1333,73 @@ const tiktokEmbed = (() => {
     border: none;
   }
 
-  .tiktok-embed-wrap {
-    margin: 1rem 0;
+  .tiktok-facade {
+    position: relative;
+    margin: 1rem auto;
+    max-width: 325px;
+    aspect-ratio: 9 / 16;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
   }
 
-  .tiktok-embed-wrap :global(.tiktok-embed) {
-    margin: 0 auto;
+  .tiktok-facade__thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .tiktok-facade__placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #25f4ee 0%, #000 50%, #fe2c55 100%);
+  }
+
+  .tiktok-facade__play {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+
+  .tiktok-facade__play:hover {
+    background: rgba(254, 44, 85, 0.85);
+    transform: scale(1.05);
+  }
+
+  .tiktok-facade__handle {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    z-index: 2;
+  }
+
+  .tiktok-facade__handle:hover {
+    color: var(--color-blue);
+  }
+
+  .tiktok-facade iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
   }
 
   /* ── ENTRY VISUAL (people + logos) ── */
@@ -1528,5 +1605,21 @@ const tiktokEmbed = (() => {
         (btn.querySelector('.compact__toggle-text') as HTMLElement).textContent = 'Show more';
       }
     });
+  });
+
+  // TikTok facade: swap to real iframe only on click. Keeps the page from
+  // loading 16 TikTok video players on iOS Safari (which OOMs the tab).
+  document.querySelectorAll('.tiktok-facade').forEach(facade => {
+    facade.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('.tiktok-facade__handle')) return;
+      const videoId = facade.getAttribute('data-video-id');
+      if (!videoId) return;
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.tiktok.com/embed/v2/${videoId}?autoplay=1`;
+      iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
+      iframe.setAttribute('allowfullscreen', '');
+      facade.innerHTML = '';
+      facade.appendChild(iframe);
+    }, { once: true });
   });
 </script>
