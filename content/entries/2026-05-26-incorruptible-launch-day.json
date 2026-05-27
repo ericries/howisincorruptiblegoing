@@ -14,7 +14,7 @@
   "attribution_title": null,
   "attribution_image": null,
   "tags": ["event", "launch-event"],
-  "type_metadata": {"city": "Launch Day", "featured": true},
+  "type_metadata": {"city": "Launch Day"},
   "scanner_source": "manual",
   "verified": true,
   "created_at": "2026-05-24T20:45:00Z"
