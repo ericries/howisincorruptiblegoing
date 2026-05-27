@@ -1,0 +1,23 @@
+{
+  "id": "2026-05-26-amazon-bestseller-startups",
+  "date": "2026-05-26",
+  "type": "milestone",
+  "title": "Incorruptible reaches #1 Best Seller in Startups on Amazon",
+  "summary": "Incorruptible takes the top Best Seller slot in Amazon's Startups category.",
+  "blockquote": "#1 Best Seller in Startups",
+  "blockquote_source": "Amazon",
+  "source_url": "https://www.amazon.com/gp/bestsellers/digital-text/8493731011/",
+  "source_urls": [
+    {"url": "https://www.amazon.com/Incorruptible-Good-Companies-Great-Stay/dp/B0FWZZBPZB", "label": "Book page on Amazon"}
+  ],
+  "video_url": null,
+  "image": "/images/amazon/startups-bestseller-1.png",
+  "attribution": null,
+  "attribution_title": null,
+  "attribution_image": null,
+  "tags": ["milestone", "amazon", "rank", "best-seller"],
+  "type_metadata": {"amazon_rank": "#1", "amazon_badge": "Best Seller", "amazon_category": "Startups", "amazon_url": "https://www.amazon.com/gp/bestsellers/digital-text/8493731011/"},
+  "scanner_source": "manual",
+  "verified": false,
+  "created_at": "2026-05-27T03:05:00Z"
+}
