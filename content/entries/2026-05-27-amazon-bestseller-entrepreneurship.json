@@ -1,0 +1,23 @@
+{
+  "id": "2026-05-27-amazon-bestseller-entrepreneurship",
+  "date": "2026-05-27",
+  "type": "milestone",
+  "title": "Incorruptible reaches #1 Best Seller in Entrepreneurship on Amazon",
+  "summary": "Incorruptible takes the top Best Seller slot in Amazon's Entrepreneurship category.",
+  "blockquote": "#1 Best Seller in Entrepreneurship",
+  "blockquote_source": "Amazon",
+  "source_url": "https://www.amazon.com/gp/bestsellers/digital-text/156413011/",
+  "source_urls": [
+    {"url": "https://www.amazon.com/Incorruptible-Good-Companies-Great-Stay/dp/B0FWZZBPZB", "label": "Book page on Amazon"}
+  ],
+  "video_url": null,
+  "image": "/images/amazon/entrepreneurship-bestseller-1.png",
+  "attribution": null,
+  "attribution_title": null,
+  "attribution_image": null,
+  "tags": ["milestone", "amazon", "rank", "best-seller"],
+  "type_metadata": {"amazon_rank": "#1", "amazon_badge": "Best Seller", "amazon_category": "Entrepreneurship", "amazon_url": "https://www.amazon.com/gp/bestsellers/digital-text/156413011/"},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-05-27T13:35:00Z"
+}
