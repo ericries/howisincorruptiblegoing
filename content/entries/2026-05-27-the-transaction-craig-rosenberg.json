@@ -1,0 +1,23 @@
+{
+  "id": "2026-05-27-the-transaction-craig-rosenberg",
+  "date": "2026-05-27",
+  "type": "podcast",
+  "title": "The Transaction #78 (Craig Rosenberg + Scott Albro) — Eric: 'Trust is the asset that compounds'",
+  "summary": "Craig Rosenberg (TOPO founder, B2B GTM author) and returning guest host Scott Albro publish a launch-week episode of The Transaction framing Incorruptible for go-to-market leaders — trust as the compounding asset, ARR creative-accounting risk, and why so-called best practices are quietly value-destroying.",
+  "blockquote": "We have built an economy that is eating itself alive as we hollow company after company after company. Trust is the asset that compounds.",
+  "blockquote_source": "Eric Ries on The Transaction",
+  "source_url": "https://www.youtube.com/watch?v=Auh0offo5VQ",
+  "source_urls": [
+    {"url": "https://thetransactionpod.com/", "label": "The Transaction Podcast"}
+  ],
+  "video_url": "https://www.youtube.com/watch?v=Auh0offo5VQ",
+  "image": "/images/podcasts/the-transaction.jpg",
+  "attribution": "The Transaction",
+  "attribution_title": "B2B GTM podcast hosted by Craig Rosenberg (TOPO founder); guest host Scott Albro",
+  "attribution_image": null,
+  "tags": ["podcast", "youtube", "launch-week", "gtm"],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-05-27T15:30:00Z"
+}
