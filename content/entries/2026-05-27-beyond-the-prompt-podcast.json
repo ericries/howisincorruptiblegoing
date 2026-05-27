@@ -1,0 +1,21 @@
+{
+  "id": "2026-05-27-beyond-the-prompt-podcast",
+  "date": "2026-05-27",
+  "type": "podcast",
+  "title": "Beyond the Prompt — Eric: 'Their signature on the company's death warrant. They signed it the first day, but they didn't even read it.'",
+  "summary": "Beyond the Prompt — an AI-focused podcast — runs a launch-week episode opening with Eric's case that the gap between a company's mission statement and its legal charter is a self-inflicted wound, and tracing why he was brought in early to advise Anthropic on governance.",
+  "blockquote": "You may have a mission statement that says we're going to build a high-quality product, but your legal charter says you're going to maximize shareholder value. And this disconnect between what you claim your mission is and what your purpose actually is means you are lying to your customers, to your employees, to everybody. You're probably even lying to yourself.",
+  "blockquote_source": "Eric Ries on Beyond the Prompt",
+  "source_url": "https://www.youtube.com/watch?v=cYbE8AgaB9Q",
+  "source_urls": null,
+  "video_url": "https://www.youtube.com/watch?v=cYbE8AgaB9Q",
+  "image": "/images/podcasts/beyond-the-prompt.jpg",
+  "attribution": "Beyond the Prompt",
+  "attribution_title": "AI podcast (Beyond the Prompt — How to use AI in your company)",
+  "attribution_image": null,
+  "tags": ["podcast", "youtube", "launch-week", "ai"],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-05-27T16:51:00Z"
+}
