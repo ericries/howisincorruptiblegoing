@@ -1,0 +1,23 @@
+{
+  "id": "2026-05-26-bubble-new-build-straschnov",
+  "date": "2026-05-26",
+  "type": "podcast",
+  "title": "Bubble's The New Build with Emmanuel Straschnov — 'mission driven' vs 'mission hopeful'",
+  "summary": "Emmanuel Straschnov — co-founder and co-CEO of no-code platform Bubble — hosts Eric on The New Build for a launch-day conversation centered on the distinction between 'mission driven' and 'mission hopeful,' and how governance does the structural work most founders attribute to culture.",
+  "blockquote": "Central to that is the distinction he draws between being \"mission driven\" and \"mission hopeful,\" which reframes a lot of what founders are usually told to prioritize.",
+  "blockquote_source": "Emmanuel Straschnov on LinkedIn",
+  "source_url": "https://www.linkedin.com/posts/straschnov_eric-ries-author-of-the-lean-startup-was-activity-7465055572871086080-iOtU",
+  "source_urls": [
+    {"url": "https://bubble.io/blog/the-new-build-10-eric-ries/", "label": "The New Build #10 — Eric Ries (Bubble blog)"}
+  ],
+  "video_url": null,
+  "image": "/images/podcasts/the-new-build.jpg",
+  "attribution": "The New Build",
+  "attribution_title": "Podcast hosted by Bubble co-founder & co-CEO Emmanuel Straschnov",
+  "attribution_image": null,
+  "tags": ["podcast", "launch-day", "linkedin"],
+  "type_metadata": {"featured": true},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-05-27T01:51:00Z"
+}

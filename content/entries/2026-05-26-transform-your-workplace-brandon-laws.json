@@ -1,0 +1,23 @@
+{
+  "id": "2026-05-26-transform-your-workplace-brandon-laws",
+  "date": "2026-05-26",
+  "type": "podcast",
+  "title": "Transform Your Workplace (Brandon Laws, Xenium HR) — 'It's always too early until it's too late'",
+  "summary": "Brandon Laws — VP at Xenium HR and host of Transform Your Workplace — runs a launch-day episode framing financial gravity and mission protection for an HR/people-leader audience, with Eric pinpointing the governance timing trap: lawyers say 'too early' until bankers say 'too late.'",
+  "blockquote": "It's always too early until it's too late.",
+  "blockquote_source": "Eric Ries on Transform Your Workplace",
+  "source_url": "https://youtu.be/6QWHGXwLX8M",
+  "source_urls": [
+    {"url": "https://www.linkedin.com/posts/lawsbrandon_eric-ries-the-hidden-force-destroying-good-activity-7465174624046088206-0eFu", "label": "Brandon Laws's launch post on LinkedIn"}
+  ],
+  "video_url": "https://youtu.be/6QWHGXwLX8M",
+  "image": "/images/podcasts/transform-your-workplace.jpg",
+  "attribution": "Transform Your Workplace",
+  "attribution_title": "Podcast hosted by Brandon Laws, VP at Xenium HR",
+  "attribution_image": null,
+  "tags": ["podcast", "youtube", "launch-day", "hr"],
+  "type_metadata": {"featured": true},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-05-27T01:53:00Z"
+}
