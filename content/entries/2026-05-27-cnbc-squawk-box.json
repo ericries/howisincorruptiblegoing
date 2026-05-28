@@ -1,0 +1,23 @@
+{
+  "id": "2026-05-27-cnbc-squawk-box",
+  "date": "2026-05-27",
+  "type": "media",
+  "title": "CNBC Squawk Box — Eric on building business in the AI age and his push to end quarterly earnings",
+  "summary": "CNBC books Eric for a launch-week Squawk Box segment on building businesses in the AI age, corporate governance, and his SEC petition to end quarterly earnings reporting — the first time the SEC has reconsidered the rule in 40 years.",
+  "blockquote": "'Incorruptible' author Eric Ries on building business in the AI age, push to end quarterly earnings",
+  "blockquote_source": "CNBC Squawk Box (video segment title)",
+  "source_url": "https://www.cnbc.com/video/2026/05/27/incorruptible-author-eric-ries-on-building-business-in-the-ai-age-push-to-end-quarterly-earnings.html",
+  "source_urls": [
+    {"url": "https://www.linkedin.com/posts/eries_headed-to-cnbc-to-talk-incorruptible-ai-activity-7465338636855607296-vGWp", "label": "Eric's heads-up post on LinkedIn"}
+  ],
+  "video_url": null,
+  "image": null,
+  "attribution": "CNBC Squawk Box",
+  "attribution_title": "CNBC's flagship morning business news program",
+  "attribution_image": null,
+  "tags": ["media", "cnbc", "launch-week", "tv"],
+  "type_metadata": {"featured": true},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-05-28T03:30:00Z"
+}
