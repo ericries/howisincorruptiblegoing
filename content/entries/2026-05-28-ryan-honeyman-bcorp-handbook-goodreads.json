@@ -1,0 +1,23 @@
+{
+  "id": "2026-05-28-ryan-honeyman-bcorp-handbook-goodreads",
+  "date": "2026-05-28",
+  "type": "review",
+  "title": "Ryan (author of The B Corp Handbook) on Goodreads — 'one of the most important books for the B Corp movement I have ever read'",
+  "summary": "Ryan — author of The B Corp Handbook, the canonical reference for the B Corp movement — posts a launch-week Goodreads review framing Incorruptible as essential reading for B Corps, citing Allbirds as a cautionary case where benefit-corporation status alone wasn't enough to resist financial gravity.",
+  "blockquote": "I am the author of \"The B Corp Handbook.\" Incorruptible is one of the most important books for the B Corp movement I have ever read.",
+  "blockquote_source": "Ryan on Goodreads",
+  "source_url": "https://www.goodreads.com/user/show/36132283-ryan",
+  "source_urls": [
+    {"url": "https://www.goodreads.com/book/show/242970642-incorruptible", "label": "Incorruptible on Goodreads"}
+  ],
+  "video_url": null,
+  "image": null,
+  "attribution": "Ryan",
+  "attribution_title": "Author, The B Corp Handbook",
+  "attribution_image": null,
+  "tags": ["review", "goodreads", "launch-week", "b-corp"],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-05-28T14:54:00Z"
+}

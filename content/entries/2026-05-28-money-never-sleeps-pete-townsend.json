@@ -1,0 +1,23 @@
+{
+  "id": "2026-05-28-money-never-sleeps-pete-townsend",
+  "date": "2026-05-28",
+  "type": "podcast",
+  "title": "MoneyNeverSleeps (Pete Townsend) — Eric: 'The more golden the goose, the greater the temptation to butcher it.'",
+  "summary": "Pete Townsend — Norio Ventures GP and Techstars MD Emeritus, who used The Lean Startup as required reading for portfolio founders — drops a special double-length MoneyNeverSleeps episode covering the Long-Term Benefit Trust, the 100-year-old Danish insulin company protecting $500B in shareholder value, and the one two-page filing most founders never make.",
+  "blockquote": "The more golden the goose, the greater the temptation to butcher it.",
+  "blockquote_source": "Eric Ries on MoneyNeverSleeps (quoted by Pete Townsend on X)",
+  "source_url": "https://www.linkedin.com/posts/petetownsendnv_ericries-leanstartup-incorruptible-activity-7465658393349980160-ro8z",
+  "source_urls": [
+    {"url": "https://x.com/PeteTownsendNV/status/2059913322082779354", "label": "Pete Townsend's X promo"}
+  ],
+  "video_url": null,
+  "image": "/images/podcasts/money-never-sleeps.jpg",
+  "attribution": "MoneyNeverSleeps",
+  "attribution_title": "Podcast hosted by Pete Townsend (GP, Norio Ventures; MD Emeritus, Techstars)",
+  "attribution_image": null,
+  "tags": ["podcast", "launch-week", "linkedin"],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-05-28T14:52:00Z"
+}
