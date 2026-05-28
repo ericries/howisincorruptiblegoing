@@ -1,0 +1,23 @@
+{
+  "id": "2026-05-28-geekwire-podcast-todd-bishop",
+  "date": "2026-05-28",
+  "type": "podcast",
+  "title": "GeekWire podcast (Todd Bishop) — 'a shift to mission primacy' in Incorruptible",
+  "summary": "Todd Bishop — GeekWire co-founder and Seattle tech journalist — publishes a launch-week podcast and companion article framing Incorruptible's redefinition of profit as 'mission primacy,' with Eric discussing Anthropic's governance structure, the Whole Foods collapse, the Musk v. OpenAI trial, and his case that the era of shareholder primacy is already over.",
+  "blockquote": "Ries explains why he's redefining profit as the maximization of human flourishing, reveals his role advising Anthropic's founders on their corporate structure, and makes the case that the era of shareholder primacy is already over.",
+  "blockquote_source": "GeekWire podcast episode description (Todd Bishop)",
+  "source_url": "https://www.geekwire.com/2026/lean-startup-author-eric-ries-calls-for-a-shift-to-mission-primacy-in-his-new-book-incorruptible/",
+  "source_urls": [
+    {"url": "https://www.youtube.com/watch?v=ZGgDmtHa-wM", "label": "Episode on YouTube"}
+  ],
+  "video_url": "https://www.youtube.com/watch?v=ZGgDmtHa-wM",
+  "image": "/images/podcasts/geekwire-podcast.jpg",
+  "attribution": "GeekWire",
+  "attribution_title": "Seattle tech publication; podcast hosted by co-founder Todd Bishop",
+  "attribution_image": null,
+  "tags": ["podcast", "media", "launch-week", "geekwire"],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-05-28T19:01:00Z"
+}

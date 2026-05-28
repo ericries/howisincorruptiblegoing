@@ -1,0 +1,23 @@
+{
+  "id": "2026-05-27-time-magazine-excerpt",
+  "date": "2026-05-27",
+  "type": "media",
+  "title": "TIME magazine excerpt — 'We've come to accept that the gradual corruption of successful companies is as natural and inevitable as gravity'",
+  "summary": "TIME magazine publishes a launch-week excerpt from Incorruptible — 'Why Corporate Corruption Is so Common' — surfacing Eric's case that the structural force he calls financial gravity is what's behind spiraling infrastructure costs, declining journalism, social media decay, medical errors, and bad customer service. TIME's @TIME promo tweet hit 13K+ views on day one.",
+  "blockquote": "We've come to accept that the gradual corruption of successful companies is as natural and inevitable as gravity.",
+  "blockquote_source": "Eric Ries in TIME magazine",
+  "source_url": "https://time.com/article/2026/05/27/why-corporate-corruption-is-so-common/",
+  "source_urls": [
+    {"url": "https://x.com/TIME/status/2059729007780962578", "label": "TIME on X"}
+  ],
+  "video_url": null,
+  "image": null,
+  "attribution": "TIME magazine",
+  "attribution_title": "Mainstream news weekly (18.5M Twitter followers)",
+  "attribution_image": null,
+  "tags": ["media", "time-magazine", "launch-week", "excerpt"],
+  "type_metadata": {"featured": true},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-05-28T19:00:00Z"
+}
