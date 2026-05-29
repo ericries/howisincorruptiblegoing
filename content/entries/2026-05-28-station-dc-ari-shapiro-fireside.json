@@ -14,7 +14,37 @@
   "attribution_title": "DC's hub for founders, operators, and policymakers building at the intersection of tech and government",
   "attribution_image": null,
   "tags": ["event", "washington-dc", "in-person", "launch-event", "station-dc", "ari-shapiro", "npr"],
-  "type_metadata": {"city": "Washington DC", "featured": true, "signup_url": "https://luma.com/cs48vtxz"},
+  "type_metadata": {
+    "city": "Washington DC",
+    "featured": true,
+    "signup_url": "https://luma.com/cs48vtxz",
+    "event_photos": [
+      {
+        "src": "/images/events/2026-05-28-station-dc/01-marsha-acker-stage.jpg",
+        "alt": "Eric Ries and Ari Shapiro in conversation on stage at STATION DC, with the Incorruptible cover projected behind them",
+        "credit": "Marsha Acker",
+        "source_url": "https://www.linkedin.com/posts/marsha-acker-3486a72_its-been-a-long-time-since-ive-been-so-activity-7465959058123030528-CEFl"
+      },
+      {
+        "src": "/images/events/2026-05-28-station-dc/02-rick-austin-venue.jpg",
+        "alt": "Pre-event view of the empty STATION DC stage and audience seating",
+        "credit": "Rick Austin",
+        "source_url": "https://www.linkedin.com/posts/rickwaustin_just-arrived-and-looking-forward-to-tonight-activity-7465877523332120576-NAVM"
+      },
+      {
+        "src": "/images/events/2026-05-28-station-dc/03-lyubomira-buresch-candid.jpg",
+        "alt": "Candid shot from the audience: Eric and Ari mid-conversation, with attendees in the foreground",
+        "credit": "Lyubomira Buresch",
+        "source_url": "https://www.linkedin.com/posts/buresch_last-night-at-station-dc-i-heard-eric-ries-activity-7466144896270106625-_DEF"
+      },
+      {
+        "src": "/images/events/2026-05-28-station-dc/04-benjy-braun-screen.jpg",
+        "alt": "Wide shot of the STATION DC stage with Eric and Ari seated below the Incorruptible cover and host portraits",
+        "credit": "Benjy Braun",
+        "source_url": "https://www.linkedin.com/posts/benjybraun-datascience-intel_ai-leadership-startups-activity-7466100359325974529-sbwk"
+      }
+    ]
+  },
   "scanner_source": "manual",
   "verified": false,
   "created_at": "2026-05-06T19:00:00Z"
