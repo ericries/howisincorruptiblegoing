@@ -67,11 +67,19 @@ const sidebarQuotes = entries
 // so we pin them to the two flagship mainstream categories rather than reshuffling
 // every time a narrower sub-category #1 lands. Other #1s still appear on the
 // timeline as their own milestone entries.
-const PINNED_AMAZON_CATEGORIES = ['Entrepreneurship', 'Startups'];
-// Pills always read "Amazon Bestseller" — the book is past the new-release
-// phase. Underlying entries keep their granular badge (New Release / Best
-// Seller) for historical accuracy; the StatsBar surfaces the marquee status.
-const STATS_BAR_BADGE = 'Amazon Bestseller';
+// Four pinned categories — two business/leadership pills on the left,
+// two entrepreneurship/startups pills on the right.
+const PINNED_AMAZON_CATEGORIES = [
+  'Business Management',
+  'Leadership & Motivation',
+  'Entrepreneurship',
+  'Startups',
+];
+// Pills always read "Best Seller" (Amazon's native badge wording) — the
+// book is past the new-release phase. Underlying entries keep their
+// granular badge for historical accuracy; the StatsBar surfaces the
+// marquee status.
+const STATS_BAR_BADGE = 'Best Seller';
 const amazonRankByCategory = new Map<string, {entryId: string; rank: string; badge: string; category: string}>();
 // entries iterate date-desc (newest first); keep the FIRST hit per category
 // so the most recent ranking wins (e.g. Best Seller from May 27 beats the

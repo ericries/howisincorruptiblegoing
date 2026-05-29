@@ -19,28 +19,41 @@ const { totalEntries, totalEndorsements, amazonRanks = [] } = Astro.props;
 const LAUNCH_DATE = new Date('2026-05-26T00:00:00Z');
 const now = new Date();
 const msPerDay = 1000 * 60 * 60 * 24;
-const diffDays = Math.floor((now.getTime() - LAUNCH_DATE.getTime()) / msPerDay);
-const isPostLaunch = diffDays >= 0;
-const launchCount = isPostLaunch ? diffDays : -diffDays;
-const launchLabel = isPostLaunch ? 'days since launch' : 'days to launch';
+const daysToLaunch = Math.max(0, Math.ceil((LAUNCH_DATE.getTime() - now.getTime()) / msPerDay));
+const isPostLaunch = now.getTime() >= LAUNCH_DATE.getTime();
 
-// Split the rankings to the two flanks of the stats row (first → left, second → right).
-const leftRank = amazonRanks[0] ?? null;
-const rightRank = amazonRanks[1] ?? null;
+// Split rankings evenly across the two flanks. First half → left, second
+// half → right. Each side renders its ranks as a vertical stack of pills.
+const half = Math.ceil(amazonRanks.length / 2);
+const leftRanks = amazonRanks.slice(0, half);
+const rightRanks = amazonRanks.slice(half);
 ---
 
 <div class="stats">
   <div class="stats__inner">
-    {leftRank && (
-      <a class="stats__amazon stats__amazon--left" href={leftRank.entryId ? `#${leftRank.entryId}` : leftRank.url} aria-label={`Amazon ${leftRank.rank} ${leftRank.badge} in ${leftRank.category}`}>
-        <span class="stats__amazon-pill"><span class="stats__amazon-num">{leftRank.rank}</span> {leftRank.badge}</span>
-        <span class="stats__amazon-cat">in {leftRank.category}</span>
-      </a>
+    {leftRanks.length > 0 && (
+      <div class="stats__amazon-stack stats__amazon-stack--left">
+        {leftRanks.map((r) => (
+          <a class="stats__amazon stats__amazon--left" href={r.entryId ? `#${r.entryId}` : r.url} aria-label={`Amazon ${r.rank} ${r.badge} in ${r.category}`}>
+            <span class="stats__amazon-pill"><span class="stats__amazon-num">{r.rank}</span> {r.badge}</span>
+            <span class="stats__amazon-cat">in {r.category}</span>
+          </a>
+        ))}
+      </div>
     )}
     <div class="stats__center">
       <div class="stats__item">
-        <span class="stats__number stats__number--red">{launchCount}</span>
-        <span class="stats__label">{launchLabel}</span>
+        {isPostLaunch ? (
+          <>
+            <span class="stats__out-now">OUT NOW</span>
+            <span class="stats__label">the book</span>
+          </>
+        ) : (
+          <>
+            <span class="stats__number stats__number--red">{daysToLaunch}</span>
+            <span class="stats__label">days to launch</span>
+          </>
+        )}
       </div>
       <div class="stats__divider"></div>
       <div class="stats__item">
@@ -53,11 +66,15 @@ const rightRank = amazonRanks[1] ?? null;
         <span class="stats__label">voices</span>
       </div>
     </div>
-    {rightRank && (
-      <a class="stats__amazon stats__amazon--right" href={rightRank.entryId ? `#${rightRank.entryId}` : rightRank.url} aria-label={`Amazon ${rightRank.rank} ${rightRank.badge} in ${rightRank.category}`}>
-        <span class="stats__amazon-pill"><span class="stats__amazon-num">{rightRank.rank}</span> {rightRank.badge}</span>
-        <span class="stats__amazon-cat">in {rightRank.category}</span>
-      </a>
+    {rightRanks.length > 0 && (
+      <div class="stats__amazon-stack stats__amazon-stack--right">
+        {rightRanks.map((r) => (
+          <a class="stats__amazon stats__amazon--right" href={r.entryId ? `#${r.entryId}` : r.url} aria-label={`Amazon ${r.rank} ${r.badge} in ${r.category}`}>
+            <span class="stats__amazon-pill"><span class="stats__amazon-num">{r.rank}</span> {r.badge}</span>
+            <span class="stats__amazon-cat">in {r.category}</span>
+          </a>
+        ))}
+      </div>
     )}
   </div>
 </div>
@@ -83,18 +100,26 @@ const rightRank = amazonRanks[1] ?? null;
     gap: 3rem;
     flex: 1;
   }
-  /* Amazon ranking flanks — small, muted, side-anchored. Pushed all the way
-     to the edge of the stats row so they don't compete with the headline
-     counters in the middle. */
+  /* Vertical stack of Amazon ranking pills on each flank. */
+  .stats__amazon-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    flex-shrink: 0;
+  }
+  .stats__amazon-stack--right {
+    align-items: flex-end;
+  }
+  /* Each ranking = a chunky Amazon-style "#1 Best Seller" pill with the
+     category text below it. */
   .stats__amazon {
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 3px;
+    gap: 4px;
     text-decoration: none;
     color: inherit;
-    flex-shrink: 0;
-    opacity: 0.78;
+    opacity: 0.95;
     transition: opacity 0.18s, transform 0.18s;
   }
   .stats__amazon:hover {
@@ -105,32 +130,34 @@ const rightRank = amazonRanks[1] ?? null;
     align-items: flex-end;
     text-align: right;
   }
+  /* Mimics Amazon's native "#1 Best Seller" badge — chunky burnt-orange
+     pill with rounded corners and bold white text. */
   .stats__amazon-pill {
     display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
+    align-items: baseline;
+    gap: 0.3rem;
     font-family: var(--font-body);
-    font-size: 0.55rem;
+    font-size: 0.78rem;
     font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    letter-spacing: 0.01em;
     color: #fff;
-    background: linear-gradient(180deg, #f08804 0%, #c95a01 100%);
-    padding: 0.18rem 0.42rem 0.18rem 0.32rem;
-    border-radius: 3px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    background: #c45500;
+    padding: 0.28rem 0.62rem 0.3rem;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
     white-space: nowrap;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.18);
   }
   .stats__amazon-num {
     font-weight: 800;
-    font-size: 0.62rem;
+    font-size: 0.82rem;
     letter-spacing: 0;
   }
   .stats__amazon-cat {
     font-family: var(--font-body);
-    font-size: 0.6rem;
+    font-size: 0.62rem;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.55);
+    color: rgba(255, 255, 255, 0.6);
     letter-spacing: 0.02em;
     white-space: nowrap;
   }
@@ -153,6 +180,18 @@ const rightRank = amazonRanks[1] ?? null;
   .stats__number--blue { color: var(--color-blue); }
   .stats__number--white { color: var(--color-white); }
 
+  /* Post-launch "OUT NOW" replaces the days-to-launch counter. Sized to
+     sit at the same baseline as the other stat numbers, with letter-spacing
+     to match the marquee feel. */
+  .stats__out-now {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--color-red);
+    letter-spacing: 0.04em;
+  }
+
   .stats__label {
     font-family: var(--font-body);
     font-size: 0.65rem;
@@ -169,12 +208,12 @@ const rightRank = amazonRanks[1] ?? null;
   }
 
   @media (max-width: 768px) {
-    .stats__amazon { display: none; }
+    .stats__amazon-stack { display: none; }
     .stats__inner { justify-content: center; }
   }
 
   /* Mobile (≤640px). Tighten gap and shrink number/label so that the
-     three stat blocks (DAYS TO LAUNCH / MOMENTS / VOICES) fit inside an
+     three stat blocks (OUT NOW/DAYS / MOMENTS / VOICES) fit inside an
      iPhone-portrait viewport without clipping "VOICES". Amazon flank
      pills hide entirely. */
   @media (max-width: 640px) {
@@ -182,6 +221,7 @@ const rightRank = amazonRanks[1] ?? null;
     .stats__center { gap: 0.9rem; }
     .stats__divider { height: 28px; }
     .stats__number { font-size: 1.45rem; }
+    .stats__out-now { font-size: 1.05rem; }
     .stats__label {
       font-size: 0.55rem;
       letter-spacing: 0.1em;
