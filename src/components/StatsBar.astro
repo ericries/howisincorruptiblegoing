@@ -100,11 +100,12 @@ const rightRanks = amazonRanks.slice(half);
     gap: 3rem;
     flex: 1;
   }
-  /* Vertical stack of Amazon ranking pills on each flank. */
+  /* Two Amazon ranking pills sit side-by-side on each flank. */
   .stats__amazon-stack {
     display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.85rem;
     flex-shrink: 0;
   }
   .stats__amazon-stack--right {
