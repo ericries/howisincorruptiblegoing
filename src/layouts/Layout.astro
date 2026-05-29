@@ -21,6 +21,25 @@ const { title } = Astro.props;
   <body>
     <slot />
     <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
+    <script>
+      // Strip the hash from the URL when the user scrolls to the very
+      // top — keeps a clean URL once they've left the deep-linked entry.
+      (() => {
+        let ticking = false;
+        const maybeClearHash = () => {
+          ticking = false;
+          if (window.scrollY <= 4 && location.hash) {
+            history.replaceState(null, '', location.pathname + location.search);
+          }
+        };
+        window.addEventListener('scroll', () => {
+          if (!ticking) {
+            requestAnimationFrame(maybeClearHash);
+            ticking = true;
+          }
+        }, { passive: true });
+      })();
+    </script>
   </body>
 </html>
 
