@@ -1,0 +1,23 @@
+{
+  "id": "2026-05-29-career-sessions-james-lowry",
+  "date": "2026-05-29",
+  "type": "podcast",
+  "title": "Career Sessions (James Lowry, PathWise) — 'Most companies don't fail because they're outcompeted. They fail because they succeed.'",
+  "summary": "James (J.R.) Lowry — C-level executive, founder of PathWise.io, Career Sessions host — releases a launch-week episode titled 'Why Success Can Destroy A Company,' framing Incorruptible as a manifesto on how too much capitalism has become a bad thing.",
+  "blockquote": "Most companies don't fail because they're outcompeted. They fail because they succeed.",
+  "blockquote_source": "Career Sessions episode page (PathWise)",
+  "source_url": "https://pathwise.io/podcasts/eric-ries/",
+  "source_urls": [
+    {"url": "https://www.linkedin.com/posts/jameslowry1_eric-ries-the-lean-start-up-was-a-runaway-activity-7465884073027096577-8zsa", "label": "Host announcement"}
+  ],
+  "video_url": null,
+  "image": null,
+  "attribution": "Career Sessions Podcast",
+  "attribution_title": "Podcast hosted by James (J.R.) Lowry — C-level executive, founder of PathWise.io",
+  "attribution_image": null,
+  "tags": ["podcast", "launch-week", "linkedin", "careers"],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-05-29T13:55:00Z"
+}
