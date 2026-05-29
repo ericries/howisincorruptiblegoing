@@ -304,15 +304,15 @@ if (quoteCards.length === 0 && upcoming.length === 0 && posterCards.length === 0
             <li class={`event-card-wrap${stop.isPast ? ' event-card-wrap--past' : ''}`}>
               <a
                 class="event-card"
-                href={stop.signupUrl ?? `#${stop.id}`}
+                href={stop.isPast || !stop.signupUrl ? `#${stop.id}` : stop.signupUrl}
                 data-first-future={i === scrollTargetIndex ? '' : undefined}
-                {...(stop.signupUrl ? { target: '_blank', rel: 'noopener' } : {})}
+                {...(!stop.isPast && stop.signupUrl ? { target: '_blank', rel: 'noopener' } : {})}
               >
                 <div class="event-card__date">{stop.dateLabel}</div>
                 <div class="event-card__title">{stop.title}</div>
                 <div class="event-card__meta">
                   {stop.city ? <span>{stop.city}</span> : <span>Virtual</span>}
-                  {stop.signupUrl && <span class="event-card__rsvp">RSVP ↗</span>}
+                  {!stop.isPast && stop.signupUrl && <span class="event-card__rsvp">RSVP ↗</span>}
                 </div>
               </a>
             </li>
