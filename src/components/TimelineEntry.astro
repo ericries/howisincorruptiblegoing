@@ -9,6 +9,17 @@ interface Props {
 
 const { entry, index, reactions = [] } = Astro.props;
 
+interface EventPhoto {
+  src: string;
+  alt?: string;
+  credit?: string;
+  source_url?: string;
+}
+const eventPhotosRaw = (entry.type_metadata as Record<string, unknown> | undefined)?.event_photos;
+const eventPhotos: EventPhoto[] = Array.isArray(eventPhotosRaw)
+  ? (eventPhotosRaw as EventPhoto[]).filter((p) => p && typeof p.src === 'string')
+  : [];
+
 const reactionSourceDomain = (url: string): string => {
   try {
     return new URL(url).hostname.replace('www.', '');
@@ -464,23 +475,46 @@ const tiktokEmbed = (() => {
     </article>
   )}
 
-  {reactions.length > 0 && (
+  {(reactions.length > 0 || eventPhotos.length > 0) && (
     <div class="reactions">
-      <div class="reactions__label">Reactions · {reactions.length}</div>
-      <ul class="reactions__list">
-        {reactions.map(r => (
-          <li class="reaction">
-            <div class="reaction__head">
-              <span class="reaction__author">{r.attribution || (r.blockquote_source ?? '').replace(/\s+on\s+\w+$/, '')}</span>
-              {r.attribution_title && (
-                <span class="reaction__title"> · {r.attribution_title}</span>
-              )}
-            </div>
-            <p class="reaction__quote">{r.blockquote}</p>
-            <a class="reaction__source" href={r.source_url} target="_blank" rel="noopener">source ↗</a>
-          </li>
-        ))}
-      </ul>
+      {eventPhotos.length > 0 && (
+        <div class="event-photos">
+          <div class="reactions__label">From the event · {eventPhotos.length} {eventPhotos.length === 1 ? 'photo' : 'photos'}</div>
+          <ul class="event-photos__list">
+            {eventPhotos.map(p => (
+              <li class="event-photo">
+                {p.source_url ? (
+                  <a class="event-photo__link" href={p.source_url} target="_blank" rel="noopener" aria-label={p.alt || 'Event photo'}>
+                    <img class="event-photo__img" src={p.src} alt={p.alt || ''} loading="lazy" />
+                  </a>
+                ) : (
+                  <img class="event-photo__img" src={p.src} alt={p.alt || ''} loading="lazy" />
+                )}
+                {p.credit && <span class="event-photo__credit">{p.credit}</span>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {reactions.length > 0 && (
+        <>
+          <div class="reactions__label">Reactions · {reactions.length}</div>
+          <ul class="reactions__list">
+            {reactions.map(r => (
+              <li class="reaction">
+                <div class="reaction__head">
+                  <span class="reaction__author">{r.attribution || (r.blockquote_source ?? '').replace(/\s+on\s+\w+$/, '')}</span>
+                  {r.attribution_title && (
+                    <span class="reaction__title"> · {r.attribution_title}</span>
+                  )}
+                </div>
+                <p class="reaction__quote">{r.blockquote}</p>
+                <a class="reaction__source" href={r.source_url} target="_blank" rel="noopener">source ↗</a>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
     </div>
   )}
 </div>
@@ -524,6 +558,60 @@ const tiktokEmbed = (() => {
     list-style: none;
     margin: 0;
     padding: 0;
+  }
+
+  /* "From the event" photo strip — sits above the reactions list.
+     Polaroid-ish frames so the photos feel attached to the event without
+     dominating the timeline card. */
+  .event-photos {
+    margin-bottom: 0.85rem;
+  }
+  .event-photos__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .event-photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.18rem;
+  }
+  .event-photo__link {
+    display: block;
+    line-height: 0;
+    transition: transform 0.18s, box-shadow 0.18s;
+  }
+  .event-photo__link:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(26, 30, 58, 0.18);
+  }
+  .event-photo__img {
+    display: block;
+    width: 132px;
+    height: 88px;
+    object-fit: cover;
+    border-radius: 3px;
+    background: var(--color-white);
+    padding: 4px 4px 14px;
+    box-shadow: 0 1px 3px rgba(26, 30, 58, 0.18), inset 0 0 0 1px rgba(26, 30, 58, 0.06);
+  }
+  .event-photo__credit {
+    font-family: var(--font-body);
+    font-size: 0.62rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.02em;
+    font-style: italic;
+    max-width: 132px;
+    text-align: center;
+    line-height: 1.2;
+  }
+  @media (max-width: 767px) {
+    .event-photo__img { width: 108px; height: 72px; }
+    .event-photo__credit { max-width: 108px; font-size: 0.58rem; }
   }
 
   .reaction {
