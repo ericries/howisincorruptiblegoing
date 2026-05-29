@@ -1,0 +1,24 @@
+{
+  "id": "2026-05-12-sosv-deep-tech-live-po-bronson",
+  "date": "2026-05-12",
+  "type": "event",
+  "title": "SOSV Deep Tech Live: Governance in the Age of AI — Eric in conversation with Po Bronson",
+  "summary": "SOSV hosts Eric in San Francisco in conversation with Po Bronson, General Partner at SOSV, on whether startups need a new governance template for the AI era — with a parallel LinkedIn livestream for the broader founder audience.",
+  "blockquote": "Eric and moderator Po Bronson (General Partner at SOSV) will dig into Eric's blueprint for how startups can prosper and endure without losing their soul",
+  "blockquote_source": "SOSV event listing",
+  "source_url": "https://sosv.com/sosv-deep-tech-live-governance-in-the-age-of-ai-a-radical-blueprint-for-radical-technologies-with-author-investor-eric-ries/",
+  "source_urls": [
+    {"url": "https://luma.com/2xwjixm2", "label": "In-person RSVP (Luma)"},
+    {"url": "https://luma.com/skklov1k", "label": "Virtual RSVP (LinkedIn Live)"}
+  ],
+  "video_url": null,
+  "image": null,
+  "attribution": "SOSV Deep Tech Live",
+  "attribution_title": "SOSV's deep-tech founder series; moderated by General Partner Po Bronson",
+  "attribution_image": null,
+  "tags": ["event", "san-francisco", "in-person", "sosv", "po-bronson", "ai-governance"],
+  "type_metadata": {"city": "San Francisco", "signup_url": "https://luma.com/2xwjixm2"},
+  "scanner_source": "manual",
+  "verified": false,
+  "created_at": "2026-05-29T18:00:00Z"
+}
