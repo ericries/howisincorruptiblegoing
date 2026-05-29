@@ -18,10 +18,11 @@ const { totalEntries, totalEndorsements, amazonRanks = [] } = Astro.props;
 
 const LAUNCH_DATE = new Date('2026-05-26T00:00:00Z');
 const now = new Date();
-const daysToLaunch = Math.max(
-  0,
-  Math.ceil((LAUNCH_DATE.getTime() - now.getTime()) / (1000 * 60 * 60 * 24))
-);
+const msPerDay = 1000 * 60 * 60 * 24;
+const diffDays = Math.floor((now.getTime() - LAUNCH_DATE.getTime()) / msPerDay);
+const isPostLaunch = diffDays >= 0;
+const launchCount = isPostLaunch ? diffDays : -diffDays;
+const launchLabel = isPostLaunch ? 'days since launch' : 'days to launch';
 
 // Split the rankings to the two flanks of the stats row (first → left, second → right).
 const leftRank = amazonRanks[0] ?? null;
@@ -38,8 +39,8 @@ const rightRank = amazonRanks[1] ?? null;
     )}
     <div class="stats__center">
       <div class="stats__item">
-        <span class="stats__number stats__number--red">{daysToLaunch}</span>
-        <span class="stats__label">days to launch</span>
+        <span class="stats__number stats__number--red">{launchCount}</span>
+        <span class="stats__label">{launchLabel}</span>
       </div>
       <div class="stats__divider"></div>
       <div class="stats__item">
