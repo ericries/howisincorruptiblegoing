@@ -75,26 +75,35 @@ const PINNED_AMAZON_CATEGORIES = [
   'Entrepreneurship',
   'Startups',
 ];
-// Pills always read "Best Seller" (Amazon's native badge wording) — the
-// book is past the new-release phase. Underlying entries keep their
-// granular badge for historical accuracy; the StatsBar surfaces the
-// marquee status.
-const STATS_BAR_BADGE = 'Best Seller';
+// Each pill's badge text reflects the underlying entry's amazon_badge
+// field, so the pill matches what users see when they click through.
+// Best Seller beats New Release at the same date (sort priority); within
+// a tier the most recent date wins.
 const amazonRankByCategory = new Map<string, {entryId: string; rank: string; badge: string; category: string}>();
-// entries iterate date-desc (newest first); keep the FIRST hit per category
-// so the most recent ranking wins (e.g. Best Seller from May 27 beats the
-// New Release from May 26 in the same category).
+type RankCandidate = {entryId: string; rank: string; badge: string; category: string; date: string};
+const isBestSeller = (b: string) => /best.?seller/i.test(b);
+const rankCandidates: RankCandidate[] = [];
 for (const e of entries) {
   const meta = e.type_metadata as Record<string, unknown> | undefined;
   if (!meta || typeof meta.amazon_rank !== 'string' || typeof meta.amazon_category !== 'string') continue;
-  const cat = meta.amazon_category as string;
-  if (amazonRankByCategory.has(cat)) continue;
-  amazonRankByCategory.set(cat, {
+  rankCandidates.push({
     entryId: e.id,
     rank: meta.amazon_rank as string,
-    badge: STATS_BAR_BADGE,
-    category: cat,
+    badge: typeof meta.amazon_badge === 'string' ? meta.amazon_badge : 'New Release',
+    category: meta.amazon_category as string,
+    date: e.date,
   });
+}
+// Sort: Best Seller before New Release; then date desc.
+rankCandidates.sort((a, b) => {
+  const aBs = isBestSeller(a.badge) ? 0 : 1;
+  const bBs = isBestSeller(b.badge) ? 0 : 1;
+  if (aBs !== bBs) return aBs - bBs;
+  return b.date.localeCompare(a.date);
+});
+for (const c of rankCandidates) {
+  if (amazonRankByCategory.has(c.category)) continue;
+  amazonRankByCategory.set(c.category, {entryId: c.entryId, rank: c.rank, badge: c.badge, category: c.category});
 }
 const amazonRanks = PINNED_AMAZON_CATEGORIES
   .map(cat => amazonRankByCategory.get(cat))
