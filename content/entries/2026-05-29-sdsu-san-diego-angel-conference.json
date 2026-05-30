@@ -17,7 +17,35 @@
   "attribution_title": "Host of the San Diego Angel Conference; SDAC VIII Fund finale on May 29, 2026",
   "attribution_image": null,
   "tags": ["event", "san-diego-california", "in-person", "keynote", "book-signing", "sdac"],
-  "type_metadata": {"city": "San Diego"},
+  "type_metadata": {
+    "city": "San Diego",
+    "event_photos": [
+      {
+        "src": "/images/events/2026-05-29-sdsu-san-diego-angel-conference/01-ohad-tzur-stage-wide.jpg",
+        "alt": "Wide shot of Eric Ries on stage with interviewer Vidya Dinamani at SDSU, audience in foreground, large Eric Ries title slide projected behind them",
+        "credit": "Ohad Tzur",
+        "source_url": "https://www.linkedin.com/posts/ohadtzur_spent-yesterday-at-the-finals-of-the-sdsu-activity-7466590450284564480-umOl"
+      },
+      {
+        "src": "/images/events/2026-05-29-sdsu-san-diego-angel-conference/02-auriga-martin-conversation.jpg",
+        "alt": "Vidya Dinamani in conversation with Eric Ries on stage at SDSU's Fowler College of Business",
+        "credit": "Auriga Martin",
+        "source_url": "https://www.linkedin.com/posts/aurigamartin_incredible-interview-by-my-friend-vidya-activity-7466511243051388928-yFDn"
+      },
+      {
+        "src": "/images/events/2026-05-29-sdsu-san-diego-angel-conference/03-felena-hanson-group-selfie.jpg",
+        "alt": "Group selfie of four SDAC attendees in front of the Angel Conference signage",
+        "credit": "Felena Hanson",
+        "source_url": "https://www.linkedin.com/posts/felenahanson_loved-attending-the-sdsu-san-diego-angel-activity-7466341375379206145-CZ11"
+      },
+      {
+        "src": "/images/events/2026-05-29-sdsu-san-diego-angel-conference/04-paige-kaye-book-signing.jpg",
+        "alt": "Paige Kaye and Eric Ries making heart shapes with their hands at the post-keynote book signing table",
+        "credit": "Paige Kaye",
+        "source_url": "https://www.linkedin.com/posts/paige-kaye_kares-karing-activity-7466501969818472449-Tofu"
+      }
+    ]
+  },
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-05-09T16:30:00Z"
