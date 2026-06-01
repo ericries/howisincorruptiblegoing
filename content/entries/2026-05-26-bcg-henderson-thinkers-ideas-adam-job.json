@@ -8,14 +8,23 @@
   "blockquote_source": "Eric Ries on Thinkers & Ideas (BCG Henderson Institute)",
   "source_url": "https://podcasts.apple.com/us/podcast/incorruptible-with-eric-ries/id1450867110?i=1000769635172",
   "source_urls": [
-    {"url": "https://www.linkedin.com/posts/bcg-henderson-institute_podcast-activity-7465016201958596608--3Oo", "label": "BCG Henderson Institute launch post on LinkedIn"}
+    {
+      "url": "https://www.linkedin.com/posts/bcg-henderson-institute_podcast-activity-7465016201958596608--3Oo",
+      "label": "BCG Henderson Institute launch post on LinkedIn"
+    }
   ],
   "video_url": null,
-  "image": null,
+  "image": "/images/podcasts/bcg-henderson-thinkers-ideas.jpg",
   "attribution": "Adam Job",
   "attribution_title": "Senior Director, BCG Henderson Institute; Host, Thinkers & Ideas",
   "attribution_image": null,
-  "tags": ["podcast", "bcg", "henderson-institute", "thinkers-and-ideas", "launch-day"],
+  "tags": [
+    "podcast",
+    "bcg",
+    "henderson-institute",
+    "thinkers-and-ideas",
+    "launch-day"
+  ],
   "type_metadata": {},
   "scanner_source": "manual",
   "verified": false,

@@ -9,11 +9,16 @@
   "source_url": "https://x.com/cxotalk/status/2052104108799320167",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/podcasts/cxotalk.jpg",
   "attribution": "CXOTalk",
   "attribution_title": "Long-running interview show with technology and business leaders, hosted by Michael Krigsman",
   "attribution_image": null,
-  "tags": ["podcast", "twitter", "cxotalk", "upcoming"],
+  "tags": [
+    "podcast",
+    "twitter",
+    "cxotalk",
+    "upcoming"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

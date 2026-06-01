@@ -7,14 +7,25 @@
   "blockquote": "One of my biggest fears when writing this book was imagining how genuine governance experts would react to it. Evan's response — thoughtful, provocative, and highly relevant — is exactly the kind of serious engagement this topic deserves.",
   "blockquote_source": "Eric Ries on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/eries_eric-ries-incorruptible-and-the-case-for-activity-7444765121794699265-Z4Fc",
-  "source_urls": [{"url": "https://podcasts.apple.com/us/podcast/boardroom-governance-with-evan-epstein/id1513064579", "label": "Apple Podcasts"}],
+  "source_urls": [
+    {
+      "url": "https://podcasts.apple.com/us/podcast/boardroom-governance-with-evan-epstein/id1513064579",
+      "label": "Apple Podcasts"
+    }
+  ],
   "video_url": null,
-  "image": null,
+  "image": "/images/podcasts/boardroom-governance.jpg",
   "attribution": null,
   "attribution_title": null,
   "attribution_image": null,
-  "tags": ["podcast", "governance", "boards"],
-  "type_metadata": { "weight": 1 },
+  "tags": [
+    "podcast",
+    "governance",
+    "boards"
+  ],
+  "type_metadata": {
+    "weight": 1
+  },
   "scanner_source": "web-search",
   "verified": true,
   "created_at": "2026-04-12T23:00:00Z"

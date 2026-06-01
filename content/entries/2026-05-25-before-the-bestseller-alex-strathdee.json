@@ -9,11 +9,15 @@
   "source_url": "https://www.linkedin.com/posts/alexander-strathdee_ericries-incorruptible-theleanstartup-activity-7464642688286359552-zqXA",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/podcasts/before-the-bestseller.jpg",
   "attribution": "Alex Strathdee",
   "attribution_title": "Founder, Influential Books; Host, Before the Bestseller",
   "attribution_image": null,
-  "tags": ["podcast", "linkedin", "before-the-bestseller"],
+  "tags": [
+    "podcast",
+    "linkedin",
+    "before-the-bestseller"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

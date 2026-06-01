@@ -8,14 +8,22 @@
   "blockquote_source": "Social Change Career Podcast episode page (PCDN.Global)",
   "source_url": "https://pcdn.global/incorruptible-why-good-companies-go-bad-and-how-great-companies-stay-great-2/",
   "source_urls": [
-    {"url": "https://www.linkedin.com/posts/craigzelizer_new-pcdnglobal-social-change-career-podcast-activity-7465919867205021698-ooUJ", "label": "Host announcement"}
+    {
+      "url": "https://www.linkedin.com/posts/craigzelizer_new-pcdnglobal-social-change-career-podcast-activity-7465919867205021698-ooUJ",
+      "label": "Host announcement"
+    }
   ],
   "video_url": null,
-  "image": null,
+  "image": "/images/podcasts/pcdn-social-change-career.jpg",
   "attribution": "Social Change Career Podcast",
   "attribution_title": "Podcast hosted by Craig Zelizer — founder of PCDN.Global, social entrepreneur",
   "attribution_image": null,
-  "tags": ["podcast", "launch-week", "linkedin", "social-impact"],
+  "tags": [
+    "podcast",
+    "launch-week",
+    "linkedin",
+    "social-impact"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

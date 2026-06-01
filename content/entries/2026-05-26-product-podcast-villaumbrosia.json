@@ -9,11 +9,16 @@
   "source_url": "https://www.linkedin.com/posts/villaumbrosia_theproductpodcast-activity-7462030661449719808-Fyfc",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/podcasts/the-product-podcast.jpg",
   "attribution": "Carlos Gonzalez de Villaumbrosia",
   "attribution_title": "CEO, Product School & Product Partners",
   "attribution_image": null,
-  "tags": ["podcast", "linkedin", "product-school", "the-product-podcast"],
+  "tags": [
+    "podcast",
+    "linkedin",
+    "product-school",
+    "the-product-podcast"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

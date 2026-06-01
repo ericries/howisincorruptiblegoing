@@ -8,14 +8,22 @@
   "blockquote_source": "Netguru on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/netguru_so-this-is-big-eric-ries-comes-to-our-next-activity-7461035766375362560-VbH8",
   "source_urls": [
-    {"url": "https://www.linkedin.com/posts/kubafilipowski_i-never-thought-id-meet-eric-ries-for-a-activity-7462048396460138497-yRhY", "label": "Kuba Filipowski (Netguru CEO, host) announces the conversation"}
+    {
+      "url": "https://www.linkedin.com/posts/kubafilipowski_i-never-thought-id-meet-eric-ries-for-a-activity-7462048396460138497-yRhY",
+      "label": "Kuba Filipowski (Netguru CEO, host) announces the conversation"
+    }
   ],
   "video_url": null,
-  "image": null,
+  "image": "/images/podcasts/disruption-talks-netguru.jpg",
   "attribution": "Netguru",
   "attribution_title": "Polish design & engineering firm; host of Next in Commerce podcast",
   "attribution_image": null,
-  "tags": ["podcast", "linkedin", "netguru", "next-in-commerce"],
+  "tags": [
+    "podcast",
+    "linkedin",
+    "netguru",
+    "next-in-commerce"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

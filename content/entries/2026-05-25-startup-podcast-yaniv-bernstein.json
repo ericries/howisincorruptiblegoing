@@ -9,11 +9,15 @@
   "source_url": "https://www.linkedin.com/posts/ybernstein_even-if-you-dont-know-eric-ries-you-know-activity-7464801224924696576--Z8E",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/podcasts/the-startup-podcast.jpg",
   "attribution": "Yaniv Bernstein",
   "attribution_title": "Founder, Vera; Host, The Startup Podcast",
   "attribution_image": null,
-  "tags": ["podcast", "linkedin", "the-startup-podcast"],
+  "tags": [
+    "podcast",
+    "linkedin",
+    "the-startup-podcast"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

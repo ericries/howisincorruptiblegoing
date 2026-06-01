@@ -8,15 +8,26 @@
   "blockquote_source": "Seedcamp Views — 'How to Build a Company Worth Protecting With Eric Ries'",
   "source_url": "https://seedcamp.com/views/how-to-build-a-company-worth-protecting-with-eric-ries",
   "source_urls": [
-    {"url": "https://www.linkedin.com/posts/seedcamp_eric-ries-has-spent-his-career-trying-to-activity-7466144585870934016-7UK_", "label": "Seedcamp announcement"}
+    {
+      "url": "https://www.linkedin.com/posts/seedcamp_eric-ries-has-spent-his-career-trying-to-activity-7466144585870934016-7UK_",
+      "label": "Seedcamp announcement"
+    }
   ],
   "video_url": null,
-  "image": null,
+  "image": "/images/podcasts/seedcamp.jpg",
   "attribution": "Seedcamp Views",
   "attribution_title": "Europe's seed-stage accelerator; conversation hosted by Managing Partner Carlos Eduardo Espinal MBE",
   "attribution_image": null,
-  "tags": ["podcast", "linkedin", "europe", "vc", "seedcamp"],
-  "type_metadata": {"featured": true},
+  "tags": [
+    "podcast",
+    "linkedin",
+    "europe",
+    "vc",
+    "seedcamp"
+  ],
+  "type_metadata": {
+    "featured": true
+  },
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-05-29T17:00:00Z"

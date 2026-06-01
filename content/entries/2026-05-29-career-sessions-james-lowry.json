@@ -8,14 +8,22 @@
   "blockquote_source": "Career Sessions episode page (PathWise)",
   "source_url": "https://pathwise.io/podcasts/eric-ries/",
   "source_urls": [
-    {"url": "https://www.linkedin.com/posts/jameslowry1_eric-ries-the-lean-start-up-was-a-runaway-activity-7465884073027096577-8zsa", "label": "Host announcement"}
+    {
+      "url": "https://www.linkedin.com/posts/jameslowry1_eric-ries-the-lean-start-up-was-a-runaway-activity-7465884073027096577-8zsa",
+      "label": "Host announcement"
+    }
   ],
   "video_url": null,
-  "image": null,
+  "image": "/images/podcasts/career-sessions-career-lessons.jpg",
   "attribution": "Career Sessions Podcast",
   "attribution_title": "Podcast hosted by James (J.R.) Lowry — C-level executive, founder of PathWise.io",
   "attribution_image": null,
-  "tags": ["podcast", "launch-week", "linkedin", "careers"],
+  "tags": [
+    "podcast",
+    "launch-week",
+    "linkedin",
+    "careers"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

@@ -8,14 +8,22 @@
   "blockquote_source": "Kara Goldin on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/karagoldin_thekaragoldinshow-ericries-incorruptible-activity-7462870222786584577-UqZO",
   "source_urls": [
-    {"url": "https://podcasts.apple.com/us/podcast/841-eric-ries-author-of-incorruptible/id1327208777?i=1000768719795", "label": "Episode 841 on Apple Podcasts"}
+    {
+      "url": "https://podcasts.apple.com/us/podcast/841-eric-ries-author-of-incorruptible/id1327208777?i=1000768719795",
+      "label": "Episode 841 on Apple Podcasts"
+    }
   ],
   "video_url": null,
-  "image": null,
+  "image": "/images/podcasts/kara-goldin-show.jpg",
   "attribution": "Kara Goldin",
   "attribution_title": "Founder of Hint Water; host of The Kara Goldin Show; WSJ bestselling author of Undaunted",
   "attribution_image": null,
-  "tags": ["podcast", "linkedin", "the-kara-goldin-show", "hint-water"],
+  "tags": [
+    "podcast",
+    "linkedin",
+    "the-kara-goldin-show",
+    "hint-water"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

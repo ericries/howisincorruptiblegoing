@@ -9,12 +9,20 @@
   "source_url": "https://www.linkedin.com/posts/ritamcgrath_thoughtsparks-corruption-leanstartup-activity-7463581956539273216-CAXk",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/podcasts/thought-sparks.jpg",
   "attribution": "Rita McGrath",
   "attribution_title": "C-Suite Strategist; Thinkers50 Top 10; bestselling author; Columbia Business School Professor",
   "attribution_image": null,
-  "tags": ["podcast", "linkedin", "thought-sparks", "rita-mcgrath", "thinkers50"],
-  "type_metadata": {"featured": true},
+  "tags": [
+    "podcast",
+    "linkedin",
+    "thought-sparks",
+    "rita-mcgrath",
+    "thinkers50"
+  ],
+  "type_metadata": {
+    "featured": true
+  },
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-05-22T16:45:00Z"

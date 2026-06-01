@@ -9,11 +9,16 @@
   "source_url": "https://www.linkedin.com/posts/craigdowden_dogoodtoleadwell-ceosuccess-positiveleadership-activity-7466140380544012288-76xZ",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/podcasts/do-good-to-lead-well.jpg",
   "attribution": "Do Good to Lead Well",
   "attribution_title": "Podcast hosted by Craig Dowden, Ph.D. — WSJ/USA Today bestselling author, executive coach",
   "attribution_image": null,
-  "tags": ["podcast", "linkedin", "launch-week", "leadership"],
+  "tags": [
+    "podcast",
+    "linkedin",
+    "launch-week",
+    "leadership"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

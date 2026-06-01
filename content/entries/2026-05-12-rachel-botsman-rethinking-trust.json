@@ -8,14 +8,23 @@
   "blockquote_source": "Rachel Botsman on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/rachel-botsman_rethinking-trust-with-eric-ries-activity-7459980905466683392-Bvwm",
   "source_urls": [
-    {"url": "https://www.linkedin.com/newsletters/6625780695937626112/", "label": "Rachel Botsman's RETHINK newsletter on LinkedIn"}
+    {
+      "url": "https://www.linkedin.com/newsletters/6625780695937626112/",
+      "label": "Rachel Botsman's RETHINK newsletter on LinkedIn"
+    }
   ],
   "video_url": null,
-  "image": null,
+  "image": "/images/podcasts/rethinking-trust.jpg",
   "attribution": "Rachel Botsman",
   "attribution_title": "Leading global expert on trust; Oxford lecturer; author of WHAT'S MINE IS YOURS, WHO CAN YOU TRUST?, and HOW TO TRUST & BE TRUSTED",
   "attribution_image": null,
-  "tags": ["podcast", "linkedin", "rethink", "rachel-botsman", "trust"],
+  "tags": [
+    "podcast",
+    "linkedin",
+    "rethink",
+    "rachel-botsman",
+    "trust"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

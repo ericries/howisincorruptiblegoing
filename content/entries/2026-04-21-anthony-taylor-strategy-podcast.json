@@ -9,11 +9,15 @@
   "source_url": "https://www.linkedin.com/posts/anthonyctaylor604_misalignment-activity-7452415986743345152-59s_",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/podcasts/sme-strategy.jpg",
   "attribution": "Anthony C Taylor",
   "attribution_title": "Helping mid-market leadership teams execute strategy",
   "attribution_image": "/images/people/anthony-c-taylor.jpg",
-  "tags": ["podcast", "linkedin", "strategy"],
+  "tags": [
+    "podcast",
+    "linkedin",
+    "strategy"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": true,

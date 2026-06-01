@@ -9,11 +9,15 @@
   "source_url": "https://www.linkedin.com/posts/davideritorto_thecorporateventuringpodcast-corporateventuring-activity-7452968788683014144-CVRV",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/podcasts/corporate-venturing-podcast.jpg",
   "attribution": "Davide Ritorto",
   "attribution_title": "Innovation @ Lamborghini; Host, The Corporate Venturing Podcast",
   "attribution_image": "/images/people/davide-ritorto.jpg",
-  "tags": ["podcast", "linkedin", "corporate-venturing"],
+  "tags": [
+    "podcast",
+    "linkedin",
+    "corporate-venturing"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": true,

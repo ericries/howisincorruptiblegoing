@@ -111,8 +111,9 @@ const POSTER_PINS = [
   '2026-05-22-yc-main-function-garry-tan',                 // 2. Y Combinator
   '2026-04-07-david-meyer-ageless-warrior',                // 3. Ageless Warrior
   '2026-05-26-hbr-ideacast-sophisticated-zombies',         // 4. HBR
-  '2026-05-24-learning-leader-ryan-hawk',                  // 5. Ryan Hawk
-  '2026-04-16-kim-scott-radical-candor-podcast',           // 6. Kim Scott
+  '2026-04-16-kim-scott-radical-candor-podcast',           // 5. Kim Scott
+  '2026-05-27-guy-kawasaki-remarkable-people',             // 6. Guy Kawasaki
+  '2026-05-24-learning-leader-ryan-hawk',                  // 7. Ryan Hawk
 ];
 // Short institutional labels for the pinned podcasts so the card credits the
 // show, not the host's personal name.
@@ -123,6 +124,7 @@ const POSTER_LABELS: Record<string, string> = {
   '2026-04-07-david-meyer-ageless-warrior': 'Ageless Warrior',
   '2026-05-24-learning-leader-ryan-hawk': 'Learning Leader',
   '2026-04-16-kim-scott-radical-candor-podcast': 'Radical Candor',
+  '2026-05-27-guy-kawasaki-remarkable-people': 'Remarkable People',
   '2026-05-26-awarepreneurs-396-launch': 'Awarepreneurs',
   '2026-05-26-leading-learning-jeff-cobb': 'Leading Learning',
   '2026-05-26-inside-outside-brian-ardinger': 'Inside Outside',
@@ -163,7 +165,7 @@ const posterCards: PosterCard[] = entries
     if (aBucket === 0) return aPin - bPin;
     return b.date.localeCompare(a.date);
   })
-  .slice(0, 40);
+  .slice(0, 120);
 
 interface AwardCard {
   id: string;

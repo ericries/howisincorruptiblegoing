@@ -9,11 +9,16 @@
   "source_url": "https://www.linkedin.com/posts/ryanhhoneyman_bcorp-activity-7457474231640137728-pt5A",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/podcasts/b-corp-podcast.jpg",
   "attribution": "Ryan Honeyman",
   "attribution_title": "Partner, Purpose Foundation; co-author, The B Corp Handbook",
   "attribution_image": null,
-  "tags": ["podcast", "linkedin", "b-corp", "purpose-foundation"],
+  "tags": [
+    "podcast",
+    "linkedin",
+    "b-corp",
+    "purpose-foundation"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,
