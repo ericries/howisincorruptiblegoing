@@ -8,12 +8,16 @@
   "blockquote_source": "The Inverted Podcast (Spotify episode description)",
   "source_url": "https://open.spotify.com/episode/39dfdSknQAEWRgd3rgvWxV",
   "source_urls": null,
-  "video_url": null,
+  "video_url": "https://www.youtube.com/watch?v=VKJBtSKGwj8",
   "image": "/images/podcasts/inverted-podcast.jpg",
   "attribution": "The Inverted Podcast",
   "attribution_title": "Hosted by Jeroen, Dana, and Dario",
   "attribution_image": null,
-  "tags": ["podcast", "launch-day", "spotify"],
+  "tags": [
+    "podcast",
+    "launch-day",
+    "spotify"
+  ],
   "type_metadata": {},
   "scanner_source": "manual",
   "verified": false,

@@ -8,12 +8,16 @@
   "blockquote_source": "Eric Ries on FOMO Sapiens (quoted by Patrick McGinnis on LinkedIn)",
   "source_url": "https://www.linkedin.com/posts/patrick-mcginnis_eric-ries-wrote-the-lean-startup-in-2011-activity-7465824073772658688-18k0",
   "source_urls": null,
-  "video_url": null,
+  "video_url": "https://www.youtube.com/watch?v=J3Vm2_Tauu8",
   "image": "/images/podcasts/fomo-sapiens.jpg",
   "attribution": "FOMO Sapiens",
   "attribution_title": "Podcast hosted by Patrick McGinnis — inventor of FOMO, author of The 10% Entrepreneur",
   "attribution_image": null,
-  "tags": ["podcast", "launch-week", "linkedin"],
+  "tags": [
+    "podcast",
+    "launch-week",
+    "linkedin"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

@@ -8,12 +8,16 @@
   "blockquote_source": "Leah Solivan on LinkedIn (Breaking Precedent the Podcast)",
   "source_url": "https://www.linkedin.com/posts/leahsolivan_what-if-the-most-valuable-thing-a-startup-activity-7465830102208090113-oV6V",
   "source_urls": null,
-  "video_url": null,
+  "video_url": "https://www.youtube.com/watch?v=Cvu-lRcJYzU",
   "image": "/images/podcasts/breaking-precedent.jpg",
   "attribution": "Breaking Precedent the Podcast",
   "attribution_title": "Podcast hosted by Leah Solivan, TaskRabbit founder",
   "attribution_image": null,
-  "tags": ["podcast", "launch-week", "linkedin"],
+  "tags": [
+    "podcast",
+    "launch-week",
+    "linkedin"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

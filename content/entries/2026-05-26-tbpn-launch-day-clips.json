@@ -8,15 +8,26 @@
   "blockquote_source": "Eric Ries on TBPN (quoting Jim Sinegal)",
   "source_url": "https://x.com/tbpn/status/2059435702119735610",
   "source_urls": [
-    {"url": "https://x.com/tbpn/status/2059425817260933537", "label": "TBPN — Eric on the 5% quarterly-reporting penalty"},
-    {"url": "https://x.com/tbpn/status/2059430574700572790", "label": "TBPN — 'you're a business revolutionary, whether you know it or not'"}
+    {
+      "url": "https://x.com/tbpn/status/2059425817260933537",
+      "label": "TBPN — Eric on the 5% quarterly-reporting penalty"
+    },
+    {
+      "url": "https://x.com/tbpn/status/2059430574700572790",
+      "label": "TBPN — 'you're a business revolutionary, whether you know it or not'"
+    }
   ],
-  "video_url": null,
+  "video_url": "https://www.youtube.com/watch?v=AWuE2Ru2SrE",
   "image": "/images/podcasts/tbpn.jpg",
   "attribution": "TBPN",
   "attribution_title": "Daily Silicon Valley video podcast hosted by John Coogan and Jordi Hays",
   "attribution_image": null,
-  "tags": ["podcast", "twitter", "launch-day", "tbpn"],
+  "tags": [
+    "podcast",
+    "twitter",
+    "launch-day",
+    "tbpn"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

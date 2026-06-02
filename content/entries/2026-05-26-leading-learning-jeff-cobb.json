@@ -8,12 +8,15 @@
   "blockquote_source": "Jeff Cobb on the Leading Learning Podcast",
   "source_url": "https://www.leadinglearning.com/episode-479-eric-ries/",
   "source_urls": null,
-  "video_url": null,
+  "video_url": "https://www.youtube.com/watch?v=GG4KEsxz1aQ",
   "image": "/images/podcasts/leading-learning.jpg",
   "attribution": "Leading Learning Podcast",
   "attribution_title": "Long-running podcast for the professional learning industry, hosted by Jeff Cobb and Celisa Steele",
   "attribution_image": null,
-  "tags": ["podcast", "launch-day"],
+  "tags": [
+    "podcast",
+    "launch-day"
+  ],
   "type_metadata": {},
   "scanner_source": "manual",
   "verified": false,

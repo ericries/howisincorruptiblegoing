@@ -8,12 +8,16 @@
   "blockquote_source": "Tech Lead Journal episode 259 page",
   "source_url": "https://techleadjournal.dev/episodes/259/",
   "source_urls": null,
-  "video_url": null,
+  "video_url": "https://www.youtube.com/watch?v=jF8J3CmPdi4",
   "image": "/images/podcasts/tech-lead-journal.jpg",
   "attribution": "Tech Lead Journal",
   "attribution_title": "Podcast hosted by Henry Suryawirawan",
   "attribution_image": "/images/podcasts/tech-lead-journal.jpg",
-  "tags": ["podcast", "launch-week", "engineering-leadership"],
+  "tags": [
+    "podcast",
+    "launch-week",
+    "engineering-leadership"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

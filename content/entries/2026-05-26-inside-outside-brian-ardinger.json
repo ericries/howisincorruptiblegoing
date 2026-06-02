@@ -8,12 +8,15 @@
   "blockquote_source": "Brian Ardinger on Inside Outside Innovation",
   "source_url": "https://insideoutside.io/podcast/building-companies-that-last-without-selling-out-with-brian-ardinger-and-eric-ries-author-of-incorruptible/",
   "source_urls": null,
-  "video_url": null,
+  "video_url": "https://www.youtube.com/watch?v=h_89JOBm0-k",
   "image": "/images/podcasts/inside-outside-innovation.jpg",
   "attribution": "Inside Outside Innovation Podcast",
   "attribution_title": "Innovation podcast hosted by Brian Ardinger",
   "attribution_image": null,
-  "tags": ["podcast", "launch-day"],
+  "tags": [
+    "podcast",
+    "launch-day"
+  ],
   "type_metadata": {},
   "scanner_source": "manual",
   "verified": false,

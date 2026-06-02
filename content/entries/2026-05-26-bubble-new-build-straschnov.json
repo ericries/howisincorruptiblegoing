@@ -8,14 +8,21 @@
   "blockquote_source": "Emmanuel Straschnov on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/straschnov_eric-ries-author-of-the-lean-startup-was-activity-7465055572871086080-iOtU",
   "source_urls": [
-    {"url": "https://bubble.io/blog/the-new-build-10-eric-ries/", "label": "The New Build #10 — Eric Ries (Bubble blog)"}
+    {
+      "url": "https://bubble.io/blog/the-new-build-10-eric-ries/",
+      "label": "The New Build #10 — Eric Ries (Bubble blog)"
+    }
   ],
-  "video_url": null,
+  "video_url": "https://www.youtube.com/watch?v=YKYUT3QENw8",
   "image": "/images/podcasts/the-new-build.jpg",
   "attribution": "The New Build",
   "attribution_title": "Podcast hosted by Bubble co-founder & co-CEO Emmanuel Straschnov",
   "attribution_image": null,
-  "tags": ["podcast", "launch-day", "linkedin"],
+  "tags": [
+    "podcast",
+    "launch-day",
+    "linkedin"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

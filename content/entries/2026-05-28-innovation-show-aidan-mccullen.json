@@ -8,14 +8,21 @@
   "blockquote_source": "Aidan McCullen on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/aidanmccullen_innovation-leadership-governance-activity-7465650833880272896-Ear4",
   "source_urls": [
-    {"url": "https://www.linkedin.com/pulse/everyone-who-gets-you-out-shit-your-friend-aidan-mccullen-qujaf", "label": "Aidan McCullen's companion LinkedIn essay"}
+    {
+      "url": "https://www.linkedin.com/pulse/everyone-who-gets-you-out-shit-your-friend-aidan-mccullen-qujaf",
+      "label": "Aidan McCullen's companion LinkedIn essay"
+    }
   ],
-  "video_url": null,
+  "video_url": "https://www.youtube.com/watch?v=JDjzR2nuctA",
   "image": "/images/podcasts/innovation-show.jpg",
   "attribution": "The Innovation Show",
   "attribution_title": "Podcast hosted by Aidan McCullen — Thinkers50 Award winner, keynote speaker on innovation and change",
   "attribution_image": null,
-  "tags": ["podcast", "launch-week", "linkedin"],
+  "tags": [
+    "podcast",
+    "launch-week",
+    "linkedin"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

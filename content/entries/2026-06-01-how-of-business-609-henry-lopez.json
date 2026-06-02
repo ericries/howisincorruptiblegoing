@@ -8,12 +8,15 @@
   "blockquote_source": "The How of Business episode 609 show notes",
   "source_url": "https://www.thehowofbusiness.com/609-eric-ries-incorruptible/",
   "source_urls": null,
-  "video_url": null,
+  "video_url": "https://www.youtube.com/watch?v=FfV71RRBVcE",
   "image": "/images/podcasts/how-of-business.jpg",
   "attribution": "The How of Business",
   "attribution_title": "Podcast hosted by Henry Lopez",
   "attribution_image": "/images/podcasts/how-of-business.jpg",
-  "tags": ["podcast", "small-business"],
+  "tags": [
+    "podcast",
+    "small-business"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

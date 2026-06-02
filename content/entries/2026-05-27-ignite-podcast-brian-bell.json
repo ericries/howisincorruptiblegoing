@@ -8,12 +8,15 @@
   "blockquote_source": "Eric Ries on the Ignite Podcast",
   "source_url": "https://insights.teamignite.ventures/p/ignite-the-book-eric-ries-on-why",
   "source_urls": null,
-  "video_url": null,
+  "video_url": "https://www.youtube.com/watch?v=F4LMg9hi_EI",
   "image": "/images/podcasts/ignite-podcast.jpg",
   "attribution": "Ignite Podcast",
   "attribution_title": "Conversations on Startups, Venture Capital, Tech, Future, and Society — hosted by Brian Bell",
   "attribution_image": null,
-  "tags": ["podcast", "launch-week"],
+  "tags": [
+    "podcast",
+    "launch-week"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,
