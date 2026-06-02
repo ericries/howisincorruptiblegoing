@@ -1,0 +1,21 @@
+{
+  "id": "2026-06-02-amazon-reviews-100-milestone",
+  "date": "2026-06-02",
+  "type": "milestone",
+  "title": "Incorruptible passes 100 reviews on Amazon",
+  "summary": "Incorruptible crosses 100 customer reviews on Amazon at a 5.0★ average.",
+  "blockquote": "100 reviews · 5.0★",
+  "blockquote_source": "Amazon",
+  "source_url": "https://www.amazon.com/Incorruptible-Good-Companies-Great-Stay/product-reviews/B0FWZZBPZB/",
+  "source_urls": null,
+  "video_url": null,
+  "image": null,
+  "attribution": "Amazon",
+  "attribution_title": null,
+  "attribution_image": null,
+  "tags": ["milestone", "amazon", "reviews"],
+  "type_metadata": {"review_count": 100, "average_rating": 5.0},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-06-02T16:45:00Z"
+}

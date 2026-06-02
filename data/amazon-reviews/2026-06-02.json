@@ -1,0 +1,26 @@
+{
+  "snapshot_date": "2026-06-02",
+  "captured_at": "2026-06-02T16:45:00Z",
+  "capture_method": "totals-only (Eric's LinkedIn announcement '100 five-star reviews' + 102 global ratings observed via rag-web-browser on 2026-06-01)",
+  "source_url": "https://www.amazon.com/Incorruptible-Good-Companies-Great-Stay/product-reviews/B0FWZZBPZB/",
+  "asin": "B0FWZZBPZB",
+  "totals": {
+    "global_ratings": 102,
+    "customer_reviews": 100,
+    "average_rating": 5.0,
+    "five_star_pct": 99,
+    "four_star_pct": 1,
+    "three_star_pct": 0,
+    "two_star_pct": 0,
+    "one_star_pct": 0
+  },
+  "notes_for_future_agents": [
+    "Anonymous scrapers can't pull review text. Reviewer-level rows omitted from this snapshot.",
+    "100-review threshold crossed and milestone shipped at content/entries/2026-06-02-amazon-reviews-100-milestone.json.",
+    "Next milestone threshold: 250 reviews."
+  ],
+  "reviews": [],
+  "milestone_entries": [
+    "2026-06-02-amazon-reviews-100-milestone"
+  ]
+}
