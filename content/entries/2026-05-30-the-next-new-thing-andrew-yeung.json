@@ -1,0 +1,21 @@
+{
+  "id": "2026-05-30-the-next-new-thing-andrew-yeung",
+  "date": "2026-05-30",
+  "type": "podcast",
+  "title": "The Next New Thing (Andrew Yeung) — Eric on Anthropic, vibe coding, and 'the artifact is not the asset. The learning is.'",
+  "summary": "Andrew Yeung runs Eric on The Next New Thing, walking through Anthropic's founding structure and the Long-Term Benefit Trust, what Google's AI story reveals about corporate drift, and the danger Eric sees in vibe coding — using AI to replace skill rather than build it.",
+  "blockquote": "AI can make builders more powerful, but only if it strengthens human judgment, craft, and learning. The artifact is not the asset. The learning is.",
+  "blockquote_source": "The Next New Thing YouTube episode description",
+  "source_url": "https://www.youtube.com/watch?v=xxzZJDqyTg8",
+  "source_urls": null,
+  "video_url": "https://www.youtube.com/watch?v=xxzZJDqyTg8",
+  "image": "/images/podcasts/the-next-new-thing.jpg",
+  "attribution": "The Next New Thing",
+  "attribution_title": "Podcast hosted by Andrew Yeung",
+  "attribution_image": "/images/podcasts/the-next-new-thing.jpg",
+  "tags": ["podcast", "ai", "anthropic", "vibe-coding"],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-06-02T02:31:00Z"
+}
