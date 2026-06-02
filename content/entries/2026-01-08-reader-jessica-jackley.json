@@ -13,8 +13,13 @@
   "attribution": "Jessica Jackley",
   "attribution_title": "Founder of Kiva; Professor of Social Entrepreneurship, USC Marshall School of Business",
   "attribution_image": "/images/readers/jessica-jackley.jpg",
-  "tags": ["endorsement", "reader", "founder", "kiva"],
-  "type_metadata": {"highlight": "Jessica Jackley: 'This book nearly brought me to tears.'"},
+  "tags": [
+    "endorsement",
+    "reader",
+    "founder",
+    "kiva"
+  ],
+  "type_metadata": {},
   "scanner_source": "manual",
   "verified": true,
   "created_at": "2026-04-12T23:00:00Z"

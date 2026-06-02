@@ -13,8 +13,14 @@
   "attribution": "Penguin Life UK",
   "attribution_title": "UK publisher of Incorruptible; post by Senior Commissioning Editor Matt James",
   "attribution_image": null,
-  "tags": ["media", "linkedin", "launch-week", "uk", "publisher"],
-  "type_metadata": {"featured": true},
+  "tags": [
+    "media",
+    "linkedin",
+    "launch-week",
+    "uk",
+    "publisher"
+  ],
+  "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-05-28T19:05:00Z"

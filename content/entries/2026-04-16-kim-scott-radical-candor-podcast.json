@@ -8,16 +8,30 @@
   "blockquote_source": "Kim Scott on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/kimm4_eric-ries-has-a-new-book-coming-out-and-activity-7450566182153396224-wrst",
   "source_urls": [
-    {"url": "https://www.radicalcandor.com/podcast/incorruptible-eric-ries-8-12", "label": "Full episode on Radical Candor"},
-    {"url": "https://www.youtube.com/watch?v=JgOfO8V0zaE", "label": "Full episode on YouTube"}
+    {
+      "url": "https://www.radicalcandor.com/podcast/incorruptible-eric-ries-8-12",
+      "label": "Full episode on Radical Candor"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=JgOfO8V0zaE",
+      "label": "Full episode on YouTube"
+    }
   ],
   "video_url": "https://www.youtube.com/watch?v=JgOfO8V0zaE",
   "image": null,
   "attribution": "Kim Scott",
   "attribution_title": "Co-founder of Radical Candor; NYT Bestselling Author",
   "attribution_image": "/images/people/kim-scott.jpg",
-  "tags": ["podcast", "linkedin", "radical-candor"],
-  "type_metadata": {"highlight": "Kim Scott: 'One of the most important books I've read in the last decade'", "sidebar_quote": "It's one of the most important books I've read in the last decade. Companies don't fail their missions because of bad people. They fail because of bad structures.", "hero_quote_label": "most important books I've read in the last decade", "hero_quote_author": "Kim Scott"},
+  "tags": [
+    "podcast",
+    "linkedin",
+    "radical-candor"
+  ],
+  "type_metadata": {
+    "sidebar_quote": "It's one of the most important books I've read in the last decade. Companies don't fail their missions because of bad people. They fail because of bad structures.",
+    "hero_quote_label": "most important books I've read in the last decade",
+    "hero_quote_author": "Kim Scott"
+  },
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-04-16T22:00:00Z"

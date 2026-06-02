@@ -13,8 +13,12 @@
   "attribution": "Lisa Brennan-Jobs",
   "attribution_title": "Writer; author of the memoir Small Fry",
   "attribution_image": null,
-  "tags": ["review", "amazon", "launch-day"],
-  "type_metadata": {"featured": true},
+  "tags": [
+    "review",
+    "amazon",
+    "launch-day"
+  ],
+  "type_metadata": {},
   "scanner_source": "manual",
   "verified": false,
   "created_at": "2026-05-30T22:55:00Z"

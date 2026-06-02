@@ -13,8 +13,13 @@
   "attribution": "Porchlight Book Company",
   "attribution_title": "Largest US distributor of business books to corporate buyers; curator of the Porchlight Business Book Awards",
   "attribution_image": null,
-  "tags": ["interview", "porchlight", "launch-day", "q-and-a"],
-  "type_metadata": {"featured": true},
+  "tags": [
+    "interview",
+    "porchlight",
+    "launch-day",
+    "q-and-a"
+  ],
+  "type_metadata": {},
   "scanner_source": "manual",
   "verified": false,
   "created_at": "2026-05-26T19:56:00Z"

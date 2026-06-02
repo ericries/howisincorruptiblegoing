@@ -8,15 +8,24 @@
   "blockquote_source": "Matt Blumberg, 'Book Short: Incorruptible' on LinkedIn Pulse",
   "source_url": "https://www.linkedin.com/pulse/book-short-incorruptible-right-timely-inspiring-all-same-blumberg-mkjqc",
   "source_urls": [
-    {"url": "https://www.linkedin.com/posts/blumbergmatt_eric-riess-new-book-incorruptible-is-out-activity-7466107345526423553-G5Jg", "label": "Announcement post"}
+    {
+      "url": "https://www.linkedin.com/posts/blumbergmatt_eric-riess-new-book-incorruptible-is-out-activity-7466107345526423553-G5Jg",
+      "label": "Announcement post"
+    }
   ],
   "video_url": null,
   "image": null,
   "attribution": "Matt Blumberg",
   "attribution_title": "CEO of Markup AI; author of Startup CEO, Startup CXO, and Startup Boards",
   "attribution_image": "/images/people/matt-blumberg.jpg",
-  "tags": ["media", "linkedin", "launch-week", "long-form-review", "endorser"],
-  "type_metadata": {"featured": true},
+  "tags": [
+    "media",
+    "linkedin",
+    "launch-week",
+    "long-form-review",
+    "endorser"
+  ],
+  "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-05-29T13:45:00Z"

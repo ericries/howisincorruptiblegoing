@@ -13,8 +13,16 @@
   "attribution": "Bob Sutton",
   "attribution_title": "Stanford professor; NYT bestselling author of The No Asshole Rule and Good Boss, Bad Boss",
   "attribution_image": "/images/people/robert-sutton.jpg",
-  "tags": ["endorsement", "linkedin", "stanford", "launch-day", "blurb"],
-  "type_metadata": {"featured": true, "highlight": "Bob Sutton: 'a rare joy to read'", "sidebar_quote": "Incorruptible destroys the myth that only sleazy founders and companies get rich. Eric Ries shows you how to build a mission-driven company that will be humane, ethical, and make piles of money for decades."},
+  "tags": [
+    "endorsement",
+    "linkedin",
+    "stanford",
+    "launch-day",
+    "blurb"
+  ],
+  "type_metadata": {
+    "sidebar_quote": "Incorruptible destroys the myth that only sleazy founders and companies get rich. Eric Ries shows you how to build a mission-driven company that will be humane, ethical, and make piles of money for decades."
+  },
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-05-26T16:50:00Z"
