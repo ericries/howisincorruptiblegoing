@@ -1,0 +1,21 @@
+{
+  "id": "2026-06-01-zapier-agents-of-scale-wade-foster",
+  "date": "2026-06-01",
+  "type": "podcast",
+  "title": "Zapier's Agents of Scale (Wade Foster) — Eric on vibe coding, 'slop factories', and the new bottleneck after AI cheapens building",
+  "summary": "Wade Foster — co-founder and CEO of Zapier — runs Eric on Agents of Scale to argue that when AI makes building radically cheaper, measurement and learning become the new bottleneck, and teams that use AI to outsource judgment end up running what Eric calls 'slop factories.'",
+  "blockquote": "AI has made the build step radically faster. Code that used to take weeks can now appear in minutes. But Eric's warning is sharp: when building gets cheaper, measurement and learning become the new bottlenecks. Teams that use AI to close the learning loop are flying. Teams that use AI to outsource their judgment are building what he calls \"slop factories.\"",
+  "blockquote_source": "Zapier's Agents of Scale podcast — Wade Foster on the Eric Ries episode",
+  "source_url": "https://www.youtube.com/watch?v=Qs33r-Nreb8",
+  "source_urls": null,
+  "video_url": "https://www.youtube.com/watch?v=Qs33r-Nreb8",
+  "image": null,
+  "attribution": "Agents of Scale",
+  "attribution_title": "Podcast hosted by Wade Foster — Co-founder and CEO, Zapier",
+  "attribution_image": null,
+  "tags": ["podcast", "ai", "zapier", "vibe-coding"],
+  "type_metadata": {"featured": true},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-06-03T16:35:00Z"
+}
