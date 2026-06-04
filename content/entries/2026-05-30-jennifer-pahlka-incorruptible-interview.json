@@ -13,8 +13,14 @@
   "attribution": "Jennifer Pahlka",
   "attribution_title": "Author of Recoding America; founder of Code for America; former US Deputy CTO",
   "attribution_image": null,
-  "tags": ["media", "linkedin", "endorsement", "government", "civic-tech"],
-  "type_metadata": {"featured": true},
+  "tags": [
+    "media",
+    "linkedin",
+    "endorsement",
+    "government",
+    "civic-tech"
+  ],
+  "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-05-30T22:30:00Z"

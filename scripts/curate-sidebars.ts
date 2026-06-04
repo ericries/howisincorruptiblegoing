@@ -1,8 +1,6 @@
 #!/usr/bin/env tsx
-// One-shot sidebar curation: trim featured (16->8) and highlight (16->6)
-// per memory/feedback_sidebar_flags.md, removing flags from entries that
-// dropped out of the top N. Modifies type_metadata in place — deletes the
-// key entirely rather than setting it to false/empty.
+// One-shot sidebar curation: trim featured (11->8) per
+// memory/feedback_sidebar_flags.md. Highlights already at 6 — no change.
 
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -10,28 +8,12 @@ import { resolve } from 'node:path';
 const ENTRIES = resolve(import.meta.dirname, '..', 'content/entries');
 
 const REMOVE_FEATURED = [
-  '2026-05-26-bob-sutton-launch-day-blurb',
-  '2026-05-26-porchlight-qa-incorruptible',
-  '2026-05-26-reader-lisa-brennan-jobs',
-  '2026-05-26-rob-walling-startups-for-the-rest-of-us',
-  '2026-05-26-thought-sparks-rita-mcgrath',
-  '2026-05-28-penguin-life-publisher-blurbs',
-  '2026-05-29-matt-blumberg-book-short-review',
-  '2026-05-29-seedcamp-carlos-espinal',
+  '2026-05-30-jennifer-pahlka-incorruptible-interview',
+  '2026-06-01-raphaelle-kennedy-book-of-the-year',
+  '2026-06-01-ryan-martens-rally-software-review',
 ];
 
-const REMOVE_HIGHLIGHT = [
-  '2026-01-08-reader-jessica-jackley',
-  '2026-02-27-endorsement-tim-oreilly',
-  '2026-03-19-endorsement-matt-blumberg',
-  '2026-04-01-endorsement-ken-chenault',
-  '2026-04-08-endorsement-daniel-pink',
-  '2026-04-16-kim-scott-radical-candor-podcast',
-  '2026-05-16-frances-frei-incorruptible-comment',
-  '2026-05-26-bob-sutton-launch-day-blurb',
-  '2026-05-26-nir-eyal-launch-day-tweet',
-  '2026-05-27-karri-saarinen-linear-tweet',
-];
+const REMOVE_HIGHLIGHT: string[] = [];
 
 function patch(id: string, op: (meta: Record<string, unknown>) => boolean) {
   const p = resolve(ENTRIES, `${id}.json`);

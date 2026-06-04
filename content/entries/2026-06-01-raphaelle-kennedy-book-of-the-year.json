@@ -13,8 +13,12 @@
   "attribution": "Raphaelle Kennedy",
   "attribution_title": "Member Specialist; Senior Leader",
   "attribution_image": null,
-  "tags": ["reader", "linkedin", "purpose"],
-  "type_metadata": {"featured": true},
+  "tags": [
+    "reader",
+    "linkedin",
+    "purpose"
+  ],
+  "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-06-02T01:37:00Z"
