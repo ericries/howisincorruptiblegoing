@@ -161,6 +161,29 @@ if (isMainModule) {
     }
   }
 
+  // Highlights row floor — the carousel is meant to GROW over time, not be
+  // pruned. The floor is the count of type_metadata.highlight entries we
+  // currently honor. Any commit that drops the count below the floor fails
+  // lint. Raise the floor whenever a new highlight is legitimately added
+  // (do not lower it). See memory/feedback_highlights_row_grows.md and the
+  // 2026-06-04 chat: "the top rows of highlights are meant to get longer
+  // and longer, not be pruned".
+  const HIGHLIGHTS_FLOOR = 16;
+  let highlightsCount = 0;
+  for (const f of files) {
+    const data = JSON.parse(fs.readFileSync(path.join(entriesDir, f), 'utf-8'));
+    if (data.type_metadata?.highlight) highlightsCount++;
+  }
+  if (highlightsCount < HIGHLIGHTS_FLOOR) {
+    hasErrors = true;
+    console.error(
+      `\n❌ HIGHLIGHTS FLOOR: only ${highlightsCount} entries have type_metadata.highlight, ` +
+      `floor is ${HIGHLIGHTS_FLOOR}. The carousel grows; it does not shrink. ` +
+      `Restore missing highlight flags or, if a highlight was legitimately removed ` +
+      `(e.g. the entry was deleted), lower the floor in scripts/lint-entries.ts.`,
+    );
+  }
+
   let lastEndorsementIndex = -999;
   for (let i = 0; i < allEntries.length; i++) {
     const entry = allEntries[i];
