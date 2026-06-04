@@ -1,0 +1,21 @@
+{
+  "id": "2026-06-03-usa-today-bestseller-list",
+  "date": "2026-06-03",
+  "type": "milestone",
+  "title": "Incorruptible makes the USA Today Best-selling Booklist",
+  "summary": "Incorruptible lands on the USA Today Best-selling Booklist — a combined all-genres list of the 150 top-selling titles of the week across print and electronic formats, sold across bookstore chains, independent bookstores, mass merchandisers, and online retailers.",
+  "blockquote": "USA Today Bestseller",
+  "blockquote_source": "USA Today",
+  "source_url": "https://www.usatoday.com/booklist/booklist",
+  "source_urls": null,
+  "video_url": null,
+  "image": null,
+  "attribution": "USA Today",
+  "attribution_title": "Best-selling Booklist — all genres, week ending 2026-06-01 (published 2026-06-03)",
+  "attribution_image": null,
+  "tags": ["milestone", "usa-today", "bestseller-list", "mainstream-press"],
+  "type_metadata": {"featured": true},
+  "scanner_source": "manual",
+  "verified": false,
+  "created_at": "2026-06-04T16:20:00Z"
+}
