@@ -1,0 +1,24 @@
+{
+  "id": "2026-06-03-unsiloed-656-greg-lablanc",
+  "date": "2026-06-03",
+  "type": "podcast",
+  "title": "unSILOed #656 (Greg LaBlanc) — Eric: 'governance is really the art of organizational soul craft'",
+  "summary": "Greg LaBlanc — Berkeley Haas / Wharton lecturer and host of unSILOed — runs Eric on episode 656 for an interdisciplinary audience, framing the conversation around startup governance, mission control, and the failures of shareholder primacy.",
+  "blockquote": "Governance sounds really boring, but it's really the art of organizational soul craft.",
+  "blockquote_source": "Eric Ries on unSILOed podcast (episode 656)",
+  "source_url": "https://www.unsiloedpodcast.com/episodes/eric-ries",
+  "source_urls": [
+    {"url": "https://open.spotify.com/show/1dxKOERwHbT3VxQ8g4gVXM", "label": "Spotify"},
+    {"url": "https://podcasts.apple.com/us/podcast/unsiloed-with-greg-lablanc/id1566956045", "label": "Apple Podcasts"}
+  ],
+  "video_url": null,
+  "image": "/images/podcasts/unsiloed.jpg",
+  "attribution": "unSILOed",
+  "attribution_title": "Podcast hosted by Greg LaBlanc (Berkeley Haas, Wharton)",
+  "attribution_image": "/images/podcasts/unsiloed.jpg",
+  "tags": ["podcast", "governance", "academia"],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-06-04T01:40:00Z"
+}
