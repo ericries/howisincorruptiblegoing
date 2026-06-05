@@ -49,7 +49,7 @@ const outlets: Outlet[] = [
      strip its own clear "credentials" zone. */
   .bestsellers {
     background: #f5f1e8;
-    padding: 1.75rem 1.5rem 1.6rem;
+    padding: 0.95rem 1.5rem 0.85rem;
     border-top: 1px solid rgba(26, 30, 58, 0.05);
     border-bottom: 1px solid rgba(26, 30, 58, 0.05);
   }
@@ -60,7 +60,7 @@ const outlets: Outlet[] = [
     justify-content: center;
     gap: 1.25rem;
     max-width: 1100px;
-    margin: 0 auto 1.2rem;
+    margin: 0 auto 0.6rem;
   }
   .bestsellers__rule {
     flex: 1;
@@ -105,21 +105,22 @@ const outlets: Outlet[] = [
     display: block;
   }
 
-  /* Per-outlet sizing — each asset has its own natural aspect; size each
-     so the visual weight is roughly balanced across the row. */
-  .wm-nyt        { height: 22px; }   /* wide blackletter masthead */
-  .wm-usat       { height: 22px; }   /* USA TODAY blue-globe wordmark */
-  .wm-indie      { height: 56px; }   /* multi-color illustrated seal */
-  .wm-amazon     { height: 24px; }   /* amazon wordmark + arrow */
-  .wm-porchlight { height: 36px; }   /* Porchlight wordmark — fine letterforms */
+  /* Per-outlet sizing — NYT gets the dominant visual weight since
+     it's the headline credential ('Instant New York Times Bestseller'),
+     other outlets sized down so they support rather than compete. */
+  .wm-nyt        { height: 36px; }   /* wide blackletter masthead — dominant */
+  .wm-usat       { height: 20px; }
+  .wm-indie      { height: 48px; }   /* multi-color illustrated seal */
+  .wm-amazon     { height: 22px; }
+  .wm-porchlight { height: 32px; }
 
   @media (max-width: 640px) {
     .bestsellers {
-      padding: 1.25rem 0.75rem 1.15rem;
+      padding: 0.7rem 0.75rem 0.65rem;
     }
     .bestsellers__headline {
       gap: 0.55rem;
-      margin-bottom: 0.9rem;
+      margin-bottom: 0.5rem;
     }
     .bestsellers__rule { max-width: 50px; }
     .bestsellers__headline-text {
@@ -128,11 +129,11 @@ const outlets: Outlet[] = [
       white-space: normal;
       text-align: center;
     }
-    .bestsellers__row { gap: 1.25rem 1.75rem; }
-    .wm-nyt        { height: 16px; }
-    .wm-usat       { height: 16px; }
-    .wm-indie      { height: 40px; }
-    .wm-amazon     { height: 18px; }
-    .wm-porchlight { height: 26px; }
+    .bestsellers__row { gap: 1rem 1.5rem; }
+    .wm-nyt        { height: 24px; }
+    .wm-usat       { height: 14px; }
+    .wm-indie      { height: 34px; }
+    .wm-amazon     { height: 16px; }
+    .wm-porchlight { height: 22px; }
   }
 </style>
