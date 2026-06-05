@@ -67,7 +67,7 @@ const { awards = [], heroQuotes = [] } = Astro.props;
 <style>
   .header {
     background: var(--color-navy-dark);
-    padding: 5rem 1.5rem 3rem;
+    padding: 5rem 1.5rem 1.25rem;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -160,25 +160,9 @@ const { awards = [], heroQuotes = [] } = Astro.props;
     font-weight: 700;
   }
 
-  /* Clean bottom edge — iridescent gradient border only */
-  .header::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--color-blue),
-      rgba(180, 140, 220, 0.6),
-      var(--color-red),
-      rgba(180, 140, 220, 0.6),
-      var(--color-blue),
-      transparent
-    );
-  }
+  /* Gradient bottom edge moved to the bottom of BestsellerStrip — the
+     header now flows continuously into the strip (both navy), with the
+     iridescent rule appearing once at the end of the masthead block. */
 
   /* ── HERO QUOTES (top-left laurels — symmetric mirror of awards on the right,
      same red leaves, but the LABEL ("of the year/decade") is sized big & bold
@@ -338,7 +322,7 @@ const { awards = [], heroQuotes = [] } = Astro.props;
      without clipping. Desktop (>640px) is unchanged. */
   @media (max-width: 640px) {
     .header {
-      padding: 2.5rem 0.75rem 2rem;
+      padding: 2.5rem 0.75rem 0.9rem;
     }
 
     .header__title,
