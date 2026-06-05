@@ -1,28 +1,30 @@
 ---
-// Bestseller-list strip in the James Clear / Atomic Habits pattern:
-// a cream band sitting between the navy header and the StatsBar, with
-// a muted "INSTANT NEW YORK TIMES BESTSELLER" headline flanked by
-// hairline rules and a single row of outlet logos in their NATIVE
-// colors below. Native colors because every real outlet asset is
-// designed for a light background — forcing them onto navy via a
-// white-tint filter produces inconsistent results (white blocks for
-// non-transparent backgrounds, black dots for inverted globe icons,
-// etc.). Cream lets each logo render as its actual brand mark.
+// Bestseller-list strip — an "awards row" of four bestseller list
+// credentials, each with the list's official mark above and an
+// explicit credential caption below. Captions are the load-bearing
+// element here: vendor logos alone (Amazon, Porchlight) read as
+// "you can buy it here," not "it's a bestseller." Spelling out the
+// list name under each mark makes the credential unambiguous.
+//
+// Amazon is intentionally NOT on the strip — its #1 New Release /
+// #1 Best Seller pills already sit in the StatsBar below, and showing
+// the retailer wordmark here would duplicate that credential while
+// muddying the "list of lists" theme.
 
 interface Outlet {
   href: string;
   src: string;
   alt: string;
   aria: string;
+  caption: string;
   cls?: string;
 }
 
 const outlets: Outlet[] = [
-  { href: '#2026-06-04-nyt-bestseller-debut',                src: '/images/lists/nyt.png',                alt: 'The New York Times',          aria: 'New York Times Bestseller',                  cls: 'wm-nyt' },
-  { href: '#2026-06-03-usa-today-bestseller-list',           src: '/images/lists/usa-today.svg',          alt: 'USA Today',                   aria: 'USA Today Best-selling Booklist',            cls: 'wm-usat' },
-  { href: '#2026-05-31-lithub-independent-press-bestseller', src: '/images/lists/lithub-indie-press.png',  alt: 'Indie Press Bestsellers — Nonfiction',  aria: 'LitHub Independent Press Top 40 Bestsellers — Nonfiction', cls: 'wm-indie' },
-  { href: '#2026-05-26-amazon-bestseller-startups',          src: '/images/lists/amazon.svg',             alt: 'Amazon',                      aria: 'Amazon Bestseller',                          cls: 'wm-amazon' },
-  { href: '#2026-06-01-porchlight-may-2026-double-honor',    src: '/images/lists/porchlight.svg',         alt: 'Porchlight',                  aria: 'Porchlight Bestseller',                      cls: 'wm-porchlight' },
+  { href: '#2026-06-04-nyt-bestseller-debut',                src: '/images/lists/nyt.png',               alt: 'The New York Times',         aria: 'New York Times Bestseller',                                caption: 'Bestseller List',         cls: 'wm-nyt' },
+  { href: '#2026-06-03-usa-today-bestseller-list',           src: '/images/lists/usa-today.svg',         alt: 'USA Today',                  aria: 'USA Today Best-Selling Booklist',                          caption: 'Best-Selling Booklist',   cls: 'wm-usat' },
+  { href: '#2026-05-31-lithub-independent-press-bestseller', src: '/images/lists/indie-bestsellers.png', alt: 'ABA Indie Bestsellers List', aria: 'American Booksellers Association Indie Bestsellers List',  caption: 'Independent Bookstores',  cls: 'wm-indie' },
+  { href: '#2026-06-01-porchlight-may-2026-double-honor',    src: '/images/lists/porchlight.svg',        alt: 'Porchlight',                 aria: 'Porchlight Business Book Bestseller',                      caption: 'Business Bestseller',     cls: 'wm-porchlight' },
 ];
 ---
 
@@ -36,7 +38,10 @@ const outlets: Outlet[] = [
     {outlets.map((o) => (
       <li class="bestsellers__item">
         <a href={o.href} class="bestsellers__link" aria-label={o.aria}>
-          <img class={`bestsellers__img ${o.cls ?? ''}`} src={o.src} alt={o.alt} />
+          <span class="bestsellers__logo-frame">
+            <img class={`bestsellers__img ${o.cls ?? ''}`} src={o.src} alt={o.alt} />
+          </span>
+          <span class="bestsellers__caption">{o.caption}</span>
         </a>
       </li>
     ))}
@@ -49,7 +54,7 @@ const outlets: Outlet[] = [
      strip its own clear "credentials" zone. */
   .bestsellers {
     background: #f5f1e8;
-    padding: 0.55rem 1.5rem 0.55rem;
+    padding: 0.7rem 1.5rem 0.85rem;
     border-top: 1px solid rgba(26, 30, 58, 0.05);
     border-bottom: 1px solid rgba(26, 30, 58, 0.05);
   }
@@ -60,7 +65,7 @@ const outlets: Outlet[] = [
     justify-content: center;
     gap: 1.25rem;
     max-width: 1100px;
-    margin: 0 auto 0.35rem;
+    margin: 0 auto 0.6rem;
   }
   .bestsellers__rule {
     flex: 1;
@@ -83,44 +88,67 @@ const outlets: Outlet[] = [
     margin: 0 auto;
     padding: 0;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    gap: clamp(1.75rem, 4.5vw, 3.5rem);
+    gap: clamp(1.75rem, 5vw, 4rem);
     flex-wrap: wrap;
     max-width: 1100px;
   }
-  .bestsellers__item { margin: 0; line-height: 0; }
+  .bestsellers__item { margin: 0; }
   .bestsellers__link {
-    display: inline-block;
-    line-height: 0;
-    opacity: 0.85;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    opacity: 0.9;
     transition: opacity 0.2s, transform 0.2s;
   }
   .bestsellers__link:hover {
     opacity: 1;
     transform: translateY(-1px);
   }
+  /* Fixed logo-zone height so the captions sit on a shared baseline
+     regardless of each mark's intrinsic aspect ratio. */
+  .bestsellers__logo-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+  }
   .bestsellers__img {
     width: auto;
     display: block;
   }
+  /* Caption: small, uppercase, dim navy — matches the headline rule's
+     vocabulary so the whole strip reads as one typographic system. */
+  .bestsellers__caption {
+    font-family: var(--font-body);
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(26, 30, 58, 0.6);
+    font-weight: 600;
+    white-space: nowrap;
+    text-align: center;
+    line-height: 1;
+  }
 
-  /* Per-outlet sizing — NYT gets the dominant visual weight since
-     it's the headline credential ('Instant New York Times Bestseller'),
-     other outlets sized down so they support rather than compete. */
-  .wm-nyt        { height: 36px; }   /* wide blackletter masthead — dominant */
-  .wm-usat       { height: 20px; }
-  .wm-indie      { height: 50px; }   /* LitHub "BESTSELLERS / NONFICTION" wordmark — 2-line stack, sized so each line ~22px to match NYT weight */
-  .wm-amazon     { height: 22px; }
-  .wm-porchlight { height: 38px; }   /* SVG vector — bumped so fine letterforms read crisply */
+  /* Per-outlet sizing — each mark sized for visual balance within the
+     fixed 44px logo frame. NYT (wide masthead) gets max width to land
+     as the dominant credential. */
+  .wm-nyt        { height: 36px; }   /* wide blackletter masthead */
+  .wm-usat       { height: 22px; }
+  .wm-indie      { height: 44px; }   /* round seal — fills the frame */
+  .wm-porchlight { height: 38px; }
 
   @media (max-width: 640px) {
     .bestsellers {
-      padding: 0.45rem 0.75rem 0.45rem;
+      padding: 0.55rem 0.5rem 0.7rem;
     }
     .bestsellers__headline {
       gap: 0.55rem;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.45rem;
     }
     .bestsellers__rule { max-width: 50px; }
     .bestsellers__headline-text {
@@ -129,11 +157,16 @@ const outlets: Outlet[] = [
       white-space: normal;
       text-align: center;
     }
-    .bestsellers__row { gap: 1rem 1.5rem; }
+    .bestsellers__row { gap: 0.75rem 1.25rem; }
+    .bestsellers__link { gap: 0.3rem; }
+    .bestsellers__logo-frame { height: 30px; }
+    .bestsellers__caption {
+      font-size: 0.5rem;
+      letter-spacing: 0.14em;
+    }
     .wm-nyt        { height: 24px; }
     .wm-usat       { height: 14px; }
-    .wm-indie      { height: 34px; }
-    .wm-amazon     { height: 16px; }
-    .wm-porchlight { height: 26px; }
+    .wm-indie      { height: 30px; }
+    .wm-porchlight { height: 24px; }
   }
 </style>
