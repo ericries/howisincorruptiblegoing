@@ -1,0 +1,138 @@
+---
+// Bestseller-list strip in the James Clear / Atomic Habits pattern:
+// a cream band sitting between the navy header and the StatsBar, with
+// a muted "INSTANT NEW YORK TIMES BESTSELLER" headline flanked by
+// hairline rules and a single row of outlet logos in their NATIVE
+// colors below. Native colors because every real outlet asset is
+// designed for a light background — forcing them onto navy via a
+// white-tint filter produces inconsistent results (white blocks for
+// non-transparent backgrounds, black dots for inverted globe icons,
+// etc.). Cream lets each logo render as its actual brand mark.
+
+interface Outlet {
+  href: string;
+  src: string;
+  alt: string;
+  aria: string;
+  cls?: string;
+}
+
+const outlets: Outlet[] = [
+  { href: '#2026-06-04-nyt-bestseller-debut',                src: '/images/lists/nyt.png',                alt: 'The New York Times',          aria: 'New York Times Bestseller',                  cls: 'wm-nyt' },
+  { href: '#2026-06-03-usa-today-bestseller-list',           src: '/images/lists/usa-today.svg',          alt: 'USA Today',                   aria: 'USA Today Best-selling Booklist',            cls: 'wm-usat' },
+  { href: '#2026-05-31-lithub-independent-press-bestseller', src: '/images/lists/indie-bestsellers.png',  alt: 'ABA Indie Bestsellers List',  aria: 'American Booksellers Association Indie Bestsellers List', cls: 'wm-indie' },
+  { href: '#2026-05-26-amazon-bestseller-startups',          src: '/images/lists/amazon.svg',             alt: 'Amazon',                      aria: 'Amazon Bestseller',                          cls: 'wm-amazon' },
+  { href: '#2026-06-01-porchlight-may-2026-double-honor',    src: '/images/lists/porchlight.svg',         alt: 'Porchlight',                  aria: 'Porchlight Bestseller',                      cls: 'wm-porchlight' },
+];
+---
+
+<section class="bestsellers" aria-label="Bestseller list inclusions">
+  <div class="bestsellers__headline" aria-hidden="true">
+    <span class="bestsellers__rule"></span>
+    <span class="bestsellers__headline-text">Instant New York Times Bestseller</span>
+    <span class="bestsellers__rule"></span>
+  </div>
+  <ul class="bestsellers__row">
+    {outlets.map((o) => (
+      <li class="bestsellers__item">
+        <a href={o.href} class="bestsellers__link" aria-label={o.aria}>
+          <img class={`bestsellers__img ${o.cls ?? ''}`} src={o.src} alt={o.alt} />
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  /* Cream band — warm light bg matches the cover backdrop and contrasts
+     with the navy header above and the StatsBar's navy below, giving the
+     strip its own clear "credentials" zone. */
+  .bestsellers {
+    background: #f5f1e8;
+    padding: 1.75rem 1.5rem 1.6rem;
+    border-top: 1px solid rgba(26, 30, 58, 0.05);
+    border-bottom: 1px solid rgba(26, 30, 58, 0.05);
+  }
+
+  .bestsellers__headline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    max-width: 1100px;
+    margin: 0 auto 1.2rem;
+  }
+  .bestsellers__rule {
+    flex: 1;
+    height: 1px;
+    background: rgba(26, 30, 58, 0.22);
+    max-width: 300px;
+  }
+  .bestsellers__headline-text {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: rgba(26, 30, 58, 0.55);
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .bestsellers__row {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1.75rem, 4.5vw, 3.5rem);
+    flex-wrap: wrap;
+    max-width: 1100px;
+  }
+  .bestsellers__item { margin: 0; line-height: 0; }
+  .bestsellers__link {
+    display: inline-block;
+    line-height: 0;
+    opacity: 0.85;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .bestsellers__link:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+  }
+  .bestsellers__img {
+    width: auto;
+    display: block;
+  }
+
+  /* Per-outlet sizing — each asset has its own natural aspect; size each
+     so the visual weight is roughly balanced across the row. */
+  .wm-nyt        { height: 22px; }   /* wide blackletter masthead */
+  .wm-usat       { height: 22px; }   /* USA TODAY blue-globe wordmark */
+  .wm-indie      { height: 56px; }   /* multi-color illustrated seal */
+  .wm-amazon     { height: 24px; }   /* amazon wordmark + arrow */
+  .wm-porchlight { height: 36px; }   /* Porchlight wordmark — fine letterforms */
+
+  @media (max-width: 640px) {
+    .bestsellers {
+      padding: 1.25rem 0.75rem 1.15rem;
+    }
+    .bestsellers__headline {
+      gap: 0.55rem;
+      margin-bottom: 0.9rem;
+    }
+    .bestsellers__rule { max-width: 50px; }
+    .bestsellers__headline-text {
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      white-space: normal;
+      text-align: center;
+    }
+    .bestsellers__row { gap: 1.25rem 1.75rem; }
+    .wm-nyt        { height: 16px; }
+    .wm-usat       { height: 16px; }
+    .wm-indie      { height: 40px; }
+    .wm-amazon     { height: 18px; }
+    .wm-porchlight { height: 26px; }
+  }
+</style>
