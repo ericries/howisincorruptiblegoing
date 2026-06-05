@@ -1,0 +1,204 @@
+---
+// Bestseller-list strip modeled on the Atomic Habits / James Clear page:
+// a cream-on-navy band sitting just below the header with a muted small-caps
+// headline ("THE INSTANT NEW YORK TIMES BESTSELLER") flanked by hairline
+// rules, then a single horizontal row of outlet wordmarks below.
+//
+// Adapted: we drop the "#1" starburst badges James Clear uses because
+// Incorruptible doesn't hit #1 on every list — presence on the list IS
+// the news per Eric. Each wordmark links to its underlying milestone entry.
+
+interface Outlet {
+  id: string;          // milestone entry id to anchor-link to
+  className: string;   // CSS class for the wordmark styling
+  label: string;       // visible text inside the wordmark
+  aria: string;        // accessible name (full outlet name)
+}
+
+const outlets: Outlet[] = [
+  { id: '2026-06-04-nyt-bestseller-debut',                className: 'wm-nyt',       label: 'The New York Times', aria: 'New York Times Bestseller' },
+  { id: '2026-06-03-usa-today-bestseller-list',           className: 'wm-usat',      label: 'USA TODAY',          aria: 'USA Today Bestseller' },
+  { id: '2026-05-31-lithub-independent-press-bestseller', className: 'wm-indie',     label: 'INDIE BESTSELLER',   aria: 'American Booksellers Association Independent Press Bestseller' },
+  { id: '2026-05-26-amazon-bestseller-startups',          className: 'wm-amazon',    label: 'amazon',             aria: 'Amazon Bestseller' },
+  { id: '2026-06-01-porchlight-may-2026-double-honor',    className: 'wm-porchlight',label: 'Porchlight',          aria: 'Porchlight Bestseller' },
+];
+---
+
+<section class="bestseller-strip" aria-label="Bestseller list inclusions">
+  <div class="bestseller-strip__headline-row" aria-hidden="true">
+    <span class="bestseller-strip__rule"></span>
+    <span class="bestseller-strip__headline">The Instant New York Times Bestseller</span>
+    <span class="bestseller-strip__rule"></span>
+  </div>
+  <ul class="bestseller-strip__outlets">
+    {outlets.map((o) => (
+      <li class="bestseller-strip__outlet">
+        <a href={`#${o.id}`} class={`bestseller-strip__link ${o.className}`} aria-label={o.aria}>
+          {o.className === 'wm-amazon' ? (
+            <>
+              <span class="wm-amazon__text">{o.label}</span>
+              <svg class="wm-amazon__swoosh" viewBox="0 0 60 12" aria-hidden="true" preserveAspectRatio="none">
+                <path d="M2 4 C 18 11, 42 11, 58 4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"></path>
+                <path d="M52 1 L 58 4 L 53 8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </>
+          ) : (
+            o.label
+          )}
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  /* Cream band that visually echoes the Atomic Habits press strip — sits
+     between the navy header and the StatsBar to function as a credentials
+     anchor for the book itself, not as decoration. */
+  .bestseller-strip {
+    background: #f5f3ed;
+    padding: 2.5rem 1.5rem 2.25rem;
+    border-bottom: 1px solid rgba(26, 30, 58, 0.06);
+  }
+
+  .bestseller-strip__headline-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    max-width: 1100px;
+    margin: 0 auto 1.6rem;
+  }
+  .bestseller-strip__rule {
+    flex: 1;
+    height: 1px;
+    background: rgba(26, 30, 58, 0.22);
+    max-width: 280px;
+  }
+  .bestseller-strip__headline {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: rgba(26, 30, 58, 0.55);
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .bestseller-strip__outlets {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .bestseller-strip__outlet { margin: 0; }
+  .bestseller-strip__link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-navy-dark);
+    text-decoration: none;
+    line-height: 1;
+    opacity: 0.9;
+    transition: opacity 0.18s, transform 0.18s;
+  }
+  .bestseller-strip__link:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+  }
+
+  /* ── Wordmark typography per outlet ──────────────────────────────────── */
+
+  /* NYT — Old-style serif italic-light, approximating the masthead's
+     blackletter feel using available web-safe serifs. */
+  .wm-nyt {
+    font-family: 'UnifrakturMaguntia', 'Cormorant Garamond', 'Times New Roman', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    letter-spacing: 0.005em;
+  }
+
+  /* USA TODAY — compact bold sans, all caps, slightly condensed. */
+  .wm-usat {
+    font-family: 'Helvetica Neue', 'Arial Narrow', 'Arial', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 900;
+    letter-spacing: 0.01em;
+    font-stretch: condensed;
+  }
+
+  /* INDIE BESTSELLER — clean uppercase sans, slightly looser tracking
+     to feel like a credential, not a logo. */
+  .wm-indie {
+    font-family: 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+  }
+
+  /* amazon — lowercase serif/sans with a curved underline arrow drawn
+     in inline SVG below the wordmark. */
+  .wm-amazon {
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+  .wm-amazon__text {
+    font-family: 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 1.65rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .wm-amazon__swoosh {
+    position: absolute;
+    left: 4%;
+    right: 4%;
+    bottom: 0;
+    width: 92%;
+    height: 0.6em;
+    color: rgba(26, 30, 58, 0.85);
+  }
+
+  /* Porchlight — title-case sans with subtle small-caps secondary line. */
+  .wm-porchlight {
+    font-family: 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  /* Mobile: stack the headline rules less aggressively and keep wordmarks
+     wrappable. Reduce gap to keep things tight on small screens. */
+  @media (max-width: 640px) {
+    .bestseller-strip {
+      padding: 1.75rem 1rem 1.5rem;
+    }
+    .bestseller-strip__headline-row {
+      gap: 0.7rem;
+      margin-bottom: 1.1rem;
+    }
+    .bestseller-strip__rule {
+      max-width: 60px;
+    }
+    .bestseller-strip__headline {
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      white-space: normal;
+      text-align: center;
+    }
+    .bestseller-strip__outlets {
+      gap: 1.25rem 1.75rem;
+    }
+    .wm-nyt { font-size: 1.3rem; }
+    .wm-usat { font-size: 1.05rem; }
+    .wm-indie { font-size: 0.78rem; }
+    .wm-amazon__text { font-size: 1.4rem; }
+    .wm-porchlight { font-size: 1.1rem; }
+  }
+</style>
