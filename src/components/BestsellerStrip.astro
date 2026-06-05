@@ -1,15 +1,16 @@
 ---
-// Bestseller-list strip — an "awards row" of four bestseller list
-// credentials, each with the list's official mark above and an
-// explicit credential caption below. Captions are the load-bearing
-// element here: vendor logos alone (Amazon, Porchlight) read as
-// "you can buy it here," not "it's a bestseller." Spelling out the
-// list name under each mark makes the credential unambiguous.
+// Bestseller-list strip — a navy band sitting between (or merged with)
+// the navy Header, presenting four bestseller-list credentials as
+// white-knockout marks with explicit credential captions below.
+//
+// Navy bg (matching the book's primary color and the Header above)
+// unifies the row into a single set of credentials in the book's
+// brand color, rather than five competing brand palettes. Knockouts
+// are sourced as separate -knockout.{svg,png} assets so the originals
+// remain available for any future light-bg use.
 //
 // Amazon is intentionally NOT on the strip — its #1 New Release /
-// #1 Best Seller pills already sit in the StatsBar below, and showing
-// the retailer wordmark here would duplicate that credential while
-// muddying the "list of lists" theme.
+// #1 Best Seller pills already sit in the StatsBar below.
 
 interface Outlet {
   href: string;
@@ -21,10 +22,10 @@ interface Outlet {
 }
 
 const outlets: Outlet[] = [
-  { href: '#2026-06-04-nyt-bestseller-debut',                src: '/images/lists/nyt.png',               alt: 'The New York Times',         aria: 'New York Times Bestseller',                                caption: 'Bestseller List',         cls: 'wm-nyt' },
-  { href: '#2026-06-03-usa-today-bestseller-list',           src: '/images/lists/usa-today.svg',         alt: 'USA Today',                  aria: 'USA Today Best-Selling Booklist',                          caption: 'Best-Selling Booklist',   cls: 'wm-usat' },
-  { href: '#2026-05-31-lithub-independent-press-bestseller', src: '/images/lists/indie-bestsellers.png', alt: 'ABA Indie Bestsellers List', aria: 'American Booksellers Association Indie Bestsellers List',  caption: 'Independent Bookstores',  cls: 'wm-indie' },
-  { href: '#2026-06-01-porchlight-may-2026-double-honor',    src: '/images/lists/porchlight.svg',        alt: 'Porchlight',                 aria: 'Porchlight Business Book Bestseller',                      caption: 'Business Bestseller',     cls: 'wm-porchlight' },
+  { href: '#2026-06-04-nyt-bestseller-debut',                src: '/images/lists/nyt-knockout.png',                alt: 'The New York Times',         aria: 'New York Times Bestseller',                                caption: 'Bestseller List',         cls: 'wm-nyt' },
+  { href: '#2026-06-03-usa-today-bestseller-list',           src: '/images/lists/usa-today-knockout.svg',          alt: 'USA Today',                  aria: 'USA Today Best-Selling Booklist',                          caption: 'Best-Selling Booklist',   cls: 'wm-usat' },
+  { href: '#2026-05-31-lithub-independent-press-bestseller', src: '/images/lists/indie-bestsellers-knockout.png', alt: 'ABA Indie Bestsellers List', aria: 'American Booksellers Association Indie Bestsellers List',  caption: 'Independent Bookstores',  cls: 'wm-indie' },
+  { href: '#2026-06-01-porchlight-may-2026-double-honor',    src: '/images/lists/porchlight-knockout.svg',         alt: 'Porchlight',                 aria: 'Porchlight Business Book Bestseller',                      caption: 'Business Bestseller',     cls: 'wm-porchlight' },
 ];
 ---
 
@@ -49,14 +50,14 @@ const outlets: Outlet[] = [
 </section>
 
 <style>
-  /* Cream band — warm light bg matches the cover backdrop and contrasts
-     with the navy header above and the StatsBar's navy below, giving the
-     strip its own clear "credentials" zone. */
+  /* Navy band — matches the Header above and the book's primary brand
+     color, so the credentials feel like they belong to Incorruptible
+     rather than to five separate outlets. */
   .bestsellers {
-    background: #f5f1e8;
-    padding: 0.7rem 1.5rem 0.85rem;
-    border-top: 1px solid rgba(26, 30, 58, 0.05);
-    border-bottom: 1px solid rgba(26, 30, 58, 0.05);
+    background: var(--color-navy-dark);
+    padding: 0.85rem 1.5rem 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   .bestsellers__headline {
@@ -65,12 +66,12 @@ const outlets: Outlet[] = [
     justify-content: center;
     gap: 1.25rem;
     max-width: 1100px;
-    margin: 0 auto 0.6rem;
+    margin: 0 auto 0.7rem;
   }
   .bestsellers__rule {
     flex: 1;
     height: 1px;
-    background: rgba(26, 30, 58, 0.22);
+    background: rgba(255, 255, 255, 0.22);
     max-width: 300px;
   }
   .bestsellers__headline-text {
@@ -78,7 +79,7 @@ const outlets: Outlet[] = [
     font-size: 0.78rem;
     letter-spacing: 0.36em;
     text-transform: uppercase;
-    color: rgba(26, 30, 58, 0.55);
+    color: rgba(255, 255, 255, 0.7);
     white-space: nowrap;
     font-weight: 500;
   }
@@ -99,9 +100,9 @@ const outlets: Outlet[] = [
     display: inline-flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.5rem;
     text-decoration: none;
-    opacity: 0.9;
+    opacity: 0.95;
     transition: opacity 0.2s, transform 0.2s;
   }
   .bestsellers__link:hover {
@@ -120,14 +121,14 @@ const outlets: Outlet[] = [
     width: auto;
     display: block;
   }
-  /* Caption: small, uppercase, dim navy — matches the headline rule's
+  /* Caption: small, uppercase, dim white — matches the headline rule's
      vocabulary so the whole strip reads as one typographic system. */
   .bestsellers__caption {
     font-family: var(--font-body);
     font-size: 0.58rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(26, 30, 58, 0.6);
+    color: rgba(255, 255, 255, 0.65);
     font-weight: 600;
     white-space: nowrap;
     text-align: center;
@@ -135,8 +136,7 @@ const outlets: Outlet[] = [
   }
 
   /* Per-outlet sizing — each mark sized for visual balance within the
-     fixed 44px logo frame. NYT (wide masthead) gets max width to land
-     as the dominant credential. */
+     fixed 44px logo frame. */
   .wm-nyt        { height: 36px; }   /* wide blackletter masthead */
   .wm-usat       { height: 22px; }
   .wm-indie      { height: 44px; }   /* round seal — fills the frame */
@@ -144,11 +144,11 @@ const outlets: Outlet[] = [
 
   @media (max-width: 640px) {
     .bestsellers {
-      padding: 0.55rem 0.5rem 0.7rem;
+      padding: 0.65rem 0.5rem 0.8rem;
     }
     .bestsellers__headline {
       gap: 0.55rem;
-      margin-bottom: 0.45rem;
+      margin-bottom: 0.5rem;
     }
     .bestsellers__rule { max-width: 50px; }
     .bestsellers__headline-text {
@@ -158,7 +158,7 @@ const outlets: Outlet[] = [
       text-align: center;
     }
     .bestsellers__row { gap: 0.75rem 1.25rem; }
-    .bestsellers__link { gap: 0.3rem; }
+    .bestsellers__link { gap: 0.35rem; }
     .bestsellers__logo-frame { height: 30px; }
     .bestsellers__caption {
       font-size: 0.5rem;
