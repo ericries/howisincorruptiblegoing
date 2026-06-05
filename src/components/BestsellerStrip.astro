@@ -20,7 +20,7 @@ interface Outlet {
 const outlets: Outlet[] = [
   { href: '#2026-06-04-nyt-bestseller-debut',                src: '/images/lists/nyt.png',                alt: 'The New York Times',          aria: 'New York Times Bestseller',                  cls: 'wm-nyt' },
   { href: '#2026-06-03-usa-today-bestseller-list',           src: '/images/lists/usa-today.svg',          alt: 'USA Today',                   aria: 'USA Today Best-selling Booklist',            cls: 'wm-usat' },
-  { href: '#2026-05-31-lithub-independent-press-bestseller', src: '/images/lists/indie-bestsellers.png',  alt: 'ABA Indie Bestsellers List',  aria: 'American Booksellers Association Indie Bestsellers List', cls: 'wm-indie' },
+  { href: '#2026-05-31-lithub-independent-press-bestseller', src: '/images/lists/lithub-indie-press.png',  alt: 'Indie Press Bestsellers — Nonfiction',  aria: 'LitHub Independent Press Top 40 Bestsellers — Nonfiction', cls: 'wm-indie' },
   { href: '#2026-05-26-amazon-bestseller-startups',          src: '/images/lists/amazon.svg',             alt: 'Amazon',                      aria: 'Amazon Bestseller',                          cls: 'wm-amazon' },
   { href: '#2026-06-01-porchlight-may-2026-double-honor',    src: '/images/lists/porchlight.svg',         alt: 'Porchlight',                  aria: 'Porchlight Bestseller',                      cls: 'wm-porchlight' },
 ];
@@ -110,7 +110,7 @@ const outlets: Outlet[] = [
      other outlets sized down so they support rather than compete. */
   .wm-nyt        { height: 36px; }   /* wide blackletter masthead — dominant */
   .wm-usat       { height: 20px; }
-  .wm-indie      { height: 52px; }   /* multi-color illustrated seal — slightly larger so fine type is legible */
+  .wm-indie      { height: 42px; }   /* LitHub "Indie Press Bestsellers / Nonfiction" wordmark — wide 2:1 type stack */
   .wm-amazon     { height: 22px; }
   .wm-porchlight { height: 38px; }   /* SVG vector — bumped so fine letterforms read crisply */
 
@@ -132,7 +132,7 @@ const outlets: Outlet[] = [
     .bestsellers__row { gap: 1rem 1.5rem; }
     .wm-nyt        { height: 24px; }
     .wm-usat       { height: 14px; }
-    .wm-indie      { height: 38px; }
+    .wm-indie      { height: 30px; }
     .wm-amazon     { height: 16px; }
     .wm-porchlight { height: 26px; }
   }
