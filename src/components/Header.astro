@@ -61,6 +61,13 @@ const { awards = [], heroQuotes = [] } = Astro.props;
     <p class="header__subtitle">
       The new book by <span class="header__author">Eric Ries</span> · May 26, 2026
     </p>
+    <ul class="header__bestsellers" aria-label="Bestseller list inclusions">
+      <li><a href="#2026-06-04-nyt-bestseller-debut" aria-label="New York Times Bestseller"><img src="/images/lists/nyt.svg" alt="New York Times" /></a></li>
+      <li><a href="#2026-06-03-usa-today-bestseller-list" aria-label="USA Today Bestseller"><img src="/images/lists/usa-today.svg" alt="USA Today" /></a></li>
+      <li><a href="#2026-05-31-lithub-independent-press-bestseller" aria-label="Indie Bestseller"><img src="/images/lists/indie-bestsellers.png" alt="ABA Indie Bestsellers" /></a></li>
+      <li><a href="#2026-05-26-amazon-bestseller-startups" aria-label="Amazon Bestseller"><img src="/images/lists/amazon.svg" alt="Amazon" /></a></li>
+      <li><a href="#2026-06-01-porchlight-may-2026-double-honor" aria-label="Porchlight Bestseller"><img src="/images/lists/porchlight.svg" alt="Porchlight" /></a></li>
+    </ul>
   </div>
 </header>
 
@@ -158,6 +165,36 @@ const { awards = [], heroQuotes = [] } = Astro.props;
   .header__author {
     color: var(--color-red);
     font-weight: 700;
+  }
+
+  /* Bestseller-list logos — small subtle row below the subtitle, white-
+     tinted via filter so each outlet's brand mark sits as quiet
+     attribution against the navy bg without standing up as a separate
+     band. Each clicks through to its underlying milestone entry. */
+  .header__bestsellers {
+    list-style: none;
+    margin: 1.4rem auto 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.6rem;
+    max-width: 720px;
+  }
+  .header__bestsellers li { margin: 0; line-height: 0; }
+  .header__bestsellers a {
+    display: inline-block;
+    line-height: 0;
+    opacity: 0.55;
+    transition: opacity 0.2s;
+  }
+  .header__bestsellers a:hover { opacity: 0.9; }
+  .header__bestsellers img {
+    height: 16px;
+    width: auto;
+    display: block;
+    filter: brightness(0) invert(1);
   }
 
   /* Clean bottom edge — iridescent gradient border only */
@@ -362,6 +399,14 @@ const { awards = [], heroQuotes = [] } = Astro.props;
       font-size: 0.82rem;
       margin-top: 1.2rem;
       line-height: 1.5;
+    }
+
+    .header__bestsellers {
+      margin-top: 1rem;
+      gap: 1rem;
+    }
+    .header__bestsellers img {
+      height: 12px;
     }
   }
 </style>
