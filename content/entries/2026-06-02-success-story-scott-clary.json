@@ -13,8 +13,12 @@
   "attribution": "Success Story",
   "attribution_title": "Podcast hosted by Scott D. Clary",
   "attribution_image": "/images/podcasts/success-story.jpg",
-  "tags": ["podcast", "launch-week", "founders"],
-  "type_metadata": {"featured": true},
+  "tags": [
+    "podcast",
+    "launch-week",
+    "founders"
+  ],
+  "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-06-03T17:40:00Z"

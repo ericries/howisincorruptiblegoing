@@ -1,6 +1,6 @@
 #!/usr/bin/env tsx
-// One-shot sidebar curation: trim featured (11->8) per
-// memory/feedback_sidebar_flags.md. Highlights already at 6 — no change.
+// One-shot sidebar curation: trim featured 11->8 per memory/feedback_sidebar_flags.md.
+// Highlights stay untouched per memory/feedback_highlights_row_grows.md (grow-only).
 
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -8,9 +8,9 @@ import { resolve } from 'node:path';
 const ENTRIES = resolve(import.meta.dirname, '..', 'content/entries');
 
 const REMOVE_FEATURED = [
-  '2026-05-30-jennifer-pahlka-incorruptible-interview',
-  '2026-06-01-raphaelle-kennedy-book-of-the-year',
-  '2026-06-01-ryan-martens-rally-software-review',
+  '2026-06-01-zapier-agents-of-scale-wade-foster',
+  '2026-06-01-porchlight-may-2026-double-honor',
+  '2026-06-02-success-story-scott-clary',
 ];
 
 const REMOVE_HIGHLIGHT: string[] = [];

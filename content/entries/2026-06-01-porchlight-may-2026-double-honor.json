@@ -8,15 +8,23 @@
   "blockquote_source": "Porchlight Book Company, Best New Business Books: May 2026",
   "source_url": "https://www.porchlightbooks.com/collections/may-2026-business-bestsellers",
   "source_urls": [
-    {"url": "https://www.porchlightbooks.com/collections/best-new-business-books-may-2026", "label": "Best New Business Books: May 2026"}
+    {
+      "url": "https://www.porchlightbooks.com/collections/best-new-business-books-may-2026",
+      "label": "Best New Business Books: May 2026"
+    }
   ],
   "video_url": null,
   "image": null,
   "attribution": "Porchlight Book Company",
   "attribution_title": "Largest US distributor of business books to corporate buyers; curator of the Porchlight Business Book Awards",
   "attribution_image": null,
-  "tags": ["media", "curation", "porchlight", "bestseller-list"],
-  "type_metadata": {"featured": true},
+  "tags": [
+    "media",
+    "curation",
+    "porchlight",
+    "bestseller-list"
+  ],
+  "type_metadata": {},
   "scanner_source": "manual",
   "verified": false,
   "created_at": "2026-06-04T15:35:00Z"

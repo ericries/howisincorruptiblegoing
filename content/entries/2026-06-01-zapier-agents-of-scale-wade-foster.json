@@ -13,8 +13,13 @@
   "attribution": "Agents of Scale",
   "attribution_title": "Podcast hosted by Wade Foster — Co-founder and CEO, Zapier",
   "attribution_image": null,
-  "tags": ["podcast", "ai", "zapier", "vibe-coding"],
-  "type_metadata": {"featured": true},
+  "tags": [
+    "podcast",
+    "ai",
+    "zapier",
+    "vibe-coding"
+  ],
+  "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-06-03T16:35:00Z"
