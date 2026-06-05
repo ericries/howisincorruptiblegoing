@@ -61,13 +61,17 @@ const { awards = [], heroQuotes = [] } = Astro.props;
     <p class="header__subtitle">
       The new book by <span class="header__author">Eric Ries</span> · May 26, 2026
     </p>
-    <p class="header__bestsellers-headline" aria-hidden="true">Instant New York Times Bestseller</p>
+    <div class="header__bestsellers-headline" aria-hidden="true">
+      <span class="header__bestsellers-rule"></span>
+      <span class="header__bestsellers-headline-text">Instant New York Times Bestseller</span>
+      <span class="header__bestsellers-rule"></span>
+    </div>
     <ul class="header__bestsellers" aria-label="Bestseller list inclusions">
       <li><a href="#2026-06-04-nyt-bestseller-debut" aria-label="New York Times Bestseller"><img src="/images/lists/nyt.svg" alt="The New York Times" /></a></li>
       <li><a href="#2026-06-03-usa-today-bestseller-list" aria-label="USA Today Best-selling Booklist"><img src="/images/lists/usa-today.svg" alt="USA Today" /></a></li>
-      <li><a href="#2026-05-31-lithub-independent-press-bestseller" aria-label="Indie Bestsellers List"><img class="header__bestsellers-img--png" src="/images/lists/indie-bestsellers.png" alt="ABA Indie Bestsellers List" /></a></li>
+      <li><a href="#2026-05-31-lithub-independent-press-bestseller" aria-label="Indie Bestsellers List"><img class="header__bestsellers-img--seal" src="/images/lists/indie-bestsellers.png" alt="ABA Indie Bestsellers List" /></a></li>
       <li><a href="#2026-05-26-amazon-bestseller-startups" aria-label="Amazon Bestseller"><img src="/images/lists/amazon.svg" alt="Amazon" /></a></li>
-      <li><a href="#2026-06-01-porchlight-may-2026-double-honor" aria-label="Porchlight Bestseller"><img src="/images/lists/porchlight.svg" alt="Porchlight" /></a></li>
+      <li><a href="#2026-06-01-porchlight-may-2026-double-honor" aria-label="Porchlight Bestseller"><img class="header__bestsellers-img--wordmark" src="/images/lists/porchlight.svg" alt="Porchlight" /></a></li>
     </ul>
   </div>
 </header>
@@ -172,15 +176,32 @@ const { awards = [], heroQuotes = [] } = Astro.props;
      attribution row. Each outlet's badge/wordmark uses its own graphic
      treatment; all are white-tinted at low opacity so the strip reads
      as quiet credentialing against the navy bg, not as a sales pitch. */
+  /* James-Clear-style headline: hairline rules flanking the
+     "INSTANT BESTSELLER" line so the visual unit reads as a single
+     credential band — the logos below are the bestseller status,
+     not random press attribution. */
   .header__bestsellers-headline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    max-width: 980px;
+    margin: 1rem auto 0.65rem;
+  }
+  .header__bestsellers-rule {
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.22);
+    max-width: 340px;
+  }
+  .header__bestsellers-headline-text {
     font-family: var(--font-body);
     font-size: 0.7rem;
     letter-spacing: 0.32em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.45);
-    text-align: center;
-    margin: 1rem 0 0.55rem;
+    color: rgba(255, 255, 255, 0.55);
     font-weight: 500;
+    white-space: nowrap;
   }
   .header__bestsellers {
     list-style: none;
@@ -203,15 +224,22 @@ const { awards = [], heroQuotes = [] } = Astro.props;
   }
   .header__bestsellers a:hover { opacity: 1; }
   .header__bestsellers img {
-    height: 22px;
+    height: 26px;
     width: auto;
     display: block;
     filter: brightness(0) invert(1);
   }
-  /* The Indie Bestsellers asset is a multi-color PNG seal — give it a
-     touch more height so its illustration reads. */
-  .header__bestsellers-img--png {
-    height: 32px !important;
+  /* The Indie Bestsellers PNG is a multi-color illustrated seal whose
+     details get wiped by the white-invert filter. Keep its native colors
+     and render it noticeably larger so the wordmark inside reads. */
+  .header__bestsellers-img--seal {
+    height: 48px !important;
+    filter: none !important;
+  }
+  /* Porchlight's wordmark has finer letterforms than NYT/USAT/Amazon's
+     marks — bump the height so it's readable at the same opacity. */
+  .header__bestsellers-img--wordmark {
+    height: 34px !important;
   }
 
   /* Clean bottom edge — iridescent gradient border only */
@@ -419,17 +447,27 @@ const { awards = [], heroQuotes = [] } = Astro.props;
     }
 
     .header__bestsellers-headline {
+      gap: 0.55rem;
+      margin: 0.8rem auto 0.45rem;
+    }
+    .header__bestsellers-rule {
+      max-width: 50px;
+    }
+    .header__bestsellers-headline-text {
       font-size: 0.55rem;
       letter-spacing: 0.22em;
-      margin: 0.8rem 0 0.45rem;
+      white-space: normal;
     }
     .header__bestsellers {
       gap: 1.1rem;
     }
     .header__bestsellers img {
-      height: 16px;
+      height: 18px;
     }
-    .header__bestsellers-img--png {
+    .header__bestsellers-img--seal {
+      height: 34px !important;
+    }
+    .header__bestsellers-img--wordmark {
       height: 24px !important;
     }
   }
