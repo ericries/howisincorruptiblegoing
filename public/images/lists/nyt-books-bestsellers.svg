@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 56" role="img" aria-label="The New York Times Books Best Sellers">
+  <style>
+    .nyt-wm { font-family: 'Cheltenham', 'Cormorant Garamond', 'Georgia', serif; font-weight: 800; font-size: 38px; fill: currentColor; letter-spacing: 0.02em; }
+    .nyt-rule { stroke: currentColor; stroke-width: 2; opacity: 0.55; }
+  </style>
+  <text class="nyt-wm" x="2" y="42">BOOKS</text>
+  <line class="nyt-rule" x1="138" y1="12" x2="138" y2="44" />
+  <text class="nyt-wm" x="150" y="42">BEST SELLERS</text>
+</svg>

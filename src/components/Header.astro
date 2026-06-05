@@ -61,10 +61,11 @@ const { awards = [], heroQuotes = [] } = Astro.props;
     <p class="header__subtitle">
       The new book by <span class="header__author">Eric Ries</span> · May 26, 2026
     </p>
+    <p class="header__bestsellers-headline" aria-hidden="true">Instant New York Times Bestseller</p>
     <ul class="header__bestsellers" aria-label="Bestseller list inclusions">
-      <li><a href="#2026-06-04-nyt-bestseller-debut" aria-label="New York Times Bestseller"><img src="/images/lists/nyt.svg" alt="New York Times" /></a></li>
-      <li><a href="#2026-06-03-usa-today-bestseller-list" aria-label="USA Today Bestseller"><img src="/images/lists/usa-today.svg" alt="USA Today" /></a></li>
-      <li><a href="#2026-05-31-lithub-independent-press-bestseller" aria-label="Indie Bestseller"><img src="/images/lists/indie-bestsellers.png" alt="ABA Indie Bestsellers" /></a></li>
+      <li><a href="#2026-06-04-nyt-bestseller-debut" aria-label="New York Times Best Sellers"><img src="/images/lists/nyt-books-bestsellers.svg" alt="The New York Times Books Best Sellers" /></a></li>
+      <li><a href="#2026-06-03-usa-today-bestseller-list" aria-label="USA Today Best-selling Booklist"><img src="/images/lists/usa-today.svg" alt="USA Today" /></a></li>
+      <li><a href="#2026-05-31-lithub-independent-press-bestseller" aria-label="Indie Bestsellers List"><img class="header__bestsellers-img--png" src="/images/lists/indie-bestsellers.png" alt="ABA Indie Bestsellers List" /></a></li>
       <li><a href="#2026-05-26-amazon-bestseller-startups" aria-label="Amazon Bestseller"><img src="/images/lists/amazon.svg" alt="Amazon" /></a></li>
       <li><a href="#2026-06-01-porchlight-may-2026-double-honor" aria-label="Porchlight Bestseller"><img src="/images/lists/porchlight.svg" alt="Porchlight" /></a></li>
     </ul>
@@ -74,7 +75,7 @@ const { awards = [], heroQuotes = [] } = Astro.props;
 <style>
   .header {
     background: var(--color-navy-dark);
-    padding: 5rem 1.5rem 4.5rem;
+    padding: 5rem 1.5rem 2.5rem;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -167,34 +168,50 @@ const { awards = [], heroQuotes = [] } = Astro.props;
     font-weight: 700;
   }
 
-  /* Bestseller-list logos — small subtle row below the subtitle, white-
-     tinted via filter so each outlet's brand mark sits as quiet
-     attribution against the navy bg without standing up as a separate
-     band. Each clicks through to its underlying milestone entry. */
+  /* Bestseller-list strip — sits below the subtitle as a wide, subtle
+     attribution row. Each outlet's badge/wordmark uses its own graphic
+     treatment; all are white-tinted at low opacity so the strip reads
+     as quiet credentialing against the navy bg, not as a sales pitch. */
+  .header__bestsellers-headline {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    text-align: center;
+    margin: 1rem 0 0.55rem;
+    font-weight: 500;
+  }
   .header__bestsellers {
     list-style: none;
-    margin: 1.4rem auto 0;
+    margin: 0 auto;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 1.6rem;
-    max-width: 720px;
+    gap: 2.25rem;
+    max-width: 980px;
   }
   .header__bestsellers li { margin: 0; line-height: 0; }
   .header__bestsellers a {
     display: inline-block;
     line-height: 0;
-    opacity: 0.55;
+    color: #ffffff;
+    opacity: 0.7;
     transition: opacity 0.2s;
   }
-  .header__bestsellers a:hover { opacity: 0.9; }
+  .header__bestsellers a:hover { opacity: 1; }
   .header__bestsellers img {
-    height: 16px;
+    height: 22px;
     width: auto;
     display: block;
     filter: brightness(0) invert(1);
+  }
+  /* The Indie Bestsellers asset is a multi-color PNG seal — give it a
+     touch more height so its illustration reads. */
+  .header__bestsellers-img--png {
+    height: 32px !important;
   }
 
   /* Clean bottom edge — iridescent gradient border only */
@@ -401,12 +418,19 @@ const { awards = [], heroQuotes = [] } = Astro.props;
       line-height: 1.5;
     }
 
+    .header__bestsellers-headline {
+      font-size: 0.55rem;
+      letter-spacing: 0.22em;
+      margin: 0.8rem 0 0.45rem;
+    }
     .header__bestsellers {
-      margin-top: 1rem;
-      gap: 1rem;
+      gap: 1.1rem;
     }
     .header__bestsellers img {
-      height: 12px;
+      height: 16px;
+    }
+    .header__bestsellers-img--png {
+      height: 24px !important;
     }
   }
 </style>
