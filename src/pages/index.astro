@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
-import BestsellerStrip from '../components/BestsellerStrip.astro';
 import StatsBar from '../components/StatsBar.astro';
 import TimelineEntry from '../components/TimelineEntry.astro';
 import UpcomingStrip from '../components/UpcomingStrip.astro';
@@ -145,7 +144,6 @@ const heroQuotes = entries
 
 <Layout title="How Is Incorruptible Going?">
   <Header awards={awards} heroQuotes={heroQuotes} />
-  <BestsellerStrip />
   <StatsBar totalEntries={entries.length} totalEndorsements={totalEndorsements} amazonRanks={amazonRanks} />
   <UpcomingStrip entries={entries} />
 
