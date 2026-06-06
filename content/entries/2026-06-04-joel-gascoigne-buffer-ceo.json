@@ -14,7 +14,9 @@
   "attribution_title": "Founder & CEO, Buffer",
   "attribution_image": null,
   "tags": ["endorsement", "linkedin", "founder", "saas"],
-  "type_metadata": {},
+  "type_metadata": {
+    "highlight": "Joel Gascoigne: 'I already know it's going to make a real difference to Buffer'"
+  },
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-06-04T16:55:00Z"
