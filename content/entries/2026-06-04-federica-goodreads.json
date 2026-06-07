@@ -9,11 +9,15 @@
   "source_url": "https://www.goodreads.com/user/show/145664176-federica",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2026-06-04-federica-goodreads.png",
   "attribution": "Federica",
   "attribution_title": "Goodreads reviewer; early-stage founder",
   "attribution_image": null,
-  "tags": ["review", "goodreads", "founder"],
+  "tags": [
+    "review",
+    "goodreads",
+    "founder"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

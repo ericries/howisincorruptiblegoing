@@ -258,16 +258,25 @@ const tiktokEmbed = (() => {
     </article>
   ) : (
     /* ── STANDARD ENTRY ── */
-    <article class={`card card--standard ${entry.image ? 'card--has-hero' : ''} ${isCompact ? 'card--compact' : ''}`}>
+    <article class={`card card--standard ${entry.image ? 'card--has-hero' : ''} ${entry.image?.startsWith('/images/cards/') ? 'card--quote-card' : ''} ${isCompact ? 'card--compact' : ''}`}>
       {entry.image ? (
-        /* Entry with hero image */
+        /* Entry with hero image. Quote cards (path: /images/cards/) skip
+           the dark overlay + title-overlay treatment since the card already
+           carries the quote — the textual title falls through to standard__inner. */
         <Fragment>
-          <div class="hero">
+          <div class={`hero ${entry.image.startsWith('/images/cards/') ? 'hero--quote-card' : ''}`}>
             <img class="hero__img" src={entry.image} alt={entry.title} loading="lazy" />
-            <div class="hero__overlay"></div>
-            <h3 class="hero__title">{entry.title}</h3>
+            {!entry.image.startsWith('/images/cards/') && (
+              <Fragment>
+                <div class="hero__overlay"></div>
+                <h3 class="hero__title">{entry.title}</h3>
+              </Fragment>
+            )}
           </div>
           <div class="standard__inner">
+            {entry.image.startsWith('/images/cards/') && (
+              <h3 class="standard__title">{entry.title}</h3>
+            )}
             {isLinkedInPost && linkedInAuthorName && (
               <div class="linkedin-byline">
                 {entry.attribution_image ? (
@@ -1371,6 +1380,17 @@ const tiktokEmbed = (() => {
     line-height: 1.25;
     z-index: 1;
     text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  /* Quote-card hero — auto height, natural aspect, no overlay or title overlay.
+     The card itself carries the quote; the textual title falls through to
+     standard__inner below. */
+  .hero--quote-card {
+    height: auto;
+  }
+  .hero--quote-card .hero__img {
+    height: auto;
+    object-fit: contain;
   }
 
   /* ═══════════════════════════════

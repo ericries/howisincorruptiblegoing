@@ -2,18 +2,23 @@
   "id": "2026-06-04-joel-gascoigne-buffer-ceo",
   "date": "2026-06-04",
   "type": "endorsement",
-  "title": "Joel Gascoigne (Buffer CEO) — 'I already know it's going to make a real difference to Buffer'",
-  "summary": "Joel Gascoigne — founder and CEO of Buffer, the long-running independent SaaS company that famously went remote-first, transparent-by-default, and resisted multiple acquisition attempts — posts on the eve of cracking Incorruptible that he already knows it's going to make a real difference at Buffer.",
+  "title": "Joel Gascoigne (Buffer CEO) \u2014 'I already know it's going to make a real difference to Buffer'",
+  "summary": "Joel Gascoigne \u2014 founder and CEO of Buffer, the long-running independent SaaS company that famously went remote-first, transparent-by-default, and resisted multiple acquisition attempts \u2014 posts on the eve of cracking Incorruptible that he already knows it's going to make a real difference at Buffer.",
   "blockquote": "Solo dinner tonight and time to get started with Incorruptible by Eric Ries. I'm super excited to dive in, my only fear is that I won't be able to put it down. And I already know it's going to make a real difference to Buffer. Here we go.",
   "blockquote_source": "Joel Gascoigne on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/joelgascoigne_solo-dinner-tonight-and-time-to-get-started-activity-7468106549136322560-cQJA",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2026-06-04-joel-gascoigne-buffer-ceo.png",
   "attribution": "Joel Gascoigne",
   "attribution_title": "Founder & CEO, Buffer",
   "attribution_image": null,
-  "tags": ["endorsement", "linkedin", "founder", "saas"],
+  "tags": [
+    "endorsement",
+    "linkedin",
+    "founder",
+    "saas"
+  ],
   "type_metadata": {
     "highlight": "Joel Gascoigne: 'I already know it's going to make a real difference to Buffer'"
   },

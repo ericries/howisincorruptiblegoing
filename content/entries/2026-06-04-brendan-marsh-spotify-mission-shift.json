@@ -2,20 +2,28 @@
   "id": "2026-06-04-brendan-marsh-spotify-mission-shift",
   "date": "2026-06-04",
   "type": "review",
-  "title": "Brendan Marsh (ex-Spotify) — diagrams Spotify's pre- vs post-IPO mission statement through the lens of 'financial gravity'",
-  "summary": "Brendan Marsh — Product / Org Adviser, ex-Spotify — uses Incorruptible's 'financial gravity' lens to put Spotify's pre-IPO mission statement next to its current one and show exactly which words got quietly removed in the drift.",
+  "title": "Brendan Marsh (ex-Spotify) \u2014 diagrams Spotify's pre- vs post-IPO mission statement through the lens of 'financial gravity'",
+  "summary": "Brendan Marsh \u2014 Product / Org Adviser, ex-Spotify \u2014 uses Incorruptible's 'financial gravity' lens to put Spotify's pre-IPO mission statement next to its current one and show exactly which words got quietly removed in the drift.",
   "blockquote": "Eric Ries' new book 'Incorruptible' has got me reflecting on my time working at Spotify, as the company prepared to list on the stock exchange. Notably, how the culture subtly shifted and the changes that followed as the company succumbed to what Eric calls \"financial gravity\".\n\nThe clearest example: Spotify's mission used to be \"to unlock the potential of human creativity - by giving a million creative artists the opportunity to live off their art.\" and now, perhaps to reconcile with the reality of what they've become, it is \"to deliver creativity to the world - one note, one voice, one idea at a time... connecting the world to the art and the creatives who shape it.\"\n\nReally look at the change in words, \"human\" is gone, the opportunity to \"live off their art\" is gone. Truly saddening.",
   "blockquote_source": "Brendan Marsh on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/bamarsh_eric-ries-new-book-incorruptible-has-got-activity-7468440368859140096-YmiS",
   "source_urls": [
-    {"url": "https://www.linkedin.com/pulse/incorruptible-spotify-brendan-marsh-feirc", "label": "Incorruptible & Spotify (full essay)"}
+    {
+      "url": "https://www.linkedin.com/pulse/incorruptible-spotify-brendan-marsh-feirc",
+      "label": "Incorruptible & Spotify (full essay)"
+    }
   ],
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2026-06-04-brendan-marsh-spotify-mission-shift.png",
   "attribution": "Brendan Marsh",
   "attribution_title": "Product / Org Adviser; ex-Spotify",
   "attribution_image": null,
-  "tags": ["review", "linkedin", "spotify", "mission-shift"],
+  "tags": [
+    "review",
+    "linkedin",
+    "spotify",
+    "mission-shift"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

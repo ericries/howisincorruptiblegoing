@@ -9,11 +9,15 @@
   "source_url": "https://www.goodreads.com/user/show/201369030-bridget-harris",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2026-06-04-bridget-harris-goodreads.png",
   "attribution": "Bridget Harris",
   "attribution_title": "Goodreads reviewer; 7 years in investment",
   "attribution_image": null,
-  "tags": ["review", "goodreads", "investment"],
+  "tags": [
+    "review",
+    "goodreads",
+    "investment"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

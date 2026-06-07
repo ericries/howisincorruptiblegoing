@@ -8,14 +8,21 @@
   "blockquote_source": "Randy Mayeux on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/randymayeux_inside-the-box-by-david-epstein-and-incorruptible-activity-7456039714408542208-mS8R",
   "source_urls": [
-    {"url": "https://15minutebusinessbooks.com/blog/2026/05/01/inside-the-box-by-david-epstein-and-incorruptible-by-eric-ries-for-the-june-5-first-friday-book-synopsis/", "label": "First Friday Book Synopsis preview"}
+    {
+      "url": "https://15minutebusinessbooks.com/blog/2026/05/01/inside-the-box-by-david-epstein-and-incorruptible-by-eric-ries-for-the-june-5-first-friday-book-synopsis/",
+      "label": "First Friday Book Synopsis preview"
+    }
   ],
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2026-06-05-first-friday-book-synopsis.png",
   "attribution": "Randy Mayeux",
   "attribution_title": "First Friday Book Synopsis",
   "attribution_image": null,
-  "tags": ["media", "dallas-texas", "book-synopsis"],
+  "tags": [
+    "media",
+    "dallas-texas",
+    "book-synopsis"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": true,
