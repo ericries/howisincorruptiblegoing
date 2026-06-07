@@ -44,7 +44,7 @@ const shareText = text ?? title;
     </svg>
     <span class="share__label">Share</span>
   </button>
-  <div class="share__menu" role="menu" hidden>
+  <div class="share__menu" role="menu">
     <button class="share__action" type="button" data-action="copy" role="menuitem">
       <span class="share__action-icon">⎘</span>
       <span>Copy link</span>
@@ -104,21 +104,23 @@ const shareText = text ?? title;
     border-color: var(--color-blue);
   }
 
+  /* Fixed positioning so no ancestor with overflow:hidden (the card body)
+     can clip the menu. The .open class is added by JS once the menu has
+     been positioned via getBoundingClientRect — without it the menu is
+     display:none, so it never flashes at (0,0) before being placed. */
   .share__menu {
-    position: absolute;
-    top: calc(100% + 0.45rem);
-    right: 0;
-    min-width: 180px;
+    position: fixed;
+    min-width: 200px;
     background: #fff;
     border-radius: 10px;
     border: 1px solid rgba(26, 30, 58, 0.08);
-    box-shadow: 0 8px 28px rgba(26, 30, 58, 0.13);
+    box-shadow: 0 8px 28px rgba(26, 30, 58, 0.18);
     padding: 0.35rem;
-    z-index: 30;
-    display: flex;
+    z-index: 1000;
+    display: none;
     flex-direction: column;
   }
-  .share__menu[hidden] { display: none; }
+  .share__menu.open { display: flex; }
   .share__action {
     display: flex;
     align-items: center;
@@ -206,9 +208,33 @@ const shareText = text ?? title;
         if (s === except) return;
         const m = s.querySelector('.share__menu') as HTMLElement | null;
         const b = s.querySelector('.share__button') as HTMLButtonElement | null;
-        if (m) m.hidden = true;
+        if (m) m.classList.remove('open');
         if (b) b.setAttribute('aria-expanded', 'false');
       });
+    }
+
+    function positionMenu(button: HTMLElement, menu: HTMLElement) {
+      // Make sure layout has the menu's natural size before positioning.
+      menu.style.visibility = 'hidden';
+      menu.classList.add('open');
+      const btnRect = button.getBoundingClientRect();
+      const menuRect = menu.getBoundingClientRect();
+      const margin = 8;
+      let top = btnRect.bottom + margin;
+      let left = btnRect.right - menuRect.width;
+      // Clamp to viewport so the menu never spills off-screen.
+      if (left < margin) left = margin;
+      if (left + menuRect.width > window.innerWidth - margin) {
+        left = window.innerWidth - menuRect.width - margin;
+      }
+      // If there's not enough room below, flip above the button.
+      if (top + menuRect.height > window.innerHeight - margin) {
+        top = btnRect.top - menuRect.height - margin;
+        if (top < margin) top = margin;
+      }
+      menu.style.top = `${top}px`;
+      menu.style.left = `${left}px`;
+      menu.style.visibility = '';
     }
 
     shares.forEach((root) => {
@@ -232,12 +258,23 @@ const shareText = text ?? title;
           const ok = await nativeShare(root, url, title, text, cardSrc);
           if (ok) return;
         }
-        // Else open the menu.
-        const isOpen = !menu.hidden;
+        // Else toggle the menu.
+        const isOpen = menu.classList.contains('open');
         closeAll(root);
-        menu.hidden = isOpen;
-        button.setAttribute('aria-expanded', String(!isOpen));
+        if (!isOpen) {
+          positionMenu(button, menu);
+          button.setAttribute('aria-expanded', 'true');
+        } else {
+          button.setAttribute('aria-expanded', 'false');
+        }
       });
+
+      // Reposition on resize / scroll while open.
+      const reposition = () => {
+        if (menu.classList.contains('open')) positionMenu(button, menu);
+      };
+      window.addEventListener('resize', reposition);
+      window.addEventListener('scroll', reposition, { passive: true });
 
       const copyBtn = root.querySelector('[data-action="copy"]') as HTMLButtonElement;
       copyBtn.addEventListener('click', async (e) => {
