@@ -1,0 +1,30 @@
+{
+  "snapshot_date": "2026-06-06",
+  "captured_at": "2026-06-07T01:42:00Z",
+  "capture_method": "totals-only via apify/rag-web-browser (Best Sellers Rank + Customer Reviews block)",
+  "source_url": "https://www.amazon.com/Incorruptible-Good-Companies-Great-Stay/dp/B0FWZZBPZB",
+  "asin": "B0FWZZBPZB",
+  "totals": {
+    "global_ratings": 110,
+    "customer_reviews": null,
+    "average_rating": 5.0,
+    "five_star_pct": 99,
+    "four_star_pct": 1,
+    "three_star_pct": 0,
+    "two_star_pct": 0,
+    "one_star_pct": 0
+  },
+  "ranks": {
+    "books_overall": 3368,
+    "entrepreneurship": 6,
+    "business_management": 14,
+    "leadership_motivation": 19
+  },
+  "notes_for_future_agents": [
+    "No #1 categories for Incorruptible itself today; the #1 badges on the page belong to other products in related-items strips.",
+    "100-review milestone shipped 2026-06-02. Next threshold: 250. Currently at 110.",
+    "Overall books rank slipped 3043 -> 3368 since 2026-06-04; category positions essentially unchanged."
+  ],
+  "reviews": [],
+  "milestone_entries": []
+}
