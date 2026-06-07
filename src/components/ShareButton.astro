@@ -1,0 +1,261 @@
+---
+/*
+ * Share button — mobile-first.
+ *
+ * On platforms that support Web Share API with file attachments (modern
+ * iOS Safari + Android Chrome), pressing the button opens the native OS
+ * share sheet with the entry's quote-card PNG already attached + the
+ * permalink URL. Result: one tap → AirDrop / iMessage / WhatsApp / X / etc.
+ *
+ * On desktop (no Web Share API or no file support), the button opens a
+ * small popover with Copy link / Share on X / Share on LinkedIn /
+ * Download PNG actions. The X and LinkedIn intents pre-fill the quote
+ * and the permalink URL; those platforms then unfurl the og:image card
+ * we already set on the permalink page.
+ */
+interface Props {
+  /** Canonical permalink URL — must be absolute for shares to work. */
+  url: string;
+  /** Page/entry title for the share text. */
+  title: string;
+  /** Optional message body (used in tweet text + native share `text`). */
+  text?: string;
+  /** Path to the entry's card PNG (relative to /public, e.g. /images/cards/x.png). */
+  cardSrc?: string;
+  /** Bigger / more prominent styling for the standalone permalink page. */
+  primary?: boolean;
+}
+
+const { url, title, text, cardSrc, primary } = Astro.props;
+const shareText = text ?? title;
+---
+
+<div
+  class={`share ${primary ? 'share--primary' : ''}`}
+  data-share
+  data-url={url}
+  data-title={title}
+  data-text={shareText}
+  data-card={cardSrc ?? ''}
+>
+  <button class="share__button" type="button" aria-haspopup="menu" aria-expanded="false">
+    <svg class="share__icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+      <path fill="currentColor" d="M18 8a3 3 0 1 0-2.83-4H15c-.04 0-.07.01-.1.02l-6.05 3.5a3 3 0 1 0 0 4.96l6.05 3.5c.03.01.06.02.1.02h.17a3 3 0 1 0 2.83-4 3 3 0 0 0-2.17.94l-6.05-3.5a3 3 0 0 0 0-.88l6.05-3.5A3 3 0 0 0 18 8z"/>
+    </svg>
+    <span class="share__label">Share</span>
+  </button>
+  <div class="share__menu" role="menu" hidden>
+    <button class="share__action" type="button" data-action="copy" role="menuitem">
+      <span class="share__action-icon">⎘</span>
+      <span>Copy link</span>
+    </button>
+    <a class="share__action" data-action="x" role="menuitem" target="_blank" rel="noopener" href="#">
+      <span class="share__action-icon">𝕏</span>
+      <span>Share on X</span>
+    </a>
+    <a class="share__action" data-action="linkedin" role="menuitem" target="_blank" rel="noopener" href="#">
+      <span class="share__action-icon">in</span>
+      <span>Share on LinkedIn</span>
+    </a>
+    {cardSrc && (
+      <a class="share__action" data-action="download" role="menuitem" href={cardSrc} download>
+        <span class="share__action-icon">⤓</span>
+        <span>Download card</span>
+      </a>
+    )}
+  </div>
+</div>
+
+<style>
+  .share {
+    position: relative;
+    display: inline-flex;
+  }
+  .share__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-navy);
+    background: rgba(108, 184, 214, 0.12);
+    border: 1px solid rgba(108, 184, 214, 0.32);
+    border-radius: 999px;
+    padding: 0.4rem 0.85rem;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, transform 0.15s;
+  }
+  .share__button:hover {
+    background: rgba(108, 184, 214, 0.22);
+    transform: translateY(-1px);
+  }
+  .share__icon { display: block; }
+  .share--primary .share__button {
+    font-size: 0.92rem;
+    padding: 0.55rem 1.15rem;
+    background: var(--color-navy);
+    color: var(--color-white);
+    border-color: var(--color-navy);
+  }
+  .share--primary .share__button:hover {
+    background: var(--color-blue);
+    color: var(--color-white);
+    border-color: var(--color-blue);
+  }
+
+  .share__menu {
+    position: absolute;
+    top: calc(100% + 0.45rem);
+    right: 0;
+    min-width: 180px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid rgba(26, 30, 58, 0.08);
+    box-shadow: 0 8px 28px rgba(26, 30, 58, 0.13);
+    padding: 0.35rem;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+  }
+  .share__menu[hidden] { display: none; }
+  .share__action {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.5rem 0.75rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--color-text);
+    background: transparent;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: left;
+    text-decoration: none;
+  }
+  .share__action:hover {
+    background: rgba(108, 184, 214, 0.12);
+    color: var(--color-navy);
+  }
+  .share__action-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+  }
+</style>
+
+<script>
+  // Wire every .share[data-share] on the page. Idempotent — safe to import on
+  // multiple pages and to re-run.
+  (() => {
+    const shares = document.querySelectorAll<HTMLElement>('[data-share]');
+    if (!shares.length) return;
+
+    // Feature detect Web Share API with file support.
+    const canShareFiles = (() => {
+      try {
+        const f = new File([new Blob()], 'probe.png', { type: 'image/png' });
+        return !!(navigator.canShare && navigator.canShare({ files: [f] }));
+      } catch {
+        return false;
+      }
+    })();
+
+    function buildIntents(url: string, text: string) {
+      const enc = encodeURIComponent;
+      return {
+        x: `https://twitter.com/intent/tweet?text=${enc(text)}&url=${enc(url)}`,
+        linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${enc(url)}`,
+      };
+    }
+
+    async function nativeShare(card: HTMLElement, url: string, title: string, text: string, cardSrc: string) {
+      // Try to attach the card PNG as a file so the recipient sees the image,
+      // not just a link unfurl. Fall back to URL-only if anything fails.
+      const button = card.querySelector('.share__button') as HTMLButtonElement | null;
+      try {
+        if (cardSrc && canShareFiles) {
+          const res = await fetch(cardSrc);
+          const blob = await res.blob();
+          const file = new File([blob], cardSrc.split('/').pop() || 'card.png', { type: blob.type || 'image/png' });
+          if (navigator.canShare && navigator.canShare({ files: [file] })) {
+            await navigator.share({ files: [file], url, title, text });
+            return true;
+          }
+        }
+        if (navigator.share) {
+          await navigator.share({ url, title, text });
+          return true;
+        }
+      } catch (err: any) {
+        // AbortError = user dismissed; that's success-adjacent.
+        if (err?.name === 'AbortError') return true;
+      } finally {
+        if (button) button.disabled = false;
+      }
+      return false;
+    }
+
+    function closeAll(except?: HTMLElement) {
+      shares.forEach((s) => {
+        if (s === except) return;
+        const m = s.querySelector('.share__menu') as HTMLElement | null;
+        const b = s.querySelector('.share__button') as HTMLButtonElement | null;
+        if (m) m.hidden = true;
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    shares.forEach((root) => {
+      const button = root.querySelector('.share__button') as HTMLButtonElement;
+      const menu = root.querySelector('.share__menu') as HTMLElement;
+      const url = root.dataset.url || location.href;
+      const title = root.dataset.title || document.title;
+      const text = root.dataset.text || title;
+      const cardSrc = root.dataset.card || '';
+
+      // Pre-fill the X / LinkedIn intent anchors with the encoded URL + text.
+      const intents = buildIntents(url, text);
+      (root.querySelector('[data-action="x"]') as HTMLAnchorElement).href = intents.x;
+      (root.querySelector('[data-action="linkedin"]') as HTMLAnchorElement).href = intents.linkedin;
+
+      button.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        // Mobile + supports Share API → go straight to native sheet.
+        if (canShareFiles && cardSrc) {
+          button.disabled = true;
+          const ok = await nativeShare(root, url, title, text, cardSrc);
+          if (ok) return;
+        }
+        // Else open the menu.
+        const isOpen = !menu.hidden;
+        closeAll(root);
+        menu.hidden = isOpen;
+        button.setAttribute('aria-expanded', String(!isOpen));
+      });
+
+      const copyBtn = root.querySelector('[data-action="copy"]') as HTMLButtonElement;
+      copyBtn.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        try {
+          await navigator.clipboard.writeText(url);
+          const label = copyBtn.querySelector('span:last-child') as HTMLElement;
+          const orig = label.textContent;
+          label.textContent = 'Copied!';
+          setTimeout(() => { label.textContent = orig; }, 1500);
+        } catch {
+          // Fallback: select-and-prompt — rare.
+          prompt('Copy this link:', url);
+        }
+      });
+    });
+
+    document.addEventListener('click', () => closeAll());
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAll(); });
+  })();
+</script>

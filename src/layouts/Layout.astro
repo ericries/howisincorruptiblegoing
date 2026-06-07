@@ -1,9 +1,25 @@
 ---
 interface Props {
   title: string;
+  description?: string;
+  /** Path-or-URL to the image used in og:image / twitter:image. Defaults to the site cover. */
+  ogImage?: string;
+  /** Canonical URL for this page (used in og:url + twitter url + <link rel="canonical">). */
+  canonical?: string;
+  /** og:type — "article" for permalink entry pages, default "website". */
+  ogType?: string;
 }
 
-const { title } = Astro.props;
+const SITE = 'https://howisincorruptiblegoing.com';
+const DEFAULT_OG_IMAGE = '/images/og-cover.png';
+const DEFAULT_DESCRIPTION = "Tracking the momentum of Eric Ries's forthcoming book Incorruptible — events, endorsements, reviews, and more.";
+
+const { title, description, ogImage, canonical, ogType } = Astro.props;
+const desc = description ?? DEFAULT_DESCRIPTION;
+const ogImgPath = ogImage ?? DEFAULT_OG_IMAGE;
+// og:image MUST be an absolute URL for X / LinkedIn / iMessage unfurls to work.
+const ogImgAbs = ogImgPath.startsWith('http') ? ogImgPath : `${SITE}${ogImgPath}`;
+const canonicalAbs = canonical ?? SITE + Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -11,8 +27,22 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Tracking the momentum of Eric Ries's forthcoming book Incorruptible — events, endorsements, reviews, and more." />
+    <meta name="description" content={desc} />
     <meta name="theme-color" content="#1a1e3a" />
+    <link rel="canonical" href={canonicalAbs} />
+
+    <meta property="og:type" content={ogType ?? 'website'} />
+    <meta property="og:site_name" content="How Is Incorruptible Going?" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:image" content={ogImgAbs} />
+    <meta property="og:url" content={canonicalAbs} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={desc} />
+    <meta name="twitter:image" content={ogImgAbs} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="alternate" type="application/rss+xml" title="How Is Incorruptible Going?" href="/rss.xml" />

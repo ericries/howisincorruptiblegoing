@@ -1,0 +1,162 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { loadEntries } from '../../lib/entries';
+import ShareButton from '../../components/ShareButton.astro';
+import * as path from 'path';
+
+export async function getStaticPaths() {
+  const entriesDir = path.join(process.cwd(), 'content', 'entries');
+  const entries = loadEntries(entriesDir);
+  return entries.map((e) => ({
+    params: { id: e.id },
+    props: { entry: e },
+  }));
+}
+
+const { entry } = Astro.props;
+const ogImage = entry.image || '/images/og-cover.png';
+const canonical = `https://howisincorruptiblegoing.com/e/${entry.id}/`;
+const timelineUrl = `https://howisincorruptiblegoing.com/#${entry.id}`;
+// Strip wrapping quotes from titles like "'pull quote'" (the whole title is a quote).
+// Don't touch titles where quotes appear inside (e.g. `Person — 'quote'`).
+const cleanTitle = /^['"“‘].*['"”’]$/.test(entry.title)
+  ? entry.title.replace(/^['"“‘]|['"”’]$/g, '')
+  : entry.title;
+---
+
+<Layout
+  title={`${cleanTitle} · How Is Incorruptible Going?`}
+  description={entry.summary}
+  ogImage={ogImage}
+  canonical={canonical}
+  ogType="article"
+>
+  <main class="permalink">
+    <header class="permalink__masthead">
+      <a class="permalink__home" href="/">← How Is Incorruptible Going?</a>
+    </header>
+
+    <article class="permalink__card">
+      {entry.image && (
+        <img class="permalink__hero" src={entry.image} alt={cleanTitle} />
+      )}
+      <div class="permalink__body">
+        <h1 class="permalink__title">{cleanTitle}</h1>
+        {entry.summary && <p class="permalink__summary">{entry.summary}</p>}
+        {entry.blockquote && (
+          <blockquote class="permalink__quote">
+            “{entry.blockquote}”
+            {entry.blockquote_source && (
+              <cite class="permalink__cite">— {entry.blockquote_source}</cite>
+            )}
+          </blockquote>
+        )}
+        <div class="permalink__actions">
+          <ShareButton
+            url={canonical}
+            title={cleanTitle}
+            text={entry.summary || cleanTitle}
+            cardSrc={entry.image || undefined}
+            primary
+          />
+          <a class="permalink__timeline-link" href={timelineUrl}>Open in timeline ↗</a>
+          {entry.source_url && (
+            <a class="permalink__source-link" href={entry.source_url} target="_blank" rel="noopener">Original source ↗</a>
+          )}
+        </div>
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .permalink {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 4rem;
+  }
+  .permalink__masthead {
+    margin-bottom: 1.5rem;
+  }
+  .permalink__home {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .permalink__home:hover { color: var(--color-blue); }
+
+  .permalink__card {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(26, 30, 58, 0.07);
+    border: 1px solid rgba(26, 30, 58, 0.05);
+  }
+  .permalink__hero {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .permalink__body {
+    padding: 1.75rem 2rem 2rem;
+  }
+  .permalink__title {
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    line-height: 1.25;
+    color: var(--color-navy);
+    margin-bottom: 0.85rem;
+    font-weight: 600;
+  }
+  .permalink__summary {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.55;
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
+  }
+  .permalink__quote {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    line-height: 1.55;
+    color: var(--color-text);
+    border-left: 3px solid var(--color-blue);
+    padding-left: 1.1rem;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+  .permalink__cite {
+    display: block;
+    margin-top: 0.6rem;
+    font-style: normal;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+  }
+  .permalink__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    align-items: center;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(26, 30, 58, 0.06);
+    margin-top: 1rem;
+  }
+  .permalink__timeline-link,
+  .permalink__source-link {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+  }
+  .permalink__timeline-link:hover,
+  .permalink__source-link:hover { color: var(--color-blue); }
+
+  @media (max-width: 640px) {
+    .permalink { padding: 1rem 0.75rem 3rem; }
+    .permalink__body { padding: 1.25rem 1.25rem 1.5rem; }
+    .permalink__title { font-size: 1.4rem; }
+  }
+</style>

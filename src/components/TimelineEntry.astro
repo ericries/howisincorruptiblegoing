@@ -1,5 +1,6 @@
 ---
 import type { TimelineEntry } from '../lib/schema';
+import ShareButton from './ShareButton.astro';
 
 interface Props {
   entry: TimelineEntry;
@@ -8,6 +9,12 @@ interface Props {
 }
 
 const { entry, index, reactions = [] } = Astro.props;
+const SITE = 'https://howisincorruptiblegoing.com';
+const permalinkUrl = `${SITE}/e/${entry.id}/`;
+const shareText = entry.blockquote
+  ? `"${entry.blockquote.length > 240 ? entry.blockquote.slice(0, 240).trim() + '…' : entry.blockquote}"`
+  : entry.title;
+const isQuoteCard = (entry.image || '').startsWith('/images/cards/');
 
 interface EventPhoto {
   src: string;
@@ -364,6 +371,12 @@ const tiktokEmbed = (() => {
               {allLinks.map(link => (
                 <a class="card__source" href={link.url} target="_blank" rel="noopener">{link.label}</a>
               ))}
+              <ShareButton
+                url={permalinkUrl}
+                title={entry.title}
+                text={shareText}
+                cardSrc={isQuoteCard ? entry.image : undefined}
+              />
             </div>
           </div>
         </Fragment>
@@ -477,6 +490,12 @@ const tiktokEmbed = (() => {
               {allLinks.map(link => (
                 <a class="card__source" href={link.url} target="_blank" rel="noopener">{link.label}</a>
               ))}
+              <ShareButton
+                url={permalinkUrl}
+                title={entry.title}
+                text={shareText}
+                cardSrc={isQuoteCard ? entry.image : undefined}
+              />
             </div>
           </div>
         </Fragment>
