@@ -57,7 +57,6 @@ const cleanTitle = /^['"“‘].*['"”’]$/.test(entry.title)
             title={cleanTitle}
             text={entry.summary || cleanTitle}
             cardSrc={entry.image || undefined}
-            primary
           />
           <a class="permalink__timeline-link" href={timelineUrl}>Open in timeline ↗</a>
           {entry.source_url && (

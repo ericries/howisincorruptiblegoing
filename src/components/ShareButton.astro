@@ -1,65 +1,80 @@
 ---
 /*
- * Share button — mobile-first.
+ * Entry actions — a compact lower-right pair of icon buttons:
  *
- * On platforms that support Web Share API with file attachments (modern
- * iOS Safari + Android Chrome), pressing the button opens the native OS
- * share sheet with the entry's quote-card PNG already attached + the
- * permalink URL. Result: one tap → AirDrop / iMessage / WhatsApp / X / etc.
+ *  ⧉  (permalink)  — one-click copies the canonical /e/<id>/ URL to clipboard
+ *  ⤴  (share)     — opens native share sheet on touch devices, or a popover
+ *                    on desktop (Share on X · Share on LinkedIn · Download card).
  *
- * On desktop (no Web Share API or no file support), the button opens a
- * small popover with Copy link / Share on X / Share on LinkedIn /
- * Download PNG actions. The X and LinkedIn intents pre-fill the quote
- * and the permalink URL; those platforms then unfurl the og:image card
- * we already set on the permalink page.
+ * The popover is rendered via a portal — on first open the menu DOM is moved
+ * to <body> so no `transform: translateY(0)` containing-block ancestor (the
+ * card-enter animation leaves one behind) can re-scope position:fixed.
  */
 interface Props {
-  /** Canonical permalink URL — must be absolute for shares to work. */
+  /** Canonical permalink URL — must be absolute for unfurls to work. */
   url: string;
   /** Page/entry title for the share text. */
   title: string;
-  /** Optional message body (used in tweet text + native share `text`). */
+  /** Optional message body (tweet text + native-share `text`). */
   text?: string;
-  /** Path to the entry's card PNG (relative to /public, e.g. /images/cards/x.png). */
+  /** Path to the entry's card PNG (e.g. /images/cards/x.png) if available. */
   cardSrc?: string;
-  /** Bigger / more prominent styling for the standalone permalink page. */
-  primary?: boolean;
 }
 
-const { url, title, text, cardSrc, primary } = Astro.props;
+const { url, title, text, cardSrc } = Astro.props;
 const shareText = text ?? title;
 ---
 
 <div
-  class={`share ${primary ? 'share--primary' : ''}`}
+  class="entry-actions"
   data-share
   data-url={url}
   data-title={title}
   data-text={shareText}
   data-card={cardSrc ?? ''}
 >
-  <button class="share__button" type="button" aria-haspopup="menu" aria-expanded="false">
-    <svg class="share__icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-      <path fill="currentColor" d="M18 8a3 3 0 1 0-2.83-4H15c-.04 0-.07.01-.1.02l-6.05 3.5a3 3 0 1 0 0 4.96l6.05 3.5c.03.01.06.02.1.02h.17a3 3 0 1 0 2.83-4 3 3 0 0 0-2.17.94l-6.05-3.5a3 3 0 0 0 0-.88l6.05-3.5A3 3 0 0 0 18 8z"/>
+  <button
+    class="entry-actions__btn"
+    type="button"
+    data-action="permalink"
+    aria-label="Copy permalink"
+    title="Copy permalink"
+  >
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.72"/>
+      <path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.72-1.72"/>
     </svg>
-    <span class="share__label">Share</span>
   </button>
-  <div class="share__menu" role="menu">
-    <button class="share__action" type="button" data-action="copy" role="menuitem">
-      <span class="share__action-icon">⎘</span>
-      <span>Copy link</span>
-    </button>
-    <a class="share__action" data-action="x" role="menuitem" target="_blank" rel="noopener" href="#">
-      <span class="share__action-icon">𝕏</span>
+  <button
+    class="entry-actions__btn"
+    type="button"
+    data-action="share"
+    aria-label="Share"
+    title="Share"
+    aria-haspopup="menu"
+    aria-expanded="false"
+  >
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 16V4"/>
+      <path d="M8 8l4-4 4 4"/>
+      <path d="M5 14v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5"/>
+    </svg>
+  </button>
+  <!-- Menu lives here at SSR; JS moves it to <body> on first open so it
+       escapes any transform-containing-block ancestor (the card-enter
+       animation leaves transform:translateY(0) on .timeline-row). -->
+  <div class="share-menu" role="menu" data-share-menu hidden>
+    <a class="share-menu__item" data-menu-action="x" role="menuitem" target="_blank" rel="noopener" href="#">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M18.244 2H21.5l-7.55 8.63L23 22h-6.99l-5.47-7.18L4.2 22H.94l8.07-9.22L1 2h7.16l4.94 6.53L18.244 2zm-1.22 18h1.91L7.07 4H5.07l11.954 16z"/></svg>
       <span>Share on X</span>
     </a>
-    <a class="share__action" data-action="linkedin" role="menuitem" target="_blank" rel="noopener" href="#">
-      <span class="share__action-icon">in</span>
+    <a class="share-menu__item" data-menu-action="linkedin" role="menuitem" target="_blank" rel="noopener" href="#">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
       <span>Share on LinkedIn</span>
     </a>
     {cardSrc && (
-      <a class="share__action" data-action="download" role="menuitem" href={cardSrc} download>
-        <span class="share__action-icon">⤓</span>
+      <a class="share-menu__item" data-menu-action="download" role="menuitem" href={cardSrc} download>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>
         <span>Download card</span>
       </a>
     )}
@@ -67,99 +82,112 @@ const shareText = text ?? title;
 </div>
 
 <style>
-  .share {
-    position: relative;
+  .entry-actions {
     display: inline-flex;
+    gap: 0.15rem;
+    margin-left: auto;        /* push to the right within .card__links flex */
+    align-self: flex-end;
   }
-  .share__button {
+  .entry-actions__btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
-    font-family: var(--font-body);
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--color-navy);
-    background: rgba(108, 184, 214, 0.12);
-    border: 1px solid rgba(108, 184, 214, 0.32);
-    border-radius: 999px;
-    padding: 0.4rem 0.85rem;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    background: transparent;
+    color: var(--color-text-muted);
+    border-radius: 8px;
     cursor: pointer;
     transition: background 0.15s, color 0.15s, transform 0.15s;
   }
-  .share__button:hover {
-    background: rgba(108, 184, 214, 0.22);
-    transform: translateY(-1px);
+  .entry-actions__btn:hover {
+    background: rgba(108, 184, 214, 0.16);
+    color: var(--color-navy);
   }
-  .share__icon { display: block; }
-  .share--primary .share__button {
-    font-size: 0.92rem;
-    padding: 0.55rem 1.15rem;
-    background: var(--color-navy);
-    color: var(--color-white);
-    border-color: var(--color-navy);
+  .entry-actions__btn:active { transform: scale(0.94); }
+  .entry-actions__btn.is-success {
+    color: var(--color-blue);
+    background: rgba(108, 184, 214, 0.18);
   }
-  .share--primary .share__button:hover {
-    background: var(--color-blue);
-    color: var(--color-white);
-    border-color: var(--color-blue);
+  .entry-actions__btn[aria-expanded="true"] {
+    background: rgba(108, 184, 214, 0.18);
+    color: var(--color-navy);
   }
 
-  /* Fixed positioning so no ancestor with overflow:hidden (the card body)
-     can clip the menu. The .open class is added by JS once the menu has
-     been positioned via getBoundingClientRect — without it the menu is
-     display:none, so it never flashes at (0,0) before being placed. */
-  .share__menu {
+  /* Tooltip popping after a copy — pure CSS via [data-tooltip]. */
+  .entry-actions__btn[data-tooltip] { position: relative; }
+  .entry-actions__btn[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-navy);
+    color: var(--color-white);
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  /* The menu uses :global so the styles still apply after JS moves it
+     to <body>, which puts it outside this component's scoped tree. */
+  :global(.share-menu) {
     position: fixed;
     min-width: 200px;
     background: #fff;
     border-radius: 10px;
     border: 1px solid rgba(26, 30, 58, 0.08);
-    box-shadow: 0 8px 28px rgba(26, 30, 58, 0.18);
+    box-shadow: 0 12px 32px rgba(26, 30, 58, 0.22);
     padding: 0.35rem;
     z-index: 1000;
     display: none;
     flex-direction: column;
+    font-family: var(--font-body);
   }
-  .share__menu.open { display: flex; }
-  .share__action {
+  :global(.share-menu.is-open) { display: flex; }
+  :global(.share-menu__item) {
     display: flex;
     align-items: center;
-    gap: 0.65rem;
-    padding: 0.5rem 0.75rem;
-    font-family: var(--font-body);
+    gap: 0.6rem;
+    padding: 0.55rem 0.7rem;
     font-size: 0.85rem;
     color: var(--color-text);
-    background: transparent;
     border: 0;
+    background: transparent;
     border-radius: 6px;
     cursor: pointer;
-    text-align: left;
     text-decoration: none;
   }
-  .share__action:hover {
-    background: rgba(108, 184, 214, 0.12);
+  :global(.share-menu__item:hover) {
+    background: rgba(108, 184, 214, 0.16);
     color: var(--color-navy);
   }
-  .share__action-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 22px;
-    font-weight: 700;
+  :global(.share-menu__item svg) {
     color: var(--color-text-muted);
-    font-size: 0.95rem;
+    flex-shrink: 0;
   }
+  :global(.share-menu__item:hover svg) { color: var(--color-navy); }
 </style>
 
 <script>
-  // Wire every .share[data-share] on the page. Idempotent — safe to import on
-  // multiple pages and to re-run.
   (() => {
-    const shares = document.querySelectorAll<HTMLElement>('[data-share]');
-    if (!shares.length) return;
+    const groups = document.querySelectorAll<HTMLElement>('[data-share]');
+    if (!groups.length) return;
 
-    // Feature detect Web Share API with file support.
-    const canShareFiles = (() => {
+    // Touch-only gating for the native share sheet. Chrome/macOS technically
+    // supports navigator.share, but the desktop sheet is unreliable — desktop
+    // always gets the popover instead.
+    const isTouchDevice =
+      navigator.maxTouchPoints > 0 ||
+      (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+    const canShareFiles = isTouchDevice && (() => {
       try {
         const f = new File([new Blob()], 'probe.png', { type: 'image/png' });
         return !!(navigator.canShare && navigator.canShare({ files: [f] }));
@@ -168,7 +196,12 @@ const shareText = text ?? title;
       }
     })();
 
-    function buildIntents(url: string, text: string) {
+    // Track which group's menu is currently mounted at body level.
+    let openGroup: HTMLElement | null = null;
+    let openMenu: HTMLElement | null = null;
+    let openButton: HTMLElement | null = null;
+
+    function intentUrls(url: string, text: string) {
       const enc = encodeURIComponent;
       return {
         x: `https://twitter.com/intent/tweet?text=${enc(text)}&url=${enc(url)}`,
@@ -176,10 +209,56 @@ const shareText = text ?? title;
       };
     }
 
-    async function nativeShare(card: HTMLElement, url: string, title: string, text: string, cardSrc: string) {
-      // Try to attach the card PNG as a file so the recipient sees the image,
-      // not just a link unfurl. Fall back to URL-only if anything fails.
-      const button = card.querySelector('.share__button') as HTMLButtonElement | null;
+    function closeMenu() {
+      if (!openMenu || !openGroup || !openButton) return;
+      openMenu.classList.remove('is-open');
+      openMenu.hidden = true;
+      openButton.setAttribute('aria-expanded', 'false');
+      // Move the menu back to its original group so re-opens still find it.
+      openGroup.appendChild(openMenu);
+      openGroup = null;
+      openMenu = null;
+      openButton = null;
+    }
+
+    function positionMenu(button: HTMLElement, menu: HTMLElement) {
+      menu.style.visibility = 'hidden';
+      menu.classList.add('is-open');
+      menu.hidden = false;
+      const btnRect = button.getBoundingClientRect();
+      const menuRect = menu.getBoundingClientRect();
+      const margin = 8;
+      let top = btnRect.bottom + margin;
+      let left = btnRect.right - menuRect.width;
+      if (left < margin) left = margin;
+      if (left + menuRect.width > window.innerWidth - margin) {
+        left = window.innerWidth - menuRect.width - margin;
+      }
+      // Flip above when there's no room below.
+      if (top + menuRect.height > window.innerHeight - margin) {
+        top = btnRect.top - menuRect.height - margin;
+        if (top < margin) top = margin;
+      }
+      menu.style.top = `${top}px`;
+      menu.style.left = `${left}px`;
+      menu.style.visibility = '';
+    }
+
+    function openShareMenu(group: HTMLElement, button: HTMLElement, menu: HTMLElement) {
+      // Portal: move menu to <body> so position:fixed escapes any
+      // transform-containing-block ancestor (.timeline-row's cardEnter
+      // animation leaves transform applied, breaking fixed positioning).
+      if (menu.parentElement !== document.body) {
+        document.body.appendChild(menu);
+      }
+      openGroup = group;
+      openMenu = menu;
+      openButton = button;
+      positionMenu(button, menu);
+      button.setAttribute('aria-expanded', 'true');
+    }
+
+    async function nativeShare(url: string, title: string, text: string, cardSrc: string) {
       try {
         if (cardSrc && canShareFiles) {
           const res = await fetch(cardSrc);
@@ -195,104 +274,76 @@ const shareText = text ?? title;
           return true;
         }
       } catch (err: any) {
-        // AbortError = user dismissed; that's success-adjacent.
         if (err?.name === 'AbortError') return true;
-      } finally {
-        if (button) button.disabled = false;
       }
       return false;
     }
 
-    function closeAll(except?: HTMLElement) {
-      shares.forEach((s) => {
-        if (s === except) return;
-        const m = s.querySelector('.share__menu') as HTMLElement | null;
-        const b = s.querySelector('.share__button') as HTMLButtonElement | null;
-        if (m) m.classList.remove('open');
-        if (b) b.setAttribute('aria-expanded', 'false');
-      });
+    function tooltip(btn: HTMLElement, message: string, ms = 1400) {
+      btn.setAttribute('data-tooltip', message);
+      btn.classList.add('is-success');
+      setTimeout(() => {
+        btn.removeAttribute('data-tooltip');
+        btn.classList.remove('is-success');
+      }, ms);
     }
 
-    function positionMenu(button: HTMLElement, menu: HTMLElement) {
-      // Make sure layout has the menu's natural size before positioning.
-      menu.style.visibility = 'hidden';
-      menu.classList.add('open');
-      const btnRect = button.getBoundingClientRect();
-      const menuRect = menu.getBoundingClientRect();
-      const margin = 8;
-      let top = btnRect.bottom + margin;
-      let left = btnRect.right - menuRect.width;
-      // Clamp to viewport so the menu never spills off-screen.
-      if (left < margin) left = margin;
-      if (left + menuRect.width > window.innerWidth - margin) {
-        left = window.innerWidth - menuRect.width - margin;
-      }
-      // If there's not enough room below, flip above the button.
-      if (top + menuRect.height > window.innerHeight - margin) {
-        top = btnRect.top - menuRect.height - margin;
-        if (top < margin) top = margin;
-      }
-      menu.style.top = `${top}px`;
-      menu.style.left = `${left}px`;
-      menu.style.visibility = '';
-    }
+    groups.forEach((group) => {
+      const url = group.dataset.url || location.href;
+      const title = group.dataset.title || document.title;
+      const text = group.dataset.text || title;
+      const cardSrc = group.dataset.card || '';
 
-    shares.forEach((root) => {
-      const button = root.querySelector('.share__button') as HTMLButtonElement;
-      const menu = root.querySelector('.share__menu') as HTMLElement;
-      const url = root.dataset.url || location.href;
-      const title = root.dataset.title || document.title;
-      const text = root.dataset.text || title;
-      const cardSrc = root.dataset.card || '';
+      const permalinkBtn = group.querySelector('[data-action="permalink"]') as HTMLElement;
+      const shareBtn = group.querySelector('[data-action="share"]') as HTMLElement;
+      const menu = group.querySelector('[data-share-menu]') as HTMLElement;
 
-      // Pre-fill the X / LinkedIn intent anchors with the encoded URL + text.
-      const intents = buildIntents(url, text);
-      (root.querySelector('[data-action="x"]') as HTMLAnchorElement).href = intents.x;
-      (root.querySelector('[data-action="linkedin"]') as HTMLAnchorElement).href = intents.linkedin;
+      // Pre-fill the intent anchors.
+      const intents = intentUrls(url, text);
+      (menu.querySelector('[data-menu-action="x"]') as HTMLAnchorElement).href = intents.x;
+      (menu.querySelector('[data-menu-action="linkedin"]') as HTMLAnchorElement).href = intents.linkedin;
 
-      button.addEventListener('click', async (e) => {
-        e.stopPropagation();
-        // Mobile + supports Share API → go straight to native sheet.
-        if (canShareFiles && cardSrc) {
-          button.disabled = true;
-          const ok = await nativeShare(root, url, title, text, cardSrc);
-          if (ok) return;
-        }
-        // Else toggle the menu.
-        const isOpen = menu.classList.contains('open');
-        closeAll(root);
-        if (!isOpen) {
-          positionMenu(button, menu);
-          button.setAttribute('aria-expanded', 'true');
-        } else {
-          button.setAttribute('aria-expanded', 'false');
-        }
-      });
-
-      // Reposition on resize / scroll while open.
-      const reposition = () => {
-        if (menu.classList.contains('open')) positionMenu(button, menu);
-      };
-      window.addEventListener('resize', reposition);
-      window.addEventListener('scroll', reposition, { passive: true });
-
-      const copyBtn = root.querySelector('[data-action="copy"]') as HTMLButtonElement;
-      copyBtn.addEventListener('click', async (e) => {
+      permalinkBtn.addEventListener('click', async (e) => {
         e.stopPropagation();
         try {
           await navigator.clipboard.writeText(url);
-          const label = copyBtn.querySelector('span:last-child') as HTMLElement;
-          const orig = label.textContent;
-          label.textContent = 'Copied!';
-          setTimeout(() => { label.textContent = orig; }, 1500);
+          tooltip(permalinkBtn, 'Copied!');
         } catch {
-          // Fallback: select-and-prompt — rare.
           prompt('Copy this link:', url);
         }
       });
+
+      shareBtn.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        // Touch device with file support → native share sheet.
+        if (canShareFiles && cardSrc) {
+          const ok = await nativeShare(url, title, text, cardSrc);
+          if (ok) return;
+        }
+        // Toggle the popover.
+        if (openGroup === group) {
+          closeMenu();
+          return;
+        }
+        if (openMenu) closeMenu();
+        openShareMenu(group, shareBtn, menu);
+      });
     });
 
-    document.addEventListener('click', () => closeAll());
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAll(); });
+    // Click-away to close.
+    document.addEventListener('click', (e) => {
+      if (!openMenu) return;
+      if (openMenu.contains(e.target as Node)) return;
+      closeMenu();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+    window.addEventListener('resize', () => {
+      if (openMenu && openButton) positionMenu(openButton, openMenu);
+    });
+    window.addEventListener('scroll', () => {
+      if (openMenu && openButton) positionMenu(openButton, openMenu);
+    }, { passive: true });
   })();
 </script>
