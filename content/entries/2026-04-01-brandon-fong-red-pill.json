@@ -9,12 +9,18 @@
   "source_url": "https://www.linkedin.com/posts/brandonsfong_i-told-eric-ries-that-i-felt-like-puking-activity-7445187052050157568-2BHj",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2026-04-01-brandon-fong-red-pill.png",
   "attribution": "Brandon T. Fong",
   "attribution_title": null,
   "attribution_image": null,
-  "tags": ["review", "linkedin", "podcast-upcoming"],
-  "type_metadata": { "weight": 1 },
+  "tags": [
+    "review",
+    "linkedin",
+    "podcast-upcoming"
+  ],
+  "type_metadata": {
+    "weight": 1
+  },
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-04-13T18:00:00Z"

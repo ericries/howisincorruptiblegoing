@@ -3,19 +3,27 @@
   "date": "2026-04-30",
   "type": "media",
   "title": "Long Now Releases the 'Incorruptible by Design' Talk: 'What if we redefined profit as maximizing human flourishing?'",
-  "summary": "The Long Now Foundation publishes the full video of Eric's April 7 talk with Denise Hearn on YouTube — bringing the live conversation to a much wider audience three weeks ahead of the book launch.",
+  "summary": "The Long Now Foundation publishes the full video of Eric's April 7 talk with Denise Hearn on YouTube \u2014 bringing the live conversation to a much wider audience three weeks ahead of the book launch.",
   "blockquote": "What if we redefined \"profit\" as maximizing human flourishing? Eric Ries has seen the corrosive effects of shareholder primacy at every company he's worked with. But some companies are outliers, demonstrating stronger profits, better talent, and deeper loyalty. What are they doing differently? And why doesn't everyone follow their lead?",
   "blockquote_source": "The Long Now Foundation on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/longnow_eric-ries-incorruptible-by-design-youtube-activity-7455670945374973952-yvMH",
   "source_urls": [
-    {"url": "https://www.linkedin.com/posts/eries_eric-ries-incorruptible-by-design-youtube-activity-7455712033544536064-J2iq", "label": "Eric's repost"}
+    {
+      "url": "https://www.linkedin.com/posts/eries_eric-ries-incorruptible-by-design-youtube-activity-7455712033544536064-J2iq",
+      "label": "Eric's repost"
+    }
   ],
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2026-04-30-long-now-video-release.png",
   "attribution": "The Long Now Foundation",
   "attribution_title": null,
   "attribution_image": null,
-  "tags": ["media", "youtube", "long-now", "video-release"],
+  "tags": [
+    "media",
+    "youtube",
+    "long-now",
+    "video-release"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": true,

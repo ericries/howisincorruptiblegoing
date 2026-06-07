@@ -9,11 +9,15 @@
   "source_url": "https://incorruptible.co",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2026-04-04-reader-jonah-lopin.png",
   "attribution": "Jonah Lopin",
   "attribution_title": "CEO, Crayon",
   "attribution_image": "/images/readers/jonah-lopin.jpg",
-  "tags": ["endorsement", "reader", "ceo"],
+  "tags": [
+    "endorsement",
+    "reader",
+    "ceo"
+  ],
   "type_metadata": {},
   "scanner_source": "manual",
   "verified": true,

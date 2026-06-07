@@ -8,15 +8,24 @@
   "blockquote_source": "Steve Brock on Goodreads",
   "source_url": "https://www.goodreads.com/review/show/8628432105",
   "source_urls": [
-    {"url": "https://www.goodreads.com/book/show/242970642-incorruptible", "label": "Goodreads book page"}
+    {
+      "url": "https://www.goodreads.com/book/show/242970642-incorruptible",
+      "label": "Goodreads book page"
+    }
   ],
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2026-05-24-steve-brock-stevos-book-of-the-week.png",
   "attribution": "Steve Brock",
   "attribution_title": "Goodreads reviewer (675+ reviews)",
   "attribution_image": null,
-  "tags": ["review", "goodreads", "book-of-the-week"],
-  "type_metadata": {"compact": true},
+  "tags": [
+    "review",
+    "goodreads",
+    "book-of-the-week"
+  ],
+  "type_metadata": {
+    "compact": true
+  },
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-05-25T18:10:00Z"

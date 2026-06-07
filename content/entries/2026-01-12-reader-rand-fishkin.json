@@ -9,11 +9,16 @@
   "source_url": "https://incorruptible.co",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2026-01-12-reader-rand-fishkin.png",
   "attribution": "Rand Fishkin",
   "attribution_title": "Cofounder & CEO, SparkToro",
   "attribution_image": "/images/readers/rand-fishkin.jpg",
-  "tags": ["endorsement", "reader", "founder", "sparktoro"],
+  "tags": [
+    "endorsement",
+    "reader",
+    "founder",
+    "sparktoro"
+  ],
   "type_metadata": {},
   "scanner_source": "manual",
   "verified": true,

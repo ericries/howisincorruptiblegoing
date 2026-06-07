@@ -9,11 +9,15 @@
   "source_url": "https://incorruptible.co",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2026-03-06-reader-melissa-sherman.png",
   "attribution": "Melissa Sherman",
   "attribution_title": "Corporate Attorney, Virgil Law LLP",
   "attribution_image": null,
-  "tags": ["endorsement", "reader", "legal"],
+  "tags": [
+    "endorsement",
+    "reader",
+    "legal"
+  ],
   "type_metadata": {},
   "scanner_source": "manual",
   "verified": true,

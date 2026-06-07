@@ -9,11 +9,14 @@
   "source_url": "https://incorruptible.co",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2025-12-28-reader-manisha-snoyer.png",
   "attribution": "Manisha Snoyer",
   "attribution_title": "Co-founder and CEO, Modulo",
   "attribution_image": "/images/people/manisha-snoyer.jpg",
-  "tags": ["endorsement", "reader-review"],
+  "tags": [
+    "endorsement",
+    "reader-review"
+  ],
   "type_metadata": {},
   "scanner_source": "manual",
   "verified": true,

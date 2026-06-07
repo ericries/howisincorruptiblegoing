@@ -9,12 +9,19 @@
   "source_url": "https://www.linkedin.com/posts/silicon-prairie-news_ericries-theleanstartup-incorruptible-activity-7449497164399149056-6G5o",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2026-04-13-silicon-prairie-io2026-photo.png",
   "attribution": "Silicon Prairie News",
   "attribution_title": null,
   "attribution_image": "/images/people/silicon-prairie-news.jpg",
-  "tags": ["media", "linkedin", "io2026", "lincoln-nebraska"],
-  "type_metadata": { "weight": 1 },
+  "tags": [
+    "media",
+    "linkedin",
+    "io2026",
+    "lincoln-nebraska"
+  ],
+  "type_metadata": {
+    "weight": 1
+  },
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-04-13T17:30:00Z"

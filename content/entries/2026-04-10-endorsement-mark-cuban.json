@@ -7,7 +7,7 @@
   "blockquote": "Every founder hopes their path is a straight line. It won't be. They hope they will have the right mentor to help them avoid problems. They won't. Eric Ries gives founders a playbook to help avoid the inevitable pitfalls and find your path to the business you set out to create.",
   "blockquote_source": "Book endorsement",
   "source_url": "https://incorruptible.co",
-  "image": null,
+  "image": "/images/cards/2026-04-10-endorsement-mark-cuban.png",
   "attribution": "Mark Cuban",
   "attribution_title": "Investor and entrepreneur",
   "attribution_image": "/images/people/mark-cuban.jpg",
@@ -15,7 +15,9 @@
     "endorsement",
     "investor"
   ],
-  "type_metadata": {"highlight": "Mark Cuban: 'Eric Ries gives founders a playbook to help avoid the inevitable pitfalls'"},
+  "type_metadata": {
+    "highlight": "Mark Cuban: 'Eric Ries gives founders a playbook to help avoid the inevitable pitfalls'"
+  },
   "scanner_source": "web-search",
   "verified": true,
   "created_at": "2026-04-12T23:00:00Z"

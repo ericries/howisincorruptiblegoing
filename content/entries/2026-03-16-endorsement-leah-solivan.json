@@ -4,10 +4,10 @@
   "type": "endorsement",
   "title": "Leah Solivan endorses Incorruptible",
   "summary": "TaskRabbit founder Leah Solivan calls the book the one she wishes she'd had while building her company.",
-  "blockquote": "As a mission-driven founder, this is the book I wish I'd had while building. Ries offers both a new vocabulary and concrete, hard-won examples for how to create real value without losing your soul at scale. He explains why mission and massive growth so often end up at odds — and, more importantly, how founders can be intentional about choosing a different path.",
+  "blockquote": "As a mission-driven founder, this is the book I wish I'd had while building. Ries offers both a new vocabulary and concrete, hard-won examples for how to create real value without losing your soul at scale. He explains why mission and massive growth so often end up at odds \u2014 and, more importantly, how founders can be intentional about choosing a different path.",
   "blockquote_source": "Book endorsement",
   "source_url": "https://incorruptible.co",
-  "image": null,
+  "image": "/images/cards/2026-03-16-endorsement-leah-solivan.png",
   "attribution": "Leah Solivan",
   "attribution_title": "Founder of TaskRabbit",
   "attribution_image": "/images/people/leah-solivan.jpg",
@@ -15,7 +15,9 @@
     "endorsement",
     "founder"
   ],
-  "type_metadata": {"face_position": "center top"},
+  "type_metadata": {
+    "face_position": "center top"
+  },
   "scanner_source": "web-search",
   "verified": true,
   "created_at": "2026-04-12T23:00:00Z"

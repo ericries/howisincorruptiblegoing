@@ -9,11 +9,15 @@
   "source_url": "https://www.goodreads.com/review/show/8499122749",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2026-04-06-kieran-goodreads.png",
   "attribution": "Kieran",
   "attribution_title": "Goodreads reviewer (219 reviews)",
   "attribution_image": null,
-  "tags": ["review", "goodreads", "founder-perspective"],
+  "tags": [
+    "review",
+    "goodreads",
+    "founder-perspective"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

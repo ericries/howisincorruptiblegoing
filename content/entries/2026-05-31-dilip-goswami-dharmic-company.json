@@ -2,20 +2,28 @@
   "id": "2026-05-31-dilip-goswami-dharmic-company",
   "date": "2026-05-31",
   "type": "review",
-  "title": "Dilip Goswami (Dharma and Management) — Incorruptible as a blueprint for a dharmic company",
-  "summary": "Dilip Goswami — deep tech founder and executive coach — sets out to write his own essay on how to build a dharmic company and, after reading Incorruptible, ends up writing a book review instead, distilling Eric's argument that a founder's values alone can't be the load-bearing structure for the long-term character of a company.",
-  "blockquote": "Eric illustrates through a remarkable range of stories, both from history and from the modern day, that a founder's values can not be the only load-bearing structure for the long-term character of a company. This structure has to be designed with the same seriousness with which one designs a product. And it has to be designed against something — against the gravity that will act on every successor, every future board, every future financial cycle.",
+  "title": "Dilip Goswami (Dharma and Management) \u2014 Incorruptible as a blueprint for a dharmic company",
+  "summary": "Dilip Goswami \u2014 deep tech founder and executive coach \u2014 sets out to write his own essay on how to build a dharmic company and, after reading Incorruptible, ends up writing a book review instead, distilling Eric's argument that a founder's values alone can't be the load-bearing structure for the long-term character of a company.",
+  "blockquote": "Eric illustrates through a remarkable range of stories, both from history and from the modern day, that a founder's values can not be the only load-bearing structure for the long-term character of a company. This structure has to be designed with the same seriousness with which one designs a product. And it has to be designed against something \u2014 against the gravity that will act on every successor, every future board, every future financial cycle.",
   "blockquote_source": "Dilip Goswami on LinkedIn (linking to his Dharma and Management essay)",
   "source_url": "https://www.dharmaandmanagement.com/p/incorruptible-building-a-dharmic",
   "source_urls": [
-    {"url": "https://www.linkedin.com/posts/dilipgoswami_incorruptible-building-a-dharmic-company-activity-7467198385372962818-5E1B", "label": "LinkedIn post"}
+    {
+      "url": "https://www.linkedin.com/posts/dilipgoswami_incorruptible-building-a-dharmic-company-activity-7467198385372962818-5E1B",
+      "label": "LinkedIn post"
+    }
   ],
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2026-05-31-dilip-goswami-dharmic-company.png",
   "attribution": "Dilip Goswami",
   "attribution_title": "Deep Tech Founder & Operator; Executive Coach",
   "attribution_image": null,
-  "tags": ["review", "linkedin", "substack", "dharma"],
+  "tags": [
+    "review",
+    "linkedin",
+    "substack",
+    "dharma"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

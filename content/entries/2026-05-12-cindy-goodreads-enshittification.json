@@ -4,18 +4,25 @@
   "type": "review",
   "title": "Goodreads reviewer connects Incorruptible to Cory Doctorow's 'Enshittification'",
   "summary": "Prolific Goodreads reviewer Cindy (1,877 reviews) posts a 5-star audiobook review framing Incorruptible alongside Cory Doctorow's Enshittification: short-term ROI superseding mission, founders voted out, companies drifting from purpose. Notes the audiobook's narration by Eric and the companion PDF with interview snippets.",
-  "blockquote": "Most importantly, Ries illustrates that it is possible (and, of course, preferable) for people to build thriving companies (like Costco and its predecessors) that contribute in a positive way to their communities, support their partner-suppliers, respect their employees, and delight their customers. \n\nThe quarterly earnings report isn’t the be-all and end-all of running a successful business and, in fact, is to blame for a lot of what ails our corporations today. If only we could all work for companies that align with our personal values and that put their mission above short term gains.",
+  "blockquote": "Most importantly, Ries illustrates that it is possible (and, of course, preferable) for people to build thriving companies (like Costco and its predecessors) that contribute in a positive way to their communities, support their partner-suppliers, respect their employees, and delight their customers. \n\nThe quarterly earnings report isn\u2019t the be-all and end-all of running a successful business and, in fact, is to blame for a lot of what ails our corporations today. If only we could all work for companies that align with our personal values and that put their mission above short term gains.",
   "blockquote_source": "Cindy on Goodreads",
   "source_url": "https://www.goodreads.com/review/show/8576711856",
   "source_urls": [
-    {"url": "https://www.goodreads.com/book/show/242970642-incorruptible", "label": "Goodreads book page"}
+    {
+      "url": "https://www.goodreads.com/book/show/242970642-incorruptible",
+      "label": "Goodreads book page"
+    }
   ],
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2026-05-12-cindy-goodreads-enshittification.png",
   "attribution": "Cindy",
   "attribution_title": "Goodreads reviewer (1,877 reviews)",
   "attribution_image": null,
-  "tags": ["review", "goodreads", "audiobook"],
+  "tags": [
+    "review",
+    "goodreads",
+    "audiobook"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

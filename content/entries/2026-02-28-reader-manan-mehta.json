@@ -9,11 +9,16 @@
   "source_url": "https://incorruptible.co",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2026-02-28-reader-manan-mehta.png",
   "attribution": "Manan Mehta",
   "attribution_title": "Founding Partner, Unshackled Ventures",
   "attribution_image": "/images/readers/manan-mehta.jpg",
-  "tags": ["endorsement", "reader", "investor", "venture-capital"],
+  "tags": [
+    "endorsement",
+    "reader",
+    "investor",
+    "venture-capital"
+  ],
   "type_metadata": {},
   "scanner_source": "manual",
   "verified": true,

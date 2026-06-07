@@ -2,20 +2,28 @@
   "id": "2026-05-14-financial-times-andrew-hill-interview",
   "date": "2026-05-14",
   "type": "media",
-  "title": "Financial Times' Andrew Hill: Eric on writing Incorruptible — 'a journey down the river'",
-  "summary": "Andrew Hill — FT Senior Business Writer, Consulting Editor of FT Live, and the paper's longtime management columnist — interviews Eric about Incorruptible, framing the writing process as a Heart of Darkness journey through modern finance.",
+  "title": "Financial Times' Andrew Hill: Eric on writing Incorruptible \u2014 'a journey down the river'",
+  "summary": "Andrew Hill \u2014 FT Senior Business Writer, Consulting Editor of FT Live, and the paper's longtime management columnist \u2014 interviews Eric about Incorruptible, framing the writing process as a Heart of Darkness journey through modern finance.",
   "blockquote": "'If you know Heart of Darkness, I feel like I did a bit of the journey down the river and got to see how our modern financial system works, up close' - Eric Ries, of \"Lean Startup\" fame, talks to me about the horrors he discovered while writing his new book Incorruptible",
   "blockquote_source": "Andrew Hill on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/andrewtghill_ive-seen-some-things-eric-ries-on-why-activity-7460643940858400768-mX7G",
   "source_urls": [
-    {"url": "https://www.ft.com/content/600554a2-7ef3-4c37-bcc8-ca990b38dea6", "label": "Andrew Hill's FT interview (paywalled)"}
+    {
+      "url": "https://www.ft.com/content/600554a2-7ef3-4c37-bcc8-ca990b38dea6",
+      "label": "Andrew Hill's FT interview (paywalled)"
+    }
   ],
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2026-05-14-financial-times-andrew-hill-interview.png",
   "attribution": "Andrew Hill",
   "attribution_title": "Senior Business Writer, Financial Times; Consulting Editor, FT Live",
   "attribution_image": null,
-  "tags": ["media", "financial-times", "interview", "linkedin"],
+  "tags": [
+    "media",
+    "financial-times",
+    "interview",
+    "linkedin"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

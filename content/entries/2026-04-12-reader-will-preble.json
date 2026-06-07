@@ -9,11 +9,16 @@
   "source_url": "https://incorruptible.co",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2026-04-12-reader-will-preble.png",
   "attribution": "Will Preble",
   "attribution_title": "Founder & CEO, Covenant Labs",
   "attribution_image": "/images/readers/will-preble.png",
-  "tags": ["endorsement", "reader", "ai", "founder"],
+  "tags": [
+    "endorsement",
+    "reader",
+    "ai",
+    "founder"
+  ],
   "type_metadata": {},
   "scanner_source": "manual",
   "verified": true,

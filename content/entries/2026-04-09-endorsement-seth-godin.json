@@ -3,11 +3,11 @@
   "date": "2026-04-09",
   "type": "endorsement",
   "title": "Seth Godin endorses Incorruptible",
-  "summary": "Seth Godin says Incorruptible will first inform and infuriate you, then help you see a path forward — and that it should be required reading for anyone who manages or has a manager.",
+  "summary": "Seth Godin says Incorruptible will first inform and infuriate you, then help you see a path forward \u2014 and that it should be required reading for anyone who manages or has a manager.",
   "blockquote": "This profound book will inform and infuriate, and then it will help you see a path forward. It should be required reading for anyone who manages (or has a manager). Gravity is real.",
   "blockquote_source": "Book endorsement",
   "source_url": "https://incorruptible.co",
-  "image": null,
+  "image": "/images/cards/2026-04-09-endorsement-seth-godin.png",
   "attribution": "Seth Godin",
   "attribution_title": "Bestselling author of twenty-one books, including This Is Strategy",
   "attribution_image": "/images/people/seth-godin.jpg",
@@ -16,7 +16,10 @@
     "author",
     "marketing"
   ],
-  "type_metadata": {"highlight": "Seth Godin: 'Gravity is real.'", "face_position": "center 20%"},
+  "type_metadata": {
+    "highlight": "Seth Godin: 'Gravity is real.'",
+    "face_position": "center 20%"
+  },
   "scanner_source": "web-search",
   "verified": true,
   "created_at": "2026-04-12T23:00:00Z"

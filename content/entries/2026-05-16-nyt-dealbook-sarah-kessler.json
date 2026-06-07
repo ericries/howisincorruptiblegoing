@@ -8,14 +8,22 @@
   "blockquote_source": "Sarah Kessler in NYT DealBook (quoting Eric Ries)",
   "source_url": "https://www.nytimes.com/2026/05/16/business/dealbook/debt-100-percent-gdp.html",
   "source_urls": [
-    {"url": "https://www.linkedin.com/posts/davidboghossian_dealbook-activity-7461393536026935296-cHJr", "label": "Quote relayed via David Boghossian on LinkedIn"}
+    {
+      "url": "https://www.linkedin.com/posts/davidboghossian_dealbook-activity-7461393536026935296-cHJr",
+      "label": "Quote relayed via David Boghossian on LinkedIn"
+    }
   ],
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2026-05-16-nyt-dealbook-sarah-kessler.png",
   "attribution": "Sarah Kessler",
   "attribution_title": "DealBook journalist, The New York Times",
   "attribution_image": null,
-  "tags": ["media", "new-york-times", "dealbook", "interview"],
+  "tags": [
+    "media",
+    "new-york-times",
+    "dealbook",
+    "interview"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

@@ -9,11 +9,14 @@
   "source_url": "https://incorruptible.co",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2025-12-27-reader-emily-tate.png",
   "attribution": "Emily Tate",
   "attribution_title": "VP of Product",
   "attribution_image": "/images/people/emily-tate.jpg",
-  "tags": ["endorsement", "reader-review"],
+  "tags": [
+    "endorsement",
+    "reader-review"
+  ],
   "type_metadata": {},
   "scanner_source": "manual",
   "verified": true,

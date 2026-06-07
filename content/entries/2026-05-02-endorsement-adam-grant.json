@@ -8,15 +8,28 @@
   "blockquote_source": "Adam Grant, Granted (Substack)",
   "source_url": "https://adamgrant.substack.com/p/the-12-new-books-to-enliven-spring",
   "source_urls": [
-    {"url": "https://www.linkedin.com/posts/adammgrant_my-recommended-new-reads-for-spring-and-summer-activity-7456317975311118336-kG59", "label": "Adam Grant's LinkedIn announcement"}
+    {
+      "url": "https://www.linkedin.com/posts/adammgrant_my-recommended-new-reads-for-spring-and-summer-activity-7456317975311118336-kG59",
+      "label": "Adam Grant's LinkedIn announcement"
+    }
   ],
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2026-05-02-endorsement-adam-grant.png",
   "attribution": "Adam Grant",
   "attribution_title": "Organizational Psychologist, Wharton; #1 NYT Bestselling Author of Think Again",
   "attribution_image": "/images/people/adam-grant.jpg",
-  "tags": ["endorsement", "substack", "wharton", "reading-list"],
-  "type_metadata": {"highlight": "Adam Grant: 'A road map to preventing people and organizations from making unethical decisions'", "sidebar_quote": "A road map to preventing people and organizations from making unethical decisions.", "award_label": "Top Spring/Summer 2026 Read", "award_curator": "Adam Grant"},
+  "tags": [
+    "endorsement",
+    "substack",
+    "wharton",
+    "reading-list"
+  ],
+  "type_metadata": {
+    "highlight": "Adam Grant: 'A road map to preventing people and organizations from making unethical decisions'",
+    "sidebar_quote": "A road map to preventing people and organizations from making unethical decisions.",
+    "award_label": "Top Spring/Summer 2026 Read",
+    "award_curator": "Adam Grant"
+  },
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-05-02T15:30:00Z"

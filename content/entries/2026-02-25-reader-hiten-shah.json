@@ -9,11 +9,16 @@
   "source_url": "https://incorruptible.co",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2026-02-25-reader-hiten-shah.png",
   "attribution": "Hiten Shah",
   "attribution_title": "CEO, Crazy Egg",
   "attribution_image": "/images/readers/hiten-shah.jpg",
-  "tags": ["endorsement", "reader", "founder", "saas"],
+  "tags": [
+    "endorsement",
+    "reader",
+    "founder",
+    "saas"
+  ],
   "type_metadata": {},
   "scanner_source": "manual",
   "verified": true,

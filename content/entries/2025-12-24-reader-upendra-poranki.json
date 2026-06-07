@@ -9,11 +9,14 @@
   "source_url": "https://incorruptible.co",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2025-12-24-reader-upendra-poranki.png",
   "attribution": "Upendra Poranki",
   "attribution_title": "Product Manager, UP Strategy Consulting",
   "attribution_image": "/images/people/upendra-poranki.jpg",
-  "tags": ["endorsement", "reader-review"],
+  "tags": [
+    "endorsement",
+    "reader-review"
+  ],
   "type_metadata": {},
   "scanner_source": "manual",
   "verified": true,

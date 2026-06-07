@@ -7,11 +7,15 @@
   "blockquote": "Incorruptible destroys the myth that only sleazy founders and companies get rich. Eric Ries shows you how to build a mission-driven company that will be humane, ethical, and make piles of money for decades. A rare joy to read.",
   "blockquote_source": "Book endorsement",
   "source_url": "https://incorruptible.co",
-  "image": null,
+  "image": "/images/cards/2026-03-21-endorsement-robert-sutton.png",
   "attribution": "Robert I. Sutton",
   "attribution_title": "Professor Emeritus at Stanford, bestselling author of The No Asshole Rule",
   "attribution_image": "/images/people/robert-sutton.jpg",
-  "tags": ["endorsement", "academia", "stanford"],
+  "tags": [
+    "endorsement",
+    "academia",
+    "stanford"
+  ],
   "type_metadata": {},
   "scanner_source": "web-search",
   "verified": true,

@@ -5,16 +5,24 @@
   "title": "Next Big Idea Club Selects Incorruptible as a May 2026 Must-Read",
   "summary": "The people whose job it is to pick the next big idea picked this one.",
   "blockquote": "I'm excited to introduce a new batch of standout nonfiction, the most compelling and thought-provoking titles scheduled for release in May 2026.",
-  "blockquote_source": "Next Big Idea Club — May 2026 Must-Read Books",
+  "blockquote_source": "Next Big Idea Club \u2014 May 2026 Must-Read Books",
   "source_url": "https://nextbigideaclub.com/magazine/next-big-idea-clubs-may-2026-must-read-books/59720/",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2026-05-01-next-big-idea-club-may-must-read.png",
   "attribution": "Next Big Idea Club",
   "attribution_title": "Curation by Malcolm Gladwell, Susan Cain, Adam Grant, and Daniel Pink",
   "attribution_image": null,
-  "tags": ["endorsement", "next-big-idea-club", "curation", "must-read"],
-  "type_metadata": {"award_label": "May 2026 Must-Read", "award_curator": "Next Big Idea Club"},
+  "tags": [
+    "endorsement",
+    "next-big-idea-club",
+    "curation",
+    "must-read"
+  ],
+  "type_metadata": {
+    "award_label": "May 2026 Must-Read",
+    "award_curator": "Next Big Idea Club"
+  },
   "scanner_source": "web-search",
   "verified": true,
   "created_at": "2026-05-02T16:00:00Z"

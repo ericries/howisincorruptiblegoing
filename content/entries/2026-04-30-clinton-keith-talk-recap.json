@@ -9,11 +9,15 @@
   "source_url": "https://www.linkedin.com/posts/clintonkeith_heard-eric-ries-talk-about-his-latest-book-activity-7455611027049828352-wk0n",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2026-04-30-clinton-keith-talk-recap.png",
   "attribution": "Clinton Keith",
   "attribution_title": "Author of Agile Game Development",
   "attribution_image": null,
-  "tags": ["review", "linkedin", "attendee-reaction"],
+  "tags": [
+    "review",
+    "linkedin",
+    "attendee-reaction"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": true,
