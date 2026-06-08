@@ -41,13 +41,34 @@ describe('ShareButton source — touch-only gating (Lesson A)', () => {
     expect(SHARE_SRC).toMatch(/pointer:\s*coarse/);
   });
 
-  it('uses the touch signal as a precondition for canShareFiles', () => {
-    // The order matters: isTouchDevice && file-API-probe. If a future edit
-    // reverses this and just probes the file API, desktop Chrome will once
-    // again trigger the macOS native sheet.
-    const block = SHARE_SRC.match(/const\s+canShareFiles\s*=[\s\S]{0,400}/);
-    expect(block, 'canShareFiles definition not found').not.toBeNull();
+  it('uses the touch signal as a precondition for native share', () => {
+    // The order matters: isTouchDevice && navigator.share-availability.
+    // If a future edit reverses this and just checks API existence, desktop
+    // Chrome will once again trigger the unreliable macOS native sheet.
+    const block = SHARE_SRC.match(/const\s+canNativeShare\s*=[\s\S]{0,300}/);
+    expect(block, 'canNativeShare definition not found').not.toBeNull();
     expect(block![0]).toMatch(/isTouchDevice\s*&&/);
+  });
+
+  it('does NOT probe canShare with an empty Blob (iOS Safari rejects it — 2026-06-08 postmortem)', () => {
+    // The first-pass code used `canShare({ files: [new File([new Blob()], …)] })`
+    // as a feature probe. iOS Safari validates file contents and returned
+    // false on the very devices where native share was supposed to work,
+    // so the click handler fell through to the desktop popover. The fix is
+    // to drop the upfront probe and let nativeShare() check canShare against
+    // the real fetched PNG inside the click handler. If anyone reintroduces
+    // the empty-Blob probe, this test catches it.
+    expect(SHARE_SRC).not.toMatch(/new File\(\s*\[\s*new Blob\(\s*\)\s*\]/);
+  });
+
+  it('falls back to URL-only share when the file path fails', () => {
+    // Without the upfront probe, the click handler must still gracefully
+    // handle the case where canShare({files}) is false at attempt-time, or
+    // fetch fails. The source must contain BOTH a file-attached share AND
+    // a URL-only share so iOS users always get the OS sheet — even if the
+    // file attach didn't work out.
+    expect(SHARE_SRC).toMatch(/navigator\.share\(\s*\{\s*files:\s*\[\s*file\s*\]/);
+    expect(SHARE_SRC).toMatch(/navigator\.share\(\s*\{\s*url\s*,\s*title\s*,\s*text\s*\}\s*\)/);
   });
 });
 

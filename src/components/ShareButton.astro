@@ -187,14 +187,15 @@ const shareText = text ?? title;
     const isTouchDevice =
       navigator.maxTouchPoints > 0 ||
       (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
-    const canShareFiles = isTouchDevice && (() => {
-      try {
-        const f = new File([new Blob()], 'probe.png', { type: 'image/png' });
-        return !!(navigator.canShare && navigator.canShare({ files: [f] }));
-      } catch {
-        return false;
-      }
-    })();
+    // Whether native share is even available. The earlier code did a
+    // canShare({ files: [emptyBlob] }) probe to decide between file-share
+    // and URL-only — but iOS Safari validates file contents and rejects an
+    // empty File whose MIME claims to be image/png, so the probe returned
+    // false on the very devices where native share works best. The real
+    // canShare check happens later against the actual fetched PNG; if
+    // files can't be shared we transparently fall back to URL-only share,
+    // which still opens the OS share sheet.
+    const canNativeShare = isTouchDevice && typeof (navigator as any).share === 'function';
 
     // Track which group's menu is currently mounted at body level.
     let openGroup: HTMLElement | null = null;
@@ -259,20 +260,33 @@ const shareText = text ?? title;
     }
 
     async function nativeShare(url: string, title: string, text: string, cardSrc: string) {
-      try {
-        if (cardSrc && canShareFiles) {
+      // Try with the card PNG attached first (best UX — recipients get the
+      // image, not just a link). If anything goes wrong — fetch fails,
+      // canShare rejects the file, the await drops user activation —
+      // fall back to URL-only share, which still opens the OS sheet.
+      if (cardSrc) {
+        try {
           const res = await fetch(cardSrc);
-          const blob = await res.blob();
-          const file = new File([blob], cardSrc.split('/').pop() || 'card.png', { type: blob.type || 'image/png' });
-          if (navigator.canShare && navigator.canShare({ files: [file] })) {
-            await navigator.share({ files: [file], url, title, text });
-            return true;
+          if (res.ok) {
+            const blob = await res.blob();
+            const file = new File(
+              [blob],
+              cardSrc.split('/').pop() || 'card.png',
+              { type: blob.type || 'image/png' },
+            );
+            if (!navigator.canShare || navigator.canShare({ files: [file] })) {
+              await navigator.share({ files: [file], url, title, text });
+              return true;
+            }
           }
+        } catch (err: any) {
+          if (err?.name === 'AbortError') return true;
+          // Otherwise fall through to URL-only share below.
         }
-        if (navigator.share) {
-          await navigator.share({ url, title, text });
-          return true;
-        }
+      }
+      try {
+        await navigator.share({ url, title, text });
+        return true;
       } catch (err: any) {
         if (err?.name === 'AbortError') return true;
       }
@@ -315,8 +329,11 @@ const shareText = text ?? title;
 
       shareBtn.addEventListener('click', async (e) => {
         e.stopPropagation();
-        // Touch device with file support → native share sheet.
-        if (canShareFiles && cardSrc) {
+        // Touch device with the Web Share API → native share sheet. We
+        // attempt this even when there's no cardSrc (URL-only share still
+        // opens the OS sheet) so iOS / Android users always get the
+        // platform-native flow.
+        if (canNativeShare) {
           const ok = await nativeShare(url, title, text, cardSrc);
           if (ok) return;
         }

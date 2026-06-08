@@ -62,6 +62,26 @@ The tests in `tests/share-button.test.ts` codify these so the next person who ed
 | `permalink page sets og:image to the entry's card` | Foundation of the share story; if this breaks, recipient unfurls go blank. |
 | `entry actions are icon-only (no "Share" text)` | Per user direction, the buttons stay subtle icons. |
 
+## Follow-up: iOS Safari still didn't open the native sheet (2026-06-08)
+
+After the 8e8e73c fix, a user on iOS reported that tapping the share icon still didn't open the native iOS share widget — the popover appeared instead. Fifth why:
+
+1. **Why didn't iOS get the native sheet?** Because `canShareFiles` was returning `false` on iOS, so the click handler fell through to the popover path.
+2. **Why did `canShareFiles` return false?** Because the feature-detection probe was `navigator.canShare({ files: [new File([new Blob()], 'probe.png', { type: 'image/png' })] })`.
+3. **Why did that probe return false on iOS Safari?** Because Safari validates the *contents* of the file passed to `canShare({ files })`, not just the MIME type. An empty Blob with a claimed `image/png` MIME doesn't match a real PNG header, so Safari rejected the probe.
+4. **Why didn't I catch this in testing?** I only checked that `canShare` existed; I didn't verify Safari accepted my specific probe payload. I treated the API's permissive behavior on Chrome as universal.
+5. **Why is this a recurring class of bug?** Same as Bug A — conflating "feature detected" with "feature works for my exact call site." `canShare` is a *capability query*: its answer depends on what you ask it about. An empty Blob is a degenerate query that some implementations reject.
+
+**Fix (this commit):** drop the upfront file-API probe entirely. `canNativeShare` only checks `isTouchDevice && typeof navigator.share === 'function'`. The real `canShare({ files: [actualFile] })` check happens inside `nativeShare()` against the fetched PNG. If that returns false — or if anything else goes wrong (fetch fails, user-activation dropped across the await) — the function transparently falls back to `navigator.share({ url, title, text })`, which still opens the OS native sheet.
+
+**Test invariants added (`tests/share-button.test.ts`):**
+
+- `does NOT probe canShare with an empty Blob` — regression catch for this exact bug; re-introducing `new File([new Blob()], …)` fails the test.
+- `falls back to URL-only share when the file path fails` — `nativeShare()` source must contain BOTH the file-attached share AND a URL-only share, so iOS users always get the OS sheet even when file attach fails.
+- `uses the touch signal as a precondition for native share` — updated to check the new `canNativeShare` definition instead of the removed `canShareFiles`.
+
+Mutation-verified: reintroducing the empty-Blob probe via sed makes the dedicated test fail; reverting passes.
+
 ## Preventive measures
 
 - **CSS containing-block invariant test.** Whenever I add a `position: fixed` popover to a component that lives inside `.timeline-row`, I either portal it to `<body>` or remove `animation-fill-mode: both` on the row. The test in `tests/share-button.test.ts` enforces this for the share menu specifically.
