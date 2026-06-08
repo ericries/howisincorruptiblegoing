@@ -4,7 +4,10 @@
  *
  *  ⧉  (permalink)  — one-click copies the canonical /e/<id>/ URL to clipboard
  *  ⤴  (share)     — opens native share sheet on touch devices, or a popover
- *                    on desktop (Share on X · Share on LinkedIn · Download card).
+ *                    on desktop (LinkedIn · Bluesky · Download card). On mobile
+ *                    + macOS the native sheet exposes the full set of installed
+ *                    apps — LinkedIn, Bluesky, Instagram, YouTube, TikTok,
+ *                    Messages, Mail, etc. — so we don't reproduce them here.
  *
  * The popover is rendered via a portal — on first open the menu DOM is moved
  * to <body> so no `transform: translateY(0)` containing-block ancestor (the
@@ -64,13 +67,13 @@ const shareText = text ?? title;
        escapes any transform-containing-block ancestor (the card-enter
        animation leaves transform:translateY(0) on .timeline-row). -->
   <div class="share-menu" role="menu" data-share-menu hidden>
-    <a class="share-menu__item" data-menu-action="x" role="menuitem" target="_blank" rel="noopener" href="#">
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M18.244 2H21.5l-7.55 8.63L23 22h-6.99l-5.47-7.18L4.2 22H.94l8.07-9.22L1 2h7.16l4.94 6.53L18.244 2zm-1.22 18h1.91L7.07 4H5.07l11.954 16z"/></svg>
-      <span>Share on X</span>
-    </a>
     <a class="share-menu__item" data-menu-action="linkedin" role="menuitem" target="_blank" rel="noopener" href="#">
       <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
       <span>Share on LinkedIn</span>
+    </a>
+    <a class="share-menu__item" data-menu-action="bluesky" role="menuitem" target="_blank" rel="noopener" href="#">
+      <svg viewBox="0 0 568 501" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M123.121 33.6637C188.241 82.5526 258.281 181.681 284 234.873c25.719-53.192 95.759-152.32 160.879-201.21C491.866-1.61699 568-28.9188 568 57.9105c0 17.3286-9.9341 145.529-15.764 166.32-20.273 72.293-93.991 90.7-159.563 79.554 114.587 19.491 143.714 84.111 80.6 148.732-119.834 122.69-172.22-30.778-185.644-70.103-2.46-7.21-3.61-10.583-3.629-7.7-.024-2.883-1.174.49-3.634 7.7-13.422 39.325-65.808 192.793-185.643 70.103-63.114-64.621-33.987-129.241 80.6-148.732-65.572 11.146-139.29-7.261-159.564-79.554C9.93408 203.439 0 75.2386 0 57.9105 0-28.9188 76.1345-1.61699 123.121 33.6637z"/></svg>
+      <span>Share on Bluesky</span>
     </a>
     {cardSrc && (
       <a class="share-menu__item" data-menu-action="download" role="menuitem" href={cardSrc} download>
@@ -181,21 +184,35 @@ const shareText = text ?? title;
     const groups = document.querySelectorAll<HTMLElement>('[data-share]');
     if (!groups.length) return;
 
-    // Touch-only gating for the native share sheet. Chrome/macOS technically
-    // supports navigator.share, but the desktop sheet is unreliable — desktop
-    // always gets the popover instead.
+    // Platform gating for the native share sheet. Use the OS sheet on the
+    // platforms where it's reliably good:
+    //   • Apple (iOS, iPadOS, macOS) — sheet is consistently great; Chrome
+    //     on macOS proxies to the same macOS Sharing widget.
+    //   • Android — Chrome's share sheet is the canonical pattern there.
+    //   • Any other touch device — popover would be awkward.
+    // Skip on Windows / Linux desktop where the OS share UI is uneven or
+    // missing; those get the popover instead.
+    //
+    // The earlier code did a canShare({ files: [emptyBlob] }) probe to
+    // pick between file-share and URL-only — but iOS Safari validates file
+    // contents and rejected the empty File, so the probe returned false on
+    // the very devices where native share is the whole point. The real
+    // canShare check happens inside nativeShare() against the fetched PNG;
+    // if files can't be shared we transparently fall back to URL-only,
+    // which still opens the OS sheet.
+    const ua = navigator.userAgent || '';
+    const uaDataPlatform = (navigator as any).userAgentData?.platform || '';
+    const platformStr = uaDataPlatform || navigator.platform || '';
+    const isApplePlatform =
+      /Mac|iPhone|iPad|iPod/.test(platformStr) ||
+      /Mac OS X|iPhone|iPad|iPod/.test(ua);
+    const isAndroid = /Android/.test(ua);
     const isTouchDevice =
       navigator.maxTouchPoints > 0 ||
       (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
-    // Whether native share is even available. The earlier code did a
-    // canShare({ files: [emptyBlob] }) probe to decide between file-share
-    // and URL-only — but iOS Safari validates file contents and rejects an
-    // empty File whose MIME claims to be image/png, so the probe returned
-    // false on the very devices where native share works best. The real
-    // canShare check happens later against the actual fetched PNG; if
-    // files can't be shared we transparently fall back to URL-only share,
-    // which still opens the OS share sheet.
-    const canNativeShare = isTouchDevice && typeof (navigator as any).share === 'function';
+    const canNativeShare =
+      (isApplePlatform || isAndroid || isTouchDevice) &&
+      typeof (navigator as any).share === 'function';
 
     // Track which group's menu is currently mounted at body level.
     let openGroup: HTMLElement | null = null;
@@ -203,10 +220,15 @@ const shareText = text ?? title;
     let openButton: HTMLElement | null = null;
 
     function intentUrls(url: string, text: string) {
+      // Web-share intent URLs for the platforms that publish them. Instagram,
+      // YouTube, and TikTok don't expose intent URLs (no public web post API),
+      // so they're not in the popover — but mobile / macOS users get them
+      // automatically through the OS native share sheet, which lists every
+      // installed app that registers as a share target.
       const enc = encodeURIComponent;
       return {
-        x: `https://twitter.com/intent/tweet?text=${enc(text)}&url=${enc(url)}`,
         linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${enc(url)}`,
+        bluesky: `https://bsky.app/intent/compose?text=${enc(`${text} ${url}`)}`,
       };
     }
 
@@ -314,8 +336,8 @@ const shareText = text ?? title;
 
       // Pre-fill the intent anchors.
       const intents = intentUrls(url, text);
-      (menu.querySelector('[data-menu-action="x"]') as HTMLAnchorElement).href = intents.x;
       (menu.querySelector('[data-menu-action="linkedin"]') as HTMLAnchorElement).href = intents.linkedin;
+      (menu.querySelector('[data-menu-action="bluesky"]') as HTMLAnchorElement).href = intents.bluesky;
 
       permalinkBtn.addEventListener('click', async (e) => {
         e.stopPropagation();

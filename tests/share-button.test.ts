@@ -32,22 +32,35 @@ const PERMALINK_SRC = fs.readFileSync(path.join(ROOT, 'src/pages/e/[id].astro'),
 // SOURCE-LEVEL INVARIANTS
 // ───────────────────────────────────────────────────────────────────────────
 
-describe('ShareButton source — touch-only gating (Lesson A)', () => {
-  it('checks for touch-device signal before claiming canShareFiles', () => {
-    // Feature detection ≠ UX selection. The Web Share API exists on Chrome
-    // desktop but the macOS sheet is unreliable; desktop must always get
-    // the popover.
+describe('ShareButton source — platform-gated native share (Lesson A)', () => {
+  it('detects Apple platforms (iOS, iPadOS, macOS) for native share', () => {
+    // macOS desktop (including Chrome → macOS Sharing widget) is a yes;
+    // iOS/iPadOS are yes via the same Apple check or the touch fallback.
+    expect(SHARE_SRC).toMatch(/Mac\|iPhone\|iPad/);
+  });
+
+  it('detects Android for native share', () => {
+    // Chrome's share sheet on Android is the canonical pattern.
+    expect(SHARE_SRC).toMatch(/Android/);
+  });
+
+  it('also accepts other touch devices (fallback)', () => {
+    // Any device whose primary pointer is coarse / has touch points gets
+    // the native sheet too, so we don't miss e.g. Surface tablets.
     expect(SHARE_SRC).toMatch(/maxTouchPoints\s*>\s*0/);
     expect(SHARE_SRC).toMatch(/pointer:\s*coarse/);
   });
 
-  it('uses the touch signal as a precondition for native share', () => {
-    // The order matters: isTouchDevice && navigator.share-availability.
-    // If a future edit reverses this and just checks API existence, desktop
-    // Chrome will once again trigger the unreliable macOS native sheet.
+  it('does NOT trigger native share on Windows / Linux desktop', () => {
+    // The gating logic must NOT match Windows or Linux as positive platforms.
+    // Those get the popover instead, because their native share UI is uneven.
     const block = SHARE_SRC.match(/const\s+canNativeShare\s*=[\s\S]{0,300}/);
     expect(block, 'canNativeShare definition not found').not.toBeNull();
-    expect(block![0]).toMatch(/isTouchDevice\s*&&/);
+    expect(block![0]).not.toMatch(/Win|Linux/);
+  });
+
+  it('requires navigator.share to be a function (capability check)', () => {
+    expect(SHARE_SRC).toMatch(/typeof\s+\(navigator\s+as\s+any\)\.share\s*===\s*['"]function['"]/);
   });
 
   it('does NOT probe canShare with an empty Blob (iOS Safari rejects it — 2026-06-08 postmortem)', () => {
@@ -136,6 +149,33 @@ describe('TimelineEntry source — every card variant renders the actions (Lesso
     const shareButtonCalls = (TIMELINE_SRC.match(/<ShareButton/g) || []).length;
     expect(linkSections, 'expected at least one card__links footer').toBeGreaterThan(0);
     expect(shareButtonCalls).toBe(linkSections);
+  });
+});
+
+describe('ShareButton source — popover platform set (user direction 2026-06-08)', () => {
+  it('offers LinkedIn and Bluesky in the popover', () => {
+    expect(SHARE_SRC).toMatch(/data-menu-action="linkedin"/);
+    expect(SHARE_SRC).toMatch(/data-menu-action="bluesky"/);
+    // Their intent URLs must be the canonical web-share endpoints.
+    expect(SHARE_SRC).toMatch(/linkedin\.com\/sharing\/share-offsite/);
+    expect(SHARE_SRC).toMatch(/bsky\.app\/intent\/compose/);
+  });
+
+  it('does NOT offer X / Twitter (user direction)', () => {
+    // Per the 2026-06-08 direction, drop X from the popover. Mobile / macOS
+    // users still get X in the native sheet if they have the app installed.
+    expect(SHARE_SRC).not.toMatch(/twitter\.com\/intent/);
+    expect(SHARE_SRC).not.toMatch(/data-menu-action="x"/);
+    expect(SHARE_SRC).not.toMatch(/Share on X/);
+  });
+
+  it('does NOT offer Instagram / YouTube / TikTok in the popover (no web intent URLs)', () => {
+    // These platforms don't expose web-share intent endpoints; sharing to
+    // them happens through the native sheet on mobile / macOS. Adding
+    // placeholder menu items would be misleading.
+    expect(SHARE_SRC).not.toMatch(/data-menu-action="instagram"/);
+    expect(SHARE_SRC).not.toMatch(/data-menu-action="youtube"/);
+    expect(SHARE_SRC).not.toMatch(/data-menu-action="tiktok"/);
   });
 });
 
@@ -268,8 +308,8 @@ describe('Portal pattern — jsdom simulation', () => {
             <button class="entry-actions__btn" data-action="permalink" aria-label="Copy permalink"></button>
             <button class="entry-actions__btn" data-action="share" aria-label="Share" aria-expanded="false"></button>
             <div class="share-menu" role="menu" data-share-menu hidden>
-              <a data-menu-action="x" href="#"></a>
               <a data-menu-action="linkedin" href="#"></a>
+              <a data-menu-action="bluesky" href="#"></a>
             </div>
           </div>
         </article>
