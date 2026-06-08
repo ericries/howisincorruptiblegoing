@@ -82,6 +82,24 @@ After the 8e8e73c fix, a user on iOS reported that tapping the share icon still 
 
 Mutation-verified: reintroducing the empty-Blob probe via sed makes the dedicated test fail; reverting passes.
 
+## Follow-up: Chrome/macOS native share was URL-only (2026-06-08)
+
+After the iOS-empty-Blob fix, a user on Chrome/macOS reported the native sheet now opens — but only with the URL, no card attached. Sixth why:
+
+1. **Why did Chrome/macOS share URL-only?** Because the code still gated the file-attached share behind `if (!navigator.canShare || navigator.canShare({ files: [file] }))`, and on Chrome/macOS that check returns `false` for an `image/png` file.
+2. **Why does Chrome/macOS canShare return false for PNG files?** Chrome's implementation of `canShare({ files })` on desktop is conservative — it doesn't always accurately predict whether the underlying macOS Sharing widget will accept the file. It returns false for cases where the actual `navigator.share({ files })` call would succeed.
+3. **Why was I gating on canShare at all?** Defensive programming: ask permission before attempting. The intent was to fall back to URL-only when files weren't supported.
+4. **Why didn't the defensive check work?** Because `canShare`'s spec contract — "return true iff share will succeed" — is broken in practice. Chrome's implementation is too conservative; some platforms accept file shares without canShare's blessing.
+5. **Why is this a recurring class of bug?** Same chain as bugs A and the iOS fix: I trusted a capability query to predict the answer, when the only reliable answer is to attempt the action. Capability queries are HINTS, not contracts. For Web Share API, the cleanest pattern is "try, catch, fall back" — let the platform decide.
+
+**Fix (this commit):** drop the upfront `canShare({ files })` check around the file-share attempt. The function now just calls `navigator.share({ files: [file], url, title, text })` directly. If the platform rejects, we catch the error, fall through to `navigator.share({ url, title, text })`, and the user gets the URL-only share they had before. If the platform accepts (which Chrome/macOS actually does for PNG, despite canShare's pessimism), the recipient gets the card image. Failed file-share attempts that reject synchronously don't consume user activation, so the URL-only fallback still runs in the same click.
+
+**Test invariant added:** `does NOT gate the file share on canShare (Chrome/macOS lies — 2026-06-08 follow-up)` scans the `nativeShare` body and fails if a `canShare({…files…}) {` gate appears between the File construction and `navigator.share({ files })`. Mutation-verified.
+
+**Pattern lesson for future Web Platform APIs:**
+
+> Capability queries (`canX`, `is*Supported`, etc.) are hints, not contracts. When they're cheap to retry, prefer "try and catch" over "ask first" — the runtime behavior is the ground truth, not the prediction.
+
 ## Preventive measures
 
 - **CSS containing-block invariant test.** Whenever I add a `position: fixed` popover to a component that lives inside `.timeline-row`, I either portal it to `<body>` or remove `animation-fill-mode: both` on the row. The test in `tests/share-button.test.ts` enforces this for the share menu specifically.

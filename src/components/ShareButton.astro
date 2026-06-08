@@ -282,10 +282,17 @@ const shareText = text ?? title;
     }
 
     async function nativeShare(url: string, title: string, text: string, cardSrc: string) {
-      // Try with the card PNG attached first (best UX — recipients get the
-      // image, not just a link). If anything goes wrong — fetch fails,
-      // canShare rejects the file, the await drops user activation —
-      // fall back to URL-only share, which still opens the OS sheet.
+      // Try with the card PNG attached first — recipients get the actual
+      // image, not just a link unfurl.
+      //
+      // We deliberately don't gate on `navigator.canShare({ files: [file] })`
+      // anymore: on Chrome/macOS canShare often returns false for image/png
+      // even though navigator.share({ files }) would actually succeed. The
+      // upfront probe was lying — so users got the URL-only share instead
+      // of the image they expected. Just attempt the file share and catch
+      // the rejection if the platform really doesn't accept it; failed
+      // attempts that reject synchronously don't consume user activation,
+      // so the URL-only fallback still works in the same click.
       if (cardSrc) {
         try {
           const res = await fetch(cardSrc);
@@ -296,14 +303,17 @@ const shareText = text ?? title;
               cardSrc.split('/').pop() || 'card.png',
               { type: blob.type || 'image/png' },
             );
-            if (!navigator.canShare || navigator.canShare({ files: [file] })) {
+            try {
               await navigator.share({ files: [file], url, title, text });
               return true;
+            } catch (err: any) {
+              if (err?.name === 'AbortError') return true;
+              // Not aborted — the platform rejected the file share. Fall
+              // through to the URL-only attempt below.
             }
           }
         } catch (err: any) {
           if (err?.name === 'AbortError') return true;
-          // Otherwise fall through to URL-only share below.
         }
       }
       try {

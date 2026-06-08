@@ -68,18 +68,35 @@ describe('ShareButton source — platform-gated native share (Lesson A)', () => 
     // as a feature probe. iOS Safari validates file contents and returned
     // false on the very devices where native share was supposed to work,
     // so the click handler fell through to the desktop popover. The fix is
-    // to drop the upfront probe and let nativeShare() check canShare against
-    // the real fetched PNG inside the click handler. If anyone reintroduces
-    // the empty-Blob probe, this test catches it.
+    // to drop the upfront probe and let nativeShare() attempt the file
+    // share directly. If anyone reintroduces the empty-Blob probe, this
+    // test catches it.
     expect(SHARE_SRC).not.toMatch(/new File\(\s*\[\s*new Blob\(\s*\)\s*\]/);
   });
 
+  it('does NOT gate the file share on canShare (Chrome/macOS lies — 2026-06-08 follow-up)', () => {
+    // After the iOS fix, Chrome on macOS was still URL-only. Root cause:
+    // canShare({ files: [pngFile] }) returns false on Chrome desktop even
+    // when navigator.share({ files }) would actually succeed. Trust the
+    // attempt, not the prediction — try the file share and catch the
+    // rejection. This test fails if someone re-adds a canShare gate around
+    // the navigator.share({ files }) call.
+    const nativeShareSrc = SHARE_SRC.slice(
+      SHARE_SRC.indexOf('async function nativeShare'),
+      SHARE_SRC.indexOf('function tooltip'),
+    );
+    expect(nativeShareSrc.length, 'expected nativeShare body extract').toBeGreaterThan(100);
+    expect(
+      nativeShareSrc,
+      'no upfront canShare check should sit between the File construction and navigator.share({files})',
+    ).not.toMatch(/canShare\([^)]*files[^)]*\)\s*\)?\s*\{/);
+  });
+
   it('falls back to URL-only share when the file path fails', () => {
-    // Without the upfront probe, the click handler must still gracefully
-    // handle the case where canShare({files}) is false at attempt-time, or
-    // fetch fails. The source must contain BOTH a file-attached share AND
-    // a URL-only share so iOS users always get the OS sheet — even if the
-    // file attach didn't work out.
+    // The click handler must still gracefully handle the case where the
+    // platform rejects the file share or fetch fails. The source must
+    // contain BOTH a file-attached share AND a URL-only share so users
+    // always get the OS sheet — even if the file attach didn't work out.
     expect(SHARE_SRC).toMatch(/navigator\.share\(\s*\{\s*files:\s*\[\s*file\s*\]/);
     expect(SHARE_SRC).toMatch(/navigator\.share\(\s*\{\s*url\s*,\s*title\s*,\s*text\s*\}\s*\)/);
   });
