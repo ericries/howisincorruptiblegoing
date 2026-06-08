@@ -21,7 +21,9 @@
     "ikea",
     "precedent-collective"
   ],
-  "type_metadata": {},
+  "type_metadata": {
+    "highlight": "Leah Solivan: 'They are not exceptions. They are clues.'"
+  },
   "scanner_source": "manual",
   "verified": true,
   "created_at": "2026-06-04T20:00:00Z"
