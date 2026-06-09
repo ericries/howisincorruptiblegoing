@@ -1,0 +1,31 @@
+{
+  "id": "2026-06-08-think-fast-talk-smart-matt-abrahams",
+  "date": "2026-06-08",
+  "type": "podcast",
+  "title": "Think Fast, Talk Smart (Stanford GSB / Matt Abrahams) — 'as a leader, only make deposits, never make withdrawals from the culture bank'",
+  "summary": "Matt Abrahams — Stanford Graduate School of Business lecturer and host of the 125K-subscriber Think Fast, Talk Smart — interviews Eric for the Culture Club episode. Eric introduces the culture-bank framing and the Todd Park rule he uses to explain why trustworthy actions look ROI-negative on paper but compound as the most valuable asset a company can build.",
+  "blockquote": "The rule I learned from Todd Park, the rule is as a leader, only make deposits, never make withdrawals from the culture bank. It sounds like an impossible standard, but actually, it's not that hard. The great great Clay Christensen once said that it is much harder to do the right thing 100% of the time than 98% of the time.",
+  "blockquote_source": "Eric Ries on Think Fast, Talk Smart",
+  "source_url": "https://www.youtube.com/watch?v=feCA0lHkS9s",
+  "source_urls": [
+    {
+      "url": "https://www.fastersmarter.io/incorruptible",
+      "label": "Think Fast, Talk Smart episode page"
+    }
+  ],
+  "video_url": "https://www.youtube.com/watch?v=feCA0lHkS9s",
+  "image": "/images/podcasts/think-fast-talk-smart.jpg",
+  "attribution": "Matt Abrahams",
+  "attribution_title": "Lecturer in Strategic Communication, Stanford Graduate School of Business; Host, Think Fast, Talk Smart",
+  "attribution_image": null,
+  "tags": [
+    "podcast",
+    "youtube",
+    "stanford-gsb",
+    "communication"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-06-09T16:45:00Z"
+}
