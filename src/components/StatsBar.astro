@@ -32,13 +32,16 @@ const rightRanks = amazonRanks.slice(half);
 <div class="stats">
   <div class="stats__inner">
     {leftRanks.length > 0 && (
-      <div class="stats__amazon-stack stats__amazon-stack--left">
-        {leftRanks.map((r) => (
-          <a class="stats__amazon stats__amazon--left" href={r.entryId ? `#${r.entryId}` : r.url} aria-label={`Amazon ${r.rank} ${r.badge} in ${r.category}`}>
-            <span class="stats__amazon-pill"><span class="stats__amazon-num">{r.rank}</span> {r.badge}</span>
-            <span class="stats__amazon-cat">in {r.category}</span>
-          </a>
-        ))}
+      <div class="stats__amazon-col stats__amazon-col--left">
+        <span class="stats__amazon-header">On Amazon</span>
+        <div class="stats__amazon-stack stats__amazon-stack--left">
+          {leftRanks.map((r) => (
+            <a class="stats__amazon stats__amazon--left" href={r.entryId ? `#${r.entryId}` : r.url} aria-label={`Amazon ${r.rank} ${r.badge} in ${r.category}`}>
+              <span class="stats__amazon-pill"><span class="stats__amazon-num">{r.rank}</span> {r.badge}</span>
+              <span class="stats__amazon-cat">in {r.category}</span>
+            </a>
+          ))}
+        </div>
       </div>
     )}
     <div class="stats__center">
@@ -67,13 +70,16 @@ const rightRanks = amazonRanks.slice(half);
       </div>
     </div>
     {rightRanks.length > 0 && (
-      <div class="stats__amazon-stack stats__amazon-stack--right">
-        {rightRanks.map((r) => (
-          <a class="stats__amazon stats__amazon--right" href={r.entryId ? `#${r.entryId}` : r.url} aria-label={`Amazon ${r.rank} ${r.badge} in ${r.category}`}>
-            <span class="stats__amazon-pill"><span class="stats__amazon-num">{r.rank}</span> {r.badge}</span>
-            <span class="stats__amazon-cat">in {r.category}</span>
-          </a>
-        ))}
+      <div class="stats__amazon-col stats__amazon-col--right">
+        <span class="stats__amazon-header">On Amazon</span>
+        <div class="stats__amazon-stack stats__amazon-stack--right">
+          {rightRanks.map((r) => (
+            <a class="stats__amazon stats__amazon--right" href={r.entryId ? `#${r.entryId}` : r.url} aria-label={`Amazon ${r.rank} ${r.badge} in ${r.category}`}>
+              <span class="stats__amazon-pill"><span class="stats__amazon-num">{r.rank}</span> {r.badge}</span>
+              <span class="stats__amazon-cat">in {r.category}</span>
+            </a>
+          ))}
+        </div>
       </div>
     )}
   </div>
@@ -99,6 +105,26 @@ const rightRanks = amazonRanks.slice(half);
     align-items: center;
     gap: 3rem;
     flex: 1;
+  }
+  /* Each flank: a small "On Amazon" header above the row of ranking pills. */
+  .stats__amazon-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .stats__amazon-col--right {
+    align-items: flex-end;
+  }
+  .stats__amazon-header {
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    padding: 0 2px;
   }
   /* Two Amazon ranking pills sit side-by-side on each flank. */
   .stats__amazon-stack {
@@ -209,7 +235,7 @@ const rightRanks = amazonRanks.slice(half);
   }
 
   @media (max-width: 768px) {
-    .stats__amazon-stack { display: none; }
+    .stats__amazon-col { display: none; }
     .stats__inner { justify-content: center; }
   }
 
