@@ -167,6 +167,19 @@ describe('TimelineEntry source — every card variant renders the actions (Lesso
     expect(linkSections, 'expected at least one card__links footer').toBeGreaterThan(0);
     expect(shareButtonCalls).toBe(linkSections);
   });
+
+  it('passes entry.image as cardSrc on every variant — not gated to quote-cards', () => {
+    // Marcus G / user feedback 2026-06-08: the native share sheet was opening
+    // URL-only because cardSrc was gated to `isQuoteCard ? entry.image : undefined`.
+    // Most entries are NOT quote-cards (they have hero images, podcast covers,
+    // book selfies, etc.), so the file-share branch never fired. Every variant
+    // must forward entry.image so the share sheet attaches a thumbnail.
+    const gated = (TIMELINE_SRC.match(/cardSrc=\{isQuoteCard\s*\?\s*entry\.image\s*:\s*undefined\}/g) || []).length;
+    expect(gated, 'cardSrc must not be gated on isQuoteCard — share sheet needs the image on every entry').toBe(0);
+    const forwards = (TIMELINE_SRC.match(/cardSrc=\{entry\.image\s*\?\?\s*undefined\}/g) || []).length;
+    const shareButtonCalls = (TIMELINE_SRC.match(/<ShareButton/g) || []).length;
+    expect(forwards, 'every <ShareButton> must forward entry.image as cardSrc').toBe(shareButtonCalls);
+  });
 });
 
 describe('ShareButton source — popover platform set (user direction 2026-06-08)', () => {
