@@ -29,3 +29,7 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 *.csv
+
+# Python
+__pycache__/
+*.pyc
