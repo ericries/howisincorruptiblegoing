@@ -11,6 +11,7 @@ The goal isn't to dump posts into the queue. It's to **find the moments the queu
 ### Repo (read-only — DO NOT commit)
 - `content/entries/*.json` — every entry on the site, one file per ID. Fields you'll use: `id`, `date`, `type`, `title`, `summary`, `blockquote`, `blockquote_source`, `attribution`, `attribution_title`, `image`, `source_url`, `type_metadata.highlight`, `type_metadata.sidebar_quote`, `tags`.
 - `public/images/cards/<id>.png` — the auto-generated 1600×900 quote card with `howisincorruptiblegoing.com` watermark. Use this as the share image when `entry.image` points to `/images/cards/...`.
+- `public/images/ig-cards/<id>.png` — Instagram-format 1080×1350 (4:5 portrait) quote card with watermark in the safe area. Generated on demand by `scripts/generate_ig_card.py <entry-json> public/images/ig-cards/<id>.png`. Use this for any IG-bound post. If the file doesn't exist yet for the entry, generate it before scheduling.
 - `public/images/podcasts/<slug>.jpg` — 600×600 podcast covers. Use when `entry.image` points to `/images/podcasts/...`.
 - `public/images/social/`, `public/images/featured/`, `public/images/events/` — other hero images. Same rule: if `entry.image` is set, that's the file to attach.
 - `public/images/cards/2026-06-09-steve-blank-incorruptible.png` is a representative example to look at first to understand the card aesthetic.
@@ -176,9 +177,13 @@ Only post here if cross-posting Eric's *own* media (CNBC clip, podcast pull). Fo
 **Always attach an image to scheduled posts when one exists.** A bare URL on Bluesky/X is dramatically worse engagement than a card.
 
 - **Quote cards** (`/images/cards/<id>.png`, 1600×900) — attach as-is to Bluesky, X, LinkedIn. They render correctly in the feed.
-- **For Instagram feed:** the 1600×900 card needs a 1:1 crop or 4:5 portrait. As of 2026-06-09 the site does NOT yet auto-generate Instagram-format cards. Options:
-  - (Preferred) Use the original card and let Buffer's IG composer crop — verify the crop keeps the quote + attribution + watermark visible. If it cuts off the watermark, fall back to:
-  - Tell the user "no IG-suitable crop available for entry X" and skip IG for that entry. Don't post a card with the watermark cut off.
+- **For Instagram feed:** use the matching 4:5 portrait card at `public/images/ig-cards/<id>.png`. If the file doesn't exist yet, generate it before scheduling:
+  ```bash
+  uv run --with pillow python scripts/generate_ig_card.py \
+    content/entries/<id>.json \
+    public/images/ig-cards/<id>.png
+  ```
+  The card is 1080×1350 with the `howisincorruptiblegoing.com` watermark in the safe area. Never crop the 1600×900 card for IG — it cuts off the watermark.
 - **Podcast covers** (`/images/podcasts/<slug>.jpg`, 600×600) — already 1:1, work on every channel.
 - **Featured photos** (`/images/featured/<id>.jpg`, `/images/social/<id>.jpg`) — varies; check aspect ratio before posting.
 
@@ -206,7 +211,15 @@ After each successful schedule:
 3. Write back the file with 2-space indent.
 4. Do NOT commit this file to git in this run — Eric will review and commit periodically.
 
-If the state file doesn't exist when you start, you may also want to **backfill the `"source"` markers** for past entries. Walk `content/entries/*.json`, look at `source_url` + `source_urls[].url`, and for each entry mark `data[id][channel] = "source"` where the URL domain matches the channel. This prevents re-posting a LinkedIn endorsement back to LinkedIn.
+**Backfill is already wired up.** If `data/cross-posts.json` is missing or appears empty of `"source"` markers, run the backfill CLI before Step 1:
+
+```bash
+uv run python scripts/backfill_cross_posts.py \
+  --entries-dir content/entries \
+  --state-file data/cross-posts.json
+```
+
+The CLI walks `content/entries/*.json`, infers source markers from each entry's `source_url` and `source_urls[].url` (via `scripts/lib/cross_posts.py`), and merges them into the state file. It's idempotent — existing scheduled timestamps are always preserved over inferred source markers. As of 2026-06-09 the production state file has 183 LinkedIn / 20 X / 1 Bluesky source markers across 201 entries.
 
 ---
 
