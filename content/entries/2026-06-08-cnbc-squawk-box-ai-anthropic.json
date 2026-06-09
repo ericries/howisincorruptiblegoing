@@ -1,0 +1,32 @@
+{
+  "id": "2026-06-08-cnbc-squawk-box-ai-anthropic",
+  "date": "2026-06-08",
+  "type": "media",
+  "title": "CNBC Squawk Box \u2014 Eric on AI productivity and the Anthropic governance work he started years before AI governance went mainstream",
+  "summary": "Eric returns to CNBC Squawk Box less than two weeks after the launch-week appearance, this time to discuss why governance matters as much as the technology in shaping AI's long-term impact \u2014 and to surface the long-term-stock-exchange-flavored governance work he did with Anthropic before AI governance was on anyone else's radar.",
+  "blockquote": "Years before AI governance became a mainstream concern, Long-Term Stock Exchange Founder Eric Ries advised Anthropic on its long-term governance structure.\n\nEric joined CNBC Squawk Box today to discuss why governance matters as much as technology in shaping AI's long-term impact.",
+  "blockquote_source": "Long-Term Stock Exchange on LinkedIn",
+  "source_url": "https://www.cnbc.com/video/2026/06/08/its-very-very-early-to-see-the-impacts-of-ai-on-productivity-incorruptible-author-eric-ries.html",
+  "source_urls": [
+    {
+      "url": "https://www.linkedin.com/posts/ltse_years-before-ai-governance-became-a-mainstream-activity-7469807522015731714-QwAg",
+      "label": "LTSE LinkedIn announcement"
+    }
+  ],
+  "video_url": "https://www.cnbc.com/video/2026/06/08/its-very-very-early-to-see-the-impacts-of-ai-on-productivity-incorruptible-author-eric-ries.html",
+  "image": "/images/cards/2026-06-08-cnbc-squawk-box-ai-anthropic.png",
+  "attribution": "CNBC Squawk Box",
+  "attribution_title": "CNBC's morning business news show",
+  "attribution_image": null,
+  "tags": [
+    "media",
+    "cnbc",
+    "tv",
+    "ai",
+    "anthropic"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-06-09T01:40:00Z"
+}
