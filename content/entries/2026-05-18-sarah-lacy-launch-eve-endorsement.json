@@ -19,7 +19,10 @@
     "san-francisco",
     "best-bookstore"
   ],
-  "type_metadata": {},
+  "type_metadata": {
+    "highlight": "Sarah Lacy: 'his book is the explanation of why and an answer on how to fix' what our generation broke",
+    "sidebar_quote": "His book is the explanation of why and an answer on how to fix what he, me, we, our entire generation of Internet people… mostly unintentionally broke in the world."
+  },
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-05-18T22:00:00Z"

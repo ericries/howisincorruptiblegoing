@@ -18,7 +18,10 @@
     "bluesky",
     "tech-ethics"
   ],
-  "type_metadata": {},
+  "type_metadata": {
+    "highlight": "Anil Dash: 'This book is a big deal'",
+    "sidebar_quote": "This book is a big deal, and helps shift the conversation exactly the direction it needs to be."
+  },
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-05-17T17:00:00Z"

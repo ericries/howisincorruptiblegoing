@@ -20,7 +20,10 @@
     "government",
     "civic-tech"
   ],
-  "type_metadata": {},
+  "type_metadata": {
+    "highlight": "Jennifer Pahlka: 'This book will make you angry, but it will make you even more hopeful.'",
+    "sidebar_quote": "This book will make you angry, but it will make you even more hopeful."
+  },
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-05-30T22:30:00Z"

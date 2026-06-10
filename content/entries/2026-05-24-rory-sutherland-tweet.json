@@ -20,7 +20,10 @@
     "ogilvy",
     "behavioral-economics"
   ],
-  "type_metadata": {},
+  "type_metadata": {
+    "highlight": "Rory Sutherland: '90% of interesting companies are either founder-run or family owned… this explains a lot'",
+    "sidebar_quote": "If you have ever wondered why 90% of interesting companies are either founder-run or family owned, this explains a lot."
+  },
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-05-25T01:35:00Z"

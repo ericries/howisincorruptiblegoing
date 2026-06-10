@@ -24,9 +24,7 @@
     "launch-week",
     "tv"
   ],
-  "type_metadata": {
-    "featured": true
-  },
+  "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-05-28T03:30:00Z"
