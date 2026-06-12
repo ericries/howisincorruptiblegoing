@@ -1,0 +1,31 @@
+{
+  "snapshot_date": "2026-06-11",
+  "captured_at": "2026-06-12T01:15:00Z",
+  "capture_method": "structured fields via apify junglee/Amazon-crawler (bestsellerRanks[])",
+  "source_url": "https://www.amazon.com/Incorruptible-Good-Companies-Great-Stay/dp/B0FWZZBPZB",
+  "asin": "B0FWZZBPZB",
+  "totals": {
+    "global_ratings": 114,
+    "customer_reviews": null,
+    "average_rating": 5.0,
+    "five_star_pct": 99,
+    "four_star_pct": 1,
+    "three_star_pct": 0,
+    "two_star_pct": 0,
+    "one_star_pct": 0
+  },
+  "ranks": {
+    "books_overall": 1621,
+    "entrepreneurship": 4,
+    "business_management": 5,
+    "leadership_motivation": 11
+  },
+  "notes_for_future_agents": [
+    "Apify junglee/Amazon-crawler succeeded today with structured bestsellerRanks[] output.",
+    "No #1 categories for Incorruptible itself today — closest is #4 in Entrepreneurship.",
+    "100-review milestone shipped 2026-06-02. Next threshold: 250. Currently at 114 (up 2 from 112 yesterday).",
+    "Significant momentum vs 2026-06-10 snapshot: Books overall 2689 → 1621 (≈ +1000 spots); Entrepreneurship #6 → #4; Business Management #10 → #5; Leadership & Motivation #15 → #11. Likely lift from the Hacker News AMA (760 points / 523 comments, posted 2026-06-10)."
+  ],
+  "reviews": [],
+  "milestone_entries": []
+}

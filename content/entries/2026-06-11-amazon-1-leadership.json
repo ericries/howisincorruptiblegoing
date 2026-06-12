@@ -1,0 +1,31 @@
+{
+  "id": "2026-06-11-amazon-1-leadership",
+  "date": "2026-06-11",
+  "type": "milestone",
+  "title": "Incorruptible reaches #1 New Release in Leadership on Amazon",
+  "summary": "Incorruptible takes the top New Release slot in Amazon's Leadership category.",
+  "blockquote": "#1 New Release in Leadership",
+  "blockquote_source": "Amazon",
+  "source_url": "https://www.amazon.com/gp/new-releases/audible/18572052011",
+  "source_urls": null,
+  "video_url": null,
+  "image": null,
+  "attribution": "Amazon",
+  "attribution_title": "New Releases in Leadership",
+  "attribution_image": null,
+  "tags": [
+    "milestone",
+    "amazon",
+    "rank",
+    "new-release"
+  ],
+  "type_metadata": {
+    "amazon_rank": "#1",
+    "amazon_badge": "New Release",
+    "amazon_category": "Leadership",
+    "amazon_url": "https://www.amazon.com/gp/new-releases/audible/18572052011"
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-06-12T02:00:00Z"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "2026-06-10-hacker-news-ama",
+  "date": "2026-06-10",
+  "type": "media",
+  "title": "Hacker News AMA \u2014 Eric on 'the darkness in our industry that we often don't talk about'",
+  "summary": "Eric runs an Ask Me Anything on Hacker News pegged to Incorruptible. The thread climbs to 760 points and 523 comments inside 24 hours, with Eric himself working through the Costco / FedMart governance-fortress argument, the leadership-versus-structure debate, and a meta-thread on whether his measured replies even read like a human anymore.",
+  "blockquote": "Hey gang, you may remember me from such books as The Lean Startup and The Startup Way.\n\nIt's been fifteen years since I wrote The Lean Startup, and in that time I've seen some things. In both big companies and tiny startups, NGOs and governments, in almost every industry you can name.\n\nI've helped a lot of people create a lot of amazing companies, but I've also seen so many ways this can go wrong. There's a darkness in our industry that we often don't talk about.\n\nI kept watching good companies drift away from the missions they were founded on. Not because anyone woke up one day and decided to be evil, but because the structure they were built on slowly pulled them there. I call that pull \"financial gravity.\"",
+  "blockquote_source": "Hacker News AMA",
+  "source_url": "https://news.ycombinator.com/item?id=48477135",
+  "source_urls": null,
+  "video_url": null,
+  "image": "/images/cards/2026-06-10-hacker-news-ama.png",
+  "attribution": "Hacker News",
+  "attribution_title": "AMA thread \u2014 760 points, 523 comments in 24 hours",
+  "attribution_image": null,
+  "tags": [
+    "media",
+    "hacker-news",
+    "ama",
+    "tech-community"
+  ],
+  "type_metadata": {
+    "featured": true
+  },
+  "scanner_source": "social-scan",
+  "verified": true,
+  "created_at": "2026-06-11T16:50:00Z"
+}
