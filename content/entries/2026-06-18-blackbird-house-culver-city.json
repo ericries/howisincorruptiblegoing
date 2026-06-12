@@ -1,0 +1,31 @@
+{
+  "id": "2026-06-18-blackbird-house-culver-city",
+  "date": "2026-06-18",
+  "type": "event",
+  "title": "Blackbird House Culver City — Breakfast fireside hosted by Build to Lead + Underground Tech",
+  "summary": "Eric joins a breakfast fireside at Blackbird House in Culver City, hosted by Build to Lead and Underground Tech, for one of his last LA book-tour stops on Incorruptible.",
+  "blockquote": "Breakfast fireside chat at Blackbird House in Culver City. Hosted by Build to Lead and Underground Tech.",
+  "blockquote_source": "Incorruptible book tour announcement",
+  "source_url": "https://luma.com/a0z6tonx",
+  "source_urls": null,
+  "video_url": null,
+  "image": null,
+  "attribution": "Build to Lead + Underground Tech",
+  "attribution_title": "Breakfast fireside co-hosts at Blackbird House",
+  "attribution_image": null,
+  "tags": [
+    "event",
+    "los-angeles-california",
+    "culver-city",
+    "in-person",
+    "book-tour"
+  ],
+  "type_metadata": {
+    "city": "Culver City",
+    "venue": "Blackbird House — 3520 Schaefer St, Culver City",
+    "time": "10:00 - 11:30 AM PT"
+  },
+  "scanner_source": "manual",
+  "verified": false,
+  "created_at": "2026-06-12T03:00:00Z"
+}
