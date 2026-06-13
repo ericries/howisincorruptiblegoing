@@ -1,0 +1,31 @@
+{
+  "snapshot_date": "2026-06-13",
+  "captured_at": "2026-06-13T15:30:00Z",
+  "capture_method": "structured fields via apify junglee/Amazon-crawler (bestsellerRanks[])",
+  "source_url": "https://www.amazon.com/Incorruptible-Good-Companies-Great-Stay/dp/B0FWZZBPZB",
+  "asin": "B0FWZZBPZB",
+  "totals": {
+    "global_ratings": 116,
+    "customer_reviews": null,
+    "average_rating": 5.0,
+    "five_star_pct": 97,
+    "four_star_pct": 3,
+    "three_star_pct": 0,
+    "two_star_pct": 0,
+    "one_star_pct": 0
+  },
+  "ranks": {
+    "books_overall": 2688,
+    "entrepreneurship": 8,
+    "business_management": 11,
+    "leadership_motivation": 17
+  },
+  "notes_for_future_agents": [
+    "Apify junglee/Amazon-crawler succeeded today with structured bestsellerRanks[] output.",
+    "No #1 categories for Incorruptible itself today.",
+    "100-review milestone shipped 2026-06-02. Next threshold: 250. Currently at 116 (up 2 from 114 yesterday).",
+    "Continued slippage vs 2026-06-12 (which was already a step back from the 6-11 AMA peak): Books overall 2261 → 2688; Entrepreneurship #6 → #8; Business Management #9 → #11; Leadership & Motivation held at #17. AMA bump nearly fully decayed; ranks roughly back to the 2026-06-10 baseline (#2689) but category positions still slightly better than that baseline."
+  ],
+  "reviews": [],
+  "milestone_entries": []
+}
