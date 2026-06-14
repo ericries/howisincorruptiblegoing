@@ -1,0 +1,42 @@
+{
+  "id": "2026-06-12-lead-from-the-heart-mark-crowley",
+  "date": "2026-06-12",
+  "type": "media",
+  "title": "Lead From The Heart (Mark C. Crowley) — Eric Ries on why most companies are built to fail",
+  "summary": "Mark C. Crowley releases episode 180 of Lead From The Heart, an Eric Ries interview on Incorruptible. Crowley's podcast reaches an audience in 156 countries.",
+  "blockquote": "Eric Ries, author of the bestselling The Lean Startup and in his new book, Incorruptible, has spent decades studying how organizations can thrive over the long term while genuinely improving the lives of employees, customers, and communities. In Incorruptible, he argues that the most enduring, high-performing companies are guided by a mission that advances human flourishing and a principled ethos that shapes every decision and action. These organizations resist shortcuts, prioritize employee well-being, and refuse to squeeze customers—proving that ethics and excellence are inseparable.",
+  "blockquote_source": "Mark C. Crowley, Lead From The Heart podcast",
+  "source_url": "https://markccrowley.com/eric-ries-why-most-companies-are-built-to-fail/",
+  "source_urls": [
+    {
+      "url": "https://podcasts.apple.com/us/podcast/lead-from-the-heart/id1365633369",
+      "label": "Apple Podcasts"
+    },
+    {
+      "url": "https://open.spotify.com/show/6VAtJ7YlSeKocDL6rRvCJp",
+      "label": "Spotify"
+    },
+    {
+      "url": "https://x.com/MarkCCrowley/status/2065932333752991798",
+      "label": "Mark Crowley promo tweet"
+    }
+  ],
+  "video_url": null,
+  "image": "/images/podcasts/lead-from-the-heart.jpg",
+  "attribution": "Mark C. Crowley",
+  "attribution_title": "Host, Lead From The Heart; author of Lead From The Heart: Transformational Leadership For The 21st Century",
+  "attribution_image": null,
+  "tags": [
+    "podcast",
+    "media",
+    "leadership",
+    "lead-from-the-heart"
+  ],
+  "type_metadata": {
+    "podcast_show": "Lead From The Heart",
+    "episode_number": "180"
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-06-14T17:00:00Z"
+}
