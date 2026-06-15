@@ -1,0 +1,33 @@
+{
+  "id": "2026-06-15-hello-monday-jessi-hempel",
+  "date": "2026-06-15",
+  "type": "media",
+  "title": "Hello Monday with Jessi Hempel — 'so many ways for people to make money without creating any value at all'",
+  "summary": "Jessi Hempel, Senior Editor at Large at LinkedIn and host of Hello Monday, releases her interview with Eric on Incorruptible. The episode covers shareholder primacy's 1980s origins, 'financial gravity,' AI-driven layoffs, and structural integrity as a defense against extraction.",
+  "blockquote": "We've built an economy now that's created so many ways for people to make money without creating any value at all. In fact, often by destroying value.",
+  "blockquote_source": "Eric Ries on Hello Monday with Jessi Hempel",
+  "source_url": "https://www.youtube.com/watch?v=eS0z2w1GPc0",
+  "source_urls": [
+    {
+      "url": "https://www.linkedin.com/posts/jessihempel_weve-built-an-economy-now-thats-created-activity-7472264168704942080-B9Vp",
+      "label": "Jessi Hempel's LinkedIn announcement"
+    }
+  ],
+  "video_url": "https://www.youtube.com/watch?v=eS0z2w1GPc0",
+  "image": "/images/podcasts/hello-monday.jpg",
+  "attribution": "Jessi Hempel",
+  "attribution_title": "Host, Hello Monday with Jessi Hempel; Senior Editor at Large at LinkedIn",
+  "attribution_image": null,
+  "tags": [
+    "podcast",
+    "media",
+    "linkedin",
+    "hello-monday"
+  ],
+  "type_metadata": {
+    "podcast_show": "Hello Monday with Jessi Hempel"
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-06-15T17:00:00Z"
+}
