@@ -1,0 +1,37 @@
+{
+  "id": "2026-06-15-justpaid-podcast-daniel-kivatinos",
+  "date": "2026-06-15",
+  "type": "media",
+  "title": "JustPaid Podcast (Daniel Kivatinos) — 49-minute Eric interview on financial gravity, governance fortress, and mission protection",
+  "summary": "Daniel Kivatinos — JustPaid CEO and DrChrono co-founder — releases a 49-minute interview with Eric on Incorruptible. Episode walks through financial gravity, Saul Price / FedMart, the Costco governance fortress, Novo Nordisk's industrial foundation structure, perpetual purpose trusts, and why default corporate structures push companies toward extraction.",
+  "blockquote": "In this episode of the JustPaid Podcast, Daniel and Dan sit down with Eric Ries, author of The Lean Startup and Incorruptible, to discuss why mission-driven companies often lose their soul as they grow.\n\nEric explains the hidden force he calls financial gravity, why shareholder primacy can push companies toward short-term extraction, and how founders can protect their mission through better governance. The conversation covers Twilio, Costco, FedMart, Novo Nordisk, Anthropic, public benefit corporations, perpetual purpose trusts, and the legal structures founders can use to build companies that endure.",
+  "blockquote_source": "Daniel Kivatinos, JustPaid Podcast",
+  "source_url": "https://www.youtube.com/watch?v=SMAUu6K-neQ",
+  "source_urls": [
+    {
+      "url": "https://podcasts.apple.com/us/podcast/justpaid-io-the-future-of-business-finance/id1720325089",
+      "label": "Apple Podcasts"
+    },
+    {
+      "url": "https://www.linkedin.com/posts/justpaid_why-do-good-companies-go-bad-on-this-episode-activity-7472355637671174144-zvAj",
+      "label": "JustPaid LinkedIn announcement"
+    }
+  ],
+  "video_url": "https://www.youtube.com/watch?v=SMAUu6K-neQ",
+  "image": "/images/podcasts/justpaid.jpg",
+  "attribution": "Daniel Kivatinos",
+  "attribution_title": "Co-founder & CEO, JustPaid; previously co-founder, DrChrono",
+  "attribution_image": null,
+  "tags": [
+    "podcast",
+    "media",
+    "founder-interview",
+    "yc"
+  ],
+  "type_metadata": {
+    "podcast_show": "JustPaid Podcast"
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-06-16T17:00:00Z"
+}

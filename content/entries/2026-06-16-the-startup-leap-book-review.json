@@ -1,0 +1,32 @@
+{
+  "id": "2026-06-16-the-startup-leap-book-review",
+  "date": "2026-06-16",
+  "type": "media",
+  "title": "The Startup Leap — 26-minute book-review podcast: 'Why culture alone isn't enough'",
+  "summary": "The Startup Leap releases a 26-minute Incorruptible book-review podcast focused on Costco's $1.50 hot dog, Cloudflare's commitment to protecting users, mission guardians, golden shares, and the spiritual holding company.",
+  "blockquote": "From Costco's legendary $1.50 hot dog to Cloudflare's commitment to protecting the internet, Eric reveals why culture alone isn't enough — and why the future of capitalism may depend on something far less discussed: structure.",
+  "blockquote_source": "The Startup Leap",
+  "source_url": "https://www.youtube.com/watch?v=egjymJwqwjQ",
+  "source_urls": [
+    {
+      "url": "https://www.linkedin.com/posts/the-startup-leap_every-founder-asks-how-do-i-grow-faster-activity-7472603908423663616-rlqX",
+      "label": "The Startup Leap LinkedIn announcement"
+    }
+  ],
+  "video_url": "https://www.youtube.com/watch?v=egjymJwqwjQ",
+  "image": "/images/podcasts/the-startup-leap.jpg",
+  "attribution": "The Startup Leap",
+  "attribution_title": "Founder-focused book-review podcast",
+  "attribution_image": null,
+  "tags": [
+    "podcast",
+    "media",
+    "book-review"
+  ],
+  "type_metadata": {
+    "podcast_show": "The Startup Leap"
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-06-16T17:00:00Z"
+}
