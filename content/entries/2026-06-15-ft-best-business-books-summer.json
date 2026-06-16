@@ -21,7 +21,9 @@
     "summer-2026"
   ],
   "type_metadata": {
-    "featured": true
+    "featured": true,
+    "award_curator": "Financial Times",
+    "award_label": "Best Business Books of Summer 2026"
   },
   "scanner_source": "manual",
   "verified": false,
