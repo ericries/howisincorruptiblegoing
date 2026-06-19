@@ -22,7 +22,8 @@
   ],
   "type_metadata": {
     "award_curator": "HR Magazine",
-    "award_label": "Best of HR Books, June 2026"
+    "award_label": "Best of HR Books, June 2026",
+    "award_priority": 30
   },
   "scanner_source": "manual",
   "verified": false,

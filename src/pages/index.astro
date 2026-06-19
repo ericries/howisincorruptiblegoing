@@ -114,6 +114,9 @@ const amazonRanks = PINNED_AMAZON_CATEGORIES
 // Header awards (curated lists/best-of selections) — render as little laurels
 // in the navy header. Default to the right column; type_metadata.award_side === 'left'
 // promotes an award onto the left column alongside hero quotes.
+// Ordered by award_priority desc (default 50 — higher = higher up the column),
+// with entry date descending as tiebreaker. Use priority to rank by prestige so a
+// recent low-tier pick doesn't sit above a high-tier institutional one.
 const allAwards = entries
   .map(e => {
     const meta = e.type_metadata as Record<string, unknown> | undefined;
@@ -123,9 +126,12 @@ const allAwards = entries
       label: meta.award_label as string,
       curator: meta.award_curator as string,
       side: (meta.award_side === 'left' ? 'left' : 'right') as 'left' | 'right',
+      priority: typeof meta.award_priority === 'number' ? meta.award_priority : 50,
+      date: e.date as string,
     };
   })
-  .filter((a): a is { id: string; label: string; curator: string; side: 'left' | 'right' } => a !== null);
+  .filter((a): a is { id: string; label: string; curator: string; side: 'left' | 'right'; priority: number; date: string } => a !== null)
+  .sort((a, b) => b.priority - a.priority || (b.date > a.date ? 1 : -1));
 const awards = allAwards.filter(a => a.side === 'right').map(({ id, label, curator }) => ({ id, label, curator }));
 const leftAwards = allAwards.filter(a => a.side === 'left').map(({ id, label, curator }) => ({ id, label, curator }));
 

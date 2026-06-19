@@ -22,7 +22,8 @@
   ],
   "type_metadata": {
     "award_label": "Best New Management Books of 2026",
-    "award_curator": "Thinkers50"
+    "award_curator": "Thinkers50",
+    "award_priority": 70
   },
   "scanner_source": "social-scan",
   "verified": true,

@@ -29,7 +29,8 @@
     "sidebar_quote": "A road map to preventing people and organizations from making unethical decisions.",
     "award_label": "Top Spring/Summer 2026 Read",
     "award_curator": "Adam Grant",
-    "award_side": "left"
+    "award_side": "left",
+    "award_priority": 85
   },
   "scanner_source": "social-scan",
   "verified": false,
