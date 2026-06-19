@@ -1,0 +1,29 @@
+{
+  "id": "2026-06-19-innoguide-podcast-book-review",
+  "date": "2026-06-19",
+  "type": "media",
+  "title": "The InnoGuide Podcast — Episode 099 Part One book review of Incorruptible",
+  "summary": "The InnoGuide Podcast releases the first part of its 47-minute book review of Incorruptible — episode 099.",
+  "blockquote": "#099 Incorruptible by Eric Ries (Part One)",
+  "blockquote_source": "The InnoGuide Podcast, Episode 099",
+  "source_url": "https://www.youtube.com/watch?v=Rj7EAvj4WXA",
+  "source_urls": null,
+  "video_url": "https://www.youtube.com/watch?v=Rj7EAvj4WXA",
+  "image": "/images/podcasts/innoguide.jpg",
+  "attribution": "The InnoGuide Podcast",
+  "attribution_title": "Innovation and entrepreneurship podcast",
+  "attribution_image": null,
+  "tags": [
+    "podcast",
+    "media",
+    "book-review",
+    "innoguide"
+  ],
+  "type_metadata": {
+    "podcast_show": "The InnoGuide Podcast",
+    "episode_number": "099"
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-06-19T17:30:00Z"
+}
