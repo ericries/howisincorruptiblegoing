@@ -11,15 +11,16 @@ interface HeroQuote {
 }
 interface Props {
   awards?: Award[];
+  leftAwards?: Award[];
   heroQuotes?: HeroQuote[];
 }
-const { awards = [], heroQuotes = [] } = Astro.props;
+const { awards = [], leftAwards = [], heroQuotes = [] } = Astro.props;
 ---
 
 <header class="header">
   <div class="header__shimmer"></div>
-  {heroQuotes.length > 0 && (
-    <ul class="header__quotes" aria-label="Standout pull quotes">
+  {(heroQuotes.length > 0 || leftAwards.length > 0) && (
+    <ul class="header__quotes" aria-label="Standout pull quotes and curated picks">
       {heroQuotes.map(q => (
         <li class="header__quote">
           <a class="quote-laurel" href={`#${q.id}`} title={`${q.author}: ${q.label}`}>
@@ -29,6 +30,18 @@ const { awards = [], heroQuotes = [] } = Astro.props;
               <span class="quote-laurel__label">&ldquo;{q.label}&rdquo;</span>
             </span>
             <span class="quote-laurel__leaf quote-laurel__leaf--right" aria-hidden="true">❯</span>
+          </a>
+        </li>
+      ))}
+      {leftAwards.map(a => (
+        <li class="header__quote">
+          <a class="award-laurel" href={`#${a.id}`} title={`${a.curator}: ${a.label}`}>
+            <span class="award-laurel__leaf award-laurel__leaf--left" aria-hidden="true">❮</span>
+            <span class="award-laurel__body">
+              <span class="award-laurel__curator">{a.curator}</span>
+              <span class="award-laurel__label">{a.label}</span>
+            </span>
+            <span class="award-laurel__leaf award-laurel__leaf--right" aria-hidden="true">❯</span>
           </a>
         </li>
       ))}

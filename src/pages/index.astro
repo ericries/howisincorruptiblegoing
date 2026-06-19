@@ -112,8 +112,9 @@ const amazonRanks = PINNED_AMAZON_CATEGORIES
   .filter((r): r is {entryId: string; rank: string; badge: string; category: string} => !!r);
 
 // Header awards (curated lists/best-of selections) — render as little laurels
-// in the navy header, top-right corner.
-const awards = entries
+// in the navy header. Default to the right column; type_metadata.award_side === 'left'
+// promotes an award onto the left column alongside hero quotes.
+const allAwards = entries
   .map(e => {
     const meta = e.type_metadata as Record<string, unknown> | undefined;
     if (!meta || typeof meta.award_label !== 'string' || typeof meta.award_curator !== 'string') return null;
@@ -121,9 +122,12 @@ const awards = entries
       id: e.id,
       label: meta.award_label as string,
       curator: meta.award_curator as string,
+      side: (meta.award_side === 'left' ? 'left' : 'right') as 'left' | 'right',
     };
   })
-  .filter((a): a is { id: string; label: string; curator: string } => a !== null);
+  .filter((a): a is { id: string; label: string; curator: string; side: 'left' | 'right' } => a !== null);
+const awards = allAwards.filter(a => a.side === 'right').map(({ id, label, curator }) => ({ id, label, curator }));
+const leftAwards = allAwards.filter(a => a.side === 'left').map(({ id, label, curator }) => ({ id, label, curator }));
 
 // Hero pull-quotes ("book of the year/decade" type accolades) — render as
 // little laurels in the navy header, top-LEFT corner (mirror of awards).
@@ -144,7 +148,7 @@ const heroQuotes = entries
 ---
 
 <Layout title="How Is Incorruptible Going?">
-  <Header awards={awards} heroQuotes={heroQuotes} />
+  <Header awards={awards} leftAwards={leftAwards} heroQuotes={heroQuotes} />
   <BestsellerStrip />
   <StatsBar totalEntries={entries.length} totalEndorsements={totalEndorsements} amazonRanks={amazonRanks} />
   <UpcomingStrip entries={entries} />
