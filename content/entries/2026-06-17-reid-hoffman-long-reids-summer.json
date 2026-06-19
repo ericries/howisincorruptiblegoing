@@ -34,7 +34,8 @@
     "featured": true,
     "award_curator": "Reid Hoffman",
     "award_label": "Long Reids Summer Reading List 2026",
-    "award_priority": 95
+    "award_side": "left",
+    "award_priority": 80
   },
   "scanner_source": "manual",
   "verified": false,
