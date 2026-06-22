@@ -1,0 +1,37 @@
+{
+  "id": "2026-06-22-masters-of-scale-summer-reading",
+  "date": "2026-06-22",
+  "type": "media",
+  "title": "Masters of Scale picks Incorruptible for its 2026 Summer Reading List",
+  "summary": "Masters of Scale \u2014 Reid Hoffman's podcast network spanning Masters of Scale, Rapid Response, and Pioneers of AI \u2014 names Incorruptible to its 2026 Summer Reading List of 11 books, alongside Arthur Brooks, Maya Shankar, David Epstein, Lew Frankfort, Nicholas Thompson, Joanna Stern, Carrie Joy Grimes, Vivian Tu, Jacob Soboroff, and Danny Funt.",
+  "blockquote": "When mission-driven companies lose their way, it's rarely bad actors \u2014 it's bad structure. Eric Ries makes the case for designing governance that protects a company's purpose from the gravitational pull of success, drawing on decades advising founders.",
+  "blockquote_source": "Masters of Scale 2026 Summer Reading List",
+  "source_url": "https://www.linkedin.com/pulse/summer-reading-list-2026-11-books-business-ai-building-dengc",
+  "source_urls": [
+    {
+      "url": "https://www.linkedin.com/posts/eries_how-to-find-meaning-in-life-unlock-creativity-activity-7474842587065962496-i7T9",
+      "label": "Eric Ries thanks Masters of Scale"
+    }
+  ],
+  "video_url": null,
+  "image": "/images/cards/2026-06-22-masters-of-scale-summer-reading.png",
+  "attribution": "Masters of Scale",
+  "attribution_title": "Reid Hoffman's podcast network \u2014 Masters of Scale, Rapid Response, Pioneers of AI",
+  "attribution_image": null,
+  "tags": [
+    "media",
+    "curation",
+    "masters-of-scale",
+    "summer-reading",
+    "best-of-list"
+  ],
+  "type_metadata": {
+    "featured": true,
+    "award_curator": "Masters of Scale",
+    "award_label": "Summer Reading List 2026",
+    "award_priority": 75
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-06-22T16:30:00Z"
+}
