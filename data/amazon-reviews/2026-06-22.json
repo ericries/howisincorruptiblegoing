@@ -1,6 +1,6 @@
 {
   "snapshot_date": "2026-06-22",
-  "captured_at": "2026-06-22T15:58:21Z",
+  "captured_at": "2026-06-23T02:15:04Z",
   "capture_method": "structured fields via apify junglee/Amazon-crawler (bestsellerRanks[])",
   "source_url": "https://www.amazon.com/Incorruptible-Good-Companies-Great-Stay/dp/B0FWZZBPZB",
   "asin": "B0FWZZBPZB",
@@ -15,16 +15,16 @@
     "one_star_pct": 2
   },
   "ranks": {
-    "books_overall": 5457,
+    "books_overall": 5363,
     "entrepreneurship": 16,
     "business_management": 22,
-    "leadership_motivation": 32
+    "leadership_motivation": 35
   },
   "notes_for_future_agents": [
-    "Apify junglee/Amazon-crawler succeeded today with structured bestsellerRanks[] output. First capture in 3 days (crons were dropped across the weekend).",
+    "Apify junglee/Amazon-crawler succeeded today with structured bestsellerRanks[] output. Two readings today: morning 08:58 PDT (Books #5457; Entrep #16; BizMgmt #22; Lead #32) and evening 19:15 PDT — this file (Books #5363; Entrep #16; BizMgmt #22; Lead #35).",
     "No #1 categories for Incorruptible itself today.",
-    "100-review milestone shipped 2026-06-02. Next threshold: 250. Currently 135 (+6 from 6-19 snapshot of 129).",
-    "Continued slow slip vs 2026-06-19: Books overall 4842 → 5457 (-615); Entrepreneurship held at #16; Business Management #23 → #22 (+1); Leadership & Motivation #34 → #32 (+2). 5-star share continues to decline as more reviews come in — breakdown now 87/11/0/0/2 (was 91/7/0/0/2). Stable post-launch baseline."
+    "100-review milestone shipped 2026-06-02. Next threshold: 250. Currently 135 (unchanged across the day).",
+    "Overall rank ticked up modestly mid-day (#5457 → #5363) while Leadership slipped 3 positions; category positions otherwise held. Stable post-launch baseline. 5-star share 87/11/0/0/2 unchanged."
   ],
   "reviews": [],
   "milestone_entries": []
