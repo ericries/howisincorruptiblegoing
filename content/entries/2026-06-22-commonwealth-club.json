@@ -12,7 +12,7 @@
   "attribution_title": null,
   "attribution_image": null,
   "tags": ["speaking", "san-francisco", "book-tour", "commonwealth-club"],
-  "type_metadata": { "featured": true, "city": "San Francisco" },
+  "type_metadata": { "city": "San Francisco" },
   "scanner_source": "web-search",
   "verified": false,
   "created_at": "2026-04-12T23:00:00Z"
