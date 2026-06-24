@@ -1,0 +1,31 @@
+{
+  "snapshot_date": "2026-06-23",
+  "captured_at": "2026-06-24T03:26:50Z",
+  "capture_method": "structured fields via apify junglee/Amazon-crawler (bestsellerRanks[]) + user-supplied screenshot confirming #1 New Release in Business Management",
+  "source_url": "https://www.amazon.com/Incorruptible-Good-Companies-Great-Stay/dp/B0FWZZBPZB",
+  "asin": "B0FWZZBPZB",
+  "totals": {
+    "global_ratings": 137,
+    "customer_reviews": null,
+    "average_rating": 4.8,
+    "five_star_pct": null,
+    "four_star_pct": null,
+    "three_star_pct": null,
+    "two_star_pct": null,
+    "one_star_pct": null
+  },
+  "ranks": {
+    "books_overall": null,
+    "entrepreneurship": null,
+    "business_management": null,
+    "leadership_motivation": null
+  },
+  "notes_for_future_agents": [
+    "User-supplied screenshot showed #1 New Release in Business Management today on the Hardcover detail page (137 ratings, 4.8 stars). Milestone entry shipped: 2026-06-23-amazon-1-business-management.",
+    "Apify junglee/Amazon-crawler succeeded on the evening run but the structured bestsellerRanks[] array was not returned in the partial output we captured before the MCP session dropped — re-grab on the next cycle. The reviewsCount/stars confirm 137 / 4.8.",
+    "100-review milestone shipped 2026-06-02. Next threshold: 250. Currently 137 (+2 from 6-22 snapshot of 135).",
+    "Amazon's 'New Release' badge is a separate chart from bestseller ranks and tracks new releases within a category. Incorruptible launched 5/26, ~4 weeks ago — still inside the new-release window."
+  ],
+  "reviews": [],
+  "milestone_entries": ["2026-06-23-amazon-1-business-management"]
+}
