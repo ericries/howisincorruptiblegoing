@@ -2,25 +2,38 @@
   "id": "2026-06-26-cxotalk-michael-krigsman",
   "date": "2026-06-26",
   "type": "podcast",
-  "title": "CXOTalk Books Eric Ries for June 26 Episode",
-  "summary": "Michael Krigsman's CXOTalk announces Eric for its June 26 slot — slotted alongside Box CEO Aaron Levie (June 12) and McKinsey AI lead Alex Singla (June 19) in CXOTalk's June lineup.",
-  "blockquote": "Here's a peek at who'll be on #CXOTalk this June 2026:\n\n* @Levie of @Box - 12 June\n* @AlexSingla of @McKinsey - 19 June\n* Eric Ries, author of \"Lean Startup\" and now \"Incorruptible\" - 26 June",
-  "blockquote_source": "CXOTalk on X",
-  "source_url": "https://x.com/cxotalk/status/2052104108799320167",
-  "source_urls": null,
-  "video_url": null,
+  "title": "CXOTalk Episode 923 — 'Can You Build an Incorruptible AI Company?'",
+  "summary": "Michael Krigsman hosts Eric for an hour-long live conversation on whether an AI company can take outside investment and still stay independent of its investors' demands — covering financial gravity, how to lock a mission into a legal structure under real financial pressure, what Anthropic's mission structures reveal in practice and where they fail, and what enterprise buyers should examine in how their AI vendors are funded and governed.",
+  "blockquote": "Growth, outside capital, and the race to monetize all pull AI companies toward easy money. Eric Ries on whether a company can resist that pull and stay true to its mission as it scales.",
+  "blockquote_source": "CXOTalk Episode 923 page",
+  "source_url": "https://www.cxotalk.com/episode/can-you-build-an-incorruptible-ai-company-a-conversation-with-eric-ries",
+  "source_urls": [
+    {
+      "url": "https://www.youtube.com/watch?v=p38yt5WLz6s",
+      "label": "Episode 923 on YouTube"
+    },
+    {
+      "url": "https://x.com/cxotalk/status/2052104108799320167",
+      "label": "Original June lineup announcement"
+    }
+  ],
+  "video_url": "https://www.youtube.com/watch?v=p38yt5WLz6s",
   "image": "/images/podcasts/cxotalk.jpg",
-  "attribution": "CXOTalk",
-  "attribution_title": "Long-running interview show with technology and business leaders, hosted by Michael Krigsman",
+  "attribution": "Michael Krigsman",
+  "attribution_title": "Publisher, CXOTalk",
   "attribution_image": null,
   "tags": [
     "podcast",
-    "twitter",
     "cxotalk",
-    "upcoming"
+    "ai",
+    "live-episode"
   ],
-  "type_metadata": {"featured": true},
+  "type_metadata": {
+    "podcast_show": "CXOTalk",
+    "episode_number": "923",
+    "featured": true
+  },
   "scanner_source": "social-scan",
   "verified": false,
-  "created_at": "2026-05-07T16:30:00Z"
+  "created_at": "2026-06-28T17:00:00Z"
 }
