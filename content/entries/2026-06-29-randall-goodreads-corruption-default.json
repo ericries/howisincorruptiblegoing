@@ -1,0 +1,30 @@
+{
+  "id": "2026-06-29-randall-goodreads-corruption-default",
+  "date": "2026-06-29",
+  "type": "review",
+  "title": "'Wow. Takes something true and obvious and gives it a name and a face'",
+  "summary": "Randall \u2014 San Francisco reader whose Goodreads friend graph is anchored by Eric Migicovsky (Pebble founder, Beeper CEO) and Gustaf Alstromer (YC partner) \u2014 gives Incorruptible 5 stars in a one-sitting read. The pull quote names the corruption-as-default framing in three lines.",
+  "blockquote": "Wow. Takes something true and obvious and gives it a name and a face\n\nCorruption is the default. Every organization is pushing against corruption, and the ones that are most successful actually build from the outset to prevent it.\n\nThis book was insanely great. I read it in one sitting, and it really changed my perspective on a lot of ideas.",
+  "blockquote_source": "Randall on Goodreads",
+  "source_url": "https://www.goodreads.com/review/show/8721900096",
+  "source_urls": [
+    {
+      "url": "https://www.goodreads.com/user/show/4002635-randall",
+      "label": "Randall's Goodreads profile (SF reader)"
+    }
+  ],
+  "video_url": null,
+  "image": "/images/cards/2026-06-29-randall-goodreads-corruption-default.png",
+  "attribution": "Randall",
+  "attribution_title": "Goodreads reader, San Francisco",
+  "attribution_image": null,
+  "tags": [
+    "review",
+    "goodreads",
+    "5-star"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-06-29T18:15:00Z"
+}
