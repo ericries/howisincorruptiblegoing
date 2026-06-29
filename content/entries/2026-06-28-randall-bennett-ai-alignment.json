@@ -1,0 +1,29 @@
+{
+  "id": "2026-06-28-randall-bennett-ai-alignment",
+  "date": "2026-06-28",
+  "type": "endorsement",
+  "title": "Randall Bennett (Vidpresso founder) \u2014 'the most important current book on AI alignment'",
+  "summary": "Randall Bennett \u2014 founder of Vidpresso (acquired by Facebook in 2018, customers included NBC, BuzzFeed, Reuters, BMW, NASDAQ) \u2014 is one chapter into Incorruptible and frames it on X as the most important current book on AI alignment because of how it treats organizational inertia.",
+  "blockquote": "i'm like one chapter into @ericries 's new book about avoiding organizational corruption, and i'm pretty sure it's the most important current book on AI alignment.\n\nai has inertia , and setting up objective ways of measuring trajectory of ai will be the thing that saves us.",
+  "blockquote_source": "Randall Bennett on X",
+  "source_url": "https://x.com/randallb/status/2071039242508132378",
+  "source_urls": null,
+  "video_url": null,
+  "image": "/images/cards/2026-06-28-randall-bennett-ai-alignment.png",
+  "attribution": "Randall Bennett",
+  "attribution_title": "Founder, Vidpresso (acquired by Facebook 2018)",
+  "attribution_image": null,
+  "tags": [
+    "endorsement",
+    "twitter",
+    "ai",
+    "ai-alignment",
+    "founder"
+  ],
+  "type_metadata": {
+    "featured": true
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-06-29T01:40:00Z"
+}
