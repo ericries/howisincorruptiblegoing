@@ -1,0 +1,35 @@
+{
+  "id": "2026-06-30-solar-maverick-podcast-benoy-thanjan",
+  "date": "2026-06-30",
+  "type": "media",
+  "title": "Solar Maverick Podcast #289 (Benoy Thanjan) \u2014 'Mission alone is not enough'",
+  "summary": "Benoy Thanjan \u2014 Founder & CEO of Reneu Energy and host of the Solar Maverick Podcast (Top Global Solar Podcast) \u2014 releases his Incorruptible episode with Eric, using the Sol Price / FedMart / Costco arc as the throughline for the renewable energy industry: how mission-driven clean energy companies can protect their purpose from capital pressure through governance and legal structure.",
+  "blockquote": "Eric's message is that mission alone is not enough. Companies need governance, aligned investors, and legal structures that protect their purpose when pressure inevitably arrives.",
+  "blockquote_source": "Benoy Thanjan on LinkedIn",
+  "source_url": "https://www.youtube.com/watch?v=4zCtjhh2ujw",
+  "source_urls": [
+    {
+      "url": "https://www.linkedin.com/posts/bthanjan_solarmaverickpodcast-ericries-incorruptible-activity-7477781032596033537-TeXu",
+      "label": "Benoy Thanjan LinkedIn announcement"
+    }
+  ],
+  "video_url": "https://www.youtube.com/watch?v=4zCtjhh2ujw",
+  "image": "/images/cards/2026-06-30-solar-maverick-podcast-benoy-thanjan.png",
+  "attribution": "Benoy Thanjan",
+  "attribution_title": "Founder & CEO, Reneu Energy; Host, Solar Maverick Podcast",
+  "attribution_image": null,
+  "tags": [
+    "media",
+    "podcast",
+    "solar",
+    "renewable-energy",
+    "interview"
+  ],
+  "type_metadata": {
+    "podcast_show": "Solar Maverick Podcast",
+    "episode_number": "289"
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-07-01T01:40:00Z"
+}
