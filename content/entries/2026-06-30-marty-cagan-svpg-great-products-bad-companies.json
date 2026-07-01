@@ -17,7 +17,7 @@
   "image": "/images/cards/2026-06-30-marty-cagan-svpg-great-products-bad-companies.png",
   "attribution": "Marty Cagan",
   "attribution_title": "Founder & Partner \u2014 Product, Silicon Valley Product Group; author of INSPIRED, EMPOWERED, TRANSFORMED",
-  "attribution_image": null,
+  "attribution_image": "/images/people/marty-cagan.jpg",
   "tags": [
     "endorsement",
     "svpg",
@@ -26,7 +26,12 @@
   ],
   "type_metadata": {
     "featured": true,
-    "highlight": "Marty Cagan: 'the single most important business book you'll read'"
+    "highlight": "Marty Cagan: 'the single most important business book you'll read'",
+    "sidebar_quote": "If you're considering starting a company, then reading this book may be the single most important business book you'll read.",
+    "award_curator": "Marty Cagan",
+    "award_label": "Most Important Business Book",
+    "award_side": "left",
+    "award_priority": 85
   },
   "scanner_source": "social-scan",
   "verified": false,

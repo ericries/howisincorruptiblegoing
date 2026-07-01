@@ -168,7 +168,7 @@ if (isMainModule) {
   // (do not lower it). See memory/feedback_highlights_row_grows.md and the
   // 2026-06-04 chat: "the top rows of highlights are meant to get longer
   // and longer, not be pruned".
-  const HIGHLIGHTS_FLOOR = 16;
+  const HIGHLIGHTS_FLOOR = 28;
   let highlightsCount = 0;
   for (const f of files) {
     const data = JSON.parse(fs.readFileSync(path.join(entriesDir, f), 'utf-8'));
