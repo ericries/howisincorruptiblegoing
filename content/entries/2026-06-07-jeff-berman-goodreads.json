@@ -3,16 +3,21 @@
   "date": "2026-06-07",
   "type": "review",
   "title": "'In the long run, it's better for shareholders too. An absolute must read.'",
-  "summary": "Jeff Berman \u2014 CEO of WaitWhat, Co-Host of Masters of Scale with Reid Hoffman, and Board Director at Protect Democracy (formerly NFL, MySpace, Buddy Media) \u2014 distills Incorruptible's anti-shareholder-primacy thesis in three sentences: 60 years of fetishizing shareholder returns missed the punchline that stakeholder-centered companies compound for shareholders too. The review ran first on Goodreads, then again on his LinkedIn.",
+  "summary": "Jeff Berman — CEO of WaitWhat, Co-Host of Masters of Scale with Reid Hoffman, and Board Director at Protect Democracy (formerly NFL, MySpace, Buddy Media) — distills Incorruptible's anti-shareholder-primacy thesis in three sentences: 60 years of fetishizing shareholder returns missed the punchline that stakeholder-centered companies compound for shareholders too. The review ran first on Goodreads, then again on his LinkedIn.",
   "blockquote": "For the past nearly 60 years, we have fetishized shareholder returns at the cost of other stakeholders. It turns out, elevating the interests of team members, customers, suppliers, and broader society, isn't just better for the world. In the long run, it's better for shareholders too. An absolute must read.",
   "blockquote_source": "Jeff Berman",
   "source_url": "https://www.linkedin.com/posts/bermanjeff_for-the-past-nearly-60-years-we-have-fetishized-activity-7469761413742444544-Ep8S",
-  "source_urls": [{"url": "https://www.goodreads.com/user/show/3893802-jeff-berman", "label": "Goodreads profile"}],
+  "source_urls": [
+    {
+      "url": "https://www.goodreads.com/user/show/3893802-jeff-berman",
+      "label": "Goodreads profile"
+    }
+  ],
   "video_url": null,
   "image": "/images/cards/2026-06-07-jeff-berman-goodreads.png",
   "attribution": "Jeff Berman",
   "attribution_title": "CEO, WaitWhat; Co-Host, Masters of Scale; Board Director, Protect Democracy",
-  "attribution_image": null,
+  "attribution_image": "/images/people/jeff-berman.jpg",
   "tags": [
     "review",
     "goodreads",

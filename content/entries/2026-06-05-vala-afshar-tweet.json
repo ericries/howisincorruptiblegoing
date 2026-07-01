@@ -12,8 +12,12 @@
   "image": "/images/cards/2026-06-05-vala-afshar-tweet.png",
   "attribution": "Vala Afshar",
   "attribution_title": "Chief Digital Evangelist, Salesforce",
-  "attribution_image": null,
-  "tags": ["endorsement", "twitter", "salesforce"],
+  "attribution_image": "/images/people/vala-afshar.jpg",
+  "tags": [
+    "endorsement",
+    "twitter",
+    "salesforce"
+  ],
   "type_metadata": {
     "highlight": "Vala Afshar: 'a clear-eyed diagnosis and a practical blueprint for change'"
   },

@@ -28,10 +28,8 @@
     "featured": true,
     "highlight": "Marty Cagan: 'the single most important business book you'll read'",
     "sidebar_quote": "If you're considering starting a company, then reading this book may be the single most important business book you'll read.",
-    "award_curator": "Marty Cagan",
-    "award_label": "Most Important Business Book",
-    "award_side": "left",
-    "award_priority": 85
+    "hero_quote_label": "the single most important business book you'll read",
+    "hero_quote_author": "Marty Cagan"
   },
   "scanner_source": "social-scan",
   "verified": false,

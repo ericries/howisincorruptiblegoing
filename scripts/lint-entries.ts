@@ -184,6 +184,47 @@ if (isMainModule) {
     );
   }
 
+  // Highlights row = row of FACES. Any entry flagged with
+  // type_metadata.highlight must have a real attribution_image (a person's
+  // face) — not null, not a quote-card fallback. Highlights.astro will
+  // silently fall back to entry.image (which is now the auto-generated
+  // quote card for endorsement/review/media entries), producing text
+  // tiles instead of faces. That is the failure mode postmortem'd on
+  // 2026-07-01. If you can't source a real headshot for the endorser,
+  // don't set `highlight` — use `sidebar_quote` instead.
+  for (const f of files) {
+    const data = JSON.parse(fs.readFileSync(path.join(entriesDir, f), 'utf-8'));
+    if (!data.type_metadata?.highlight) continue;
+    const ai = data.attribution_image;
+    if (!ai) {
+      hasErrors = true;
+      console.error(
+        `\n❌ HIGHLIGHT WITHOUT FACE: ${f} has type_metadata.highlight but ` +
+        `attribution_image is null. Highlights.astro will fall back to the ` +
+        `text quote-card. Download a real headshot to public/images/people/` +
+        ` and set attribution_image, or remove the highlight flag.`,
+      );
+      continue;
+    }
+    if (ai.startsWith('/images/cards/')) {
+      hasErrors = true;
+      console.error(
+        `\n❌ HIGHLIGHT WITH CARD IMAGE: ${f} attribution_image points at ` +
+        `${ai}, which is a quote-card (text graphic). Highlights row must ` +
+        `show real faces. Replace with a headshot at /images/people/.`,
+      );
+      continue;
+    }
+    const facePath = path.join(process.cwd(), 'public', ai.replace(/^\//, ''));
+    if (!fs.existsSync(facePath)) {
+      hasErrors = true;
+      console.error(
+        `\n❌ HIGHLIGHT FACE MISSING ON DISK: ${f} references ` +
+        `attribution_image=${ai} but the file does not exist.`,
+      );
+    }
+  }
+
   let lastEndorsementIndex = -999;
   for (let i = 0; i < allEntries.length; i++) {
     const entry = allEntries[i];

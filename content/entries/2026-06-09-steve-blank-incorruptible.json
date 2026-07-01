@@ -2,9 +2,9 @@
   "id": "2026-06-09-steve-blank-incorruptible",
   "date": "2026-06-09",
   "type": "endorsement",
-  "title": "Steve Blank \u2014 'This book will possibly be more important than the Lean Startup ever was \u2014 for you, your company and society as a whole.'",
-  "summary": "Steve Blank \u2014 the customer-development pioneer whose work Lean Startup was built on, Stanford adjunct, and the intellectual godfather of the lean-startup movement \u2014 publishes a full-throated review of Incorruptible on his blog and LinkedIn, framing it as the book that will rebuild the corporate and startup world after the next financial crash. Reading list and red-pill imagery aside, the headline judgment lands: more important than Lean Startup.",
-  "blockquote": "Every once in a while a book comes along that doesn't just change your tactical thinking, but makes you see the world in a different way. Reading this book is like taking the red pill in the Matrix.\n\nSome will read this book, think it's interesting and then get back to figuring out to how get their next big round of funding or how to deal with AI disruption in their large company.\n\nBut what they'll miss is that this is the book that will rebuild the corporate and startup world after the next financial crash.\n\nThis book will possibly be more important than the Lean Startup ever was \u2013 for you, your company and society as a whole.",
+  "title": "Steve Blank — 'This book will possibly be more important than the Lean Startup ever was — for you, your company and society as a whole.'",
+  "summary": "Steve Blank — the customer-development pioneer whose work Lean Startup was built on, Stanford adjunct, and the intellectual godfather of the lean-startup movement — publishes a full-throated review of Incorruptible on his blog and LinkedIn, framing it as the book that will rebuild the corporate and startup world after the next financial crash. Reading list and red-pill imagery aside, the headline judgment lands: more important than Lean Startup.",
+  "blockquote": "Every once in a while a book comes along that doesn't just change your tactical thinking, but makes you see the world in a different way. Reading this book is like taking the red pill in the Matrix.\n\nSome will read this book, think it's interesting and then get back to figuring out to how get their next big round of funding or how to deal with AI disruption in their large company.\n\nBut what they'll miss is that this is the book that will rebuild the corporate and startup world after the next financial crash.\n\nThis book will possibly be more important than the Lean Startup ever was – for you, your company and society as a whole.",
   "blockquote_source": "Steve Blank, steveblank.com",
   "source_url": "https://steveblank.com/2026/06/09/incorruptible/",
   "source_urls": [
@@ -21,7 +21,7 @@
   "image": "/images/cards/2026-06-09-steve-blank-incorruptible.png",
   "attribution": "Steve Blank",
   "attribution_title": "Customer-development pioneer; Adjunct Professor, Stanford University; intellectual godfather of the Lean Startup movement",
-  "attribution_image": null,
+  "attribution_image": "/images/people/steve-blank.jpg",
   "tags": [
     "endorsement",
     "linkedin",
@@ -32,7 +32,7 @@
   "type_metadata": {
     "featured": true,
     "highlight": "Steve Blank: 'possibly more important than the Lean Startup ever was'",
-    "sidebar_quote": "This book will possibly be more important than the Lean Startup ever was \u2013 for you, your company and society as a whole."
+    "sidebar_quote": "This book will possibly be more important than the Lean Startup ever was – for you, your company and society as a whole."
   },
   "scanner_source": "social-scan",
   "verified": false,
