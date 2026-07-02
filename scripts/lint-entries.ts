@@ -168,7 +168,7 @@ if (isMainModule) {
   // (do not lower it). See memory/feedback_highlights_row_grows.md and the
   // 2026-06-04 chat: "the top rows of highlights are meant to get longer
   // and longer, not be pruned".
-  const HIGHLIGHTS_FLOOR = 28;
+  const HIGHLIGHTS_FLOOR = 22;
   let highlightsCount = 0;
   for (const f of files) {
     const data = JSON.parse(fs.readFileSync(path.join(entriesDir, f), 'utf-8'));
@@ -184,17 +184,59 @@ if (isMainModule) {
     );
   }
 
-  // Highlights row = row of FACES. Any entry flagged with
-  // type_metadata.highlight must have a real attribution_image (a person's
-  // face) — not null, not a quote-card fallback. Highlights.astro will
-  // silently fall back to entry.image (which is now the auto-generated
-  // quote card for endorsement/review/media entries), producing text
-  // tiles instead of faces. That is the failure mode postmortem'd on
-  // 2026-07-01. If you can't source a real headshot for the endorser,
-  // don't set `highlight` — use `sidebar_quote` instead.
+  // Highlights row = the row of FACES at the top of the home page. Two
+  // hard gates protect it:
+  //
+  //   (a) HIGHLIGHT_ELIGIBLE_ENDORSERS below is the canonical allowlist.
+  //       Only names on this list can carry type_metadata.highlight. This
+  //       is an intentional editorial constraint — non-household-name
+  //       endorsers should use type_metadata.sidebar_quote instead, which
+  //       surfaces the praise without putting them in the row of faces.
+  //       See docs/postmortems/2026-07-01-highlights-row-tier-drift.md.
+  //
+  //   (b) Every highlight-flagged entry must have a real attribution_image
+  //       (a face) on disk. Highlights.astro falls back to entry.image
+  //       when attribution_image is null — and entry.image is now the
+  //       auto-generated text-graphic quote card. That silent fallback is
+  //       what filled the row with text tiles. See docs/postmortems/
+  //       2026-07-01-highlights-row-text-graphic-fallback.md.
+  //
+  // To add someone to the row: (1) confirm they're on the allowlist —
+  // adding to the allowlist is Eric's editorial call, not the scanner's;
+  // (2) download a real headshot to public/images/people/{slug}.jpg;
+  // (3) set both attribution_image and type_metadata.highlight on the entry.
+  const HIGHLIGHT_ELIGIBLE_ENDORSERS = new Set([
+    // Household names — launch-era set
+    'reid hoffman', 'kim scott', 'dan heath', 'adam grant', 'seth godin',
+    'daniel pink', 'mark cuban', 'frances frei', 'bob sutton', 'scott cook',
+    'ken chenault', "tim o'reilly", 'matt blumberg', 'jessica jackley',
+    'daniel h. pink',   // matches attribution field which carries middle initial
+    // Clearly-peer additions (author/founder tier with real name recognition)
+    'marty cagan',      // SVPG founder, INSPIRED/EMPOWERED/TRANSFORMED
+    'steve blank',      // Lean Startup co-creator
+    'nir eyal',         // Hooked / Indistractable
+    'anil dash',        // long-time tech writer, ex-Fog Creek/Glitch
+    'sarah lacy',       // Pando founder, ex-TechCrunch
+    'rory sutherland',  // Ogilvy vice chairman, Alchemy author, TED speaker
+    'jennifer pahlka',  // former US Deputy CTO, Recoding America author
+    'karri saarinen',   // Linear cofounder
+  ]);
+  const normalize = (s: string) => s.toLowerCase().replace(/[‘’]/g, "'").trim();
   for (const f of files) {
     const data = JSON.parse(fs.readFileSync(path.join(entriesDir, f), 'utf-8'));
     if (!data.type_metadata?.highlight) continue;
+    const attr = data.attribution ? normalize(data.attribution) : '';
+    if (!HIGHLIGHT_ELIGIBLE_ENDORSERS.has(attr)) {
+      hasErrors = true;
+      console.error(
+        `\n❌ HIGHLIGHT ATTR NOT ON ALLOWLIST: ${f} attribution="${data.attribution}" ` +
+        `is not on HIGHLIGHT_ELIGIBLE_ENDORSERS. Non-household-name endorsers ` +
+        `should use type_metadata.sidebar_quote instead of highlight. To add ` +
+        `a new name to the row, edit HIGHLIGHT_ELIGIBLE_ENDORSERS in ` +
+        `scripts/lint-entries.ts — that is a deliberate editorial decision.`,
+      );
+      continue;
+    }
     const ai = data.attribution_image;
     if (!ai) {
       hasErrors = true;
