@@ -1,0 +1,39 @@
+{
+  "id": "2026-05-28-one-of-one-darren-gold-soulcraft",
+  "date": "2026-05-28",
+  "type": "media",
+  "title": "One of One (Darren Gold, Trium Group CEO) \u2014 'The Art of Organizational Soulcraft' with Eric Ries",
+  "summary": "Darren Gold \u2014 CEO of The Trium Group \u2014 releases his One of One podcast conversation with Eric on Incorruptible. 64-minute Episode 25 walks the central argument (mission-driven companies succumbing to financial gravity), then covers Sol Price / Costco, Novo Nordisk, Eric's work with Anthropic, the spiritual holding company concept, and closes on Eric's own inner journey.",
+  "blockquote": "Eric's central argument is that even the most mission driven companies will, over time, succumb to what he calls financial gravity and lose their soul. The solution, how to become incorruptible, is to design structural protections early.",
+  "blockquote_source": "One of One podcast (Darren Gold), Episode 25 description",
+  "source_url": "https://podcasts.apple.com/us/podcast/the-art-of-organizational-soulcraft-eric-ries/id1766321362?i=1000769983707",
+  "source_urls": [
+    {
+      "url": "https://open.spotify.com/show/3mCgDVgdPj6qnd0cAkBgip",
+      "label": "One of One on Spotify"
+    },
+    {
+      "url": "https://www.linkedin.com/posts/the-trium-group_last-month-trium-hosted-our-second-annual-activity-7478188505387425792-MFBS",
+      "label": "Trium Group LinkedIn recap (2026-07-01)"
+    }
+  ],
+  "video_url": null,
+  "image": "/images/cards/2026-05-28-one-of-one-darren-gold-soulcraft.png",
+  "attribution": "Darren Gold",
+  "attribution_title": "CEO, The Trium Group; Host, One of One podcast",
+  "attribution_image": null,
+  "tags": [
+    "podcast",
+    "media",
+    "one-of-one",
+    "trium-group",
+    "ceo-advisory"
+  ],
+  "type_metadata": {
+    "podcast_show": "One of One",
+    "episode_number": "25"
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-07-02T16:45:00Z"
+}
