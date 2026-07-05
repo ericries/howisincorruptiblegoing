@@ -17,7 +17,11 @@
     "endorsement",
     "twitter"
   ],
-  "type_metadata": {},
+  "type_metadata": {
+    "featured": true,
+    "highlight": "Steve Blank: 'Best start up / corporate book of the decade'",
+    "sidebar_quote": "Best start up / corporate book of the decade. Should be on everybody's reading list."
+  },
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-07-04T01:40:00Z"
