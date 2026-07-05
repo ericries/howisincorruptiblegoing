@@ -1,0 +1,35 @@
+{
+  "id": "2026-07-04-haroon-meer-thinkst-canary-cyber",
+  "date": "2026-07-04",
+  "type": "endorsement",
+  "title": "Haroon Meer (Thinkst Canary) \u2014 'His new book, Incorruptible, is more important' than The Lean Startup",
+  "summary": "Haroon Meer \u2014 founder of Thinkst (Thinkst Canary), one of the most respected voices in cybersecurity \u2014 endorses Incorruptible on LinkedIn and X, calling it more important than The Lean Startup for anyone building a company. Frames it against the pattern he sees in his own field: founders being told that principled choices are unique and non-repeatable, when Eric shows they aren't.",
+  "blockquote": "If you built a company in the past decade u probably received advice from the Eric Ries classic: \u201cThe Lean Startup\u201d.\n\nHis new book, \u201cIncorruptible\u201d is more important.\n\nWe\u2019ve been told constantly how choices we made at Thinkst Canary are unique/non-repeatable. He shows otherwise.\n\nIf you are building a cyber-startup, you should read this book.",
+  "blockquote_source": "Haroon Meer on LinkedIn",
+  "source_url": "https://www.linkedin.com/posts/haroonmeer_if-you-built-a-company-in-the-past-decade-activity-7479212153883906049-KIa6",
+  "source_urls": [
+    {
+      "url": "https://twitter.com/haroonmeer/status/2073438750856601875",
+      "label": "Also on X"
+    }
+  ],
+  "video_url": null,
+  "image": "/images/cards/2026-07-04-haroon-meer-thinkst-canary-cyber.png",
+  "attribution": "Haroon Meer",
+  "attribution_title": "Founder, Thinkst (Thinkst Canary)",
+  "attribution_image": null,
+  "tags": [
+    "endorsement",
+    "linkedin",
+    "twitter",
+    "cybersecurity",
+    "founder"
+  ],
+  "type_metadata": {
+    "featured": true,
+    "sidebar_quote": "His new book, \u201cIncorruptible\u201d is more important."
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-07-05T01:45:00Z"
+}
