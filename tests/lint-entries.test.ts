@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { lintEntryFile } from '../scripts/lint-entries';
+import { lintEntryFile, formatLintSummary } from '../scripts/lint-entries';
 
 const validJson = JSON.stringify({
   id: '2026-04-10-long-now-event',
@@ -82,5 +82,36 @@ describe('lintEntryFile — reaction parent resolution', () => {
     const result = lintEntryFile(reactionJson, '2026-04-22-davide-ritorto-reaction.json');
     expect(result.valid).toBe(true);
     expect(result.errors).toEqual([]);
+  });
+});
+
+// See docs/postmortems/2026-07-06-lint-failure-hidden-by-tail.md.
+// When lint FAILs were printed inline (mid-loop), piping through `tail -N`
+// silently hid them if the failing file wasn't alphabetically last.
+// The trailing summary must ALWAYS surface failures so `tail -5` catches them.
+describe('formatLintSummary', () => {
+  it('returns an OK line when there are no failures', () => {
+    const out = formatLintSummary([]);
+    expect(out).toMatch(/Lint: OK/);
+  });
+
+  it('names every failing file in a trailing summary block', () => {
+    const out = formatLintSummary([
+      { file: '2026-07-01-example.json', errors: ['scanner_source must be one of […], got "goodreads-scan"'] },
+      { file: '2026-07-02-other.json', errors: ['image "/images/cards/x.png" does not exist on disk'] },
+    ]);
+    expect(out).toMatch(/Lint: 2 failure/);
+    expect(out).toContain('2026-07-01-example.json');
+    expect(out).toContain('2026-07-02-other.json');
+    expect(out).toContain('goodreads-scan');
+  });
+
+  it('survives tail -5 — the failure section is at the tail of the output', () => {
+    const out = formatLintSummary([
+      { file: 'bad.json', errors: ['scanner_source invalid'] },
+    ]);
+    const tail5 = out.split('\n').slice(-5).join('\n');
+    expect(tail5).toContain('bad.json');
+    expect(tail5).toMatch(/failure/i);
   });
 });

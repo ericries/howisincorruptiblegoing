@@ -98,6 +98,28 @@ export function lintEntryFile(
   return { valid: errors.length === 0, errors };
 }
 
+export interface LintFailure {
+  file: string;
+  errors: string[];
+}
+
+// Print a compact failure summary at the END of the lint output so a
+// downstream `tail -N` cannot silently hide FAILs (see
+// docs/postmortems/2026-07-06-lint-failure-hidden-by-tail.md).
+export function formatLintSummary(failures: LintFailure[]): string {
+  if (failures.length === 0) {
+    return '\nLint: OK — all entries valid.';
+  }
+  const lines = [`\nLint: ${failures.length} failure(s):`];
+  for (const { file, errors } of failures) {
+    lines.push(`❌ ${file}`);
+    for (const err of errors) {
+      lines.push(`   - ${err}`);
+    }
+  }
+  return lines.join('\n');
+}
+
 // CLI entrypoint: lint all JSON files in content/entries/
 const isMainModule = process.argv[1]?.endsWith('lint-entries.ts');
 if (isMainModule) {
@@ -115,7 +137,15 @@ if (isMainModule) {
     process.exit(0);
   }
 
-  let hasErrors = false;
+  const failures: LintFailure[] = [];
+  const recordFailure = (file: string, message: string): void => {
+    const existing = failures.find((f) => f.file === file);
+    if (existing) {
+      existing.errors.push(message);
+    } else {
+      failures.push({ file, errors: [message] });
+    }
+  };
 
   for (const file of files) {
     const filePath = path.join(entriesDir, file);
@@ -123,10 +153,10 @@ if (isMainModule) {
     const result = lintEntryFile(contents, file);
 
     if (!result.valid) {
-      hasErrors = true;
       console.error(`\n❌ ${file}:`);
       for (const error of result.errors) {
         console.error(`   - ${error}`);
+        recordFailure(file, error);
       }
     } else {
       console.log(`✓ ${file}`);
@@ -153,11 +183,13 @@ if (isMainModule) {
     if (!e.parent_id) continue; // validateEntry already caught this
     const parent = idToEntry.get(e.parent_id);
     if (!parent) {
-      hasErrors = true;
-      console.error(`\n❌ ORPHAN REACTION: ${e.file} parent_id "${e.parent_id}" does not resolve to any entry`);
+      const msg = `ORPHAN REACTION: parent_id "${e.parent_id}" does not resolve to any entry`;
+      console.error(`\n❌ ${e.file}: ${msg}`);
+      recordFailure(e.file, msg);
     } else if (parent.type === 'reaction') {
-      hasErrors = true;
-      console.error(`\n❌ NESTED REACTION: ${e.file} parent_id "${e.parent_id}" is itself a reaction; reactions cannot nest`);
+      const msg = `NESTED REACTION: parent_id "${e.parent_id}" is itself a reaction; reactions cannot nest`;
+      console.error(`\n❌ ${e.file}: ${msg}`);
+      recordFailure(e.file, msg);
     }
   }
 
@@ -175,13 +207,13 @@ if (isMainModule) {
     if (data.type_metadata?.highlight) highlightsCount++;
   }
   if (highlightsCount < HIGHLIGHTS_FLOOR) {
-    hasErrors = true;
-    console.error(
-      `\n❌ HIGHLIGHTS FLOOR: only ${highlightsCount} entries have type_metadata.highlight, ` +
+    const msg =
+      `HIGHLIGHTS FLOOR: only ${highlightsCount} entries have type_metadata.highlight, ` +
       `floor is ${HIGHLIGHTS_FLOOR}. The carousel grows; it does not shrink. ` +
       `Restore missing highlight flags or, if a highlight was legitimately removed ` +
-      `(e.g. the entry was deleted), lower the floor in scripts/lint-entries.ts.`,
-    );
+      `(e.g. the entry was deleted), lower the floor in scripts/lint-entries.ts.`;
+    console.error(`\n❌ ${msg}`);
+    recordFailure('<HIGHLIGHTS_FLOOR>', msg);
   }
 
   // Highlights row = the row of FACES at the top of the home page. Two
@@ -227,43 +259,40 @@ if (isMainModule) {
     if (!data.type_metadata?.highlight) continue;
     const attr = data.attribution ? normalize(data.attribution) : '';
     if (!HIGHLIGHT_ELIGIBLE_ENDORSERS.has(attr)) {
-      hasErrors = true;
-      console.error(
-        `\n❌ HIGHLIGHT ATTR NOT ON ALLOWLIST: ${f} attribution="${data.attribution}" ` +
+      const msg =
+        `HIGHLIGHT ATTR NOT ON ALLOWLIST: attribution="${data.attribution}" ` +
         `is not on HIGHLIGHT_ELIGIBLE_ENDORSERS. Non-household-name endorsers ` +
         `should use type_metadata.sidebar_quote instead of highlight. To add ` +
         `a new name to the row, edit HIGHLIGHT_ELIGIBLE_ENDORSERS in ` +
-        `scripts/lint-entries.ts — that is a deliberate editorial decision.`,
-      );
+        `scripts/lint-entries.ts — that is a deliberate editorial decision.`;
+      console.error(`\n❌ ${f}: ${msg}`);
+      recordFailure(f, msg);
       continue;
     }
     const ai = data.attribution_image;
     if (!ai) {
-      hasErrors = true;
-      console.error(
-        `\n❌ HIGHLIGHT WITHOUT FACE: ${f} has type_metadata.highlight but ` +
-        `attribution_image is null. Highlights.astro will fall back to the ` +
-        `text quote-card. Download a real headshot to public/images/people/` +
-        ` and set attribution_image, or remove the highlight flag.`,
-      );
+      const msg =
+        `HIGHLIGHT WITHOUT FACE: attribution_image is null. Highlights.astro ` +
+        `will fall back to the text quote-card. Download a real headshot to ` +
+        `public/images/people/ and set attribution_image, or remove the highlight flag.`;
+      console.error(`\n❌ ${f}: ${msg}`);
+      recordFailure(f, msg);
       continue;
     }
     if (ai.startsWith('/images/cards/')) {
-      hasErrors = true;
-      console.error(
-        `\n❌ HIGHLIGHT WITH CARD IMAGE: ${f} attribution_image points at ` +
-        `${ai}, which is a quote-card (text graphic). Highlights row must ` +
-        `show real faces. Replace with a headshot at /images/people/.`,
-      );
+      const msg =
+        `HIGHLIGHT WITH CARD IMAGE: attribution_image points at ${ai}, which ` +
+        `is a quote-card (text graphic). Highlights row must show real faces. ` +
+        `Replace with a headshot at /images/people/.`;
+      console.error(`\n❌ ${f}: ${msg}`);
+      recordFailure(f, msg);
       continue;
     }
     const facePath = path.join(process.cwd(), 'public', ai.replace(/^\//, ''));
     if (!fs.existsSync(facePath)) {
-      hasErrors = true;
-      console.error(
-        `\n❌ HIGHLIGHT FACE MISSING ON DISK: ${f} references ` +
-        `attribution_image=${ai} but the file does not exist.`,
-      );
+      const msg = `HIGHLIGHT FACE MISSING ON DISK: references attribution_image=${ai} but the file does not exist.`;
+      console.error(`\n❌ ${f}: ${msg}`);
+      recordFailure(f, msg);
     }
   }
 
@@ -274,13 +303,18 @@ if (isMainModule) {
     if (isEndorsement) {
       const gap = i - lastEndorsementIndex - 1;
       if (gap < 2 && lastEndorsementIndex >= 0) {
-        hasErrors = true;
         const prevEndorsement = allEntries[lastEndorsementIndex];
-        console.error(`\n❌ ADJACENCY: ${entry.file} is only ${gap} entries after ${prevEndorsement.file} (need at least 2 non-endorsement entries between endorsements)`);
+        const msg = `ADJACENCY: only ${gap} entries after ${prevEndorsement.file} (need at least 2 non-endorsement entries between endorsements)`;
+        console.error(`\n❌ ${entry.file}: ${msg}`);
+        recordFailure(entry.file, msg);
       }
       lastEndorsementIndex = i;
     }
   }
 
-  process.exit(hasErrors ? 1 : 0);
+  // Always print a trailing summary so `tail -N` on the piped output cannot
+  // silently hide FAILs. See docs/postmortems/2026-07-06-lint-failure-hidden-by-tail.md.
+  console.log(formatLintSummary(failures));
+
+  process.exit(failures.length > 0 ? 1 : 0);
 }
