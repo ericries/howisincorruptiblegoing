@@ -25,9 +25,7 @@
     "ai",
     "anthropic"
   ],
-  "type_metadata": {
-    "featured": true
-  },
+  "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-06-09T01:40:00Z"
