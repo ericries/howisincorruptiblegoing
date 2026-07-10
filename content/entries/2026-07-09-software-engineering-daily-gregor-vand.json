@@ -14,10 +14,10 @@
     }
   ],
   "video_url": null,
-  "image": null,
+  "image": "/images/podcasts/software-engineering-daily.jpg",
   "attribution": "Gregor Vand",
   "attribution_title": "Host, Software Engineering Daily",
-  "attribution_image": null,
+  "attribution_image": "/images/podcasts/software-engineering-daily.jpg",
   "tags": [
     "podcast",
     "media",
