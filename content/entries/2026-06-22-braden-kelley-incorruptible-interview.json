@@ -7,12 +7,17 @@
   "blockquote": "I believe that the era of shareholder primacy is actually already over, for two reasons. One is, this is an idea that has proved to be self-defeating. It was originally enacted — not in ancient times, but in the 1980s, at least in Delaware — to be beneficial to shareholders, but that is not how it has proved.",
   "blockquote_source": "Eric Ries, quoted in Braden Kelley interview",
   "source_url": "https://bradenkelley.com/2026/06/eric-ries-incorruptible-interview/",
-  "source_urls": null,
+  "source_urls": [
+    {
+      "url": "https://customerthink.com/anatomy-of-an-incorruptible-company/",
+      "label": "Cross-posted on CustomerThink as 'Anatomy of an Incorruptible Company' (2026-07-08)"
+    }
+  ],
   "video_url": null,
   "image": null,
   "attribution": "Braden Kelley",
   "attribution_title": "Keynote Speaker & Futurist; LinkedIn Top Voice; Human-Centered Change and Innovation (17K+ subscribers)",
-  "attribution_image": null,
+  "attribution_image": "/images/people/braden-kelley.jpg",
   "tags": [
     "media",
     "interview",
