@@ -1,0 +1,31 @@
+{
+  "id": "2026-07-09-software-engineering-daily-gregor-vand",
+  "date": "2026-07-09",
+  "type": "podcast",
+  "title": "Software Engineering Daily (Gregor Vand) — Eric on why good companies go bad, for engineers",
+  "summary": "Software Engineering Daily — a leading podcast for engineering leaders — releases Gregor Vand's conversation with Eric on Incorruptible, framed for founders and engineers: how to build resilient organizations and what technical staff can do to resist corruption from the inside.",
+  "blockquote": "Eric Ries is the creator of The Lean Startup. He joins Gregor Vand to discuss why good companies go bad, building resilient organizations, and what founders and engineers can do to resist corruption.",
+  "blockquote_source": "Software Engineering Daily",
+  "source_url": "https://softwareengineeringdaily.com/2026/07/09/eric-ries-incorruptible-why-good-companies-go-bad/",
+  "source_urls": [
+    {
+      "url": "https://www.linkedin.com/posts/software-engineering-daily_eric-ries-on-why-good-companies-go-bad-activity-7480947634984353792-4Grf",
+      "label": "Software Engineering Daily LinkedIn announcement"
+    }
+  ],
+  "video_url": null,
+  "image": null,
+  "attribution": "Gregor Vand",
+  "attribution_title": "Host, Software Engineering Daily",
+  "attribution_image": null,
+  "tags": [
+    "podcast",
+    "media",
+    "software-engineering-daily",
+    "engineering"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-07-10T01:50:00Z"
+}
