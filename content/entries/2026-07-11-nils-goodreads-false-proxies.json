@@ -1,0 +1,24 @@
+{
+  "id": "2026-07-11-nils-goodreads-false-proxies",
+  "date": "2026-07-11",
+  "type": "review",
+  "title": "'The most interesting analytic is what Ries calls false proxies, where metrics like average call-hold-time end up making the underlying service worse'",
+  "summary": "Nils \u2014 established Goodreads reviewer (185 followers, 667 reviews) \u2014 posts a substantive 4-star review of Incorruptible zeroing in on false proxies and using OpenAI's for-profit conversion as the counterexample to the book's mission-lock thesis.",
+  "blockquote": "The most interesting analytic is what Ries calls 'false proxies,' where metrics like average call-hold-time end up making the underlying service worse rather than better\u2026 What Ries proposes is to lock in the company's original mission from the start. But no such lock is completely unpickable, as the saga with OpenAI's conversion from a nonprofit to a for-profit indicates.",
+  "blockquote_source": "Nils on Goodreads",
+  "source_url": "https://www.goodreads.com/review/show/8760868084",
+  "source_urls": null,
+  "video_url": null,
+  "image": "/images/cards/2026-07-11-nils-goodreads-false-proxies.png",
+  "attribution": "Nils",
+  "attribution_title": "Established Goodreads reviewer (185 followers, 667 reviews)",
+  "attribution_image": null,
+  "tags": [
+    "review",
+    "goodreads"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-07-15T18:00:00Z"
+}
