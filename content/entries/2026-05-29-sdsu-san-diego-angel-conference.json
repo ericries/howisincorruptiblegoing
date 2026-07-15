@@ -9,9 +9,10 @@
   "source_url": "https://sdac.sdsu.edu",
   "source_urls": [
     {"url": "https://www.eventbrite.com/e/sdsu-2026-sdsu-san-diego-angel-conference-sdac-tickets-1984572309200", "label": "Tickets (Friday May 29, 2–6pm PT)"},
-    {"url": "https://www.linkedin.com/posts/briandirkmaat_congratulations-to-the-top-6-companies-they-activity-7458659379513540608-bJlQ", "label": "Brian Dirkmaat (Rimon Law) on the agenda"}
+    {"url": "https://www.linkedin.com/posts/briandirkmaat_congratulations-to-the-top-6-companies-they-activity-7458659379513540608-bJlQ", "label": "Brian Dirkmaat (Rimon Law) on the agenda"},
+    {"url": "https://www.youtube.com/watch?v=L2rWOHqgUjI", "label": "Full talk video, published by Rising Tide Partners (2026-07-14)"}
   ],
-  "video_url": null,
+  "video_url": "https://www.youtube.com/watch?v=L2rWOHqgUjI",
   "image": null,
   "attribution": "SDSU Lavin Entrepreneurship Center",
   "attribution_title": "Host of the San Diego Angel Conference; SDAC VIII Fund finale on May 29, 2026",
