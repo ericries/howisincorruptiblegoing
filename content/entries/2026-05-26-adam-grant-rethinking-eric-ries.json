@@ -17,7 +17,7 @@
   "image": "/images/podcasts/rethinking-adam-grant.jpg",
   "attribution": "Adam Grant",
   "attribution_title": "Wharton professor; host, ReThinking (TED Audio Collective); NYT-bestselling author of Think Again, Give and Take, Hidden Potential, Originals",
-  "attribution_image": "/images/podcasts/rethinking-adam-grant.jpg",
+  "attribution_image": "/images/people/adam-grant.jpg",
   "tags": [
     "podcast",
     "media",
@@ -26,7 +26,10 @@
     "ted-audio",
     "launch-week"
   ],
-  "type_metadata": {},
+  "type_metadata": {
+    "highlight": "Adam Grant: 'many people believe [corporate corruption] may be unsolvable — but Eric Ries doesn't think so'",
+    "sidebar_quote": "Corruption in organizations is one of the biggest problems of our time, and many people believe it may be unsolvable — but Eric Ries doesn't think so."
+  },
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-07-16T04:15:00Z"
