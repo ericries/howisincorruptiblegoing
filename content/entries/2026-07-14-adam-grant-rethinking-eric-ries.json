@@ -1,9 +1,9 @@
 {
-  "id": "2026-05-26-adam-grant-rethinking-eric-ries",
-  "date": "2026-05-26",
+  "id": "2026-07-14-adam-grant-rethinking-eric-ries",
+  "date": "2026-07-14",
   "type": "podcast",
   "title": "ReThinking with Adam Grant — 'How to prevent corporate corruption with Eric Ries'",
-  "summary": "Adam Grant — Wharton professor, five-time NYT-bestselling author (Think Again, Give and Take, Hidden Potential, Originals, Option B), and host of TED Audio Collective's ReThinking — drops an Eric-launch-week episode framed around the book's central provocation: corporate corruption may look unsolvable, but it isn't.",
+  "summary": "Adam Grant — Wharton professor, five-time NYT-bestselling author (Think Again, Give and Take, Hidden Potential, Originals, Option B), and host of TED Audio Collective's ReThinking — releases a 30-minute Eric episode framed around the book's central provocation: corporate corruption may look unsolvable, but it isn't. TED Podcasts publishes the video version on July 16.",
   "blockquote": "Corruption in organizations is one of the biggest problems of our time, and many people believe it may be unsolvable—but Eric Ries doesn't think so. As entrepreneur and author, Eric has dedicated his career to helping businesses succeed and do the right thing. His new book, Incorruptible, focuses on how to help organizations stay aligned with their ideals.",
   "blockquote_source": "Adam Grant on ReThinking",
   "source_url": "https://podcasts.apple.com/us/podcast/how-to-prevent-corporate-corruption-with-eric-ries/id1554567118?i=1000776703734",
@@ -13,7 +13,7 @@
       "label": "ReThinking episode index"
     }
   ],
-  "video_url": null,
+  "video_url": "https://www.youtube.com/watch?v=hpH88ThLZ_U",
   "image": "/images/podcasts/rethinking-adam-grant.jpg",
   "attribution": "Adam Grant",
   "attribution_title": "Wharton professor; host, ReThinking (TED Audio Collective); NYT-bestselling author of Think Again, Give and Take, Hidden Potential, Originals",
@@ -23,8 +23,7 @@
     "media",
     "rethinking",
     "adam-grant",
-    "ted-audio",
-    "launch-week"
+    "ted-audio"
   ],
   "type_metadata": {
     "highlight": "Adam Grant: 'many people believe [corporate corruption] may be unsolvable — but Eric Ries doesn't think so'",
