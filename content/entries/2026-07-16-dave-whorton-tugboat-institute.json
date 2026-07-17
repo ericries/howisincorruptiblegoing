@@ -20,7 +20,9 @@
     "evergreen-companies",
     "author-to-author"
   ],
-  "type_metadata": {},
+  "type_metadata": {
+    "featured": true
+  },
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-07-16T17:00:00Z"
