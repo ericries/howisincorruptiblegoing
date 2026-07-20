@@ -1,0 +1,35 @@
+{
+  "id": "2026-07-20-lets-talk-transformation-suzie-lewis",
+  "date": "2026-07-20",
+  "type": "podcast",
+  "title": "Let's talk Transformation #180 (Suzie Lewis) — 'Incorruptible: maximising human flourishing with Eric Ries'",
+  "summary": "Suzie Lewis's business-leaders podcast releases a 41-minute Eric conversation on organisational soulcraft — mission guardians, PBC status, tenured board structures, and the argument that profit is best defined as the result of maximising human flourishing.",
+  "blockquote": "The companies that last aren't the ones that avoid pressure. They're the ones that decided early what they would refuse to trade away.",
+  "blockquote_source": "Suzie Lewis on LinkedIn",
+  "source_url": "https://www.youtube.com/watch?v=9p6jiEAilt4",
+  "source_urls": [
+    {
+      "url": "https://www.linkedin.com/posts/lewissuzie_humansystems-purposedriven-sustainablegrowth-activity-7484853376556564480-jbmI",
+      "label": "Suzie Lewis LinkedIn post"
+    },
+    {
+      "url": "https://podcasts.apple.com/us/podcast/lets-talk/id1516783025",
+      "label": "Let's talk Transformation on Apple Podcasts"
+    }
+  ],
+  "video_url": "https://www.youtube.com/watch?v=9p6jiEAilt4",
+  "image": "/images/podcasts/lets-talk-transformation.jpg",
+  "attribution": "Suzie Lewis",
+  "attribution_title": "Host, Let's talk Transformation",
+  "attribution_image": null,
+  "tags": [
+    "podcast",
+    "youtube",
+    "lets-talk-transformation",
+    "human-flourishing"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-07-20T17:05:00Z"
+}

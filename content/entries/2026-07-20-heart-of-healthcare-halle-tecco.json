@@ -1,0 +1,32 @@
+{
+  "id": "2026-07-20-heart-of-healthcare-halle-tecco",
+  "date": "2026-07-20",
+  "type": "podcast",
+  "title": "The Heart of Healthcare (Halle Tecco) — 'Shareholder Primacy Is Breaking Healthcare' with Eric Ries",
+  "summary": "Halle Tecco — Rock Health co-founder and long-standing digital health investor — releases a 40-minute Eric episode framed around why healthcare companies drift from patient mission toward shareholder primacy, with Novo Nordisk's ownership structure as the counter-example.",
+  "blockquote": "Healthcare companies are built to improve patients' lives. So why do so many prioritize shareholders over the people they're meant to serve?",
+  "blockquote_source": "The Heart of Healthcare episode description",
+  "source_url": "https://www.youtube.com/watch?v=wiY8srjKDU0",
+  "source_urls": [
+    {
+      "url": "https://www.linkedin.com/posts/the-heart-of-healthcare-podcast_healthcare-companies-are-built-to-improve-activity-7484968489435250688-dwgW",
+      "label": "The Heart of Healthcare LinkedIn announcement"
+    }
+  ],
+  "video_url": "https://www.youtube.com/watch?v=wiY8srjKDU0",
+  "image": "/images/podcasts/heart-of-healthcare.jpg",
+  "attribution": "Halle Tecco",
+  "attribution_title": "Host, The Heart of Healthcare; co-founder, Rock Health",
+  "attribution_image": null,
+  "tags": [
+    "podcast",
+    "youtube",
+    "healthcare",
+    "halle-tecco",
+    "heart-of-healthcare"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-07-20T17:00:00Z"
+}
