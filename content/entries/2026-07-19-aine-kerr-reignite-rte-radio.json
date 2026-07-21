@@ -26,7 +26,9 @@
     "ireland",
     "book-club"
   ],
-  "type_metadata": {},
+  "type_metadata": {
+    "featured": true
+  },
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-07-19T16:00:00Z"
