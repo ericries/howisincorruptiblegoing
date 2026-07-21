@@ -1,0 +1,33 @@
+{
+  "id": "2026-07-20-growth-podcast-aakash-gupta",
+  "date": "2026-07-20",
+  "type": "podcast",
+  "title": "The Growth Podcast (Aakash Gupta) — Eric on OpenAI's original mistake and why Anthropic's LTBT structure is different",
+  "summary": "Aakash Gupta — product-management writer to 1M+ subscribers — releases an Eric conversation framed around governance as a study of power relationships: the Sam Altman firing as OpenAI's structural design failure, Dario Amodei's three funding rounds defending Anthropic's Long-Term Benefit Trust, and Costco as the 'governance fortress' whose returns crush the S&P 500.",
+  "blockquote": "Eric's read is that if you've ever wondered why Anthropic seems a little more courageous than the other labs, that structure is why. Most first-time founders chicken out when the stakes get high. Dario has a structure built to support his conviction.",
+  "blockquote_source": "Aakash Gupta on LinkedIn",
+  "source_url": "https://www.youtube.com/watch?v=drUU7zwLKgM",
+  "source_urls": [
+    {
+      "url": "https://www.linkedin.com/posts/aagupta_is-sam-altman-just-a-bad-ceo-eric-ries-thinks-activity-7485112845743837184-aY4s",
+      "label": "Aakash Gupta LinkedIn announcement"
+    }
+  ],
+  "video_url": "https://www.youtube.com/watch?v=drUU7zwLKgM",
+  "image": "/images/podcasts/growth-podcast-aakash-gupta.jpg",
+  "attribution": "Aakash Gupta",
+  "attribution_title": "Host, The Growth Podcast; product-management writer",
+  "attribution_image": null,
+  "tags": [
+    "podcast",
+    "aakash-gupta",
+    "product-growth",
+    "openai",
+    "anthropic",
+    "governance"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-07-21T02:00:00Z"
+}
