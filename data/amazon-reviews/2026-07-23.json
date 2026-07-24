@@ -1,0 +1,22 @@
+{
+  "snapshot_date": "2026-07-23",
+  "captured_at": "2026-07-24T01:15:00Z",
+  "source": "junglee/Amazon-crawler",
+  "totals": {
+    "global_ratings": null,
+    "customer_reviews": 179,
+    "average_rating": 4.8,
+    "five_star_pct": 0.84,
+    "four_star_pct": 0.13,
+    "three_star_pct": 0.02,
+    "two_star_pct": 0,
+    "one_star_pct": 0.01
+  },
+  "bestseller_ranks": [
+    {"rank": 5744, "category": "Books"},
+    {"rank": 22, "category": "Entrepreneurship (Books)"},
+    {"rank": 34, "category": "Business Management (Books)"},
+    {"rank": 51, "category": "Leadership & Motivation"}
+  ],
+  "reviews": []
+}
