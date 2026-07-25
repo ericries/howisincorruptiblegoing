@@ -2,16 +2,16 @@
   "id": "2026-05-24-bob-sutton-tweet-capitalism-compassion",
   "date": "2026-05-24",
   "type": "endorsement",
-  "title": "Bob Sutton on X \u2014 'capitalism and compassion need not be treated as trade-offs'",
-  "summary": "Stanford's Bob Sutton \u2014 bestselling author of The No Asshole Rule and Good Boss, Bad Boss, who hosted Eric at Manny's SF earlier this month \u2014 publicly endorses Incorruptible on launch eve with a one-line frame that captures the book's core wager.",
-  "blockquote": "Go Eric! Your book can make companies better for all us\u2026 a compelling argument that capitalism and compassion need not be treated as trade-offs.",
+  "title": "Bob Sutton on X — 'capitalism and compassion need not be treated as trade-offs'",
+  "summary": "Stanford's Bob Sutton — bestselling author of The No Asshole Rule and Good Boss, Bad Boss, who hosted Eric at Manny's SF earlier this month — publicly endorses Incorruptible on launch eve with a one-line frame that captures the book's core wager.",
+  "blockquote": "Go Eric! Your book can make companies better for all us… a compelling argument that capitalism and compassion need not be treated as trade-offs.",
   "blockquote_source": "Bob Sutton on X",
   "source_url": "https://x.com/work_matters/status/2058661000271020366",
   "source_urls": null,
   "video_url": null,
   "image": "/images/cards/2026-05-24-bob-sutton-tweet-capitalism-compassion.png",
   "attribution": "Bob Sutton",
-  "attribution_title": "Stanford professor; bestselling author, The No Asshole Rule and Good Boss, Bad Boss",
+  "attribution_title": "Stanford professor; bestselling author of Good Boss, Bad Boss",
   "attribution_image": "/images/people/robert-sutton.jpg",
   "tags": [
     "endorsement",
@@ -20,6 +20,6 @@
   ],
   "type_metadata": {},
   "scanner_source": "social-scan",
-  "verified": false,
+  "verified": true,
   "created_at": "2026-05-26T01:30:00Z"
 }
