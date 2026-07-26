@@ -1,0 +1,32 @@
+{
+  "id": "2026-07-26-lennys-podcast-dianne-penn-anthropic-pick",
+  "date": "2026-07-26",
+  "type": "media",
+  "title": "Dianne Penn (Anthropic's first technical PM, Head of Product for AI Research and Labs) recommends Incorruptible on Lenny's Podcast",
+  "summary": "Dianne Penn — Anthropic's first technical PM, now Head of Product for AI Research and Labs — closes her Lenny's Podcast appearance by naming Incorruptible as one of just three recommended books, alongside Crucial Conversations and How to Raise an Adult. Lenny Rachitsky's 200K-subscriber product podcast; Anthropic's own governance is a case study in the book.",
+  "blockquote": "Incorruptible: Why Good Companies Go Bad... and How Great Companies Stay Great",
+  "blockquote_source": "Dianne Penn on Lenny's Podcast (Recommended Books)",
+  "source_url": "https://www.youtube.com/watch?v=tivaWTTVRhY",
+  "source_urls": [
+    {
+      "url": "https://www.lennysnewsletter.com/p/anthropics-first-technical-pm",
+      "label": "Episode transcript"
+    }
+  ],
+  "video_url": "https://www.youtube.com/watch?v=tivaWTTVRhY",
+  "image": "/images/podcasts/lennys-podcast.jpg",
+  "attribution": "Dianne Penn",
+  "attribution_title": "Head of Product, Anthropic AI Research and Labs; Anthropic's first technical PM",
+  "attribution_image": null,
+  "tags": [
+    "reaction",
+    "podcast",
+    "lennys-podcast",
+    "anthropic",
+    "book-recommendation"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-07-26T17:00:00Z"
+}

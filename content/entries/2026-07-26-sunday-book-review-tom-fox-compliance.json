@@ -1,0 +1,32 @@
+{
+  "id": "2026-07-26-sunday-book-review-tom-fox-compliance",
+  "date": "2026-07-26",
+  "type": "media",
+  "title": "Sunday Book Review (Tom Fox) — Incorruptible on the compliance-leader summer reading list",
+  "summary": "Tom Fox — the longtime compliance-industry commentator behind the Compliance Podcast Network — dedicates his weekly Sunday Book Review to four FT-picked summer reads for compliance leaders, with Incorruptible sitting alongside Henry Snow's Control Science, Xiao Hai's Adrift in the South, and Justin Baer's House of Fidelity.",
+  "blockquote": "What can four summer reads on environment, science, and technology teach compliance leaders about integrity, resilience, risk, and the future of business? In this #SundayBookReview, I consider Control Science by Henry Snow, Incorruptible by Eric Ries, Adrift in the South by Xiao Hai, and House of Fidelity by Justin Baer.",
+  "blockquote_source": "Tom Fox on LinkedIn",
+  "source_url": "https://www.youtube.com/watch?v=jdTagGjGbCQ",
+  "source_urls": [
+    {
+      "url": "https://www.linkedin.com/posts/thomasfox13_sundaybookreview-compliance-leadership-activity-7487114517450076160-k1Xo",
+      "label": "Tom Fox LinkedIn announcement"
+    }
+  ],
+  "video_url": "https://www.youtube.com/watch?v=jdTagGjGbCQ",
+  "image": "/images/podcasts/sunday-book-review.jpg",
+  "attribution": "Tom Fox",
+  "attribution_title": "Host, Sunday Book Review; Compliance Podcast Network",
+  "attribution_image": null,
+  "tags": [
+    "media",
+    "podcast",
+    "compliance",
+    "sunday-book-review",
+    "tom-fox"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-07-26T17:05:00Z"
+}
