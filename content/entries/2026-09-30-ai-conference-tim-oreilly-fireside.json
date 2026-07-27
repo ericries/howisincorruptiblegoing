@@ -1,0 +1,30 @@
+{
+  "id": "2026-09-30-ai-conference-tim-oreilly-fireside",
+  "date": "2026-09-30",
+  "type": "event",
+  "title": "The AI Conference (SF) — Tim O'Reilly and Eric Ries fireside on building AI companies that matter",
+  "summary": "The AI Conference 2026 — the 5,500-person San Francisco gathering of AI builders, researchers, and leaders (Sept 29–Oct 1) — announces a fireside chat between Tim O'Reilly (O'Reilly Media founder & CEO) and Eric on founder responsibility and the future of the AI-powered economy.",
+  "blockquote": "Join Tim O'Reilly, Founder & CEO of O'Reilly Media, and Eric Ries, Founder and Author of The Lean Startup and The Startup Incorruptible, for a fireside chat on what it takes to build AI companies that matter.",
+  "blockquote_source": "The AI Conference on X",
+  "source_url": "https://x.com/AIconference/status/2081825330474738016",
+  "source_urls": null,
+  "video_url": null,
+  "image": "/images/events/ai-conference-2026/announcement.jpg",
+  "attribution": "The AI Conference 2026",
+  "attribution_title": "5,500+ AI builders, researchers, and leaders; 120+ speakers; San Francisco, Sept 29–Oct 1, 2026",
+  "attribution_image": null,
+  "tags": [
+    "event",
+    "upcoming",
+    "ai-conference",
+    "tim-oreilly",
+    "fireside",
+    "san-francisco"
+  ],
+  "type_metadata": {
+    "city": "San Francisco"
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-07-27T21:30:00Z"
+}
