@@ -1,0 +1,32 @@
+{
+  "id": "2026-07-29-startup-defense-callye-keen",
+  "date": "2026-07-29",
+  "type": "podcast",
+  "title": "The Startup Defense (Callye Keen) — 'There are fates much worse than death that have plagued a lot of founders'",
+  "summary": "Callye Keen — founder of Kform and host of The Startup Defense (a podcast for founders, investors, and operators building for national security) — releases a 33-minute conversation with Eric on mission mortality, financial gravity, and why the Lean Startup toolkit protected companies through the first cliff but left them naive about a second one: the pressures that drag principled companies into corruption after they succeed.",
+  "blockquote": "I used to think your company failing was the worst thing that can happen to you. Oh, no, my friend. It's hardly in the top 10. There are fates much worse than death that have plagued a lot of founders.",
+  "blockquote_source": "Eric Ries on The Startup Defense podcast",
+  "source_url": "https://www.youtube.com/watch?v=X_SIc0zs-n8",
+  "source_urls": [
+    {
+      "url": "https://www.linkedin.com/posts/callyekeen_why-do-successful-companies-abandon-the-principles-activity-7488198618974154753-L6Vk",
+      "label": "Callye Keen LinkedIn announcement (22 likes)"
+    }
+  ],
+  "video_url": "https://www.youtube.com/watch?v=X_SIc0zs-n8",
+  "image": "/images/podcasts/startup-defense-callye-keen.jpg",
+  "attribution": "Callye Keen",
+  "attribution_title": "Founder, Kform; host, The Startup Defense",
+  "attribution_image": null,
+  "tags": [
+    "podcast",
+    "youtube",
+    "startup-defense",
+    "callye-keen",
+    "national-security"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-07-29T17:00:00Z"
+}
