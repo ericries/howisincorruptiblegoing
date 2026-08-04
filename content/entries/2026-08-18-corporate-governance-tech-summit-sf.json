@@ -22,7 +22,8 @@
     "evan-epstein"
   ],
   "type_metadata": {
-    "city": "San Francisco"
+    "city": "San Francisco",
+    "featured": true
   },
   "scanner_source": "social-scan",
   "verified": false,
