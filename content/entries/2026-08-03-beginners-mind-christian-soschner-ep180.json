@@ -1,0 +1,32 @@
+{
+  "id": "2026-08-03-beginners-mind-christian-soschner-ep180",
+  "date": "2026-08-03",
+  "type": "podcast",
+  "title": "Beginner's Mind (Christian Soschner) EP 180 — 'If you go to your local park, you'll find trees older than shareholder primacy'",
+  "summary": "Christian Soschner — biotech investor and Beginner's Mind host — releases a full-hour Eric interview walking through why shareholder primacy is a recent legal theory, how 'any lawful act or activity' erased corporate purpose, what actually killed Sears (a CEO who extracted $1.5B from himself while the company lost $11B), and why foundation-owned companies (Novo Nordisk, Patagonia, IKEA, Grundfos) outlive competitors. Ends on the turtles-all-the-way-down question of who guards the guardian.",
+  "blockquote": "If you go to your local park, you'll find trees older than shareholder primacy.",
+  "blockquote_source": "Eric Ries on Beginner's Mind podcast",
+  "source_url": "https://www.youtube.com/watch?v=EFdJRemOV74",
+  "source_urls": [
+    {
+      "url": "https://www.linkedin.com/posts/christiansoschner_independent-directors-are-the-gold-standard-activity-7490126962468855809-CoAU",
+      "label": "Christian Soschner LinkedIn announcement"
+    }
+  ],
+  "video_url": "https://www.youtube.com/watch?v=EFdJRemOV74",
+  "image": "/images/podcasts/beginners-mind-christian-soschner.jpg",
+  "attribution": "Christian Soschner",
+  "attribution_title": "Host, Beginner's Mind; biotech investor",
+  "attribution_image": null,
+  "tags": [
+    "podcast",
+    "youtube",
+    "beginners-mind",
+    "christian-soschner",
+    "shareholder-primacy"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-08-05T02:15:00Z"
+}
