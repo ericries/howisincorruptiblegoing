@@ -21,7 +21,9 @@
     "university-of-toronto",
     "summer-reads"
   ],
-  "type_metadata": {},
+  "type_metadata": {
+    "featured": true
+  },
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-08-08T02:00:00Z"
