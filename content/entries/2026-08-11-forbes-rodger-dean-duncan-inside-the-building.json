@@ -25,7 +25,9 @@
     "governance",
     "financial-gravity"
   ],
-  "type_metadata": {},
+  "type_metadata": {
+    "featured": true
+  },
   "scanner_source": "web-search",
   "verified": false,
   "created_at": "2026-08-12T17:00:00Z"
