@@ -20,7 +20,9 @@
     "yc-s26",
     "curated-reading"
   ],
-  "type_metadata": {},
+  "type_metadata": {
+    "featured": true
+  },
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-08-15T03:00:00Z"
