@@ -1,0 +1,21 @@
+{
+  "id": "2026-09-10-kpmg-partner-conversation-canary-wharf",
+  "date": "2026-09-10",
+  "type": "event",
+  "title": "KPMG Partner Conversation, Canary Wharf — Eric Ries with UK & Swiss partners on Incorruptible",
+  "summary": "Eric joins KPMG for a partner-only conversation at Canary Wharf London on the fourth day of the UK tour, with an internal livestream to UK and Swiss partners.",
+  "blockquote": "KPMG — a global network of professional firms providing audit, tax and advisory services.",
+  "blockquote_source": "KPMG",
+  "source_url": "https://kpmg.com/",
+  "source_urls": null,
+  "video_url": null,
+  "image": null,
+  "attribution": "KPMG",
+  "attribution_title": "Canary Wharf partner conversation, UK & Swiss livestream — Thu Sep 10, 3:30pm",
+  "attribution_image": null,
+  "tags": ["event", "london", "uk-tour", "in-person", "kpmg", "private"],
+  "type_metadata": {"city": "London"},
+  "scanner_source": "manual",
+  "verified": false,
+  "created_at": "2026-08-19T18:00:00Z"
+}

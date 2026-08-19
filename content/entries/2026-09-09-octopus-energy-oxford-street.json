@@ -1,0 +1,21 @@
+{
+  "id": "2026-09-09-octopus-energy-oxford-street",
+  "date": "2026-09-09",
+  "type": "event",
+  "title": "Octopus Energy Oxford Street — Eric Ries fireside for the Octopus team",
+  "summary": "Eric joins Octopus Energy at their Oxford Street London office for an employees-only fireside on Incorruptible during the UK tour.",
+  "blockquote": "Octopus Energy — a global energy technology company disrupting a stagnant industry.",
+  "blockquote_source": "Octopus Energy",
+  "source_url": "https://octopus.energy/",
+  "source_urls": null,
+  "video_url": null,
+  "image": null,
+  "attribution": "Octopus Energy",
+  "attribution_title": "Oxford Street London employee fireside — Wed Sep 9, 1pm",
+  "attribution_image": null,
+  "tags": ["event", "london", "uk-tour", "in-person", "octopus-energy", "private"],
+  "type_metadata": {"city": "London"},
+  "scanner_source": "manual",
+  "verified": false,
+  "created_at": "2026-08-19T18:00:00Z"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2026-09-09-startup-leap-huckletree-oxford-circus",
+  "date": "2026-09-09",
+  "type": "event",
+  "title": "The Startup Leap @ Huckletree Oxford Circus — Eric Ries with Yvonne Bajela (LocalGlobe) and Maria Rotilu (Openseed.VC)",
+  "summary": "Yvonne Bajela (LocalGlobe) and Maria Rotilu (Openseed.VC) host Eric for a live episode of The Startup Leap at Huckletree Oxford Circus on the third day of the UK book tour. The Startup Leap airs on Spotify and Apple Podcasts.",
+  "blockquote": "The Startup Leap — a podcast for founders navigating the leap, hosted by Yvonne Bajela and Maria Rotilu.",
+  "blockquote_source": "The Startup Leap",
+  "source_url": "https://www.thestartupleap.io/",
+  "source_urls": [
+    {"url": "https://open.spotify.com/show/5ISju4agtozl1p5tWVAwof", "label": "The Startup Leap on Spotify"},
+    {"url": "https://podcasts.apple.com/us/podcast/the-startup-leap-podcast/id1758504768", "label": "The Startup Leap on Apple Podcasts"}
+  ],
+  "video_url": null,
+  "image": null,
+  "attribution": "Yvonne Bajela & Maria Rotilu",
+  "attribution_title": "Hosts, The Startup Leap — Huckletree Oxford Circus, Wed Sep 9, 6pm",
+  "attribution_image": null,
+  "tags": ["event", "london", "uk-tour", "in-person", "startup-leap", "huckletree", "live-podcast"],
+  "type_metadata": {"city": "London", "featured": true},
+  "scanner_source": "manual",
+  "verified": false,
+  "created_at": "2026-08-19T18:00:00Z"
+}
