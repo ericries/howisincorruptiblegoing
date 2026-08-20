@@ -1,0 +1,32 @@
+{
+  "id": "2026-10-14-inc-5000-conference-dallas",
+  "date": "2026-10-14",
+  "type": "event",
+  "title": "Inc. 5000 Conference & Gala (Omni Dallas) — Eric Ries speaks to America's fastest-growing private companies",
+  "summary": "Eric joins the 2026 Inc. 5000 Conference & Gala at the Omni Dallas Hotel (Oct 14–16). Inc.'s official speaker page lists him as 'Bestselling author and founder, Long-Term Stock Exchange.' The conference culminates in the black-tie gala featuring the iconic Inc. 5000 roll call for the year's honorees.",
+  "blockquote": "The most prestigious event in entrepreneurship is back live – join us for the largest celebration of Inc. 5000 honorees ever.",
+  "blockquote_source": "Inc. 5000 Conference & Gala",
+  "source_url": "https://events.inc.com/2026incconference/speakers",
+  "source_urls": [
+    {"url": "https://events.inc.com/2026incconference", "label": "Main event page (Omni Dallas Hotel, Oct 14–16)"}
+  ],
+  "video_url": null,
+  "image": null,
+  "attribution": "Inc. 5000 Conference & Gala",
+  "attribution_title": "Omni Dallas Hotel, Dallas Texas — Oct 14–16, 2026",
+  "attribution_image": null,
+  "tags": [
+    "event",
+    "dallas",
+    "in-person",
+    "conference",
+    "inc-5000",
+    "gala"
+  ],
+  "type_metadata": {
+    "city": "Dallas"
+  },
+  "scanner_source": "web-search",
+  "verified": false,
+  "created_at": "2026-08-20T17:15:00Z"
+}
