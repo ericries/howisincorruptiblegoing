@@ -1,0 +1,35 @@
+{
+  "id": "2026-10-27-berkeley-newton-changemaker-lecture",
+  "date": "2026-10-27",
+  "type": "event",
+  "title": "A. Richard Newton Lecture Series (UC Berkeley SCET Changemaker Course) — Eric on the Fall 2026 lineup with Scott Galloway, Vivienne Ming, Kapor & Kapor",
+  "summary": "UC Berkeley's Sutardja Center for Entrepreneurship & Technology (SCET) books Eric for the Fall 2026 A. Richard Newton Distinguished Innovator Lecture Series — the flagship Berkeley Changemaker® course (ENGIN 183A/283A) led by Victoria Howell. He joins Scott Galloway (Prof G), Vivienne Ming, Freada Kapor Klein & Mitch Kapor (in conversation with Chancellor Rich Lyons), Nikhil Reddy (Kaizen), Shireen Santosham, Al Ghorai (thredUP), Bailey Farren (Perimeter), Jini Kim (Nuna), and Zofia Kierner (Girls Future Ready) on the SCET stage.",
+  "blockquote": "The A. Richard Newton Distinguished Innovator Lecture Series honors the entrepreneurial vision of A. Richard Newton, the Dean of UC Berkeley's College of Engineering 2000–2007. Inspired by his legacy, we host distinguished innovators sharing valuable lessons from their personal and professional journeys. Keynote speakers include highly accomplished leaders and notable Cal alumni. Their engaging stories reveal insights for innovation, leadership, industry trends and life lessons.",
+  "blockquote_source": "UC Berkeley Sutardja Center for Entrepreneurship & Technology (SCET)",
+  "source_url": "https://scet.berkeley.edu/a-richard-newton-lecture-series/",
+  "source_urls": [
+    {"url": "https://classes.berkeley.edu/content/2025-fall-engin-183a-001-col-001", "label": "Berkeley Classes: ENGIN 183A (Fall 2026)"}
+  ],
+  "video_url": null,
+  "image": "/images/cards/2026-10-27-berkeley-newton-changemaker-lecture.png",
+  "attribution": "UC Berkeley Sutardja Center for Entrepreneurship & Technology (SCET)",
+  "attribution_title": "A. Richard Newton Lecture Series — A Berkeley Changemaker® Course · UC Berkeley · Monday October 27, 2026",
+  "attribution_image": null,
+  "tags": [
+    "event",
+    "upcoming",
+    "in-person",
+    "berkeley",
+    "uc-berkeley",
+    "scet",
+    "newton-lecture",
+    "changemaker",
+    "lecture-series"
+  ],
+  "type_metadata": {
+    "city": "Berkeley"
+  },
+  "scanner_source": "manual",
+  "verified": false,
+  "created_at": "2026-08-21T16:35:00Z"
+}
