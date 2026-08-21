@@ -2,8 +2,8 @@
   "id": "2026-08-25-founderx-founder-institute-sf",
   "date": "2026-08-25",
   "type": "event",
-  "title": "FounderX (Founder Institute, San Francisco) — Eric on 'AI companies that do not lose themselves on the way up'",
-  "summary": "The Founder Institute announces Eric as a speaker at its Global FounderX Conference (Aug 25–27 at STAK Space and Step San Francisco), joining the conversation on the future of startups and what it takes to build AI companies without drifting from the purpose that made them worth building.",
+  "title": "FounderX (Founder Institute, Oakland + SF) — Eric on 'AI companies that do not lose themselves on the way up'",
+  "summary": "The Founder Institute announces Eric as a speaker at its Global FounderX Conference (Aug 25–27) — Days 1–2 at 1900 Broadway Tower and STAK Space in Oakland, Day 3 at Step San Francisco. Eric joins the conversation on the future of startups and what it takes to build AI companies without drifting from the purpose that made them worth building.",
   "blockquote": "At FounderX, Eric joins the conversation on the future of startups and what it takes to build AI companies that do not lose themselves on the way up.\n\nAugust 25-27, STAK Space and Step San Francisco.",
   "blockquote_source": "Founder Institute on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/the-founder-institute_fifteen-years-ago-eric-ries-gave-founders-activity-7492935234808774657-SZ8W",
@@ -11,7 +11,7 @@
   "video_url": null,
   "image": "/images/cards/2026-08-25-founderx-founder-institute-sf.png",
   "attribution": "Founder Institute",
-  "attribution_title": "Global FounderX Conference, Aug 25–27, STAK Space + Step San Francisco",
+  "attribution_title": "Global FounderX Conference, Aug 25–27 · Oakland (STAK Space) + Step San Francisco",
   "attribution_image": null,
   "tags": [
     "event",
@@ -22,6 +22,7 @@
     "ai"
   ],
   "type_metadata": {
+    "city": "Oakland",
     "featured": true
   },
   "scanner_source": "social-scan",

@@ -1,0 +1,33 @@
+{
+  "id": "2026-10-07-stanford-etl-eric-ries",
+  "date": "2026-10-07",
+  "type": "event",
+  "title": "Stanford ETL (Entrepreneurial Thought Leaders) — Eric Ries at STVP's flagship speaker series",
+  "summary": "Eric returns to the Stanford Technology Ventures Program's Entrepreneurial Thought Leaders series — the weekly Wednesday lecture at Huang Engineering Center that has featured the founder generation from Reid Hoffman to Marissa Mayer to Guy Kawasaki. Talk covers Incorruptible's argument about why great companies drift from their mission and what founders can architect at the earliest stage to keep the drift from happening.",
+  "blockquote": "A candid exploration of the entrepreneurial journey where informed leaders share personal stories of the secrets and setbacks behind real success.",
+  "blockquote_source": "Stanford Technology Ventures Program — Entrepreneurial Thought Leaders",
+  "source_url": "https://stvp.stanford.edu/entrepreneurial-thought-leaders",
+  "source_urls": [
+    {"url": "https://stvp.stanford.edu/events", "label": "STVP events page (schedule to be posted)"}
+  ],
+  "video_url": null,
+  "image": "/images/cards/2026-10-07-stanford-etl-eric-ries.png",
+  "attribution": "Stanford Technology Ventures Program (STVP)",
+  "attribution_title": "Entrepreneurial Thought Leaders lecture · Stanford, CA · Wednesday October 7, 2026",
+  "attribution_image": null,
+  "tags": [
+    "event",
+    "upcoming",
+    "in-person",
+    "stanford",
+    "stvp",
+    "etl",
+    "lecture-series"
+  ],
+  "type_metadata": {
+    "city": "Stanford"
+  },
+  "scanner_source": "manual",
+  "verified": false,
+  "created_at": "2026-08-21T16:25:00Z"
+}
