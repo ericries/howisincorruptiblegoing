@@ -1,0 +1,29 @@
+{
+  "id": "2026-08-21-tom-gilb-datocracy-incorruptible-ai-agent",
+  "date": "2026-08-21",
+  "type": "media",
+  "title": "Tom Gilb (Planguage inventor) ships an 'Incorruptible AI Agent' that scores plans against Eric's principles",
+  "summary": "Tom Gilb \u2014 inventor of Planguage, veteran software-methodology author, and consultant to international engineering organizations \u2014 demos a new AI agent built into his Planguage SIM platform on the August Datocracy call. Tom fed the entire Incorruptible book (plus Eric's additional chapters) into the agent, which then reviews any plan against Ries's principles, generates an overall 'incorruptibility score', flags mission drift and governance gaps, and records every accepted or rejected recommendation as an auditable trail. A companion 'Sharpen' workflow turns the agent into an interactive planning partner. Third-party productization of the book's ideas by a heavyweight methodology voice.",
+  "blockquote": "Tom demonstrated a new SIM agent that evaluates plans against Eric Ries' Incorruptible principles, generates an incorruptibility score, proposes targeted improvements, and records every accepted or rejected recommendation as part of a permanent decision trail.",
+  "blockquote_source": "Datocracy Monthly meeting notes (Aug 21, 2026)",
+  "source_url": "https://www.youtube.com/watch?v=quAW-Ddxdkw",
+  "source_urls": null,
+  "video_url": "https://www.youtube.com/watch?v=quAW-Ddxdkw",
+  "image": "/images/cards/2026-08-21-tom-gilb-datocracy-incorruptible-ai-agent.png",
+  "attribution": "Tom Gilb",
+  "attribution_title": "Inventor of Planguage; consultant, methods inventor, textbook author",
+  "attribution_image": "/images/people/tom-gilb.jpg",
+  "tags": [
+    "media",
+    "youtube",
+    "tool",
+    "ai-agent",
+    "planguage",
+    "software-methodology",
+    "governance"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-08-22T16:45:00Z"
+}
