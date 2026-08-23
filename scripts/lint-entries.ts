@@ -252,6 +252,7 @@ if (isMainModule) {
     'rory sutherland',  // Ogilvy vice chairman, Alchemy author, TED speaker
     'jennifer pahlka',  // former US Deputy CTO, Recoding America author
     'karri saarinen',   // Linear cofounder
+    'paul graham',      // Y Combinator co-founder, essayist
   ]);
   const normalize = (s: string) => s.toLowerCase().replace(/[‘’]/g, "'").trim();
   for (const f of files) {

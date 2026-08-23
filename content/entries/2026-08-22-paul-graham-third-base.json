@@ -21,7 +21,10 @@
     "paul-graham",
     "founder"
   ],
-  "type_metadata": {},
+  "type_metadata": {
+    "featured": true,
+    "highlight": "Paul Graham: 'Other leadership books for founders only let you get to third base.'"
+  },
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-08-23T01:40:00Z"
