@@ -1,0 +1,31 @@
+{
+  "id": "2026-08-24-amazon-1-entrepreneurship",
+  "date": "2026-08-24",
+  "type": "milestone",
+  "title": "Incorruptible reaches #1 New Release in Entrepreneurship on Amazon",
+  "summary": "Incorruptible takes the top New Release slot in Amazon's Entrepreneurship category.",
+  "blockquote": "#1 New Release in Entrepreneurship",
+  "blockquote_source": "Amazon",
+  "source_url": "https://www.amazon.com/gp/new-releases/books/2745/ref=pd_zg_hrnr_books",
+  "source_urls": null,
+  "video_url": null,
+  "image": null,
+  "attribution": "Amazon",
+  "attribution_title": "Amazon Hot New Releases in Entrepreneurship",
+  "attribution_image": null,
+  "tags": [
+    "milestone",
+    "amazon",
+    "rank",
+    "new-release"
+  ],
+  "type_metadata": {
+    "amazon_rank": "#1",
+    "amazon_badge": "New Release",
+    "amazon_category": "Entrepreneurship",
+    "amazon_url": "https://www.amazon.com/gp/new-releases/books/2745/ref=pd_zg_hrnr_books"
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-08-25T01:15:00Z"
+}
