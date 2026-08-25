@@ -27,7 +27,8 @@
     "lecture-series"
   ],
   "type_metadata": {
-    "city": "Berkeley"
+    "city": "Berkeley",
+    "featured": true
   },
   "scanner_source": "manual",
   "verified": false,
