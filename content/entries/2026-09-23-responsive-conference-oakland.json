@@ -21,7 +21,8 @@
     "leadership"
   ],
   "type_metadata": {
-    "city": "Oakland, CA"
+    "city": "Oakland, CA",
+    "featured": true
   },
   "scanner_source": "social-scan",
   "verified": false,
