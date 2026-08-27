@@ -12,9 +12,16 @@
   "image": "/images/events/startup-grind-priyanka.jpg",
   "attribution": "Priyanka Shinde",
   "attribution_title": "Founder, SoloMate AI; ex-Meta & Cruise",
-  "attribution_image": null,
-  "tags": ["review", "linkedin", "startup-grind", "attendee-reaction"],
-  "type_metadata": { "weight": 1 },
+  "attribution_image": "/images/people/priyanka-shinde.jpg",
+  "tags": [
+    "review",
+    "linkedin",
+    "startup-grind",
+    "attendee-reaction"
+  ],
+  "type_metadata": {
+    "weight": 1
+  },
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-05-02T17:00:00Z"
