@@ -1,0 +1,24 @@
+{
+  "snapshot_date": "2026-08-27",
+  "captured_at": "2026-08-28T01:14:00Z",
+  "source": "junglee/Amazon-crawler + apify/rag-web-browser Hot New Releases",
+  "totals": {
+    "global_ratings": null,
+    "customer_reviews": 232,
+    "average_rating": 4.7,
+    "five_star_pct": null,
+    "four_star_pct": null,
+    "three_star_pct": null,
+    "two_star_pct": null,
+    "one_star_pct": null
+  },
+  "bestseller_ranks": [
+    {"rank": 8077, "category": "Books"},
+    {"rank": 26, "category": "Entrepreneurship (Books)"},
+    {"rank": 55, "category": "Business Management (Books)"},
+    {"rank": 83, "category": "Leadership & Motivation"}
+  ],
+  "new_release_positions": [],
+  "new_release_note": "Incorruptible no longer appears in top 50 Hot New Releases for Business Management, Entrepreneurship, or Leadership & Motivation. 90-day post-launch New Release window has aged out.",
+  "reviews": []
+}
