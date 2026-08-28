@@ -8,15 +8,26 @@
   "blockquote_source": "Kelsey Parks on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/kelsey-k-parks_walking-into-marias-reading-room-last-night-activity-7455672058283450368-AZPf",
   "source_urls": [
-    {"url": "https://www.linkedin.com/posts/eries_thanks-eric-ries-for-doing-a-virtual-book-activity-7455634122091167744-B6jW", "label": "Eric's repost"}
+    {
+      "url": "https://www.linkedin.com/posts/eries_thanks-eric-ries-for-doing-a-virtual-book-activity-7455634122091167744-B6jW",
+      "label": "Eric's repost"
+    }
   ],
   "video_url": null,
   "image": "/images/events/scape-durango-kelsey.jpg",
   "attribution": "Kelsey Parks",
   "attribution_title": "COO & Co-Founder, Psyche Digital",
-  "attribution_image": null,
-  "tags": ["review", "linkedin", "durango-colorado", "scape", "attendee-reaction"],
-  "type_metadata": { "weight": 1 },
+  "attribution_image": "/images/people/kelsey-parks.jpg",
+  "tags": [
+    "review",
+    "linkedin",
+    "durango-colorado",
+    "scape",
+    "attendee-reaction"
+  ],
+  "type_metadata": {
+    "weight": 1
+  },
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-05-01T22:30:00Z"
