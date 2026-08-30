@@ -1,0 +1,36 @@
+{
+  "id": "2026-08-28-one-knight-in-product-eric-ries",
+  "date": "2026-08-28",
+  "type": "podcast",
+  "title": "One Knight in Product — 'If you have a mission statement, but this is your corporate purpose, then you are lying'",
+  "summary": "Jason Knight hosts Eric on the podcast's 6th anniversary episode for a deep conversation on Incorruptible: why MVP is more important than ever in the age of AI, why founders take marching orders from their own lawyers, and why mission statements that don't match corporate charters are lies to customers and employees alike.",
+  "blockquote": "If you have a mission statement, but this is your corporate purpose, then you are lying. You are lying to your customers, you are lying to your employees, and you are lying to yourself about what this company really is. Fix it.",
+  "blockquote_source": "Eric Ries on One Knight in Product",
+  "source_url": "https://www.youtube.com/watch?v=jVghPRCF9HA",
+  "source_urls": [
+    {
+      "url": "https://x.com/onejasonknight/status/2093274041222041810",
+      "label": "Jason Knight announcement — podcast 6-year anniversary episode"
+    },
+    {
+      "url": "https://www.linkedin.com/posts/jason-knight_its-my-podcasts-6-year-birthday-tomorrow-activity-7499037628940451840-vugz",
+      "label": "Jason Knight on LinkedIn"
+    }
+  ],
+  "video_url": "https://www.youtube.com/watch?v=jVghPRCF9HA",
+  "image": "/images/podcasts/one-knight-in-product.jpg",
+  "attribution": "Jason Knight",
+  "attribution_title": "Host, One Knight in Product",
+  "attribution_image": null,
+  "tags": [
+    "podcast",
+    "product-management",
+    "youtube",
+    "mission",
+    "governance"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-08-30T20:00:00Z"
+}
