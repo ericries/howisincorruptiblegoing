@@ -1,0 +1,20 @@
+{
+  "snapshot_date": "2026-08-31",
+  "captured_at": "2026-09-01T01:20:00Z",
+  "source": "apify/rag-web-browser Hot New Releases + product page (junglee blocked)",
+  "totals": {
+    "global_ratings": null,
+    "customer_reviews": 233,
+    "average_rating": 4.7,
+    "five_star_pct": null,
+    "four_star_pct": null,
+    "three_star_pct": null,
+    "two_star_pct": null,
+    "one_star_pct": null
+  },
+  "bestseller_ranks": null,
+  "bestseller_ranks_note": "junglee/Amazon-crawler returned no_results_found this cycle (likely captcha/rate-limit). Product page fetched via rag-web-browser but BSR text section was below the truncation cutoff (17880 chars). Prior snapshot 2026-08-27 had BSR Books #8077, Entrepreneurship #26, Business Management #55, Leadership & Motivation #83.",
+  "new_release_positions": [],
+  "new_release_note": "Confirmed aged out. Scanned all 3 tracked Hot New Releases lists (Business Management top 50, Entrepreneurship top 30, Leadership & Motivation top 38) via rag-web-browser; no Incorruptible appearance in any. 90-day post-launch window closed (launch was 2026-05-26).",
+  "reviews": []
+}
