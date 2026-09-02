@@ -1,0 +1,38 @@
+{
+  "id": "2026-09-02-divot-derek-andersen-podcast",
+  "date": "2026-09-02",
+  "type": "podcast",
+  "title": "Divot with Derek Andersen (Startup Grind founder) — 'The Lean Startup's creator on why good companies go bad and how to make yours incorruptible'",
+  "summary": "Derek Andersen — Startup Grind co-founder — hosts Eric on his new podcast Divot for a 45-minute conversation covering why Build-Measure-Learn is more relevant than ever in the AI era, why software has gotten more expensive (not cheaper), the sentence hidden in nearly every corporate charter that legally forces mission-betrayal, and Anthropic's Mission Guardian as the model others are copying.",
+  "blockquote": "Eric explains why 'Lean Startup' has held up in the AI era, why AI has made building software nearly free while learning what customers truly need remains the real bottleneck, and why founders chasing AI-generated demos are skipping the customer validation that actually determines survival. 'The learn step,' he says, 'has always been the rate-limiting step.'",
+  "blockquote_source": "Derek Andersen on Divot",
+  "source_url": "https://www.youtube.com/watch?v=GZJ6uf54sME",
+  "source_urls": [
+    {
+      "url": "https://www.linkedin.com/posts/divotpod_eric-ries-wrote-the-book-that-shaped-how-activity-7500934328588320768-R132",
+      "label": "Divot announcement on LinkedIn"
+    },
+    {
+      "url": "https://x.com/DerekjAndersen/status/2095177643880862107",
+      "label": "Derek Andersen announcement on X"
+    }
+  ],
+  "video_url": "https://www.youtube.com/watch?v=GZJ6uf54sME",
+  "image": "/images/podcasts/divot.jpg",
+  "attribution": "Derek Andersen",
+  "attribution_title": "Host, Divot · Co-Founder, Startup Grind",
+  "attribution_image": null,
+  "tags": [
+    "podcast",
+    "divot",
+    "startup-grind",
+    "derek-andersen",
+    "youtube",
+    "governance",
+    "ai"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-09-02T17:00:00Z"
+}
