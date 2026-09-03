@@ -31,7 +31,9 @@
     "governance",
     "ai"
   ],
-  "type_metadata": {},
+  "type_metadata": {
+    "featured": true
+  },
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-09-02T17:00:00Z"
