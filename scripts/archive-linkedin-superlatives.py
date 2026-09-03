@@ -154,7 +154,19 @@ def main() -> int:
     existing: list[dict] = []
     if archive_path.exists():
         existing = json.loads(archive_path.read_text())
-    seen_keys = {dedupe_key(r) for r in existing}
+
+    # Dedupe key = LinkedIn comment.id (globally unique). Load seen keys from
+    # ALL archive files so the same comment surfaced on a later scan isn't
+    # captured again on a new day.
+    seen_keys: set[str] = set()
+    for f in ARCHIVE_DIR.glob("*.json"):
+        try:
+            for r in json.loads(f.read_text()):
+                key = dedupe_key(r)
+                if key:
+                    seen_keys.add(key)
+        except Exception:
+            pass
 
     new_records: list[dict] = []
     scanned_posts = 0
