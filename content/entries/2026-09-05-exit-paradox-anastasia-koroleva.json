@@ -1,0 +1,33 @@
+{
+  "id": "2026-09-05-exit-paradox-anastasia-koroleva",
+  "date": "2026-09-05",
+  "type": "podcast",
+  "title": "Exit Paradox — Anastasia Koroleva (4x exited founder) on why building again after a successful exit can be harder than the first time",
+  "summary": "Anastasia Koroleva (4x exited tech founder, 9-figure first exit) hosts Eric for a 69-minute conversation on what changes when founders build after success — why the motivation that carried you the first time may not carry you again, why experience doesn't automatically become useful learning, and why founders often leave a difficult exit with a personal story that avoids changing the structures that allowed it. Chapters span Sol Price / Costco, Eric's four dimensions of governance, vanity metrics, and contribution vs status.",
+  "blockquote": "Building a second company after a successful exit can look easier. You have experience, a network and financial freedom. But one of the forces that carried you through the first company may no longer be there: financial necessity. Eric Ries, author of The Lean Startup and Incorruptible, joins Anastasia Koroleva to examine what changes when founders build again after success.",
+  "blockquote_source": "Anastasia Koroleva on Exit Paradox",
+  "source_url": "https://www.youtube.com/watch?v=pvELppU9XH0",
+  "source_urls": [
+    {
+      "url": "https://www.exitparadox.com/podcast",
+      "label": "Exit Paradox podcast page"
+    }
+  ],
+  "video_url": "https://www.youtube.com/watch?v=pvELppU9XH0",
+  "image": "/images/podcasts/exit-paradox.jpg",
+  "attribution": "Anastasia Koroleva",
+  "attribution_title": "Host, Exit Paradox · 4x exited tech founder",
+  "attribution_image": null,
+  "tags": [
+    "podcast",
+    "exit-paradox",
+    "youtube",
+    "governance",
+    "post-exit",
+    "costco"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-09-05T16:50:00Z"
+}
