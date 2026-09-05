@@ -1,0 +1,28 @@
+{
+  "id": "2026-09-03-dennis-yao-yu-simulacrum-of-responsibility",
+  "date": "2026-09-03",
+  "type": "media",
+  "title": "Dennis Yao Yu (ex-Shopify, Art.com/Walmart) interviews Eric on AI governance \u2014 'Either way, the AI creates only the simulacrum of responsibility'",
+  "summary": "Dennis Yao Yu \u2014 founder & CEO, ex-Shopify, ex-Art.com (Walmart acq), ex-Society6 \u2014 publishes an exclusive Q&A with Eric on Incorruptible applied to AI adoption. Eric on companies buying (not building) AI: an 'incoherent Frankenstein mess rather than any kind of coherent outcome that would be of service to the customer.' Eric on vibe-coding accountability: the AI 'sycophantically' says 'Yes. You're correct. Don't worry, it's all taken care of' \u2014 creating only the simulacrum of responsibility.",
+  "blockquote": "We can already see this happening in vibe coding, you have a situation where the person who 'wrote' the software has never actually seen the software and does not know what it does. When they have the impulse to check, they ask the harness, 'Does this reflect the value?' Meaning that no human being has actually independently verified that the AI properly understood and properly implemented the value in question. Quite often, because of the way that LLMs are trained, they will sycophantically tell you, 'Yes. You're correct. Don't worry, it's all taken care of.' Either way, the AI creates only the simulacrum of responsibility.",
+  "blockquote_source": "Dennis Yao Yu interviewing Eric Ries on LinkedIn",
+  "source_url": "https://www.linkedin.com/posts/dennisyaoyu_if-youve-built-anything-in-tech-in-the-last-activity-7501323238665244672-e3JL",
+  "source_urls": null,
+  "video_url": null,
+  "image": "/images/cards/2026-09-03-dennis-yao-yu-simulacrum-of-responsibility.png",
+  "attribution": "Dennis Yao Yu",
+  "attribution_title": "Founder & CEO \u00b7 ex-Shopify \u00b7 ex-Art.com (Walmart acq) \u00b7 ex-Society6",
+  "attribution_image": null,
+  "tags": [
+    "media",
+    "interview",
+    "linkedin",
+    "ai",
+    "governance",
+    "vibe-coding"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-09-05T07:20:00Z"
+}

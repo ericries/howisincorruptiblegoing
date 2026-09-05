@@ -24,8 +24,7 @@
     "gala"
   ],
   "type_metadata": {
-    "city": "Dallas",
-    "featured": true
+    "city": "Dallas"
   },
   "scanner_source": "web-search",
   "verified": false,
