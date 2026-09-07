@@ -14,7 +14,7 @@
   "attribution_title": "Books for Breakfast series, Soho House London — Tue Sep 8, 8:30am",
   "attribution_image": null,
   "tags": ["event", "london", "uk-tour", "in-person", "bookomi", "soho-house"],
-  "type_metadata": {"city": "London"},
+  "type_metadata": {"city": "London", "featured": true},
   "scanner_source": "manual",
   "verified": false,
   "created_at": "2026-08-19T18:00:00Z"
