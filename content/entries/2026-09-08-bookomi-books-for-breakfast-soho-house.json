@@ -7,7 +7,9 @@
   "blockquote": "Books for Breakfast — Bookomi's flagship series of author breakfast events, running at Soho House clubs since 2011.",
   "blockquote_source": "Bookomi",
   "source_url": "https://www.bookomi.com/events",
-  "source_urls": null,
+  "source_urls": [
+    {"url": "https://x.com/famoffice_vc/status/2097371789034741788", "label": "Attendee recap (Neetu, Family Office VC) on X"}
+  ],
   "video_url": null,
   "image": null,
   "attribution": "Bookomi / Richard Kilgarriff",

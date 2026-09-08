@@ -23,8 +23,7 @@
     "quebec-house"
   ],
   "type_metadata": {
-    "city": "London",
-    "featured": true
+    "city": "London"
   },
   "scanner_source": "manual",
   "verified": false,
