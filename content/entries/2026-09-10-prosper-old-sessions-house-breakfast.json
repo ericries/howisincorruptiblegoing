@@ -1,0 +1,36 @@
+{
+  "id": "2026-09-10-prosper-old-sessions-house-breakfast",
+  "date": "2026-09-10",
+  "type": "event",
+  "title": "Prosper breakfast @ The Old Sessions House (London) — Eric Ries in conversation with Nick Perrett on Incorruptible",
+  "summary": "UK-tour Day 4 breakfast: Eric joins Prosper co-founder Nick Perrett for a morning conversation about Incorruptible at The Old Sessions House in Clerkenwell, London. Multiple attendee recaps within hours — CMO Hattie Moll ('Corruption breaks the logic of capitalism itself'), Andrew Olley ('a must read for businesses of all shapes and sizes'), Seyi Ayinla ('the best thing a founder can do is listen'), Stewart Bewley ('deeply refreshing and amazing'), and physician Dana Mincer among them.",
+  "blockquote": "Corruption breaks the logic of capitalism itself.",
+  "blockquote_source": "Eric Ries at the Prosper breakfast (via Hattie Moll)",
+  "source_url": "https://www.linkedin.com/posts/hattie-moll-78352616_early-morning-inspiration-from-eric-ries-activity-7503767434504388608-ax8G",
+  "source_urls": [
+    {"url": "https://www.linkedin.com/posts/aolley_fantastic-breakfast-event-the-old-sessions-activity-7503809644822212609-cWqO", "label": "Andrew Olley attendee recap"},
+    {"url": "https://www.linkedin.com/posts/seyiayinla_productmanagement-productleadership-theleanstartup-activity-7503774645335277568-xopj", "label": "Seyi Ayinla attendee recap"},
+    {"url": "https://www.linkedin.com/posts/stewartjbewley_they-made-money-but-at-what-cost-i-am-activity-7503720608392884224-qxLG", "label": "Stewart Bewley attendee recap"},
+    {"url": "https://www.linkedin.com/posts/alessio-schiavone_theleanstartup-incorruptible-activity-7503740453826162688-Vn2-", "label": "Alessio Schiavone attendee recap"}
+  ],
+  "video_url": null,
+  "image": null,
+  "attribution": "Prosper × Nick Perrett",
+  "attribution_title": "The Old Sessions House, Clerkenwell, London · Sept 10 morning",
+  "attribution_image": null,
+  "tags": [
+    "event",
+    "london",
+    "prosper",
+    "nick-perrett",
+    "breakfast",
+    "in-person"
+  ],
+  "type_metadata": {
+    "city": "London",
+    "featured": true
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-09-10T22:45:00Z"
+}
