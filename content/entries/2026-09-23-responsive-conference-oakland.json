@@ -7,7 +7,9 @@
   "blockquote": "Established in 2016, Responsive Conference brings together 275 CHROs, CPOs, founders, and executives for an immersive two-day experience about work — built for leaders who want new ideas, tools, and a community that understands what it's actually like to lead amidst uncertainty.",
   "blockquote_source": "A.C.T.@work on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/american-conservatory-theater-san-francisco_actwork-will-be-presenting-at-this-years-activity-7485121628348223489-YDOp",
-  "source_urls": null,
+  "source_urls": [
+    {"url": "https://www.linkedin.com/posts/ahvasadeghi_peopleleaders-responsiveconference-futureofwork-activity-7503921675122577408-G-Ym", "label": "Ahva Sadeghi (VP Growth Yello, Forbes 30U30) speaker promo — 'Eric Ries is speaking, plus people leaders from Alphabet, Zapier, and OpenAI'"}
+  ],
   "video_url": null,
   "image": null,
   "attribution": "Responsive Conference",
