@@ -27,8 +27,7 @@
     "in-person"
   ],
   "type_metadata": {
-    "city": "London",
-    "featured": true
+    "city": "London"
   },
   "scanner_source": "social-scan",
   "verified": false,

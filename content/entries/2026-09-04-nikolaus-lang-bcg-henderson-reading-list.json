@@ -20,7 +20,7 @@
     "henderson-institute",
     "reading-list"
   ],
-  "type_metadata": {},
+  "type_metadata": {"featured": true},
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-09-06T20:40:00Z"
