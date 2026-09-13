@@ -27,7 +27,7 @@
     "salesforce-tower",
     "housing-innovation"
   ],
-  "type_metadata": {"city": "London", "featured": true},
+  "type_metadata": {"city": "London"},
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-07-16T22:20:00Z"
