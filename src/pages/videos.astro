@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import PageNav from '../components/PageNav.astro';
+import SiteHeader from '../components/SiteHeader.astro';
 import { loadEntries } from '../lib/entries';
 import * as path from 'path';
 
@@ -34,12 +34,8 @@ function fmtDate(iso: string) {
 ---
 
 <Layout title="Videos · How Is Incorruptible Going?" description="Podcast recordings, fireside chats, and short-form video — Eric on camera.">
+  <SiteHeader active="videos" />
   <main class="page">
-    <header class="page__masthead">
-      <a class="page__home" href="/">← How Is Incorruptible Going?</a>
-      <PageNav active="videos" />
-    </header>
-
     <div class="page__hero">
       <h1 class="page__title">Videos</h1>
       <p class="page__lede">

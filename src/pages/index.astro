@@ -5,7 +5,7 @@ import BestsellerStrip from '../components/BestsellerStrip.astro';
 import StatsBar from '../components/StatsBar.astro';
 import TimelineEntry from '../components/TimelineEntry.astro';
 import UpcomingStrip from '../components/UpcomingStrip.astro';
-import PageNav from '../components/PageNav.astro';
+import SiteHeader from '../components/SiteHeader.astro';
 import { loadEntries, partitionReactions } from '../lib/entries';
 import * as path from 'path';
 
@@ -155,12 +155,8 @@ const heroQuotes = entries
 ---
 
 <Layout title="How Is Incorruptible Going?">
-  <nav class="page-nav-strip" aria-label="Browse by category">
-    <div class="page-nav-strip__inner">
-      <span class="page-nav-strip__label">Browse</span>
-      <PageNav />
-    </div>
-  </nav>
+  <SiteHeader anchorHome={true} />
+  <a id="top" tabindex="-1" aria-hidden="true"></a>
 
   <Header awards={awards} leftAwards={leftAwards} heroQuotes={heroQuotes} />
   <BestsellerStrip />
@@ -326,39 +322,87 @@ const heroQuotes = entries
 </Layout>
 
 <style>
-  /* ── PAGE-NAV STRIP (browse by category) ── */
-  .page-nav-strip {
-    background: var(--color-navy);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+  /* ── SITE HEADER (top nav) ── */
+  .site-header {
+    background: var(--color-navy-deep);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+    z-index: 50;
   }
-  .page-nav-strip__inner {
-    max-width: var(--max-width);
+  .site-header__inner {
+    max-width: 1180px;
     margin: 0 auto;
-    padding: 0.55rem 1.25rem;
+    padding: 0.75rem 1.5rem;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 0.6rem;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    gap: 1.5rem;
   }
-  .page-nav-strip__label {
-    font-family: var(--font-body);
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
-    white-space: nowrap;
+  .site-header__wordmark {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: var(--color-white);
+    font-family: var(--font-title);
+    line-height: 1;
     flex-shrink: 0;
   }
-  /* Recolor PageNav chips inside the dark strip (dark bg = need light text) */
-  .page-nav-strip :global(.page-nav__link) {
-    color: rgba(255,255,255,0.75);
-    border-color: rgba(255,255,255,0.15);
+  .site-header__pre,
+  .site-header__post {
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--color-blue);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
   }
-  .page-nav-strip :global(.page-nav__link:hover) {
+  .site-header__brand {
+    font-family: var(--font-title);
+    font-size: 1.05rem;
+    font-weight: 800;
     color: var(--color-white);
-    border-color: var(--color-white);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .site-header__wordmark:hover .site-header__brand { color: var(--color-blue); }
+
+  /* PageNav chips on the dark header — light text, subtle borders */
+  .site-header :global(.page-nav) { gap: 0.3rem; }
+  .site-header :global(.page-nav__link) {
+    color: rgba(255,255,255,0.72);
+    border-color: rgba(255,255,255,0.12);
+    font-size: 0.7rem;
+    padding: 0.32rem 0.7rem;
+  }
+  .site-header :global(.page-nav__link:hover) {
+    color: var(--color-white);
+    border-color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.04);
+  }
+  .site-header :global(.page-nav__link--active) {
+    background: var(--color-red);
+    border-color: var(--color-red);
+    color: var(--color-white);
+  }
+
+  @media (max-width: 720px) {
+    .site-header__inner {
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: stretch;
+      padding: 0.5rem 0.75rem;
+    }
+    .site-header__wordmark {
+      justify-content: center;
+    }
+    .site-header :global(.page-nav) {
+      justify-content: center;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 0.15rem;
+    }
   }
 
   /* ── STICKY NAV ── */

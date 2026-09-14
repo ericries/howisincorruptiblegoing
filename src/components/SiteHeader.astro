@@ -1,0 +1,103 @@
+---
+import PageNav from './PageNav.astro';
+interface Props {
+  /** Slug of the currently-active page, e.g. "events". Empty for homepage. */
+  active?: string;
+  /** If true, the wordmark links to /#top (anchor scroll) instead of /. Homepage-only. */
+  anchorHome?: boolean;
+}
+const { active = '', anchorHome = false } = Astro.props;
+const href = anchorHome ? '#top' : '/';
+---
+
+<header class="site-header" aria-label="Site navigation">
+  <div class="site-header__inner">
+    <a href={href} class="site-header__wordmark" aria-label="How Is Incorruptible Going? — home">
+      <span class="site-header__pre">How Is</span>
+      <span class="site-header__brand">Incorruptible</span>
+      <span class="site-header__post">Going?</span>
+    </a>
+    <PageNav active={active} />
+  </div>
+</header>
+
+<style>
+  .site-header {
+    background: var(--color-navy-deep);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+    z-index: 50;
+  }
+  .site-header__inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .site-header__wordmark {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: var(--color-white);
+    font-family: var(--font-title);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .site-header__pre,
+  .site-header__post {
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--color-blue);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .site-header__brand {
+    font-family: var(--font-title);
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--color-white);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .site-header__wordmark:hover .site-header__brand { color: var(--color-blue); }
+
+  .site-header :global(.page-nav) { gap: 0.3rem; }
+  .site-header :global(.page-nav__link) {
+    color: rgba(255,255,255,0.72);
+    border-color: rgba(255,255,255,0.12);
+    font-size: 0.7rem;
+    padding: 0.32rem 0.7rem;
+  }
+  .site-header :global(.page-nav__link:hover) {
+    color: var(--color-white);
+    border-color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.04);
+  }
+  .site-header :global(.page-nav__link--active) {
+    background: var(--color-red);
+    border-color: var(--color-red);
+    color: var(--color-white);
+  }
+
+  @media (max-width: 720px) {
+    .site-header__inner {
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: stretch;
+      padding: 0.5rem 0.75rem;
+    }
+    .site-header__wordmark { justify-content: center; }
+    .site-header :global(.page-nav) {
+      justify-content: center;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 0.15rem;
+    }
+  }
+</style>

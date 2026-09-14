@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { loadEntries, partitionReactions } from '../../lib/entries';
 import ShareButton from '../../components/ShareButton.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
 import * as path from 'path';
 import type { TimelineEntry } from '../../lib/schema';
 
@@ -38,11 +39,8 @@ const extraSources = (entry.source_urls || []) as Array<{ url: string; label: st
   canonical={canonical}
   ogType="article"
 >
+  <SiteHeader />
   <main class="permalink">
-    <header class="permalink__masthead">
-      <a class="permalink__home" href="/">← How Is Incorruptible Going?</a>
-    </header>
-
     <article class="permalink__card">
       {entry.image && (
         <img class="permalink__hero" src={entry.image} alt={cleanTitle} />

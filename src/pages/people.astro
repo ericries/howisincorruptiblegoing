@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import PageNav from '../components/PageNav.astro';
+import SiteHeader from '../components/SiteHeader.astro';
 import { loadEntries } from '../lib/entries';
 import * as path from 'path';
 
@@ -105,12 +105,8 @@ for (const arr of byBucket.values()) {
 ---
 
 <Layout title="People · How Is Incorruptible Going?" description="Everyone who has publicly talked about Incorruptible — grouped by role.">
+  <SiteHeader active="people" />
   <main class="page">
-    <header class="page__masthead">
-      <a class="page__home" href="/">← How Is Incorruptible Going?</a>
-      <PageNav active="people" />
-    </header>
-
     <div class="page__hero">
       <h1 class="page__title">People</h1>
       <p class="page__lede">
