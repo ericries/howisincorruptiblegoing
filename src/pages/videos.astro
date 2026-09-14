@@ -1,0 +1,182 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageNav from '../components/PageNav.astro';
+import { loadEntries } from '../lib/entries';
+import * as path from 'path';
+
+const entries = loadEntries(path.join(process.cwd(), 'content', 'entries'));
+const videoEntries = entries
+  .filter(e => e.video_url)
+  .sort((a, b) => b.date.localeCompare(a.date));
+
+// Extract a thumbnail URL from a video URL (YouTube).
+// TikTok/LinkedIn don't have easy thumbnail APIs — fall back to entry.image.
+function thumb(e: (typeof videoEntries)[number]): string | null {
+  const u = e.video_url || '';
+  const yt = u.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([\w-]{11})/);
+  if (yt) return `https://i.ytimg.com/vi/${yt[1]}/mqdefault.jpg`;
+  return e.image || null;
+}
+
+function source(u: string): string {
+  if (/tiktok/.test(u)) return 'TikTok';
+  if (/youtu/.test(u)) return 'YouTube';
+  if (/linkedin/.test(u)) return 'LinkedIn';
+  if (/instagram/.test(u)) return 'Instagram';
+  return 'Video';
+}
+
+function fmtDate(iso: string) {
+  return new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC'
+  });
+}
+---
+
+<Layout title="Videos · How Is Incorruptible Going?" description="Podcast recordings, fireside chats, and short-form video — Eric on camera.">
+  <main class="page">
+    <header class="page__masthead">
+      <a class="page__home" href="/">← How Is Incorruptible Going?</a>
+      <PageNav active="videos" />
+    </header>
+
+    <div class="page__hero">
+      <h1 class="page__title">Videos</h1>
+      <p class="page__lede">
+        Podcast recordings, fireside chats, and short-form video.
+        <span class="page__count">{videoEntries.length} videos</span>
+      </p>
+    </div>
+
+    <section class="page__section">
+      <ul class="video-grid">
+        {videoEntries.map(e => {
+          const thumbUrl = thumb(e);
+          return (
+            <li class="video-tile">
+              <a href={`/e/${e.id}/`} class="video-tile__link">
+                <div class="video-tile__thumb">
+                  {thumbUrl ? (
+                    <img src={thumbUrl} alt={e.title} loading="lazy" />
+                  ) : (
+                    <span class="video-tile__placeholder">▶</span>
+                  )}
+                  <span class="video-tile__source">{source(e.video_url!)}</span>
+                  <span class="video-tile__play">▶</span>
+                </div>
+                <div class="video-tile__body">
+                  <h3 class="video-tile__title">{e.title}</h3>
+                  <div class="video-tile__meta">
+                    <span class="video-tile__date">{fmtDate(e.date)}</span>
+                    {e.attribution && <span class="video-tile__who"> · {e.attribution}</span>}
+                  </div>
+                </div>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .page { max-width: var(--max-width); margin: 0 auto; padding: 1rem 1.25rem 4rem; }
+  .page__masthead { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0 1.5rem; flex-wrap: wrap; gap: 0.75rem; }
+  .page__home { font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-navy); text-decoration: none; }
+  .page__home:hover { color: var(--color-blue); }
+
+  .page__hero { padding: 1rem 0 2rem; border-bottom: 1px solid var(--color-border); margin-bottom: 2rem; }
+  .page__title { font-family: var(--font-title); font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: 0.02em; color: var(--color-navy); margin-bottom: 0.5rem; }
+  .page__lede { font-family: var(--font-body); color: var(--color-text-light); display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; }
+  .page__count { font-size: 0.8rem; color: var(--color-text-muted); font-weight: 600; }
+
+  .page__section { margin-bottom: 3rem; }
+
+  .video-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+  .video-tile {
+    background: var(--color-card);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px var(--color-shadow);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .video-tile:hover { box-shadow: 0 6px 18px var(--color-shadow-lg); transform: translateY(-2px); }
+  .video-tile__link { text-decoration: none; color: inherit; display: block; }
+  .video-tile__thumb {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: var(--color-navy);
+    overflow: hidden;
+  }
+  .video-tile__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .video-tile__placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 3rem;
+  }
+  .video-tile__source {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(26, 30, 58, 0.85);
+    color: var(--color-white);
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+  }
+  .video-tile__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(232, 64, 64, 0.9);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    padding-left: 4px;
+    opacity: 0.85;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+  .video-tile:hover .video-tile__play { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+
+  .video-tile__body { padding: 0.75rem 0.9rem 0.9rem; }
+  .video-tile__title {
+    font-family: var(--font-title);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    margin: 0 0 0.35rem;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .video-tile__meta { font-size: 0.72rem; color: var(--color-text-muted); }
+  .video-tile__date { font-weight: 700; color: var(--color-red); }
+
+  @media (max-width: 640px) {
+    .video-grid { grid-template-columns: 1fr; }
+  }
+</style>

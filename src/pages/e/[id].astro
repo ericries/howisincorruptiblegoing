@@ -1,19 +1,24 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { loadEntries } from '../../lib/entries';
+import { loadEntries, partitionReactions } from '../../lib/entries';
 import ShareButton from '../../components/ShareButton.astro';
 import * as path from 'path';
+import type { TimelineEntry } from '../../lib/schema';
 
 export async function getStaticPaths() {
   const entriesDir = path.join(process.cwd(), 'content', 'entries');
-  const entries = loadEntries(entriesDir);
-  return entries.map((e) => ({
+  const allEntries = loadEntries(entriesDir);
+  const { reactionsByParent } = partitionReactions(allEntries);
+  return allEntries.map((e) => ({
     params: { id: e.id },
-    props: { entry: e },
+    props: {
+      entry: e,
+      reactions: reactionsByParent.get(e.id) ?? [],
+    },
   }));
 }
 
-const { entry } = Astro.props;
+const { entry, reactions } = Astro.props as { entry: TimelineEntry; reactions: TimelineEntry[] };
 const ogImage = entry.image || '/images/og-cover.png';
 const canonical = `https://howisincorruptiblegoing.com/e/${entry.id}/`;
 const timelineUrl = `https://howisincorruptiblegoing.com/#${entry.id}`;
@@ -22,6 +27,8 @@ const timelineUrl = `https://howisincorruptiblegoing.com/#${entry.id}`;
 const cleanTitle = /^['"“‘].*['"”’]$/.test(entry.title)
   ? entry.title.replace(/^['"“‘]|['"”’]$/g, '')
   : entry.title;
+
+const extraSources = (entry.source_urls || []) as Array<{ url: string; label: string }>;
 ---
 
 <Layout
@@ -65,6 +72,43 @@ const cleanTitle = /^['"“‘].*['"”’]$/.test(entry.title)
         </div>
       </div>
     </article>
+
+    {extraSources.length > 0 && (
+      <section class="permalink__extras">
+        <h2 class="permalink__extras-title">Additional coverage</h2>
+        <ul class="permalink__extras-list">
+          {extraSources.map(s => (
+            <li>
+              <a href={s.url} target="_blank" rel="noopener" class="permalink__extra-link">{s.label} ↗</a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {reactions.length > 0 && (
+      <section class="permalink__reactions">
+        <h2 class="permalink__reactions-title">Reactions <span class="permalink__reactions-count">({reactions.length})</span></h2>
+        <ul class="permalink__reactions-list">
+          {reactions.map(r => (
+            <li class="permalink__reaction">
+              <a href={`/e/${r.id}/`} class="permalink__reaction-link">
+                <div class="permalink__reaction-head">
+                  {r.attribution && <span class="permalink__reaction-who">{r.attribution}</span>}
+                  {r.attribution_title && <span class="permalink__reaction-title">{r.attribution_title}</span>}
+                </div>
+                {r.blockquote && (
+                  <blockquote class="permalink__reaction-quote">&ldquo;{r.blockquote}&rdquo;</blockquote>
+                )}
+                {!r.blockquote && r.summary && (
+                  <p class="permalink__reaction-summary">{r.summary}</p>
+                )}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
   </main>
 </Layout>
 
@@ -152,6 +196,82 @@ const cleanTitle = /^['"“‘].*['"”’]$/.test(entry.title)
   }
   .permalink__timeline-link:hover,
   .permalink__source-link:hover { color: var(--color-blue); }
+
+  /* ── Additional coverage + Reactions ── */
+  .permalink__extras,
+  .permalink__reactions {
+    margin-top: 2rem;
+  }
+  .permalink__extras-title,
+  .permalink__reactions-title {
+    font-family: var(--font-title);
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-navy);
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-navy);
+    margin-bottom: 1rem;
+  }
+  .permalink__reactions-count { font-size: 0.75em; color: var(--color-text-muted); font-weight: 500; letter-spacing: 0.05em; }
+
+  .permalink__extras-list { list-style: none; padding: 0; margin: 0; }
+  .permalink__extras-list li { padding: 0.5rem 0; border-bottom: 1px solid rgba(26, 30, 58, 0.05); }
+  .permalink__extras-list li:last-child { border-bottom: none; }
+  .permalink__extra-link {
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    color: var(--color-navy);
+    text-decoration: none;
+    line-height: 1.4;
+    display: block;
+  }
+  .permalink__extra-link:hover { color: var(--color-blue); }
+
+  .permalink__reactions-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+  .permalink__reaction {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(26, 30, 58, 0.07);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .permalink__reaction:hover { box-shadow: 0 4px 12px rgba(26, 30, 58, 0.13); transform: translateY(-1px); }
+  .permalink__reaction-link { display: block; padding: 1rem 1.25rem; text-decoration: none; color: inherit; }
+  .permalink__reaction-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .permalink__reaction-who {
+    font-family: var(--font-title);
+    font-weight: 700;
+    color: var(--color-navy);
+    font-size: 0.95rem;
+  }
+  .permalink__reaction-title {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    line-height: 1.35;
+  }
+  .permalink__reaction-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-text);
+    border-left: 2px solid var(--color-blue);
+    padding-left: 0.75rem;
+    margin: 0;
+    line-height: 1.5;
+    font-size: 0.98rem;
+  }
+  .permalink__reaction-summary {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.5;
+    margin: 0;
+  }
 
   @media (max-width: 640px) {
     .permalink { padding: 1rem 0.75rem 3rem; }

@@ -6,8 +6,6 @@ import * as path from 'path';
 
 const entries = loadEntries(path.join(process.cwd(), 'content', 'entries'));
 
-// Aggregate by attribution — only entries with a real named attribution
-// and one of the "who said something" types.
 const RELEVANT = new Set(['endorsement', 'review', 'media', 'podcast']);
 
 type PersonAgg = {
@@ -18,14 +16,52 @@ type PersonAgg = {
   count: number;
   latestDate: string;
   entryIds: string[];
+  bucket: string;
 };
+
+// Heuristic role classifier. Order matters — first match wins. Buckets are
+// intentionally broad ("Founders & CEOs" covers co-founders + solo founders +
+// CEOs) so the page reads as a survey, not a taxonomy.
+function classify(title: string, name: string): string {
+  const t = title.toLowerCase();
+  const n = name.toLowerCase();
+  // Goodreads reviewers first — they have distinct signature strings
+  if (/goodreads reviewer|goodreads review\)|\(goodreads/.test(t)) return 'Goodreads readers';
+  // Podcast hosts (must catch before "founder" since some are both)
+  if (/\bhost\b|hosts,|podcast|\bshow$|hosted by/.test(t)) return 'Podcast hosts';
+  // Founders & CEOs (biggest bucket)
+  if (/founder|ceo|chief executive|managing director/.test(t)) return 'Founders & CEOs';
+  // Investors, VCs, GPs
+  if (/\bgp\b|\bvc\b|venture|capital(?!ism)|investor|angel|fund manager|partner @|partner at|managing partner|general partner|\blp\b/.test(t)) return 'Investors';
+  // Academics
+  if (/professor|\bphd\b|ph\.d|\bdean\b|university|faculty|lecturer|academic|research fellow|research director|institute for|business school|harvard|stanford|mit\b|columbia|wharton|insead|cambridge|oxford/.test(t)) return 'Academics & researchers';
+  // Executives — C-suite (non-CEO), VP, Director, Head of
+  if (/\bcto\b|\bcfo\b|\bcoo\b|\bcmo\b|\bcpo\b|\bcio\b|\bcro\b|\bchro\b|chief (?!executive)|\bevp\b|\bsvp\b|\bvp\b|vice president|head of|director|\bpresident\b|executive/.test(t)) return 'Executives';
+  // Authors & journalists
+  if (/author|journalist|reporter|editor|writer|columnist|substack|newsletter|book \d|book coach|book review/.test(t)) return 'Authors & journalists';
+  // Consultants, advisors, coaches
+  if (/consultant|advisor|adviser|fractional|coach|\bcoo?ach\b|specialist|practitioner|architect|strategist/.test(t)) return 'Consultants & advisors';
+  // Everyone else — operators, professionals, unclassified
+  return 'Operators & everyone else';
+}
+
+const BUCKET_ORDER = [
+  'Founders & CEOs',
+  'Executives',
+  'Investors',
+  'Academics & researchers',
+  'Authors & journalists',
+  'Consultants & advisors',
+  'Podcast hosts',
+  'Goodreads readers',
+  'Operators & everyone else',
+];
 
 const byKey = new Map<string, PersonAgg>();
 for (const e of entries) {
   if (!RELEVANT.has(e.type)) continue;
   const name = (e.attribution || '').trim();
   if (!name) continue;
-  // Skip Eric's own posts and generic aggregators
   if (name.startsWith('Eric Ries')) continue;
   const key = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   const existing = byKey.get(key);
@@ -33,27 +69,42 @@ for (const e of entries) {
     existing.count += 1;
     if (e.date > existing.latestDate) existing.latestDate = e.date;
     if (!existing.image && e.attribution_image) existing.image = e.attribution_image;
+    if (!existing.title && e.attribution_title) {
+      existing.title = e.attribution_title;
+      existing.bucket = classify(e.attribution_title, name);
+    }
     existing.entryIds.push(e.id);
   } else {
+    const title = e.attribution_title || '';
     byKey.set(key, {
       key,
       name,
-      title: e.attribution_title || '',
+      title,
       image: e.attribution_image || null,
       count: 1,
       latestDate: e.date,
       entryIds: [e.id],
+      bucket: classify(title, name),
     });
   }
 }
 
-// Split: multi-entry people ("recurring voices") + everyone else
 const all = Array.from(byKey.values()).sort((a, b) => b.count - a.count || b.latestDate.localeCompare(a.latestDate));
-const recurring = all.filter(p => p.count >= 2);
-const everyone = all.filter(p => p.count === 1).sort((a, b) => b.latestDate.localeCompare(a.latestDate));
+const recurring = all.filter(p => p.count >= 3);
+
+// Group all into buckets
+const byBucket = new Map<string, PersonAgg[]>();
+for (const p of all) {
+  if (!byBucket.has(p.bucket)) byBucket.set(p.bucket, []);
+  byBucket.get(p.bucket)!.push(p);
+}
+// Sort each bucket by count desc, then latest date desc
+for (const arr of byBucket.values()) {
+  arr.sort((a, b) => b.count - a.count || b.latestDate.localeCompare(a.latestDate));
+}
 ---
 
-<Layout title="People · How Is Incorruptible Going?" description="Everyone who has publicly talked about Incorruptible — endorsers, reviewers, podcast hosts, and media.">
+<Layout title="People · How Is Incorruptible Going?" description="Everyone who has publicly talked about Incorruptible — grouped by role.">
   <main class="page">
     <header class="page__masthead">
       <a class="page__home" href="/">← How Is Incorruptible Going?</a>
@@ -70,7 +121,7 @@ const everyone = all.filter(p => p.count === 1).sort((a, b) => b.latestDate.loca
 
     {recurring.length > 0 && (
       <section class="page__section">
-        <h2 class="page__section-title page__section-title--red">Recurring voices</h2>
+        <h2 class="page__section-title page__section-title--red">Recurring voices <span class="section-count">(3+ mentions)</span></h2>
         <ul class="people-grid">
           {recurring.map(p => (
             <li class="person-card person-card--recurring">
@@ -94,28 +145,35 @@ const everyone = all.filter(p => p.count === 1).sort((a, b) => b.latestDate.loca
       </section>
     )}
 
-    <section class="page__section">
-      <h2 class="page__section-title">Everyone else</h2>
-      <ul class="people-grid people-grid--compact">
-        {everyone.map(p => (
-          <li class="person-card">
-            <a href={`/e/${p.entryIds[0]}/`} class="person-card__link">
-              <div class="person-card__avatar">
-                {p.image ? (
-                  <img src={p.image} alt={p.name} loading="lazy" />
-                ) : (
-                  <span class="person-card__initials">{p.name.split(/\s+/).slice(0, 2).map(w => w[0] || '').join('').toUpperCase()}</span>
-                )}
-              </div>
-              <div class="person-card__body">
-                <h3 class="person-card__name">{p.name}</h3>
-                {p.title && <p class="person-card__title">{p.title}</p>}
-              </div>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </section>
+    {BUCKET_ORDER.map(bucket => {
+      const people = byBucket.get(bucket) || [];
+      if (people.length === 0) return null;
+      return (
+        <section class="page__section">
+          <h2 class="page__section-title">{bucket} <span class="section-count">({people.length})</span></h2>
+          <ul class="people-grid people-grid--compact">
+            {people.map(p => (
+              <li class="person-card">
+                <a href={`/e/${p.entryIds[0]}/`} class="person-card__link">
+                  <div class="person-card__avatar">
+                    {p.image ? (
+                      <img src={p.image} alt={p.name} loading="lazy" />
+                    ) : (
+                      <span class="person-card__initials">{p.name.split(/\s+/).slice(0, 2).map(w => w[0] || '').join('').toUpperCase()}</span>
+                    )}
+                  </div>
+                  <div class="person-card__body">
+                    <h3 class="person-card__name">{p.name}</h3>
+                    {p.title && <p class="person-card__title">{p.title}</p>}
+                    {p.count > 1 && <span class="person-card__count-mini">{p.count}×</span>}
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      );
+    })}
   </main>
 </Layout>
 
@@ -124,10 +182,6 @@ const everyone = all.filter(p => p.count === 1).sort((a, b) => b.latestDate.loca
   .page__masthead { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0 1.5rem; flex-wrap: wrap; gap: 0.75rem; }
   .page__home { font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-navy); text-decoration: none; }
   .page__home:hover { color: var(--color-blue); }
-  .page__nav { display: flex; gap: 0.35rem; flex-wrap: wrap; }
-  .page__nav-link { font-family: var(--font-body); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.02em; padding: 0.35rem 0.75rem; border-radius: 999px; border: 1.5px solid var(--color-border); background: transparent; color: var(--color-text-muted); text-decoration: none; transition: all 0.15s ease; }
-  .page__nav-link:hover { border-color: var(--color-navy); color: var(--color-navy); }
-  .page__nav-link--active { background: var(--color-navy); border-color: var(--color-navy); color: var(--color-white); }
 
   .page__hero { padding: 1rem 0 2rem; border-bottom: 1px solid var(--color-border); margin-bottom: 2rem; }
   .page__title { font-family: var(--font-title); font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: 0.02em; color: var(--color-navy); margin-bottom: 0.5rem; }
@@ -137,6 +191,7 @@ const everyone = all.filter(p => p.count === 1).sort((a, b) => b.latestDate.loca
   .page__section { margin-bottom: 3rem; }
   .page__section-title { font-family: var(--font-title); font-size: 0.85rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-navy); padding-bottom: 0.5rem; border-bottom: 2px solid var(--color-navy); margin-bottom: 1rem; }
   .page__section-title--red { color: var(--color-red); border-bottom-color: var(--color-red); }
+  .section-count { font-size: 0.75em; color: var(--color-text-muted); font-weight: 500; letter-spacing: 0.05em; }
 
   .people-grid {
     list-style: none;
@@ -197,24 +252,6 @@ const everyone = all.filter(p => p.count === 1).sort((a, b) => b.latestDate.loca
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  .person-card__links {
-    list-style: none;
-    padding: 0;
-    margin: 0.35rem 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem;
-  }
-  .person-card__entry {
-    font-size: 0.65rem;
-    padding: 0.15rem 0.4rem;
-    background: var(--color-gray-bg);
-    border-radius: 4px;
-    color: var(--color-text-light);
-    font-family: monospace;
-    text-decoration: none;
-  }
-  .person-card__entry:hover { background: var(--color-navy); color: var(--color-white); }
   .person-card__count {
     display: inline-block;
     font-size: 0.68rem;
@@ -223,6 +260,12 @@ const everyone = all.filter(p => p.count === 1).sort((a, b) => b.latestDate.loca
     letter-spacing: 0.04em;
     text-transform: uppercase;
     margin-top: 0.25rem;
+  }
+  .person-card__count-mini {
+    display: inline-block;
+    font-size: 0.7rem;
+    color: var(--color-red);
+    font-weight: 700;
   }
 
   @media (max-width: 640px) {

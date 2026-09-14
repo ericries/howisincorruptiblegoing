@@ -155,17 +155,17 @@ const heroQuotes = entries
 ---
 
 <Layout title="How Is Incorruptible Going?">
-  <Header awards={awards} leftAwards={leftAwards} heroQuotes={heroQuotes} />
-  <BestsellerStrip />
-  <StatsBar totalEntries={entries.length} totalEndorsements={totalEndorsements} amazonRanks={amazonRanks} />
-  <UpcomingStrip entries={entries} />
-
   <nav class="page-nav-strip" aria-label="Browse by category">
     <div class="page-nav-strip__inner">
       <span class="page-nav-strip__label">Browse</span>
       <PageNav />
     </div>
   </nav>
+
+  <Header awards={awards} leftAwards={leftAwards} heroQuotes={heroQuotes} />
+  <BestsellerStrip />
+  <StatsBar totalEntries={entries.length} totalEndorsements={totalEndorsements} amazonRanks={amazonRanks} />
+  <UpcomingStrip entries={entries} />
 
   <nav class="timeline-nav" id="timeline-nav">
     <div class="timeline-nav__inner">
