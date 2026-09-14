@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PageNav from '../components/PageNav.astro';
 import { loadEntries } from '../lib/entries';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -40,11 +41,7 @@ readers.sort((a, b) => a.displayName.localeCompare(b.displayName));
   <main class="page">
     <header class="page__masthead">
       <a class="page__home" href="/">← How Is Incorruptible Going?</a>
-      <nav class="page__nav">
-        <a href="/events" class="page__nav-link">Events</a>
-        <a href="/people" class="page__nav-link">People</a>
-        <a href="/readers" class="page__nav-link page__nav-link--active">Readers</a>
-      </nav>
+      <PageNav active="readers" />
     </header>
 
     <div class="page__hero">

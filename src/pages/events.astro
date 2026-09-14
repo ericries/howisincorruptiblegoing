@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PageNav from '../components/PageNav.astro';
 import { loadEntries } from '../lib/entries';
 import * as path from 'path';
 
@@ -26,11 +27,7 @@ function city(e: (typeof events)[number]): string | null {
   <main class="page">
     <header class="page__masthead">
       <a class="page__home" href="/">← How Is Incorruptible Going?</a>
-      <nav class="page__nav">
-        <a href="/events" class="page__nav-link page__nav-link--active">Events</a>
-        <a href="/people" class="page__nav-link">People</a>
-        <a href="/readers" class="page__nav-link">Readers</a>
-      </nav>
+      <PageNav active="events" />
     </header>
 
     <div class="page__hero">

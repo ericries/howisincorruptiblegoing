@@ -5,6 +5,7 @@ import BestsellerStrip from '../components/BestsellerStrip.astro';
 import StatsBar from '../components/StatsBar.astro';
 import TimelineEntry from '../components/TimelineEntry.astro';
 import UpcomingStrip from '../components/UpcomingStrip.astro';
+import PageNav from '../components/PageNav.astro';
 import { loadEntries, partitionReactions } from '../lib/entries';
 import * as path from 'path';
 
@@ -159,6 +160,13 @@ const heroQuotes = entries
   <StatsBar totalEntries={entries.length} totalEndorsements={totalEndorsements} amazonRanks={amazonRanks} />
   <UpcomingStrip entries={entries} />
 
+  <nav class="page-nav-strip" aria-label="Browse by category">
+    <div class="page-nav-strip__inner">
+      <span class="page-nav-strip__label">Browse</span>
+      <PageNav />
+    </div>
+  </nav>
+
   <nav class="timeline-nav" id="timeline-nav">
     <div class="timeline-nav__inner">
       <button class="nav-btn nav-btn--active" data-filter="all">All</button>
@@ -173,10 +181,6 @@ const heroQuotes = entries
       <div class="nav-sep"></div>
       <button class="nav-btn nav-btn--jump" id="jump-prev" title="Previous entry">&uarr;</button>
       <button class="nav-btn nav-btn--jump" id="jump-next" title="Next entry">&darr;</button>
-      <div class="nav-sep"></div>
-      <a class="nav-btn nav-btn--page" href="/events">Events ↗</a>
-      <a class="nav-btn nav-btn--page" href="/people">People ↗</a>
-      <a class="nav-btn nav-btn--page" href="/readers">Readers ↗</a>
     </div>
   </nav>
 
@@ -322,6 +326,41 @@ const heroQuotes = entries
 </Layout>
 
 <style>
+  /* ── PAGE-NAV STRIP (browse by category) ── */
+  .page-nav-strip {
+    background: var(--color-navy);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .page-nav-strip__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0.55rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .page-nav-strip__label {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  /* Recolor PageNav chips inside the dark strip (dark bg = need light text) */
+  .page-nav-strip :global(.page-nav__link) {
+    color: rgba(255,255,255,0.75);
+    border-color: rgba(255,255,255,0.15);
+  }
+  .page-nav-strip :global(.page-nav__link:hover) {
+    color: var(--color-white);
+    border-color: var(--color-white);
+  }
+
   /* ── STICKY NAV ── */
   .timeline-nav {
     position: sticky;

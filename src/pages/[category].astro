@@ -1,0 +1,158 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageNav from '../components/PageNav.astro';
+import { loadEntries } from '../lib/entries';
+import * as path from 'path';
+
+export async function getStaticPaths() {
+  const CATEGORIES = [
+    {
+      slug: 'endorsements',
+      label: 'Endorsements',
+      lede: 'Founders, operators, professors, and practitioners who’ve gone on the record.',
+      types: ['endorsement'],
+    },
+    {
+      slug: 'reviews',
+      label: 'Reviews',
+      lede: 'Book reviews — short, long, professional, and civilian.',
+      types: ['review'],
+    },
+    {
+      slug: 'podcasts',
+      label: 'Podcasts',
+      lede: 'Eric on air — long-form conversations, fireside chats, and interviews.',
+      types: ['podcast'],
+    },
+    {
+      slug: 'press',
+      label: 'Press & media',
+      lede: 'Coverage in the trade press, magazines, TV, and syndicated video.',
+      types: ['media', 'social'],
+    },
+  ];
+  return CATEGORIES.map(cat => ({ params: { category: cat.slug }, props: cat }));
+}
+
+const { label, lede, types } = Astro.props as { slug: string; label: string; lede: string; types: string[] };
+const active = Astro.params.category as string;
+
+const entries = loadEntries(path.join(process.cwd(), 'content', 'entries'));
+const filtered = entries.filter(e => types.includes(e.type)).sort((a, b) => b.date.localeCompare(a.date));
+
+function fmtDate(iso: string) {
+  return new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC'
+  });
+}
+
+function trimQuote(q: string, max = 260): string {
+  if (!q) return '';
+  if (q.length <= max) return q;
+  return q.slice(0, max).replace(/[,;\s]+\S*$/, '') + '…';
+}
+---
+
+<Layout title={`${label} · How Is Incorruptible Going?`} description={lede}>
+  <main class="page">
+    <header class="page__masthead">
+      <a class="page__home" href="/">← How Is Incorruptible Going?</a>
+      <PageNav active={active} />
+    </header>
+
+    <div class="page__hero">
+      <h1 class="page__title">{label}</h1>
+      <p class="page__lede">
+        {lede}
+        <span class="page__count">{filtered.length} total</span>
+      </p>
+    </div>
+
+    <section class="page__section">
+      <ul class="entry-list">
+        {filtered.map(e => (
+          <li class="entry-row">
+            <a class="entry-row__link" href={`/e/${e.id}/`}>
+              <div class="entry-row__when">
+                <span class="entry-row__date">{fmtDate(e.date)}</span>
+                {e.attribution && <span class="entry-row__who">{e.attribution}</span>}
+              </div>
+              <div class="entry-row__what">
+                <h3 class="entry-row__title">{e.title}</h3>
+                {e.blockquote && (
+                  <blockquote class="entry-row__quote">&ldquo;{trimQuote(e.blockquote)}&rdquo;</blockquote>
+                )}
+                {!e.blockquote && e.summary && (
+                  <p class="entry-row__summary">{trimQuote(e.summary, 220)}</p>
+                )}
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .page { max-width: var(--max-width); margin: 0 auto; padding: 1rem 1.25rem 4rem; }
+  .page__masthead { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0 1.5rem; flex-wrap: wrap; gap: 0.75rem; }
+  .page__home { font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-navy); text-decoration: none; }
+  .page__home:hover { color: var(--color-blue); }
+
+  .page__hero { padding: 1rem 0 2rem; border-bottom: 1px solid var(--color-border); margin-bottom: 2rem; }
+  .page__title { font-family: var(--font-title); font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: 0.02em; color: var(--color-navy); margin-bottom: 0.5rem; }
+  .page__lede { font-family: var(--font-body); color: var(--color-text-light); display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; }
+  .page__count { font-size: 0.8rem; color: var(--color-text-muted); font-weight: 600; }
+
+  .page__section { margin-bottom: 3rem; }
+
+  .entry-list { list-style: none; padding: 0; margin: 0; }
+  .entry-row {
+    background: var(--color-card);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px var(--color-shadow);
+    margin-bottom: 0.6rem;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .entry-row:hover { box-shadow: 0 4px 12px var(--color-shadow-lg); transform: translateY(-1px); }
+
+  .entry-row__link {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    text-decoration: none;
+    color: inherit;
+    align-items: baseline;
+  }
+  .entry-row__when { display: flex; flex-direction: column; gap: 0.2rem; }
+  .entry-row__date { font-family: var(--font-body); font-size: 0.75rem; font-weight: 700; color: var(--color-red); letter-spacing: 0.02em; }
+  .entry-row__who { font-family: var(--font-body); font-size: 0.78rem; color: var(--color-navy); font-weight: 600; line-height: 1.35; }
+
+  .entry-row__title {
+    font-family: var(--font-title);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    margin: 0 0 0.4rem;
+    line-height: 1.35;
+  }
+  .entry-row__quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--color-text);
+    border-left: 2px solid var(--color-blue);
+    padding-left: 0.75rem;
+    margin: 0;
+    line-height: 1.5;
+  }
+  .entry-row__summary { font-size: 0.88rem; color: var(--color-text-light); line-height: 1.5; margin: 0; }
+
+  @media (max-width: 640px) {
+    .entry-row__link { grid-template-columns: 1fr; gap: 0.4rem; padding: 0.9rem 1rem; }
+    .entry-row__when { flex-direction: row; gap: 0.6rem; flex-wrap: wrap; align-items: baseline; }
+    .entry-row__title { font-size: 0.95rem; }
+  }
+</style>

@@ -1,0 +1,47 @@
+---
+interface Props {
+  /** Slug of the currently-active page, e.g. "events". Empty for homepage. */
+  active?: string;
+}
+const { active = '' } = Astro.props;
+
+const links = [
+  { slug: 'events', label: 'Events', href: '/events' },
+  { slug: 'endorsements', label: 'Endorsements', href: '/endorsements' },
+  { slug: 'reviews', label: 'Reviews', href: '/reviews' },
+  { slug: 'podcasts', label: 'Podcasts', href: '/podcasts' },
+  { slug: 'press', label: 'Press', href: '/press' },
+  { slug: 'people', label: 'People', href: '/people' },
+  { slug: 'readers', label: 'Readers', href: '/readers' },
+];
+---
+
+<nav class="page-nav" aria-label="Browse by category">
+  {links.map(l => (
+    <a href={l.href} class={`page-nav__link${l.slug === active ? ' page-nav__link--active' : ''}`}>{l.label}</a>
+  ))}
+</nav>
+
+<style>
+  .page-nav { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+  .page-nav__link {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    border: 1.5px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+  }
+  .page-nav__link:hover { border-color: var(--color-navy); color: var(--color-navy); }
+  .page-nav__link--active {
+    background: var(--color-navy);
+    border-color: var(--color-navy);
+    color: var(--color-white);
+  }
+</style>
