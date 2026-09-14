@@ -3,16 +3,16 @@
   "date": "2026-09-12",
   "type": "endorsement",
   "title": "Chris Coleridge (Associate Professor, Strategy & Entrepreneurship, University of Cambridge) recommends Incorruptible to his materials-scientist entrepreneurs",
-  "summary": "Chris Coleridge \u2014 Associate Professor of Strategy & Entrepreneurship Management Practice at the University of Cambridge, Founding Partner at Technology Innovation Associates, Fellow of Wolfson College Cambridge \u2014 publishes a substantive reflection (14 likes) on 21 years of teaching entrepreneurship. As his motivation has shifted from student self-actualization toward societal impact and avoiding unintended negative consequences, he now points students to Incorruptible for the governance framework: 'I have had the misfortune to fall in with some low-integrity folks on my journey\u2026 and it's caused me to focus hard on how to empower my students not to overlook the fundamental significance of proper, high-integrity governance as they build.'",
-  "blockquote": "Those who are especially interested in the latter subject may want to read Incorruptible, by Eric Ries. I have had the misfortune to fall in with some low-integrity folks on my journey\u2026 and it's caused me to focus hard on how to empower my students not to overlook the fundamental significance of proper, high-integrity governance as they build.",
+  "summary": "Chris Coleridge — Associate Professor of Strategy & Entrepreneurship Management Practice at the University of Cambridge, Founding Partner at Technology Innovation Associates, Fellow of Wolfson College Cambridge — publishes a substantive reflection (14 likes) on 21 years of teaching entrepreneurship. As his motivation has shifted from student self-actualization toward societal impact and avoiding unintended negative consequences, he now points students to Incorruptible for the governance framework: 'I have had the misfortune to fall in with some low-integrity folks on my journey… and it's caused me to focus hard on how to empower my students not to overlook the fundamental significance of proper, high-integrity governance as they build.'",
+  "blockquote": "Those who are especially interested in the latter subject may want to read Incorruptible, by Eric Ries. I have had the misfortune to fall in with some low-integrity folks on my journey… and it's caused me to focus hard on how to empower my students not to overlook the fundamental significance of proper, high-integrity governance as they build.",
   "blockquote_source": "Chris Coleridge on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/chriscoleridge_discussed-how-to-build-a-healthy-company-activity-7504510582189035520-RaHj",
   "source_urls": null,
   "video_url": null,
   "image": "/images/cards/2026-09-12-chris-coleridge-cambridge-entrepreneurship-teaching.png",
   "attribution": "Chris Coleridge",
-  "attribution_title": "Associate Professor, Strategy & Entrepreneurship Management Practice, University of Cambridge \u00b7 Founding Partner, Technology Innovation Associates \u00b7 Fellow, Wolfson College",
-  "attribution_image": null,
+  "attribution_title": "Associate Professor, Strategy & Entrepreneurship Management Practice, University of Cambridge · Founding Partner, Technology Innovation Associates · Fellow, Wolfson College",
+  "attribution_image": "/images/people/chris-coleridge.jpg",
   "tags": [
     "endorsement",
     "linkedin",
@@ -21,7 +21,9 @@
     "entrepreneurship-education",
     "governance"
   ],
-  "type_metadata": {"featured": true},
+  "type_metadata": {
+    "featured": true
+  },
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-09-12T15:45:00Z"
