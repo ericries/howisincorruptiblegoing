@@ -167,11 +167,16 @@ const heroQuotes = entries
       <button class="nav-btn" data-filter="review,media,social">Reviews</button>
       <button class="nav-btn" data-filter="podcast">Podcasts</button>
       <span class="nav-count" id="nav-count"></span>
+      <input type="search" class="nav-search" id="nav-search" placeholder="Search…" aria-label="Search timeline" autocomplete="off" />
       <div class="nav-sep"></div>
       <button class="nav-btn nav-btn--jump" id="jump-today" title="Jump to today">Today</button>
       <div class="nav-sep"></div>
       <button class="nav-btn nav-btn--jump" id="jump-prev" title="Previous entry">&uarr;</button>
       <button class="nav-btn nav-btn--jump" id="jump-next" title="Next entry">&darr;</button>
+      <div class="nav-sep"></div>
+      <a class="nav-btn nav-btn--page" href="/events">Events ↗</a>
+      <a class="nav-btn nav-btn--page" href="/people">People ↗</a>
+      <a class="nav-btn nav-btn--page" href="/readers">Readers ↗</a>
     </div>
   </nav>
 
@@ -390,6 +395,28 @@ const heroQuotes = entries
     margin: 0 0.25rem;
     flex-shrink: 0;
   }
+
+  .nav-search {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    padding: 0.35rem 0.65rem;
+    border-radius: 999px;
+    border: 1.5px solid var(--color-border);
+    background: var(--color-white);
+    color: var(--color-text);
+    min-width: 140px;
+    max-width: 200px;
+    outline: none;
+    transition: border-color 0.15s ease;
+  }
+  .nav-search:focus { border-color: var(--color-navy); }
+
+  .nav-btn--page {
+    text-decoration: none;
+    display: inline-block;
+    color: var(--color-text-muted);
+  }
+  .nav-btn--page:hover { border-color: var(--color-red); color: var(--color-red); }
 
   /* ── TODAY MARKER ── */
   .today-marker {
@@ -768,17 +795,38 @@ const heroQuotes = entries
   const filterBtns = document.querySelectorAll('.nav-btn[data-filter]');
   const rows = document.querySelectorAll('.timeline-row');
   const countEl = document.getElementById('nav-count');
+  const searchInput = document.getElementById('nav-search') as HTMLInputElement | null;
   let currentIndex = -1;
 
   const getVisible = () => Array.from(rows).filter(r => !r.classList.contains('hidden'));
 
+  function applyFilters() {
+    const filter = document.querySelector('.nav-btn--active')?.getAttribute('data-filter') || 'all';
+    const types = filter.split(',');
+    const q = (searchInput?.value || '').trim().toLowerCase();
+    rows.forEach(row => {
+      const type = row.getAttribute('data-type') || '';
+      const search = row.getAttribute('data-search') || '';
+      const typeOk = filter === 'all' || types.includes(type);
+      const searchOk = !q || search.includes(q);
+      if (typeOk && searchOk) row.classList.remove('hidden');
+      else row.classList.add('hidden');
+    });
+    updateCount();
+  }
+
   function updateCount() {
     const visible = getVisible();
     const filter = document.querySelector('.nav-btn--active')?.getAttribute('data-filter');
-    if (filter && filter !== 'all' && countEl) {
-      countEl.textContent = `${currentIndex + 1} / ${visible.length}`;
-    } else if (countEl) {
-      countEl.textContent = '';
+    const q = (searchInput?.value || '').trim();
+    if (countEl) {
+      if (q) {
+        countEl.textContent = `${visible.length} match${visible.length === 1 ? '' : 'es'}`;
+      } else if (filter && filter !== 'all') {
+        countEl.textContent = `${currentIndex + 1} / ${visible.length}`;
+      } else {
+        countEl.textContent = '';
+      }
     }
   }
 
@@ -794,21 +842,10 @@ const heroQuotes = entries
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('nav-btn--active'));
       btn.classList.add('nav-btn--active');
+      applyFilters();
 
-      const filter = btn.getAttribute('data-filter')!;
-      const types = filter.split(',');
-
-      rows.forEach(row => {
-        const type = row.getAttribute('data-type') || '';
-        if (filter === 'all' || types.includes(type)) {
-          row.classList.remove('hidden');
-        } else {
-          row.classList.add('hidden');
-        }
-      });
-
-      // Jump to first visible entry when filtering (not for "all")
-      if (filter !== 'all') {
+      const filter = btn.getAttribute('data-filter');
+      if (filter && filter !== 'all') {
         currentIndex = -1;
         jumpTo(0);
       } else {
@@ -817,6 +854,18 @@ const heroQuotes = entries
       }
     });
   });
+
+  // Debounced search
+  if (searchInput) {
+    let searchTimer: number | null = null;
+    searchInput.addEventListener('input', () => {
+      if (searchTimer) window.clearTimeout(searchTimer);
+      searchTimer = window.setTimeout(() => {
+        applyFilters();
+        currentIndex = -1;
+      }, 120);
+    });
+  }
 
   // Jump to today
   document.getElementById('jump-today')?.addEventListener('click', () => {

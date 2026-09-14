@@ -20,6 +20,7 @@ const LAUNCH_DATE = new Date('2026-05-26T00:00:00Z');
 const now = new Date();
 const msPerDay = 1000 * 60 * 60 * 24;
 const daysToLaunch = Math.max(0, Math.ceil((LAUNCH_DATE.getTime() - now.getTime()) / msPerDay));
+const daysSinceLaunch = Math.max(0, Math.floor((now.getTime() - LAUNCH_DATE.getTime()) / msPerDay));
 const isPostLaunch = now.getTime() >= LAUNCH_DATE.getTime();
 
 // Split rankings evenly across the two flanks. First half → left, second
@@ -50,7 +51,7 @@ const rightRanks = amazonRanks.slice(half);
         {isPostLaunch ? (
           <>
             <span class="stats__out-now">OUT NOW</span>
-            <span class="stats__label">the book</span>
+            <span class="stats__label">day {daysSinceLaunch} since launch</span>
           </>
         ) : (
           <>

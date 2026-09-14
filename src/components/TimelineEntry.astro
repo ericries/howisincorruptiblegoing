@@ -130,7 +130,7 @@ const tiktokEmbed = (() => {
 })();
 ---
 
-<div class="timeline-row" id={entry.id} data-date={entry.date} data-type={entry.type} style={`animation-delay: ${index * 0.06}s`}>
+<div class="timeline-row" id={entry.id} data-date={entry.date} data-type={entry.type} data-search={[entry.title, entry.summary, entry.attribution, entry.blockquote_source, entry.blockquote].filter(Boolean).join(' ').toLowerCase().slice(0, 1200)} style={`animation-delay: ${index * 0.06}s`}>
   <div class="timeline-date">
     <span class="timeline-date__month">{month}</span>
     <span class="timeline-date__day">{day}</span>
