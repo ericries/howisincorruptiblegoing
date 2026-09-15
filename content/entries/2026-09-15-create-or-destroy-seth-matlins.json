@@ -1,0 +1,30 @@
+{
+  "id": "2026-09-15-create-or-destroy-seth-matlins",
+  "date": "2026-09-15",
+  "type": "podcast",
+  "title": "Create or Destroy (Seth Matlins · Vox Media Podcast Network) — 'Making Money But Creating No Value' with Eric Ries",
+  "summary": "Seth Matlins — marketer, host of Create or Destroy: Reimagining Marketing (Vox Media Podcast Network) — releases a 55-minute Eric Ries conversation covering Sol Price's Costco origin, why profit ≠ value, the 78% of CFOs who admit killing profitable projects to hit quarterly targets, and why 'culture can walk out the door when people leave, but architecture endures.' Positioned as required listening for every CMO, CEO, CFO, and board member.",
+  "blockquote": "In a study of 401 CFOs, 78% admitted they'd cancel profitable projects to hit quarterly targets, which means they're knowingly destroying the value they were hired to create. And yet the companies that resist this — Costco, Patagonia, Vanguard, Novo Nordisk — don't share culture or brand or geography or personality. What they share is governance architecture, structural protections that keep the short-term from cannibalizing the long-term, because as Eric puts it, culture can walk out the door when people leave, but architecture endures.",
+  "blockquote_source": "Seth Matlins on Create or Destroy (Vox Media)",
+  "source_url": "https://www.youtube.com/watch?v=PppHv9FlTi0",
+  "source_urls": [
+    {"url": "https://www.linkedin.com/posts/seth-matlins_best-known-for-the-lean-startup-i-talked-activity-7505619693647437824-HmAP", "label": "Seth Matlins announcement on LinkedIn"}
+  ],
+  "video_url": "https://www.youtube.com/watch?v=PppHv9FlTi0",
+  "image": "/images/podcasts/create-or-destroy.jpg",
+  "attribution": "Seth Matlins",
+  "attribution_title": "Host, Create or Destroy: Reimagining Marketing · Vox Media Podcast Network",
+  "attribution_image": null,
+  "tags": [
+    "podcast",
+    "youtube",
+    "vox-media",
+    "create-or-destroy",
+    "governance",
+    "financial-gravity"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-09-15T16:15:00Z"
+}
