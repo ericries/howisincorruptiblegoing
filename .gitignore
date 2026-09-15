@@ -33,3 +33,10 @@ pnpm-debug.log*
 # Python
 __pycache__/
 *.pyc
+
+# Local raw-scrape archive — NEVER pushed to GitHub or shipped to the site.
+# Stores full Goodreads/Amazon/LinkedIn/Twitter pulls + YouTube transcripts
+# so we can re-grep them later for thematic clusters (e.g. emotional
+# reactions, specific concepts) without re-scraping.
+data/archive/
+/data/social-cards/
