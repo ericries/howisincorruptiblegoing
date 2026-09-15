@@ -7,7 +7,9 @@
   "blockquote": "Why do so many great companies stop being great? It's easy to blame bad leaders but Eric Ries thinks the real problem is something else entirely: success changes companies and many of the best organizations drift from what made them worth building in the first place.",
   "blockquote_source": "Augment.org on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/augment-org_so-many-people-have-no-idea-what-to-do-with-activity-7491467411167145984-GeG7",
-  "source_urls": null,
+  "source_urls": [
+    {"url": "https://www.linkedin.com/posts/arielrenous_the-first-ever-startup-book-i-read-was-the-activity-7505246826229452800-4Nhn", "label": "Ariel Renous (Co-Founder & CEO, Augment; Forbes 30U30) — day-before announcement: 'join us live tomorrow for a very special conversation with Eric Ries'"}
+  ],
   "video_url": null,
   "image": null,
   "attribution": "Augment.org",
