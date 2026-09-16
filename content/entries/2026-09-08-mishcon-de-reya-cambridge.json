@@ -7,7 +7,10 @@
   "blockquote": "Mishcon de Reya — an independent law firm serving businesses and private clients internationally.",
   "blockquote_source": "Mishcon de Reya",
   "source_url": "https://www.mishcon.com/",
-  "source_urls": null,
+  "source_urls": [
+    {"url": "https://www.linkedin.com/posts/mishcon-de-reya_why-do-successful-organisations-lose-their-activity-7505938492728733696-DVLD", "label": "Mishcon de Reya LLP corporate account (76K followers) — event recap with full-conversation video link"},
+    {"url": "https://www.linkedin.com/posts/neli-atanassova-phd-mba-63377820_in-conversation-with-eric-ries-activity-7505897606133370880-Ddr8", "label": "Neli Atanassova, PhD MBA (AI, Data & Analytics) attendee recap — asked Eric if he'd rewrite The Lean Startup for the AI age; 'Not much, it stands the test of time'"}
+  ],
   "video_url": null,
   "image": null,
   "attribution": "Mishcon de Reya",
