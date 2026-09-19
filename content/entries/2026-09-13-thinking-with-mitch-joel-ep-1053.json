@@ -1,0 +1,30 @@
+{
+  "id": "2026-09-13-thinking-with-mitch-joel-ep-1053",
+  "date": "2026-09-13",
+  "type": "podcast",
+  "title": "Thinking With Mitch Joel #1053 — 'Great Companies With Eric Ries': the Vonnegut/Heller 'enough' moment applied to AI",
+  "summary": "Mitch Joel — author of Six Pixels of Separation and CTRL ALT Delete, founder of the Next Era Institute, one of Fast Company's Most Original Minds in Marketing — hosts Eric on episode #1053 for a wide-ranging conversation on Incorruptible's core themes: financial gravity, why 'more' becomes the direction instead of the outcome, and the Kurt Vonnegut / Joseph Heller 'enough' anecdote applied to the current AI moment. Mitch's own accompanying LinkedIn essay (150+ engagements) elevates one Eric line above the rest: 'speed requires a long-term container.'",
+  "blockquote": "Eric has spent years thinking about how great companies get built… and increasingly, what happens to them after they succeed. And too often, what happens next isn't great. We don't know what \"enough\" means. It reminded me of that famous story… at a party hosted by a billionaire, Kurt Vonnegut pointed out to his friend Joseph Heller that their host made more money in a single day than Catch-22 had earned in its entire history. Heller responded that he had something their host would never have… enough. For a company that's a very strange idea… enough? We don't build companies around enough… we build them around more. AI may be our Vonnegut moment… this relentless pressure for more without any understanding of when it will be enough.",
+  "blockquote_source": "Mitch Joel, host of Thinking With Mitch Joel #1053",
+  "source_url": "https://sixpixels.libsyn.com/great-companies-with-eric-ries-twmj-1053",
+  "source_urls": [
+    {"url": "https://www.linkedin.com/posts/mitchjoel_the-relentless-pursuit-of-growth-ugh-activity-7506807211952672768-CmWK", "label": "Mitch Joel's own LinkedIn essay on the conversation — 'direction + momentum > speed'"},
+    {"url": "https://podcasts.apple.com/podcast/six-pixels-of-separation-podcast-by-mitch-joel/id157616278", "label": "Apple Podcasts"}
+  ],
+  "video_url": null,
+  "image": "/images/podcasts/thinking-with-mitch-joel.jpg",
+  "attribution": "Mitch Joel",
+  "attribution_title": "Author, Six Pixels of Separation & CTRL ALT Delete · Next Era Institute · Host, Thinking With Mitch Joel",
+  "attribution_image": "/images/people/mitch-joel.jpg",
+  "tags": [
+    "podcast",
+    "linkedin",
+    "mitch-joel",
+    "next-era-institute",
+    "financial-gravity"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-09-19T01:45:00Z"
+}
