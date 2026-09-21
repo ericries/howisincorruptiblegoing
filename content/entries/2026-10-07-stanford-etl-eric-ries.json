@@ -25,7 +25,8 @@
     "lecture-series"
   ],
   "type_metadata": {
-    "city": "Stanford"
+    "city": "Stanford",
+    "featured": true
   },
   "scanner_source": "manual",
   "verified": false,
