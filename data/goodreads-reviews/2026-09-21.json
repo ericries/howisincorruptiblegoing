@@ -1,0 +1,1705 @@
+[{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v1.yFNuHGuWUKK7_dOUs9scuA",
+  "creator": {
+    "id": 16552226,
+    "imageUrlSquare": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/users/1580707140i/16552226._UY200_CR0,0,200,200_.jpg",
+    "isAuthor": false,
+    "viewerRelationshipStatus": null,
+    "followersCount": 48,
+    "__typename": "User",
+    "textReviewsCount": 1998,
+    "name": "Cindy",
+    "webUrl": "https://www.goodreads.com/user/show/16552226-cindy",
+    "contributor": null
+  },
+  "recommendFor": null,
+  "updatedAt": 1786150582007,
+  "createdAt": 1778569695837,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1778657588829,
+  "text": "We’ve all heard the stories of founders being voted out of their companies…and those companies moving far away from their founders’ original missions. When short -term ROI supercedes utility and positive, transformative change, we all suffer. In the words of. Corey Doctorow, it’s #Enshitification, [btw a great book] and it’s all around us. <br />Eric Ríes has seen this firsthand, and has been wrestling with alternative approaches that aim to help companies remain mission-driven in the face of pressure from investors just looking for a quick exit. In this work of non-fiction, he profiles a number of companies that have managed to stay true to their causes, not always easily: Patagonia, CloudFlare, Novo Nordisk, and Anthropic to name a few. Ríes walks us through all the arguments for building an unassailable mission-driven organizational structure. Several times we hear about founders whose lawyers said “it’s too early” to put such a structure in place then later told the same founder “it’s too late for that.” <br />Most importantly, Ries illustrates that it is possible (and, of course, preferable) for people to build thriving companies (like Costco and its predecessors) that contribute in a positive way to their communities, support their partner-suppliers, respect their employees, and delight their customers. <br />The quarterly earnings report isn’t the be-all and end-all of running a successful business and, in fact, is to blame for a lot of what ails our corporations today. If only we could all work for companies that align with our personal values and that put their mission above short term gains. <br />This is an inspiring book, narrated by the author. There is a companion PDF with additional data, plus audiobook extras - interview snippets from Ries’ podcasts with three founders talking about their experiences implementing their “incorruptible” business structures. <br />My thanks to the author, publisher, @S&amp;SAudio, and #NetGalley for early access to the audiobook of #Incorruptible for review purposes. Publication date: 26 May 2026.",
+  "rating": 5,
+  "preciseRating": 5,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/A2D3GDVJK2QFKO",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.NAGl07A_6y8DaCJo",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/16552226?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [
+      {
+        "tag": {
+          "name": "audiobooks",
+          "webUrl": "https://www.goodreads.com/review/list/16552226?shelf=audiobooks",
+          "__typename": "Tag"
+        },
+        "__typename": "Tagging"
+      },
+      {
+        "tag": {
+          "name": "giveaways-and-arcs",
+          "webUrl": "https://www.goodreads.com/review/list/16552226?shelf=giveaways-and-arcs",
+          "__typename": "Tag"
+        },
+        "__typename": "Tagging"
+      },
+      {
+        "tag": {
+          "name": "nonfiction",
+          "webUrl": "https://www.goodreads.com/review/list/16552226?shelf=nonfiction",
+          "__typename": "Tag"
+        },
+        "__typename": "Tagging"
+      },
+      {
+        "tag": {
+          "name": "recommended-non-fiction",
+          "webUrl": "https://www.goodreads.com/review/list/16552226?shelf=recommended-non-fiction",
+          "__typename": "Tag"
+        },
+        "__typename": "Tagging"
+      }
+    ],
+    "webUrl": "https://www.goodreads.com/review/show/8576711856",
+    "__typename": "Shelving"
+  },
+  "likeCount": 6,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v1.EfhT6T4L3K3e-knS2H9qLg",
+  "creator": {
+    "id": 39098524,
+    "imageUrlSquare": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/users/1727572859i/39098524._UY200_CR50,0,200,200_.jpg",
+    "isAuthor": false,
+    "viewerRelationshipStatus": null,
+    "followersCount": 25,
+    "__typename": "User",
+    "textReviewsCount": 412,
+    "name": "Julian Dunn",
+    "webUrl": "https://www.goodreads.com/user/show/39098524-julian-dunn",
+    "contributor": null
+  },
+  "recommendFor": null,
+  "updatedAt": 1785000116761,
+  "createdAt": 1783472092478,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1785000116761,
+  "text": "Eric Ries is a legend in Silicon Valley, and represents to me the best parts of the old guard of technology, back in the days when we made real products to solve real customer problems (and largely started with those problems, rather than solutions!), had at least some moral and ethical frameworks for launching those products, and believed in the power of technology to improve \"human flourishing\", to use Ries's language. Unfortunately, in 2026, Silicon Valley has lost its way; as Ed Zitron likes to say, it is out of new ideas and has forgotten the culture of wild experimentation that led to great products like cloud computing and smartphones. Instead, the AI bubble shows us that many stakeholders, including investors, prefer the certainty of \"number go up\" and are willing to hollow out previously admired companies like Facebook in the service of short-term financialization tricks that ultimately blow up in their faces.<br /><br />Ries points out that this corruption (by which he means the corruption of a company's original mission -- not necessarily blatant financial fraud) is not restricted to technology companies: lacking the proper governance structures to preserve a long-term mission, <b>any</b> company can fall prey to short-term thinking and get ruined. He shows that there are many tools that company founders can use, as early as possible, to create mission-locked governance (or \"spirit\" as he likes to say) ensuring that stakeholders don't sacrifice the company's very existence for short-term benefits. The examples are few and far between, but they exist, even among public companies who are subject to quarterly earnings scrutiny. He's also realistic that doing this is pushing a boulder up a hill, because most investors, lawyers, boards, markets, etc. are stacked against anything that challenges the <i>status quo</i>. However, he also makes some excellent motivational points, which is that today's mantra of <i>shareholder primacy</i> is a relatively new concept, only coming into its prime after Milton Friedman's infamous paper in the 1970's, and the great thing about humans is that if we don't like something, we can change it. Altogether this is a meaty book with lots of practical advice and lays out a compelling business case that companies who go down the path of becoming incorruptible last longer, deliver better returns to the market, and have happier customers and employees.<br /><br />I have three criticisms of the book. The first is that it does get quite technocratic at times, diving into potential corporate structures and how to handle objections from VCs, etc. -- material that is useful to a CEO reading it, perhaps, but not to a lay audience. The second is the focus on individual actions, which is a uniquely American trait, I suppose: the notion that any single person can effect massive change in the world, which is essentially <a href=\"https://en.wikipedia.org/wiki/Great_man_theory\" rel=\"nofollow noopener\">Great Man Theory</a> by another name. I think massive change like this will have to be done by individuals acting in union with one another (pun intended), although labor unions in their current form probably aren't the right vehicle to drive this change. The adoption of necessary structures are a management decision, so there will have to be a coalition somehow of founders/CEOs/etc. across sectors that are willing to abide by these principles and do the hard work of implementing them in their firms.<br /><br />Third, though, is perhaps the most bothersome: the inclusion of certain AI companies like Anthropic in the list of supposedly incorruptible companies. True, Anthropic is structured as a PBC (Public Benefit Corporation) that purportedly safeguards its mission to create \"safe\" AI. But so much of what Anthropic spouts as \"safe AI\" copies the framing of what many other AI maximalists, like OpenAI, use as marketing copy. To wit, all of their talk about AGI and \"superintelligence\" and other ill-defined concepts is frankly just doom trolling with a nefarious objective (to use Cal Newport's term): trying to scare the general public into allowing insane levels of capital to be allocated to economically ruinous statistical probability machines, all in the absurd and impossible hope that extremely fancy math will somehow become sentient. (Whatever <b>that</b> even means.) I suspect that Ries, living in the Bay Area, has immense difficulty refuting the deceptions of the AI boosters. He's an iconoclast in many other ways, but the noise is so pervasive in the Valley: everyone repeating the lies enough times will cause even someone with principles like Eric Ries to believe they are the truth. But no PBC or \"spiritual holding company\" or mission-locked corporate structure is going to counter the fact that Anthropic acts just as unethically and immorally as OpenAI or other \"frontier labs\". They shouldn't be included in a book like this.",
+  "rating": 4,
+  "preciseRating": 4,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/A3MM3IAMRTYCE9",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.lRH7oT4vCf77HK4D",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/39098524?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [],
+    "webUrl": "https://www.goodreads.com/review/show/8751187375",
+    "__typename": "Shelving"
+  },
+  "likeCount": 2,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v1.PEcs0vnPGp9g3i0FX1Xqmw",
+  "creator": {
+    "id": 177297310,
+    "imageUrlSquare": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/users/1764262020i/177297310._UY200_CR0,0,200,200_.jpg",
+    "isAuthor": false,
+    "viewerRelationshipStatus": null,
+    "followersCount": 10,
+    "__typename": "User",
+    "textReviewsCount": 566,
+    "name": "Mandi",
+    "webUrl": "https://www.goodreads.com/user/show/177297310-mandi",
+    "contributor": null
+  },
+  "recommendFor": null,
+  "updatedAt": 1786190882617,
+  "createdAt": 1785537180363,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1786134959347,
+  "text": "This was so much more than I thought I'd be. I really enjoyed this! <br /><br />This book demystifies &amp; invalidates so many untrue constructs &amp; normalised business practices that lead to corruption within organisations and what you can do to prevent corruption, not just short-term but long-term. <br /><br />Backed with real-world examples of people that have both failed &amp; succeeded with keeping flourishing companies in successful &amp; positive standings, not just within the organisations but externally as well. <br /><br />I will be referencing this book for a long time to come.<br /><br />This is a must-read for any business owner, company executive or anyone in any sort of managerial position.<br /><br />Thank you Netgalley, Simon &amp; Schuster Audio and Eric Ries for allowing me to have access to ALC in exchange for an honest review.",
+  "rating": 5,
+  "preciseRating": 5,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/A20FF52HR11S30",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.NAGl07A_6y8DaCJo",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/177297310?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [
+      {
+        "tag": {
+          "name": "netgalley-2026-reads",
+          "webUrl": "https://www.goodreads.com/review/list/177297310?shelf=netgalley-2026-reads",
+          "__typename": "Tag"
+        },
+        "__typename": "Tagging"
+      }
+    ],
+    "webUrl": "https://www.goodreads.com/review/show/8585404570",
+    "__typename": "Shelving"
+  },
+  "likeCount": 2,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v1.Xdh50URo5VCMokxPH_NJ0w",
+  "creator": {
+    "id": 4002635,
+    "imageUrlSquare": "",
+    "isAuthor": false,
+    "viewerRelationshipStatus": null,
+    "followersCount": 39,
+    "__typename": "User",
+    "textReviewsCount": 3,
+    "name": "Randall",
+    "webUrl": "https://www.goodreads.com/user/show/4002635-randall",
+    "contributor": null
+  },
+  "recommendFor": null,
+  "updatedAt": 1783723743464,
+  "createdAt": 1782740532985,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1782740661070,
+  "text": "<strong>Wow. Takes something true and obvious and gives it a name and a face</strong><br /><br />Corruption is the default. Every organization is pushing against corruption, and the ones that are most successful actually build from the outset to prevent it.<br /><br />This book was insanely great. I read it in one sitting, and it really changed my perspective on a lot of ideas.",
+  "rating": 5,
+  "preciseRating": 5,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/A1C8JUBDABFL8Y",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.ZAr5eKXcmVdXwUD-",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/4002635?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [],
+    "webUrl": "https://www.goodreads.com/review/show/8721900096",
+    "__typename": "Shelving"
+  },
+  "likeCount": 2,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v1.xQE1d_h08fteGPJXR-yUDQ",
+  "creator": {
+    "id": 185987992,
+    "imageUrlSquare": "",
+    "isAuthor": false,
+    "viewerRelationshipStatus": null,
+    "followersCount": 0,
+    "__typename": "User",
+    "textReviewsCount": 10,
+    "name": "Rob Moore",
+    "webUrl": "https://www.goodreads.com/user/show/185987992-rob-moore",
+    "contributor": null
+  },
+  "recommendFor": null,
+  "updatedAt": 1783059648426,
+  "createdAt": 1782875131442,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1782877341194,
+  "text": "My favourite book I’ve read in years. Cuts straight to the dysfunction that has overtaken capitalism in recent times, and offers a compelling vision for a future built by businesses that exist to serve rather than extract. Yet, Eric Ries manages to totally avoid the hand-waving idealism that afflicts other such vision casters. The book is clearly reasoned from first principles and Ries convincingly justifies the value of these methods from a practical and commercial standpoint. The book is also replete with detailed case studies drawn from some of the most commercially successful businesses in the world.<br /><br />This book is a practical guide for builders and founders who want to make a better future happen. Reading it made me feel optimistic. There is a new generation of companies emerging that are able to resist the temptation to plunder their customers and betray their trust in the name of profit. Even so, there are still countless industries and niches where incumbents are notorious extractors - this book provides the playbook for replacing them with companies who are true fiduciaries to their customers, employees, society, and earth.<br /><br />I highly recommend this book!",
+  "rating": 5,
+  "preciseRating": 5,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/AZPWGN90IZVFB",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.NAGl07A_6y8DaCJo",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/185987992?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [],
+    "webUrl": "https://www.goodreads.com/review/show/8591235912",
+    "__typename": "Shelving"
+  },
+  "likeCount": 1,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v1.mRy4zJm0V51naz7VOmzOMw",
+  "creator": {
+    "id": 56097113,
+    "imageUrlSquare": "",
+    "isAuthor": false,
+    "viewerRelationshipStatus": null,
+    "followersCount": 2,
+    "__typename": "User",
+    "textReviewsCount": 2,
+    "name": "Josh Bell",
+    "webUrl": "https://www.goodreads.com/user/show/56097113-josh-bell",
+    "contributor": null
+  },
+  "recommendFor": null,
+  "updatedAt": 1786385281625,
+  "createdAt": 1786036273907,
+  "spoilerStatus": true,
+  "lastRevisionAt": 1786385281625,
+  "text": "I’m inspired. After finishing this book I want to actively seek to bring these lessons, not only into my own life, but spread them to others as much as possible. One of my favorite books is \"Banker to the Poor,” by Muhammad Yunus. I draw the comparison because, although they are different, they share a similar outlook of using the economic system as a platform for change. I've been fascinated by that idea and I’m in particular interested in the story of Shorefast. The idea of a company that enriches the community that it’s in is an idea that sticks in my mind. I want to answer the question of how do you start a business that directly funds higher quality education in low income neighborhoods? I think this book brought me one step closer to finding the answer.",
+  "rating": 5,
+  "preciseRating": 5,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/A3TMNL60UXI2F8",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.NAGl07A_6y8DaCJo",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/56097113?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [],
+    "webUrl": "https://www.goodreads.com/review/show/8818912755",
+    "__typename": "Shelving"
+  },
+  "likeCount": 1,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v2.2026050311.4a45b09f-f1f0-41ef-a0ff-a5e5eeef91e7",
+  "creator": {
+    "id": 44700039,
+    "imageUrlSquare": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/users/1775801801i/44700039._UX200_CR0,50,200,200_.jpg",
+    "isAuthor": false,
+    "viewerRelationshipStatus": null,
+    "followersCount": 151,
+    "__typename": "User",
+    "textReviewsCount": 939,
+    "name": "Demetri Papadimitropoulos",
+    "webUrl": "https://www.goodreads.com/user/show/44700039-demetri-papadimitropoulos",
+    "contributor": null
+  },
+  "recommendFor": null,
+  "updatedAt": 1777809718401,
+  "createdAt": 1777809448820,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1777809716125,
+  "text": "<b>The Architecture of a Promise</b><br><i>Eric Ries’s “Incorruptible” asks whether companies can build structures strong enough to protect the values that made them worth building.</i><br>By Demetris Papadimitropoulos | May 1st, 2026<br><br><img src=\"https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/hostedimages/1777809716i/37754720._SX540_.jpg\" class=\"gr-hostedUserImg\" loading=\"lazy\"> <br><i>“After the Vote” – a solitary boardroom at dusk for Eric Ries’s “Incorruptible,” where the promise of a company sits beneath cold blue light, waiting to learn whether power will protect it or sell it.</i><br><br>In most business books, governance is the windowless beige room one enters after the exciting work is done: charters, boards, voting rights, compliance documents, lawyers speaking in the soft baritone of risk management. “Incorruptible” begins from the opposite suspicion. For Eric Ries, governance is not the dull casing around a company’s living compact. It is the arrangement of power that decides whether that compact gets load-bearing walls or remains a polished sentence in search of enforcement.<br><br>The voltage is higher than the subtitle lets on. “Why Good Companies Go Bad… and How Great Companies Stay Great” sounds like the sort of management diagnosis that might lead to a quadrant, a laminated framework, and a closing chapter in which every reader is invited to become an “intentional leader” by Tuesday. Ries has built a stranger apparatus: founder’s mea culpa, governance manual, critique of shareholder primacy, and reform manifesto with implementation tabs. By the end, it has also become myth. This is a book about boards and charters that finds its way to a queen of the dead with a golden scythe. One does not often encounter corporate law wearing a cloak. Stranger still, it fits.<br><br>The opening stages the structural trap before it explains it. Ries receives a call from “The Professor,” a scientist-founder whose AI biology company could design life-saving medicines but also targeted poisons, bioweapons, or a plague no one is prepared to meet. The Professor does not merely fear failure. He fears success under the wrong structure. What happens when investors want faster returns? What happens if a board replaces him? What happens if a company built to heal becomes a machine for harm, and its founder wakes as a monster with excellent liquidity and no sleep? Ries takes the call while parked outside what appears to be a celebration for another founder, only to reveal that the event is really a wake. The founder has been forced out; the company remains, but not in the form people loved. Its name lives on. Its animating compact has gone into receivership.<br><br>That scene gives “Incorruptible” its hinge. A company can be legally alive and spiritually dead; the stock may trade, the logo may shine, the mission page may still hum its little hymn, but the thing that earned devotion has been professionally removed. Ries’s subject is not corporate misconduct in the tabloid sense. It is the slower betrayal of watching something trusted become a polished instrument for betraying the trust that made it valuable.<br><br>From that wound, Ries builds his argument. “The Lean Startup,” his earlier book, taught a generation how to test, learn, build, and scale. “Incorruptible” is his attempt to answer the question success left behind: once you have built something worth protecting, how do you keep its value from attracting the forces that will strip it for parts? His answer is structural. Good companies do not usually go bad because everyone inside them rises one morning, stretches, and chooses villainy before breakfast. They go bad because ownership, incentives, boards, metrics, charters, career rewards, and sanctified “best practices” teach decent people to call surrender prudence. Ries names that pull “financial gravity,” and the phrase earns its keep. It gives a body to the force that makes short-term extraction feel inevitable even to those who dislike its consequences.<br><br>Ries does not confuse profit with guilt, which keeps the book from becoming a sermon with spreadsheets. His claim is more exacting: not every way of making money is equally good. Some profit is the residue of value created; some is value captured, deferred, externalized, disguised, or harvested from the loyalty that made the enterprise possible. “Incorruptible” presses against the well-compensated shrug of “that’s just business.” The shrug, Ries suggests, is not wisdom. It is often the sound a system makes when too many people have learned how to benefit from having no alternative.<br><br>The structure is not scaffolding after the fact; it is one of the book’s arguments. Part I, “The Shape of the Abyss,” diagnoses how mission-driven companies become open to capture. Part II, “Escape Velocity,” turns toward counterweights: mission drive, constitutional governance, aligned ownership, public-benefit structures, steward ownership, and the wonderfully odd “spiritual holding company,” a separate entity meant to preserve an organization’s animating purpose over time. Part III, “To Bend the Light,” widens from company design to standards, supply chains, mission transmission, and civic infrastructure. The physics metaphor is not decorative. Gravity pulls. Structures brace. Escape takes force. The most durable institutions do not merely survive the field; they alter the field around them.<br><br>The examples arrive in force, but the best of them behave less like exhibits than autopsies: Sol Price and FedMart, Costco, Patagonia, Whole Foods, Boeing, Johnson &amp; Johnson, Google, GitLab, Mondragon, Anthropic, Grundfos, Novo Nordisk, Tony’s Chocolonely, Underwriters Laboratories, Cost Plus Drugs, Pol.is, and the Long-Term Stock Exchange itself. The danger of such breadth is the overstuffed-briefcase problem: too many files, all relevant, none breathing. Ries mostly avoids that fate because the examples keep returning to the same uncomfortable test. What happens when culture has no enforcement? When metrics become idols? When governance experts mistake mission protection for managerial entrenchment? When a company’s purpose has no legal or economic machinery behind it?<br><br>The more revealing neighbors are not ordinary startup manuals but books that ask what lets institutions endure without forfeiting their reason for existing. “Incorruptible” sits near Lynn A. Stout’s “The Shareholder Value Myth” in its challenge to the supposed inevitability of shareholder primacy, near Jim Collins and Jerry I. Porras’s “Built to Last” in its fascination with durable companies, and near Yvon Chouinard’s “Let My People Go Surfing” in its belief that a company’s commitments should govern daily operations rather than decorate recruiting copy. Ries’s distinctiveness lies in the severity of his structural demand. Mission statements, founder charisma, beloved cultures, values posters, all-hands speeches – none of these are enough. They may inspire, but inspiration is not a control right. At some point, someone will ask who can vote, who can sell, who can replace whom, who controls the board, which metric counts, and what the charter actually says when the room gets expensive.<br><br>Ries writes better than the governance shelf requires. His prose gives abstractions a body: earbuds pressed against traffic noise, music rattling a windshield, a party turning into a wake, a company fed into a meat grinder, a leader on cool bathroom tile at 3:15 a.m. after refusing to compromise the Long-Term Stock Exchange. The bathroom floor is not rhetorical furniture. It punctures the usual founder-hero posture and lets failure, humiliation, and resolve occupy the same square of tile. A less candid book would have converted the scene into triumph with better lighting. Ries lets it remain a collapse first, then a lesson.<br><br>The diction keeps unlikely company: fiduciary duty beside human flourishing, cap tables beside souls, standards beside mercy, boards beside monsters. Sometimes the furniture bumps. The finger-on-the-table second person can begin telling readers what they have seen, felt, and must now recognize with a little too much certainty. For some, that insistence will be bracing. Others may feel trapped at a reception by a brilliant, wounded founder who has located the moral center of capitalism just as the hors d’oeuvres run out. Yet the heat is not fake. Ries is trying to make institutional betrayal impossible to treat as background weather.<br><br>The book’s sharpest work is to drag mission out of the brochure and into the machinery. It refuses to leave purpose in the handsome-type portion of corporate life, the part quietly ignored when the board packet arrives. Ries asks what mission means when the founder leaves, when the company goes public, when investors want liquidity, when lawyers advise obedience to norms that have been misnamed prudence, when employees are told to trust what has never been protected, and when customers cannot see the machinery rearranging their relationship to the company. This is where “Incorruptible” becomes more than a plea for nicer capitalism. It is a design argument: if values matter, they need mechanisms; if trust matters, it needs a container; if a company’s purpose is real, it should survive the quarterly weather.<br><br>Beneath the grammar of power, the book is about grief. Not the public grief of scandal, but the quieter grief of recognition: the beloved product worsened after loyalty has been captured; the workplace that once had a compact with its people turned extractive, polished, and very well-advised; the platform that learned to tax the attention it first earned; the company whose founding promise survives only as a museum label. Ries understands that people do not mourn companies because they confuse corporations with friends. They mourn because their work, taste, time, trust, and hope have been deposited there. When the institution turns, something personal has been used without consent.<br><br>The cost of the wager is also clear. “Incorruptible” is a thrilling title and a dangerous one. Ries is persuasive when he shows that structure can make betrayal harder, mission more durable, and trust less available for extraction. He is less persuasive when the rhetoric edges toward the idea that design can make corruption impossible. No governance form abolishes vanity, cowardice, exhaustion, fear, status hunger, or the human gift for routing around constraint while praising the constraint in public. The book knows this in flashes. Its epilogue admits that its tools can be used “in reverse,” as instruments of career advancement, fluent takedown, or sharper complicity. Still, the title’s absolutism sometimes shines more brightly than the machinery can bear.<br><br>A builder’s-eye view narrows the frame, not fatally but noticeably. Ries cares about employees, customers, suppliers, patients, communities, and citizens; Part III expands well beyond the founder’s chair. But the emotional camera often begins with those nearest power: the founder afraid of losing control, the builder trying not to lose his soul, the institution-maker trying to keep faith with the original spark. That gives the book urgency, and Ries has earned some of that angle through his own scar tissue. Still, some readers will want more labor power, more democratic accountability, more regulation, more attention to the possibility that scale itself may be not merely the condition requiring better design, but part of the corruption. Ries’s hope is reformist and structural from inside the machinery. Readers who suspect the machinery is the problem may find the book illuminating and insufficient in the same breath.<br><br>The pacing quickens whenever scene turns into mechanism: The Professor’s call into dual-use AI governance, the wake into mission death, the bathroom floor into LTSE’s guardrails, Costco’s stubborn hot dog into harder-is-easier trust. It slows when the examples pile up. Ries repeats because he is trying to overwrite governance folklore: that shareholder primacy is natural, that extraction is realism, that “best practices” are neutral, that mission belongs to culture rather than control. The repetition has a purpose. It also sometimes lands with both shoes.<br><br>The ending is where the book reveals how large its appetite has been all along. “Queen of the Dead” abandons the conventional management-book farewell. Ries begins by saying a book lives in reverse: its words die when written and are born only when read. He then grants the reader an uncomfortable freedom. The tools in “Incorruptible” can be used to resist financial gravity, or to ride it upward. One can build, or sharpen pencils and knives and write the career-making takedown. The book does not pretend that understanding produces virtue. Knowledge, too, would like a promotion.<br><br>From there, the epilogue swerves into vision: a strip-mined wasteland, megalithic zombie beasts, dark sinews, puppet strings stretching backward to cruel fathers and brutal conquistadors, and a terrifying queen with her mother’s golden scythe. At first she seems violent. Then perception reverses. The beasts are not majestic; they are undead. The scythe is not cruelty; it is mercy. Small lights move in the cracks like mammals among dinosaurs, waiting for their moment. The reader looks down at their own hands. Upward, to lend work to hers; downward, to the dust.<br><br>The weather turns operatic, but the storm has been gathering all along. The epilogue makes visible the myth Ries has been smuggling through the machinery: dead systems do not always stop moving, and living ones often begin as small, furtive lights. Many books on governance end by asking readers to align stakeholders, clarify metrics, and visit a website for additional resources. Ries does all of that too – the guides, glossary, community, and templates are waiting in the wings, an afterlife of implementation for the converted and the merely curious. But before the toolkit, he gives us a death queen in a wasteland of undead institutions. Some readers will find this mortifyingly grand. Others will feel that a book about living systems captured by dead incentives has simply chosen the correct myth.<br><br>The world outside the book keeps supplying footnotes. Ries’s opening dilemma belongs to the age of frontier AI, dual-use biology, and companies whose governance will matter long before the public understands their products. His critique of stakeholder language without structural commitment lands in a moment when many readers have learned to distrust purpose-talk once the varnish dries. His account of mission decay also touches the everyday experience of platform rot: beloved services worsened, customer service hollowed, loyalty harvested, institutions that become less trustworthy precisely after they become unavoidable. “Incorruptible” gives that feeling a plumbing diagram of betrayal. The diagram has gaps, but it shows which walls have been hiding the pipes.<br><br>The reason to take the book seriously is not that Ries has discovered a pure way out of corruption. He has not, and the book is most vulnerable when it sounds as if purity might be engineered. Its value lies elsewhere. It stops treating mission as mist. It asks where the power sits, how the incentives run, which promises are enforceable, which metrics have become idols, and who can still say no when the price gets flattering. Values do not endure because people say them fervently. They endure when power has been designed to remember them after fervor fades.<br><br>Rating: 87/100; 4/5 stars. On my scale, that means a strongly successful book with real bite and real reservations: ambitious, useful, wired with dread and repair, argumentatively substantial, sometimes lit a little too fiercely, occasionally repetitive, and far more alive than a book about corporate governance has any polite obligation to be.<br><br>By the end, “Incorruptible” leaves behind less a checklist than an altered posture of attention: not the founder at the podium, not the board in session, not the mission statement polished to a shine, but a pair of hands held over dust. The book’s wager is that what we build will eventually ask whether we protected it. The disquieting part is that the question may already have been asked.<br><br><img src=\"https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/hostedimages/1777809716i/37754719._SX540_.jpg\" class=\"gr-hostedUserImg\" loading=\"lazy\"> <br><i>Color swatch study for “After the Vote” – translating the cover palette of “Incorruptible” into cold institutional blues, pale window light, and the darker washes of financial gravity.</i><br><br><img src=\"https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/hostedimages/1777809716i/37754724._SX540_.jpg\" class=\"gr-hostedUserImg\" loading=\"lazy\"> <br><i>Compositional thumbnail studies for “After the Vote” – testing the long table, empty chairs, window geometry, and negative space that would make the room feel larger than the lone figure inside it.</i><br><br><img src=\"https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/hostedimages/1777809716i/37754721._SX540_.jpg\" class=\"gr-hostedUserImg\" loading=\"lazy\"> <br><i>Figure and posture studies for “After the Vote” – searching for a restrained, anatomically believable solitude rather than a theatrical pose of corporate despair.</i><br><br><img src=\"https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/hostedimages/1777809716i/37754722._SX540_.jpg\" class=\"gr-hostedUserImg\" loading=\"lazy\"> <br><i>Faint pencil underdrawing for “After the Vote” – the quiet scaffolding of table, chairs, windows, and figure before the washes begin to turn architecture into moral weather.</i><br><br><img src=\"https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/hostedimages/1777809716i/37754718._SX540_.jpg\" class=\"gr-hostedUserImg\" loading=\"lazy\"> <br><i>Watercolor border study for “After the Vote” – experimenting with eroded blue edges, dry-brush drag, and distressed margins that echo the cover’s weathered typography without crowding the image.</i><br><br><img src=\"https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/hostedimages/1777809716i/37754723._SX540_.jpg\" class=\"gr-hostedUserImg\" loading=\"lazy\"> <br><i>Pencil-plus-first-wash stage for “After the Vote” – the moment the drawing begins to absorb the cover-derived blues, and the empty room starts to feel less like a setting than a consequence.</i><br><br>All watercolor illustrations by Demetris Papadimitropoulos.",
+  "rating": 4,
+  "preciseRating": 4,
+  "preReleaseBookSource": "NetGalley",
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/A3H19UEV2KGGEF",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.NAGl07A_6y8DaCJo",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/44700039?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [
+      {
+        "tag": {
+          "name": "business-leadership-finance",
+          "webUrl": "https://www.goodreads.com/review/list/44700039?shelf=business-leadership-finance",
+          "__typename": "Tag"
+        },
+        "__typename": "Tagging"
+      },
+      {
+        "tag": {
+          "name": "professional-technical",
+          "webUrl": "https://www.goodreads.com/review/list/44700039?shelf=professional-technical",
+          "__typename": "Tag"
+        },
+        "__typename": "Tagging"
+      },
+      {
+        "tag": {
+          "name": "nonfiction",
+          "webUrl": "https://www.goodreads.com/review/list/44700039?shelf=nonfiction",
+          "__typename": "Tag"
+        },
+        "__typename": "Tagging"
+      },
+      {
+        "tag": {
+          "name": "politics-current-affairs",
+          "webUrl": "https://www.goodreads.com/review/list/44700039?shelf=politics-current-affairs",
+          "__typename": "Tag"
+        },
+        "__typename": "Tagging"
+      },
+      {
+        "tag": {
+          "name": "self-help",
+          "webUrl": "https://www.goodreads.com/review/list/44700039?shelf=self-help",
+          "__typename": "Tag"
+        },
+        "__typename": "Tagging"
+      }
+    ],
+    "webUrl": "https://www.goodreads.com/review/show/8571575931",
+    "__typename": "Shelving"
+  },
+  "likeCount": 1,
+  "viewerHasLiked": null,
+  "commentCount": 2
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v1.k4v40JOUJBu4uZoHJbQF_A",
+  "creator": {
+    "id": 9102750,
+    "imageUrlSquare": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/users/1610162484i/9102750._UX200_CR0,0,200,200_.jpg",
+    "isAuthor": false,
+    "viewerRelationshipStatus": null,
+    "followersCount": 14,
+    "__typename": "User",
+    "textReviewsCount": 153,
+    "name": "Katie",
+    "webUrl": "https://www.goodreads.com/user/show/9102750-katie",
+    "contributor": null
+  },
+  "recommendFor": null,
+  "updatedAt": 1789332153369,
+  "createdAt": 1788248305837,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1788249515124,
+  "text": "(Read as an audiobook) I found this a very hopeful book, and a much-needed balm for the despair I’ve (we’ve all?) been feeling about the corruption of society by way of unrestrained capitalism. There ARE people thinking about ethics in corporate America. There ARE (or so the author confidently describes) concrete tactics for preserving values, principles, and ethics via thoughtful corporate governance. And it DOESN’T have to be a race to the bottom, to sell the worst, cheapest, most base offering that will extract a quick buck, discarding people and communities as collateral in the processes.<br /><br />I have been hungering for this kind of roadmap; just to know it exists and can be / has been done. 6 years at Meta has hardened me as a cynic, and this thawed me a few degrees. <br /><br />I restarted it and am listening a second time, if that says anything about the book!",
+  "rating": 5,
+  "preciseRating": 5,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/A70XFDTC7JOO1",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.NAGl07A_6y8DaCJo",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/9102750?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [],
+    "webUrl": "https://www.goodreads.com/review/show/8909062171",
+    "__typename": "Shelving"
+  },
+  "likeCount": 1,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v1.kgOykAoYN_OxN2NnlszQpA",
+  "creator": {
+    "id": 86608172,
+    "imageUrlSquare": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/users/1760199335i/86608172._UX200_CR0,77,200,200_.jpg",
+    "isAuthor": false,
+    "viewerRelationshipStatus": null,
+    "followersCount": 2,
+    "__typename": "User",
+    "textReviewsCount": 302,
+    "name": "Daniel",
+    "webUrl": "https://www.goodreads.com/user/show/86608172-daniel",
+    "contributor": null
+  },
+  "recommendFor": null,
+  "updatedAt": 1787178505673,
+  "createdAt": 1784338592542,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1784338604564,
+  "text": "Incorruptible by Eric Ries — 9/10<br /><br />The first 80% is an unsettling diagnosis of how good companies lose their way.<br /><br />Few leaders decide to abandon a company’s values. It happens gradually through decisions that each appear reasonable: pressure for faster returns, ownership changes and board incentives.<br /><br />Ries calls this “financial gravity”, the force pulling companies towards short-term extraction.<br /><br />One of the strongest sections is how that force starts shaping culture. Finance is essential, but its instinct is often control, certainty and measurable short-term outcomes. It becomes damaging when Finance moves beyond governance and starts setting policy for functions it does not operate or fully understand.<br /><br />What gets funded, delayed, measured or cut changes behaviour across the company. Finance should protect and support the business. It should not quietly decide what the whole business is allowed to value.<br /><br />Ries goes deeper than culture or stated values. He uses “ethos” to describe the organisation’s underlying commitments, the character that shapes its strategy, decisions and behaviour.<br /><br />His formula is simple: ethos plus integrity equals incorruptible. Ethos creates something worth protecting. Integrity gives it structural protection.<br /><br />That leads to “the new governance”, built around compliance, purpose, coherence and integrity. Governance should protect the company’s ethos when founders leave, ownership changes or financial pressure arrives.<br /><br />The deeper warning is that a company can remain profitable, compliant and successful on paper while becoming something entirely different from what it was created to be.<br /><br />The final part lost me slightly. The “spiritual holding company” and redefining profit around human flourishing are ambitious, but some solutions feel more idealistic than practical in running a complex business.<br /><br />I have not bought into every answer, but the diagnosis is exceptional.<br /><br />Most companies assume culture and values will survive because people believe in them.<br /><br />Ries makes a compelling case that belief is not protection.",
+  "rating": 4,
+  "preciseRating": 4,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/AOYOH0BZRVT1H",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.NAGl07A_6y8DaCJo",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/86608172?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [],
+    "webUrl": "https://www.goodreads.com/review/show/8742798179",
+    "__typename": "Shelving"
+  },
+  "likeCount": 1,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v1.9H6g2TrpXxRqnCaDFIA8eQ",
+  "creator": {
+    "id": 197445539,
+    "imageUrlSquare": "",
+    "isAuthor": false,
+    "viewerRelationshipStatus": null,
+    "followersCount": 0,
+    "__typename": "User",
+    "textReviewsCount": 30,
+    "name": "Natt S",
+    "webUrl": "https://www.goodreads.com/user/show/197445539-natt-s",
+    "contributor": null
+  },
+  "recommendFor": null,
+  "updatedAt": 1789835518760,
+  "createdAt": 1787413657245,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1787606528903,
+  "text": "A little high level and idealistic for me, but a good overview of examples of companies that failed to protect their mission as well as those that succeeded. More geared towards those in leadership positions that can influence the strategy of an organization. Still a good read though.",
+  "rating": 3,
+  "preciseRating": 3,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/A3VP7NO3OZVGOM",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.ZAr5eKXcmVdXwUD-",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/197445539?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [],
+    "webUrl": "https://www.goodreads.com/review/show/8689657944",
+    "__typename": "Shelving"
+  },
+  "likeCount": 1,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v2.2026041406.a6e496f4-dd17-4ef3-8c00-1776bff35cf6",
+  "creator": {
+    "id": 32717494,
+    "imageUrlSquare": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/users/1533197574i/32717494._UX200_CR0,0,200,200_.jpg",
+    "isAuthor": false,
+    "viewerRelationshipStatus": null,
+    "followersCount": 433,
+    "__typename": "User",
+    "textReviewsCount": 1070,
+    "name": "Venky",
+    "webUrl": "https://www.goodreads.com/user/show/32717494-venky",
+    "contributor": null
+  },
+  "recommendFor": null,
+  "updatedAt": 1776147581820,
+  "createdAt": 1776147552940,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1776147581601,
+  "text": "When Eric Ries started the Long-Term Stock Exchange (LTSE), or at least an idea of it, he was brimming with unbridled optimism and hope. A bulwark against pernicious short-term thinking, LTSE would not only be a beacon of sustainable and inclusive business practices, but it would also be a perfect alignment between interests of long-term investors and public company experience. But bucking conventions turned out to be an exercise in utter futility. Hostile overtures and subtle threats later, not only did LTSE vanish as a dream, but the entire experience also left its potential founder literally curled up on his bathroom floor in a fit of unconstrained anguish.<br /><br />But the indefatigable bestselling author of “Lean Start Ups” did finally end up founding LTSE with its original mission intact. In his latest work he endeavours to provide what he terms to be an ‘incorruptible blueprint’ for aspiring founders. At its core this blueprint embeds two quintessential and uncompromising principles: first, create something worth protecting, and second, build with structural integrity. Backing his reasoning with a plethora of real-life cases, Ries contends that enduring and indelible organisations are those that are neither investor-controlled nor founder-controlled. Instead, such persevering entities are always mission controlled.<br /><br />Ries begins the book on a solemn note by providing an exhaustive list of once stories companies, that fell by the wayside, consequent to sacrificing business and customer ethos at the altar of greed. Polaroid, the evanescent dream of Edwin Land, and an once powerhouse of R&amp;D (“intersection of art and science and business” according to Steve Jobs), vanished into oblivion after an egregious board sacked Land in 1982 and literally annihilated its R&amp;D processes. The fall of Cadbury from grace where after 170 momentous years, the company lost its Royal Warrant, the elimination of 33,000 jobs by Toys “R” Us in 2018, after close to eight decades of bringing joy to innumerable families, all demonstrate, in the words of Ries, a dangerous erosion of values and culture.<br /><br />Six primary reasons for the decimation of a prospering organisation lies in existing investors killing the golden goose, external raiders putting paid to the hopes of enduring legacies, boardroom betrayals, succession vacuum, extraction of returns and mission drifts. A mission controlled organisation creates adequate guard rails against such dangerous possibilities. There are companies that have rebelled against potential destruction of values and principles. A classic case in point, 3M. When a decline was noticed in the “New Product Vitality Index”, an innovative metric that tracked the percentage of revenues stemming from products introduced in the previous five years, it was immediately attributed to the detrimental practices of the CEO. The board undertook extraordinary ameliorative measures and the CEO parted ways with 3M. This was in the year 2005.<br /><br />Ries terms psychological pressures that shapes behaviour in organisations, ‘Financial Gravity’. Such pressures are a consequence of resource imbalances, and its laws even override direct authority Working more via perception than reality, financial gravity leads to systemic collapses. The need of the hour, according to Ries is a paradigm shifting and shaping form of governance that entails building an exoskeleton with four ‘load bearing’ responsibilities: compliance, purpose, coherence, and integrity.<br /><br />Every founder also happens to be a builder with great many choices. Such choices either encourage human flourishing or completely obliterate it. The value of trust by which Costco swears by, following decades of consistent practice, is a classic example. When then COO Craig Jelinek in 2008 proposed increasing the price of the famous Costco hotdog, CEO Jim Sinegal barked back, “if you raise the f&amp;^ing hot dog price, I will kill you. Figure it out.” Even after Jelenik took over as the CEO, the price of the hot dog remained untouched. During the financial recession that racked the world in 2008-09, Costco instead of following the practices of layoffs, raised hourly worker wages by $1.50, to be split over the succeeding three years.<br /><br />The most novel concept in the book, personally speaking is that of Spiritual Holding Companies. In the words of Ries, a Spiritual Holding Company is a separate entity with governance authority over one or more organisations, designed specifically to protect and advance their core mission over the long term. The spiritual here animates more an essence than a religious attribute. These companies preserve and protect in the fiercest of fashion, the spirit of the organisation by coalescing it with various operational aspects.<br /><br />Finally in conclusion, Ries lends a clarion call for companies to birth an innovative and ingenious “Civic Infrastructure.” Organisations with Civic Infrastructure, ensure that their decisions manifest as other’s constraints. For example, the moment the Financial Accounting Standards Board (FASB) promulgates an accounting rule, there is no choice but adherence on the part of every public company that is regulated by the FASB. The only real currency possessed by companies boasting a Civic Infrastructure is the currency of trust.<br /><br />Incorruptible is a hard hitting, genuine and iconoclastic handbook hoping to usher in a tectonic shift in organisational culture, management, and operations. While not a singularly new concept, it is a curated distillation of unconventional yet productive practices that have been the hallmark of a handful of organisations marking themselves for preservation in perpetuity!<br /><br />Incorruptible – Why Good Companies Go Bad and How Great Companies Stay Great, is published by Authors Equity, and will be available on sale beginning 26 May 2026.<br /><br />Thank You, Net Galley for the Advance Reviewer Copy.",
+  "rating": 4,
+  "preciseRating": 4,
+  "preReleaseBookSource": "NetGalley",
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/A3HYJUO5FLAYI4",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.NAGl07A_6y8DaCJo",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/32717494?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [
+      {
+        "tag": {
+          "name": "management-leadership",
+          "webUrl": "https://www.goodreads.com/review/list/32717494?shelf=management-leadership",
+          "__typename": "Tag"
+        },
+        "__typename": "Tagging"
+      }
+    ],
+    "webUrl": "https://www.goodreads.com/review/show/8521207800",
+    "__typename": "Shelving"
+  },
+  "likeCount": 1,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v2.2026092100.b250319e-cf93-49e9-8d28-b26f18092d03",
+  "creator": {
+    "id": 193570197,
+    "imageUrlSquare": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/users/1774036508i/193570197._UX200_CR0,0,200,200_.jpg",
+    "isAuthor": true,
+    "viewerRelationshipStatus": null,
+    "followersCount": 8,
+    "__typename": "User",
+    "textReviewsCount": 3,
+    "name": "Joshua Pritikin",
+    "webUrl": "https://www.goodreads.com/user/show/193570197-joshua-pritikin",
+    "contributor": {
+      "id": "kca://author/amzn1.gr.author.v3.HApqWIbdaXo6f7QE",
+      "works": {
+        "totalCount": 1,
+        "__typename": "ContributorWorksConnection"
+      },
+      "__typename": "Contributor"
+    }
+  },
+  "recommendFor": null,
+  "updatedAt": 1789952225210,
+  "createdAt": 1789951939206,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1789952225007,
+  "text": "<b>Incorruptible Institutions Need Incorruptible People First</b><br /><br />Eric Ries’s new book <i>Incorruptible: Why Good Companies Go Bad… and How Great Companies Stay Great</i> names a question that haunts anyone who’s built a business they care about: whether their creation can survive the forces of success. He calls that pressure financial gravity: the doctrine of shareholder primacy pulling every company toward extraction. Ries’s answer is structural. Costco’s governance. Patagonia’s ownership handed to the earth. GitLab’s values embedded so deeply in process that no one has to be in the room to enforce them. Build the right scaffolding, he argues, and the mission survives contact with success.<br /><br />It’s a good diagnosis. But look at the last few years of American governance. The corporate framing falls short.<br /><br /><b>Structure is not self-enforcing</b><br /><br />Corporate governance, no matter how cleverly designed, is downstream of law. Bylaws, board structures, dual-class shares, mission locks: all of it exists inside a legal system. A legal system is only as strong as the willingness of the people running it to follow the rules.<br /><br />That willingness has been failing nationally for a long time. A recent example is the For the People Act of 2019 (an anti-corruption bill, but for democracy instead of companies). It died in the Senate. Mitch McConnell blocked it, and later Joe Manchin and Kyrsten Sinema blocked the rules changes that could have gotten it past him. And more recently we’ve watched Trump treat the law itself as optional, betting correctly that the usual checks can’t reach him (so far).<br /><br />This is the same failure mode Ries is writing about, but one level up. Incorruptible institutions can’t be built only out of governance design, because law is itself an institution. Someone still has to choose to honor it. The statutes that make a mission lock enforceable, that let a board fend off a hostile takeover, that give Patagonia’s ownership structure any teeth, all exist because Congress and the courts uphold them. Congress could rewrite corporate law to strip that protection away, or simply decline to enforce it when a well-connected shareholder tests the limits. Costco’s mission lock survives only because the people who could hollow it out choose not to.<br /><br />The people holding power are the real leverage point. What matters is whether they can feel the pull toward self-interest and not go under. Manchin is a case worth keeping in mind: he had every reason to vote for reform and folded anyway. Whatever vetting he survived to reach the Senate, it wasn’t enough.<br /><br /><b>How would you even test for that?</b><br /><br />Call the skill what you want: empathy, integrity, emotional regulation, self-leadership. The label matters less than the fact that our current ways of detecting it aren’t good enough.<br /><br />Start with self-report, like financial disclosures. Good, but politicians routinely lie about their intentions. Worse, plenty of people who eventually fold probably believed, at some point, that they’d hold the line. Sincere aspiration is a prediction, made by the person least able to see their own blind spots. Questionnaires fare little better. People tend to answer the way they think the test writer expects, a well-documented effect called demand characteristics.<br /><br />Voting records and reputation feed a third category: the judgment of a trained observer. If any profession has tried to formalize that kind of judgment, it’s talk therapy. Years of supervised clinical hours. It’s the most serious attempt we make at vetting. But it’s enormously expensive: years of one-on-one expert attention per person. And even then it’s still a judgment call. Show the same session to two different supervisors and you can get two different verdicts. And a voting record doesn’t receive anywhere near that level of scrutiny.<br /><br />All of these approaches share annoying weaknesses: they watch someone when nothing is at stake, or trust their word for how they’d behave under fire. A real test has to ambush the person with material they can’t rehearse.<br /><br /><b>The test we’ve been overlooking</b><br /><br />Consider a classical psychedelic like N,N-DMT, psilocybin, or LSD. Among other effects, these substances make inner experience more vivid and enticing—part of why bad trips happen. Some of those trips go bad for mundane reasons: too high a dose, an unsafe setting, an inexperienced guide. Others go bad when fear, grandiosity, or greed unexpectedly takes over. Losing yourself to these feelings is almost irresistible.<br /><br />Feeling that pull and not being swept away by it is the skill. Daily life provokes people too, but unpredictably: a crisis arrives on its own schedule, at whatever intensity it happens to bring. A psychedelic session administers a measured dose of provocation. Fail once and it might be something about the occasion. Fail consistently and it’s you.<br /><br />Recall Manchin. Nobody outside his own head knows for certain, but his behavior fits a familiar pattern: coal and gas donors with a stake in the outcome, a Senate seat that felt safer if he stayed the guy who protects the filibuster. Something pulled harder than the reform did, and he went under. A DMT session creates the same fork in the road, on demand. Fear or self-interest surges, and the person either holds firm or is swept away by it.<br /><br />DMT is the most direct instrument we have to test whether someone can be with strong emotion without being carried away by it. To fulfill Ries’s vision, we need a way to identify who can be trusted with power. We have never had a plausible test for that, until now.<br /><br />More at <a href=\"https://goodreads.com/book/show/249868833.Religion_Unburdened_by_Belief_The_Way_of_Open_Inquiry\" title=\"Religion Unburdened by Belief The Way of Open Inquiry by Joshua N. Pritikin\" rel=\"noopener\">Religion Unburdened by Belief: The Way of Open Inquiry</a>.",
+  "rating": 4,
+  "preciseRating": 4,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/A1HT5JV864Y0E5",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.NAGl07A_6y8DaCJo",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/193570197?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [],
+    "webUrl": "https://www.goodreads.com/review/show/8961964208",
+    "__typename": "Shelving"
+  },
+  "likeCount": 0,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v1.zaFDcZZFpgviOxntH6oC5g",
+  "creator": {
+    "id": 125763228,
+    "imageUrlSquare": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/users/1646955674i/125763228._UY200_CR25,0,200,200_.jpg",
+    "isAuthor": false,
+    "viewerRelationshipStatus": null,
+    "followersCount": 15,
+    "__typename": "User",
+    "textReviewsCount": 555,
+    "name": "Mae B",
+    "webUrl": "https://www.goodreads.com/user/show/125763228-mae-b",
+    "contributor": null
+  },
+  "recommendFor": null,
+  "updatedAt": 1779757084782,
+  "createdAt": 1774819183593,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1774819225669,
+  "text": "A well researched book. Highly recommend it! ",
+  "rating": 5,
+  "preciseRating": 5,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/A3OAEFB0E2L3LZ",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.NAGl07A_6y8DaCJo",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/125763228?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [
+      {
+        "tag": {
+          "name": "netgalley-arcs",
+          "webUrl": "https://www.goodreads.com/review/list/125763228?shelf=netgalley-arcs",
+          "__typename": "Tag"
+        },
+        "__typename": "Tagging"
+      }
+    ],
+    "webUrl": "https://www.goodreads.com/review/show/8462473428",
+    "__typename": "Shelving"
+  },
+  "likeCount": 1,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v1.jpdV8Sz4we79STNZHdyOxg",
+  "creator": {
+    "id": 201386444,
+    "imageUrlSquare": "",
+    "isAuthor": false,
+    "viewerRelationshipStatus": null,
+    "followersCount": 0,
+    "__typename": "User",
+    "textReviewsCount": 1,
+    "name": "Sudha Shankar",
+    "webUrl": "https://www.goodreads.com/user/show/201386444-sudha-shankar",
+    "contributor": null
+  },
+  "recommendFor": null,
+  "updatedAt": 1779842892500,
+  "createdAt": 1779842611482,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1779842892355,
+  "text": "Eric Ries wrote The Lean Startup to help founders build something worth protecting. With Incorruptible, he's written the book he should have written next, because it turns out that knowing how to build is only half the battle. The harder question is how you keep what you've built from being quietly hollowed out.<br /><br />The central argument is both simple and devastating: mission corruption isn't a moral failure. It's an engineering failure. \"Financial gravity\" - the doctrine of shareholder primacy is a force so deeply embedded in corporate law, investor expectations, and boardroom norms that it bends even the most principled founders toward extraction, often without anyone noticing until it's too late. <br /><br />What makes this book exceptional is that Eric doesn't stop at diagnosis. He is, above all, an engineer and he brings that same rigor here. The Sol Price story alone is enough to shake you up. Price built FedMart on the philosophy that a business exists to genuinely serve its members and was ousted from his own company by his own board, not because he failed, but because the structure couldn't protect the mission when financial gravity pulled hard enough. It's a haunting opener.<br /><br />Eric also tells us how to protect the mission through solid well-researched examples. Costco's governance fortress. Patagonia's extraordinary restructuring that made the earth its majority shareholder. GitLab's invisible leader- values so embedded in operations that they guide decisions without anyone needing to be in the room. Novo Nordisk optimizing for patients and paradoxically becoming one of the most valuable companies on earth. Each case study is carefully chosen not to inspire envy but to prove a point: the harder-is-easier mission actually works. Genuine purpose, structurally protected and consistently acted upon, compounds.<br /><br />The chapters on mission transmission and the culture bank are quietly the most practical in the book. The idea that every transaction — every vendor, every hire, every partnership — either transmits your values outward or erodes them is something I won't stop thinking about. And the culture bank reframes every organizational decision in a way that's immediately usable: is this a deposit or a withdrawal?<br /><br />What's striking about Eric Ries as an author is that he is himself a demonstration of the book's thesis. This is not a detached academic writing about mission-driven companies from the outside. This is someone who has watched companies he cared about get surgically deboned and who has spent years building the tools to prevent it. Incorruptible is a mission-driven book about mission-driven building, written by someone who clearly believes that the future of capitalism depends on getting this right.<br /><br />For any founder who has looked at what they're building and felt both pride and fear — pride in the mission, fear of what success and scale might do to it- this book is essential. Not motivational. Essential. It will change how you think about your board, your governance documents, your metrics, your culture, and every decision you make before you have leverage to protect what matters.<br /><br />Do NOT miss reading this book!",
+  "rating": 5,
+  "preciseRating": 5,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/A54P56AO9XYQ6",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.NAGl07A_6y8DaCJo",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/201386444?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [],
+    "webUrl": "https://www.goodreads.com/review/show/8634506791",
+    "__typename": "Shelving"
+  },
+  "likeCount": 0,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v1.jdechVW2hOOcApwwZiW1iQ",
+  "creator": {
+    "id": 3055905,
+    "imageUrlSquare": "",
+    "isAuthor": false,
+    "viewerRelationshipStatus": null,
+    "followersCount": 189,
+    "__typename": "User",
+    "textReviewsCount": 679,
+    "name": "Nils",
+    "webUrl": "https://www.goodreads.com/user/show/3055905-nils",
+    "contributor": null
+  },
+  "recommendFor": null,
+  "updatedAt": 1783780249539,
+  "createdAt": 1783779638147,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1783780249348,
+  "text": "Argues that the profit motive — and more specifically, the fiduciary duty to maximize shareholder value — causes even the best companies drift from their missions, betraying the trust of customers, employees, and investors. Ries describes a kind of “financial gravity” that pulls companies away from their founders’ original purpose as they scale and succeed — success itself attracts pressure toward short-term thinking and extractive behavior, often despite good intentions inside the company. Waiting until a company is already successful to build in protections is too late, he argues, because success is precisely what attracts predatory pressure. The fix has to be structural and built in from the start.<br /><br />The core move Rie’s proposes is to reframe “profit” as the maximization of human flourishing rather than pure shareholder return. This isn’t an argument against profit-making — the book explicitly rejects the idea of pivoting away from profit, arguing instead that doing good and doing well are aligned when governance is designed correctly. My reaction: yes, sometimes, but the problems occur whenever there is disalignment between these two.<br /><br />To resolve (or rather prevent) this conundrum, Ries calls for mission-locked or “incorruptible” governance: structural guardrails — ownership design, board composition, voting structures, legal charters — that bind a company to its founding purpose even as leadership, investors, and market pressures change over time. He introduces the notion of a “spiritual holding company” and argues for something like a universal director’s oath, modeled on the Hippocratic Oath, that would commit corporate leaders to their mission the way doctors commit to patients.<br /><br />The book draws on a wide range of examples spanning historical and contemporary companies: Cadbury, the John Lewis Partnership, Vanguard, Costco (with extensive material on Jim Sinegal and Costco’s predecessor FedMart under Sol Price), Patagonia, GitLab, Novo Nordisk, Grundfos, Whole Foods under John Mackey, and Anthropic. Ries draws on two decades of his own work advising founders and investors, plus his experience building the Long-Term Stock Exchange, to argue these organizations succeeded partly because they built structural protections against mission drift rather than relying on the goodwill of individual leaders.<br /><br />The most interesting analytic is what Ries calls “false proxies,” where metrics like average call-hold-time end up making the underlying service worse rather than better; the claim that technology itself is neutral and that danger lies in who controls it; and the idea that a company’s founding compact is a kind of promise that governance either reinforces with structural support or leaves unenforced. What Ries proposes is to lock in the company’s original mission from the start. But not course no such lock is completely unpickable, as the saga with OpenAI’s conversion from a nonprofit to a for-profit indicates. ",
+  "rating": 4,
+  "preciseRating": 4,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/A11YWPBHNV6A1K",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.NAGl07A_6y8DaCJo",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/3055905?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [],
+    "webUrl": "https://www.goodreads.com/review/show/8760868084",
+    "__typename": "Shelving"
+  },
+  "likeCount": 0,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v1.1HWGg_TFBUfyVZ1-AaIs9Q",
+  "creator": {
+    "id": 7069868,
+    "imageUrlSquare": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/users/1322533800i/7069868.jpg",
+    "isAuthor": false,
+    "viewerRelationshipStatus": null,
+    "followersCount": 39,
+    "__typename": "User",
+    "textReviewsCount": 337,
+    "name": "John",
+    "webUrl": "https://www.goodreads.com/user/show/7069868-john",
+    "contributor": null
+  },
+  "recommendFor": null,
+  "updatedAt": 1786063044522,
+  "createdAt": 1786063028742,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1786063044364,
+  "text": "\"Incorruptible\" is an amazing book. Full of good general advice, compelling case studies, and careful implementation detail, \"Incorruptible\" is getting the full five stars. <br /><br />(Even though the last chapter is, well, completely unhinged.)<br /><br />\"Incorruptible\" is a design book, specifically the institutional design of organizations that have business components but an underlying mission to benefit the public.<br /><br />Under capitalism, that should really be all companies: the commercial transaction, undertaken freely with shared understanding, makes both parties better off. The problem is, with legal precedent tilting corporate obligations to priviledge profit under the most common arragements, there is always going to be pressure to exploit some leverage, such as asymmetric information. Moreover, there's always one key point of this kind of leverage for companies that are mission-driven: compromising the trust that you're continuing to act on the same principles that earned you the trust in the first place.<br /><br />Therefore, it takes a little bit of doing to keep companies on a path that retains their integrity. One has to start by actually have a purpose for the business that increases public flourishing: there has to be a coherent mission to retain. This standard has to be actually known in the company, and have processes that allow everyone to hold everyone else accountable to it. Once you have the processes in place and are actually operating this way, you have to legally establish it, including it in the company charter and board oaths. It helps to lock it into place by making it hard to change, such as by putting members of oversight non-profits on the board and having governance rules that make them hard to remove and change all this. If protocols that further the mission can be instuted as an industry-wide standard, all the better.<br /><br />\"Incorruptible\" has a biblical organization in developing these ideas:<br /><br />* old testiment: case studies explaining the corruption problem<br />* gospels: forming companies with missions and mission-preserving processes<br />* epistles: creating constellations of institutions that lock the mission in place<br />* revelation: a strange vision of the wasteland you'll create for yourself if you undermine enterprises promoting flourishing<br /><br />In addition to the book itself, there are a lot links with QR codes that go to great resources, such as templated legal documents to help you along.<br /><br />Overall, I hope this book becomes required reading for those wanting to think through new commercial endeavors. Thinking not only about what it is all about, but what oversight of the mission would look like, will give a new clarity to the design of new enterprises.<br />",
+  "rating": 5,
+  "preciseRating": 5,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/A39IKEL415P5ZS",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.NAGl07A_6y8DaCJo",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/7069868?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [],
+    "webUrl": "https://www.goodreads.com/review/show/8786827564",
+    "__typename": "Shelving"
+  },
+  "likeCount": 0,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v2.2026061605.ac9e9a9d-50e1-4871-bf87-3779db9e3406",
+  "creator": {
+    "id": 82530971,
+    "imageUrlSquare": "",
+    "isAuthor": false,
+    "viewerRelationshipStatus": null,
+    "followersCount": 0,
+    "__typename": "User",
+    "textReviewsCount": 1,
+    "name": "NAOTAKE MURAYAMA",
+    "webUrl": "https://www.goodreads.com/user/show/82530971-naotake-murayama",
+    "contributor": null
+  },
+  "recommendFor": null,
+  "updatedAt": 1781586261328,
+  "createdAt": 1781586235797,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1781586261146,
+  "text": "If you're building a company with a mission geared towards human flourishing, this is the book to read.<br /><br />Eric Ries' follow-up to \"The Lean Startup\" is no sequel; it goes above and beyond making startups successful, and provides us with inspiring models of companies that defy the constant and seemingly inevitable \"Financial Gravity\" - the pull of shareholder value and conventional fiduciary duty that \"corrupt\" their mission to make the world a better place.<br /><br />This book, however, does not merely leave us in awe of such wonderful companies. It's not about \"keeping founder control,\" too. It provides practical frameworks and practices that build in protective corporate governance to keep companies with a mission worth protecting \"incorruptible.\"<br /><br />It's not just visionary founders. It's also not about idealistic cultures. It's not merely about creative governance structures such as a nonprofit governing entity that holds the majority vote. It's all of those, integrated and inseparable from what the company offers its non-shareholder stakeholders and its competitive advantage.<br /><br />This book also discusses how Incorruptible businesses influence the world beyond themselves and how we, as individual customers, workers, and shareholders, can do our part in keeping them free from corruption, but I'd love you to find that out on your own.<br /><br />Interested? Pick up a copy. You won't be disappointed.<br /><br />Now for something personal.<br /><br />Reading this reminded me of another book, \"Built to Last,\" by Jim Collins and Jerry Porras. I read that book about special companies that stood the test of time and kept on delivering value. That book, and knowing the authors at the Stanford Graduate School of Business, definitely influenced my decision to remain in the US and pursue an entrepreneurial life.<br /><br />I remember getting so excited about \"Built to Last\" and sharing what I learned from the book with anyone who'd graciously spare their attention. One classmate might remember me talking about it nonstop while we made our way to the school parking lot in the rain.<br /><br />Now that I'm older and more world-wary, I might not be preaching about \"Incorruptible\" during a rainy-day walk, but reading it has revitalized the \"itch\" I had - an aspiration to build something remarkable and feel good about bettering a slice of the world (as tiny as it could be) as I was approaching graduation from business school.<br /><br />For that, I thank you, Eric Ries.",
+  "rating": 5,
+  "preciseRating": 5,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/A3QLG3AKOQHQT5",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.NAGl07A_6y8DaCJo",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/82530971?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [
+      {
+        "tag": {
+          "name": "business-finance-entrepreneurship",
+          "webUrl": "https://www.goodreads.com/review/list/82530971?shelf=business-finance-entrepreneurship",
+          "__typename": "Tag"
+        },
+        "__typename": "Tagging"
+      }
+    ],
+    "webUrl": "https://www.goodreads.com/review/show/8690446544",
+    "__typename": "Shelving"
+  },
+  "likeCount": 0,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v2.2026061020.c3bbaf9e-19ab-4ad6-a2cf-eae076620987",
+  "creator": {
+    "id": 194861848,
+    "imageUrlSquare": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/users/1761402773i/194861848._UY200_CR9,0,200,200_.jpg",
+    "isAuthor": true,
+    "viewerRelationshipStatus": null,
+    "followersCount": 1,
+    "__typename": "User",
+    "textReviewsCount": 1,
+    "name": "David Bauman",
+    "webUrl": "https://www.goodreads.com/user/show/194861848-david-bauman",
+    "contributor": {
+      "id": "kca://author/amzn1.gr.author.v3.LRriLs9A3jO5Q9Ua",
+      "works": {
+        "totalCount": 1,
+        "__typename": "ContributorWorksConnection"
+      },
+      "__typename": "Contributor"
+    }
+  },
+  "recommendFor": null,
+  "updatedAt": 1781562543153,
+  "createdAt": 1781125050902,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1781562542958,
+  "text": "I've been teaching college business ethics for over 18 years, and individual choice takes center stage. But other forces are involved that challenge ethical managers and employees. <br /><br />Eric Ries' new book \"Incorruptible\" explains where these forces come from and how founders and business leaders can build a fortress around their mission. <br /><br />In the book he details how the governance structures of many publicly traded companies create a \"financial gravity\" that can destroy a company's founding purpose (serve customers, create value, inspire employees) and replace it with investors extracting as much money as they can. <br /><br />Think of 3M when the new CEO stopped employees from innovating in the name of \"efficiency.\" Or Sears and Whole Foods which were eventually captured by extractive investors.<br /><br />Ries relates these stories along with multiple personal stories of founders who ask him for help against extractive private equity funds or larger corporations. He clearly describes the problem that companies have: investors can purchase enough shares and then rob a corporation of its soul. <br /><br />After defining the problem, Ries explains how companies can create governance structures that protect their purpose beyond making a profit which he redefines as \"maximization of human flourishing.\" These are not boring chapters about law. He provides insights into how we can change the corporate extraction game by writing governance documents that protect the mission. He quotes Jim Sinegal, founder of Costco, as saying, \"On Wall Street, they're in the business of making money between now and Thursday....We want to build a company that will still be here 50 to 60 years from now.\" <br /><br />Ries explains how Sinegal created a \"governance fortress\" so that activist investors could not exploit the company for their own gains. He relates other proven strategies -- constellation structures, spiritual holding companies -- to protect a company's purpose and culture.<br /><br />The strength of the book is Ries' ability to tell the stories behind corporate collapses and corporate triumphs. He also has experience advising many leaders on how to protect their creative creations. <br /><br />His research is detailed, his personal stories are encouraging, and his purpose is practical. Ries lets us know that we can create companies that last and fulfill their mission of caring for People and the Planet while still bringing in a good profit that includes human flourishing. The area the book does not address is what employees and middle managers can do when their company is losing its mission. <br /><br />I heartily recommend the book to anyone who wants to build a long-lasting company. It is also a book for those who want to take power back from investors and shareholders who create nothing but extract everything.",
+  "rating": 5,
+  "preciseRating": 5,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/A1MQC8NARP2Z4Z",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.NAGl07A_6y8DaCJo",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "currently-reading",
+      "displayName": "Currently Reading",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_current",
+      "sortOrder": 1,
+      "webUrl": "https://www.goodreads.com/review/list/194861848?shelf=currently-reading",
+      "__typename": "Shelf"
+    },
+    "taggings": [],
+    "webUrl": "https://www.goodreads.com/review/show/8675970908",
+    "__typename": "Shelving"
+  },
+  "likeCount": 0,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v2.2026052722.3592b79d-c5ca-4333-9e4c-c61df873307e",
+  "creator": {
+    "id": 36132283,
+    "imageUrlSquare": "",
+    "isAuthor": false,
+    "viewerRelationshipStatus": null,
+    "followersCount": 1,
+    "__typename": "User",
+    "textReviewsCount": 1,
+    "name": "Ryan",
+    "webUrl": "https://www.goodreads.com/user/show/36132283-ryan",
+    "contributor": null
+  },
+  "recommendFor": null,
+  "updatedAt": 1779919888311,
+  "createdAt": 1779919742851,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1779919888139,
+  "text": "I am the author of \"The B Corp Handbook.\" Incorruptible is one of the most important books for the B Corp movement I have ever read.<br /><br />Eric’s main point in the book is that good companies do not usually lose their way because people stop caring. They drift because “financial gravity” pulls their ownership, governance, incentives, investors, and accountability systems away from their stated purpose.<br /><br />His warning for B Corps is especially important: benefit corporation status helps, but it is not enough.<br /><br />Allbirds is a vivid example. The company was both a B Corp and a public benefit corporation, yet financial gravity pushed them to rapidly scale and overextend in search of profitability. Eventually, as we saw in recent news headlines, this pressure contributed to a dramatic unraveling of the company’s original business model and mission identity. That does not mean B Corp certification or benefit corporation laws are meaningless. It means that B Corps need to get creative to ensure their long-term viability.<br /><br />The companies Eric points to include well-known B Corps like Tony’s Chocolonely and Patagonia, along with mainstream businesses like Anthropic, IKEA, Hershey’s, Novo Nordisk, and Costco, all have unique mission-locked architecture. Whether through mission guardians, foundations, trusts, employee ownership, or otherwise, all of these companies are designed to resist pressure over time.<br /><br />For B Corps, Incorruptible is a reminder that going beyond the standard \"B Corp + benefit corp\" structure is needed to build companies that are set up for the next 50 to 100 years or longer.",
+  "rating": 5,
+  "preciseRating": 5,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/AXVR1K4HJVLGZ",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.NAGl07A_6y8DaCJo",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/36132283?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [],
+    "webUrl": "https://www.goodreads.com/review/show/8636928408",
+    "__typename": "Shelving"
+  },
+  "likeCount": 0,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v1.Zbvz5v8oLS-qq9SGhyLy8w",
+  "creator": {
+    "id": 36085391,
+    "imageUrlSquare": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/users/1738764162i/36085391._UY200_CR45,0,200,200_.jpg",
+    "isAuthor": true,
+    "viewerRelationshipStatus": null,
+    "followersCount": 5,
+    "__typename": "User",
+    "textReviewsCount": 300,
+    "name": "Ron Scheese",
+    "webUrl": "https://www.goodreads.com/user/show/36085391-ron-scheese",
+    "contributor": {
+      "id": "kca://author/amzn1.gr.author.v3.dsBPfOWEUnzXJziW",
+      "works": {
+        "totalCount": 1,
+        "__typename": "ContributorWorksConnection"
+      },
+      "__typename": "Contributor"
+    }
+  },
+  "recommendFor": null,
+  "updatedAt": 1784758414107,
+  "createdAt": 1784758371594,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1784758413925,
+  "text": "<strong>Thought Provoking</strong><br /><br />I just finished Eric Ries' latest book \"Incorruptible,\" one of the most thought-provoking books I've read on building organizations designed to endure.<br /><br />As someone deeply interested in creating an evergreen company—one that can thrive across generations rather than simply optimize for short-term results—I found the book both inspiring and practical. Ries challenges many of the assumptions that drive modern business leadership, especially the tendency to prioritize immediate gains over long-term stewardship. He offers a compelling framework for designing governance structures, incentives, and decision-making processes that protect the mission of a company from being gradually compromised over time.<br /><br />Some of the concepts are still emerging theories, while others are grounded in decades of real-world testing and organizational experience. What makes the book valuable is that Ries doesn't simply critique the current system; he provides a vision for what durable, principled, and resilient organizations can look like.<br /><br />This book was recommended to me by a friend who has successfully led a triple-bottom-line company for over 40 years. After reading it, I understand exactly why it resonated with him. The ideas align closely with what many mission-driven and evergreen leaders wrestle with: how to grow, innovate, and create value without sacrificing the principles that made the organization worth building in the first place.<br /><br />Whether you're an entrepreneur, business owner, board member, or leader thinking about the next generation of your company, \"Incorruptible\" is well worth your time.",
+  "rating": 5,
+  "preciseRating": 5,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/A1ZV8OEWHXZB30",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.ZAr5eKXcmVdXwUD-",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/36085391?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [],
+    "webUrl": "https://www.goodreads.com/review/show/8652559898",
+    "__typename": "Shelving"
+  },
+  "likeCount": 0,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v2.2026070408.b8685985-ca95-4567-bb1d-9f11bafcbdbd",
+  "creator": {
+    "id": 11116469,
+    "imageUrlSquare": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/users/1765918495i/11116469._UX200_CR0,0,200,200_.jpg",
+    "isAuthor": false,
+    "viewerRelationshipStatus": null,
+    "followersCount": 1468,
+    "__typename": "User",
+    "textReviewsCount": 1307,
+    "name": "Sebastian Gebski",
+    "webUrl": "https://www.goodreads.com/user/show/11116469-sebastian-gebski",
+    "contributor": null
+  },
+  "recommendFor": null,
+  "updatedAt": 1783154752407,
+  "createdAt": 1783154265364,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1783154752234,
+  "text": "If you expect this one will get as much reverb as \"Lean Startup\" - it's not going to happen.<br />The topic (&amp; the promise associated -&gt; what to do to preserve your initial success, and culture, and effectiveness - as your company grows and scales) is actually very interesting, so the potential was definitely in place, but ...<br /><br />... the diagnosis is overly simplified. The solution (according to Ries) is being \"mission-driven\" - it's definitely the part of the equation, but I'd expect a deeper dive, e.g.:<br />- intrinsically motivated individuals ...<br />- ... with their motivations aligned to org's goals, ...<br />- ... skin in the game and ...<br />- ... \"good game's\" ticks all on<br /><br />Ries iterates and re-iterates, evangelizes and preaches (TBH the last chapters were really unbearable), but doesn't get very practical, barely builds any heuristics. Even his examples are rather un-inspired, especially if you've read a bit about Patagonia (e.g., the book on its founder) or know a bit better how GitLab works.<br /><br />Yes, there are some interesting ideas here (e.g., about mixed models of for-profit+non-profit), but they start appearing detached from reality, when Ries ignores what he has written (very well) in the beginning of this book about \"financial gravity\". The reason is probably simple -&gt; he became a guru of startupers, so he may have a twisted opinion on how hard/easy it is to acquire some money for a fledgling business.<br /><br />Long story short- yaaaawn. Awesome topic that requires a far better, truly thought-through approach.",
+  "rating": 2,
+  "preciseRating": 2,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/AOCO6IR9XZS4V",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.NAGl07A_6y8DaCJo",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/11116469?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [],
+    "webUrl": "https://www.goodreads.com/review/show/8718934755",
+    "__typename": "Shelving"
+  },
+  "likeCount": 4,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v1.vy4gJ5gMy9QulC-OPLCccA",
+  "creator": {
+    "id": 145664176,
+    "imageUrlSquare": "",
+    "isAuthor": false,
+    "viewerRelationshipStatus": null,
+    "followersCount": 0,
+    "__typename": "User",
+    "textReviewsCount": 4,
+    "name": "Federica",
+    "webUrl": "https://www.goodreads.com/user/show/145664176-federica",
+    "contributor": null
+  },
+  "recommendFor": null,
+  "updatedAt": 1780106791023,
+  "createdAt": 1780106311170,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1780106790833,
+  "text": "This is one of the best books I have read recently, and I can't recommend it enough. I am an early founder, and I spent the last months trying to figure out how to build a company that is mission-protected. I read a number of books and articles, but none hit the mark like Incorruptible. Eric Ries was able to put into word many concepts I thought about but didn't really know how to articulate. I particularly loved the examples: now, when I talk to other founders or investors about steward ownership and the perils of short-term profit maximization, I have so many clear examples to share that bring the concepts to life.<br /><br />I think every aspiring entrepreneur should read this book. It is clear that building a startup is not just about shipping an MVP out fast, but founders should think early also about how to build in a way that protects the company and their work in the long term, and that allows a company to survive and thrive in the long term.<br /><br />I also encourage reading it to investors - we need capital that will support the structures that Eric Ries proposes.<br /><br />I finished the book inspired, with clear frameworks on how to implement a mission-lock in real life, and hopeful that I have finally found a community of people who share my same vision for businesses and a new type of capitalism.",
+  "rating": 5,
+  "preciseRating": 5,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/A3JFL0KRDTKJYG",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.ZAr5eKXcmVdXwUD-",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/145664176?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [],
+    "webUrl": "https://www.goodreads.com/review/show/8642604117",
+    "__typename": "Shelving"
+  },
+  "likeCount": 0,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v2.2026070712.24cb80bb-1663-41d0-ad58-1928c1480523",
+  "creator": {
+    "id": 4752059,
+    "imageUrlSquare": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/users/1674476499i/4752059._UY200_CR2,0,200,200_.jpg",
+    "isAuthor": true,
+    "viewerRelationshipStatus": null,
+    "followersCount": 73,
+    "__typename": "User",
+    "textReviewsCount": 296,
+    "name": "Захарченко Віктор",
+    "webUrl": "https://www.goodreads.com/user/show/4752059",
+    "contributor": {
+      "id": "kca://author/amzn1.gr.author.v3.742YQAesXeGTo9m4",
+      "works": {
+        "totalCount": 1,
+        "__typename": "ContributorWorksConnection"
+      },
+      "__typename": "Contributor"
+    }
+  },
+  "recommendFor": null,
+  "updatedAt": 1783425922076,
+  "createdAt": 1783425881590,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1783425921869,
+  "text": "Влітку 1975 року Сол Прайс прийшов на роботу й не зміг відчинити двері власної компанії. Замки змінили за ніч. За двадцять років до того він винайшов формат, який згодом поховає половину американського ритейлу, – магазин-склад із членством, де ціни тримаються близько до собівартості. FedMart на той момент мав сорок крамниць і понад 350 мільйонів доларів річних продажів. Прайс платив працівникам удвічі більше за ринок, обмежував власну націнку й називав покупця клієнтом, перед яким має фідуціарний обов’язок. Він навіть вивішував у залі рекламу конкурентів зі словами: «Не купуйте це в мене. Через дорогу дешевше».<br /><br />Інвестори, яким він продав дві третини компанії німецькому ритейлеру Гуго Манну, бачили в цьому марнотратство. Чому націнка обмежена, коли можна заробляти більше? Навіщо платити вдвічі, коли люди підуть працювати й за менше? Менш ніж через рік після угоди Прайса звільнили з компанії, яку він заснував. Нові власники взялися «виправляти» його філософію. До 1982 року FedMart закрився повністю – сорок шість крамниць, вісім тисяч робочих місць. Бізнес не програв ринку. Його випатрали зсередини ті, хто був упевнений, що знає краще.",
+  "rating": 5,
+  "preciseRating": 5,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/A76TJLG4CX6Y",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.NAGl07A_6y8DaCJo",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/4752059?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [],
+    "webUrl": "https://www.goodreads.com/review/show/8749346200",
+    "__typename": "Shelving"
+  },
+  "likeCount": 0,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v1.crV0m5r7NOjELhJkHsWdSA",
+  "creator": {
+    "id": 161494773,
+    "imageUrlSquare": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/users/1704082907i/161494773._UY200_CR0,0,200,200_.jpg",
+    "isAuthor": false,
+    "viewerRelationshipStatus": null,
+    "followersCount": 0,
+    "__typename": "User",
+    "textReviewsCount": 162,
+    "name": "Eric",
+    "webUrl": "https://www.goodreads.com/user/show/161494773-eric",
+    "contributor": null
+  },
+  "recommendFor": null,
+  "updatedAt": 1783798199616,
+  "createdAt": 1783798191718,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1783798199452,
+  "text": "Really interesting premise that resonated strongly: why do so many companies enshittify? Why do they betray the principles that are foundational to their success?<br /><br />Dries up/becomes a bit repetitive when shifting from describing the problem to describing the solution, which is a shame because the solution section still felt very high-level—more a list of terms to search then a true blueprint or proof of why these things work in practice. Likewise, there was a lot of cited research, but I had some lingering concerns as to the direction of causality or if there may be some selection bias.<br /><br />That said, there’s still a ton of valuable inspiration and really fascinating case studies within this book. The timing of its release seems perfect, given how many conversations about finding deeper meaning within corporate life seem to be occurring due to recent AI advances. While I couldn’t quite get myself to five stars, I’ve been enthusiastically recommending and discussing it with colleagues all week!",
+  "rating": 4,
+  "preciseRating": 4,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/A1HS7KL2LFQWDT",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.NAGl07A_6y8DaCJo",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/161494773?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [],
+    "webUrl": "https://www.goodreads.com/review/show/8746573800",
+    "__typename": "Shelving"
+  },
+  "likeCount": 0,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v2.2026072014.c8792b04-23d3-40d0-b490-1b7494722e77",
+  "creator": {
+    "id": 29091176,
+    "imageUrlSquare": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/users/1393450510i/29091176._UX200_CR0,27,200,200_.jpg",
+    "isAuthor": false,
+    "viewerRelationshipStatus": null,
+    "followersCount": 12,
+    "__typename": "User",
+    "textReviewsCount": 2,
+    "name": "James Cracknell",
+    "webUrl": "https://www.goodreads.com/user/show/29091176-james-cracknell",
+    "contributor": null
+  },
+  "recommendFor": null,
+  "updatedAt": 1784558082803,
+  "createdAt": 1784557541378,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1784558082637,
+  "text": "The book is the result of Eric Ries's ambitions spelt out at the end of The Lean Startup: the idea of creating a Long Term Stock Exchange, where the longevity of companies and investments is measured in years, not weeks. For anyone who believes that short-termism is the denial of smart thinking, this book should resonate. It is not a manifesto for change but more of a blueprint. He speaks the language of mission lock, introduces us to the concept of financial gravity, and explores the world of emergence. There are practical steps in how to do this, and many, many reasons why you should. In today's world of volatility and uncertainty, the longer-term perspective is the least fashionable. If I were Burnham stepping into Downing Street, my first call would be to Eric Ries and ask: how do we build the civic infrastructure the UK needs to upend short-termism and focus on the longevity of quality businesses? Having read many business books, this one is a corker and probably the finest of its ilk for many years. ",
+  "rating": 5,
+  "preciseRating": 5,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/A2DGFXX39YXCHO",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.NAGl07A_6y8DaCJo",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/29091176?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [],
+    "webUrl": "https://www.goodreads.com/review/show/8786019110",
+    "__typename": "Shelving"
+  },
+  "likeCount": 0,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v1.-cijOwsu4cTm8Wq1RqO-Fg",
+  "creator": {
+    "id": 201369030,
+    "imageUrlSquare": "",
+    "isAuthor": false,
+    "viewerRelationshipStatus": null,
+    "followersCount": 0,
+    "__typename": "User",
+    "textReviewsCount": 1,
+    "name": "Bridget Harris",
+    "webUrl": "https://www.goodreads.com/user/show/201369030-bridget-harris",
+    "contributor": null
+  },
+  "recommendFor": null,
+  "updatedAt": 1779789999548,
+  "createdAt": 1779788819056,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1779789999548,
+  "text": "This is a must-read for anyone involved in building durable businesses, or trying to do something good within our capitalist system. <br /><br />I finished the book feeling really hopeful - Eric Ries gives a super clear account of why companies can fail to deliver on the good intentions they had at their founding, and a brilliant toolkit for anyone hoping to build something enduringly positive. <br /><br />It's extremely well researched, engagingly written and synthesises a lot of fun, underexplored examples (Grundfos pumps, anyone? Volvo seat belts?) that stick in the brain and show you that things can be done better. I was looking for a book like this over the course of my 7 years in investment, and was amazed by the lack of strong literature on this topic. Incorruptible fills a real gap, and does so in a brilliant, highly practical way.",
+  "rating": 5,
+  "preciseRating": 5,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/A1ZUX4XJ2RMGSL",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.NAGl07A_6y8DaCJo",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/201369030?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [],
+    "webUrl": "https://www.goodreads.com/review/show/8632617987",
+    "__typename": "Shelving"
+  },
+  "likeCount": 0,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v1.r-wozcDQdAbHR8Xqe3NLZg",
+  "creator": {
+    "id": 4738716,
+    "imageUrlSquare": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/users/1294004443i/4738716._UX200_CR0,33,200,200_.jpg",
+    "isAuthor": false,
+    "viewerRelationshipStatus": null,
+    "followersCount": 7,
+    "__typename": "User",
+    "textReviewsCount": 39,
+    "name": "Joel Silverberg",
+    "webUrl": "https://www.goodreads.com/user/show/4738716-joel-silverberg",
+    "contributor": null
+  },
+  "recommendFor": null,
+  "updatedAt": 1784379712419,
+  "createdAt": 1784379301611,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1784379712271,
+  "text": "The most inspiring business book I’ve read, it makes a coherent argument for market capitalism serving a larger purpose. Particularly interesting given it’s really a book about corporate governance— a domain typically reserved for lawyers and highly unusual for such a broadly accessible and relevant book. The way the book is structured, starting micro and slowly zooming out further and further, was very clever. The case studies are well researched. Weiss manages to publish what is in many parts a critique of capitalism, without offending his friends and peers (CEOs, venture capitalists, LPs). This is impressive. But also means the language is less searing, direct, and fun than it could be. But it’s also what enables this book to be a best seller. And the message here, building businesses that serve a mission instead of short term extractionism, deserves to go far and wide. ",
+  "rating": 4,
+  "preciseRating": 4,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/A2LAABF4P1NETN",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.NAGl07A_6y8DaCJo",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/4738716?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [],
+    "webUrl": "https://www.goodreads.com/review/show/8574076243",
+    "__typename": "Shelving"
+  },
+  "likeCount": 0,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v1.OguxA95g5kXLBQxZm7KFiQ",
+  "creator": {
+    "id": 37997622,
+    "imageUrlSquare": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/users/1509998885i/37997622._UX200_CR0,0,200,200_.jpg",
+    "isAuthor": false,
+    "viewerRelationshipStatus": null,
+    "followersCount": 0,
+    "__typename": "User",
+    "textReviewsCount": 16,
+    "name": "David Vugteveen",
+    "webUrl": "https://www.goodreads.com/user/show/37997622-david-vugteveen",
+    "contributor": null
+  },
+  "recommendFor": null,
+  "updatedAt": 1779925425878,
+  "createdAt": 1779924754980,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1779925425690,
+  "text": "<strong>from the bathroom floor</strong><br /><br />You will run into memorable stories and statements right from the start. I couldn’t put this book down until done; and if you are serious about business success, you might experience that too! The premise is simple and Eric says it so well;<br /><br />“Over the weeks that followed, The Professor and I forged a different path for his fledgling company. A path that would allow them to shape their own future. Discovering that path required me to unlearn everything I thought I knew about business, from the very definition of profit itself to the fundamental way we build and structure organizations. Now let me share it with you.”",
+  "rating": 5,
+  "preciseRating": 5,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/A3FI45ZYK97080",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.ZAr5eKXcmVdXwUD-",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/37997622?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [],
+    "webUrl": "https://www.goodreads.com/review/show/8636998166",
+    "__typename": "Shelving"
+  },
+  "likeCount": 0,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v1.f4lApXr5xqEqqm51xU3HDA",
+  "creator": {
+    "id": 184917894,
+    "imageUrlSquare": "",
+    "isAuthor": false,
+    "viewerRelationshipStatus": null,
+    "followersCount": 0,
+    "__typename": "User",
+    "textReviewsCount": 23,
+    "name": "Nicolas Cuba",
+    "webUrl": "https://www.goodreads.com/user/show/184917894-nicolas-cuba",
+    "contributor": null
+  },
+  "recommendFor": null,
+  "updatedAt": 1780574729687,
+  "createdAt": 1780574218642,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1780574729505,
+  "text": "Seducing all the liberal latinx women around me by outlining responsible corporate governance and why we don’t have to be slaves to maximizing shareholder value. <br /><br />Public benefit corporation with the purpose written in the charter? Of course. Mission-aligned directors having skin in the game? Gladly. <br /><br />Jokes aside, incredible book for those looking to build a company with purpose. Having already experienced the downsides of nearsightedness and losing site of the mission, executing these strategies seem like a solid option to ensure a venture’s the long term viability. It’s always too early, until it’s too late. ",
+  "rating": 4,
+  "preciseRating": 4,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/AR2APFVS8CC29",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.NAGl07A_6y8DaCJo",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/184917894?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [],
+    "webUrl": "https://www.goodreads.com/review/show/8658363953",
+    "__typename": "Shelving"
+  },
+  "likeCount": 0,
+  "viewerHasLiked": null,
+  "commentCount": 0
+},
+{
+  "bookUrl": "https://www.goodreads.com/book/show/242970642-incorruptible",
+  "__typename": "Review",
+  "id": "kca://review:goodreads/amzn1.gr.review:goodreads.v1.rWNAzn6yWgIeEQztL8ImQA",
+  "creator": {
+    "id": 12098774,
+    "imageUrlSquare": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/users/1617380291i/12098774._UY200_CR3,0,200,200_.jpg",
+    "isAuthor": true,
+    "viewerRelationshipStatus": null,
+    "followersCount": 18,
+    "__typename": "User",
+    "textReviewsCount": 348,
+    "name": "Nacho Bassino",
+    "webUrl": "https://www.goodreads.com/user/show/12098774-nacho-bassino",
+    "contributor": {
+      "id": "kca://author/amzn1.gr.author.v3.2H7mXiwx0LuTDPAD",
+      "works": {
+        "totalCount": 4,
+        "__typename": "ContributorWorksConnection"
+      },
+      "__typename": "Contributor"
+    }
+  },
+  "recommendFor": null,
+  "updatedAt": 1789830016637,
+  "createdAt": 1789829346485,
+  "spoilerStatus": false,
+  "lastRevisionAt": 1789830016637,
+  "text": "Best business book I have read in a while. The argument is that mission drift is not a character problem but a structural one: financial gravity bends every company eventually, so if you care about staying who you are, you design it into ownership and governance instead of trusting yourself to be good. That reframing landed hard. The cases are the strongest part, Costco, Cadbury, John Lewis, Anthropic's benefit trust, and the stage by stage playbook is concrete. Most of the machinery assumes venture backing, which is not my situation, but the diagnosis applies at any size and I have not stopped thinking about it.",
+  "rating": 5,
+  "preciseRating": 5,
+  "preReleaseBookSource": null,
+  "shelving": {
+    "creator": {
+      "id": "kca://profile:goodreads/A2KEVNAWFIHPWD",
+      "__typename": "User"
+    },
+    "book": {
+      "id": "kca://book/amzn1.gr.book.v3.ZAr5eKXcmVdXwUD-",
+      "__typename": "Book"
+    },
+    "shelf": {
+      "name": "read",
+      "displayName": "Read",
+      "editable": false,
+      "default": true,
+      "actionType": "add_to_read",
+      "sortOrder": 2,
+      "webUrl": "https://www.goodreads.com/review/list/12098774?shelf=read",
+      "__typename": "Shelf"
+    },
+    "taggings": [],
+    "webUrl": "https://www.goodreads.com/review/show/8957970191",
+    "__typename": "Shelving"
+  },
+  "likeCount": 0,
+  "viewerHasLiked": null,
+  "commentCount": 0
+}]
