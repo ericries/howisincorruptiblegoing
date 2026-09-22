@@ -1,0 +1,30 @@
+{
+  "id": "2026-09-22-business-leader-podcast-richard-harpin",
+  "date": "2026-09-22",
+  "type": "podcast",
+  "title": "The Business Leader Podcast — Sir Richard Harpin hosts Eric Ries: 'Anybody who has found a way to make money without creating value is corrupting the moral logic of our economic system'",
+  "summary": "The Business Leader Podcast — UK business publication (38K YouTube subs; sponsored by RBC Wealth Management) hosted by Sir Richard Harpin (founder of Homeserve; £4B exit) — releases a 62-minute conversation with Eric on Incorruptible. Frames the book as 'Silicon Valley's innovation bible, Part Two': how successful startups get ground down by corporate governance norms and best practices, why financial gravity affects even visionary founders, and Ries's blueprint for retaining integrity through long-term growth.",
+  "blockquote": "Anybody who has found a way to make money without creating value is corrupting the moral logic of our economic system.",
+  "blockquote_source": "Eric Ries on The Business Leader Podcast with Sir Richard Harpin",
+  "source_url": "https://www.youtube.com/watch?v=tsd6DF1KJT8",
+  "source_urls": [
+    {"url": "https://podcasts.apple.com/podcast/the-business-leader-podcast/id1533544566", "label": "Apple Podcasts"}
+  ],
+  "video_url": "https://www.youtube.com/watch?v=tsd6DF1KJT8",
+  "image": "/images/podcasts/business-leader.jpg",
+  "attribution": "Sir Richard Harpin",
+  "attribution_title": "Host, The Business Leader Podcast · Founder, Homeserve (£4B exit)",
+  "attribution_image": null,
+  "tags": [
+    "podcast",
+    "youtube",
+    "business-leader",
+    "uk",
+    "richard-harpin",
+    "financial-gravity"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-09-22T16:45:00Z"
+}
