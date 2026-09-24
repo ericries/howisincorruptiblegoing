@@ -83,7 +83,10 @@ def _passes_selection_gates(r: dict) -> tuple[bool, str]:
     2. Must have a book anchor (Incorruptible / book / Eric Ries / read it) —
        otherwise the quote can't stand alone on its own image.
     3. Reject leading pronouns UNLESS an anchor appears in the first ~40 chars.
-    4. Length floor: 60 substantive chars.
+    4. Length floor: 60 substantive chars for regex-matched items; 30 for
+       LLM-verified items (short "It's amazing"-class superlatives are
+       intentionally kept short — Claude's second-pass classifier already
+       vouched for them, and short, sharp cards are highly shareable).
     """
     if r.get("already_have"):
         return False, "already_have"
@@ -94,7 +97,9 @@ def _passes_selection_gates(r: dict) -> tuple[bool, str]:
 
     # Length floor — measured after emoji strip / url removal
     substantive = re.sub(r"https?://\S+", "", q).strip()
-    if len(substantive) < 60:
+    is_llm = "<llm>" in (r.get("superlative_matches") or [])
+    min_len = 30 if is_llm else 60
+    if len(substantive) < min_len:
         return False, f"too-short ({len(substantive)} chars)"
 
     if not _ANCHORS.search(q):

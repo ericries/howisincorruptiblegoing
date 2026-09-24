@@ -79,6 +79,26 @@ SUPERLATIVE_PATTERNS = [
 
 COMPILED = [re.compile(p, re.IGNORECASE) for p in SUPERLATIVE_PATTERNS]
 
+# ---- Book-anchor gate (drives the LLM second pass done in the cron turn) ----
+# Regex above catches OBVIOUS superlatives. Short valid superlatives ("It's
+# amazing", "loved it", unusual phrasings) get missed. Those get caught by a
+# SECOND PASS done in the cron turn: this script also emits a candidates queue
+# (items that pass the anchor gate but got no regex hit) at
+#   data/archive/linkedin-comments/.llm-queue.json
+# The daily cron prompt tells Claude to read that queue, classify each item
+# in-turn, and re-run this script with `--apply-verdicts <path>` to append
+# LLM-verified records to today's archive.
+#
+# No external LLM API is called from this script. The classifier is Claude
+# itself, in the cron turn — no API keys required.
+
+BOOK_ANCHOR_RE = re.compile(
+    r"\b(incorruptible|eric\s*ries|@ericries|@ericriesactual)\b",
+    re.IGNORECASE,
+)
+
+LLM_QUEUE_PATH = ARCHIVE_DIR / ".llm-queue.json"
+
 # Emoji ranges we care about (BMP + supplemental plane pictographs). Also
 # catches ⭐/🌟 (U+2B50/U+1F31F) and other common social punctuation.
 EMOJI_RE = re.compile(
@@ -435,6 +455,10 @@ def _load_seen_identifiers() -> set[str]:
     same post/comment isn't re-captured on a later scan."""
     seen: set[str] = set()
     for f in ARCHIVE_DIR.glob("*.json"):
+        # Skip hidden files (e.g. .llm-queue.json — that's the pending-classification
+        # queue, not archived records)
+        if f.name.startswith("."):
+            continue
         try:
             for r in json.loads(f.read_text()):
                 ident = r.get("identifier")
@@ -445,12 +469,109 @@ def _load_seen_identifiers() -> set[str]:
     return seen
 
 
+def _apply_verdicts_mode(verdicts_path: Path) -> int:
+    """Second-pass entry point. Read a JSON list of LLM verdicts from Claude's
+    cron turn and append them to today's archive as `<llm>`-flagged records.
+
+    Verdict schema (each item):
+      {
+        "identifier": "comment:1234567" or "activity:1234567" or "post:...",
+        "kind": "post" | "comment",
+        "source_scan": "linkedin-keyword" | "linkedin-author-eries",
+        "text": "<full text of the item>",
+        "pull_quote": "<verbatim short pull-quote, <=360 chars>",
+        "permalink": "https://linkedin.com/...",
+        "posted_at": "2026-09-24T..." (or null),
+        "reactions": 12 (or null),
+        "comments_count": 3 (or null),
+        "author": {"name": "...", "headline": "...", "profile_url": "..."},
+        "parent_post": {...} | null
+      }
+    """
+    verdicts = json.loads(verdicts_path.read_text())
+    if not isinstance(verdicts, list):
+        print("verdicts JSON must be a list", file=sys.stderr)
+        return 2
+
+    known_urls = _load_known_source_urls()
+    known_names = _load_known_author_names()
+    seen_identifiers = _load_seen_identifiers()
+
+    today = datetime.date.today().isoformat()
+    archive_path = ARCHIVE_DIR / f"{today}.json"
+    existing: list[dict] = json.loads(archive_path.read_text()) if archive_path.exists() else []
+
+    added = 0
+    skipped_seen = 0
+    skipped_short = 0
+    for v in verdicts:
+        ident = v.get("identifier")
+        text = v.get("text") or ""
+        if not ident or not text:
+            continue
+        if ident in seen_identifiers:
+            skipped_seen += 1
+            continue
+        substantive = _substantive_text(text)
+        if len(substantive) < 12:
+            skipped_short += 1
+            continue
+        quote = (v.get("pull_quote") or "").strip() or _sentence_span_containing(text, "")[:360]
+        author = v.get("author") or {}
+        rec = {
+            "captured_at": (datetime.datetime.now(datetime.UTC)
+                            .replace(microsecond=0, tzinfo=None).isoformat() + "Z"),
+            "source_scan": v.get("source_scan") or "unknown",
+            "item_kind": v.get("kind") or "comment",
+            "identifier": ident,
+            "superlative_matches": ["<llm>"],
+            "full_text": text,
+            "pull_quote": quote,
+            "quotes_the_book": False,
+            "has_emoji": has_emoji(text),
+            "low_confidence": len(substantive) < 40,
+            "already_have": _already_have(
+                v.get("permalink"), author.get("name"),
+                known_urls, known_names,
+            ),
+            "author": author,
+            "permalink": v.get("permalink"),
+            "posted_at": v.get("posted_at"),
+            "reactions": v.get("reactions"),
+            "comments_count": v.get("comments_count"),
+            "parent_post": v.get("parent_post"),
+        }
+        seen_identifiers.add(ident)
+        existing.append(rec)
+        added += 1
+
+    archive_path.write_text(json.dumps(existing, indent=2, ensure_ascii=False))
+    # Clear the queue file after applying.
+    if LLM_QUEUE_PATH.exists():
+        LLM_QUEUE_PATH.unlink()
+    print(
+        f"Applied {added} LLM-verified records (skipped: seen={skipped_seen}, "
+        f"short={skipped_short}) to {archive_path.relative_to(ROOT)}. "
+        f"Queue cleared."
+    )
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("input", help="Path to Apify scan JSON (post items array)")
+    ap.add_argument("input", nargs="?",
+                    help="Path to Apify scan JSON (post items array). Omit when using --apply-verdicts.")
     ap.add_argument("--scan-source", default="unknown",
                     help="Label for this scan (e.g. linkedin-keyword, linkedin-author-eries)")
+    ap.add_argument("--apply-verdicts", metavar="PATH",
+                    help="Second-pass mode: read a JSON list of LLM verdicts from Claude's cron turn and append them as <llm>-flagged records.")
     args = ap.parse_args()
+
+    if args.apply_verdicts:
+        return _apply_verdicts_mode(Path(args.apply_verdicts))
+
+    if not args.input:
+        ap.error("input JSON is required unless --apply-verdicts is used")
 
     data = json.loads(Path(args.input).read_text())
     items = data if isinstance(data, list) else data.get("items", [])
@@ -468,9 +589,11 @@ def main() -> int:
     new_records: list[dict] = []
     scanned_posts = 0
     scanned_comments = 0
+    llm_queue: list[dict] = []  # candidates for Claude's second-pass classification
     for post in items:
         scanned_posts += 1
         scanned_comments += len(post.get("comments") or [])
+        # Pass 1: regex
         for rec in _iter_items(post, args.scan_source, known_urls, known_names):
             ident = rec.get("identifier")
             if not ident or ident in seen_identifiers:
@@ -478,25 +601,98 @@ def main() -> int:
             seen_identifiers.add(ident)
             new_records.append(rec)
 
+        # Pass 2 (queue only — no LLM call here): items that PASSED book-anchor
+        # but had no regex hits get emitted to the queue for Claude's cron turn
+        # to classify.
+        post_text = post.get("content") or post.get("commentary") or ""
+        if post_text and BOOK_ANCHOR_RE.search(post_text) and not find_matches(post_text):
+            permalink = _post_permalink(post)
+            kind = "comment" if permalink and "commentUrn=" in permalink else "post"
+            ident = _stable_identifier(
+                kind=kind, permalink=permalink,
+                raw_id=_get(post, "id", "postId", "entityId"),
+            )
+            if ident and ident not in seen_identifiers:
+                llm_queue.append({
+                    "identifier": ident,
+                    "kind": kind,
+                    "source_scan": args.scan_source,
+                    "text": post_text,
+                    "permalink": permalink,
+                    "posted_at": (post.get("postedAt") or {}).get("date") or post.get("createdAt"),
+                    "reactions": (post.get("engagement") or {}).get("likes"),
+                    "comments_count": (post.get("engagement") or {}).get("comments"),
+                    "author": _author_from(post.get("author") or post.get("actor")),
+                    "parent_post": None,
+                })
+        for cmt in post.get("comments") or []:
+            ctext = cmt.get("commentary") or cmt.get("text") or ""
+            # For comments on Eric's OWN feed, the parent post already establishes the
+            # book context, so a bare superlative like "It's amazing" counts. On keyword
+            # scans, treat comments under a book-anchored parent post as anchored too.
+            comment_anchor = (
+                BOOK_ANCHOR_RE.search(ctext)
+                or args.scan_source.startswith("linkedin-author-eries")
+                or BOOK_ANCHOR_RE.search(post_text or "")
+            )
+            if ctext and comment_anchor and not find_matches(ctext):
+                cmt_permalink = _comment_permalink(cmt)
+                ident = _stable_identifier(
+                    kind="comment", permalink=cmt_permalink,
+                    raw_id=_get(cmt, "id", "urn"),
+                )
+                if ident and ident not in seen_identifiers:
+                    llm_queue.append({
+                        "identifier": ident,
+                        "kind": "comment",
+                        "source_scan": args.scan_source,
+                        "text": ctext,
+                        "permalink": cmt_permalink,
+                        "posted_at": cmt.get("createdAt") or (cmt.get("postedAt") or {}).get("date"),
+                        "reactions": (cmt.get("engagement") or {}).get("likes"),
+                        "comments_count": (cmt.get("engagement") or {}).get("comments"),
+                        "author": _author_from(cmt.get("actor") or cmt.get("author")),
+                        "parent_post": normalize_post_meta(post),
+                    })
+
     if new_records:
         merged = existing + new_records
         archive_path.write_text(json.dumps(merged, indent=2, ensure_ascii=False))
-        # count kinds for a slightly more useful print line
         n_posts = sum(1 for r in new_records if r.get("item_kind") == "post")
         n_cmts = sum(1 for r in new_records if r.get("item_kind") == "comment")
         n_dupes = sum(1 for r in new_records if r.get("already_have"))
         n_low = sum(1 for r in new_records if r.get("low_confidence"))
         print(
             f"Scanned {scanned_posts} posts / {scanned_comments} comments. "
-            f"Archived {len(new_records)} new superlative items "
+            f"Archived {len(new_records)} regex-matched items "
             f"(posts={n_posts}, comments={n_cmts}, already_have={n_dupes}, "
             f"low_confidence={n_low}) to {archive_path.relative_to(ROOT)}"
         )
     else:
         print(
             f"Scanned {scanned_posts} posts / {scanned_comments} comments. "
-            f"No new superlative items (archive: {archive_path.relative_to(ROOT)})."
+            f"No new regex-matched items (archive: {archive_path.relative_to(ROOT)})."
         )
+
+    # Persist / merge the LLM queue for the cron-turn second pass.
+    existing_queue: list[dict] = []
+    if LLM_QUEUE_PATH.exists():
+        try:
+            existing_queue = json.loads(LLM_QUEUE_PATH.read_text())
+        except Exception:
+            existing_queue = []
+    # Dedup queue by identifier across both scan sources.
+    seen_q = {q.get("identifier") for q in existing_queue if q.get("identifier")}
+    merged_queue = existing_queue + [q for q in llm_queue if q.get("identifier") and q["identifier"] not in seen_q]
+    LLM_QUEUE_PATH.write_text(json.dumps(merged_queue, indent=2, ensure_ascii=False))
+    if merged_queue:
+        print(
+            f"LLM queue: {len(llm_queue)} new candidates added ({len(merged_queue)} total pending). "
+            f"Claude should now classify {LLM_QUEUE_PATH.relative_to(ROOT)} and re-run with "
+            f"--apply-verdicts <path-to-verdicts.json>."
+        )
+    else:
+        print("LLM queue empty (no anchor-passing candidates without regex hits).")
 
     return 0
 
