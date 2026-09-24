@@ -27,6 +27,7 @@
     "costco"
   ],
   "type_metadata": {
+    "featured": true,
     "sidebar_quote": "Sir Richard Harpin: 'Great companies go bad because of how they're built, which means founders can build them differently.'"
   },
   "scanner_source": "social-scan",
