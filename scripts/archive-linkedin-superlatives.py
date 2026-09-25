@@ -32,65 +32,19 @@ ARCHIVE_DIR.mkdir(parents=True, exist_ok=True)
 ENTRIES_DIR = ROOT / "content" / "entries"
 CROSS_POSTS = ROOT / "data" / "cross-posts.json"
 
-SUPERLATIVE_PATTERNS = [
-    r"best book of the (year|decade|century|our (lifetime|generation)|all time|ever)",
-    r"best (business|leadership|management|startup) book (i(?:'ve| have)? (?:ever )?read|of \d{4}|of the (year|decade))",
-    r"one of the (best|greatest|most important) books",
-    r"life[\s-]?chang(?:ing|ed)",
-    r"chang(?:ed|es|ing) my life",
-    r"changed my perspective",
-    r"must[\s-]?read",
-    r"a must[\s-]?read",
-    r"the most important book",
-    r"masterpiece",
-    r"essential reading",
-    r"phenomenal",
-    r"extraordinary",
-    r"mind[\s-]?blow(?:ing|n)",
-    r"eye[\s-]?open(?:ing|er)",
-    r"revolutionary",
-    r"profound(?:ly)?",
-    r"greatest (business|leadership|management) book",
-    r"the book of the year",
-    r"5[\s-]?star",
-    r"five[\s-]?stars?",
-    r"⭐⭐⭐⭐⭐",
-    r"(?:⭐️?|🌟️?){4,}",  # 4+ star emojis (with/without variation selector)
-    r"can(?:'t| ?not) recommend (this |it |enough)",
-    r"highest recommendation",
-    r"changed how i think",
-    r"read it in one sitting",
-    r"couldn'?t put (it |this )?down",
-    r"insanely great",
-    r"the single most important",
-    r"blew my mind",
-    r"most important business book",
-    r"instantly a classic",
-    r"great read",
-    r"brilliant (book|read)",
-    r"wonderful (book|read)",
-    r"excellent (book|read)",
-    r"absolutely (love|loved|loving|brilliant)",
-    r"loved (this|the) book",
-    r"can(?:'t| ?not) wait to (read|dive)",
-    r"super insightful",
-    r"the (real |actual )?playbook",
-]
-
-COMPILED = [re.compile(p, re.IGNORECASE) for p in SUPERLATIVE_PATTERNS]
-
-# ---- Book-anchor gate (drives the LLM second pass done in the cron turn) ----
-# Regex above catches OBVIOUS superlatives. Short valid superlatives ("It's
-# amazing", "loved it", unusual phrasings) get missed. Those get caught by a
-# SECOND PASS done in the cron turn: this script also emits a candidates queue
-# (items that pass the anchor gate but got no regex hit) at
+# ---- Book-anchor gate ----
+# The script emits every anchor-passing item (post/comment mentioning
+# Incorruptible / Eric Ries / @ericries, OR under a book-anchored parent,
+# OR from Eric's author feed) to:
 #   data/archive/linkedin-comments/.llm-queue.json
 # The daily cron prompt tells Claude to read that queue, classify each item
-# in-turn, and re-run this script with `--apply-verdicts <path>` to append
-# LLM-verified records to today's archive.
+# in-turn using its own judgment, and re-run this script with
+# `--apply-verdicts <path>` to append verified records to today's archive.
 #
-# No external LLM API is called from this script. The classifier is Claude
-# itself, in the cron turn — no API keys required.
+# No external LLM API is called and no regex classifier runs. The single
+# source of truth for "is this superlative praise?" is Claude's own
+# inference in the cron turn (regex retired 2026-09-25 as redundant with
+# in-turn classification).
 
 BOOK_ANCHOR_RE = re.compile(
     r"\b(incorruptible|eric\s*ries|@ericries|@ericriesactual)\b",
@@ -146,30 +100,8 @@ def _stable_identifier(*, kind: str, permalink: str | None, raw_id: str | None) 
         return f"{kind}:{raw_id}"
     return None
 
-# Heuristic: "they are quoting the book" if the matched phrase sits inside
-# quotation marks AND the author uses an attribution word for the book/author
-# somewhere in the text.
-BOOK_ATTRIBUTION_WORDS = re.compile(
-    r"\b(ries|incorruptible|the book|he (says|writes)|from the book|book's line|the book's)\b",
-    re.IGNORECASE,
-)
-QUOTE_MARK_RE = re.compile(r"[\"“”'‘’„«»]")
 
 
-def find_matches(text: str) -> list[str]:
-    """Return the unique superlative phrases matched in `text` (in order of first occurrence)."""
-    if not text:
-        return []
-    hits: list[str] = []
-    seen: set[str] = set()
-    for pat in COMPILED:
-        for m in pat.finditer(text):
-            phrase = m.group(0)
-            key = phrase.lower()
-            if key not in seen:
-                seen.add(key)
-                hits.append(phrase)
-    return hits
 
 
 def has_emoji(text: str) -> bool:
@@ -195,52 +127,6 @@ def _sentence_span_containing(text: str, needle: str) -> str:
             if best is None or len(p) < len(best):
                 best = p
     return best or text.strip()
-
-
-def guess_pull_quote(text: str, matches: list[str]) -> str:
-    """The single strongest contiguous sentence for the card.
-
-    Prefer the sentence containing the FIRST superlative match, capped to a
-    reasonable single-card length (~360 chars). The downstream agent will
-    verify against `full_text` before publishing.
-    """
-    if not text or not matches:
-        return ""
-    sentence = _sentence_span_containing(text, matches[0])
-    if not sentence:
-        return ""
-    sentence = re.sub(r"\s+", " ", sentence).strip()
-    if len(sentence) > 360:
-        sentence = sentence[:357].rstrip() + "…"
-    return sentence
-
-
-def quotes_the_book(text: str, matches: list[str]) -> bool:
-    """Heuristic: is the matched phrase the author quoting the book, vs. their own words?
-
-    True when the sentence-span containing the match is itself wrapped in
-    quotation marks (single or curly), OR when the surrounding text uses an
-    explicit attribution word (Ries / Incorruptible / from the book / etc.)
-    within 120 chars of the match.
-    """
-    if not text or not matches:
-        return False
-    span = _sentence_span_containing(text, matches[0])
-    if QUOTE_MARK_RE.search(span or ""):
-        # a quoted sentence is a strong signal
-        if BOOK_ATTRIBUTION_WORDS.search(text):
-            return True
-    # also true when the exact matched phrase sits inside quote marks nearby
-    for m in matches:
-        idx = text.lower().find(m.lower())
-        if idx < 0:
-            continue
-        pre = text[max(0, idx - 30):idx]
-        post = text[idx + len(m):idx + len(m) + 30]
-        if QUOTE_MARK_RE.search(pre) and QUOTE_MARK_RE.search(post):
-            if BOOK_ATTRIBUTION_WORDS.search(text):
-                return True
-    return False
 
 
 # ---- normalization ----
@@ -322,60 +208,8 @@ def _already_have(permalink: str | None, author_name: str | None,
     return False
 
 
-# ---- quality gate ----
-
-def _quality_verdict(full_text: str, matches: list[str]) -> tuple[bool, bool]:
-    """Return (should_store, low_confidence).
-
-    Measures the SUBSTANTIVE text (URLs and emoji stripped) so that
-    "Great read ⭐️⭐️⭐️⭐️⭐️ https://…/incorruptible" is correctly rejected as
-    a one-liner. Rough bar: at least one contiguous sentence of real praise.
-    """
-    text = (full_text or "").strip()
-    substantive = _substantive_text(text)
-    if len(substantive) < 40:
-        # after removing URLs + emoji, essentially just the matched phrase
-        return False, False
-    sentence = _sentence_span_containing(text, matches[0]) if matches else text
-    sub_sentence = _substantive_text(sentence)
-    if len(sub_sentence) < 40 and len(substantive) < 90:
-        return False, False
-    low_conf = len(substantive) < 90 or len(sub_sentence) < 60
-    return True, low_conf
 
 
-# ---- record building ----
-
-def _matched_record(*, kind: str, source_scan: str, matches: list[str],
-                    text: str, permalink: str | None, posted_at: str | None,
-                    reactions: int | None, comments_count: int | None,
-                    author: dict, parent_post: dict | None,
-                    identifier: str | None,
-                    known_urls: set[str], known_names: set[str]) -> dict | None:
-    should, low_conf = _quality_verdict(text, matches)
-    if not should:
-        return None
-    return {
-        "captured_at": (datetime.datetime.now(datetime.UTC)
-                        .replace(microsecond=0, tzinfo=None).isoformat() + "Z"),
-        "source_scan": source_scan,
-        "item_kind": kind,  # "post" or "comment"
-        "identifier": identifier,  # LinkedIn post.id or comment.id for dedupe
-        "superlative_matches": matches,
-        "full_text": text,
-        "pull_quote": guess_pull_quote(text, matches),
-        "quotes_the_book": quotes_the_book(text, matches),
-        "has_emoji": has_emoji(text),
-        "low_confidence": low_conf,
-        "already_have": _already_have(permalink, author.get("name"),
-                                       known_urls, known_names),
-        "author": author,
-        "permalink": permalink,
-        "posted_at": posted_at,
-        "reactions": reactions,
-        "comments_count": comments_count,
-        "parent_post": parent_post,  # non-null only when item_kind == "comment"
-    }
 
 
 def normalize_post_meta(post: dict) -> dict:
@@ -385,69 +219,6 @@ def normalize_post_meta(post: dict) -> dict:
         "permalink": _post_permalink(post),
         "content_preview": ((post.get("content") or post.get("commentary") or "")[:240]).strip(),
     }
-
-
-# ---- main iteration ----
-
-def _iter_items(post: dict, source_scan: str,
-                known_urls: set[str], known_names: set[str]):
-    """Yield archive records for a single post + its comments."""
-    # POST body (or — occasionally — a comment that harvestapi surfaces as a
-    # top-level item in an author-feed scrape; detect via commentUrn in URL)
-    post_text = post.get("content") or post.get("commentary") or ""
-    post_matches = find_matches(post_text)
-    if post_matches:
-        permalink = _post_permalink(post)
-        kind = "comment" if permalink and "commentUrn=" in permalink else "post"
-        rec = _matched_record(
-            kind=kind,
-            source_scan=source_scan,
-            matches=post_matches,
-            text=post_text,
-            permalink=permalink,
-            posted_at=(post.get("postedAt") or {}).get("date") or post.get("createdAt"),
-            reactions=(post.get("engagement") or {}).get("likes"),
-            comments_count=(post.get("engagement") or {}).get("comments"),
-            author=_author_from(post.get("author") or post.get("actor")),
-            parent_post=None,
-            identifier=_stable_identifier(
-                kind=kind, permalink=permalink,
-                raw_id=_get(post, "id", "postId", "entityId"),
-            ),
-            known_urls=known_urls,
-            known_names=known_names,
-        )
-        if rec:
-            yield rec
-
-    # COMMENTS
-    for cmt in post.get("comments") or []:
-        text = cmt.get("commentary") or cmt.get("text") or ""
-        c_matches = find_matches(text)
-        if not c_matches:
-            continue
-        author = _author_from(cmt.get("actor") or cmt.get("author"))
-        cmt_permalink = _comment_permalink(cmt)
-        rec = _matched_record(
-            kind="comment",
-            source_scan=source_scan,
-            matches=c_matches,
-            text=text,
-            permalink=cmt_permalink,
-            posted_at=cmt.get("createdAt") or (cmt.get("postedAt") or {}).get("date"),
-            reactions=(cmt.get("engagement") or {}).get("likes"),
-            comments_count=(cmt.get("engagement") or {}).get("comments"),
-            author=author,
-            parent_post=normalize_post_meta(post),
-            identifier=_stable_identifier(
-                kind="comment", permalink=cmt_permalink,
-                raw_id=_get(cmt, "id", "urn"),
-            ),
-            known_urls=known_urls,
-            known_names=known_names,
-        )
-        if rec:
-            yield rec
 
 
 def _load_seen_identifiers() -> set[str]:
@@ -586,26 +357,16 @@ def main() -> int:
     if archive_path.exists():
         existing = json.loads(archive_path.read_text())
 
-    new_records: list[dict] = []
+    # Anchor-passing items → LLM queue for Claude to classify in-turn.
     scanned_posts = 0
     scanned_comments = 0
-    llm_queue: list[dict] = []  # candidates for Claude's second-pass classification
+    llm_queue: list[dict] = []
     for post in items:
         scanned_posts += 1
         scanned_comments += len(post.get("comments") or [])
-        # Pass 1: regex
-        for rec in _iter_items(post, args.scan_source, known_urls, known_names):
-            ident = rec.get("identifier")
-            if not ident or ident in seen_identifiers:
-                continue
-            seen_identifiers.add(ident)
-            new_records.append(rec)
 
-        # Pass 2 (queue only — no LLM call here): items that PASSED book-anchor
-        # but had no regex hits get emitted to the queue for Claude's cron turn
-        # to classify.
         post_text = post.get("content") or post.get("commentary") or ""
-        if post_text and BOOK_ANCHOR_RE.search(post_text) and not find_matches(post_text):
+        if post_text and BOOK_ANCHOR_RE.search(post_text):
             permalink = _post_permalink(post)
             kind = "comment" if permalink and "commentUrn=" in permalink else "post"
             ident = _stable_identifier(
@@ -625,17 +386,18 @@ def main() -> int:
                     "author": _author_from(post.get("author") or post.get("actor")),
                     "parent_post": None,
                 })
+
         for cmt in post.get("comments") or []:
             ctext = cmt.get("commentary") or cmt.get("text") or ""
-            # For comments on Eric's OWN feed, the parent post already establishes the
-            # book context, so a bare superlative like "It's amazing" counts. On keyword
-            # scans, treat comments under a book-anchored parent post as anchored too.
+            # Comments on Eric's OWN feed inherit book context from the parent.
+            # On keyword scans, comments under a book-anchored parent post also
+            # inherit anchor. Otherwise, the comment itself must name the book.
             comment_anchor = (
                 BOOK_ANCHOR_RE.search(ctext)
                 or args.scan_source.startswith("linkedin-author-eries")
                 or BOOK_ANCHOR_RE.search(post_text or "")
             )
-            if ctext and comment_anchor and not find_matches(ctext):
+            if ctext and comment_anchor:
                 cmt_permalink = _comment_permalink(cmt)
                 ident = _stable_identifier(
                     kind="comment", permalink=cmt_permalink,
@@ -655,24 +417,7 @@ def main() -> int:
                         "parent_post": normalize_post_meta(post),
                     })
 
-    if new_records:
-        merged = existing + new_records
-        archive_path.write_text(json.dumps(merged, indent=2, ensure_ascii=False))
-        n_posts = sum(1 for r in new_records if r.get("item_kind") == "post")
-        n_cmts = sum(1 for r in new_records if r.get("item_kind") == "comment")
-        n_dupes = sum(1 for r in new_records if r.get("already_have"))
-        n_low = sum(1 for r in new_records if r.get("low_confidence"))
-        print(
-            f"Scanned {scanned_posts} posts / {scanned_comments} comments. "
-            f"Archived {len(new_records)} regex-matched items "
-            f"(posts={n_posts}, comments={n_cmts}, already_have={n_dupes}, "
-            f"low_confidence={n_low}) to {archive_path.relative_to(ROOT)}"
-        )
-    else:
-        print(
-            f"Scanned {scanned_posts} posts / {scanned_comments} comments. "
-            f"No new regex-matched items (archive: {archive_path.relative_to(ROOT)})."
-        )
+    print(f"Scanned {scanned_posts} posts / {scanned_comments} comments.")
 
     # Persist / merge the LLM queue for the cron-turn second pass.
     existing_queue: list[dict] = []
