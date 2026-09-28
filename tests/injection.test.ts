@@ -52,6 +52,18 @@ describe('detectInjection', () => {
     expect(result.detected).toBe(false);
   });
 
+  it('does not flag long single-case hashtags as base64 (regression: #responsiveconference)', () => {
+    const result = detectInjection(
+      'I had the honor to graphic record Eric\'s talk at the #responsiveconference.'
+    );
+    expect(result.detected).toBe(false);
+  });
+
+  it('does not flag long CamelCase hashtags as base64 (regression: #BusinessForGoodRoundtable)', () => {
+    const result = detectInjection('Join us at the #BusinessForGoodRoundtable this October.');
+    expect(result.detected).toBe(false);
+  });
+
   it('detects anomalously long field values', () => {
     const result = detectInjection('x'.repeat(5001));
     expect(result.detected).toBe(true);

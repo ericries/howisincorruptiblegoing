@@ -21,7 +21,14 @@ const RTL_OVERRIDE_PATTERN = /[\u202A-\u202E\u2066-\u2069]/;
 // URL path components (forms.gle/abc123, youtu.be/xyz789) match it as a 20+ char run
 // and trip the false positive. Real attack payloads of length 20+ in pure A-Za-z0-9+
 // (with optional `=` padding) are still caught.
-const BASE64_PATTERN = /[A-Za-z0-9+]{20,}={0,2}/;
+//
+// A 20+ char run is not enough on its own: long hashtags in source blockquotes
+// ("#responsiveconference", "#BusinessForGoodRoundtable") are all-letters and were
+// flagged as payloads, blocking legitimate entries at lint time. Base64 of any real
+// payload mixes all three character classes, so require upper AND lower AND digit.
+const BASE64_RUN_PATTERN = /[A-Za-z0-9+]{20,}={0,2}/g;
+const isBase64Like = (run: string) =>
+  /[A-Z]/.test(run) && /[a-z]/.test(run) && /[0-9]/.test(run);
 const MAX_FIELD_LENGTH = 5000;
 
 export function detectInjection(text: string): InjectionResult {
@@ -49,7 +56,7 @@ export function detectInjection(text: string): InjectionResult {
     reasons.push(`anomalous length: ${text.length} chars (max ${MAX_FIELD_LENGTH})`);
   }
 
-  if (BASE64_PATTERN.test(text)) {
+  if ((text.match(BASE64_RUN_PATTERN) ?? []).some(isBase64Like)) {
     reasons.push('possible base64 encoded payload');
   }
 
