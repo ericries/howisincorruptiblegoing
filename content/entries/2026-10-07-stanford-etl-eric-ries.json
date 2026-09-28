@@ -8,7 +8,10 @@
   "blockquote_source": "Stanford Technology Ventures Program — Entrepreneurial Thought Leaders",
   "source_url": "https://stvp.stanford.edu/entrepreneurial-thought-leaders",
   "source_urls": [
-    {"url": "https://stvp.stanford.edu/events", "label": "STVP events page (schedule to be posted)"}
+    {
+      "url": "https://stvp.stanford.edu/events",
+      "label": "STVP events page (schedule to be posted)"
+    }
   ],
   "video_url": null,
   "image": "/images/cards/2026-10-07-stanford-etl-eric-ries.png",
@@ -30,5 +33,8 @@
   },
   "scanner_source": "manual",
   "verified": false,
-  "created_at": "2026-08-21T16:25:00Z"
+  "created_at": "2026-08-21T16:25:00Z",
+  "appearance_dates": [
+    "2026-10-07"
+  ]
 }
