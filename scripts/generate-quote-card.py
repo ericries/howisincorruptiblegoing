@@ -62,22 +62,49 @@ def domain_of(url):
     except Exception:
         return ""
 
+_EMOJI = re.compile(
+    "[\U0001F000-\U0001FAFF\U00002600-\U000027BF\U0001F1E6-\U0001F1FF"
+    "\U00002190-\U000021FF\U00002B00-\U00002BFF\U00002300-\U000023FF"
+    "\U0000FE00-\U0000FE0F\U0000200D\U0000203C\U00002049]"
+)
+
+
+def strip_emoji(s):
+    """Remove emoji (they render as tofu boxes □) and clean up the leftover spacing."""
+    s = _EMOJI.sub("", s)
+    s = re.sub(r"\s+([,.;:!?…])", r"\1", s)
+    s = re.sub(r"[ \t]{2,}", " ", s)
+    return s.strip()
+
+
 def smart_quotes(s):
     """Replace straight quotes with typographic curly quotes for serif rendering."""
+    s = strip_emoji(s)
     s = re.sub(r'"([^"]*)"', "“\\1”", s)
     s = s.replace("'", "’")
     return s
 
 def fit_quote(quote, draw, max_width, max_height):
-    """Try descending font sizes until the wrapped quote fits."""
-    for size in (62, 56, 50, 46, 42, 38, 34, 30):
+    """Try descending font sizes until the wrapped quote fits.
+    If even the smallest size overflows, truncate the trailing lines and add an
+    ellipsis so the quote never collides with the attribution block. Trailing
+    truncation of a contiguous span is acceptable (the full quote is at source)."""
+    for size in (62, 56, 50, 46, 42, 38, 34, 30, 27, 24):
         font = load_font("CormorantGaramond-Italic.ttf", size)
         lines = wrap(quote, font, max_width, draw)
         line_h = int(size * 1.35)
-        total = line_h * len(lines)
-        if total <= max_height:
+        if line_h * len(lines) <= max_height:
             return font, lines, line_h
-    # Fall back to smallest
+    # Smallest size still overflows -> keep only the lines that fit + ellipsis
+    max_lines = max(1, max_height // line_h)
+    if len(lines) > max_lines:
+        lines = lines[:max_lines]
+        last = lines[-1].rstrip()
+        if not last.endswith(("…", ".", "!", "?", "”", '"')):
+            last = last.rstrip(",;:—- ") + "…"
+        else:
+            last = last + "…" if not last.endswith("…") else last
+        lines[-1] = last
     return font, lines, line_h
 
 def render(entry_path: Path, out_path: Path):

@@ -69,6 +69,11 @@ def build_url_index() -> dict[str, dict]:
         if f.name.startswith("."):
             continue
         for r in load_json(f) or []:
+            # A comment's permalink carries ?commentUrn= and normalises down to
+            # its parent post's URL — indexing it would file the comment's text
+            # as if it were the post. Posts only.
+            if r.get("item_kind") != "post":
+                continue
             add(r.get("permalink"), r.get("full_text"),
                 (r.get("author") or {}).get("name"), "linkedin")
 
@@ -108,6 +113,11 @@ def main() -> int:
             rec = source_texts.load(eid) if eid else None
             if not rec or not bq or rec.get("platform") == "transcript":
                 continue
+            # Only compare when the stored text came from the URL the blockquote
+            # is attributed to. Entries often list a secondary source_urls[] link
+            # whose text we happen to hold; that is not the quote's origin.
+            if norm_url(rec.get("source_url")) != norm_url(e.get("source_url")):
+                continue
             if not source_texts.contains_blockquote(eid, bq):
                 drift.append(eid)
         print(f"Blockquotes not found verbatim in the stored source: {len(drift)}")
@@ -140,20 +150,23 @@ def main() -> int:
         except ValueError:
             continue
 
-        text = author = platform = None
+        text = author = platform = matched_url = None
 
         t = transcripts / f"{eid}.txt"
         if t.exists():
             text, platform, kind = t.read_text(encoding="utf-8"), "transcript", "transcript"
+            matched_url = e.get("source_url")
         else:
             urls = [e.get("source_url")] + [
                 s.get("url") for s in (e.get("source_urls") or []) if isinstance(s, dict)
             ]
+            matched_url = None
             for u in urls:
                 hit = idx.get(norm_url(u))
                 if hit:
                     text, author, platform, kind = (
                         hit["text"], hit["author"], hit["platform"], "url-index")
+                    matched_url = u
                     break
 
         if not (text or "").strip():
@@ -161,7 +174,7 @@ def main() -> int:
         if not args.report:
             source_texts.capture(
                 eid,
-                source_url=e.get("source_url") or "",
+                source_url=matched_url or e.get("source_url") or "",
                 full_text=text,
                 author=author or e.get("attribution"),
                 platform=platform,

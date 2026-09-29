@@ -52,19 +52,43 @@ def _wrap(text: str, font, max_width: int, draw) -> list[str]:
     return lines
 
 
+_EMOJI = re.compile(
+    "[\U0001F000-\U0001FAFF\U00002600-\U000027BF\U0001F1E6-\U0001F1FF"
+    "\U00002190-\U000021FF\U00002B00-\U00002BFF\U00002300-\U000023FF"
+    "\U0000FE00-\U0000FE0F\U0000200D\U0000203C\U00002049]"
+)
+
+
+def _strip_emoji(s: str) -> str:
+    """Remove emoji (they render as tofu boxes □) and clean up the leftover spacing."""
+    s = _EMOJI.sub("", s)
+    s = re.sub(r"\s+([,.;:!?…])", r"\1", s)   # space left before punctuation by a removed emoji
+    s = re.sub(r"[ \t]{2,}", " ", s)
+    return s.strip()
+
+
 def _smart_quotes(s: str) -> str:
     s = re.sub(r'"([^"]*)"', "“\\1”", s)
+    # left/right single quotes: opening after start/space/paren, else closing
+    s = re.sub(r"(^|[\s(\[])'", "\\1‘", s)
     s = s.replace("'", "’")
     return s
 
 
 def _fit_quote(quote: str, draw, max_width: int, max_height: int):
-    for size in (72, 64, 58, 52, 48, 44, 40, 36, 32):
+    for size in (72, 64, 58, 52, 48, 44, 40, 36, 32, 28, 25):
         font = _font("CormorantGaramond-Italic.ttf", size)
         lines = _wrap(quote, font, max_width, draw)
         line_h = int(size * 1.32)
         if line_h * len(lines) <= max_height:
             return font, lines, line_h
+    # Smallest size still overflows -> truncate trailing lines + ellipsis (never collide)
+    max_lines = max(1, max_height // line_h)
+    if len(lines) > max_lines:
+        lines = lines[:max_lines]
+        last = lines[-1].rstrip()
+        last = last if last.endswith("…") else (last.rstrip(",;:—- ") + "…")
+        lines[-1] = last
     return font, lines, line_h
 
 
@@ -78,7 +102,7 @@ def _domain(url: str) -> str:
 
 def render_ig(entry: dict, out_path) -> Path:
     out_path = Path(out_path)
-    quote = _smart_quotes((entry.get("blockquote") or "").strip())
+    quote = _smart_quotes(_strip_emoji((entry.get("blockquote") or "").strip()))
     name = entry.get("attribution") or entry.get("blockquote_source") or ""
     title = entry.get("attribution_title") or ""
     url = entry.get("source_url") or ""
