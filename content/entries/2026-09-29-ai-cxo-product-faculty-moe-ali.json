@@ -1,0 +1,33 @@
+{
+  "id": "2026-09-29-ai-cxo-product-faculty-moe-ali",
+  "date": "2026-09-29",
+  "type": "podcast",
+  "title": "AI CXO (Product Faculty) — Moe Ali asks whether automating 95% of operations should be the goal: 'His answer was immediate: he would never set a goal like that'",
+  "summary": "Moe Ali, CEO of Product Faculty, publishes his AI CXO conversation with Eric. It runs the Sol Price and Fedmart story into financial gravity, then turns the frame on AI: how Eric advised Anthropic's founders on protecting their mission, whether a student has learned anything if AI built their capstone, and why AI may improve your output while weakening your ability to judge it.",
+  "blockquote": "Eric uses it to explain something he calls financial gravity: the pressure that slowly pulls a company toward decisions nobody seems to want, but everyone feels compelled to make.\n\nAnd that made our conversation about AI much more interesting.\n\nBecause every founder is now being asked some version of: \"How much can you automate?\"\n\nI asked Eric if automating 95% of operations should be the goal.\n\nHis answer was immediate: he would never set a goal like that.",
+  "blockquote_source": "Moe Ali on LinkedIn",
+  "source_url": "https://www.linkedin.com/posts/productfaculty_ai-activity-7510711512584318976-7E_I",
+  "source_urls": [
+    {
+      "url": "https://podcasts.apple.com/us/podcast/ai-cxo/id1573456164",
+      "label": "AI CXO on Apple Podcasts"
+    }
+  ],
+  "video_url": null,
+  "image": "/images/podcasts/ai-cxo-product-faculty.jpg",
+  "attribution": "Moe Ali",
+  "attribution_title": "CEO, Product Faculty · Host, AI CXO",
+  "attribution_image": null,
+  "tags": [
+    "podcast",
+    "linkedin",
+    "ai",
+    "product",
+    "sol-price",
+    "anthropic"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-09-29T17:15:00Z"
+}

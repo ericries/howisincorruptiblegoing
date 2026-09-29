@@ -1,0 +1,35 @@
+{
+  "id": "2026-09-28-marty-cagan-better-than-lean-startup",
+  "date": "2026-09-28",
+  "type": "endorsement",
+  "title": "Marty Cagan (SVPG \u00b7 INSPIRED, EMPOWERED, TRANSFORMED), asked for a book recommendation \u2014 'I think it's better than Lean Startup'",
+  "summary": "Asked for a recent book recommendation during an AI Product Heroes Q&A, Marty Cagan names Incorruptible and says he thinks it is better than The Lean Startup. He explains why through the frustration that has followed him for a career: teams he helped get good at product kept becoming acquisition targets and getting hollowed out, which he had always assumed was unavoidable bad luck. The book changed that assumption.",
+  "blockquote": "I do read a lot of books, maybe the last person, but Incorruptible \u2014 it's called Incorruptible, it's by Eric Ries, the guy that wrote Lean Startup, and it is a total surprise, that book. And I think it's better than Lean Startup.",
+  "blockquote_source": "Marty Cagan on the AI Product Heroes Q&A (55:20)",
+  "source_url": "https://www.youtube.com/watch?v=rmsDnMY1dAc",
+  "source_urls": [
+    {
+      "url": "https://www.youtube.com/watch?v=rmsDnMY1dAc&t=3358s",
+      "label": "Cagan on why it landed \u2014 'I always thought that was unavoidable, just bad luck\u2026 but I learned that there are actually things you can do to set up your company so that doesn't happen'"
+    }
+  ],
+  "video_url": "https://www.youtube.com/watch?v=rmsDnMY1dAc",
+  "image": "/images/cards/2026-09-28-marty-cagan-better-than-lean-startup.png",
+  "attribution": "Marty Cagan",
+  "attribution_title": "Founder & Partner \u2014 Product, Silicon Valley Product Group; author of INSPIRED, EMPOWERED, TRANSFORMED",
+  "attribution_image": "/images/people/marty-cagan.jpg",
+  "tags": [
+    "endorsement",
+    "youtube",
+    "product-management",
+    "svpg",
+    "enshittification",
+    "governance"
+  ],
+  "type_metadata": {
+    "featured": true
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-09-29T17:15:00Z"
+}
