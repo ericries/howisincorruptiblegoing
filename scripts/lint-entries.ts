@@ -253,6 +253,9 @@ if (isMainModule) {
     'jennifer pahlka',  // former US Deputy CTO, Recoding America author
     'karri saarinen',   // Linear cofounder
     'paul graham',      // Y Combinator co-founder, essayist
+    // Added 2026-09-29 at Eric's direction
+    'rebecca henderson', // Harvard University Professor, Reimagining Capitalism in a World on Fire
+    'lenny rachitsky',   // Lenny's Newsletter (~1M subscribers), Lenny's Podcast
   ]);
   const normalize = (s: string) => s.toLowerCase().replace(/[‘’]/g, "'").trim();
   for (const f of files) {
