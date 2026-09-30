@@ -9,11 +9,15 @@
   "source_url": "https://www.linkedin.com/posts/productfaculty_ai-activity-7510711512584318976-7E_I",
   "source_urls": [
     {
+      "url": "https://www.youtube.com/watch?v=icaGqPF2CBA",
+      "label": "Startup Expert Eric Ries: How to Build an Incorruptible AI Company in 2026 (full episode)"
+    },
+    {
       "url": "https://podcasts.apple.com/us/podcast/ai-cxo/id1573456164",
       "label": "AI CXO on Apple Podcasts"
     }
   ],
-  "video_url": null,
+  "video_url": "https://www.youtube.com/watch?v=icaGqPF2CBA",
   "image": "/images/podcasts/ai-cxo-product-faculty.jpg",
   "attribution": "Moe Ali",
   "attribution_title": "CEO, Product Faculty · Host, AI CXO",
