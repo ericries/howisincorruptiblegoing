@@ -1,0 +1,29 @@
+{
+  "id": "2026-09-30-david-cushman-mission-hopeful-mission-controlled",
+  "parent_id": "2026-09-30-ai-conference-tim-oreilly-fireside",
+  "date": "2026-09-30",
+  "type": "reaction",
+  "title": "David Cushman (HFS Research), reporting live from the AI Conference fireside — Ries on companies that are 'mission hopeful' and the challenge to become 'mission controlled'",
+  "summary": "David Cushman, executive research leader at HFS Research, files the first firsthand account of the Tim O'Reilly fireside at The AI Conference in San Francisco. His read of Eric's central distinction: companies that are 'mission hopeful' start with strong intent and hope people keep doing the right thing as investors and incentives change, while 'mission controlled' ones build the purpose into governance, ownership and everyday practice. He points the question straight at the AI labs.",
+  "blockquote": "Ries describes too many companies as “mission hopeful”. They start with strong intent, but hope that founders, leaders and employees will somehow keep doing the right thing as investors, incentives, quarterly targets and leadership teams change. Sound familiar AI labs? (and Eric has advised Anthropic).\n\nHis challenge is to become “mission controlled”. Build the purpose into governance, ownership, decision making, incentives and everyday operating practice so the organisation can resist the forces that gradually pull it away from what it was created to do.",
+  "blockquote_source": "David Cushman on LinkedIn, reporting from The AI Conference",
+  "source_url": "https://www.linkedin.com/posts/davidcushman_post-three-from-the-ai-conference-in-san-activity-7511130256678748160-4QIF",
+  "source_urls": null,
+  "video_url": null,
+  "image": null,
+  "attribution": "David Cushman",
+  "attribution_title": "Executive Research Leader, HFS Research",
+  "attribution_image": "/images/people/david-cushman.jpg",
+  "tags": [
+    "reaction",
+    "linkedin",
+    "ai-conference",
+    "san-francisco",
+    "governance",
+    "ai-labs"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-10-01T01:45:00Z"
+}
