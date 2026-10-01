@@ -25,7 +25,9 @@
     "uk",
     "failure"
   ],
-  "type_metadata": {},
+  "type_metadata": {
+    "featured": true
+  },
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-09-29T17:15:00Z"
