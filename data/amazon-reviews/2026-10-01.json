@@ -1,0 +1,36 @@
+{
+  "snapshot_date": "2026-10-01",
+  "captured_at": "2026-10-01T17:15:00Z",
+  "source": "screenshot supplied by Eric of the Amazon Kindle product page (no scrape this cycle; Amazon rank cron paused 2026-08-31)",
+  "totals": {
+    "global_ratings": 259,
+    "customer_reviews": 259,
+    "average_rating": 4.8,
+    "five_star_pct": null,
+    "four_star_pct": null,
+    "three_star_pct": null,
+    "two_star_pct": null,
+    "one_star_pct": null
+  },
+  "goodreads": {
+    "average_rating": 4.4,
+    "ratings": 397
+  },
+  "bestseller_ranks": null,
+  "badges": [
+    {
+      "badge": "#1 Best Seller",
+      "category": "Business Management",
+      "note": "Best Sellers Rank badge, not the New Release badge. Concurrent with a limited-time Kindle deal at $1.99 (-94% off a $32.00 print list price), which is very likely driving the rank — read it as promotion-assisted, not organic."
+    }
+  ],
+  "pricing_observed": {
+    "kindle": "$1.99 (limited time deal, -94%)",
+    "audiobook": "$0.99 with membership",
+    "hardcover": "$25.22",
+    "paperback": "$28.40",
+    "used_and_new_from": "$15.02"
+  },
+  "shipped_as_entry_id": "2026-10-01-amazon-reviews-250-milestone",
+  "notes": "Prior snapshot 2026-08-31 recorded 233 customer_reviews at 4.7. The 250 threshold (memory/feedback_amazon_review_milestones.md) is crossed; the 250 milestone entry was shipped from this snapshot. The #1 Business Management badge was NOT shipped — the same badge/category already has entries dated 2026-05-26, 2026-06-23 and 2026-08-17, and this instance coincides with the 94%-off Kindle promotion."
+}
