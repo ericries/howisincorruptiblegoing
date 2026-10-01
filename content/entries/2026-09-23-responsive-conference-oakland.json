@@ -11,9 +11,13 @@
     {
       "url": "https://www.linkedin.com/posts/ahvasadeghi_peopleleaders-responsiveconference-futureofwork-activity-7503921675122577408-G-Ym",
       "label": "Ahva Sadeghi (VP Growth Yello, Forbes 30U30) speaker promo — 'Eric Ries is speaking, plus people leaders from Alphabet, Zapier, and OpenAI'"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=tvS3-Qr-NK8",
+      "label": "Full 45-minute closing fireside video — Why Good Companies Go Bad with Eric Ries and Jamie White, OpenAI"
     }
   ],
-  "video_url": null,
+  "video_url": "https://www.youtube.com/watch?v=tvS3-Qr-NK8",
   "image": null,
   "attribution": "Responsive Conference",
   "attribution_title": "Annual leadership convening, Oakland Museum of California",

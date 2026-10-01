@@ -1,0 +1,33 @@
+{
+  "id": "2026-09-30-foundercoho-one-word-wrong",
+  "date": "2026-09-30",
+  "type": "podcast",
+  "title": "FounderCoHo (167K subscribers) — Eric on the one word he got wrong in The Lean Startup: 'We bragged about our ability to change the world, but we didn't specify for the better'",
+  "summary": "A 68-minute interview on FounderCoHo, built around the line Eric says he regrets. He traces it to the Anakin-and-Padme meme — 'I'm gonna change the world' / 'for the better, right?' — then goes and checks his own book, and finds the phrase sitting in the last sentence of the introduction without the qualifier. The conversation runs from there through Vectura's sale to Philip Morris, foundation-controlled companies, and advising Anthropic on governance.",
+  "blockquote": "I kind of feel like the whole technology industry failed this very simple test. We bragged about our ability to change the world, but we didn't specify for the better. And so many technology companies have changed the world for the worse. So what happened? Anyway, I didn't think I was responsible for this. I told people very clearly to change the world for the better, or did I?",
+  "blockquote_source": "Eric Ries on FounderCoHo",
+  "source_url": "https://www.youtube.com/watch?v=2NtKUPkg3BM",
+  "source_urls": [
+    {
+      "url": "https://www.linkedin.com/posts/foundercoho_leanstartup-incorruptible-entrepreneurship-activity-7511150852896653312-XLfv",
+      "label": "FounderCoHo's episode takeaways on LinkedIn"
+    }
+  ],
+  "video_url": "https://www.youtube.com/watch?v=2NtKUPkg3BM",
+  "image": "/images/media/foundercoho-eric-ries-interview.jpg",
+  "attribution": "FounderCoHo",
+  "attribution_title": "Founder interview channel · 167K subscribers",
+  "attribution_image": null,
+  "tags": [
+    "podcast",
+    "youtube",
+    "lean-startup",
+    "regret",
+    "governance",
+    "anthropic"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-10-01T16:50:00Z"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "2026-09-30-jason-yang-governance-as-engineering-problem",
+  "parent_id": "2026-09-30-ai-conference-tim-oreilly-fireside",
+  "date": "2026-09-30",
+  "type": "reaction",
+  "title": "Jason Yang (Sr AI Engineer, Snowflake) on the Tim O'Reilly fireside — 'As a data guy I loved that he treats governance as an engineering problem, not a values statement'",
+  "summary": "Jason Yang, a senior AI engineer at Snowflake, caught the Pier 48 fireside and writes it up from the builder's seat. His takeaway is the framing: good companies go bad because incentives quietly eat the mission, Anthropic is the counter-example built to resist that from day one, and the whole thing is an engineering problem rather than a values statement. He notes O'Reilly kept pulling the conversation back to mechanism design.",
+  "blockquote": "Ries talked about advising Anthropic's founders back when they left OpenAI. His argument in Incorruptible is that good companies go bad not because the founders are sleazy, but because incentives quietly eat the mission over time. Anthropic is his example of a company that designed its structure to defend against that from day one. As a data guy I loved that he treats governance as an engineering problem, not a values statement.",
+  "blockquote_source": "Jason Yang on LinkedIn",
+  "source_url": "https://www.linkedin.com/posts/jasonwithcoffee_went-to-the-ai-conference-today-at-pier-48-activity-7511124858240409601-WXjx",
+  "source_urls": null,
+  "video_url": null,
+  "image": null,
+  "attribution": "Jason Yang",
+  "attribution_title": "Sr AI Engineer, Snowflake",
+  "attribution_image": "/images/people/jason-yang.jpg",
+  "tags": [
+    "reaction",
+    "linkedin",
+    "ai-conference",
+    "san-francisco",
+    "anthropic",
+    "governance"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-10-01T16:50:00Z"
+}
