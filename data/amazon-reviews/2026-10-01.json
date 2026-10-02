@@ -21,7 +21,7 @@
     {
       "badge": "#1 Best Seller",
       "category": "Business Management",
-      "note": "Best Sellers Rank badge, not the New Release badge. Concurrent with a limited-time Kindle deal at $1.99 (-94% off a $32.00 print list price), which is very likely driving the rank — read it as promotion-assisted, not organic."
+      "note": "Best Sellers Rank badge for the FULL category — distinct from the #1 New Release badge, which is the ~90-day window. The 2026-05-26 / 06-23 / 08-17 entries are all amazon_badge='New Release'; this is the first Best Seller #1 in Business Management. Concurrent with a $1.99 Kindle promo (-94%), so promotion-assisted, but the badge is a first either way."
     }
   ],
   "pricing_observed": {
@@ -31,6 +31,6 @@
     "paperback": "$28.40",
     "used_and_new_from": "$15.02"
   },
-  "shipped_as_entry_id": "2026-10-01-amazon-reviews-250-milestone",
-  "notes": "Prior snapshot 2026-08-31 recorded 233 customer_reviews at 4.7. The 250 threshold (memory/feedback_amazon_review_milestones.md) is crossed; the 250 milestone entry was shipped from this snapshot. The #1 Business Management badge was NOT shipped — the same badge/category already has entries dated 2026-05-26, 2026-06-23 and 2026-08-17, and this instance coincides with the 94%-off Kindle promotion."
+  "shipped_as_entry_id": "2026-10-01-amazon-250-reviews-and-1-business-management",
+  "notes": "Prior snapshot 2026-08-31 recorded 233 customer_reviews at 4.7. The 250 threshold is crossed. Shipped as one combined milestone covering BOTH the 250 reviews and the first #1 Best Seller in Business Management. CORRECTION: on first pass I declined to ship the badge, having mistaken the three prior '#1 Business Management' entries for the same thing — they are all New Release, a different list. Eric caught it. Always read type_metadata.amazon_badge, not just the category name (memory/feedback_amazon_new_release_vs_bestseller.md)."
 }
