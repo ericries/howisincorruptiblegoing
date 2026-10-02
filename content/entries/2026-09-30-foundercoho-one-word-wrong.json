@@ -26,7 +26,10 @@
     "governance",
     "anthropic"
   ],
-  "type_metadata": {},
+  "type_metadata": {
+    "featured": true,
+    "audience": "167K YouTube subscribers"
+  },
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-10-01T16:50:00Z"

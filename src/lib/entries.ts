@@ -49,3 +49,47 @@ export function partitionReactions(entries: TimelineEntry[]): {
   }
   return { main, reactionsByParent };
 }
+
+/**
+ * Surfaces Eric controls. Used to tell self-amplification apart from
+ * third-party coverage that happens to quote him.
+ *
+ * Matching is anchored (`/in/eries`, `/posts/eries_`, `/ericries/`) so a
+ * different person whose handle merely contains "eries" doesn't match.
+ */
+const ERIC_HOSTS = new Set(['incorruptible.co', 'theleanstartup.com']);
+
+export function isEricVenue(sourceUrl: string | null | undefined): boolean {
+  if (!sourceUrl) return false;
+  let url: URL;
+  try {
+    url = new URL(sourceUrl);
+  } catch {
+    return false;
+  }
+  const host = url.hostname.toLowerCase().replace(/^www\./, '');
+  const path = url.pathname.toLowerCase();
+
+  if (ERIC_HOSTS.has(host)) return true;
+  if (host === 'linkedin.com') return path.startsWith('/in/eries') || path.startsWith('/posts/eries_');
+  if (host === 'x.com' || host === 'twitter.com') return path.startsWith('/ericries/');
+  if (host === 'tiktok.com') return path.startsWith('/@ericriesactual');
+  return false;
+}
+
+/**
+ * True only when Eric is BOTH the quoted speaker AND the venue is his own —
+ * i.e. the entry is Eric amplifying himself on his own channel.
+ *
+ * Deliberately NOT just "is Eric the speaker": that also catches every
+ * podcast, interview and press piece, which are third-party momentum even
+ * though Eric is the one talking. See
+ * docs/postmortems/2026-10-02-whats-new-excluded-third-party-media.md
+ */
+export function isSelfAmplification(entry: {
+  blockquote_source?: string | null;
+  source_url?: string | null;
+}): boolean {
+  const speakerIsEric = (entry.blockquote_source || '').startsWith('Eric Ries');
+  return speakerIsEric && isEricVenue(entry.source_url);
+}

@@ -6,7 +6,7 @@ import StatsBar from '../components/StatsBar.astro';
 import TimelineEntry from '../components/TimelineEntry.astro';
 import UpcomingStrip from '../components/UpcomingStrip.astro';
 import SiteHeader from '../components/SiteHeader.astro';
-import { loadEntries, partitionReactions } from '../lib/entries';
+import { loadEntries, partitionReactions, isSelfAmplification } from '../lib/entries';
 import * as path from 'path';
 
 const entriesDir = path.join(process.cwd(), 'content', 'entries');
@@ -20,11 +20,14 @@ const futureEntries = entries.filter(e => e.date > today);
 const pastEntries = entries.filter(e => e.date <= today);
 
 // Sidebar: What's New (curated via type_metadata.featured)
-// Excludes Eric's own posts — "What's New" is for third-party momentum
-// (events, endorsements, real news), not self-amplification.
+// Excludes self-amplification — Eric quoted on Eric's own channel. A podcast,
+// interview or press piece where Eric is the one talking is third-party
+// momentum and DOES belong here; testing blockquote_source alone used to bar
+// 72 such entries, including an NYT piece. See
+// docs/postmortems/2026-10-02-whats-new-excluded-third-party-media.md
 const featuredEntries = entries
   .filter(e => (e.type_metadata as Record<string, unknown>)?.featured)
-  .filter(e => !(e.blockquote_source || '').startsWith('Eric Ries'))
+  .filter(e => !isSelfAmplification(e))
   .sort((a, b) => b.date.localeCompare(a.date))
   .slice(0, 8);
 
