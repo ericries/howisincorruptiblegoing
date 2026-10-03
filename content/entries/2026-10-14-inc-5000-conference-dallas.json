@@ -8,7 +8,10 @@
   "blockquote_source": "Inc. 5000 Conference & Gala",
   "source_url": "https://events.inc.com/2026incconference/speakers",
   "source_urls": [
-    {"url": "https://events.inc.com/2026incconference", "label": "Main event page (Omni Dallas Hotel, Oct 14–16)"}
+    {
+      "url": "https://events.inc.com/2026incconference",
+      "label": "Main event page (Omni Dallas Hotel, Oct 14–16)"
+    }
   ],
   "video_url": null,
   "image": null,
@@ -24,9 +27,20 @@
     "gala"
   ],
   "type_metadata": {
-    "city": "Dallas"
+    "city": "Dallas",
+    "session": "The Uncertainty Advantage: How Leaders Navigate Risk and Seize Opportunity",
+    "session_time": "11:15-11:45am CT",
+    "room": "Dallas Ballroom E",
+    "co_speakers": [
+      "Janet Napolitano"
+    ],
+    "moderator": "Melissa Angell, Inc.",
+    "agenda_url": "https://events.inc.com/2026incconference/agenda"
   },
   "scanner_source": "web-search",
   "verified": false,
-  "created_at": "2026-08-20T17:15:00Z"
+  "created_at": "2026-08-20T17:15:00Z",
+  "appearance_dates": [
+    "2026-10-15"
+  ]
 }
