@@ -84,12 +84,23 @@ def smart_quotes(s):
     s = s.replace("'", "’")
     return s
 
+# Normal ladder for sentence-length quotes.
+SIZES = (62, 56, 50, 46, 42, 38, 34, 30, 27, 24)
+# Poster ladder, tried first for blurb-length fragments only ("astounding").
+# At 62pt a single word is swallowed by the card; a blurb wants display type.
+POSTER_SIZES = (150, 128, 110, 94, 80, 70)
+POSTER_MAX_CHARS = 48
+
+
 def fit_quote(quote, draw, max_width, max_height):
     """Try descending font sizes until the wrapped quote fits.
     If even the smallest size overflows, truncate the trailing lines and add an
     ellipsis so the quote never collides with the attribution block. Trailing
     truncation of a contiguous span is acceptable (the full quote is at source)."""
-    for size in (62, 56, 50, 46, 42, 38, 34, 30, 27, 24):
+    ladder = SIZES
+    if len(quote.strip()) <= POSTER_MAX_CHARS:
+        ladder = POSTER_SIZES + SIZES
+    for size in ladder:
         font = load_font("CormorantGaramond-Italic.ttf", size)
         lines = wrap(quote, font, max_width, draw)
         line_h = int(size * 1.35)

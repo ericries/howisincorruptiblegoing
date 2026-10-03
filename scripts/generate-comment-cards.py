@@ -44,6 +44,10 @@ _ANCHORS = re.compile(
     re.I,
 )
 
+# Poster-fragment ceiling. At or under this length a Claude-verified quote is a
+# blurb, not a sentence, and skips the anchor/pronoun/length gates.
+FRAGMENT_MAX_CHARS = 48
+
 # Context-dependent openers — reject if the quote leads with one of these
 # UNLESS an anchor appears in the first ~40 chars (e.g. "This book…").
 _LEADING_PRONOUN = re.compile(r"^\s*(it|this|these|that|they|them|those|he|she)\b", re.I)
@@ -67,9 +71,14 @@ def _normalize(s: str) -> str:
 
 def _substantive_text(r: dict) -> str:
     """Best text to use as the quote — pull_quote if the archive computed one,
-    otherwise full_text/text trimmed. Normalized (em-dash, emoji-stripped)."""
+    otherwise full_text/text trimmed. Normalized (em-dash, emoji-stripped).
+
+    A short pull_quote is honoured verbatim: when the archive narrowed a comment
+    down to one poster-style word ("astounding"), falling through to the full
+    comment would drag back the very context we deliberately cut.
+    """
     q = (r.get("pull_quote") or "").strip()
-    if q and len(q) > 20:
+    if q:
         return _normalize(q)
     text = (r.get("full_text") or r.get("text") or "").strip()
     return _normalize(text)
@@ -87,6 +96,13 @@ def _passes_selection_gates(r: dict) -> tuple[bool, str]:
        LLM-verified items (short "It's amazing"-class superlatives are
        intentionally kept short — Claude's second-pass classifier already
        vouched for them, and short, sharp cards are highly shareable).
+
+    Fragment lane (2026-10-03, Eric's direction): a Claude-verified quote of
+    FRAGMENT_MAX_CHARS or fewer bypasses gates 2-4 entirely. These are movie-poster
+    pull-quotes — "astounding", "This is amazing" — where an anchor physically
+    can't fit and none is wanted. The anchor and leading-pronoun gates exist to
+    stop *medium-length* quotes that read as context-dependent sentences; a
+    two-word superlative reads as a blurb, not a dangling clause.
     """
     if r.get("already_have"):
         return False, "already_have"
@@ -98,6 +114,10 @@ def _passes_selection_gates(r: dict) -> tuple[bool, str]:
     # Length floor — measured after emoji strip / url removal
     substantive = re.sub(r"https?://\S+", "", q).strip()
     is_llm = "<llm>" in (r.get("superlative_matches") or [])
+
+    if is_llm and len(substantive) <= FRAGMENT_MAX_CHARS:
+        return True, ""
+
     min_len = 30 if is_llm else 60
     if len(substantive) < min_len:
         return False, f"too-short ({len(substantive)} chars)"
