@@ -256,6 +256,8 @@ if (isMainModule) {
     // Added 2026-09-29 at Eric's direction
     'rebecca henderson', // Harvard University Professor, Reimagining Capitalism in a World on Fire
     'lenny rachitsky',   // Lenny's Newsletter (~1M subscribers), Lenny's Podcast
+    // Added 2026-10-04 at Eric's direction
+    'raj sisodia',       // Conscious Capitalism co-founder, author of 16 books
   ]);
   const normalize = (s: string) => s.toLowerCase().replace(/[‘’]/g, "'").trim();
   for (const f of files) {
