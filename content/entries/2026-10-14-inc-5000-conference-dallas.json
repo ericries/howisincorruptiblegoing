@@ -14,7 +14,7 @@
     }
   ],
   "video_url": null,
-  "image": null,
+  "image": "/images/cards/2026-10-14-inc-5000-conference-dallas.png",
   "attribution": "Inc. 5000 Conference & Gala",
   "attribution_title": "Omni Dallas Hotel, Dallas Texas — Oct 14–16, 2026",
   "attribution_image": null,
@@ -27,6 +27,7 @@
     "gala"
   ],
   "type_metadata": {
+    "featured": true,
     "city": "Dallas",
     "session": "The Uncertainty Advantage: How Leaders Navigate Risk and Seize Opportunity",
     "session_time": "11:15-11:45am CT",
