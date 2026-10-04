@@ -1,0 +1,32 @@
+{
+  "id": "2026-05-26-investor-relations-podcast-joshua-wilson",
+  "date": "2026-05-26",
+  "type": "podcast",
+  "title": "The Investor Relations Podcast (Joshua Wilson) — Eric on the Harvard Law study: 'Everyone thinks they're part of the 20% exception'",
+  "summary": "A launch-day conversation aimed squarely at founders raising capital. Eric walks host Joshua Wilson through the argument that success itself makes a company a target, and cites the Harvard Law School finding that only a fifth of venture-backed founders are still CEO three years after an IPO. A video version was posted to the show's YouTube channel in October.",
+  "blockquote": "The vast majority of companies eventually encounter this gravitational pressure to conform, to abandon the spark, to lose what made them special. And in the book I quote a Harvard Law School study that shows that among venture-backed companies who have standard governance like this, who follow all the best practices, only 20% of founders will still be CEO three years after an IPO. Everyone thinks they're part of the 20% exception, but statistically speaking, you're much more likely to be part of the 80% that is gone. Enough. Enough of this. It's absurd.",
+  "blockquote_source": "Eric Ries on The Investor Relations Podcast",
+  "source_url": "https://podcasts.apple.com/us/podcast/learn-to-become-incorruptible-with-eric-ries/id1791628629?i=1000769626531",
+  "source_urls": [
+    {"url": "https://www.youtube.com/watch?v=YjyK__q1Kvg", "label": "Video version on the show's YouTube channel (posted 2026-10-04)"}
+  ],
+  "video_url": "https://www.youtube.com/watch?v=YjyK__q1Kvg",
+  "image": "/images/podcasts/investor-relations-podcast.jpg",
+  "attribution": "Joshua Wilson",
+  "attribution_title": "Host, The Investor Relations Podcast",
+  "attribution_image": "/images/podcasts/investor-relations-podcast.jpg",
+  "tags": [
+    "podcast",
+    "investor-relations",
+    "fundraising",
+    "governance",
+    "financial-gravity"
+  ],
+  "type_metadata": {
+    "audience": "The Investor Relations Podcast · 194 episodes · video version on a 2,440-subscriber YouTube channel",
+    "episode_length": "44:48"
+  },
+  "scanner_source": "web-search",
+  "verified": false,
+  "created_at": "2026-10-04T18:00:00Z"
+}
