@@ -8,10 +8,13 @@
   "blockquote_source": "Real Ventures on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/real-ventures_realventures-defyinggravity-investingininvestors-activity-7509350702096330752-0fUl",
   "source_urls": [
-    {"url": "https://www.linkedin.com/posts/anneliejdemoya_spent-the-afternoon-at-real-ventures-2026-activity-7508966907878883328-OeQ4", "label": "Annelie Justiniano De Moya (Vice Consul, Dominican Republic ↔ Quebec) attendee reaction — 'Can't wait to dive into it!'"}
+    {
+      "url": "https://www.linkedin.com/posts/anneliejdemoya_spent-the-afternoon-at-real-ventures-2026-activity-7508966907878883328-OeQ4",
+      "label": "Annelie Justiniano De Moya (Vice Consul, Dominican Republic ↔ Quebec) attendee reaction — 'Can't wait to dive into it!'"
+    }
   ],
   "video_url": null,
-  "image": null,
+  "image": "/images/events/real-ventures-logo.png",
   "attribution": "Real Ventures",
   "attribution_title": "Real Ventures 2026 Annual Meeting · #DefyingGravity · Montreal · Sept 24",
   "attribution_image": null,
