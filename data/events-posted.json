@@ -1,0 +1,205 @@
+{
+  "2026-09-23-responsive-conference-oakland": [
+    {
+      "type": "day-of",
+      "channel": "linkedin",
+      "dueAt": "2026-09-24T09:00:00-07:00"
+    },
+    {
+      "type": "day-of",
+      "channel": "x",
+      "dueAt": "2026-09-24T09:05:00-07:00"
+    },
+    {
+      "type": "day-of",
+      "channel": "bluesky",
+      "dueAt": "2026-09-24T09:10:00-07:00"
+    }
+  ],
+  "2026-09-30-ai-conference-tim-oreilly-fireside": [
+    {
+      "type": "upcoming-2",
+      "channel": "linkedin",
+      "dueAt": "2026-09-29T13:00:00-07:00"
+    },
+    {
+      "type": "upcoming-2",
+      "channel": "twitter",
+      "dueAt": "2026-09-29T13:30:00-07:00"
+    },
+    {
+      "type": "upcoming-2",
+      "channel": "bluesky",
+      "dueAt": "2026-09-29T14:00:00-07:00"
+    },
+    {
+      "type": "upcoming-2",
+      "channel": "instagram",
+      "dueAt": "2026-09-29T14:30:00-07:00"
+    },
+    {
+      "type": "upcoming-2",
+      "channel": "tiktok",
+      "dueAt": "2026-09-29T17:30:00-07:00"
+    },
+    {
+      "type": "day-of",
+      "channel": "linkedin",
+      "dueAt": "2026-09-30T08:15:00-07:00"
+    },
+    {
+      "type": "day-of",
+      "channel": "twitter",
+      "dueAt": "2026-09-30T08:30:00-07:00"
+    },
+    {
+      "type": "day-of",
+      "channel": "bluesky",
+      "dueAt": "2026-09-30T08:40:00-07:00"
+    },
+    {
+      "type": "day-of",
+      "channel": "instagram",
+      "dueAt": "2026-09-30T08:45:00-07:00"
+    },
+    {
+      "type": "note",
+      "note": "upcoming-1 (A-7) missed while crons were down. RECAP due Thu 10/1 MORNING (~9-10:30am) with real photos/reactions; academic poster occupies 10/1 LI 12:10, IG 12:45, X 1:30pm, BS 2pm, TikTok 5:10pm; LI Venky card moved to 4:30pm."
+    },
+    {
+      "type": "recap",
+      "channel": "twitter",
+      "dueAt": "2026-10-01T15:00:00-07:00"
+    },
+    {
+      "type": "recap",
+      "channel": "bluesky",
+      "dueAt": "2026-10-01T15:15:00-07:00"
+    },
+    {
+      "type": "recap",
+      "channel": "linkedin",
+      "dueAt": "2026-10-01T15:45:00-07:00"
+    },
+    {
+      "type": "note",
+      "note": "Recap approved by Eric 10/1 (text-only; no photos found; quote = Jason Yang LinkedIn attendee post, verbatim). Event cadence complete."
+    }
+  ],
+  "2026-09-24-real-ventures-defying-gravity-annual-meeting": [
+    {
+      "type": "recap",
+      "channel": "linkedin",
+      "dueAt": "2026-09-29T11:30:00-07:00"
+    },
+    {
+      "type": "recap",
+      "channel": "twitter",
+      "dueAt": "2026-09-29T11:45:00-07:00"
+    },
+    {
+      "type": "recap",
+      "channel": "bluesky",
+      "dueAt": "2026-09-29T12:00:00-07:00"
+    },
+    {
+      "type": "note",
+      "note": "Recap only (event was past; thank-you post quoting host). Text-only (no image), so no IG/TikTok. No presence/date claims."
+    }
+  ],
+  "2026-10-07-stanford-etl-eric-ries": [
+    {
+      "type": "upcoming-1",
+      "channel": "twitter",
+      "dueAt": "2026-10-02T12:30:00-07:00"
+    },
+    {
+      "type": "upcoming-1",
+      "channel": "linkedin",
+      "dueAt": "2026-10-02T13:00:00-07:00"
+    },
+    {
+      "type": "upcoming-1",
+      "channel": "bluesky",
+      "dueAt": "2026-10-02T13:30:00-07:00"
+    },
+    {
+      "type": "upcoming-1",
+      "channel": "instagram",
+      "dueAt": "2026-10-02T14:00:00-07:00"
+    },
+    {
+      "type": "note",
+      "note": "upcoming-1 moved from A-7 (9/30, AI Conf day) to Fri 10/2 per Eric spacing guidance. Confirmed: Wed 10/7 4:30-5:20pm PT, NVIDIA Auditorium, open to everyone (events.stanford.edu). Remaining: upcoming-2 Tue 10/6, day-of Wed 10/7 (draft-and-show), recap Thu 10/8."
+    }
+  ],
+  "2026-10-13-nacd-directors-summit": [
+    {
+      "type": "upcoming-1",
+      "channel": "linkedin",
+      "dueAt": "2026-10-06T13:00:00-07:00",
+      "id": "6ac3d6c57b80e27772c23bfd"
+    },
+    {
+      "type": "upcoming-1",
+      "channel": "twitter",
+      "dueAt": "2026-10-06T13:30:00-07:00",
+      "id": "6ac3d6c791c77f0a466ac126"
+    },
+    {
+      "type": "upcoming-1",
+      "channel": "bluesky",
+      "dueAt": "2026-10-06T14:00:00-07:00",
+      "id": "6ac3d6c97b80e27772c23c8f"
+    },
+    {
+      "type": "note",
+      "note": "Eric 10/5: make a big deal. Tue 10/13 Mainstage III 8:30-10:50am ET, Gaylord National Harbor. Governance week + 'The Directors' poster 10/12 (approved to build); Builders poster moves to 10/16+. Upcoming-1 skipped IG (no image)."
+    },
+    {
+      "type": "upcoming-2",
+      "channel": "linkedin",
+      "dueAt": "2026-10-12T09:00:00-07:00",
+      "id": "6ac3d88e91c77f0a466b37a3",
+      "note": "The Directors poster (Eric approved 10/5)"
+    },
+    {
+      "type": "upcoming-2",
+      "channel": "twitter",
+      "dueAt": "2026-10-12T10:00:00-07:00",
+      "id": "6ac3d8917b80e27772c2aa85"
+    },
+    {
+      "type": "upcoming-2",
+      "channel": "bluesky",
+      "dueAt": "2026-10-12T10:30:00-07:00",
+      "id": "6ac3d89491c77f0a466b3875"
+    }
+  ],
+  "2026-10-15-inc-5000-conference-dallas": [
+    {
+      "type": "note",
+      "note": "Confirmed 10/2 from Inc agenda: Thu 10/15 11:15-11:45am CT, Dallas Ballroom E, w/ Janet Napolitano, mod. Melissa Angell (Inc.). TIER 1: upcoming-1 A-7 = Thu 10/8 (Stanford recap day; consider Fri 10/9), upcoming-2 Wed 10/14, day-of Thu 10/15 (draft-and-show), recap Fri 10/16."
+    }
+  ],
+  "2026-10-roundup": [
+    {
+      "type": "roundup",
+      "channel": "linkedin",
+      "dueAt": "2026-10-09T13:30:00-07:00",
+      "id": "6ac3d9bb00f193294b794114"
+    },
+    {
+      "type": "roundup",
+      "channel": "twitter",
+      "dueAt": "2026-10-09T15:30:00-07:00",
+      "id": "6ac3d9bd91c77f0a466b7d0b"
+    },
+    {
+      "type": "roundup",
+      "channel": "bluesky",
+      "dueAt": "2026-10-09T14:45:00-07:00",
+      "id": "6ac3d9bf5162d360af9e51f6"
+    }
+  ]
+}
