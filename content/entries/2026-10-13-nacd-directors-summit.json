@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-13-nacd-directors-summit",
+  "date": "2026-10-13",
+  "type": "event",
+  "title": "NACD Directors Summit 2026: Eric Ries on the mainstage",
+  "summary": "Eric gives a mainstage session on Incorruptible at the National Association of Corporate Directors' annual Directors Summit (October 11 to 14, Gaylord National Harbor, outside Washington, DC; 1,700+ board directors). Tuesday October 13 in Potomac A, Mainstage III (8:30 to 10:50 a.m. ET), between NACD's State of the Association and a fireside with Mark Weinberger. NACD's own session description frames the book's argument for a board audience: mission drift as a design flaw rather than an ethical lapse, and organizational integrity as a practical design problem.",
+  "blockquote": "Mission drift isn't an accident; it is a design flaw that threatens even the most successful organizations.",
+  "blockquote_source": "NACD Directors Summit 2026 agenda, session description: Incorruptible: Why Good Companies Go Bad and How Great Companies Stay Great",
+  "source_url": "https://www.nacdonline.org/nacd-events/national-events/nacd-directors-summit-2026/nacd-directors-summit-2026-agenda/",
+  "source_urls": [
+    {"url": "https://www.nacdonline.org/nacd-events/national-events/nacd-directors-summit-2026/nacd-directors-summit-2026-speakers", "label": "NACD Summit 2026 speakers"},
+    {"url": "https://www.nacdonline.org/nacd-events/national-events/nacd-directors-summit-2026/", "label": "NACD Directors Summit 2026"}
+  ],
+  "video_url": null,
+  "image": "/images/events/nacd-logo.png",
+  "attribution": "National Association of Corporate Directors (NACD)",
+  "attribution_title": "Directors Summit mainstage · National Harbor, MD · Tuesday October 13, 2026",
+  "attribution_image": null,
+  "tags": ["event", "upcoming", "in-person", "nacd", "governance", "boards", "keynote"],
+  "type_metadata": {
+    "city": "National Harbor, MD",
+    "featured": true,
+    "session": "Incorruptible: Why Good Companies Go Bad and How Great Companies Stay Great",
+    "session_time": "8:30-10:50 a.m. ET (Mainstage III)",
+    "room": "Potomac A",
+    "venue": "Gaylord National Resort & Convention Center, National Harbor, MD",
+    "audience": "NACD Directors Summit — 1,700+ board directors; summit runs Oct 11-14"
+  },
+  "prominence": 1,
+  "scanner_source": "manual",
+  "verified": false,
+  "created_at": "2026-10-05T17:00:00Z",
+  "appearance_dates": ["2026-10-13"]
+}
