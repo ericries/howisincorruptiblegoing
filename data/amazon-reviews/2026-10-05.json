@@ -1,0 +1,37 @@
+{
+  "snapshot_date": "2026-10-05",
+  "captured_at": "2026-10-05T19:00:00Z",
+  "source": "screenshot supplied by Eric of the Amazon Kindle product page (B0FXBKY9Q3); Amazon rank cron paused 2026-08-31",
+  "totals": {
+    "global_ratings": 262,
+    "customer_reviews": 262,
+    "average_rating": 4.8,
+    "five_star_pct": null,
+    "four_star_pct": null,
+    "three_star_pct": null,
+    "two_star_pct": null,
+    "one_star_pct": null
+  },
+  "goodreads": {
+    "average_rating": 4.4,
+    "ratings": 406
+  },
+  "bestseller_ranks": null,
+  "badges": [
+    {
+      "badge": "#1 Best Seller",
+      "category": "Startups",
+      "note": "Best Sellers Rank badge, NOT the New Release list. This is a RETURN to a badge the book already held on launch day (2026-05-26-amazon-bestseller-startups), not a first. Concurrent with Prime Day and the $1.99 Kindle promo."
+    }
+  ],
+  "pricing_observed": {
+    "kindle": "$1.99",
+    "audiobook": "$22.50",
+    "hardcover": "$25.22",
+    "paperback": "$23.06",
+    "used_and_new_from": "$14.86"
+  },
+  "category_breadcrumb": "Kindle Store > Kindle eBooks > Business & Money > Business Development & Entrepreneurship > Entrepreneurship > Management",
+  "shipped_as_entry_id": "2026-10-05-amazon-1-startups-bestseller",
+  "notes": "Prior snapshot 2026-10-01 recorded 259 customer_reviews at 4.8 and Goodreads 4.4/397. Four days later: 262 ratings (+3), Goodreads 406 (+9). Next review-count milestone is 500 — a long way off, so no milestone entry due on review count."
+}
