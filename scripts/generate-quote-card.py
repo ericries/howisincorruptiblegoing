@@ -62,15 +62,33 @@ def domain_of(url):
     except Exception:
         return ""
 
+# Codepoints the bundled faces cannot draw, which would render as tofu (□).
+#
+# The arrows block (U+2190-21FF) is deliberately NOT stripped wholesale: all four
+# TTFs carry → ← ↔ ↗ (verified against their cmap tables), and blanket-stripping
+# turned "0→1 product creator" into "01 product creator" and "Build → Test →
+# Learn" into "Build Test Learn". Only the arrows the fonts genuinely lack are
+# listed. Variation selectors and ZWJ are always dropped — they are invisible
+# modifiers, so removing them leaves the base glyph the font does have (↗️ → ↗).
 _EMOJI = re.compile(
-    "[\U0001F000-\U0001FAFF\U00002600-\U000027BF\U0001F1E6-\U0001F1FF"
-    "\U00002190-\U000021FF\U00002B00-\U00002BFF\U00002300-\U000023FF"
-    "\U0000FE00-\U0000FE0F\U0000200D\U0000203C\U00002049]"
+    "["
+    "\U0001F000-\U0001FAFF"      # pictographs, supplemental symbols, skin tones
+    "\U00002600-\U000027BF"      # misc symbols + dingbats
+    "\U0001F1E6-\U0001F1FF"      # regional indicators (flags)
+    "\U00002B00-\U00002BFF"      # misc symbols and arrows (⬆ ⭐ …)
+    "\U00002300-\U000023FF"      # misc technical (⌚ ⏰ …)
+    "\U000021A0-\U000021FF"      # arrows the fonts lack (⇒ ⇐ …); → ← ↔ ↗ kept
+    "\U0000FE00-\U0000FE0F"      # variation selectors
+    "\U0000200D"                 # zero-width joiner
+    "\U0000203C\U00002049"       # ‼ ⁉
+    "]"
 )
 
 
 def strip_emoji(s):
-    """Remove emoji (they render as tofu boxes □) and clean up the leftover spacing."""
+    """Remove glyphs the bundled fonts cannot draw (they render as tofu □) and
+    clean up the leftover spacing. Typographic punctuation the fonts DO carry
+    — arrows, middot, em dash — is preserved."""
     s = _EMOJI.sub("", s)
     s = re.sub(r"\s+([,.;:!?…])", r"\1", s)
     s = re.sub(r"[ \t]{2,}", " ", s)
@@ -118,11 +136,22 @@ def fit_quote(quote, draw, max_width, max_height):
         lines[-1] = last
     return font, lines, line_h
 
+def attribution_lines(d: dict) -> tuple[str, str]:
+    """Name and role for the card footer, emoji-stripped.
+
+    The DM Sans faces have no emoji glyphs, so anything left here renders as a
+    tofu box. LinkedIn headlines are full of them — "Parent of 2 👧🏻" shipped as
+    "Parent of 2 □□" on 2026-10-05 because only the quote was being stripped.
+    """
+    name = d.get("attribution") or d.get("blockquote_source", "") or ""
+    title = d.get("attribution_title") or ""
+    return strip_emoji(name), strip_emoji(title)
+
+
 def render(entry_path: Path, out_path: Path):
     d = json.loads(entry_path.read_text())
     quote = smart_quotes(d.get("blockquote", "")).strip()
-    name = d.get("attribution") or d.get("blockquote_source", "")
-    title = d.get("attribution_title") or ""
+    name, title = attribution_lines(d)
     url = d.get("source_url") or ""
     host = domain_of(url)
 
