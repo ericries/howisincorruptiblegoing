@@ -1,0 +1,328 @@
+{
+  "_comment": "BLOCKING RULE. Before shipping any @ericriesactual TikTok: grep its video id here AND confirm Eric is on camera. Caption content is not a reliable signal. Eric has removed AI-generated TikTok entries from the site three times (2026-05-28, 2026-06-01, 2026-06-06). If you cannot confirm on-camera, SKIP.",
+  "_rules": [
+    "Podcast-cutout pattern ('X and I discuss ... on the Y Podcast') is animated by default — skip unless on-camera is confirmed.",
+    "Photo slideshows (isSlideshow true, videoMeta.duration 0) are never eligible: Eric is not on camera, and /embed/v2/ cannot render photo mode so the facade renders black.",
+    "@bookthinkers-tagged and *asterisk-hook*-style captions are AI-generated.",
+    "This list only grows. Add ids as they are identified; never remove one."
+  ],
+  "_source": "extracted from memory/feedback_no_ai_tiktoks.md on 2026-10-04 so the denylist survives a platform change",
+  "denylist": [
+    {
+      "id": "7638395481743232286",
+      "note": "7638395481743232286` | 2026-05-10 | \"*I accidentally created a dangerous generation of founders*\" | @bookthinkers + asterisk hook |"
+    },
+    {
+      "id": "7638655475457871134",
+      "note": "7638655475457871134` | 2026-05-11 | \"*I wish I never had to name the book this*\" | @bookthinkers + asterisk hook |"
+    },
+    {
+      "id": "7639064111166393631",
+      "note": "7639064111166393631` | 2026-05-12 | \"*Great companies don't die, they become soulless zombies*\" | @bookthinkers + asterisk hook |"
+    },
+    {
+      "id": "7639791073509805343",
+      "note": "7639791073509805343` | 2026-05-14 | \"*I have a controversial take on money*\" | @bookthinkers + asterisk hook |"
+    },
+    {
+      "id": "7640181140149636382",
+      "note": "7640181140149636382` | 2026-05-15 | \"*Sol Price is one of the greatest entrepreneurs of all time*\" | @bookthinkers + asterisk hook |"
+    },
+    {
+      "id": "7644562379149167885",
+      "note": "Eric has removed AI-generated TikTok entries from the site three times** (2026-05-28, 2026-06-01, 2026-06-06). The Novo Nordisk TikTok (ID `7644562379149167885`"
+    },
+    {
+      "id": "7656492229636148494",
+      "note": "7656492229636148494` | 2026-06-28 | \"We're absolutely sure Google will file its quarterly report on time, but a manslaughter cover-up?\" | hashtag salad, #busine"
+    },
+    {
+      "id": "7666140979149147406",
+      "note": "7666140979149147406` | 2026-07-24 | \"Idealism vs. Profit. Want to make an impact?\" | hashtag salad |"
+    },
+    {
+      "id": "7666148198813027597",
+      "note": "7666148198813027597` | 2026-07-24 | \"Savvy or principled? Good or evil?\" | hashtag salad |"
+    },
+    {
+      "id": "7666156103066995981",
+      "note": "7666156103066995981` | 2026-07-24 | \"Shareholders destroying value?\" | hashtag salad |"
+    },
+    {
+      "id": "7666635110489279757",
+      "note": "7666635110489279757` | 2026-07-26 | \"Companies like John Lewis Partnership and H-E-B defy universal business rules\" | hashtag salad |"
+    },
+    {
+      "id": "7666882590007217421",
+      "note": "7666882590007217421` | 2026-07-26 | \"We've built an economy that rewards making money over creating value\" | hashtag salad |"
+    },
+    {
+      "id": "7667261478457675021",
+      "note": "7667261478457675021` | 2026-07-27 | \"Shareholder primacy isn't an inevitable law of capitalism\" | hashtag salad |"
+    },
+    {
+      "id": "7667632522439691534",
+      "note": "7667632522439691534` | 2026-07-28 | \"Strong organizations keep their promises\" | hashtag salad |"
+    },
+    {
+      "id": "7668003699570134286",
+      "note": "7668003699570134286` | 2026-07-29 | \"Great founders make structural decisions early. Sol Price's commitment…\" | hashtag salad |"
+    },
+    {
+      "id": "7668374793485438222",
+      "note": "7668374793485438222` | 2026-07-30 | \"Great companies don't put shareholders first\" | hashtag salad, Johnson & Johnson reference |"
+    },
+    {
+      "id": "7668745781746076942",
+      "note": "7668745781746076942` | 2026-07-31 | \"Great organizations are more than the people who build them. Protecting their purpose requires structures…\" | hashtag salad"
+    },
+    {
+      "id": "7669093642497445133",
+      "note": "7669093642497445133` | 2026-08-01 | \"Everyone thinks companies fail because of one big decision. It's usually the opposite.\" | hashtag salad |"
+    },
+    {
+      "id": "7669109080480288014",
+      "note": "7669109080480288014` | 2026-08-01 | \"When everything is on fire... who do you actually call?\" | hashtag salad |"
+    },
+    {
+      "id": "7669835905259162894",
+      "note": "7669835905259162894` | 2026-08-03 | \"The merger that never happened created $500 BILLION\" (Novo Nordisk) | hashtag salad |"
+    },
+    {
+      "id": "7669858992356723982",
+      "note": "7669858992356723982` | 2026-08-03 | \"Shareholder primacy isn't a timeless principle\" | hashtag salad |"
+    },
+    {
+      "id": "7670230224906259726",
+      "note": "7670230224906259726` | 2026-08-04 | \"AI isn't the real threat. The bigger question is whether the systems we build are guided by human values\" | hashtag salad |"
+    },
+    {
+      "id": "7670237770874424589",
+      "note": "7670237770874424589` | 2026-08-04 | \"Sounds good has probably killed more startups than bad ideas ever did\" | hashtag salad |"
+    },
+    {
+      "id": "7670601243995213069",
+      "note": "7670601243995213069` | 2026-08-05 | \"Profit isn't just what shows up on a balance sheet\" | hashtag salad |"
+    },
+    {
+      "id": "7670972447260298509",
+      "note": "7670972447260298509` | 2026-08-06 | \"Trust is one of a company's greatest assets\" | hashtag salad |"
+    },
+    {
+      "id": "7671320630062632205",
+      "note": "7671320630062632205` | 2026-08-07 | \"When the system rewards cutting costs more than creating value\" | hashtag salad |"
+    },
+    {
+      "id": "7671320730440715533",
+      "note": "7671320730440715533` | 2026-08-07 | \"The biggest lie in business: 'We're mission-driven.'\" | hashtag salad |"
+    },
+    {
+      "id": "7671343307213065485",
+      "note": "7671343307213065485` | 2026-08-07 | \"Values become powerful when they're built into the business. Tony's Chocolonely…\" | hashtag salad |"
+    },
+    {
+      "id": "7672456567748300046",
+      "note": "7672456567748300046` | 2026-08-10 | \"What happens when a founder gets pushed out of the company he helped build?\" (Sol Price / Price Club / Costco) | hashtag sa"
+    },
+    {
+      "id": "7672464211125095693",
+      "note": "7672464211125095693` | 2026-08-10 | \"AI could be the biggest growth accelerator\" | hashtag salad |"
+    },
+    {
+      "id": "7672472189630778638",
+      "note": "7672472189630778638` | 2026-08-10 | \"The problem wasn't getting people to follow instructions\" | hashtag salad |"
+    },
+    {
+      "id": "7672824725080411405",
+      "note": "7672824725080411405` | 2026-08-11 | \"Want to understand a company's culture? Look at its processes. Joe Hart and I discuss…\" | 22s clip, cannot verify Eric on-c"
+    },
+    {
+      "id": "7673136087434366221",
+      "note": "7673136087434366221` | 2026-08-12 | \"They didn't just pay the claim. They fixed the problem\" | hashtag salad |"
+    },
+    {
+      "id": "7673175881812020493",
+      "note": "7673175881812020493` | 2026-08-12 | \"The strongest thing a company can build isn't a product. It's a customer relationship\" | hashtag salad |"
+    },
+    {
+      "id": "7673198770200382734",
+      "note": "7673198770200382734` | 2026-08-12 | \"Greg Kihlstrom and I discuss why it may be time to question what we've been taught\" | podcast-cutout pattern; parent Kihlst"
+    },
+    {
+      "id": "7673532260909468941",
+      "note": "7673532260909468941` | 2026-08-13 | \"The best leaders don't need to be the center of attention\" | hashtag salad |"
+    },
+    {
+      "id": "7673569991488326925",
+      "note": "7673569991488326925` | 2026-08-13 | \"Andrea Pacini and I discuss why clear communication isn't about finding a clever new phrase\" | podcast-cutout pattern |"
+    },
+    {
+      "id": "7673918791088229646",
+      "note": "7673918791088229646` | 2026-08-14 | \"Most companies manage people by constantly checking on them. High-trust companies don't\" | hashtag salad |"
+    },
+    {
+      "id": "7673941039513750798",
+      "note": "7673941039513750798` | 2026-08-14 | \"Mel Storey and I discuss the unseen forces that can push even great organizations\" | podcast-cutout pattern |"
+    },
+    {
+      "id": "7674289620548406541",
+      "note": "7674289620548406541` | 2026-08-15 | \"Short-term thinking kills great companies\" | hashtag salad |"
+    },
+    {
+      "id": "7674304576576589070",
+      "note": "7674304576576589070` | 2026-08-15 | \"Trust is built one decision at a time. H-E-B proved it\" | hashtag salad |"
+    },
+    {
+      "id": "7674660689394355470",
+      "note": "7674660689394355470` | 2026-08-16 | \"What if the next generation of companies were built for human flourishing—not extraction?\" | 27s hashtag salad |"
+    },
+    {
+      "id": "7675032118321319181",
+      "note": "7675032118321319181` | 2026-08-17 | \"The best time was 40 years ago. The second-best time is today.\" | 25s hashtag salad |"
+    },
+    {
+      "id": "7675054105672437006",
+      "note": "7675054105672437006` | 2026-08-17 | \"Mel Storey and I discuss why corporate governance starts with a fundamental question…\" | podcast-cutout pattern (Mel Storey"
+    },
+    {
+      "id": "7675403343686044941",
+      "note": "7675403343686044941` | 2026-08-18 | \"What if the stock market rewarded companies for thinking long term?\" | 40s hashtag salad |"
+    },
+    {
+      "id": "7675425350792301838",
+      "note": "7675425350792301838` | 2026-08-18 | \"John Miles and I discuss how organizations can build structures designed to protect their mission…\" | 33s podcast-cutout pa"
+    },
+    {
+      "id": "7675775291674938637",
+      "note": "7675775291674938637` | 2026-08-19 | \"Just because you can build a destructive company doesn't mean you should\" | 59s hashtag salad |"
+    },
+    {
+      "id": "7675796353804553485",
+      "note": "7675796353804553485` | 2026-08-19 | \"Daniel Kivatinos, Harshith Vaddiparthy, and I discuss what Sol Price's story teaches us…\" | 51s podcast-cutout pattern |"
+    },
+    {
+      "id": "7676167555781840142",
+      "note": "7676167555781840142` | 2026-08-20 | \"Dave Stachowiak and I discuss why we need to rethink what organizations are ultimately committed to…\" | 26s podcast-cutout "
+    },
+    {
+      "id": "7676538679661301005",
+      "note": "7676538679661301005` | 2026-08-21 | \"Kuba Filipowski and I discuss why long-term thinking is essential to building products and companies that endure\" | 21s pod"
+    },
+    {
+      "id": "7678022881204309262",
+      "note": "7678022881204309262` | 2026-08-25 | \"Craig Rosenberg and I discuss why trust can become a business superpower\" | 149s podcast-cutout pattern |"
+    },
+    {
+      "id": "7678394176769166623",
+      "note": "7678394176769166623` | 2026-08-26 | \"Joe Hart and I discuss what it really means to think and operate like an entrepreneur\" | 15s podcast-cutout pattern |"
+    },
+    {
+      "id": "7678765094154538253",
+      "note": "7678765094154538253` | 2026-08-27 | \"Andrea Pacini and I discuss why building a healthy organization means aligning what you believe with how the company operat"
+    },
+    {
+      "id": "7679136231116082446",
+      "note": "7679136231116082446` | 2026-08-28 | \"Daniel Kivatinos, Harshith Vaddiparthy, and I discuss why governance isn't just a technical detail\" (Twilio / Jeff Lawson o"
+    },
+    {
+      "id": "7680288038320147725",
+      "note": "7680288038320147725` | 2026-08-31 | \"Kaihan Krippendorff and I discuss how alternative ownership and governance structures can scale\" (Mondragon) | 52s podcast-"
+    },
+    {
+      "id": "7680620689107225869",
+      "note": "7680620689107225869` | 2026-09-01 | \"John Miles and I discuss why great leadership is less about commanding outcomes\" | 55s podcast-cutout pattern |"
+    },
+    {
+      "id": "7680991495964364046",
+      "note": "7680991495964364046` | 2026-09-02 | \"Kuba Filipowski and I discuss why entrepreneurship is ultimately about the impact you choose to make\" | 18s podcast-cutout "
+    },
+    {
+      "id": "7681362757135912206",
+      "note": "7681362757135912206` | 2026-09-03 | \"Greg Kihlstrom and I discuss why the evidence for mission-driven business is much stronger than most people realize\" | 48s "
+    },
+    {
+      "id": "7681733723330563342",
+      "note": "7681733723330563342` | 2026-09-04 | \"Andrea Pacini and I discuss why great organizations don't just cultivate trustworthiness. They build a vault around it\" | 7"
+    },
+    {
+      "id": "7682846933345373454",
+      "note": "7682846933345373454` | 2026-09-07 | \"Joe Hart of Dale Carnegie and I discuss why culture runs deeper than any process\" | 22s podcast-cutout pattern |"
+    },
+    {
+      "id": "7683218191354580238",
+      "note": "7683218191354580238` | 2026-09-08 | \"What if hitting your OKRs is actually costing your company trust?\" | 130s solo-hashtag-salad; no named co-host but same AI-"
+    },
+    {
+      "id": "7683635445288193294",
+      "note": "7683635445288193294` | 2026-09-09 | \"John Miles and I discuss on Passion Struck why storytelling can be one of the most powerful ways to preserve a company's va"
+    },
+    {
+      "id": "7683960288789466381",
+      "note": "7683960288789466381` | 2026-09-10 | \"Alex Strathdee and I discuss on Before the Bestseller what it means to truly write for the reader\" | 30s podcast-cutout pat"
+    },
+    {
+      "id": "7684331289364729102",
+      "note": "7684331289364729102` | 2026-09-11 | \"Daniel Kivatinos, Harshith Vaddiparthy, and I discuss how governance can be designed to preserve purpose for generations\" ("
+    },
+    {
+      "id": "7685437517067291918",
+      "note": "7685437517067291918` | 2026-09-14 | \"Vlada Bortnik and I discuss on Heartful Wonders … Groupon built its business around one great local deal\" | 49s podcast-cut"
+    },
+    {
+      "id": "7685808732600601870",
+      "note": "7685808732600601870` | 2026-09-15 | \"Craig Rosenberg and I discuss on The Transaction … our grandparents had a word for that: corruption\" | 133s podcast-cutout "
+    },
+    {
+      "id": "7686180009702100238",
+      "note": "7686180009702100238` | 2026-09-16 | \"Andrea Pacini and I discuss on Ideas on Stage why communicating purpose requires understanding the forces pushing organizat"
+    },
+    {
+      "id": "7686551124387646734",
+      "note": "7686551124387646734` | 2026-09-17 | \"What does it look like when a company truly puts its customers first?\" (H-E-B Texas ice storm) | 76s podcast-cutout (split-"
+    },
+    {
+      "id": "7686921810134240525",
+      "note": "7686921810134240525` | 2026-09-18 | \"What if you treated your ideas like a startup?\" (customer advisory board for early talks) | podcast-cutout pattern |"
+    },
+    {
+      "id": "7688083773090581774",
+      "note": "7688083773090581774` | 2026-09-21 | \"What happens when optimizing a metric starts undermining what made your company successful?\" (Groupon) | podcast-cutout pat"
+    },
+    {
+      "id": "7688399198647078157",
+      "note": "7688399198647078157` | 2026-09-22 | \"What if the real value isn't in what AI produces, but in what it helps you learn?\" | podcast-cutout pattern |"
+    },
+    {
+      "id": "7688769590268153101",
+      "note": "7688769590268153101` | 2026-09-23 | \"Why do founders spend so much time defining their vision, but so little time designing the governance that protects it?\" | "
+    },
+    {
+      "id": "7689140582903483661",
+      "note": "7689140582903483661` | 2026-09-24 | \"Why is it so hard to speak up, even when you know something is wrong?\" | podcast-cutout pattern |"
+    },
+    {
+      "id": "7689511389018197261",
+      "note": "7689511389018197261` | 2026-09-25 | \"What happens when a company's mission and its governance point in different directions?\" | 17s Outthinkers (Kaihan Krippend"
+    },
+    {
+      "id": "7690666667919052046",
+      "note": "7690666667919052046` | 2026-09-28 | \"What is the real purpose of a forecast?\" — \"Vlada Bortnik and I discuss on Heartful Wonders…\" | 35s podcast-cutout, names t"
+    },
+    {
+      "id": "7691004082420534542",
+      "note": "7691004082420534542` | 2026-09-29 | \"What creates a lasting competitive advantage…\" — \"Scott Albro, Craig Rosenberg, and I discuss on The Transaction\" | 68s pod"
+    },
+    {
+      "id": "7691375208652934414",
+      "note": "7691375208652934414` | 2026-09-30 | \"What if we've been defining profit the wrong way?\" — \"Kuba Filipowski and I discuss on the Next in Commerce Podcast\" | 21s "
+    },
+    {
+      "id": "7691745812769950989",
+      "note": "7691745812769950989` | 2026-10-01 | \"Why is it often easier to do the right thing 100% of the time than 98%?\" — \"Joe Hart and I discuss on Take Command: A Dale "
+    },
+    {
+      "id": "7692170403183168782",
+      "note": "7692170403183168782` | 2026-10-02 | \"What is strategy, really?\" — \"Kaihan Krippendorff and I discuss on the Outthinkers Podcast\" | 39s podcast-cutout; Krippendo"
+    }
+  ]
+}

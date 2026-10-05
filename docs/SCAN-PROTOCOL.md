@@ -78,8 +78,16 @@ Recurring traps, in short:
 
 ### @ericriesactual TikTok — blocking rule
 
-Before shipping any TikTok: read `feedback_no_ai_tiktoks`, grep the video id
-against its denylist, **and** confirm Eric is on camera. Caption content is not a
+Before shipping any TikTok, grep its id against **`data/ai-tiktok-denylist.json`**
+(79 ids, in this repo so it survives a platform change) **and** confirm Eric is
+on camera:
+
+```sh
+python3 -c "import json,sys; d={r['id'] for r in json.load(open('data/ai-tiktok-denylist.json'))['denylist']}; print(sys.argv[1] in d and 'DENIED' or 'not on denylist — still verify on-camera')" <VIDEO_ID>
+```
+
+The list only grows; add ids as they are identified and never remove one.
+`memory/feedback_no_ai_tiktoks.md` holds the longer narrative. Caption content is not a
 reliable signal. The podcast-cutout pattern ("X and I discuss…") is animated by
 default. Photo slideshows (`isSlideshow: true`, duration 0) never qualify. If you
 cannot confirm on-camera, skip. This rule has been violated three times.
