@@ -12,6 +12,25 @@ Timeline website tracking momentum for Eric Ries's book *Incorruptible* (May 26,
 - **Stack:** Astro static site + JSON data files + GitHub Pages
 - **Pipeline:** Scanner (local Claude agent) → LLM Editor → Pre-commit hook → PR → Review Bot (GitHub Actions) → Auto-merge → Deploy
 
+## START OF EVERY SESSION — restore the scanner crons
+
+Run `CronList`. Recreate any missing job from **[`docs/CRONS.md`](docs/CRONS.md)**,
+which holds all seven cron expressions and their verbatim prompts. Report in one
+line which were restored, or "all 7 present".
+
+Session crons are in-memory: they vanish when the session ends, the runtime
+silently ignores `durable: true`, and recurring jobs auto-expire after 7 days.
+Restoring them is routine, not a sign of breakage.
+
+**Everything the scanner needs lives in this repository.** Keep it that way — no
+launchd agents, no system background items, no machine-local state, so the whole
+pipeline survives a change of platform or machine. The standing rules the jobs
+follow are in [`docs/SCAN-PROTOCOL.md`](docs/SCAN-PROTOCOL.md).
+
+Do not create, modify, or install anything outside this repo — system settings,
+LaunchAgents, login items, shell profiles — without Eric's explicit say-so for
+that specific action.
+
 ## Operating Model
 
 - **Red-Green TDD** — write a failing test first, always. No code without a test.
