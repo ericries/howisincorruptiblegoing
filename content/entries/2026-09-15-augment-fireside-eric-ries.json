@@ -8,10 +8,13 @@
   "blockquote_source": "Augment.org on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/augment-org_so-many-people-have-no-idea-what-to-do-with-activity-7491467411167145984-GeG7",
   "source_urls": [
-    {"url": "https://www.linkedin.com/posts/arielrenous_the-first-ever-startup-book-i-read-was-the-activity-7505246826229452800-4Nhn", "label": "Ariel Renous (Co-Founder & CEO, Augment; Forbes 30U30) — day-before announcement: 'join us live tomorrow for a very special conversation with Eric Ries'"}
+    {
+      "url": "https://www.linkedin.com/posts/arielrenous_the-first-ever-startup-book-i-read-was-the-activity-7505246826229452800-4Nhn",
+      "label": "Ariel Renous (Co-Founder & CEO, Augment; Forbes 30U30) — day-before announcement: 'join us live tomorrow for a very special conversation with Eric Ries'"
+    }
   ],
   "video_url": null,
-  "image": null,
+  "image": "/images/events/augment-org.jpg",
   "attribution": "Augment.org",
   "attribution_title": "Live fireside chat, September 15, 2026 — Augment student community",
   "attribution_image": null,
