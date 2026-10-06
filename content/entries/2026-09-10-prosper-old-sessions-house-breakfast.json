@@ -8,14 +8,29 @@
   "blockquote_source": "Eric Ries at the Prosper breakfast (via Hattie Moll)",
   "source_url": "https://www.linkedin.com/posts/hattie-moll-78352616_early-morning-inspiration-from-eric-ries-activity-7503767434504388608-ax8G",
   "source_urls": [
-    {"url": "https://www.linkedin.com/posts/aolley_fantastic-breakfast-event-the-old-sessions-activity-7503809644822212609-cWqO", "label": "Andrew Olley attendee recap"},
-    {"url": "https://www.linkedin.com/posts/seyiayinla_productmanagement-productleadership-theleanstartup-activity-7503774645335277568-xopj", "label": "Seyi Ayinla attendee recap"},
-    {"url": "https://www.linkedin.com/posts/stewartjbewley_they-made-money-but-at-what-cost-i-am-activity-7503720608392884224-qxLG", "label": "Stewart Bewley attendee recap"},
-    {"url": "https://www.linkedin.com/posts/alessio-schiavone_theleanstartup-incorruptible-activity-7503740453826162688-Vn2-", "label": "Alessio Schiavone attendee recap"},
-    {"url": "https://www.prosper.co.uk/resources/prosper-live/eric-ries-incorruptible-why-good-companies-go-bad-and-how-great-companies-stay-great", "label": "Prosper Live — full recording (79 min)"}
+    {
+      "url": "https://www.linkedin.com/posts/aolley_fantastic-breakfast-event-the-old-sessions-activity-7503809644822212609-cWqO",
+      "label": "Andrew Olley attendee recap"
+    },
+    {
+      "url": "https://www.linkedin.com/posts/seyiayinla_productmanagement-productleadership-theleanstartup-activity-7503774645335277568-xopj",
+      "label": "Seyi Ayinla attendee recap"
+    },
+    {
+      "url": "https://www.linkedin.com/posts/stewartjbewley_they-made-money-but-at-what-cost-i-am-activity-7503720608392884224-qxLG",
+      "label": "Stewart Bewley attendee recap"
+    },
+    {
+      "url": "https://www.linkedin.com/posts/alessio-schiavone_theleanstartup-incorruptible-activity-7503740453826162688-Vn2-",
+      "label": "Alessio Schiavone attendee recap"
+    },
+    {
+      "url": "https://www.prosper.co.uk/resources/prosper-live/eric-ries-incorruptible-why-good-companies-go-bad-and-how-great-companies-stay-great",
+      "label": "Prosper Live — full recording (79 min)"
+    }
   ],
   "video_url": "https://www.youtube.com/watch?v=UgakYYbH7oU",
-  "image": null,
+  "image": "/images/events/prosper-logo.png",
   "attribution": "Prosper × Nick Perrett",
   "attribution_title": "The Old Sessions House, Clerkenwell, London · Sept 10 morning",
   "attribution_image": null,
