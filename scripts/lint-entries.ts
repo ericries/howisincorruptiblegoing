@@ -258,6 +258,8 @@ if (isMainModule) {
     'lenny rachitsky',   // Lenny's Newsletter (~1M subscribers), Lenny's Podcast
     // Added 2026-10-04 at Eric's direction
     'raj sisodia',       // Conscious Capitalism co-founder, author of 16 books
+    // Added 2026-10-05 at Eric's direction
+    'alistair croll',    // Co-author, Lean Analytics (the Lean Series); founder, FWD50
   ]);
   const normalize = (s: string) => s.toLowerCase().replace(/[‘’]/g, "'").trim();
   for (const f of files) {
