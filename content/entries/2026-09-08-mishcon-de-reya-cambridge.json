@@ -8,16 +8,31 @@
   "blockquote_source": "Mishcon de Reya",
   "source_url": "https://www.mishcon.com/",
   "source_urls": [
-    {"url": "https://www.linkedin.com/posts/mishcon-de-reya_why-do-successful-organisations-lose-their-activity-7505938492728733696-DVLD", "label": "Mishcon de Reya LLP corporate account (76K followers) — event recap with full-conversation video link"},
-    {"url": "https://www.linkedin.com/posts/neli-atanassova-phd-mba-63377820_in-conversation-with-eric-ries-activity-7505897606133370880-Ddr8", "label": "Neli Atanassova, PhD MBA (AI, Data & Analytics) attendee recap — asked Eric if he'd rewrite The Lean Startup for the AI age; 'Not much, it stands the test of time'"}
+    {
+      "url": "https://www.linkedin.com/posts/mishcon-de-reya_why-do-successful-organisations-lose-their-activity-7505938492728733696-DVLD",
+      "label": "Mishcon de Reya LLP corporate account (76K followers) — event recap with full-conversation video link"
+    },
+    {
+      "url": "https://www.linkedin.com/posts/neli-atanassova-phd-mba-63377820_in-conversation-with-eric-ries-activity-7505897606133370880-Ddr8",
+      "label": "Neli Atanassova, PhD MBA (AI, Data & Analytics) attendee recap — asked Eric if he'd rewrite The Lean Startup for the AI age; 'Not much, it stands the test of time'"
+    }
   ],
   "video_url": null,
-  "image": null,
+  "image": "/images/events/mishcon-de-reya.jpg",
   "attribution": "Mishcon de Reya",
   "attribution_title": "Cambridge office client conversation — Tue Sep 8, 4pm",
   "attribution_image": null,
-  "tags": ["event", "cambridge", "uk-tour", "in-person", "mishcon-de-reya", "private"],
-  "type_metadata": {"city": "Cambridge"},
+  "tags": [
+    "event",
+    "cambridge",
+    "uk-tour",
+    "in-person",
+    "mishcon-de-reya",
+    "private"
+  ],
+  "type_metadata": {
+    "city": "Cambridge"
+  },
   "scanner_source": "manual",
   "verified": false,
   "created_at": "2026-08-19T18:00:00Z"
