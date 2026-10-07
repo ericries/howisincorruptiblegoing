@@ -6,7 +6,10 @@ import StatsBar from '../components/StatsBar.astro';
 import TimelineEntry from '../components/TimelineEntry.astro';
 import UpcomingStrip from '../components/UpcomingStrip.astro';
 import SiteHeader from '../components/SiteHeader.astro';
+import ChorusBand from '../components/ChorusBand.astro';
 import { loadEntries, partitionReactions, isSelfAmplification } from '../lib/entries';
+import { interleaveChorus, type ReaderQuote } from '../lib/reader-quotes';
+import * as fs from 'fs';
 import * as path from 'path';
 
 const entriesDir = path.join(process.cwd(), 'content', 'entries');
@@ -18,6 +21,16 @@ const today = new Date().toISOString().slice(0, 10);
 // Split entries into future (upcoming) and past
 const futureEntries = entries.filter(e => e.date > today);
 const pastEntries = entries.filter(e => e.date <= today);
+
+// Reader quotes — the chorus band. Curated subset promoted out of the gitignored
+// comment archive by scripts/promote-reader-quotes.py. Bands attach only to past
+// entries: the Upcoming section is forward-looking and a week of reader comments
+// has no business there.
+const quotesPath = path.join(process.cwd(), 'data', 'reader-quotes.json');
+const readerQuotes: ReaderQuote[] = fs.existsSync(quotesPath)
+  ? (JSON.parse(fs.readFileSync(quotesPath, 'utf-8')).quotes ?? [])
+  : [];
+const pastSlots = interleaveChorus(pastEntries, readerQuotes);
 
 // Sidebar: What's New (curated via type_metadata.featured)
 // Excludes self-amplification — Eric quoted on Eric's own channel. A podcast,
@@ -206,8 +219,10 @@ const heroQuotes = entries
         {/* Past entries */}
         {pastEntries.length > 0 && (
           <div class="timeline-section">
-            {pastEntries.map((entry, i) => (
-              <TimelineEntry entry={entry} index={futureEntries.length + i} reactions={reactionsByParent.get(entry.id) ?? []} />
+            {pastSlots.map((slot, i) => (
+              slot.kind === 'entry'
+                ? <TimelineEntry entry={slot.entry as any} index={futureEntries.length + i} reactions={reactionsByParent.get(slot.entry.id) ?? []} />
+                : <ChorusBand week={slot.week} quotes={slot.quotes} />
             ))}
           </div>
         )}

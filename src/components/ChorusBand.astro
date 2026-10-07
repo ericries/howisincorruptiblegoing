@@ -1,0 +1,169 @@
+---
+/**
+ * Chorus band — short reader quotes, grouped by week, sitting between dated
+ * timeline entries.
+ *
+ * Deliberately unattached: no card, no shadow, no dot in the date rail, so it
+ * never reads as an event and never takes an entry's slot. Compare .reactions,
+ * which IS attached (nested in a card, left rail) because a reaction asserts a
+ * relationship to its parent event. These quotes mostly answer one of Eric's
+ * posts, so that claim would be false — hence a separate, quieter surface.
+ */
+import type { ReaderQuote } from '../lib/reader-quotes';
+
+interface Props {
+  quotes: ReaderQuote[];
+  /** Monday-anchored week key, e.g. "2026-10-05". */
+  week: string;
+}
+
+const { quotes, week } = Astro.props;
+
+const VISIBLE = 6;
+const shown = quotes.slice(0, VISIBLE);
+const hidden = quotes.slice(VISIBLE);
+
+const monday = new Date(`${week}T00:00:00Z`);
+const sunday = new Date(monday);
+sunday.setUTCDate(sunday.getUTCDate() + 6);
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+const range = `${fmt(monday)}–${fmt(sunday)}`;
+---
+
+<div class="chorus" role="complementary" aria-label={`Reader quotes, week of ${range}`}>
+  <div class="chorus__label">
+    <span>what readers said · {range}</span>
+  </div>
+
+  <ul class="chorus__list">
+    {shown.map(q => (
+      <li class="chorus__item">
+        <p class="chorus__quote">{q.quote}</p>
+        <p class="chorus__who">
+          <a class="chorus__name" href={q.url} target="_blank" rel="noopener">{q.author}</a>
+          {q.title && <span class="chorus__title"> · {q.title}</span>}
+        </p>
+      </li>
+    ))}
+  </ul>
+
+  {hidden.length > 0 && (
+    <details class="chorus__more">
+      <summary>+ {hidden.length} more {hidden.length === 1 ? 'quote' : 'quotes'} this week</summary>
+      <ul class="chorus__list chorus__list--rest">
+        {hidden.map(q => (
+          <li class="chorus__item">
+            <p class="chorus__quote">{q.quote}</p>
+            <p class="chorus__who">
+              <a class="chorus__name" href={q.url} target="_blank" rel="noopener">{q.author}</a>
+              {q.title && <span class="chorus__title"> · {q.title}</span>}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </details>
+  )}
+</div>
+
+<style>
+  .chorus {
+    /* Align to the CARD's left edge, not the reactions' — a band is a peer of
+       the cards in the content column, where .reactions is a nested child and
+       sits 15px further left. Mirrors the row: date column + gap + rail + gap. */
+    margin: 0.3rem 0 2rem calc(var(--date-col-width) + 20px + 3px + 20px);
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(26, 30, 58, 0.1);
+  }
+
+  .chorus__label {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.05rem;
+  }
+  .chorus__label span {
+    font-family: var(--font-body);
+    font-size: 0.615rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+  }
+  .chorus__label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(26, 30, 58, 0.1);
+  }
+
+  .chorus__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(248px, 1fr));
+    gap: 1.2rem 2.1rem;
+  }
+  .chorus__list--rest {
+    margin-top: 1.2rem;
+  }
+
+  .chorus__quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.06rem;
+    line-height: 1.42;
+    color: var(--color-navy);
+    margin: 0 0 0.3rem 0;
+  }
+  .chorus__quote::before { content: '\201C'; }
+  .chorus__quote::after  { content: '\201D'; }
+
+  .chorus__who {
+    margin: 0;
+    font-size: 0.735rem;
+    line-height: 1.4;
+    color: var(--color-text-muted);
+  }
+  .chorus__name {
+    font-weight: 700;
+    color: var(--color-text-light);
+    text-decoration: none;
+  }
+  .chorus__name:hover,
+  .chorus__name:focus-visible {
+    color: var(--color-blue);
+    text-decoration: underline;
+  }
+  .chorus__title { font-weight: 400; }
+
+  .chorus__more {
+    margin-top: 1.05rem;
+  }
+  .chorus__more summary {
+    cursor: pointer;
+    list-style: none;
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.69rem;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+  .chorus__more summary::-webkit-details-marker { display: none; }
+  .chorus__more summary:hover,
+  .chorus__more summary:focus-visible { color: var(--color-blue); }
+  .chorus__more summary:focus-visible {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  @media (max-width: 767px) {
+    .chorus { margin-left: 0; }
+    .chorus__list { grid-template-columns: 1fr; }
+  }
+</style>
