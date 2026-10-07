@@ -54,6 +54,34 @@ def test_pull_quote_is_used_verbatim_even_when_short():
     ) == "astounding"
 
 
+# --- "a/an <adj> book" is as much a book anchor as "this book" ---
+# 2026-10-07: Pete Stewart's "It's an amazing book! I've already listened to it
+# 3 times!" was gated out as leading-pronoun-with-no-early-anchor, because the
+# anchor pattern only recognised the|this|his|new|latest + book. The quote plainly
+# announces it is about a book.
+
+def test_indefinite_article_book_is_an_anchor():
+    ok, reason = gcc._passes_selection_gates(
+        rec("It's an amazing book! I've already listened to it 3 times!")
+    )
+    assert ok, reason
+
+
+def test_bare_adjective_book_phrases_anchor():
+    for s in ["a wonderful book about governance and mission",
+              "an extraordinary book that I keep returning to",
+              "such a good book for any founder raising money"]:
+        assert gcc._ANCHORS.search(s), s
+
+
+def test_book_anchor_still_requires_the_word_book_or_a_title():
+    """Don't let the looser pattern match things that never mention a book."""
+    for s in ["an amazing read that changed my week",
+              "a wonderful talk from the stage yesterday",
+              "an incredible session with the team"]:
+        assert not gcc._ANCHORS.search(s), s
+
+
 # --- The fragment lane is narrow: it must not become a general bypass ---
 
 def test_regex_matched_fragment_still_rejected():

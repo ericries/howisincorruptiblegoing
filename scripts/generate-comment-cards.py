@@ -33,7 +33,8 @@ def _slug(s: str, maxlen: int = 40) -> str:
 _ANCHORS = re.compile(
     r"\b("
     r"incorruptible"                                            # explicit title
-    r"|(?:the|this|his|new|latest)\s+book"                      # noun-anchored "book"
+    r"|(?:the|this|his|new|latest|a|an)\s+(?:\w+\s+){0,2}book"  # noun-anchored "book",
+                                                                # incl. "an amazing book"
     r"|books?\s+(?:of\s+(?:the|our)\s+(?:year|decade|generation|lifetime|century)"  # "books of our generation" etc.
     r"|i(?:'| ha)?ve\s+(?:ever\s+)?read"                        # "books I've read"
     r"|worth\s+reading)"
