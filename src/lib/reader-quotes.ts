@@ -20,6 +20,8 @@ export interface ReaderQuote {
   url: string;
   /** YYYY-MM-DD, the day the comment was posted. */
   date: string;
+  /** Site-relative path to a small square photo, when we have one. */
+  avatar?: string;
 }
 
 export interface ChorusWeek {

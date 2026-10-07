@@ -40,10 +40,15 @@ const range = `${fmt(monday)}–${fmt(sunday)}`;
     {shown.map(q => (
       <li class="chorus__item">
         <p class="chorus__quote">{q.quote}</p>
-        <p class="chorus__who">
-          <a class="chorus__name" href={q.url} target="_blank" rel="noopener">{q.author}</a>
-          {q.title && <span class="chorus__title"> · {q.title}</span>}
-        </p>
+        <div class="chorus__who">
+          <span class="chorus__face-slot">
+            {q.avatar && <img class="chorus__face" src={q.avatar} alt="" width="30" height="30" loading="lazy" />}
+          </span>
+          <p class="chorus__attr">
+            <a class="chorus__name" href={q.url} target="_blank" rel="noopener">{q.author}</a>
+            {q.title && <span class="chorus__title">{q.title}</span>}
+          </p>
+        </div>
       </li>
     ))}
   </ul>
@@ -55,10 +60,15 @@ const range = `${fmt(monday)}–${fmt(sunday)}`;
         {hidden.map(q => (
           <li class="chorus__item">
             <p class="chorus__quote">{q.quote}</p>
-            <p class="chorus__who">
-              <a class="chorus__name" href={q.url} target="_blank" rel="noopener">{q.author}</a>
-              {q.title && <span class="chorus__title"> · {q.title}</span>}
-            </p>
+            <div class="chorus__who">
+              <span class="chorus__face-slot">
+                {q.avatar && <img class="chorus__face" src={q.avatar} alt="" width="30" height="30" loading="lazy" />}
+              </span>
+              <p class="chorus__attr">
+                <a class="chorus__name" href={q.url} target="_blank" rel="noopener">{q.author}</a>
+                {q.title && <span class="chorus__title">{q.title}</span>}
+              </p>
+            </div>
           </li>
         ))}
       </ul>
@@ -103,29 +113,52 @@ const range = `${fmt(monday)}–${fmt(sunday)}`;
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(248px, 1fr));
-    gap: 1.2rem 2.1rem;
+    grid-template-columns: repeat(auto-fit, minmax(286px, 1fr));
+    gap: 1.5rem 2.4rem;
   }
   .chorus__list--rest {
-    margin-top: 1.2rem;
+    margin-top: 1.5rem;
   }
 
   .chorus__quote {
     font-family: var(--font-display);
     font-style: italic;
-    font-size: 1.06rem;
-    line-height: 1.42;
+    font-size: 1.2rem;
+    line-height: 1.44;
     color: var(--color-navy);
-    margin: 0 0 0.3rem 0;
+    margin: 0 0 0.5rem 0;
   }
   .chorus__quote::before { content: '\201C'; }
   .chorus__quote::after  { content: '\201D'; }
 
+  /* Face + attribution sit on one row; the quote keeps its full measure. */
   .chorus__who {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  /* Reserved whether or not we have a photo, so every attribution line starts
+     at the same x. Only about 40% of readers have a usable LinkedIn photo, and
+     a ragged left edge across the grid looked like a bug. */
+  .chorus__face-slot {
+    width: 30px;
+    flex-shrink: 0;
+    display: block;
+  }
+  .chorus__face {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    background: rgba(26, 30, 58, 0.06);
+  }
+  .chorus__attr {
     margin: 0;
-    font-size: 0.735rem;
-    line-height: 1.4;
+    font-size: 0.78rem;
+    line-height: 1.35;
     color: var(--color-text-muted);
+    min-width: 0;
   }
   .chorus__name {
     font-weight: 700;
@@ -137,7 +170,10 @@ const range = `${fmt(monday)}–${fmt(sunday)}`;
     color: var(--color-blue);
     text-decoration: underline;
   }
-  .chorus__title { font-weight: 400; }
+  .chorus__title {
+    display: block;
+    font-weight: 400;
+  }
 
   .chorus__more {
     margin-top: 1.05rem;
