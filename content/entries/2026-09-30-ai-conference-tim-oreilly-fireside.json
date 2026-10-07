@@ -7,8 +7,13 @@
   "blockquote": "Join Tim O'Reilly, Founder & CEO of O'Reilly Media, and Eric Ries, Founder and Author of The Lean Startup and The Startup Incorruptible, for a fireside chat on what it takes to build AI companies that matter.",
   "blockquote_source": "The AI Conference on X",
   "source_url": "https://x.com/AIconference/status/2081825330474738016",
-  "source_urls": null,
-  "video_url": null,
+  "source_urls": [
+    {
+      "url": "https://www.youtube.com/watch?v=5rdK3sSbxXo",
+      "label": "Full keynote recording, published by The AI Conference on 2026-10-07 (21:36)"
+    }
+  ],
+  "video_url": "https://www.youtube.com/watch?v=5rdK3sSbxXo",
   "image": "/images/events/ai-conference-2026/announcement.jpg",
   "attribution": "The AI Conference 2026",
   "attribution_title": "5,500+ AI builders, researchers, and leaders; 120+ speakers; San Francisco, Sept 29–Oct 1, 2026",

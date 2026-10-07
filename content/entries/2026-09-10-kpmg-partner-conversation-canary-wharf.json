@@ -9,12 +9,21 @@
   "source_url": "https://kpmg.com/",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/events/kpmg-logo.png",
   "attribution": "KPMG",
   "attribution_title": "Canary Wharf partner conversation, UK & Swiss livestream — Thu Sep 10, 3:30pm",
   "attribution_image": null,
-  "tags": ["event", "london", "uk-tour", "in-person", "kpmg", "private"],
-  "type_metadata": {"city": "London"},
+  "tags": [
+    "event",
+    "london",
+    "uk-tour",
+    "in-person",
+    "kpmg",
+    "private"
+  ],
+  "type_metadata": {
+    "city": "London"
+  },
   "scanner_source": "manual",
   "verified": false,
   "created_at": "2026-08-19T18:00:00Z"

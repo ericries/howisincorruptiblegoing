@@ -8,15 +8,27 @@
   "blockquote_source": "Bookomi",
   "source_url": "https://www.bookomi.com/events",
   "source_urls": [
-    {"url": "https://x.com/famoffice_vc/status/2097371789034741788", "label": "Attendee recap (Neetu, Family Office VC) on X"}
+    {
+      "url": "https://x.com/famoffice_vc/status/2097371789034741788",
+      "label": "Attendee recap (Neetu, Family Office VC) on X"
+    }
   ],
   "video_url": null,
-  "image": null,
+  "image": "/images/events/bookomi-club-talks.png",
   "attribution": "Bookomi / Richard Kilgarriff",
   "attribution_title": "Books for Breakfast series, Soho House London — Tue Sep 8, 8:30am",
   "attribution_image": null,
-  "tags": ["event", "london", "uk-tour", "in-person", "bookomi", "soho-house"],
-  "type_metadata": {"city": "London"},
+  "tags": [
+    "event",
+    "london",
+    "uk-tour",
+    "in-person",
+    "bookomi",
+    "soho-house"
+  ],
+  "type_metadata": {
+    "city": "London"
+  },
   "scanner_source": "manual",
   "verified": false,
   "created_at": "2026-08-19T18:00:00Z"
