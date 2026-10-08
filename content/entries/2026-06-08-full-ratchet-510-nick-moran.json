@@ -7,13 +7,24 @@
   "blockquote": "Eric Ries says most founders think governance is paperwork. He believes it is the art of organizational soul craft.\n\nHis new book, Incorruptible, explores how great companies scale without losing their soul.\n\nWe discuss whether Lean Startup principles still apply in the AI era, why companies drift from their missions, how founders can build 'governance fortresses,' and why structures like public benefit corporations, perpetual purpose trusts, and nonprofit ownership models can help companies endure.",
   "blockquote_source": "Nick Moran on LinkedIn (The Full Ratchet Ep 510)",
   "source_url": "https://www.linkedin.com/posts/nick-moran-a738503_eric-ries-says-most-founders-think-governance-activity-7469777711473917954-02Fo",
-  "source_urls": [{"url": "https://www.youtube.com/watch?v=u19CWAnlsOE", "label": "Episode video on YouTube"}],
+  "source_urls": [
+    {
+      "url": "https://www.youtube.com/watch?v=u19CWAnlsOE",
+      "label": "Episode video on YouTube"
+    }
+  ],
   "video_url": "https://www.youtube.com/watch?v=u19CWAnlsOE",
-  "image": null,
+  "image": "/images/podcasts/the-full-ratchet.jpg",
   "attribution": "Nick Moran",
   "attribution_title": "General Partner, New Stack Ventures; host of The Full Ratchet",
-  "attribution_image": null,
-  "tags": ["podcast", "youtube", "linkedin", "vc", "the-full-ratchet"],
+  "attribution_image": "/images/podcasts/the-full-ratchet.jpg",
+  "tags": [
+    "podcast",
+    "youtube",
+    "linkedin",
+    "vc",
+    "the-full-ratchet"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,
