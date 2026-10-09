@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-07-worthy-for-thirty-kass-lazerow",
+  "date": "2026-10-07",
+  "type": "podcast",
+  "title": "Worthy for Thirty — Eric Tash and guest co-host Kass Lazerow (Buddy Media): 'what it refuses to negotiate when those values become expensive'",
+  "summary": "Host Eric Tash brings back Kass Lazerow to co-host, chosen deliberately: she and Michael Lazerow built Buddy Media to an extraordinary exit without treating culture, people or purpose as expendable. The hour covers why good intentions don't protect a mission, Costco's $1.50 hot dog as a promise kept, and what OpenAI and Anthropic reveal about governance in the age of AI.",
+  "blockquote": "The real test of a company's core values isn't what it stands for when times are good. It's what it refuses to negotiate when those values become expensive.",
+  "blockquote_source": "Eric Tash, Worthy for Thirty",
+  "source_url": "https://podcasts.apple.com/us/podcast/author-eric-ries-on-his-nyt-best-selling-book-incorruptible/id1614277146?i=1000793655016",
+  "source_urls": [
+    {
+      "url": "https://www.linkedin.com/posts/worthy-for-thirty_the-lean-startup-taught-a-generation-how-activity-7514309759622189056-aECw",
+      "label": "Worthy for Thirty's episode announcement"
+    }
+  ],
+  "video_url": null,
+  "image": "/images/podcasts/worthy-for-thirty.jpg",
+  "attribution": "Eric Tash",
+  "attribution_title": "Host, Worthy for Thirty · with guest co-host Kass Lazerow (Buddy Media)",
+  "attribution_image": "/images/podcasts/worthy-for-thirty.jpg",
+  "tags": [
+    "podcast",
+    "governance",
+    "culture",
+    "costco"
+  ],
+  "type_metadata": {
+    "audience": "Worthy for Thirty — 106 episodes; 'stories of leaders doing good while doing well'",
+    "episode_length": "59 min"
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-10-09T16:50:00Z"
+}
