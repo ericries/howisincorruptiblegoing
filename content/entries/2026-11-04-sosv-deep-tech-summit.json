@@ -1,0 +1,44 @@
+{
+  "id": "2026-11-04-sosv-deep-tech-summit",
+  "date": "2026-11-04",
+  "type": "event",
+  "title": "SOSV Deep Tech Summit — Eric Ries and Steve Blank on how AI is changing the way startups are built",
+  "summary": "SOSV books Eric alongside Steve Blank for its Deep Tech Summit, November 4–6, free and virtual. SOSV's own announcement frames the pairing as a discussion of startups in the new AI era; Blank, who launched Lean LaunchPad at Stanford fifteen years ago and has spent this year rebuilding it around AI, says he is looking forward to it. The summit spans climate tech, human health and AI for the physical world, with 100 speakers and 5,000+ expected attendees.",
+  "blockquote": "Steve will be joining our 𝐒𝐎𝐒𝐕 𝐃𝐞𝐞𝐩 𝐓𝐞𝐜𝐡 𝐒𝐮𝐦𝐦𝐢𝐭 (Nov. 4-6) to discuss startups in the new AI era, alongside Eric Ries, author of The Lean Startup and Incorruptible.",
+  "blockquote_source": "SOSV on LinkedIn",
+  "source_url": "https://www.linkedin.com/posts/sosv_steve-blank-launched-his-lean-launchpad-activity-7513236843467956224-7zFe",
+  "source_urls": [
+    {
+      "url": "https://sosvdeeptech.com/",
+      "label": "SOSV Deep Tech Summit — official site (Nov 4–6, free and virtual)"
+    },
+    {
+      "url": "https://www.linkedin.com/posts/steveblank_steve-blank-launched-his-lean-launchpad-activity-7514006291585966080-J5F0",
+      "label": "Steve Blank: 'Looking forward to this fireside chat with Eric Ries'"
+    }
+  ],
+  "video_url": null,
+  "image": "/images/events/sosv-deep-tech-summit-2026.jpg",
+  "attribution": "SOSV Deep Tech Summit",
+  "attribution_title": "Free and virtual · November 4–6, 2026 · with Steve Blank",
+  "attribution_image": null,
+  "tags": [
+    "event",
+    "upcoming",
+    "virtual",
+    "sosv",
+    "steve-blank",
+    "deep-tech",
+    "ai"
+  ],
+  "type_metadata": {
+    "featured": true,
+    "audience": "SOSV Deep Tech Summit — 100 speakers, 5,000+ attendees expected; free and virtual",
+    "co_speakers": [
+      "Steve Blank"
+    ]
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-10-09T05:20:00Z"
+}
