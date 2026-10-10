@@ -8,14 +8,22 @@
   "blockquote_source": "Eric Ries on The Extraordinary Business Book Club, Ep 494",
   "source_url": "https://www.youtube.com/watch?v=1mvPW3DpYhE",
   "source_urls": [
-    {"url": "https://www.linkedin.com/posts/the-alison-jones_episode-494-incorruptible-with-eric-ries-activity-7464583111742320640-bDZY", "label": "Alison Jones on LinkedIn"}
+    {
+      "url": "https://www.linkedin.com/posts/the-alison-jones_episode-494-incorruptible-with-eric-ries-activity-7464583111742320640-bDZY",
+      "label": "Alison Jones on LinkedIn"
+    }
   ],
   "video_url": "https://www.youtube.com/watch?v=1mvPW3DpYhE",
-  "image": null,
+  "image": "/images/podcasts/extraordinary-business-book-club.jpg",
   "attribution": "Alison Jones",
   "attribution_title": "Publisher; Host, The Extraordinary Business Book Club",
-  "attribution_image": null,
-  "tags": ["podcast", "youtube", "extraordinary-business-book-club", "alison-jones"],
+  "attribution_image": "/images/podcasts/extraordinary-business-book-club.jpg",
+  "tags": [
+    "podcast",
+    "youtube",
+    "extraordinary-business-book-club",
+    "alison-jones"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,
