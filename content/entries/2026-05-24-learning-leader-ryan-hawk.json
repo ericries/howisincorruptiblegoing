@@ -8,14 +8,22 @@
   "blockquote_source": "Ryan Hawk on YouTube (The Learning Leader Show)",
   "source_url": "https://www.youtube.com/watch?v=g7UalHE-drw",
   "source_urls": [
-    {"url": "https://learningleader.com", "label": "The Learning Leader Show"}
+    {
+      "url": "https://learningleader.com",
+      "label": "The Learning Leader Show"
+    }
   ],
   "video_url": "https://www.youtube.com/watch?v=g7UalHE-drw",
-  "image": null,
+  "image": "/images/podcasts/learning-leader-show.jpg",
   "attribution": "Ryan Hawk",
   "attribution_title": "Host, The Learning Leader Show; author, The Price of Becoming",
-  "attribution_image": null,
-  "tags": ["podcast", "youtube", "learning-leader", "ryan-hawk"],
+  "attribution_image": "/images/podcasts/learning-leader-show.jpg",
+  "tags": [
+    "podcast",
+    "youtube",
+    "learning-leader",
+    "ryan-hawk"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,
