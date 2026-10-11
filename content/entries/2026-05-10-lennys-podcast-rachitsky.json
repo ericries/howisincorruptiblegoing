@@ -8,16 +8,31 @@
   "blockquote_source": "Lenny Rachitsky on X (Lenny's Podcast announcement)",
   "source_url": "https://x.com/lennysan/status/2053590761804087307",
   "source_urls": [
-    {"url": "https://www.youtube.com/watch?v=PoJ1vTdHpks", "label": "Full 99-minute episode on YouTube"},
-    {"url": "https://x.com/lennysan/status/2053872291411595309", "label": "Lenny's follow-up on X: 'the reaction is hitting different'"},
-    {"url": "https://www.linkedin.com/posts/lennyrachitsky_my-biggest-takeaways-from-eric-ries-1-activity-7459652221740249088-yuwW", "label": "Lenny's '8 biggest takeaways' synthesis on LinkedIn"}
+    {
+      "url": "https://www.youtube.com/watch?v=PoJ1vTdHpks",
+      "label": "Full 99-minute episode on YouTube"
+    },
+    {
+      "url": "https://x.com/lennysan/status/2053872291411595309",
+      "label": "Lenny's follow-up on X: 'the reaction is hitting different'"
+    },
+    {
+      "url": "https://www.linkedin.com/posts/lennyrachitsky_my-biggest-takeaways-from-eric-ries-1-activity-7459652221740249088-yuwW",
+      "label": "Lenny's '8 biggest takeaways' synthesis on LinkedIn"
+    }
   ],
   "video_url": "https://www.youtube.com/watch?v=PoJ1vTdHpks",
-  "image": null,
+  "image": "/images/podcasts/lennys-podcast.jpg",
   "attribution": "Lenny Rachitsky",
   "attribution_title": "Host of Lenny's Podcast and Lenny's Newsletter (the leading product and growth publication)",
   "attribution_image": null,
-  "tags": ["podcast", "youtube", "twitter", "lennys-podcast", "lenny-rachitsky"],
+  "tags": [
+    "podcast",
+    "youtube",
+    "twitter",
+    "lennys-podcast",
+    "lenny-rachitsky"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

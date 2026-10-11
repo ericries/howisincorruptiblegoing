@@ -9,11 +9,16 @@
   "source_url": "https://www.youtube.com/watch?v=xdUD71MXy2o&t=1599s",
   "source_urls": null,
   "video_url": "https://www.youtube.com/watch?v=xdUD71MXy2o",
-  "image": null,
+  "image": "/images/podcasts/keen-on-america.jpg",
   "attribution": "Andrew Keen",
   "attribution_title": "Host, Keen On",
   "attribution_image": null,
-  "tags": ["podcast", "youtube", "keen-on", "pre-launch-discussion"],
+  "tags": [
+    "podcast",
+    "youtube",
+    "keen-on",
+    "pre-launch-discussion"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

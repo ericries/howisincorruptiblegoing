@@ -9,11 +9,15 @@
   "source_url": "https://www.youtube.com/watch?v=y5l4KtSFud0",
   "source_urls": null,
   "video_url": "https://www.youtube.com/watch?v=y5l4KtSFud0",
-  "image": null,
+  "image": "/images/podcasts/finding-peak.jpg",
   "attribution": "Ryan Hanley",
   "attribution_title": "Host, Finding Peak Podcast",
   "attribution_image": null,
-  "tags": ["podcast", "youtube", "venture-capital"],
+  "tags": [
+    "podcast",
+    "youtube",
+    "venture-capital"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

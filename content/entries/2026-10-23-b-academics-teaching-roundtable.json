@@ -8,7 +8,10 @@
   "blockquote_source": "B Academics event page",
   "source_url": "https://bacademics.org/event/teaching-roundtable-2026/",
   "source_urls": [
-    {"url": "https://bacademics.org/", "label": "B Academics — global B Corp educator network"}
+    {
+      "url": "https://bacademics.org/",
+      "label": "B Academics — global B Corp educator network"
+    }
   ],
   "video_url": null,
   "image": "/images/cards/2026-10-23-b-academics-teaching-roundtable.png",
@@ -27,5 +30,8 @@
   "type_metadata": {},
   "scanner_source": "manual",
   "verified": false,
-  "created_at": "2026-08-21T16:36:00Z"
+  "created_at": "2026-08-21T16:36:00Z",
+  "appearance_dates": [
+    "2026-10-23"
+  ]
 }

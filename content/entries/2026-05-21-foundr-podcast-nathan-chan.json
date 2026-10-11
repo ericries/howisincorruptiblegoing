@@ -8,14 +8,23 @@
   "blockquote_source": "Foundr on YouTube",
   "source_url": "https://www.youtube.com/watch?v=nN96nUEgfsI",
   "source_urls": [
-    {"url": "https://www.foundr.com/podcast", "label": "Foundr Podcast"}
+    {
+      "url": "https://www.foundr.com/podcast",
+      "label": "Foundr Podcast"
+    }
   ],
   "video_url": "https://www.youtube.com/watch?v=nN96nUEgfsI",
-  "image": null,
+  "image": "/images/podcasts/foundr-podcast.jpg",
   "attribution": "Nathan Chan",
   "attribution_title": "Founder & CEO, Foundr; host of the Foundr Podcast",
   "attribution_image": null,
-  "tags": ["podcast", "youtube", "foundr", "nathan-chan", "interview"],
+  "tags": [
+    "podcast",
+    "youtube",
+    "foundr",
+    "nathan-chan",
+    "interview"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

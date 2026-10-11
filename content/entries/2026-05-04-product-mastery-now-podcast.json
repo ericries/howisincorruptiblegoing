@@ -8,14 +8,22 @@
   "blockquote_source": "Eric Ries on Product Mastery Now (YouTube)",
   "source_url": "https://www.youtube.com/watch?v=8b-DoAETHhc",
   "source_urls": [
-    {"url": "https://productmasterynow.com/590", "label": "Show notes"}
+    {
+      "url": "https://productmasterynow.com/590",
+      "label": "Show notes"
+    }
   ],
   "video_url": "https://www.youtube.com/watch?v=8b-DoAETHhc",
-  "image": null,
+  "image": "/images/podcasts/product-mastery-now.jpg",
   "attribution": "Chad McAllister, Product Mastery Now",
   "attribution_title": "Host, Product Mastery Now podcast",
   "attribution_image": null,
-  "tags": ["podcast", "youtube", "product-management", "lean-startup"],
+  "tags": [
+    "podcast",
+    "youtube",
+    "product-management",
+    "lean-startup"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

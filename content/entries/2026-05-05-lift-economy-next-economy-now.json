@@ -8,15 +8,29 @@
   "blockquote_source": "Ryan Honeyman on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/ryanhhoneyman_bcorp-activity-7457474231640137728-pt5A",
   "source_urls": [
-    {"url": "https://www.youtube.com/watch?v=Fv5YlUGR9bs", "label": "Full episode on YouTube"},
-    {"url": "https://www.lifteconomy.com/blog/eric-ries/", "label": "Show notes"}
+    {
+      "url": "https://www.youtube.com/watch?v=Fv5YlUGR9bs",
+      "label": "Full episode on YouTube"
+    },
+    {
+      "url": "https://www.lifteconomy.com/blog/eric-ries/",
+      "label": "Show notes"
+    }
   ],
   "video_url": "https://www.youtube.com/watch?v=Fv5YlUGR9bs",
-  "image": null,
+  "image": "/images/podcasts/next-economy-now.jpg",
   "attribution": "Ryan Honeyman",
   "attribution_title": "Partner, LIFT Economy; co-author, The B Corp Handbook",
   "attribution_image": null,
-  "tags": ["podcast", "linkedin", "youtube", "lift-economy", "next-economy-now", "b-corp", "regenerative-business"],
+  "tags": [
+    "podcast",
+    "linkedin",
+    "youtube",
+    "lift-economy",
+    "next-economy-now",
+    "b-corp",
+    "regenerative-business"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,
