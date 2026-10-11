@@ -9,11 +9,15 @@
   "source_url": "https://www.youtube.com/watch?v=V6QQLmna03M",
   "source_urls": null,
   "video_url": "https://www.youtube.com/watch?v=V6QQLmna03M",
-  "image": null,
+  "image": "/images/podcasts/sme-strategy-leadership.jpg",
   "attribution": "SME Strategy",
   "attribution_title": null,
   "attribution_image": null,
-  "tags": ["podcast", "youtube", "best-practices"],
+  "tags": [
+    "podcast",
+    "youtube",
+    "best-practices"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

@@ -9,11 +9,15 @@
   "source_url": "https://www.youtube.com/watch?v=6tFBytXZs4U",
   "source_urls": null,
   "video_url": "https://www.youtube.com/watch?v=6tFBytXZs4U",
-  "image": null,
+  "image": "/images/podcasts/franklincovey-on-leadership.jpg",
   "attribution": "FranklinCovey",
   "attribution_title": null,
   "attribution_image": null,
-  "tags": ["podcast", "youtube", "culture"],
+  "tags": [
+    "podcast",
+    "youtube",
+    "culture"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

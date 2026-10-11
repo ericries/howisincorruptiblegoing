@@ -8,15 +8,28 @@
   "blockquote_source": "Ksenia Se on Turing Post's YouTube channel",
   "source_url": "https://www.youtube.com/watch?v=ypHhsCRWnWs",
   "source_urls": [
-    {"url": "https://www.turingpost.com", "label": "Turing Post"},
-    {"url": "https://x.com/TheTuringPost/status/2057264513376821272", "label": "Turing Post launch tweet"}
+    {
+      "url": "https://www.turingpost.com",
+      "label": "Turing Post"
+    },
+    {
+      "url": "https://x.com/TheTuringPost/status/2057264513376821272",
+      "label": "Turing Post launch tweet"
+    }
   ],
   "video_url": "https://www.youtube.com/watch?v=ypHhsCRWnWs",
-  "image": null,
+  "image": "/images/podcasts/turing-post.jpg",
   "attribution": "Ksenia Se",
   "attribution_title": "Founder, Turing Post; publisher of the AI newsletter and Inference podcast",
   "attribution_image": null,
-  "tags": ["podcast", "youtube", "turing-post", "ai", "ksenia-se", "inference"],
+  "tags": [
+    "podcast",
+    "youtube",
+    "turing-post",
+    "ai",
+    "ksenia-se",
+    "inference"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

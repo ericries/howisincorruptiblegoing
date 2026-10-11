@@ -9,12 +9,18 @@
   "source_url": "https://www.linkedin.com/posts/davidmeyersanfrancisco_attention-founders-who-care-about-your-mission-activity-7447416481438683136-td9Y",
   "source_urls": null,
   "video_url": "https://www.youtube.com/watch?v=9K5LsQ8LpJE",
-  "image": null,
+  "image": "/images/podcasts/ageless-warrior-lab.jpg",
   "attribution": null,
   "attribution_title": null,
   "attribution_image": null,
-  "tags": ["podcast", "linkedin", "food-systems"],
-  "type_metadata": { "weight": 1 },
+  "tags": [
+    "podcast",
+    "linkedin",
+    "food-systems"
+  ],
+  "type_metadata": {
+    "weight": 1
+  },
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-04-13T17:30:00Z"
