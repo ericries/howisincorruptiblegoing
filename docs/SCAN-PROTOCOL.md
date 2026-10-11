@@ -50,6 +50,13 @@ WebSearch.
 "incorruptible" as a plain adjective near the top of a post and credit the book
 further down, so the opening is the least reliable place to judge from.
 
+**A short list is not a reason to skim.** The daily keyword pull is often under
+15 items, and the temptation is to clear it on the triage rows alone. The
+2026-10-11 recall audit found the week's best founder-application post (Fora
+Fereydouni, Cognitai, 47 likes) had been passed over inside a 13-item list and
+reached the site a week late. Volume is never the thing that hides a candidate —
+reading only the first 150 characters is.
+
 ## 3. Inclusion bar
 
 Judge against the memory files — they hold the accumulated standards and are the

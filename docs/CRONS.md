@@ -148,6 +148,8 @@ Compare recall, then cross-check against content/entries/ for the past 7 days. R
 
 Judge by quality as well as rate. On 2026-10-04 the raw miss rate was only 7 percent, but the single missed post was a peer-tier endorsement from the co-founder of the Conscious Capitalism movement — worth escalating on its own.
 
+Audit BOTH halves — recall and judgment. For every relevant post the production query DID return but we never shipped, check it against the inclusion memories before calling it correctly skipped. On 2026-10-11 recall was healthy (8 percent miss, no cap hits) yet the week's real finding was a judgment miss: Fora Fereydouni (Founder & CEO, Cognitai, 47 likes) sat in an Oct 6 daily list of only 13 items and was passed over, then shipped a week late by the audit. A short daily list is not a reason to skim it. Ship anything the audit confirms was wrongly skipped.
+
 If a calibration change is warranted, update memory/feedback_linkedin_query_calibration.md, docs/SCAN-PROTOCOL.md and the affected prompt in docs/CRONS.md, then commit. Otherwise make no commit.
 ```
 
