@@ -8,15 +8,28 @@
   "blockquote_source": "Kapor Center on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/kapor-center_kaporcenter-activity-7457834997232619520-qBND",
   "source_urls": [
-    {"url": "https://www.linkedin.com/posts/davidareilly_last-night-i-got-to-meet-2-of-my-heroes-at-activity-7457859039117434882-L3C0", "label": "Attendee Dave Reilly's recap"}
+    {
+      "url": "https://www.linkedin.com/posts/davidareilly_last-night-i-got-to-meet-2-of-my-heroes-at-activity-7457859039117434882-L3C0",
+      "label": "Attendee Dave Reilly's recap"
+    }
   ],
   "video_url": null,
-  "image": null,
+  "image": "/images/events/kapor-center-oakland.jpg",
   "attribution": "Kapor Center",
   "attribution_title": "Tech inclusion non-profit founded by Mitch Kapor and Dr. Freada Kapor Klein",
   "attribution_image": null,
-  "tags": ["event", "linkedin", "oakland-california", "in-person", "launch-event", "kapor-center"],
-  "type_metadata": {"weight": 1, "city": "Oakland"},
+  "tags": [
+    "event",
+    "linkedin",
+    "oakland-california",
+    "in-person",
+    "launch-event",
+    "kapor-center"
+  ],
+  "type_metadata": {
+    "weight": 1,
+    "city": "Oakland"
+  },
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-05-06T18:00:00Z"

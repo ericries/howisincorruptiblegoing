@@ -9,11 +9,16 @@
   "source_url": "https://thoughteconomics.com/eric-ries/",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/media/thought-economics-eric-ries.jpg",
   "attribution": "Thought Economics",
   "attribution_title": "Long-form business interview series by Dr. Vikas Shah MBE DL",
   "attribution_image": null,
-  "tags": ["media", "interview", "thought-economics", "long-form"],
+  "tags": [
+    "media",
+    "interview",
+    "thought-economics",
+    "long-form"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,
