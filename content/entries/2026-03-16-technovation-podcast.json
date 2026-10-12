@@ -9,11 +9,15 @@
   "source_url": "https://www.metisstrategy.com/interview/eric-ries/",
   "source_urls": null,
   "video_url": "https://www.youtube.com/watch?v=-9d-CtUmauw",
-  "image": null,
+  "image": "/images/podcasts/technovation-peter-high.jpg",
   "attribution": null,
   "attribution_title": null,
   "attribution_image": null,
-  "tags": ["podcast", "strategy", "corporate-governance"],
+  "tags": [
+    "podcast",
+    "strategy",
+    "corporate-governance"
+  ],
   "type_metadata": {},
   "scanner_source": "web-search",
   "verified": true,

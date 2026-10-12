@@ -8,14 +8,22 @@
   "blockquote_source": "Alex Shevelenko on LinkedIn (quoting Eric on RELAYTO AI's Surgically Deboned podcast)",
   "source_url": "https://www.linkedin.com/posts/shevelenko_new-episode-drop-and-this-one-hits-at-activity-7458419884524191744-aSWX",
   "source_urls": [
-    {"url": "https://www.youtube.com/watch?v=Izz2sSDDxoo", "label": "Full episode on YouTube"}
+    {
+      "url": "https://www.youtube.com/watch?v=Izz2sSDDxoo",
+      "label": "Full episode on YouTube"
+    }
   ],
   "video_url": "https://www.youtube.com/watch?v=Izz2sSDDxoo",
-  "image": null,
+  "image": "/images/podcasts/relayto-shevelenko.jpg",
   "attribution": "Alex Shevelenko / RELAYTO AI",
   "attribution_title": "CEO of RELAYTO AI; host of the Surgically Deboned podcast",
   "attribution_image": null,
-  "tags": ["podcast", "youtube", "linkedin", "relayto"],
+  "tags": [
+    "podcast",
+    "youtube",
+    "linkedin",
+    "relayto"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,
