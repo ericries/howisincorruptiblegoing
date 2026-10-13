@@ -8,15 +8,28 @@
   "blockquote_source": "PURPOSE® on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/purpose-economy_book-corporateownership-becauseownershipmatters-activity-7457425147046612992-yln1",
   "source_urls": [
-    {"url": "https://www.youtube.com/watch?v=WtWWmGzCAkY", "label": "Full fireside on YouTube"},
-    {"url": "https://www.linkedin.com/posts/purpose-economy_stewardownership-becauseownershipmatters-activity-7452340403418095617-QAR2", "label": "Original event announcement"}
+    {
+      "url": "https://www.youtube.com/watch?v=WtWWmGzCAkY",
+      "label": "Full fireside on YouTube"
+    },
+    {
+      "url": "https://www.linkedin.com/posts/purpose-economy_stewardownership-becauseownershipmatters-activity-7452340403418095617-QAR2",
+      "label": "Original event announcement"
+    }
   ],
   "video_url": "https://www.youtube.com/watch?v=WtWWmGzCAkY",
-  "image": null,
+  "image": "/images/events/purpose-foundation.jpg",
   "attribution": "Maike Kauffmann, Purpose Foundation",
   "attribution_title": "Purpose Foundation, Berlin (steward-ownership advocacy)",
   "attribution_image": null,
-  "tags": ["podcast", "youtube", "linkedin", "steward-ownership", "purpose-foundation", "novo-nordisk"],
+  "tags": [
+    "podcast",
+    "youtube",
+    "linkedin",
+    "steward-ownership",
+    "purpose-foundation",
+    "novo-nordisk"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": true,

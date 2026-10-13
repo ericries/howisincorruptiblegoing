@@ -9,12 +9,20 @@
   "source_url": "https://www.startupgrind.tech/agenda",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/events/startup-grind.jpg",
   "attribution": null,
   "attribution_title": null,
   "attribution_image": null,
-  "tags": ["speaking", "redwood-city-california", "conference", "panel", "ai"],
-  "type_metadata": { "city": "Redwood City" },
+  "tags": [
+    "speaking",
+    "redwood-city-california",
+    "conference",
+    "panel",
+    "ai"
+  ],
+  "type_metadata": {
+    "city": "Redwood City"
+  },
   "scanner_source": "manual",
   "verified": false,
   "created_at": "2026-04-27T19:30:00Z"
