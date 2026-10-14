@@ -1,0 +1,32 @@
+{
+  "id": "2026-10-14-stanford-ecorner-human-spark-video",
+  "date": "2026-10-14",
+  "type": "media",
+  "title": "Stanford eCorner publishes the full ETL talk, 'Be the Human Spark' — Eric on the AI gold rush: 'The people that win the lottery are not happy. I know many of them personally'",
+  "summary": "Stanford's eCorner, which publishes the Entrepreneurial Thought Leaders archive to 108,000 subscribers, released the complete 46-minute fireside with STVP faculty director Saikat Chaudhuri. Asked how he talks students out of chasing the gold rush with VCs waiting outside the door, Eric declines to try — then makes the case that the winners he knows personally are not the advertisement they appear to be, and lands on the word his great-grandparents would have used for making money without creating value.",
+  "blockquote": "I've lived through multiple of these cycles, so I've watched it go up, I've watched it go down, and I've watched what happens to the people that chase the trend. Some of them do get lucky. Some people do win the lottery. But does that mean that playing the lottery is good for you? No, it is not. Now, here's the truth, okay? I know this is not what you want to hear. The people that win the lottery are not happy. I know many of them personally.",
+  "blockquote_source": "Eric Ries on Stanford eCorner, 'Be the Human Spark' (Entrepreneurial Thought Leaders)",
+  "source_url": "https://www.youtube.com/watch?v=M5-Uft9nX68",
+  "source_urls": null,
+  "video_url": "https://www.youtube.com/watch?v=M5-Uft9nX68",
+  "image": "/images/media/stanford-ecorner-human-spark.jpg",
+  "attribution": "Stanford eCorner",
+  "attribution_title": "Entrepreneurial Thought Leaders · Stanford Technology Ventures Program · 108K subscribers",
+  "attribution_image": null,
+  "tags": [
+    "media",
+    "video",
+    "stanford",
+    "stvp",
+    "etl",
+    "ai",
+    "long-term-thinking"
+  ],
+  "type_metadata": {
+    "audience": 108000,
+    "featured": true
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-10-14T23:40:00Z"
+}
