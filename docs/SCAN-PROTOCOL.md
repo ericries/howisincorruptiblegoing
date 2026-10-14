@@ -14,6 +14,27 @@ on every call — measured at 9,630 chars vs 609 for `waitSecs: 0`, 15.8x more,
 and none of it is ever used. The three Apify MCP tools were 69% of all tool
 traffic in the session measured on 2026-10-04.
 
+**Always pass `callOptions: {maxItems: N}`.** These actors bill per dataset
+item, and `maxPosts` is a soft target the actor does not honour: on 2026-10-14
+the comment-archive runs were given `maxPosts: 30` and `maxPosts: 40` and
+returned **130 posts each**. `maxItems` is the only hard billing cap. Measured
+over Oct 10-14, the two comment-archive runs alone were 763 of ~1,524 items
+pulled — **50% of all Apify volume for a job that ships nothing to the site**.
+
+Standing caps (raise only with a reason, and say so in the report):
+
+| job | call | maxItems |
+|---|---|---|
+| comment archive | author feed | 40 |
+| comment archive | keyword | 40 |
+| morning scan | LinkedIn ×2 | 25 each |
+| evening scan | LinkedIn @-mentions | 25 |
+| weekly audit | each of 3 | 100 (needed for a valid comparison) |
+
+Apify is on a **$29/month** limit and hit 50% by Oct 14. When a scan's triage
+shows the cap was reached and the tail still looked relevant, say so in the
+report rather than silently raising it.
+
 ```
 1. mcp__apify__call-actor  { actor, input, waitSecs: 0 }   -> runId + datasetId
 2. python3 scripts/scan-triage.py <datasetId> \

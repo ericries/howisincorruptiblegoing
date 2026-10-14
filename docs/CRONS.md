@@ -64,7 +64,7 @@ Report which crons you restored, plus "watchdog rolled: <old-id> -> <new-id>". I
 Morning content scan. Follow docs/SCAN-PROTOCOL.md in the repo for the full standing rules (Apify call pattern, inclusion bar, TikTok blocking rule, entry/image/verify/ship steps, reporting format). Read it first.
 
 Sources this cycle — run each with waitSecs:0, then scan-triage.py per the protocol:
-1. LinkedIn keyword, TWO queries (harvestapi/linkedin-post-search, postedLimit="24h", maxPosts=40, sortBy="date"):
+1. LinkedIn keyword, TWO queries (harvestapi/linkedin-post-search, postedLimit="24h", maxPosts=40, sortBy="date", callOptions {"maxItems": 25}):
    (a) searchQueries=["Incorruptible Ries"]
    (b) searchQueries=["Incorruptible"] — filter results yourself for book relevance; expect to discard roughly half.
    Both are needed: LinkedIn multi-word search is not a reliable AND over post text. The 2026-10-04 audit found 5 relevant posts (b) caught and (a) missed, two of which contained BOTH terms — including Raj Sisodia, author of Conscious Capitalism. Never use the 3-word "Incorruptible Eric Ries" variant; audited twice, it adds nothing. See memory/feedback_linkedin_query_calibration.md.
@@ -104,9 +104,9 @@ LinkedIn comment archive scan. Pull Eric's LinkedIn author feed plus the Incorru
 Use waitSecs:0 for both Apify calls, then curl the datasets (docs/SCAN-PROTOCOL.md section 1).
 
 1. harvestapi/linkedin-post-search — Eric's author feed:
-   {"authorUrls": ["https://www.linkedin.com/in/eries/"], "postedLimit": "week", "maxPosts": 30, "sortBy": "date", "scrapeComments": true, "commentsPostedLimit": "week", "maxComments": 30, "postNestedComments": true}
+   {"authorUrls": ["https://www.linkedin.com/in/eries/"], "postedLimit": "week", "maxPosts": 30, "sortBy": "date", "scrapeComments": true, "commentsPostedLimit": "week", "maxComments": 30, "postNestedComments": true} with callOptions {"maxItems": 40}
 2. harvestapi/linkedin-post-search — keyword:
-   {"searchQueries": ["Incorruptible Ries"], "postedLimit": "week", "maxPosts": 40, "sortBy": "date", "scrapeComments": true, "commentsPostedLimit": "week", "maxComments": 30, "postNestedComments": true}
+   {"searchQueries": ["Incorruptible Ries"], "postedLimit": "week", "maxPosts": 40, "sortBy": "date", "scrapeComments": true, "commentsPostedLimit": "week", "maxComments": 30, "postNestedComments": true} with callOptions {"maxItems": 40}
 
 Save each raw dataset to data/archive/linkedin-raw/<YYYY-MM-DD>-<name>.json, then:
 
@@ -160,7 +160,7 @@ Evening content scan. Follow docs/SCAN-PROTOCOL.md in the repo for the full stan
 
 Sources this cycle — run each with waitSecs:0, then scan-triage.py per the protocol:
 1. TikTok profile (clockworks/tiktok-profile-scraper, profiles=["ericriesactual"], resultsPerPage=10). The TikTok blocking rule in the protocol applies to every video without exception: grep the id against the denylist in memory/feedback_no_ai_tiktoks.md AND confirm Eric is on camera. If you cannot confirm on-camera, skip.
-2. LinkedIn @-mentions (harvestapi/linkedin-post-search, mentioningMember=["https://www.linkedin.com/in/eries/"], postedLimit="24h", maxPosts=40, sortBy="date").
+2. LinkedIn @-mentions (harvestapi/linkedin-post-search, mentioningMember=["https://www.linkedin.com/in/eries/"], postedLimit="24h", maxPosts=40, sortBy="date", callOptions {"maxItems": 25}).
 3. Twitter/X @-mentions (apidojo/tweet-scraper, searchTerms=["@ericries"], maxItems=20).
 
 Also: pick 2-3 unimaged older entries from the backlog and source photos. Query with BOTH image and attribution_image null. Org and event logos go in /images/events/ — there is no /images/orgs/.
