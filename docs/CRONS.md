@@ -25,7 +25,7 @@ control and the prompts short.
 | Watchdog | `37 8 * * *` | restores any missing job, renews itself |
 | Morning scan | `7 9 * * *` | LinkedIn ×2 + X + YouTube + WebSearch |
 | Goodreads | `33 10 * * 1` | Goodreads reviews (Mondays) |
-| Comment archive | `47 10 * * *` | LinkedIn comment superlatives (local only) |
+| Comment archive | `47 10 * * 1,3,5` | LinkedIn comment superlatives (local only) |
 | Recall audit | `17 11 * * 0` | query-calibration drift (Sundays) |
 | Evening scan | `3 18 * * *` | TikTok + LinkedIn/X mentions |
 | Sidebar curation | `27 19 * * *` | What's New / Highlights |
@@ -43,7 +43,7 @@ Cron watchdog. Run CronList. These must be present (Amazon rank is paused — do
 
 1. Morning content scan — "7 9 * * *"
 2. Goodreads review scan — "33 10 * * 1"
-3. LinkedIn comment archive scan — "47 10 * * *"
+3. LinkedIn comment archive scan — "47 10 * * 1,3,5" (Mon/Wed/Fri)
 4. Evening content scan — "3 18 * * *"
 5. Sidebar curation — "27 19 * * *"
 6. Weekly LinkedIn recall audit — "17 11 * * 0"
@@ -96,7 +96,7 @@ For each new review not already in content/entries/:
 Then backfill-quote-cards, backfill-source-texts, verify-quotes, lint, commit, push.
 ```
 
-## 4. LinkedIn comment archive — `47 10 * * *`
+## 4. LinkedIn comment archive — `47 10 * * 1,3,5`
 
 ```
 LinkedIn comment archive scan. Pull Eric's LinkedIn author feed plus the Incorruptible keyword search WITH comments enabled, and archive short superlatives to data/archive/linkedin-comments/ (gitignored). This job does NOT ship anything to the site.
@@ -159,7 +159,7 @@ If a calibration change is warranted, update memory/feedback_linkedin_query_cali
 Evening content scan. Follow docs/SCAN-PROTOCOL.md in the repo for the full standing rules (Apify call pattern, inclusion bar, TikTok blocking rule, entry/image/verify/ship steps, reporting format). Read it first.
 
 Sources this cycle — run each with waitSecs:0, then scan-triage.py per the protocol:
-1. TikTok profile (clockworks/tiktok-profile-scraper, profiles=["ericriesactual"], resultsPerPage=10). The TikTok blocking rule in the protocol applies to every video without exception: grep the id against the denylist in memory/feedback_no_ai_tiktoks.md AND confirm Eric is on camera. If you cannot confirm on-camera, skip.
+1. TikTok profile (clockworks/tiktok-profile-scraper, profiles=["ericriesactual"], resultsPerPage=10) — ONLY on Mon/Wed/Fri; skip it on other days and say so in the report. The TikTok blocking rule in the protocol applies to every video without exception: grep the id against the denylist in memory/feedback_no_ai_tiktoks.md AND confirm Eric is on camera. If you cannot confirm on-camera, skip.
 2. LinkedIn @-mentions (harvestapi/linkedin-post-search, mentioningMember=["https://www.linkedin.com/in/eries/"], postedLimit="24h", maxPosts=40, sortBy="date", callOptions {"maxItems": 25}).
 3. Twitter/X @-mentions (apidojo/tweet-scraper, searchTerms=["@ericries"], maxItems=20).
 
@@ -202,6 +202,11 @@ Then commit and push.
 - **2026-06-25** — Goodreads daily → Mondays only; Amazon rank daily → Mondays + Thursdays.
 - **2026-08-23** — added the weekly recall audit after discovering the 3-word query was missing most relevant posts.
 - **2026-08-31** — Amazon rank paused indefinitely.
+- **2026-10-14** — Apify hit 50% of its $29/month limit. Added hard `callOptions.maxItems`
+  caps (maxPosts is not honoured: 30 requested, 130 returned), moved the comment
+  archive to Mon/Wed/Fri, and made the TikTok pull Mon/Wed/Fri inside the evening
+  scan. The comment archive was 50% of all Apify volume and ships nothing to the
+  site. Eric's call on cadence; caps applied first.
 - **2026-10-04** — standing rules extracted to `SCAN-PROTOCOL.md`; prompts shortened to pointers; watchdog given rolling self-renewal; these specs moved into the repo so they survive a platform change.
 
 If volume picks up again (a major TV hit, paperback release, viral moment), the
