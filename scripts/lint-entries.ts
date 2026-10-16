@@ -1,5 +1,6 @@
 import { validateEntry } from '../src/lib/validate';
 import { scanEntry } from '../src/lib/injection';
+import { looksFabricated, findDuplicateSourceUrls } from '../src/lib/source-url-integrity';
 import type { ValidationResult } from '../src/lib/schema';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -167,7 +168,11 @@ if (isMainModule) {
   const allEntries = files
     .map((f) => {
       const data = JSON.parse(fs.readFileSync(path.join(entriesDir, f), 'utf-8'));
-      return { file: f, type: data.type, date: data.date, id: data.id, parent_id: data.parent_id ?? null };
+      return {
+        file: f, type: data.type, date: data.date, id: data.id,
+        parent_id: data.parent_id ?? null,
+        source_url: data.source_url ?? null,
+      };
     })
     .sort((a, b) => {
       // Sort by date, then by filename for same-date entries
@@ -303,6 +308,40 @@ if (isMainModule) {
       const msg = `HIGHLIGHT FACE MISSING ON DISK: references attribution_image=${ai} but the file does not exist.`;
       console.error(`\n❌ ${f}: ${msg}`);
       recordFailure(f, msg);
+    }
+  }
+
+  // --- source_url integrity ------------------------------------------------
+  // A fabricated citation is indistinguishable from a real one after it ships,
+  // so this fails the build. See src/lib/source-url-integrity.ts for the
+  // 2026-10-16 near-miss that prompted it.
+  for (const entry of allEntries) {
+    const url = (entry as { source_url?: string }).source_url;
+    if (url && looksFabricated(url)) {
+      const msg =
+        `FABRICATED SOURCE URL: source_url="${url}" contains a placeholder or an ` +
+        `implausible id. Never invent a URL — fetch the real one from the ` +
+        `archived dataset in data/archive/, or do not create the entry ` +
+        `(CLAUDE.md: never create an entry you cannot source).`;
+      console.error(`\n❌ ${entry.file}: ${msg}`);
+      recordFailure(entry.file, msg);
+    }
+  }
+
+  // Duplicates are a warning, not a failure: an event entry and a reaction can
+  // legitimately cite the same post. Three Thought Economics entries sat on one
+  // URL for five days because nothing surfaced it.
+  const dupGroups = findDuplicateSourceUrls(
+    allEntries.map((e) => ({
+      file: e.file,
+      source_url: (e as { source_url?: string }).source_url,
+    }))
+  );
+  if (dupGroups.length > 0) {
+    console.warn(`\n⚠️  ${dupGroups.length} source_url(s) shared by multiple entries — review for duplicates:`);
+    for (const g of dupGroups) {
+      console.warn(`   ${g.url}`);
+      for (const f of g.files) console.warn(`      ${f}`);
     }
   }
 
