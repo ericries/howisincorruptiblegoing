@@ -14,6 +14,35 @@ on every call — measured at 9,630 chars vs 609 for `waitSecs: 0`, 15.8x more,
 and none of it is ever used. The three Apify MCP tools were 69% of all tool
 traffic in the session measured on 2026-10-04.
 
+**Never hardcode `postedLimit`. Derive it.** These crons only fire while the
+REPL is idle, so a closed laptop means a cycle simply does not happen — and a
+fixed `"24h"` window can never reach back over the day it missed. That is not
+hypothetical: the evening scan did not run on 2026-10-12, and the next day's
+24h window silently skipped past three posts at 108, 81 and 68 reactions. They
+surfaced four days later only because someone asked.
+
+```python
+import sys; sys.path.insert(0, "scripts")
+from scan_state import choose_posted_limit, read_watermark, write_watermark, record_run, clear_run
+
+src  = "linkedin-keyword"                      # or linkedin-mentions, youtube, ...
+when = choose_posted_limit(read_watermark(src), NOW_ISO)   # "24h" on schedule, wider after a gap
+# ... call the actor with postedLimit=when ...
+record_run(dataset_id, actor=..., label=src, launched_at=NOW_ISO)   # survives a dead turn
+# ... archive + triage ...
+clear_run(dataset_id); write_watermark(src, NOW_ISO)       # only after the archive is written
+```
+
+On schedule this returns `"24h"` and costs exactly what it did before; it widens
+only as far as the actual outage requires. **A widened window always needs
+client-side dedup** against `data/archive/` — `scan-triage.py` already marks
+`SHIPPED`, and the catch-up pattern in the 2026-10-16 health check shows the
+rest.
+
+`record_run` exists because on 2026-10-15 a turn launched six Apify runs and
+ended before triage; the dataset ids lived only in conversation context and the
+paid data was nearly lost. Write them to disk at launch, clear them after triage.
+
 **Always pass `callOptions: {maxItems: N}`.** These actors bill per dataset
 item, and `maxPosts` is a soft target the actor does not honour: on 2026-10-14
 the comment-archive runs were given `maxPosts: 30` and `maxPosts: 40` and

@@ -53,7 +53,13 @@ Recreate any that are missing using the verbatim prompts in docs/CRONS.md.
 
 ROLLING SELF-RENEWAL — do this every single run, even when nothing else is missing. Recurring crons auto-expire 7 days after creation. The watchdog can never catch its own expiry by checking CronList, because it is still listed right up until it dies — and when it dies, every other cron follows at its own 7-day mark with nothing left to restore them. That is the single point of failure in this system. So on every run: (a) note your own current watchdog job ID from CronList, (b) CronCreate a NEW watchdog with this exact prompt and cron "37 8 * * *", (c) CronDelete the OLD watchdog ID. This rolls the 7-day window forward daily.
 
-Also sanity-check that the pipeline is actually producing: `git log --since="36 hours ago" --oneline` should normally show commits from the daily scans. A quiet week alongside healthy runs is possible; a quiet week is still worth flagging.
+FIRST, run the coverage check — it is free and catches what the commit log hides:
+
+    python3 scripts/scan-coverage.py --days 14
+
+It reports days a daily source never pulled, and any Apify run launched but never triaged. Both conditions come from the same cause: these crons only fire while the REPL is idle, so a closed laptop silently skips cycles. On 2026-10-12 the commit log looked healthy — other cycles ran that day — while the @-mention pull had not happened at all, hiding three posts at 108, 81 and 68 reactions. Backfill any gap with a widened postedLimit (scan_state.choose_posted_limit) and dedup against the archive. Triage orphaned datasets before launching anything new; they are already paid for.
+
+Then sanity-check that the pipeline is producing: `git log --since="36 hours ago" --oneline` should normally show commits from the daily scans. A quiet week alongside healthy runs is possible; a quiet week is still worth flagging.
 
 Report which crons you restored, plus "watchdog rolled: <old-id> -> <new-id>". If nothing else needed recreation, "all 7 present" plus the roll line is the whole report.
 ```
