@@ -96,9 +96,16 @@ WebSearch.
 - **`SLIDESHOW`** — TikTok photo post, Eric is not on camera.
 
 **When a ship/skip decision turns on what a post actually says, run
-`--full <N>`.** Never decide from the truncated row. People regularly use
-"incorruptible" as a plain adjective near the top of a post and credit the book
-further down, so the opening is the least reliable place to judge from.
+`--full <N>`.** People regularly use "incorruptible" as a plain adjective near
+the top of a post and credit the book further down, so the opening is the least
+reliable place to judge from.
+
+Since 2026-10-16 `render_row` compensates: when the book mention falls past the
+truncation point it shows the opening *and* the sentence carrying the citation,
+separated by `… […] …`. A row in that shape is telling you the author buried
+the reference — on the pull that was measured, a third of posts did. That makes
+the row safe to scan, but it is still a preview: `--full` remains the rule
+whenever the decision is close.
 
 **A short list is not a reason to skim.** The daily keyword pull is often under
 15 items, and the temptation is to clear it on the triage rows alone. The

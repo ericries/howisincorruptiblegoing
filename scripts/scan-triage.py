@@ -180,10 +180,62 @@ def normalise(item: dict, platform: str) -> dict:
 # ---------- rendering ----------
 
 def render_row(rec: dict, width: int = 150) -> str:
+    """One-line preview that always includes the book mention if there is one.
+
+    A plain head-truncation hides the citation whenever the author opens with a
+    generic hook — which is common, and which is how Fora Fereydouni (47
+    reactions) was skipped from a 13-item list and Paige Kaye was nearly lost.
+    When the mention falls past the cut, the row shows the opening plus the
+    sentence that carries it, so the decision is never taken blind.
+    """
     body = re.sub(r"\s+", " ", rec.get("text") or "").strip()
-    if len(body) > width:
-        body = body[:width] + "…"
-    return body
+    if len(body) <= width:
+        return body
+    if not citation_below_fold(body, width):
+        return body[:width] + "…"
+
+    head = body[: width // 2].rstrip()
+    m = _CITATION.search(body, width)
+
+    # Prefer the sentence carrying the mention, but clamp to a window CENTRED on
+    # the match: a long unpunctuated post has no sentence bounds to fall back on,
+    # and clipping from the sentence start would cut the citation back out.
+    sent_start = body.rfind(". ", 0, m.start())
+    sent_start = 0 if sent_start == -1 else sent_start + 2
+    sent_end = body.find(". ", m.end())
+    sent_end = len(body) if sent_end == -1 else sent_end + 1
+
+    lead = 40  # context before the mention
+    start = max(sent_start, width // 2, m.start() - lead)
+    end = min(sent_end, start + width)
+    if end <= m.end():  # never clip the mention itself out of view
+        end = min(len(body), m.end() + 20)
+
+    tail = body[start:end].strip()
+    if end < sent_end:
+        tail += "…"
+    return f"{head}… […] {tail}"
+
+
+# The book reference is frequently buried: people open with a generic hook and
+# credit Incorruptible several paragraphs down. Judging from the truncated row
+# therefore dismisses real candidates — it nearly lost Paige Kaye and did lose
+# five days on Fora Fereydouni (47 reactions, inside a 13-item list). Flagging
+# it turns "remember to read the whole post" into something mechanical.
+_CITATION = re.compile(r"incorruptible|eric\s+ries", re.I)
+
+
+def citation_below_fold(text: str, width: int = 150) -> bool:
+    """True when the only book/author mention falls past the row's truncation.
+
+    Measured against the same whitespace-collapsed string render_row() prints,
+    so the offsets cannot drift apart.
+    """
+    body = re.sub(r"\s+", " ", text or "").strip()
+    if len(body) <= width:
+        return False  # nothing is hidden; the row shows the whole post
+    visible, hidden = body[:width], body[width:]
+    return bool(_CITATION.search(hidden)) and not _CITATION.search(visible)
 
 
 def render_full(rec: dict) -> str:

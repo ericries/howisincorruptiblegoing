@@ -124,3 +124,97 @@ def test_render_table_truncates_but_marks_it():
     line = st.render_row(rec, width=120)
     assert len(line) < 400
     assert "…" in line, "truncated rows must be visibly marked as truncated"
+
+
+# --- BELOW-FOLD detection ----------------------------------------------------------
+# The costliest recurring failure is not recall, it is judgment: a post whose
+# book citation sits below the truncation point gets dismissed from the row.
+# Fora Fereydouni (47 reactions) was passed over inside a 13-item list on
+# 2026-10-06 and shipped five days late; Paige Kaye was nearly lost the same way.
+# See docs/postmortems/2026-10-16-five-whys-cadence-and-citation.md thread 2.
+
+def test_below_fold_when_citation_is_past_the_cut():
+    text = ("Every time I had taken myself out of the story, I start building the wrong "
+            "company. I have noticed it in big decisions, but also in something as small "
+            "as a pitch, where I explained the problem and the market and still walked "
+            "away knowing something was missing. " * 2
+            + "That is one reason Eric Ries's Incorruptible stayed with me.")
+    assert st.citation_below_fold(text, width=150) is True
+
+
+def test_not_below_fold_when_citation_is_visible_in_the_row():
+    text = "I finished Incorruptible by Eric Ries last week. " + ("More thoughts. " * 40)
+    assert st.citation_below_fold(text, width=150) is False
+
+
+def test_not_below_fold_when_post_is_shorter_than_the_cut():
+    assert st.citation_below_fold("Short post mentioning Eric Ries.", width=150) is False
+
+
+def test_not_below_fold_when_there_is_no_citation_at_all():
+    assert st.citation_below_fold("x" * 400, width=150) is False
+
+
+def test_below_fold_matches_either_book_or_author():
+    tail_author = ("y" * 300) + " credit to Eric Ries for this framing"
+    tail_book = ("y" * 300) + " straight out of Incorruptible"
+    assert st.citation_below_fold(tail_author, width=150) is True
+    assert st.citation_below_fold(tail_book, width=150) is True
+
+
+def test_below_fold_is_case_insensitive():
+    assert st.citation_below_fold(("z" * 300) + " read INCORRUPTIBLE", width=150) is True
+
+
+def test_below_fold_respects_the_width_actually_used():
+    # a wider row shows more, so the same post may no longer be below the fold
+    text = ("w" * 200) + " Eric Ries " + ("w" * 200)
+    assert st.citation_below_fold(text, width=150) is True
+    assert st.citation_below_fold(text, width=400) is False
+
+
+def test_below_fold_handles_whitespace_collapse_like_render_row():
+    # render_row collapses runs of whitespace before truncating; detection must
+    # measure against the same collapsed string or the offsets disagree
+    text = "a" + ("\n\n   " * 60) + "b Eric Ries"
+    assert st.citation_below_fold(text, width=150) is False
+
+
+# --- row composition: never truncate the citation out of view ----------------------
+# Flagging below-fold citations proved accurate but fired on ~1/3 of rows, which is
+# too common to stand out. Better to fix the row: when the book mention falls past
+# the cut, show the opening AND the sentence that mentions it, so the reader never
+# has to know the flag existed.
+
+def test_row_shows_citation_context_when_it_would_be_truncated():
+    text = ("Every time I had taken myself out of the story, I start building the wrong "
+            "company. " * 4
+            + "That is one reason Eric Ries's Incorruptible stayed with me. "
+            + "Growth is never a good enough reason to become careless with that trust.")
+    row = st.render_row({"text": text}, width=150)
+    assert "Incorruptible" in row, "the citation must survive truncation"
+    assert row.startswith("Every time I had taken myself"), "opening is still shown"
+    assert "…" in row, "the elision is visible"
+
+
+def test_row_is_unchanged_when_citation_already_visible():
+    text = "I finished Incorruptible by Eric Ries last week. " + ("More thoughts. " * 40)
+    row = st.render_row({"text": text}, width=150)
+    assert row == text[:150] + "…"
+
+
+def test_row_unchanged_for_short_posts():
+    text = "Short post mentioning Eric Ries."
+    assert st.render_row({"text": text}, width=150) == text
+
+
+def test_row_unchanged_when_post_never_mentions_the_book():
+    text = "q" * 400
+    assert st.render_row({"text": text}, width=150) == "q" * 150 + "…"
+
+
+def test_row_stays_within_a_sane_length_budget():
+    text = ("p" * 500) + " thanks to Eric Ries for this " + ("p" * 500)
+    row = st.render_row({"text": text}, width=150)
+    assert len(row) <= 150 * 2 + 20, "recomposed row must not blow up the output"
+    assert "Eric Ries" in row
