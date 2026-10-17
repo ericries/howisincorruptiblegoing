@@ -13,9 +13,12 @@ import json
 import pytest
 
 from scan_state import (
+    ack_gap,
     choose_posted_limit,
     clear_run,
     coverage_gaps,
+    is_gap_acked,
+    list_acked_gaps,
     list_pending,
     read_watermark,
     record_run,
@@ -207,3 +210,47 @@ def test_coverage_gaps_handles_a_missing_directory(tmp_path):
     gaps = coverage_gaps(tmp_path / "nope", "2026-10-12", "2026-10-12",
                          sources={"keyword": "kw-"})
     assert gaps == [("2026-10-12", ["keyword"])]
+
+
+# --- acknowledging backfilled gaps -------------------------------------------------
+# Catch-up pulls are deliberately excluded from counting as coverage, so that a
+# backfill cannot mask a genuine hole. The side effect, found on 2026-10-17 by
+# running the tool: a gap that HAS been backfilled keeps reporting forever, and
+# a report that accumulates permanent noise is one that stops being read.
+
+def test_acked_gap_is_remembered(tmp_path):
+    p = tmp_path / "acks.json"
+    assert is_gap_acked("mentions", "2026-10-12", path=p) is False
+    ack_gap("mentions", "2026-10-12", note="backfilled by week catch-up", path=p)
+    assert is_gap_acked("mentions", "2026-10-12", path=p) is True
+
+
+def test_ack_is_scoped_to_source_and_date(tmp_path):
+    p = tmp_path / "acks.json"
+    ack_gap("mentions", "2026-10-12", note="x", path=p)
+    assert is_gap_acked("keyword", "2026-10-12", path=p) is False
+    assert is_gap_acked("mentions", "2026-10-13", path=p) is False
+
+
+def test_acking_twice_is_idempotent(tmp_path):
+    p = tmp_path / "acks.json"
+    for _ in range(3):
+        ack_gap("mentions", "2026-10-12", note="x", path=p)
+    assert len(list_acked_gaps(path=p)) == 1
+
+
+def test_ack_survives_a_corrupt_file(tmp_path):
+    p = tmp_path / "acks.json"
+    p.write_text("{broken")
+    assert is_gap_acked("mentions", "2026-10-12", path=p) is False
+    ack_gap("mentions", "2026-10-12", note="x", path=p)
+    assert is_gap_acked("mentions", "2026-10-12", path=p) is True
+
+
+def test_ack_records_why_so_the_history_is_auditable(tmp_path):
+    p = tmp_path / "acks.json"
+    ack_gap("mentions", "2026-10-12", note="recovered 4 entries via week catch-up", path=p)
+    rec = list_acked_gaps(path=p)[0]
+    assert rec["source"] == "mentions"
+    assert rec["date"] == "2026-10-12"
+    assert "catch-up" in rec["note"]

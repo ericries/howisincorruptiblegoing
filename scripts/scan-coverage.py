@@ -18,7 +18,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from scan_state import coverage_gaps, list_pending  # noqa: E402
+from scan_state import coverage_gaps, is_gap_acked, list_pending  # noqa: E402
 
 REPO = Path(__file__).resolve().parent.parent
 
@@ -50,18 +50,29 @@ def main() -> int:
     # today is still in progress; a hole today is not yet a miss
     gaps = [g for g in gaps if g[0] != end.isoformat()]
     print(f"LinkedIn coverage, {start} .. {end}")
-    if gaps:
-        problems += len(gaps)
-        for day, missing in gaps:
+    acked_n = 0
+    open_gaps = []
+    for day, missing in gaps:
+        live = [m for m in missing if not is_gap_acked(m, day)]
+        acked_n += len(missing) - len(live)
+        if live:
+            open_gaps.append((day, live))
+    if open_gaps:
+        problems += len(open_gaps)
+        for day, missing in open_gaps:
             print(f"  GAP  {day}  missing: {', '.join(missing)}")
     else:
-        print("  no gaps")
+        print("  no open gaps")
+    if acked_n:
+        print(f"  ({acked_n} earlier gap(s) acknowledged as backfilled — "
+              f"see data/archive/.gap-acks.json)")
 
     for sub, sources in OTHER.items():
         g = coverage_gaps(REPO / "data/archive" / sub,
                           start.isoformat(), end.isoformat(), sources)
         g = [x for x in g if x[0] != end.isoformat()]
         label = sub.replace("-raw", "")
+        g = [x for x in g if not all(is_gap_acked(m, x[0]) for m in x[1])]
         if g:
             problems += len(g)
             print(f"{label}: {len(g)} day(s) with no pull — "

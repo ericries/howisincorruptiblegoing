@@ -34,6 +34,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parent.parent
 STATE_PATH = REPO / "data" / "archive" / ".scan-state.json"
 PENDING_PATH = REPO / "data" / "archive" / ".pending-runs.json"
+ACKS_PATH = REPO / "data" / "archive" / ".gap-acks.json"
 
 # postedLimit values the harvestapi actor accepts. "7d" fails validation.
 VALID_WINDOWS = ("any", "1h", "24h", "week", "month", "3months", "6months", "year")
@@ -200,3 +201,31 @@ def coverage_gaps(archive_dir, start: str, end: str, sources: dict
             out.append((iso, missing))
         day += _dt.timedelta(days=1)
     return out
+
+
+# --- acknowledging backfilled gaps -------------------------------------------------
+# coverage_gaps() deliberately ignores catch-up files so a backfill cannot mask a
+# real hole. The cost of that choice, found by running the tool on 2026-10-17: a
+# gap that HAS been backfilled reports forever. Permanent noise is how a report
+# stops being read — the same way a flag firing on a third of rows stops being
+# seen. Acknowledgement keeps the historical record while clearing the signal.
+
+def ack_gap(source: str, date: str, *, note: str, path: Path = ACKS_PATH) -> None:
+    """Record that a coverage gap has been backfilled, and how."""
+    acks = _load(Path(path), [])
+    if not isinstance(acks, list):
+        acks = []
+    if any(a.get("source") == source and a.get("date") == date for a in acks):
+        return
+    acks.append({"source": source, "date": date, "note": note})
+    _save(Path(path), acks)
+
+
+def list_acked_gaps(path: Path = ACKS_PATH) -> list[dict]:
+    acks = _load(Path(path), [])
+    return acks if isinstance(acks, list) else []
+
+
+def is_gap_acked(source: str, date: str, path: Path = ACKS_PATH) -> bool:
+    return any(a.get("source") == source and a.get("date") == date
+               for a in list_acked_gaps(path))

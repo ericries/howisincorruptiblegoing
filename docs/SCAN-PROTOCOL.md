@@ -43,6 +43,12 @@ rest.
 ended before triage; the dataset ids lived only in conversation context and the
 paid data was nearly lost. Write them to disk at launch, clear them after triage.
 
+When a gap has been backfilled, call `ack_gap(source, date, note=...)` so
+`scan-coverage.py` stops reporting it. Catch-up pulls deliberately do not count
+as coverage — otherwise a backfill would mask a real hole — which means an
+un-acked fixed gap reports forever. The history stays in
+`data/archive/.gap-acks.json`; only the signal clears.
+
 **Always pass `callOptions: {maxItems: N}`.** These actors bill per dataset
 item, and `maxPosts` is a soft target the actor does not honour: on 2026-10-14
 the comment-archive runs were given `maxPosts: 30` and `maxPosts: 40` and
