@@ -9,11 +9,15 @@
   "source_url": "https://www.youtube.com/watch?v=luXcrK0VBUI",
   "source_urls": null,
   "video_url": "https://www.youtube.com/watch?v=luXcrK0VBUI",
-  "image": null,
+  "image": "/images/podcasts/the-eric-ries-show.jpg",
   "attribution": "The Eric Ries Show",
   "attribution_title": null,
   "attribution_image": null,
-  "tags": ["media", "youtube", "the-eric-ries-show"],
+  "tags": [
+    "media",
+    "youtube",
+    "the-eric-ries-show"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

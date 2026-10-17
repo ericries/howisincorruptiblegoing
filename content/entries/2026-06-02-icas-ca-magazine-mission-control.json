@@ -9,11 +9,16 @@
   "source_url": "https://camagazine.icas.com/ca-june-2026/thought-leadership/eric-ries-mission-control/index.html",
   "source_urls": null,
   "video_url": null,
-  "image": null,
+  "image": "/images/media/icas-ca-magazine-eric-ries.jpg",
   "attribution": "CA Magazine (ICAS)",
   "attribution_title": "June 2026 issue, interview by Lysanne Currie",
   "attribution_image": null,
-  "tags": ["media", "press", "icas", "finance"],
+  "tags": [
+    "media",
+    "press",
+    "icas",
+    "finance"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,
