@@ -8,14 +8,23 @@
   "blockquote_source": "Eric Ries on Y Combinator's Main Function podcast",
   "source_url": "https://www.youtube.com/watch?v=7VKliOQXQ9M",
   "source_urls": [
-    {"url": "https://x.com/ycombinator/status/2057844527239676015", "label": "Y Combinator launch tweet"}
+    {
+      "url": "https://x.com/ycombinator/status/2057844527239676015",
+      "label": "Y Combinator launch tweet"
+    }
   ],
   "video_url": "https://www.youtube.com/watch?v=7VKliOQXQ9M",
-  "image": null,
+  "image": "/images/media/yc-main-function-garry-tan.jpg",
   "attribution": "Garry Tan",
   "attribution_title": "President & CEO, Y Combinator",
   "attribution_image": null,
-  "tags": ["podcast", "youtube", "y-combinator", "garry-tan", "main-function"],
+  "tags": [
+    "podcast",
+    "youtube",
+    "y-combinator",
+    "garry-tan",
+    "main-function"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

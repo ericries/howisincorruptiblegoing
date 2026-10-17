@@ -9,11 +9,15 @@
   "source_url": "https://www.youtube.com/watch?v=F_4uv5kmHDc",
   "source_urls": null,
   "video_url": "https://www.youtube.com/watch?v=F_4uv5kmHDc",
-  "image": null,
+  "image": "/images/media/founders-story-eric-ries.jpg",
   "attribution": "Founder's Story",
   "attribution_title": "Long-form founder interview podcast",
   "attribution_image": null,
-  "tags": ["podcast", "youtube", "founders-story"],
+  "tags": [
+    "podcast",
+    "youtube",
+    "founders-story"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

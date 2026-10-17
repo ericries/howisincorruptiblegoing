@@ -9,11 +9,16 @@
   "source_url": "https://www.youtube.com/watch?v=amMWk-Ky-EE",
   "source_urls": null,
   "video_url": "https://www.youtube.com/watch?v=amMWk-Ky-EE",
-  "image": null,
+  "image": "/images/media/reid-hoffman-conversation.jpg",
   "attribution": null,
   "attribution_title": null,
   "attribution_image": null,
-  "tags": ["podcast", "video", "reid-hoffman", "linkedin"],
+  "tags": [
+    "podcast",
+    "video",
+    "reid-hoffman",
+    "linkedin"
+  ],
   "type_metadata": {},
   "scanner_source": "web-search",
   "verified": true,
