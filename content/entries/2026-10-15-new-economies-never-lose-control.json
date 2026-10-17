@@ -21,7 +21,8 @@
     "founder-control"
   ],
   "type_metadata": {
-    "audience": 38400
+    "audience": 38400,
+    "featured": true
   },
   "scanner_source": "social-scan",
   "verified": false,

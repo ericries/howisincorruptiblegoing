@@ -25,8 +25,7 @@
     "average_rating": 4.8,
     "amazon_rank": "#1",
     "amazon_badge": "Best Seller",
-    "amazon_category": "Business Management",
-    "featured": true
+    "amazon_category": "Business Management"
   },
   "scanner_source": "manual",
   "verified": false,
