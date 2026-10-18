@@ -164,14 +164,24 @@ If a calibration change is warranted, update memory/feedback_linkedin_query_cali
 ## 6. Evening content scan — `3 18 * * *`
 
 ```
-Evening content scan. Follow docs/SCAN-PROTOCOL.md in the repo for the full standing rules (Apify call pattern, inclusion bar, TikTok blocking rule, entry/image/verify/ship steps, reporting format). Read it first.
+Evening content scan. Follow docs/SCAN-PROTOCOL.md in the repo for the full standing rules (Apify call pattern, inclusion bar, TikTok blocking rule, entry/image/verify/ship steps, reporting format). Read it first — section 1 now carries hard billing caps and the derived-window rule.
+
+Derive the window, do not hardcode it (scan_state): postedLimit = choose_posted_limit(read_watermark(src), now). record_run() each dataset id at launch; clear_run() + write_watermark() after the archive is written. A widened window always needs dedup against data/archive/.
 
 Sources this cycle — run each with waitSecs:0, then scan-triage.py per the protocol:
-1. TikTok profile (clockworks/tiktok-profile-scraper, profiles=["ericriesactual"], resultsPerPage=10) — ONLY on Mon/Wed/Fri; skip it on other days and say so in the report. The TikTok blocking rule in the protocol applies to every video without exception: grep the id against the denylist in memory/feedback_no_ai_tiktoks.md AND confirm Eric is on camera. If you cannot confirm on-camera, skip.
-2. LinkedIn @-mentions (harvestapi/linkedin-post-search, mentioningMember=["https://www.linkedin.com/in/eries/"], postedLimit="24h", maxPosts=40, sortBy="date", callOptions {"maxItems": 25}).
+1. TikTok profile (clockworks/tiktok-profile-scraper, profiles=["ericriesactual"], resultsPerPage=10) — ONLY on Mon/Wed/Fri. On other days skip it entirely and say so in one line. Nothing has shipped from TikTok in three weeks; it is podcast promo cuts, denylisted AI slop, and Eric's own event announcements. When you do run it, the blocking rule applies to every video without exception: grep the id against data/ai-tiktok-denylist.json AND confirm Eric is on camera. If you cannot confirm on-camera, skip. Genuine on-camera clips still get skipped when they are promo cuts of an episode already on the timeline — check before writing an entry.
+2. LinkedIn @-mentions (harvestapi/linkedin-post-search, mentioningMember=["https://www.linkedin.com/in/eries/"], maxPosts=40, sortBy="date", callOptions {"maxItems": 25}).
 3. Twitter/X @-mentions (apidojo/tweet-scraper, searchTerms=["@ericries"], maxItems=20).
 
-Also: pick 2-3 unimaged older entries from the backlog and source photos. Query with BOTH image and attribution_image null. Org and event logos go in /images/events/ — there is no /images/orgs/.
+When an event Eric spoke at has just happened, check whether the organiser has published a post-event quote. The NACD entry carried only its pre-event agenda blurb until NACD's own account published what he actually said; swapping that in, moving the summary to past tense and dropping the "upcoming" tag is a real upgrade worth doing the morning after any major event.
+
+Reactions have NO numeric ceiling (Eric, 2026-10-14: "relax the five reactions ceiling from now on, if quality is high"). Quality is the only gate — if the single argument against shipping a reaction is that the parent already has N, ship it. Still skip the "great event!" class, which has two recurring shapes: a name-list where Eric is one of several speakers, and a post that gives him one clause before moving to a different session for its real takeaway (David Buck, 2026-10-17, is the textbook case).
+
+But do NOT confuse that with a field observation. A credible practitioner reporting that the ideas are SPREADING — "more and more builders choosing public benefit missions" (Peter Ward, ex-Oura, 2026-10-17, which Eric reversed my skip on) — ships even as one paragraph inside an otherwise off-topic post with low engagement. Adoption evidence from someone with standing to see it is a category the timeline is short of, and the host post's topic is a weak signal against it. The test is whether the paragraph asserts something about the world or merely nods at the book. See memory/feedback_field_observations_ship.md.
+
+A promotional company post is often better used to ENRICH the parent entry than shipped as its own: SEEK Alabama's booth post documented that Innovate Alabama sponsored the Inc. 5000 book signing, which belonged in source_urls on the event, not on the timeline.
+
+Also: pick 2-3 unimaged older entries from the backlog and source photos. Query with BOTH image and attribution_image null. THIS SEAM IS DRY as of 2026-10-17 — YouTube thumbnails exhausted, LinkedIn archive avatars give zero matches for the old entries, Luma has no og:image, the rest is paywalled or small orgs. Say "no new image found" rather than forcing a weak one. Org and event logos go in /images/events/ — there is no /images/orgs/. Reject og:images that are grids of other people's faces.
 
 Finish with backfill-quote-cards, backfill-source-texts, verify-quotes, lint, commit, push.
 ```
