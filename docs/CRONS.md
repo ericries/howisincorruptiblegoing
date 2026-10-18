@@ -78,7 +78,7 @@ Sources this cycle — run each with waitSecs:0, then scan-triage.py per the pro
 3. YouTube keyword (streamers/youtube-scraper, searchQueries=["Eric Ries Incorruptible"], maxResults=15, sortingOrder="date", dateFilter="week"). Do NOT pay for Apify subtitles — pull transcripts free with the youtube-transcript-api one-liner in the protocol. Confirm the video substantively discusses Incorruptible before shipping; a name-drop is not enough. Check the RSS feed or Apple Podcasts for the true original publication date — a YouTube upload can post an episode months after it aired.
 4. WebSearch for "Eric Ries" "Incorruptible" recent mentions.
 
-Also: pick 2-3 unimaged older entries from the backlog and source photos. Query for them with BOTH image and attribution_image null — filtering on one field alone surfaces entries that already have art.
+Also: pick 2-3 unimaged older entries from the backlog and source photos. Query for them with BOTH image and attribution_image null. THIS SEAM IS DRY as of 2026-10-17 — YouTube thumbnails exhausted; all 468 archived LinkedIn posts indexed by activity id against the 93 LinkedIn-sourced unimaged entries gave ZERO matches (they predate the archive); Luma publishes no og:image; the rest is paywalled (TIME, NYT) or small orgs with no social card. Report "no new image found" rather than forcing a weak one.
 
 Finish with backfill-quote-cards, backfill-source-texts, verify-quotes, lint, commit, push.
 ```
@@ -98,6 +98,8 @@ For each new review not already in content/entries/:
 - verified:false, because Goodreads is JS-rendered and verify-quotes cannot see it.
 - Title format: do NOT prefix with "Goodreads reviewer X —". The title is just the strongest pull quote in single quotes; explain who the reviewer is in the summary and attribution fields.
 - Sidebar flags per memory/feedback_sidebar_flags.md.
+
+Amazon review-count milestones (memory/feedback_amazon_review_milestones.md): ship one flat entry at 500 and 1000. The 2026-10-05 snapshot had 262 Amazon ratings and 406 Goodreads ratings, so 500 is still some way off; no action unless a snapshot crosses it.
 
 Then backfill-quote-cards, backfill-source-texts, verify-quotes, lint, commit, push.
 ```
