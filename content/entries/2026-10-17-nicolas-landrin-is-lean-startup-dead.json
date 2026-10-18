@@ -1,0 +1,30 @@
+{
+  "id": "2026-10-17-nicolas-landrin-is-lean-startup-dead",
+  "date": "2026-10-17",
+  "type": "reaction",
+  "parent_id": "2026-10-14-stanford-ecorner-human-spark-video",
+  "title": "Nicolas Landrin (ESSEC Business School) asks whether the Lean Startup is dead — 'AI accelerates the Build part of the Build–Measure–Learn loop, but learning remains the true measure'",
+  "summary": "A business-school entrepreneurship director had been wrestling with two questions: whether generative AI changes the founding journey, and whether the Lean Startup still holds. He takes his answers from the Stanford talk and concludes the method is more relevant than ever — AI collapses the cost of building, which was never the hard part, so judgment about what to build becomes the advantage.",
+  "blockquote": "Lean Startup is more relevant than ever. AI accelerates the Build part of the Build–Measure–Learn loop, but learning remains the true measure of entrepreneurial progress.",
+  "blockquote_source": "Nicolas Landrin on LinkedIn",
+  "source_url": "https://www.linkedin.com/posts/nlandrin_eric-ries-the-lean-startup-be-the-human-activity-7517260365450113024-8E7S",
+  "source_urls": null,
+  "video_url": null,
+  "image": null,
+  "attribution": "Nicolas Landrin",
+  "attribution_title": "Executive Director, Institute for Entrepreneurship and Innovation · VC in Residence, ESSEC Business School",
+  "attribution_image": "/images/people/nicolas-landrin.jpg",
+  "tags": [
+    "reaction",
+    "linkedin",
+    "stanford",
+    "etl",
+    "ai",
+    "lean-startup",
+    "academia"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-10-18T01:45:00Z"
+}
