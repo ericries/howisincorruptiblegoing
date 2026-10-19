@@ -92,16 +92,22 @@ Goodreads review scan. Follow docs/SCAN-PROTOCOL.md for the shared rules (Apify 
 
 Pull recent reviews via Apify: easyapi/goodreads-review-scraper with bookUrls=["https://www.goodreads.com/book/show/242970642-incorruptible"], maxItems=30. Use waitSecs:0, then curl the dataset and archive it to data/archive/goodreads/<YYYY-MM-DD>.json.
 
-Inclusion bar — the general rule in memory/feedback_entry_inclusion.md plus the loosened Goodreads-specific bar in memory/feedback_goodreads_inclusion.md: textReviewsCount>100 and followersCount>50 are heuristics, not gates. A low-volume reviewer (even 0 followers, 1 review) ships if the text is extremely positive AND insightful — substantive analysis, distinctive framing, multiple paragraphs — or if their self-description signals unusual credibility (named investor, founder, professional in a relevant field). Still skip thin "highly recommend"-class reviews and reviews that are mostly verbatim quotes of Eric, regardless of credentials. No critical or mixed reviews: the site tracks momentum.
+Inclusion bar — the general rule in memory/feedback_entry_inclusion.md plus the loosened Goodreads-specific bar in memory/feedback_goodreads_inclusion.md: textReviewsCount>100 and followersCount>50 are heuristics, not gates. A low-volume reviewer (even 0 followers, 1 review) ships if the text is substantive — real analysis, distinctive framing, multiple paragraphs — or if their self-description signals unusual credibility (named investor, founder, professional in a relevant field).
+
+DEPTH ALONE CAN CARRY A REVIEW (Eric, 2026-10-19). A review that is analytically engaged but carries no sentence of praise still ships when the engagement is real: applied to a concrete domain, naming real cases, taking the argument somewhere. Spending 2,600 words extending the argument is a stronger signal of regard than "highly recommend". Mabel's constellation review was skipped twice on a "positive AND insightful" rule I had written from that very case — circular reasoning dressed as policy — and Eric reversed it. The blockquote can be the reviewer's own reasoning rather than a compliment. See memory/feedback_depth_is_endorsement.md.
+
+What still fails: thin "highly recommend"-class praise with no substance, reviews that are mostly verbatim quotes of Eric, and anything critical or mixed — the site tracks momentum. A 5-star rating does not override mixed text: judge the words, not the stars. On 2026-10-12 a 982-review 5-star reviewer was skipped because the text carried two real criticisms.
+
+Verify any named concept before attributing it to the book. "Governance fortress", "surrogation", "emergent intelligence" and "constellation" all check out as Eric's vocabulary; "mission gravity" and "the ratchet" were reader coinages. Grep data/archive/source-texts/ and data/archive/transcripts/ first.
 
 For each new review not already in content/entries/:
-- source_url = the specific review URL from the actor's `shelving.webUrl` field. The actor's `id` is a kca:// content-analytics id, not the review number.
+- source_url = the specific review URL from the actor's `shelving.webUrl` field. The actor's `id` is a kca:// content-analytics id, not the review number. Lint now hard-fails a fabricated or placeholder source_url — never invent one to complete a batch.
 - type=review, scanner_source="social-scan" (the schema permits only [web-search, social-scan, manual, rss] — "goodreads-scan" fails lint).
 - verified:false, because Goodreads is JS-rendered and verify-quotes cannot see it.
-- Title format: do NOT prefix with "Goodreads reviewer X —". The title is just the strongest pull quote in single quotes; explain who the reviewer is in the summary and attribution fields.
+- Title format: do NOT prefix with "Goodreads reviewer X —". The title is just the strongest pull quote in single quotes, capped at 200 characters; explain who the reviewer is in the summary and attribution fields.
 - Sidebar flags per memory/feedback_sidebar_flags.md.
 
-Amazon review-count milestones (memory/feedback_amazon_review_milestones.md): ship one flat entry at 500 and 1000. The 2026-10-05 snapshot had 262 Amazon ratings and 406 Goodreads ratings, so 500 is still some way off; no action unless a snapshot crosses it.
+Amazon review-count milestones (memory/feedback_amazon_review_milestones.md): ship one flat entry at 500 and 1000. The 2026-10-05 snapshot had 262 Amazon ratings and 406 Goodreads ratings, so 500 is still some way off; no action unless a snapshot crosses it. That snapshot is the most recent — the Amazon rank cron is paused at Eric's direction, so do not expect fresher numbers unless he asks for it back.
 
 Then backfill-quote-cards, backfill-source-texts, verify-quotes, lint, commit, push.
 ```
