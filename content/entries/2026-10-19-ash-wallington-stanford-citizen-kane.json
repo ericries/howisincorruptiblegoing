@@ -4,11 +4,16 @@
   "type": "reaction",
   "parent_id": "2026-10-07-stanford-etl-eric-ries",
   "title": "Ash Wallington, who greeted him at STVP — 'Incorruptible asks what comes next: once you discover genuine value, how do you build a company capable of protecting it?'",
-  "summary": "A higher-education innovation lead who hosted Eric at Stanford's Technology Ventures Program frames the two books as a sequence: Lean Startup defined how a generation found value, and this one asks how to keep it. She left the talk reaching for Citizen Kane, and thanks him for what she calls the ultimate act of entrepreneurship — searching for the truth.",
+  "summary": "A higher-education innovation lead who hosted Eric at Stanford's Technology Ventures Program frames the two books as a sequence: Lean Startup defined how a generation found value, and this one asks how to keep it. Her write-up reaches for Citizen Kane — Charles Foster Kane enthusiastically drafts a \"Declaration of Principles\" for his newspaper early in the film, and the bookend shows what becomes of it — as the case for why a mission statement is never enough.",
   "blockquote": "Eric’s earlier book, The Lean Startup, helped define a generation’s approach to entrepreneurship and innovation. Incorruptible asks what comes next: once you discover genuine value, how do you build a company capable of protecting it?",
   "blockquote_source": "Ash Wallington on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/ashlea-wallington_incorruptible-entrepreneurship-ai-activity-7517773881990938624-5kyc",
-  "source_urls": null,
+  "source_urls": [
+    {
+      "url": "https://prismsofpractice.substack.com/p/the-greater-unknown-first-find-the",
+      "label": "Her article (Prisms of Practice, Oct 19): reads mission statements through Citizen Kane's \"Declaration of Principles\""
+    }
+  ],
   "video_url": null,
   "image": null,
   "attribution": "Ash Wallington",
