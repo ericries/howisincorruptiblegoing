@@ -51,6 +51,8 @@ Cron watchdog. Run CronList. These must be present (Amazon rank is paused — do
 
 Recreate any that are missing using the verbatim prompts in docs/CRONS.md.
 
+DO THE ROLLS FIRST, BEFORE THE COVERAGE CHECK AND ANY BACKFILL. The watchdog fires at 8:37 and the morning scan at 9:07 — only 30 minutes apart. Creating a replacement job AFTER its fire time has passed sets its next run to tomorrow, so that day's scan is simply lost. That happened on 2026-10-19: a YouTube backfill pushed the rolls past 9:07 and Monday's morning scan never ran. Roll all seven in the first minutes of the turn, then do the slow work.
+
 ROLLING SELF-RENEWAL — do this every single run, even when nothing else is missing. Recurring crons auto-expire 7 days after creation. The watchdog can never catch its own expiry by checking CronList, because it is still listed right up until it dies — and when it dies, every other cron follows at its own 7-day mark with nothing left to restore them. That is the single point of failure in this system. So on every run: (a) note your own current watchdog job ID from CronList, (b) CronCreate a NEW watchdog with this exact prompt and cron "37 8 * * *", (c) CronDelete the OLD watchdog ID. This rolls the 7-day window forward daily.
 
 FIRST, run the coverage check — it is free and catches what the commit log hides:
