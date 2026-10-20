@@ -105,7 +105,7 @@ For each new review not already in content/entries/:
 - type=review, scanner_source="social-scan" (the schema permits only [web-search, social-scan, manual, rss] — "goodreads-scan" fails lint).
 - verified:false, because Goodreads is JS-rendered and verify-quotes cannot see it.
 - Title format: do NOT prefix with "Goodreads reviewer X —". The title is just the strongest pull quote in single quotes, capped at 200 characters; explain who the reviewer is in the summary and attribution fields.
-- Sidebar flags per memory/feedback_sidebar_flags.md.
+- Sidebar flags per memory/feedback_sidebar_flags.md. Note that lint forbids sidebar_quote and highlight on type=reaction entries, and HIGHLIGHT_ELIGIBLE_ENDORSERS gates the highlight flag — a Goodreads reviewer will almost never be on it.
 
 Amazon review-count milestones (memory/feedback_amazon_review_milestones.md): ship one flat entry at 500 and 1000. The 2026-10-05 snapshot had 262 Amazon ratings and 406 Goodreads ratings, so 500 is still some way off; no action unless a snapshot crosses it. That snapshot is the most recent — the Amazon rank cron is paused at Eric's direction, so do not expect fresher numbers unless he asks for it back.
 
@@ -119,10 +119,14 @@ LinkedIn comment archive scan. Pull Eric's LinkedIn author feed plus the Incorru
 
 Use waitSecs:0 for both Apify calls, then curl the datasets (docs/SCAN-PROTOCOL.md section 1).
 
-1. harvestapi/linkedin-post-search — Eric's author feed:
-   {"authorUrls": ["https://www.linkedin.com/in/eries/"], "postedLimit": "week", "maxPosts": 30, "sortBy": "date", "scrapeComments": true, "commentsPostedLimit": "week", "maxComments": 30, "postNestedComments": true} with callOptions {"maxItems": 40}
-2. harvestapi/linkedin-post-search — keyword:
-   {"searchQueries": ["Incorruptible Ries"], "postedLimit": "week", "maxPosts": 40, "sortBy": "date", "scrapeComments": true, "commentsPostedLimit": "week", "maxComments": 30, "postNestedComments": true} with callOptions {"maxItems": 40}
+COST CAP — this job was 50% of all Apify volume Oct 10-14 and ships nothing, which is why it moved to 3x/week on 2026-10-14. maxPosts is NOT honoured by the actor (30 was passed, 130 returned). Pass callOptions {"maxItems": 40} on BOTH calls. Both queries use postedLimit "week", so running 3x/week still sees every comment — just up to two days later.
+
+CHECK WHETHER THE CAP COST ANYTHING, and say so either way. Compare the oldest post in this pull against the oldest in the previous run's archive file. On 2026-10-16 the author feed hit the cap and it cost nothing — the previous run already reached past the oldest item returned. On 2026-10-19 the keyword run hit the cap and DID leave a hole: it truncated to Oct 18 onward while the Oct 16 run reached only to Oct 14, so Oct 17 keyword-post comments were never covered. Report the hole rather than silently raising the cap; this lane is archive-only, so a one-day gap is usually not worth extra spend.
+
+1. harvestapi/linkedin-post-search — Eric's author feed, callOptions {"maxItems": 40}:
+   {"authorUrls": ["https://www.linkedin.com/in/eries/"], "postedLimit": "week", "maxPosts": 30, "sortBy": "date", "scrapeComments": true, "commentsPostedLimit": "week", "maxComments": 30, "postNestedComments": true}
+2. harvestapi/linkedin-post-search — keyword, callOptions {"maxItems": 40}:
+   {"searchQueries": ["Incorruptible Ries"], "postedLimit": "week", "maxPosts": 40, "sortBy": "date", "scrapeComments": true, "commentsPostedLimit": "week", "maxComments": 30, "postNestedComments": true}
 
 Save each raw dataset to data/archive/linkedin-raw/<YYYY-MM-DD>-<name>.json, then:
 
@@ -130,11 +134,15 @@ Pass 1 — emit queue:
   python3 scripts/archive-linkedin-superlatives.py /tmp/eries-feed.json --scan-source=linkedin-author-eries
   python3 scripts/archive-linkedin-superlatives.py /tmp/kw-feed.json --scan-source=linkedin-keyword
 
-Pass 2 — classify in-turn, no external API. Read .llm-queue.json and judge each candidate.
+Pass 2 — classify in-turn, no external API. Read .llm-queue.json and judge each candidate. Filter to kind=comment and drop identifiers already present in data/archive/linkedin-comments/*.json before reading — after a big event the queue runs to 200+ and most are repeats of the same week's items.
 
 KEEP short superlative fragments, including one-word ones — per Eric, 2026-10-03: "keep comments in the archive like 'astounding' (just that one word is enough, we dont need the rest for things like movie posters), same with 'worthy path toward building bigger' and 'this is amazing' kind of stuff." Set pull_quote to JUST the superlative fragment, not the surrounding sentence. These qualify even when the rest of the comment is a question, or when the praise is addressed to the poster rather than the book. See memory/feedback_comment_archive_fragments.md.
 
-SKIP: congratulations ("Congrats!!!!"), purchase notes ("$1.99 on my kindle, purchased!"), lukewarm interest ("looks intriguing"), praise aimed at something other than the book or the talk, commenters who say they have not read it yet, and AI-slop comments.
+A person whose POST was skipped can still have a keepable COMMENT — different lanes. Ed Magee's Oct 18 post was the textbook one-clause skip; his Oct 19 comment, "Eric's talk is still occupying mindspace, rent free", was a clean keep.
+
+SKIP: congratulations ("Congrats!!!!"), purchase notes ("$1.99 on my kindle, purchased!"), lukewarm interest ("looks intriguing"), praise aimed at something other than the book or the talk, commenters who say they have not read it yet, and AI-slop comments. The slop signature is a long fluent sentence restating the post's own thesis back at it — "This is exactly the board governance and mission protection conversation most directors needed to see"; several arrive per event, sometimes with HTML-escape artifacts like "Melissa#39;s". A reading-list post draws a cluster of "got to check them out!" replies — all haven't-read-it skips.
+
+The archive holds COMMENTS only — every record to date is item_kind "comment". The queue also surfaces posts; skip those. But a comment can still yield a CONTENT-side find worth acting on: on 2026-10-19 Ash Wallington posted her article URL in comments, which completed an entry shipped the day before when the link was unreachable.
 
 CRITICAL: when a candidate's relevance depends on the PARENT post, print the parent post IN FULL before deciding. A lowercase or adjectival "incorruptible" near the top of a post is a reason to keep reading, not to dismiss — people routinely use the word casually and credit the book further down. This is how the Paige Kaye entry was nearly lost (memory/feedback_read_whole_parent_post.md).
 
@@ -156,15 +164,17 @@ Run all three over the same 7-day window, each with waitSecs:0 then scan-triage.
 2. ALTERNATE:  searchQueries=["Eric Ries Incorruptible"], same params
 3. BARE:       searchQueries=["Incorruptible"], same params
 
-maxPosts MUST be 100, not 40. On 2026-09-27 both queries hit the 40 cap, so the comparison was between two truncated lists and reported false agreement — that is how a Raj Sisodia endorsement went unseen for a week. Check and report whether any query hit the cap; if one did, its result is not a valid comparison input.
+maxPosts MUST be 100, not 40, and pass callOptions {"maxItems": 100} on each — maxPosts alone is a soft target the actor does not honour. On 2026-09-27 both queries hit the 40 cap, so the comparison was between two truncated lists and reported false agreement — that is how a Raj Sisodia endorsement went unseen for a week. Check and report whether any query hit the cap; if one did, its result is not a valid comparison input. This is the one job where 100 is justified: the comparison is worthless on truncated lists, and this audit is the designed backstop for everything the daily scans miss.
 
-The bare query is noisy (Bible verses, political theory, films, and lowercase adjectival use). Filter it for book relevance before comparing: the post body should mention Eric Ries, Lean Startup, financial gravity, or mission-lock.
+The bare query is noisy (Bible verses, political theory, films, and lowercase adjectival use). Filter it for book relevance before comparing: the post body should mention Eric Ries, Lean Startup, financial gravity, or mission-lock. But note the structural reason the bare query is not redundant: a post that hashtags Eric's name (#EricRies) never contains "Ries" as a standalone token, so the two-word production query cannot match it at all. That is a mechanism, not noise.
 
 Compare recall, then cross-check against content/entries/ for the past 7 days. Report: each query's count, whether any hit the cap, IDs unique to each alternate (up to 10), any high-signal post that two queries returned but we never shipped, and whether the production query is missing more than 20 percent of relevant posts.
 
 Judge by quality as well as rate. On 2026-10-04 the raw miss rate was only 7 percent, but the single missed post was a peer-tier endorsement from the co-founder of the Conscious Capitalism movement — worth escalating on its own.
 
 Audit BOTH halves — recall and judgment. For every relevant post the production query DID return but we never shipped, check it against the inclusion memories before calling it correctly skipped. On 2026-10-11 recall was healthy (8 percent miss, no cap hits) yet the week's real finding was a judgment miss: Fora Fereydouni (Founder & CEO, Cognitai, 47 likes) sat in an Oct 6 daily list of only 13 items and was passed over, then shipped a week late by the audit. A short daily list is not a reason to skim it. Ship anything the audit confirms was wrongly skipped.
+
+Also audit COVERAGE, not just query shape: run `python3 scripts/scan-coverage.py --days 14` and report any day a daily source produced no archive file. These crons only fire while the REPL is idle, so a closed laptop skips a cycle silently. If a gap is real and still unbackfilled, do one catch-up pull with a derived postedLimit (scan_state.choose_posted_limit) and client-side dedup against data/archive/, then ack_gap it.
 
 If a calibration change is warranted, update memory/feedback_linkedin_query_calibration.md, docs/SCAN-PROTOCOL.md and the affected prompt in docs/CRONS.md, then commit. Otherwise make no commit.
 ```
@@ -203,9 +213,22 @@ Criteria per memory/feedback_sidebar_flags.md and memory/feedback_highlights_row
 
 WHAT'S NEW (featured, exactly 8) — third-party momentum only: events, endorsements, real news. Prefer upcoming book-tour events, heavyweight endorsements, podcast appearances, viral coverage. Rotate an event out the day after it happens. Eric's own posts are auto-excluded by the index filter (isSelfAmplification keys off both the speaker and the venue), so do not bother flagging them — an entry sourced to Eric's own LinkedIn or TikTok will never render here no matter what flag it carries.
 
-Be conservative. Churn the featured set only for a clearly better candidate; a single swap is a normal night's work and no change at all is a fine outcome.
+Only standalone types have ever been featured — endorsement, event, podcast, media, milestone. A type=reaction is a child of its parent and is not a candidate, however high its engagement: Christopher O.H. Williams at 57 reactions on 2026-10-19 was the highest-engagement post of the NACD wave and still was not eligible.
 
-HIGHLIGHTS (highlight) — GROWS, NEVER TRIMMED. Lint enforces a floor. Only ADD; never remove a highlight flag from any entry, including ones dropping out of What's New. The name must already be on HIGHLIGHT_ELIGIBLE_ENDORSERS in scripts/lint-entries.ts. Adding a new name is Eric's editorial call — ship such an entry with type_metadata.sidebar_quote instead and ask via AskUserQuestion, never in prose. The operative distinction is author tier versus CEO tier: a named author with a body of work (Steve Blank, Nir Eyal, Rory Sutherland, Raj Sisodia) is worth asking about; the CEO of a notable company is not, however on-thesis the endorsement (memory/feedback_highlights_row.md).
+Be conservative. Churn the featured set only for a clearly better candidate; a single swap is a normal night's work and no change at all is a fine outcome. When an event is rotating out tomorrow anyway, do not also churn a second slot tonight — one change at a time.
+
+Tiebreakers that have actually decided calls:
+- Composition. On 2026-10-16 the rail held three events, two media, two endorsements and zero podcasts, which is what sent a 15-day-old milestone out for a 38K-subscriber interview.
+- Reach, as a reason NOT to swap: a 1,570-subscriber podcast does not displace a 38,400-subscriber one just for being newer.
+- Quote strength over freshness. On 2026-10-18 Kim Scott — allowlisted heavyweight, same day — did not displace Alistair Croll, because "such an important book!" appended to a reshare is thinner than Croll giving away a dozen copies and calling it "an incredibly important reset for startups and capitalism itself".
+
+EVENT PIPELINE — answered, do not flag nightly. A targeted search on 2026-10-20 found no unscheduled dates; the tour is concluding by design and SOSV on Nov 4 is the last event. Raise it once when that slot empties, then stop. The rail will keep working as a momentum surface — the scan produced eleven standalone entries in the six days to Oct 19 — it just stops answering "where to see Eric next". See memory/project_event_pipeline_winding_down.md.
+
+HIGHLIGHTS (highlight) — GROWS, NEVER TRIMMED. Lint enforces a floor. Only ADD; never remove a highlight flag from any entry, including ones dropping out of What's New. The name must already be on HIGHLIGHT_ELIGIBLE_ENDORSERS in scripts/lint-entries.ts. Adding a new name is Eric's editorial call — ship such an entry with type_metadata.sidebar_quote instead and ask via AskUserQuestion, never in prose. The operative distinction is author tier versus CEO tier: a named author with a body of work (Steve Blank, Nir Eyal, Rory Sutherland, Raj Sisodia) is worth asking about; the CEO of a notable company is not, however on-thesis the endorsement (memory/feedback_highlights_row.md). Academic-publication credentials (a Springer monograph, a lectureship) are not the same as that body-of-work recognition, and neither is one leadership title alongside a board career — do not ask on those.
+
+"Only ADD" does not mean add every eligible instance. Kim Scott is allowlisted and already carries three faces in the row; her 2026-10-18 one-liner was deliberately left unflagged because a fourth identical face with a weaker quote makes the row repetitive, not stronger. Declining to add is not trimming — the floor stays put.
+
+Note: lint forbids sidebar_quote and highlight on type=reaction entries — those flags belong on the parent.
 
 Format a highlight as "Name: 'verbatim short quote'".
 
@@ -217,7 +240,7 @@ Then verify, in this order:
   grep the rendered dist/index.html to confirm the change actually reached the DOM
 Do not trust the JSON alone — twice, edits landed in a component that produces no output (memory/feedback_verify_in_dom.md). Confirm both that the new entry appears in What's New and that the Highlights carousel face count did not drop.
 
-Then commit and push.
+Then commit and push. If nothing changed, make no commit and say so. Set PATH="/opt/homebrew/opt/node@23/bin:$PATH" before npm/npx commands.
 ```
 
 ---

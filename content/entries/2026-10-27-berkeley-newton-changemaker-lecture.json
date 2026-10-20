@@ -11,31 +11,37 @@
     {
       "url": "https://classes.berkeley.edu/content/2025-fall-engin-183a-001-col-001",
       "label": "Berkeley Classes: ENGIN 183A (Fall 2026)"
+    },
+    {
+      "url": "https://luma.com/nnc85qbr",
+      "label": "Registration: NEWTON LIVE: Eric Ries at UC Berkeley | The Lean Startup & Innovation"
     }
   ],
   "video_url": null,
   "image": "/images/cards/2026-10-27-berkeley-newton-changemaker-lecture.png",
   "attribution": "UC Berkeley Sutardja Center for Entrepreneurship & Technology (SCET)",
-  "attribution_title": "A. Richard Newton Lecture Series — A Berkeley Changemaker® Course · UC Berkeley · Monday October 27, 2026",
+  "attribution_title": "A. Richard Newton Lecture Series · A Berkeley Changemaker® Course · UC Berkeley · online livestream · Tuesday October 27, 2026, 5pm PT",
   "attribution_image": null,
   "tags": [
     "event",
     "upcoming",
-    "in-person",
     "berkeley",
     "uc-berkeley",
     "scet",
     "newton-lecture",
     "changemaker",
-    "lecture-series"
+    "lecture-series",
+    "virtual"
   ],
   "type_metadata": {
-    "city": "Berkeley"
+    "city": "Berkeley",
+    "session_title": "NEWTON LIVE: Eric Ries at UC Berkeley | The Lean Startup & Innovation"
   },
   "scanner_source": "manual",
   "verified": false,
   "created_at": "2026-08-21T16:35:00Z",
   "appearance_dates": [
     "2026-10-27"
-  ]
+  ],
+  "prominence": 2
 }
