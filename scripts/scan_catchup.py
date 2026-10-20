@@ -35,10 +35,17 @@ from scan_state import read_watermark  # noqa: E402
 
 UTC = _dt.timezone.utc
 
-# Jitter allows a recurring job to fire up to 15 minutes late, and it cannot fire
-# at all while a turn is in progress. Reporting a slot as missed the moment it
-# passes would flag jobs that are merely about to run.
-DEFAULT_GRACE_MINUTES = 20
+# The documented 15-minute jitter cap is not the real bound. Two probe jobs on
+# 2026-10-20 fired 50 and 30 minutes past their match — and the second with an
+# idle REPL, so the lateness is not merely a turn holding the scheduler up.
+# Whatever the mechanism, a job can be well over half an hour late and still be
+# coming.
+#
+# The asymmetry decides the number: calling a late job "missed" re-runs a scan
+# that was about to happen anyway, which costs real money against a $29/month
+# Apify budget. Waiting an extra half hour to notice a genuine miss costs nothing,
+# because the catch-up runs the job either way. So err long.
+DEFAULT_GRACE_MINUTES = 75
 
 # A three-month outage should not queue ninety scans. One catch-up with a widened
 # postedLimit (scan_state.choose_posted_limit) covers the whole gap, so there is

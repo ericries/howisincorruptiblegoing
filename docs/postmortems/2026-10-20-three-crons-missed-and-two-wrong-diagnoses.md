@@ -114,12 +114,34 @@ regardless of the documented 15-minute jitter cap. That means a long turn delays
 work but does not destroy it — and it makes the morning scan's silence stranger,
 not clearer, because the REPL was idle from 9:19 to 11:38 and nothing ran.
 
-The remaining candidate explanations, none tested: the scheduler evaluates only at
-turn boundaries and there were none in that window (but 9:19 was one); or the 9:07
-job was consumed by the watchdog turn that was still running at its match and then
-dropped rather than queued, which would make queueing conditional on something.
-Probe B, created 12:08 with an 89-minute lead, is the next data point. **No fix
-ships until a probe explains the failure rather than a story does.**
+**Probe B, 14:07.** Created 12:08 for a 13:37 match — an 89-minute lead, against
+probe A's five. It fired at **14:07:04, thirty minutes late, with the REPL idle
+the whole time** (the previous turn ended at 12:34 and nothing ran until it fired).
+
+Two findings, both measured rather than reasoned:
+
+- **Lead time is not the variable.** Five minutes and eighty-nine minutes both
+  produced a same-day run. Nothing about recreating a job costs it an occurrence.
+- **Lateness is not just REPL contention.** Probe A's fifty minutes could be
+  explained by a long turn holding the scheduler up; probe B's thirty cannot. The
+  scheduler is simply coarse. The documented 15-minute jitter cap describes
+  something other than the delay actually observed.
+
+The morning scan is therefore *still* unexplained, and now harder to explain than
+before: due 9:07, turn ended 9:19, REPL idle until 11:38, and nothing fired in two
+hours and nineteen minutes while two deliberately-created probes both ran.
+
+**What shipped off the back of it anyway.** `DEFAULT_GRACE_MINUTES` in
+`scan_catchup.py` was 20, chosen from the documented jitter cap before either
+probe reported. At 20 minutes a merely-late job reads as missed and gets re-run —
+the expensive direction to be wrong in on a $29/month budget, and the direction
+that already cost ~$0.30 this morning. Raised to 75, which clears both measured
+delays with room. That is a fix grounded in measurement rather than in a story,
+which is the whole point.
+
+**No further fix ships until a probe explains the morning scan.** The useful
+mitigation is already in place and does not depend on the diagnosis: catch-up
+finds overdue work whenever anything runs.
 
 ## Preventive measures
 

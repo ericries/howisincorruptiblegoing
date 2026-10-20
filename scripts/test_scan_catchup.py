@@ -49,8 +49,9 @@ def test_monday_only_job_is_due_once_a_week():
 
 
 def test_multi_day_job_honours_its_day_list():
-    # comment archive: Mon/Wed/Fri
-    runs = missed_runs("47 10 * * 1,3,5", last_seen=T("2026-10-16 10:47"), now=T("2026-10-21 12:00"))
+    # comment archive: Mon/Wed/Fri. `now` is set well clear of the grace window so
+    # this exercises the day list, not the lateness tolerance.
+    runs = missed_runs("47 10 * * 1,3,5", last_seen=T("2026-10-16 10:47"), now=T("2026-10-21 16:00"))
     assert runs == [T("2026-10-19 10:47"), T("2026-10-21 10:47")]
 
 
@@ -95,6 +96,25 @@ def test_past_the_grace_period_the_slot_is_reported():
     runs = missed_runs("7 9 * * *", last_seen=T("2026-10-19 09:07"),
                        now=T("2026-10-20 09:30"), grace_minutes=15)
     assert T("2026-10-20 09:07") in runs
+
+
+def test_default_grace_covers_the_measured_lateness():
+    # Two probes on 2026-10-20 fired 50 and 30 minutes past their match — the
+    # second with an idle REPL, so it is not merely contention. The documented
+    # 15-minute jitter cap is not the real bound. A grace shorter than the
+    # observed lateness reports a merely-late job as missed and re-runs it, which
+    # on a $29/month Apify budget is the expensive direction to be wrong in.
+    import scan_catchup as sc
+    assert sc.DEFAULT_GRACE_MINUTES >= 60
+
+    # 40 minutes past today's slot: late, not missed — and yesterday's slot is
+    # the one that ran, so nothing at all is owed.
+    assert missed_runs("7 9 * * *", last_seen=T("2026-10-19 09:07"),
+                       now=T("2026-10-20 09:47")) == []
+
+    # Two hours past: genuinely missed.
+    assert T("2026-10-20 09:07") in missed_runs(
+        "7 9 * * *", last_seen=T("2026-10-19 09:07"), now=T("2026-10-20 11:07"))
 
 
 # --- degrading safely ---------------------------------------------------------------
@@ -148,8 +168,8 @@ def test_overdue_compares_local_cron_times_against_utc_watermarks(tmp_path, monk
     rows = sc.overdue(now=dt.datetime(2026, 10, 20, 12, 0, tzinfo=local), jobs=jobs, tz=local)
     assert rows == [], rows
 
-    # ...and after 18:03 the next evening, it is owed.
-    rows = sc.overdue(now=dt.datetime(2026, 10, 20, 19, 0, tzinfo=local), jobs=jobs, tz=local)
+    # ...and once the next evening's slot is past the grace window, it is owed.
+    rows = sc.overdue(now=dt.datetime(2026, 10, 20, 21, 0, tzinfo=local), jobs=jobs, tz=local)
     assert [r["job"] for r in rows] == ["evening-scan"]
     assert rows[0]["missed"] == [dt.datetime(2026, 10, 20, 18, 3, tzinfo=local)]
 
