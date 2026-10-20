@@ -22,7 +22,7 @@ control and the prompts short.
 
 | job | cron | purpose |
 |---|---|---|
-| Watchdog | `37 8 * * *` | restores any missing job, renews itself |
+| Watchdog | `17 8 * * *` | restores any missing job, renews itself |
 | Morning scan | `7 9 * * *` | LinkedIn ×2 + X + YouTube + WebSearch |
 | Goodreads | `33 10 * * 1` | Goodreads reviews (Mondays) |
 | Comment archive | `47 10 * * 1,3,5` | LinkedIn comment superlatives (local only) |
@@ -36,7 +36,7 @@ he asks.
 
 ---
 
-## 1. Watchdog — `37 8 * * *`
+## 1. Watchdog — `17 8 * * *`
 
 ```
 Cron watchdog. Run CronList. These must be present (Amazon rank is paused — do NOT recreate "43 17 * * 1,4" unless the user asks):
@@ -47,23 +47,33 @@ Cron watchdog. Run CronList. These must be present (Amazon rank is paused — do
 4. Evening content scan — "3 18 * * *"
 5. Sidebar curation — "27 19 * * *"
 6. Weekly LinkedIn recall audit — "17 11 * * 0"
-7. This watchdog — "37 8 * * *"
+7. This watchdog — "17 8 * * *"
 
 Recreate any that are missing using the verbatim prompts in docs/CRONS.md.
 
-DO THE ROLLS FIRST, BEFORE THE COVERAGE CHECK AND ANY BACKFILL. The watchdog fires at 8:37 and the morning scan at 9:07 — only 30 minutes apart. Creating a replacement job AFTER its fire time has passed sets its next run to tomorrow, so that day's scan is simply lost. That happened on 2026-10-19: a YouTube backfill pushed the rolls past 9:07 and Monday's morning scan never ran. Roll all seven in the first minutes of the turn, then do the slow work.
+STEP 1 — ROLL ALL SEVEN JOBS, NOW, BEFORE ANYTHING ELSE. Do the morning scan first.
 
-ROLLING SELF-RENEWAL — do this every single run, even when nothing else is missing. Recurring crons auto-expire 7 days after creation. The watchdog can never catch its own expiry by checking CronList, because it is still listed right up until it dies — and when it dies, every other cron follows at its own 7-day mark with nothing left to restore them. That is the single point of failure in this system. So on every run: (a) note your own current watchdog job ID from CronList, (b) CronCreate a NEW watchdog with this exact prompt and cron "37 8 * * *", (c) CronDelete the OLD watchdog ID. This rolls the 7-day window forward daily.
+ROLLING SELF-RENEWAL is why this job exists. Recurring crons auto-expire 7 days after creation. The watchdog can never catch its own expiry by checking CronList, because it stays listed right up until it dies — and when it dies, every other cron follows at its own 7-day mark with nothing left to restore them. That is the single point of failure in the whole system. So roll every job every run, even when nothing is missing: for each of the seven, CronCreate a replacement carrying its current live prompt forward verbatim, then CronDelete the old id. On 2026-10-13 five daily jobs expired as a cohort because they had all been created together.
 
-FIRST, run the coverage check — it is free and catches what the commit log hides:
+Carry the LIVE prompt forward, not the one in docs/CRONS.md — the live prompts accumulate each day's lessons and CRONS.md lags behind them. CronList truncates, so read the full text from CRONS.md only for a job you are recreating from scratch. If you notice CRONS.md has drifted, re-sync it in STEP 2 and commit.
+
+THE WATCHDOG MUST BE FAST. You fire at 8:17; the morning scan fires at 9:07. Creating a replacement job after its fire time has passed sets its next run to tomorrow, so that day's scan is simply lost — and a cron cannot fire at all while this turn is still running, so a long watchdog turn swallows the 9:07 slot even when the rolls were done correctly. Both failures have happened: on 2026-10-19 a YouTube backfill pushed the rolls past 9:07, and on 2026-10-20 the rolls were done first but the turn itself ran to 9:14. So: finish STEP 1 within the first few minutes, and do NOT start work in STEP 2 that could still be running at 9:00 — defer it to the morning scan or a later turn instead.
+
+Guard: if you are somehow already past 9:07 when you start, do NOT roll the morning scan — leave it alone so it can still fire, and roll it tomorrow. Roll the other six as normal.
+
+STEP 2 — only after all seven rolls are done.
+
+Run the coverage check; it is free and catches what the commit log hides:
 
     python3 scripts/scan-coverage.py --days 14
 
-It reports days a daily source never pulled, and any Apify run launched but never triaged. Both conditions come from the same cause: these crons only fire while the REPL is idle, so a closed laptop silently skips cycles. On 2026-10-12 the commit log looked healthy — other cycles ran that day — while the @-mention pull had not happened at all, hiding three posts at 108, 81 and 68 reactions. Backfill an open gap with a widened postedLimit (scan_state.choose_posted_limit) and dedup against the archive. THEN acknowledge it so it stops reporting: scan_state.ack_gap(source, date, note="how it was backfilled"). Catch-up files are deliberately not counted as coverage, so without an ack a fixed gap reports forever and the report becomes noise nobody reads (found 2026-10-17 by running the tool). Triage orphaned datasets before launching anything new; they are already paid for.
+It reports days a daily source never pulled, and any Apify run launched but never triaged. Both come from the same cause: these crons only fire while the REPL is idle, so a closed laptop silently skips cycles. On 2026-10-12 the commit log looked healthy — other cycles ran that day — while the @-mention pull had not happened at all, hiding three posts at 108, 81 and 68 reactions. Backfill an open gap with a widened postedLimit (scan_state.choose_posted_limit) and dedup against the archive, THEN acknowledge it so it stops reporting: scan_state.ack_gap(source, date, note="how it was backfilled"). Catch-up files are deliberately not counted as coverage, so without an ack a fixed gap reports forever and the report becomes noise nobody reads (found 2026-10-17 by running the tool). Triage orphaned datasets before launching anything new; they are already paid for. If a backfill looks like it will take more than a few minutes, hand it to the morning scan rather than running past 9:00.
 
-Then sanity-check that the pipeline is producing: `git log --since="36 hours ago" --oneline` should normally show commits from the daily scans. A quiet week alongside healthy runs is possible; a quiet week is still worth flagging.
+Then sanity-check that the pipeline is producing: `git log --since="36 hours ago" --oneline` should normally show commits from the daily scans. A quiet week alongside healthy runs is possible; a quiet week is still worth flagging. Also check `git status` for uncommitted content edits left behind by a dead turn — on 2026-10-20 a corrected event entry was sitting in the working tree. data/cross-posts.json, data/events-posted.json, data/site-spotlight.json and public/documents/ are the social cross-posting tooling's own state; leave those alone.
 
-Report which crons you restored, plus "watchdog rolled: <old-id> -> <new-id>". If nothing else needed recreation, "all 7 present" plus the roll line is the whole report.
+EVENT PIPELINE — this is ANSWERED, stop flagging it nightly. A targeted search on 2026-10-20 found no November or December dates that were not already on the timeline (the one hit, Book Passage with Alex Komoroske, was the 2026-06-03 event already shipped), and a source calls the B Academics roundtable one of the final stops of the tour. SOSV Deep Tech Summit on 2026-11-04 is the last scheduled event. Raise it ONCE more when that slot actually empties, then stop — see memory/project_event_pipeline_winding_down.md.
+
+Report which crons you restored, the roll lines "<name>: <old-id> -> <new-id>" for all seven, the coverage-check result, and anything that looked wrong.
 ```
 
 ## 2. Morning content scan — `7 9 * * *`
@@ -256,6 +266,12 @@ Then commit and push. If nothing changed, make no commit and say so. Set PATH="/
   archive to Mon/Wed/Fri, and made the TikTok pull Mon/Wed/Fri inside the evening
   scan. The comment archive was 50% of all Apify volume and ships nothing to the
   site. Eric's call on cadence; caps applied first.
+- **2026-10-20** — watchdog moved 8:37 → 8:17. Twice in two days the watchdog
+  turn consumed the 9:07 morning-scan slot: on the 19th by doing slow work before
+  the rolls, on the 20th by simply running long (8:37 → 9:14) — a cron cannot fire
+  while a turn is in progress, so correct ordering alone was not enough. Fifty
+  minutes of headroom plus a hard "do not start work that could run past 9:00"
+  rule in the prompt.
 - **2026-10-04** — standing rules extracted to `SCAN-PROTOCOL.md`; prompts shortened to pointers; watchdog given rolling self-renewal; these specs moved into the repo so they survive a platform change.
 
 If volume picks up again (a major TV hit, paperback release, viral moment), the
