@@ -31,6 +31,28 @@ describe('detectInjection', () => {
     expect(result.reasons[0]).toContain('suspicious unicode');
   });
 
+  it('allows U+200C, which Persian and Arabic orthography require', () => {
+    // ZWNJ is not an invisibility trick in these scripts — it is a letter-form
+    // boundary. "می‌کشد" and "می‌خواهیم" are spelled with it; stripping or
+    // rejecting it mangles the word. Flagging it blocked a real Persian-language
+    // review on 2026-10-20. The genuine hiding characters (ZWSP, ZWJ, word
+    // joiner, BOM) stay blocked below.
+    const persian = 'اریک ریس در کتاب Incorruptible یک مسئله مهم را پیش می‌کشد';
+    expect(detectInjection(persian).detected).toBe(false);
+  });
+
+  it('still rejects the zero-width characters that only serve to hide text', () => {
+    for (const ch of ['​', '‍', '⁠', '﻿']) {
+      const result = detectInjection(`Normal${ch}text${ch}with${ch}hidden${ch}chars`);
+      expect(result.detected).toBe(true);
+      expect(result.reasons[0]).toContain('suspicious unicode');
+    }
+  });
+
+  it('rejects a run of U+200C long enough to be padding rather than orthography', () => {
+    expect(detectInjection(`pad${'‌'.repeat(12)}ding`).detected).toBe(true);
+  });
+
   it('detects RTL override characters', () => {
     const result = detectInjection('Text with \u202E RTL override');
     expect(result.detected).toBe(true);

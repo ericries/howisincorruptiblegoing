@@ -65,7 +65,13 @@ HTML_TAG_RE = re.compile(
 )
 
 # Zero-width and invisible characters
-ZERO_WIDTH_CHARS = {"\u200b", "\u200c", "\u200d", "\u2060", "\ufeff"}
+# U+200C (ZWNJ) is deliberately absent: Persian and Arabic spell words with it
+# ("\u0645\u06cc\u200c\u06a9\u0634\u062f"), so it is orthography, not an invisibility trick. Flagging it made the
+# bot reject a legitimate Persian-language review on 2026-10-20. The characters
+# below have no spelling job in any script we publish. A ZWNJ *run* is still
+# padding rather than spelling \u2014 see ZWNJ_RUN below.
+ZERO_WIDTH_CHARS = {"\u200b", "\u200d", "\u2060", "\ufeff"}
+ZWNJ_RUN = "\u200c" * 4
 
 # RTL override / bidi control characters
 RTL_RANGE = set(range(0x202A, 0x202F)) | set(range(0x2066, 0x206A))
@@ -116,6 +122,9 @@ def detect_injection(data: dict) -> list[str]:
             if ch in ZERO_WIDTH_CHARS:
                 reasons.append(f"field '{field}' contains zero-width/invisible character U+{ord(ch):04X}")
                 break
+        else:
+            if ZWNJ_RUN in value:
+                reasons.append(f"field '{field}' contains a run of U+200C (padding, not orthography)")
 
         # RTL override
         for ch in value:

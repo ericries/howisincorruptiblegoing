@@ -15,7 +15,13 @@ const INJECTION_PATTERNS = [
 ];
 
 const HTML_PATTERN = /<\s*(script|iframe|object|embed|form|input|link|meta|style)\b/i;
-const ZERO_WIDTH_PATTERN = /[\u200B\u200C\u200D\u2060\uFEFF]/;
+// U+200C (ZWNJ) is deliberately absent: in Persian and Arabic it is a letter-form
+// boundary, not an invisibility trick \u2014 "\u0645\u06CC\u200C\u06A9\u0634\u062F" is spelled with it. Flagging it
+// rejected a legitimate Persian-language review on 2026-10-20. The characters left
+// here have no orthographic job in any script we publish and exist only to hide
+// text. A ZWNJ *run* is still padding rather than spelling; see ZWNJ_RUN_PATTERN.
+const ZERO_WIDTH_PATTERN = /[\u200B\u200D\u2060\uFEFF]/;
+const ZWNJ_RUN_PATTERN = /\u200C{4,}/;
 const RTL_OVERRIDE_PATTERN = /[\u202A-\u202E\u2066-\u2069]/;
 // Standard base64 alphabet is A-Za-z0-9+/= but we exclude `/` from the run because
 // URL path components (forms.gle/abc123, youtu.be/xyz789) match it as a 20+ char run
@@ -44,7 +50,7 @@ export function detectInjection(text: string): InjectionResult {
     reasons.push('HTML/script tag detected');
   }
 
-  if (ZERO_WIDTH_PATTERN.test(text)) {
+  if (ZERO_WIDTH_PATTERN.test(text) || ZWNJ_RUN_PATTERN.test(text)) {
     reasons.push('suspicious unicode: zero-width characters');
   }
 

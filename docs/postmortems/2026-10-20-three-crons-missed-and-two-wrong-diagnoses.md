@@ -1,4 +1,4 @@
-# Three crons missed, and two wrong diagnoses in two days
+# The morning scan missed, and three wrong diagnoses in two days
 
 **Date:** 2026-10-20
 **Found by:** Eric, asking "did the cron fire this morning?" at 11:38 — the second
@@ -6,36 +6,48 @@ consecutive day a missed scan was surfaced by a human rather than by the system.
 
 ## What happened
 
-Three scheduled jobs did not run on 2026-10-20:
+The **morning content scan (9:07 daily) did not run** on 2026-10-20. Evidence: the
+newest file in `data/archive/linkedin-raw/` and `twitter-raw/` was from 2026-10-19
+18:34 (the evening scan); `.scan-state.json` carried no Oct 20 watermark past that
+run; the only commits on Oct 20 were the two from the watchdog turn itself.
 
-| job | due | ran |
-|---|---|---|
-| morning content scan | 9:07 | no |
-| Goodreads review scan (Mondays) | 10:33 | no |
-| LinkedIn comment archive (Mon/Wed/Fri) | 10:47 | no |
-
-Evidence: the newest file in `data/archive/linkedin-raw/` and `twitter-raw/` was
-from 2026-10-19 18:34 (the evening scan); `.scan-state.json` carried no Oct 20
-watermark past that run; the only commits on Oct 20 were the two from the
-watchdog turn itself.
-
-Two explanations were ruled out. The machine was awake throughout — `pmset -g log`
+Two explanations are ruled out. The machine was awake throughout — `pmset -g log`
 shows `powerd` holding `PreventUserIdleSystemSleep` for the hour before 11:38 and
-an active Zoom session. And the REPL was idle from 9:19 onward, which covers both
-the 10:33 and 10:47 slots with their full 15-minute jitter windows.
+an active Zoom session. And the REPL was idle from 9:19 onward.
 
-The one property all three share: each was **recreated during the 8:37–9:19
-watchdog turn**, and each then failed at a match later the same day. The working
-hypothesis is that recreating a recurring cron advances its schedule past the next
-match. As of this writing that is **unverified** — a probe job created at 11:38
-with an 11:43 match is pending.
+**Correction, written an hour after the first draft of this file.** I originally
+reported *three* missed jobs, adding the Goodreads scan (10:33) and the LinkedIn
+comment archive (10:47). Both were fine. **2026-10-20 was a Tuesday**; Goodreads
+runs Mondays and the comment archive Mon/Wed/Fri, so neither was due. Both had run
+correctly the previous day — `data/archive/goodreads/2026-10-19.json` at 11:03 and
+the two Oct 19 comment files at 11:18. I inferred "did not run" from the absence of
+a today-dated archive file without checking whether the job was due today, and
+`CronList` had printed "Every Monday at 10:33 AM" right in front of me. I had also,
+thirty minutes earlier, computed that Oct 27 is a Tuesday while fixing an event
+entry that said "Monday October 27" — which makes Oct 20 a Tuesday too. Same error
+class twice in one session: a weekday assumed instead of computed. The cost was not
+only a wrong report — it was ~$0.30 of Apify budget re-pulling two cycles that did
+not need pulling, on a capped account.
+
+What survives the correction: one daily job missed its slot, and a **probe job
+created at 11:38 with an 11:43 match also did not fire** (jitter window closed at
+~11:58, REPL idle from 11:48). The probe is now the primary evidence, where before
+it was corroboration for a trio that turned out to be a single.
 
 ## Five whys
 
-**1. Why did the three jobs not run?**
-Unknown mechanism. All three were rolled earlier the same day and then missed a
-same-day match. The evening jobs (18:03, 19:27) were not yet due, so they offer
-no counter-evidence either way.
+**1. Why did the morning scan not run?**
+Unverified, but the probe is a clean direct test: a recurring job created at 11:38
+did not fire at its 11:43 match the same day. Both the morning scan and the probe
+were created minutes before a same-day match and neither fired, which points at
+recreation advancing the schedule past the next match. A second probe with an
+89-minute lead is pending to test whether lead time is the variable.
+
+**1b. Why was the failure reported as three jobs when it was one?**
+Because "no archive file dated today" was treated as "the job did not run,"
+skipping the question of whether the job was due today. Two of the seven crons are
+not daily. The check is one line of Python against the cron expression and the
+weekday; I ran neither.
 
 **2. Why is the mechanism still unknown, two days into this failure?**
 Because on 2026-10-19 I explained the same symptom with the first plausible story
@@ -87,6 +99,10 @@ still open.
 
 1. **Measure before fixing.** A behavioural claim about the runtime gets a probe
    job, not an inference from one case. Added to `docs/SCAN-PROTOCOL.md`.
+1b. **Compute the weekday; never assume it.** Before calling a job missed, check
+   it was due: `python3 -c "import datetime; print(datetime.date.today().weekday())"`
+   against the cron expression. `scan-coverage.py` should learn the cadence of each
+   source so it cannot report a Monday-only job missing on a Tuesday either.
 2. **A check that runs after the morning window**, not only before it. Cheap:
    `scan-coverage.py --days 1` costs nothing and takes seconds.
 3. **An out-of-band heartbeat.** Each scan writes a committed heartbeat
