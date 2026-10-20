@@ -29,19 +29,35 @@ class twice in one session: a weekday assumed instead of computed. The cost was 
 only a wrong report — it was ~$0.30 of Apify budget re-pulling two cycles that did
 not need pulling, on a capped account.
 
-What survives the correction: one daily job missed its slot, and a **probe job
-created at 11:38 with an 11:43 match also did not fire** (jitter window closed at
-~11:58, REPL idle from 11:48). The probe is now the primary evidence, where before
-it was corroboration for a trio that turned out to be a single.
+What survives the correction: one daily job missed its slot.
+
+**Second correction, 12:33.** I reported at 11:47 that the probe job — created at
+11:38 with an 11:43 match — "did not fire," and called that decisive. **It fired,
+at 12:33:47**, fifty minutes past its match and well outside the 15-minute jitter
+cap, at the first turn boundary after a long stretch of continuous work. So a
+recurring cron created minutes before its match *does* run the same day; it simply
+queues until the REPL is free. **The hypothesis that recreation advances a job past
+its next match is dead**, and with it my third explanation for the morning scan in
+two days.
+
+I called the probe decisive after 9 minutes of a window that turned out to be 50
+minutes wide. "It has not fired yet" is not "it did not fire" — the same
+impatience that produced the first two diagnoses, now applied to the instrument
+built to correct them.
+
+What the morning scan did remains unexplained. It was due 9:07; my turn ran
+8:37–9:19; the REPL was then idle from 9:19 to 11:38 with no firing. If due jobs
+queue and run at the next turn boundary, as the probe shows, something should have
+run at 9:19. Probe B (created 12:08, 89-minute lead, 13:37 match) is still out.
 
 ## Five whys
 
 **1. Why did the morning scan not run?**
-Unverified, but the probe is a clean direct test: a recurring job created at 11:38
-did not fire at its 11:43 match the same day. Both the morning scan and the probe
-were created minutes before a same-day match and neither fired, which points at
-recreation advancing the schedule past the next match. A second probe with an
-89-minute lead is pending to test whether lead time is the variable.
+Still unknown. The probe ruled out the leading hypothesis rather than confirming
+it: a job created five minutes before its match fired the same day, just fifty
+minutes late, waiting for the REPL. Recreation does not cost a job its next
+occurrence. The morning scan's failure is therefore still unexplained, and this is
+the third explanation of it to collapse in two days.
 
 **1b. Why was the failure reported as three jobs when it was one?**
 Because "no archive file dated today" was treated as "the job did not run,"
@@ -87,13 +103,23 @@ Shipping a third restructure of the roll mechanism. The lesson of whys 2 and 3 i
 that I have been fixing a mechanism I never measured; doing it again today would
 repeat the error with more confidence. The probe settles the question first.
 
-If the probe confirms that recreation skips the next match, the fix is structural
-and clear: **each job rolls itself at the end of its own run**, so a roll always
-happens immediately *after* a fire and can never skip an occurrence. The watchdog
-then reverts to recreate-if-missing plus coverage, and the two weekly jobs
-(Goodreads, recall audit) need the watchdog to roll them on a day they are not
-due. If the probe fires normally, the hypothesis is dead and the real cause is
-still open.
+**The probe fired, so that plan is moot.** Rolling a job does not cost it an
+occurrence, and the daily cohort roll — the thing keeping all seven alive against
+7-day expiry — is safe as it stands. Good news bought by being wrong.
+
+What the probe did establish, which is worth more than the hypothesis it killed:
+**due jobs queue rather than expire.** A cron that cannot fire because the REPL is
+busy runs at the next turn boundary, fifty minutes late in the measured case,
+regardless of the documented 15-minute jitter cap. That means a long turn delays
+work but does not destroy it — and it makes the morning scan's silence stranger,
+not clearer, because the REPL was idle from 9:19 to 11:38 and nothing ran.
+
+The remaining candidate explanations, none tested: the scheduler evaluates only at
+turn boundaries and there were none in that window (but 9:19 was one); or the 9:07
+job was consumed by the watchdog turn that was still running at its match and then
+dropped rather than queued, which would make queueing conditional on something.
+Probe B, created 12:08 with an 89-minute lead, is the next data point. **No fix
+ships until a probe explains the failure rather than a story does.**
 
 ## Preventive measures
 
