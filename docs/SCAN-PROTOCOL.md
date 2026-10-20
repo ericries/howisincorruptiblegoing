@@ -43,6 +43,19 @@ rest.
 ended before triage; the dataset ids lived only in conversation context and the
 paid data was nearly lost. Write them to disk at launch, clear them after triage.
 
+**Every job writes its watermark when it finishes** — including the comment
+archive, whose key is `linkedin-comments`, and which had no watermark at all until
+2026-10-20. The watermark is the only record that a job ran; without one
+`scan_catchup.py` reports the job as never having run and the next scan widens its
+window for no reason. Write it after the archive is on disk, never before.
+
+**Catch-up is cadence-aware; absence of a file is not.** `scan_catchup.py` holds
+each job's cron expression and asks which scheduled fire times went by without the
+job running. Use it rather than reasoning from dated filenames — two of the seven
+jobs are not daily, and on 2026-10-20 a Monday-only scan was reported missed on a
+Tuesday and re-run at real cost. It is free and instant; run it at session start
+and in the watchdog.
+
 When a gap has been backfilled, call `ack_gap(source, date, note=...)` so
 `scan-coverage.py` stops reporting it. Catch-up pulls deliberately do not count
 as coverage — otherwise a backfill would mask a real hole — which means an

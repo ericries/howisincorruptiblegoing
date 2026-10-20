@@ -63,7 +63,18 @@ Guard: if you are somehow already past 9:07 when you start, do NOT roll the morn
 
 STEP 2 — only after all seven rolls are done.
 
-Run the coverage check; it is free and catches what the commit log hides:
+Run the catch-up check first; it is free, local and instant:
+
+    python3 scripts/scan_catchup.py
+
+It knows each job's cadence and each job's watermark, and reports which scheduled
+runs went by without happening. "Nothing overdue" is the common case and one line.
+Anything it lists, run with a derived postedLimit (scan_state.choose_posted_limit)
+and dedup against data/archive/. NEVER conclude a job was missed from the absence
+of a dated archive file — two of the seven jobs are not daily, and on 2026-10-20 a
+Monday-only scan was reported missed on a Tuesday and re-run at real Apify cost.
+
+Then the coverage check, which catches what the commit log hides:
 
     python3 scripts/scan-coverage.py --days 14
 
@@ -159,6 +170,9 @@ CRITICAL: when a candidate's relevance depends on the PARENT post, print the par
 For each YES write a verdict to /tmp/verdicts-<YYYY-MM-DD>.json with: identifier, kind, source_scan, text, pull_quote, permalink, posted_at, reactions, comments_count, author, parent_post — copied from the queue entry; only pull_quote needs judgment. Then:
   python3 scripts/archive-linkedin-superlatives.py --apply-verdicts /tmp/verdicts-<YYYY-MM-DD>.json
   python3 scripts/generate-comment-cards.py
+
+Then write the watermark so scan_catchup.py can see that this job ran — it had none until 2026-10-20 and so reported as "never run" forever:
+  python3 -c "import sys,datetime; sys.path.insert(0,'scripts'); from scan_state import write_watermark; write_watermark('linkedin-comments', datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'))"
 
 Report: posts and comments scanned per source, each verified item as one line of "who + quote", the running total across all daily files, and the below-bar candidates with reasons. "No new superlatives this cycle" is fine on a quiet day.
 ```

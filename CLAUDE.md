@@ -12,15 +12,29 @@ Timeline website tracking momentum for Eric Ries's book *Incorruptible* (May 26,
 - **Stack:** Astro static site + JSON data files + GitHub Pages
 - **Pipeline:** Scanner (local Claude agent) → LLM Editor → Pre-commit hook → PR → Review Bot (GitHub Actions) → Auto-merge → Deploy
 
-## START OF EVERY SESSION — restore the scanner crons
+## START OF EVERY SESSION — restore the crons, then catch up
 
-Run `CronList`. Recreate any missing job from **[`docs/CRONS.md`](docs/CRONS.md)**,
-which holds all seven cron expressions and their verbatim prompts. Report in one
-line which were restored, or "all 7 present".
+**1. Run `CronList`.** Recreate any missing job from
+**[`docs/CRONS.md`](docs/CRONS.md)**, which holds all seven cron expressions and
+their verbatim prompts. Report in one line which were restored, or "all 7
+present".
 
 Session crons are in-memory: they vanish when the session ends, the runtime
 silently ignores `durable: true`, and recurring jobs auto-expire after 7 days.
 Restoring them is routine, not a sign of breakage.
+
+**2. Run `python3 scripts/scan_catchup.py`.** It is free, local and instant, and
+it answers the one question the crons cannot answer about themselves: which
+scheduled runs went by without happening. Crons fire only while the REPL is idle,
+so a shut laptop skips cycles in silence — and a session starting is the most
+reliable signal that the laptop is back. If anything is overdue, run it with a
+derived `postedLimit` (`scan_state.choose_posted_limit`) and dedup against
+`data/archive/`, then say so. "Nothing overdue" is one line and the common case.
+
+Never conclude a job was missed from the absence of a dated archive file —
+`scan_catchup` knows each job's cadence, and two of the seven are not daily. On
+2026-10-20 a Monday-only scan was reported missed on a Tuesday and re-run at real
+cost. Let the script decide.
 
 **Everything the scanner needs lives in this repository.** Keep it that way — no
 launchd agents, no system background items, no machine-local state, so the whole
