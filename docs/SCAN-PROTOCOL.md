@@ -91,6 +91,21 @@ healthy and only the long-poll is wedged — carry on. A genuine stale session
 needs the user to `/mcp` reconnect; tell them and wait rather than degrading to
 WebSearch.
 
+### Claims about how the runtime behaves need a probe, not an inference
+
+When a scheduled job does not run, the temptation is to explain it from the one
+case in front of you and ship a fix. That produced two wrong diagnoses in two days
+(2026-10-19 and 2026-10-20, see `docs/postmortems/`): ordering, then turn
+duration, neither tested, each shipped as a fix that then consumed the evidence
+for the next day's investigation.
+
+A behavioural claim about the scheduler — "recreating a job skips its next match",
+"a cron cannot fire mid-turn" — is cheap to test directly: `CronCreate` a
+disposable job a few minutes out whose whole prompt is to report the time and
+delete itself. Recurring jobs fire up to 15 minutes late, so allow that window
+before concluding anything. Note that `CronList` does **not** expose next-fire
+time, so there is no way to verify a roll took effect except by waiting for it.
+
 ## 2. Reading candidates
 
 `scan-triage.py` marks each row:
