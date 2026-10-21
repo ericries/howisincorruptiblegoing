@@ -115,3 +115,46 @@ describe('UpcomingStrip posterCards ordering', () => {
     expect(sortBlock).toMatch(/if \(aBucket !== bBucket\) return aBucket - bBucket/);
   });
 });
+
+/**
+ * Reaction avatars.
+ *
+ * Found 2026-10-20: 58 type=reaction entries carried a sourced headshot in
+ * attribution_image and not one of them appeared anywhere in the built site.
+ * The reaction list rendered author, title, quote and source link only, so
+ * every morning scan that dutifully sourced a face for a reaction was doing
+ * work that went nowhere. The fix is one <img> in the reaction head; this test
+ * is here so it cannot quietly disappear again.
+ */
+const timelinePath = path.join(process.cwd(), 'src/components/TimelineEntry.astro');
+const timelineSource = fs.readFileSync(timelinePath, 'utf-8');
+
+describe('reaction rendering', () => {
+  const reactionBlock = (() => {
+    const start = timelineSource.indexOf('<ul class="reactions__list">');
+    const end = timelineSource.indexOf('</ul>', start);
+    if (start === -1 || end === -1) throw new Error('reactions__list block not found');
+    return timelineSource.slice(start, end);
+  })();
+
+  it('renders attribution_image for each reaction', () => {
+    expect(reactionBlock).toMatch(/r\.attribution_image/);
+    expect(reactionBlock).toMatch(/<img[^>]*class="reaction__avatar"/);
+  });
+
+  it('still renders the author and the quote alongside the avatar', () => {
+    expect(reactionBlock).toMatch(/r\.attribution\b/);
+    expect(reactionBlock).toMatch(/r\.blockquote\b/);
+  });
+
+  it('the avatar rule keeps it a small circle that cannot squash the byline', () => {
+    const rule = (() => {
+      const m = timelineSource.match(/\.reaction__avatar\s*\{[^}]+\}/);
+      if (!m) throw new Error('.reaction__avatar CSS rule not found');
+      return m[0];
+    })();
+    expect(rule).toMatch(/border-radius:\s*50%/);
+    expect(rule).toMatch(/object-fit:\s*cover/);
+    expect(rule).toMatch(/flex-shrink:\s*0/);
+  });
+});

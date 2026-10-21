@@ -549,10 +549,15 @@ const tiktokEmbed = (() => {
             {reactions.map(r => (
               <li class="reaction">
                 <div class="reaction__head">
-                  <span class="reaction__author">{r.attribution || (r.blockquote_source ?? '').replace(/\s+on\s+\w+$/, '')}</span>
-                  {r.attribution_title && (
-                    <span class="reaction__title"> · {r.attribution_title}</span>
+                  {r.attribution_image && (
+                    <img class="reaction__avatar" src={r.attribution_image} alt={r.attribution || ''} loading="lazy" />
                   )}
+                  <span class="reaction__byline">
+                    <span class="reaction__author">{r.attribution || (r.blockquote_source ?? '').replace(/\s+on\s+\w+$/, '')}</span>
+                    {r.attribution_title && (
+                      <span class="reaction__title"> · {r.attribution_title}</span>
+                    )}
+                  </span>
                 </div>
                 <p class="reaction__quote">{r.blockquote}</p>
                 <a class="reaction__source" href={r.source_url} target="_blank" rel="noopener">source ↗</a>
@@ -673,9 +678,27 @@ const tiktokEmbed = (() => {
   }
 
   .reaction__head {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
     font-size: 0.82rem;
     line-height: 1.3;
     margin-bottom: 0.2rem;
+  }
+
+  /* 58 reaction entries carried a sourced headshot that nothing rendered — the
+     reaction list printed name, title, quote and link only. The daily image
+     backlog work had been going nowhere for reactions. Found 2026-10-20. */
+  .reaction__avatar {
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .reaction__byline {
+    min-width: 0;
   }
 
   .reaction__author {
