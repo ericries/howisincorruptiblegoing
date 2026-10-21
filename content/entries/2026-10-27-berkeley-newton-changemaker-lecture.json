@@ -39,7 +39,8 @@
   ],
   "type_metadata": {
     "city": "Berkeley",
-    "session_title": "NEWTON LIVE: Eric Ries at UC Berkeley | The Lean Startup & Innovation"
+    "session_title": "NEWTON LIVE: Eric Ries at UC Berkeley | The Lean Startup & Innovation",
+    "featured": true
   },
   "scanner_source": "manual",
   "verified": false,
