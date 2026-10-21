@@ -85,16 +85,35 @@ unforgettable instead.** A check in lint, a test, a line in a script that alread
 runs. Prose is the fallback for things genuinely requiring judgment — what to
 ship, how to phrase a title — not for things a computer can decide.
 
-Candidates audited against that rule today, with the two cheapest mechanised:
+## Prevention, proportional at each level
 
-| prompt instruction | mechanism |
-|---|---|
-| "re-sync CRONS.md when it drifts" | **deleted** — `cron-prompt.py` read path |
-| "grep for the source_url before writing" | **lint now fails** on same-type duplicates |
-| "write the watermark when the job finishes" | **automatic** in `archive-social-comments.py`; the instruction is deleted |
-| "compute the weekday, never eyeball it" | open — a lint check comparing a date against a weekday named in `attribution_title` would catch the Berkeley "Monday October 27" class |
-| "grep dist/ after attaching an image" | open — the reaction-avatar test is the pattern to copy |
-| "be fast; don't run past 9:00" | stays prose; genuinely a judgment call |
+| why | prevention | kind | status |
+|---|---|---|---|
+| 1 — CRONS.md was stale | synced the twelve drifted lessons into all seven sections | fix | shipped |
+| 2 — two copies with no link | `scripts/cron-prompt.py` extracts a prompt from the file; the roll reads it | mechanism | shipped |
+| 3 — the read path was never built | session-start restoration reads the same path, so there is one way in | structural change | shipped |
+| 4 — the prompt told me to re-sync by hand | that instruction is deleted, not improved — there is nothing left to re-sync | structural change | shipped |
+| 5 — instructions written where mechanisms belong | three instructions became mechanisms; `postmortem-lint.py` now rejects a prevention that reads "remember to" | structural change | shipped |
+
+The level-five row is the one that generalises, so it got the most work. Audited
+every "remember to" across the seven prompts and mechanised what could be:
+
+| prompt instruction | mechanism | status |
+|---|---|---|
+| "re-sync CRONS.md when it drifts" | deleted — `cron-prompt.py` read path | shipped |
+| "grep for the source_url before writing" | lint fails on same-type duplicate `source_url`s | shipped |
+| "write the watermark when the job finishes" | automatic in `archive-social-comments.py` | shipped |
+| "compute the weekday, never eyeball it" | lint fails when `title`/`attribution_title` names a weekday the date contradicts | shipped |
+| "grep dist/ after attaching an image" | `check-images-render.py` reads the build and reports orphaned image paths | shipped |
+| "be fast; don't run past 9:00" | stays prose — a genuine judgment call | declined |
+
+The weekday check found two more shipped errors of the Berkeley class: Rotman
+said "Monday August 18" (a Tuesday) and Quebec House said "Sunday September 7" (a
+Monday). Both corrected. The image check found one orphan after the reaction fix
+— Dott Chen's headshot, because the social byline was gated on LinkedIn in two
+places and his post is on X. Generalised to any social platform, with the
+matching mark; the comment archive had started feeding X the day before, so it
+would have recurred.
 
 
 ## What the new check found immediately

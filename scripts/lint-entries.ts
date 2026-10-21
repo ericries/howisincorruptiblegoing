@@ -1,6 +1,7 @@
 import { validateEntry } from '../src/lib/validate';
 import { scanEntry } from '../src/lib/injection';
 import { looksFabricated, findDuplicateSourceUrls, findSameTypeDuplicates } from '../src/lib/source-url-integrity';
+import { findWeekdayMismatches } from '../src/lib/weekday-consistency';
 import type { ValidationResult } from '../src/lib/schema';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -365,6 +366,23 @@ if (isMainModule) {
         `also in: ${others}`,
         'Merge them, or correct the mis-sourced one. If the URL is genuinely a shared canonical page, add it to SHARED_CANONICAL_URLS in src/lib/source-url-integrity.ts.',
       ],
+    });
+  }
+
+  // A weekday named in a title or attribution must match the entry's date. Three
+  // shipped before this existed; the prompt line telling me to compute weekdays
+  // was already there for two of them.
+  for (const m of findWeekdayMismatches(
+    allEntries.map((e) => ({
+      file: e.file,
+      date: (e as { date?: string }).date,
+      title: (e as { title?: string }).title,
+      attribution_title: (e as { attribution_title?: string }).attribution_title,
+    }))
+  )) {
+    failures.push({
+      file: m.file,
+      errors: [`${m.field} says ${m.named}, but ${m.date} is a ${m.actual}`],
     });
   }
 

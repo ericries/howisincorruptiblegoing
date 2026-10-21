@@ -158,3 +158,31 @@ describe('reaction rendering', () => {
     expect(rule).toMatch(/flex-shrink:\s*0/);
   });
 });
+
+/**
+ * The social byline is platform-agnostic.
+ *
+ * It was gated on `isLinkedInPost` in two places, so an X-sourced entry's
+ * attribution_image rendered nowhere — found 2026-10-21 by the orphaned-image
+ * check, with the comment archive having started feeding X the day before.
+ * Fixing one of the two gates was not enough and the first rebuild still showed
+ * the orphan, which is why this asserts on the count.
+ */
+describe('social byline', () => {
+  it('gates on socialPlatform, not on LinkedIn specifically', () => {
+    const gates = timelineSource.match(/\{socialPlatform && linkedInAuthorName && \(/g) || [];
+    expect(gates.length).toBe(2);
+    expect(timelineSource).not.toMatch(/\{isLinkedInPost && linkedInAuthorName && \(/);
+  });
+
+  it('recognises x.com and twitter.com as well as linkedin.com', () => {
+    for (const host of ['linkedin.com', 'x.com', 'twitter.com']) {
+      expect(timelineSource).toContain(`'${host}'`);
+    }
+  });
+
+  it('picks the platform mark rather than hardcoding the LinkedIn one', () => {
+    const marks = timelineSource.match(/socialPlatform === 'linkedin' \? \(/g) || [];
+    expect(marks.length).toBe(2);
+  });
+});

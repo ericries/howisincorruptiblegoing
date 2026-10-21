@@ -48,7 +48,18 @@ that specific action.
 ## Operating Model
 
 - **Red-Green TDD** — write a failing test first, always. No code without a test.
-- **Five Whys on every error** — trace root cause, install preventive measures, commit postmortem to `docs/postmortems/`.
+- **Five Whys on every error, routinely** — not only when asked. Any wrong entry,
+  missed cycle, failed assumption or surprising result gets one. Copy
+  [`docs/postmortems/TEMPLATE.md`](docs/postmortems/TEMPLATE.md) and commit the
+  result to `docs/postmortems/`.
+- **Proportional prevention at every level reached** (Eric, 2026-10-21). The
+  prevention table needs a row per why, and the investment scales with depth: the
+  instance fix is cheap and prevents nothing, the systemic fix is expensive and
+  prevents the class. **A postmortem that only fixes level 1 is the failure
+  mode.** Prefer, in order: make it impossible, make it fail loudly (lint, test),
+  make it visible, and only then write prose — prose is for judgment calls.
+  A prevention reading "remember to X" is the instance fix wearing a hat;
+  `scripts/postmortem-lint.py` rejects it and runs in the pre-commit hook.
 - **Periodic self-reflection** — stop and reflect on process efficiency, update these instructions and memory to help future sessions avoid past mistakes.
 - **Pre-commit hooks** — JSON schema linter must block invalid data from being committed.
 - **GitHub Actions budget** — keep under 100 min/month. Heavy compute (scanning, LLM calls) runs locally.

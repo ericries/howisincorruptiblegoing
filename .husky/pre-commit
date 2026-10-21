@@ -30,3 +30,21 @@ if [ -n "$CHANGED_ENTRIES" ]; then
     exit 1
   fi
 fi
+
+# Postmortems must invest in prevention at every level they reached — a row per
+# why, nothing reading "remember to". Added 2026-10-21 at Eric's direction:
+# "always make proportional investments in prevention at each level."
+# Only runs when a postmortem is actually in the commit.
+CHANGED_PM=$(git diff --cached --name-only -- 'docs/postmortems/*.md')
+if [ -n "$CHANGED_PM" ]; then
+  echo "Checking postmortem prevention tables..."
+  python3 scripts/postmortem-lint.py $CHANGED_PM
+  PM_EXIT=$?
+  if [ $PM_EXIT -ne 0 ]; then
+    echo ""
+    echo "⚠️  A postmortem is missing prevention at a level it reached."
+    echo "   See docs/postmortems/TEMPLATE.md. 'declined' with a reason is a valid status."
+    echo "   To skip this check: git commit --no-verify"
+    exit 1
+  fi
+fi
