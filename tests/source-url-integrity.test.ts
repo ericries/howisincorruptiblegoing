@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import {
   looksFabricated,
   findDuplicateSourceUrls,
+  findSameTypeDuplicates,
   SHARED_CANONICAL_URLS,
 } from '../src/lib/source-url-integrity';
 
@@ -90,5 +91,54 @@ describe('findDuplicateSourceUrls', () => {
     expect(
       findDuplicateSourceUrls([mk('a', ''), mk('b', '')])
     ).toHaveLength(0);
+  });
+});
+
+/**
+ * Same-type duplicates are a failure, not a warning.
+ *
+ * Mixed types sharing a URL is legitimate — an event and a reaction to it, a
+ * milestone and the review page it counts. Two entries of the SAME type on one
+ * URL is a duplicate every time it has occurred: three Thought Economics media
+ * entries on one interview, and a Goodreads review shipped twice on 2026-10-20
+ * because the "fresh" check compared datasets instead of the timeline. The
+ * warning surfaced that one, but only after the entry and its card existed.
+ */
+describe('findSameTypeDuplicates', () => {
+  it('fails two entries of the same type on one url', () => {
+    const dups = findSameTypeDuplicates([
+      { file: 'a.json', type: 'media', source_url: 'https://x.test/eric' },
+      { file: 'b.json', type: 'media', source_url: 'https://x.test/eric' },
+    ]);
+    expect(dups).toHaveLength(1);
+    expect(dups[0].files).toEqual(['a.json', 'b.json']);
+  });
+
+  it('allows an event and a reaction to cite the same post', () => {
+    expect(findSameTypeDuplicates([
+      { file: 'a.json', type: 'event', source_url: 'https://x.test/p' },
+      { file: 'b.json', type: 'reaction', source_url: 'https://x.test/p' },
+    ])).toEqual([]);
+  });
+
+  it('allows shared canonical urls even for one type', () => {
+    expect(findSameTypeDuplicates([
+      { file: 'a.json', type: 'endorsement', source_url: 'https://incorruptible.co' },
+      { file: 'b.json', type: 'endorsement', source_url: 'https://incorruptible.co' },
+    ])).toEqual([]);
+  });
+
+  it('ignores trailing-slash differences', () => {
+    expect(findSameTypeDuplicates([
+      { file: 'a.json', type: 'review', source_url: 'https://x.test/r' },
+      { file: 'b.json', type: 'review', source_url: 'https://x.test/r/' },
+    ])).toHaveLength(1);
+  });
+
+  it('ignores entries with no source_url', () => {
+    expect(findSameTypeDuplicates([
+      { file: 'a.json', type: 'review', source_url: '' },
+      { file: 'b.json', type: 'review', source_url: undefined },
+    ])).toEqual([]);
   });
 });

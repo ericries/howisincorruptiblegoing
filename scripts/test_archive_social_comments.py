@@ -209,3 +209,46 @@ def test_a_verdict_without_a_platform_defaults_to_linkedin(tmp_path, monkeypatch
     assert asc._apply_verdicts_mode(vp) == 0
     written = json.loads(next(tmp_path.glob("2*.json")).read_text())
     assert written[-1]["platform"] == "linkedin"
+
+
+# --- the watermark writes itself ----------------------------------------------------
+
+def test_applying_verdicts_writes_the_watermark(tmp_path, monkeypatch):
+    # The prompt used to end with "then write the watermark" as a separate step.
+    # It was missing entirely until 2026-10-20, so scan_catchup reported the job
+    # as never having run. An instruction that is a one-liner at the end of a
+    # long prompt is the easiest kind to skip; the script knows it has finished,
+    # so the script records it.
+    import scan_state
+    monkeypatch.setattr(asc, "ARCHIVE_DIR", tmp_path)
+    monkeypatch.setattr(asc, "LLM_QUEUE_PATH", tmp_path / ".llm-queue.json")
+    monkeypatch.setattr(asc, "_load_seen_identifiers", lambda: set())
+    monkeypatch.setattr(asc, "_load_known_source_urls", lambda: set())
+    monkeypatch.setattr(asc, "_load_known_author_names", lambda: set())
+    written = {}
+    monkeypatch.setattr(asc, "write_watermark", lambda src, when: written.update({src: when}))
+
+    vp = tmp_path / "v.json"
+    vp.write_text(json.dumps([{
+        "identifier": "comment:1", "kind": "comment", "source_scan": "linkedin-keyword",
+        "text": "This book is astounding and I keep recommending it to founders.",
+        "pull_quote": "astounding", "author": {"name": "Someone"},
+    }]))
+    asc._apply_verdicts_mode(vp)
+    assert written.get("linkedin-comments"), "watermark not written"
+
+
+def test_the_watermark_is_not_written_when_nothing_was_applied(tmp_path, monkeypatch):
+    # A run that archived nothing has not covered the window either.
+    monkeypatch.setattr(asc, "ARCHIVE_DIR", tmp_path)
+    monkeypatch.setattr(asc, "_load_seen_identifiers", lambda: {"comment:1"})
+    monkeypatch.setattr(asc, "_load_known_source_urls", lambda: set())
+    monkeypatch.setattr(asc, "_load_known_author_names", lambda: set())
+    written = {}
+    monkeypatch.setattr(asc, "write_watermark", lambda src, when: written.update({src: when}))
+    vp = tmp_path / "v.json"
+    vp.write_text(json.dumps([{"identifier": "comment:1", "kind": "comment",
+                               "text": "already seen, long enough to pass the floor",
+                               "pull_quote": "x", "author": {}}]))
+    asc._apply_verdicts_mode(vp)
+    assert written == {}

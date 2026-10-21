@@ -89,3 +89,40 @@ export function findDuplicateSourceUrls(
   }
   return out.sort((a, b) => b.files.length - a.files.length);
 }
+
+/**
+ * Entries of the SAME type sharing a source_url. Always a duplicate.
+ *
+ * `findDuplicateSourceUrls` above is deliberately a warning, because mixed
+ * types on one URL are legitimate: an event and a reaction to it, a milestone
+ * and the review page it counts. Narrowing to a single type removes that
+ * ambiguity — every same-type collision to date has been a real duplicate.
+ * Three Thought Economics media entries sat on one interview URL, and on
+ * 2026-10-20 a Goodreads review was shipped a second time because the
+ * freshness check compared one dataset against the previous dataset instead of
+ * against the timeline. The warning surfaced that one, but only after the entry
+ * and its quote card had been written; a failure stops it at the commit.
+ */
+export function findSameTypeDuplicates(
+  entries: Array<{ file: string; type?: string | null; source_url?: string | null }>
+): DuplicateGroup[] {
+  const shared = new Set(SHARED_CANONICAL_URLS.map((u) => u.replace(/\/+$/, '')));
+  const byKey = new Map<string, { display: string; files: string[] }>();
+
+  for (const e of entries) {
+    const raw = (e.source_url || '').trim();
+    if (!raw) continue;
+    const url = raw.replace(/\/+$/, '');
+    if (shared.has(url)) continue;
+    const key = `${e.type || ''}\u0000${url}`;
+    const group = byKey.get(key) || { display: raw, files: [] };
+    group.files.push(e.file);
+    byKey.set(key, group);
+  }
+
+  const out: DuplicateGroup[] = [];
+  for (const { display, files } of byKey.values()) {
+    if (files.length > 1) out.push({ url: display, files });
+  }
+  return out.sort((a, b) => b.files.length - a.files.length);
+}

@@ -1,6 +1,6 @@
 import { validateEntry } from '../src/lib/validate';
 import { scanEntry } from '../src/lib/injection';
-import { looksFabricated, findDuplicateSourceUrls } from '../src/lib/source-url-integrity';
+import { looksFabricated, findDuplicateSourceUrls, findSameTypeDuplicates } from '../src/lib/source-url-integrity';
 import type { ValidationResult } from '../src/lib/schema';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -343,6 +343,29 @@ if (isMainModule) {
       console.warn(`   ${g.url}`);
       for (const f of g.files) console.warn(`      ${f}`);
     }
+  }
+
+  // Same-type collisions are not ambiguous the way mixed-type ones are, so this
+  // is a failure rather than a warning. It is the mechanism that replaces the
+  // prompt line "grep content/entries/ for the source_url before writing" —
+  // which was in the prompt on 2026-10-20 and did not stop a duplicate.
+  const sameType = findSameTypeDuplicates(
+    allEntries.map((e) => ({
+      file: e.file,
+      type: (e as { type?: string }).type,
+      source_url: (e as { source_url?: string }).source_url,
+    }))
+  );
+  for (const g of sameType) {
+    const others = g.files.slice(1).join(', ');
+    failures.push({
+      file: g.files[0],
+      errors: [
+        `duplicate source_url shared with the same type: ${g.url}`,
+        `also in: ${others}`,
+        'Merge them, or correct the mis-sourced one. If the URL is genuinely a shared canonical page, add it to SHARED_CANONICAL_URLS in src/lib/source-url-integrity.ts.',
+      ],
+    });
   }
 
   let lastEndorsementIndex = -999;

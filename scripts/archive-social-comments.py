@@ -37,6 +37,9 @@ import re
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from scan_state import write_watermark  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 ARCHIVE_DIR = ROOT / "data" / "archive" / "linkedin-comments"
 ARCHIVE_DIR.mkdir(parents=True, exist_ok=True)
@@ -446,6 +449,16 @@ def _apply_verdicts_mode(verdicts_path: Path) -> int:
         f"short={skipped_short}) to {_rel(archive_path)}. "
         f"Queue cleared."
     )
+
+    # The job records its own completion rather than relying on a final
+    # line of the prompt being read. The watermark was missing entirely
+    # until 2026-10-20, so scan_catchup reported this job as never run.
+    if added:
+        write_watermark(
+            "linkedin-comments",
+            datetime.datetime.now(datetime.UTC)
+            .replace(microsecond=0, tzinfo=None).isoformat() + "Z",
+        )
     return 0
 
 

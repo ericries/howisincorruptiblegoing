@@ -193,8 +193,7 @@ For each YES write a verdict to /tmp/verdicts-<YYYY-MM-DD>.json with: identifier
   python3 scripts/archive-social-comments.py --apply-verdicts /tmp/verdicts-<YYYY-MM-DD>.json
   python3 scripts/generate-comment-cards.py --all
 
-Then write the watermark so scan_catchup.py can see this job ran — it had none until 2026-10-20 and so reported as "never run" forever:
-  python3 -c "import sys,datetime; sys.path.insert(0,'scripts'); from scan_state import write_watermark; write_watermark('linkedin-comments', datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'))"
+The watermark writes itself when --apply-verdicts archives anything; there is no separate step to remember.
 
 Then write the watermark so scan_catchup.py can see that this job ran — it had none until 2026-10-20 and so reported as "never run" forever:
   python3 -c "import sys,datetime; sys.path.insert(0,'scripts'); from scan_state import write_watermark; write_watermark('linkedin-comments', datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'))"
