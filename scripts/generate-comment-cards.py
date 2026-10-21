@@ -12,6 +12,7 @@ Usage:
   python3 scripts/generate-comment-cards.py 2026-09-15 10    # top 10 instead of 6
   python3 scripts/generate-comment-cards.py --all            # all records today
 """
+import hashlib
 import json, re, sys, tempfile
 from datetime import date
 from pathlib import Path
@@ -123,7 +124,13 @@ def _passes_selection_gates(r: dict) -> tuple[bool, str]:
     if len(substantive) < min_len:
         return False, f"too-short ({len(substantive)} chars)"
 
-    if not _ANCHORS.search(q):
+    # A reply does not have to name the book — it is already standing under a
+    # post that does. Added 2026-10-20 with the Twitter/X lane: three of the
+    # first eight records were rejected here, including Kevin Payne's "Metrics
+    # outlive principles", which is a direct reply to Eric. The LinkedIn
+    # comment lane has always relied on the same inheritance upstream; the card
+    # gate just never knew about it.
+    if not _ANCHORS.search(q) and not _has_reply_context(r):
         return False, "no-book-anchor"
 
     m = _LEADING_PRONOUN.match(q)
@@ -133,6 +140,44 @@ def _passes_selection_gates(r: dict) -> tuple[bool, str]:
             return False, f"leading-pronoun ({m.group(0)!r}) with no early anchor"
 
     return True, ""
+
+
+def _has_reply_context(r: dict) -> bool:
+    """True when the record is a reply/comment under a book-anchored parent.
+
+    Twitter replies to @ericries carry the handle in the permalink's parent and
+    in the text Apify returns; LinkedIn comments carry `parent_post`. Either is
+    enough for the quote itself to be allowed to stand alone.
+    """
+    if r.get("parent_post"):
+        return True
+    if (r.get("item_kind") or r.get("kind")) == "comment" and r.get("platform") == "twitter":
+        return True
+    text = (r.get("full_text") or "") + " " + (r.get("pull_quote") or "")
+    return bool(re.search(r"@ericries(actual)?\b", text, re.IGNORECASE))
+
+
+def card_worthy(r: dict) -> tuple[bool, str]:
+    """Public name for the selection gate (see _passes_selection_gates)."""
+    return _passes_selection_gates(r)
+
+
+def card_filename(date_str: str, r: dict, only_one: bool = False) -> str:
+    """Card filename for a record.
+
+    Was `<date>-<name>.png`, which silently overwrote a person's own card when
+    they had more than one kept quote in a day — Kevin Payne had four on
+    2026-10-20 and six renders produced three files. A short hash of the
+    identifier disambiguates; a person with a single quote that day keeps the
+    plain name so the 40 days of existing cards are not churned.
+    """
+    name = ((r.get("author") or {}).get("name")) or "Anonymous"
+    base = f"{date_str}-{_slug(name)}"
+    if only_one:
+        return f"{base}.png"
+    ident = r.get("identifier") or r.get("permalink") or (r.get("pull_quote") or "")
+    suffix = hashlib.sha1(str(ident).encode("utf-8")).hexdigest()[:6]
+    return f"{base}-{suffix}.png"
 
 
 def _rank_key(r: dict):
@@ -152,7 +197,8 @@ def render_card(record: dict, date_str: str, out_dir: Path) -> Path:
     quote = _substantive_text(record)
 
     # Shape into the same schema as a content entry
-    entry_id = f"{date_str}-{_slug(name)}"
+    filename = record.get("_card_filename") or card_filename(date_str, record)
+    entry_id = filename[:-4] if filename.endswith(".png") else filename
     shim = {
         "id": entry_id,
         "blockquote": quote,
@@ -168,7 +214,7 @@ def render_card(record: dict, date_str: str, out_dir: Path) -> Path:
         tmp_path = Path(tf.name)
 
     out_dir.mkdir(parents=True, exist_ok=True)
-    out_path = out_dir / f"{entry_id}.png"
+    out_path = out_dir / filename
     try:
         subprocess.run(
             ["python3", str(GENERATOR), str(tmp_path), str(out_path)],
@@ -206,6 +252,14 @@ def main() -> int:
             skipped.append((r, reason))
 
     kept = kept[:top_n]
+
+    # Only disambiguate filenames for people with more than one card today, so
+    # the existing 40 days of <date>-<name>.png cards keep their names.
+    from collections import Counter
+    name_counts = Counter(((r.get("author") or {}).get("name") or "Anonymous") for r in kept)
+    for r in kept:
+        nm = (r.get("author") or {}).get("name") or "Anonymous"
+        r["_card_filename"] = card_filename(date_str, r, only_one=name_counts[nm] == 1)
 
     out_dir = OUT_DIR / date_str
     print(f"Selection gates: {len(kept)} passed, {len(skipped)} skipped ({len(all_records)} total in archive)")

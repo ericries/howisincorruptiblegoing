@@ -43,6 +43,15 @@ rest.
 ended before triage; the dataset ids lived only in conversation context and the
 paid data was nearly lost. Write them to disk at launch, clear them after triage.
 
+**The comment archive takes X as well as LinkedIn** (2026-10-20). The producing
+script is `scripts/archive-social-comments.py`, with `--platform linkedin|twitter`;
+every record carries a `platform` field. The evening scan's existing
+`@ericries` mention pull feeds the Twitter lane at **no extra Apify cost** — the
+dataset is already paid for by the mention scan. A reply to Eric inherits the
+book anchor exactly as a comment on his LinkedIn feed does, so the reply itself
+does not have to name the book, and praise is not required: a sharp observation
+that uses the argument counts.
+
 **Every job writes its watermark when it finishes** — including the comment
 archive, whose key is `linkedin-comments`, and which had no watermark at all until
 2026-10-20. The watermark is the only record that a job ran; without one
@@ -115,9 +124,19 @@ for the next day's investigation.
 A behavioural claim about the scheduler — "recreating a job skips its next match",
 "a cron cannot fire mid-turn" — is cheap to test directly: `CronCreate` a
 disposable job a few minutes out whose whole prompt is to report the time and
-delete itself. Recurring jobs fire up to 15 minutes late, so allow that window
-before concluding anything. Note that `CronList` does **not** expose next-fire
-time, so there is no way to verify a roll took effect except by waiting for it.
+delete itself.
+
+**Give a negative result hours, not minutes.** The documented 15-minute jitter
+cap is not the real bound: two probes on 2026-10-20 fired **50 and 30 minutes**
+past their match, the second with a completely idle REPL. Declaring the first one
+"did not fire" after nine minutes produced a third wrong diagnosis on top of the
+two above. "Has not fired yet" is not "did not fire". Those probes did establish
+two things worth keeping: lead time at creation is irrelevant (5 minutes and 89
+both ran), and due jobs **queue** rather than expire, so a busy REPL delays work
+without destroying it.
+
+Note that `CronList` does **not** expose next-fire time, so there is no way to
+verify a roll took effect except by waiting for it.
 
 ## 2. Reading candidates
 

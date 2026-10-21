@@ -152,8 +152,8 @@ CHECK WHETHER THE CAP COST ANYTHING, and say so either way. Compare the oldest p
 Save each raw dataset to data/archive/linkedin-raw/<YYYY-MM-DD>-<name>.json, then:
 
 Pass 1 — emit queue:
-  python3 scripts/archive-linkedin-superlatives.py /tmp/eries-feed.json --scan-source=linkedin-author-eries
-  python3 scripts/archive-linkedin-superlatives.py /tmp/kw-feed.json --scan-source=linkedin-keyword
+  python3 scripts/archive-social-comments.py /tmp/eries-feed.json --scan-source=linkedin-author-eries
+  python3 scripts/archive-social-comments.py /tmp/kw-feed.json --scan-source=linkedin-keyword
 
 Pass 2 — classify in-turn, no external API. Read .llm-queue.json and judge each candidate. Filter to kind=comment and drop identifiers already present in data/archive/linkedin-comments/*.json before reading — after a big event the queue runs to 200+ and most are repeats of the same week's items.
 
@@ -168,7 +168,7 @@ The archive holds COMMENTS only — every record to date is item_kind "comment".
 CRITICAL: when a candidate's relevance depends on the PARENT post, print the parent post IN FULL before deciding. A lowercase or adjectival "incorruptible" near the top of a post is a reason to keep reading, not to dismiss — people routinely use the word casually and credit the book further down. This is how the Paige Kaye entry was nearly lost (memory/feedback_read_whole_parent_post.md).
 
 For each YES write a verdict to /tmp/verdicts-<YYYY-MM-DD>.json with: identifier, kind, source_scan, text, pull_quote, permalink, posted_at, reactions, comments_count, author, parent_post — copied from the queue entry; only pull_quote needs judgment. Then:
-  python3 scripts/archive-linkedin-superlatives.py --apply-verdicts /tmp/verdicts-<YYYY-MM-DD>.json
+  python3 scripts/archive-social-comments.py --apply-verdicts /tmp/verdicts-<YYYY-MM-DD>.json
   python3 scripts/generate-comment-cards.py
 
 Then write the watermark so scan_catchup.py can see that this job ran — it had none until 2026-10-20 and so reported as "never run" forever:
@@ -214,6 +214,12 @@ Sources this cycle — run each with waitSecs:0, then scan-triage.py per the pro
 1. TikTok profile (clockworks/tiktok-profile-scraper, profiles=["ericriesactual"], resultsPerPage=10) — ONLY on Mon/Wed/Fri. On other days skip it entirely and say so in one line. Nothing has shipped from TikTok in three weeks; it is podcast promo cuts, denylisted AI slop, and Eric's own event announcements. When you do run it, the blocking rule applies to every video without exception: grep the id against data/ai-tiktok-denylist.json AND confirm Eric is on camera. If you cannot confirm on-camera, skip. Genuine on-camera clips still get skipped when they are promo cuts of an episode already on the timeline — check before writing an entry.
 2. LinkedIn @-mentions (harvestapi/linkedin-post-search, mentioningMember=["https://www.linkedin.com/in/eries/"], maxPosts=40, sortBy="date", callOptions {"maxItems": 25}).
 3. Twitter/X @-mentions (apidojo/tweet-scraper, searchTerms=["@ericries"], maxItems=20).
+
+AFTER triaging the X mentions, feed that same dataset to the comment archive — it costs NOTHING extra, the items are already paid for:
+  python3 scripts/archive-social-comments.py data/archive/twitter-raw/<YYYY-MM-DD>-mentions.json --platform twitter --scan-source=twitter-mentions
+Then classify the queue the same way the Mon/Wed/Fri LinkedIn job does, write verdicts, apply, and run generate-comment-cards.py --all.
+
+Per Eric 2026-10-20 ("you can add the twitter and cardono comments to the comment archive. expand it to include cases like that") this lane is NOT limited to superlatives. A sharp observation that uses the book's argument qualifies even with zero likes and no praise — Kevin Payne's reply "Metrics outlive principles. Once the dashboard rewards extraction, the people who remember why the company worked stop getting promoted" is the model. A reply to Eric inherits the book anchor; it does not have to name the book. Still skip questions ("is the talk gonna pull from incorruptible"), conversational replies, promo-agency filler, and tweets that merely quote the book back.
 
 When an event Eric spoke at has just happened, check whether the organiser has published a post-event quote. The NACD entry carried only its pre-event agenda blurb until NACD's own account published what he actually said; swapping that in, moving the summary to past tense and dropping the "upcoming" tag is a real upgrade worth doing the morning after any major event.
 

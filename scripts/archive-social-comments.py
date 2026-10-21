@@ -1,11 +1,22 @@
 #!/usr/bin/env python3
 """
-scripts/archive-linkedin-superlatives.py
+scripts/archive-social-comments.py
 
-Reads an Apify harvestapi/linkedin-post-search output (JSON: array of posts,
-optionally with `comments` arrays when scrapeComments=true) and filters BOTH
-post bodies AND comment text for superlative praise of Incorruptible. Appends
-matches to data/archive/linkedin-comments/YYYY-MM-DD.json.
+Builds the local archive of short, quotable social comments about Incorruptible —
+raw material for social posts, never shipped to the timeline.
+
+Two input shapes:
+  --platform linkedin  Apify harvestapi/linkedin-post-search (posts, plus
+                       `comments` arrays when scrapeComments=true)
+  --platform twitter   Apify apidojo/tweet-scraper (@ericries mentions/replies)
+
+Anchor-passing items go to a queue; Claude classifies them in the cron turn and
+re-runs with --apply-verdicts. Verified records append to
+data/archive/linkedin-comments/YYYY-MM-DD.json.
+
+The directory keeps its linkedin-comments name for continuity with the site's
+reader-quote pipeline (src/lib/reader-quotes.ts, scripts/promote-reader-quotes.py);
+the per-record `platform` field is what distinguishes sources now.
 
 Local-only archive (gitignored) — never pushed to the site. Downstream: the
 social-media agent turns these into quote cards + schedules them via Buffer.
@@ -15,7 +26,7 @@ Schema per record is documented in
 and reference_linkedin_comment_archive.md in memory.
 
 Usage:
-  python3 scripts/archive-linkedin-superlatives.py <scan.json> [--scan-source=name]
+  python3 scripts/archive-social-comments.py <scan.json> [--platform linkedin|twitter] [--scan-source=name]
 """
 from __future__ import annotations
 
@@ -68,6 +79,19 @@ EMOJI_RE = re.compile(
 URL_RE = re.compile(r"https?://\S+")
 COMMENT_URN_RE = re.compile(r"commentUrn=urn%3Ali%3Acomment%3A%28[^)]+%2C(\d+)%29", re.IGNORECASE)
 ACTIVITY_ID_RE = re.compile(r"activity[-:](\d+)", re.IGNORECASE)
+
+
+def _rel(path: Path) -> str:
+    """Repo-relative path for display, falling back to the absolute one.
+
+    `Path.relative_to` raises when the target is outside ROOT. That turned a
+    cosmetic log line into a hard failure *after* the archive had already been
+    written, which is the worst possible place for it.
+    """
+    try:
+        return str(Path(path).relative_to(ROOT))
+    except ValueError:
+        return str(path)
 
 
 def _substantive_text(text: str) -> str:
@@ -212,6 +236,99 @@ def _already_have(permalink: str | None, author_name: str | None,
 
 
 
+# ---- Twitter/X ---------------------------------------------------------------------
+# Added 2026-10-20 at Eric's request: "you can add the twitter and cardono
+# comments to the comment archive. expand it to include cases like that."
+#
+# The X material is the same kind as the LinkedIn lane and sometimes better —
+# Kevin Payne's replies to Eric ("Metrics outlive principles. Once the dashboard
+# rewards extraction, the people who remember why the company worked stop getting
+# promoted") are sharper than most of what the LinkedIn sweep returns. Engagement
+# is deliberately not a gate: these feed social posts, not the timeline, so a
+# zero-like reply with a great sentence is worth more than a popular "congrats!".
+#
+# "Cases like that" also widens what qualifies beyond superlatives, to any
+# observation that uses the book's argument. That judgment stays in the cron turn
+# — this file only decides what is worth a human look.
+
+ERIC_HANDLES = {"ericries", "ericriesactual"}
+
+
+def _twitter_author(a: dict | None) -> dict:
+    a = a or {}
+    return {
+        "name": a.get("name") or a.get("userName") or "",
+        "headline": a.get("description") or "",
+        "profile_url": a.get("url") or (f"https://x.com/{a['userName']}" if a.get("userName") else None),
+        "followers": a.get("followers"),
+    }
+
+
+def _twitter_date(raw: str | None) -> str | None:
+    """Twitter's "Tue Oct 20 23:02:09 +0000 2026" to ISO, or the raw value back.
+
+    Never drop a record over a date: the text is the thing being archived.
+    """
+    if not raw:
+        return None
+    try:
+        return datetime.datetime.strptime(raw, "%a %b %d %H:%M:%S %z %Y").isoformat()
+    except (ValueError, TypeError):
+        return raw
+
+
+def queue_from_tweets(items: list[dict], *, scan_source: str, seen: set[str]) -> list[dict]:
+    """Anchor-passing tweets, in the same queue shape as the LinkedIn path."""
+    by_id = {str(t.get("id")): t for t in items if t.get("id")}
+    out: list[dict] = []
+    for t in items:
+        if t.get("isRetweet"):
+            continue
+        author = t.get("author") or {}
+        if (author.get("userName") or "").lower() in ERIC_HANDLES:
+            continue          # Eric's own posts are never archive candidates
+        text = (t.get("text") or t.get("fullText") or "").strip()
+        if not text:
+            continue
+
+        # A reply to Eric inherits the book context exactly as a comment on his
+        # LinkedIn feed does — his best repliers never name the book.
+        anchored = (
+            BOOK_ANCHOR_RE.search(text)
+            or (t.get("inReplyToUsername") or "").lower() in ERIC_HANDLES
+        )
+        if not anchored:
+            continue
+
+        ident = f"tweet:{t.get('id')}"
+        if ident in seen:
+            continue
+
+        parent = by_id.get(str(t.get("inReplyToId") or t.get("conversationId") or ""))
+        parent_meta = None
+        if parent is not None and str(parent.get("id")) != str(t.get("id")):
+            parent_meta = {
+                "text": (parent.get("text") or parent.get("fullText") or "").strip(),
+                "permalink": parent.get("url") or parent.get("twitterUrl"),
+                "author": _twitter_author(parent.get("author")),
+            }
+
+        out.append({
+            "identifier": ident,
+            "platform": "twitter",
+            "kind": "comment",
+            "source_scan": scan_source,
+            "text": text,
+            "permalink": t.get("url") or t.get("twitterUrl"),
+            "posted_at": _twitter_date(t.get("createdAt")),
+            "reactions": t.get("likeCount"),
+            "comments_count": t.get("replyCount"),
+            "author": _twitter_author(author),
+            "parent_post": parent_meta,
+        })
+    return out
+
+
 def normalize_post_meta(post: dict) -> dict:
     """A compact snapshot of a post for use as parent_post context on a comment record."""
     return {
@@ -293,6 +410,10 @@ def _apply_verdicts_mode(verdicts_path: Path) -> int:
             "captured_at": (datetime.datetime.now(datetime.UTC)
                             .replace(microsecond=0, tzinfo=None).isoformat() + "Z"),
             "source_scan": v.get("source_scan") or "unknown",
+            # Added 2026-10-20 when the archive gained Twitter/X. Records written
+            # before that have no platform key; readers should default to
+            # "linkedin", which is what every one of them is.
+            "platform": v.get("platform") or "linkedin",
             "item_kind": v.get("kind") or "comment",
             "identifier": ident,
             "superlative_matches": ["<llm>"],
@@ -322,7 +443,7 @@ def _apply_verdicts_mode(verdicts_path: Path) -> int:
         LLM_QUEUE_PATH.unlink()
     print(
         f"Applied {added} LLM-verified records (skipped: seen={skipped_seen}, "
-        f"short={skipped_short}) to {archive_path.relative_to(ROOT)}. "
+        f"short={skipped_short}) to {_rel(archive_path)}. "
         f"Queue cleared."
     )
     return 0
@@ -334,6 +455,8 @@ def main() -> int:
                     help="Path to Apify scan JSON (post items array). Omit when using --apply-verdicts.")
     ap.add_argument("--scan-source", default="unknown",
                     help="Label for this scan (e.g. linkedin-keyword, linkedin-author-eries)")
+    ap.add_argument("--platform", default="linkedin", choices=["linkedin", "twitter"],
+                    help="Input shape: harvestapi LinkedIn posts, or apidojo tweets.")
     ap.add_argument("--apply-verdicts", metavar="PATH",
                     help="Second-pass mode: read a JSON list of LLM verdicts from Claude's cron turn and append them as <llm>-flagged records.")
     args = ap.parse_args()
@@ -357,7 +480,19 @@ def main() -> int:
     if archive_path.exists():
         existing = json.loads(archive_path.read_text())
 
-    # Anchor-passing items → LLM queue for Claude to classify in-turn.
+    if args.platform == "twitter":
+        llm_queue = queue_from_tweets(items, scan_source=args.scan_source, seen=seen_identifiers)
+        print(f"Scanned {len(items)} tweets.")
+    else:
+        llm_queue = queue_from_posts(items, scan_source=args.scan_source, seen=seen_identifiers,
+                                     verbose=True)
+
+    return _persist_queue(llm_queue)
+
+
+def queue_from_posts(items: list[dict], *, scan_source: str, seen: set[str],
+                     verbose: bool = False) -> list[dict]:
+    """Anchor-passing LinkedIn posts and comments, as queue records."""
     scanned_posts = 0
     scanned_comments = 0
     llm_queue: list[dict] = []
@@ -373,11 +508,12 @@ def main() -> int:
                 kind=kind, permalink=permalink,
                 raw_id=_get(post, "id", "postId", "entityId"),
             )
-            if ident and ident not in seen_identifiers:
+            if ident and ident not in seen:
                 llm_queue.append({
                     "identifier": ident,
+                    "platform": "linkedin",
                     "kind": kind,
-                    "source_scan": args.scan_source,
+                    "source_scan": scan_source,
                     "text": post_text,
                     "permalink": permalink,
                     "posted_at": (post.get("postedAt") or {}).get("date") or post.get("createdAt"),
@@ -394,7 +530,7 @@ def main() -> int:
             # inherit anchor. Otherwise, the comment itself must name the book.
             comment_anchor = (
                 BOOK_ANCHOR_RE.search(ctext)
-                or args.scan_source.startswith("linkedin-author-eries")
+                or scan_source.startswith("linkedin-author-eries")
                 or BOOK_ANCHOR_RE.search(post_text or "")
             )
             if ctext and comment_anchor:
@@ -403,11 +539,12 @@ def main() -> int:
                     kind="comment", permalink=cmt_permalink,
                     raw_id=_get(cmt, "id", "urn"),
                 )
-                if ident and ident not in seen_identifiers:
+                if ident and ident not in seen:
                     llm_queue.append({
                         "identifier": ident,
+                        "platform": "linkedin",
                         "kind": "comment",
-                        "source_scan": args.scan_source,
+                        "source_scan": scan_source,
                         "text": ctext,
                         "permalink": cmt_permalink,
                         "posted_at": cmt.get("createdAt") or (cmt.get("postedAt") or {}).get("date"),
@@ -417,9 +554,13 @@ def main() -> int:
                         "parent_post": normalize_post_meta(post),
                     })
 
-    print(f"Scanned {scanned_posts} posts / {scanned_comments} comments.")
+    if verbose:
+        print(f"Scanned {scanned_posts} posts / {scanned_comments} comments.")
+    return llm_queue
 
-    # Persist / merge the LLM queue for the cron-turn second pass.
+
+def _persist_queue(llm_queue: list[dict]) -> int:
+    """Merge new candidates into the pending queue for the cron-turn second pass."""
     existing_queue: list[dict] = []
     if LLM_QUEUE_PATH.exists():
         try:
@@ -433,7 +574,7 @@ def main() -> int:
     if merged_queue:
         print(
             f"LLM queue: {len(llm_queue)} new candidates added ({len(merged_queue)} total pending). "
-            f"Claude should now classify {LLM_QUEUE_PATH.relative_to(ROOT)} and re-run with "
+            f"Claude should now classify {_rel(LLM_QUEUE_PATH)} and re-run with "
             f"--apply-verdicts <path-to-verdicts.json>."
         )
     else:
