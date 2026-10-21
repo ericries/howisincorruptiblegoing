@@ -1,14 +1,18 @@
 # Scanner crons — canonical definitions
 
-**This file is the source of truth.** Any agent, on any platform, can restore the
-full scanning schedule by reading it. Nothing lives outside this repository: no
+**This file is the source of truth, and since 2026-10-21 it is read, not just
+read-from.** `scripts/cron-prompt.py <job>` extracts a prompt verbatim, and both
+the watchdog's daily roll and session-start restoration use it, so the live crons
+cannot drift away from what is committed here. Any agent, on any platform, can
+restore the full scanning schedule by reading it. Nothing lives outside this repository: no
 launchd agents, no system background items, no machine-local state.
 
 ## At the start of every session
 
 1. Run `CronList`.
-2. Recreate any job below that is missing, with `CronCreate`, copying the cron
-   expression and prompt verbatim.
+2. Recreate any job below that is missing, with `CronCreate`. Take the prompt
+   from this file — `python3 scripts/cron-prompt.py <job>` prints it verbatim —
+   and the cron expression from the table.
 3. Report in one line which were restored, or "all 7 present".
 
 Session crons are in-memory and vanish when the session ends; the runtime also
@@ -53,13 +57,21 @@ Recreate any that are missing using the verbatim prompts in docs/CRONS.md.
 
 STEP 1 — ROLL ALL SEVEN JOBS, NOW, BEFORE ANYTHING ELSE. Do the morning scan first.
 
-ROLLING SELF-RENEWAL is why this job exists. Recurring crons auto-expire 7 days after creation. The watchdog can never catch its own expiry by checking CronList, because it stays listed right up until it dies — and when it dies, every other cron follows at its own 7-day mark with nothing left to restore them. That is the single point of failure in the whole system. So roll every job every run, even when nothing is missing: for each of the seven, CronCreate a replacement carrying its current live prompt forward verbatim, then CronDelete the old id. On 2026-10-13 five daily jobs expired as a cohort because they had all been created together.
+ROLLING SELF-RENEWAL is why this job exists. Recurring crons auto-expire 7 days after creation. The watchdog can never catch its own expiry by checking CronList, because it stays listed right up until it dies — and when it dies, every other cron follows at its own 7-day mark with nothing left to restore them. That is the single point of failure in the whole system. So roll every job every run, even when nothing is missing: for each of the seven, CronCreate a replacement using the prompt printed by scripts/cron-prompt.py (see below), then CronDelete the old id. On 2026-10-13 five daily jobs expired as a cohort because they had all been created together.
 
-Carry the LIVE prompt forward, not the one in docs/CRONS.md — the live prompts accumulate each day's lessons and CRONS.md lags behind them. CronList truncates, so read the full text from CRONS.md only for a job you are recreating from scratch. If you notice CRONS.md has drifted, re-sync it in STEP 2 and commit.
+Rolling is SAFE and costs a job nothing. Two probe crons on 2026-10-20 settled this: one created five minutes before its match and one eighty-nine minutes before both fired the same day. Lead time is not a variable, and recreation does not advance a job past its next occurrence. Earlier versions of this prompt claimed otherwise; that was a guess, and it was wrong.
 
-THE WATCHDOG MUST BE FAST. You fire at 8:17; the morning scan fires at 9:07. Creating a replacement job after its fire time has passed sets its next run to tomorrow, so that day's scan is simply lost — and a cron cannot fire at all while this turn is still running, so a long watchdog turn swallows the 9:07 slot even when the rolls were done correctly. Both failures have happened: on 2026-10-19 a YouTube backfill pushed the rolls past 9:07, and on 2026-10-20 the rolls were done first but the turn itself ran to 9:14. So: finish STEP 1 within the first few minutes, and do NOT start work in STEP 2 that could still be running at 9:00 — defer it to the morning scan or a later turn instead.
+READ EACH PROMPT FROM docs/CRONS.md, which is the source of truth:
 
-Guard: if you are somehow already past 9:07 when you start, do NOT roll the morning scan — leave it alone so it can still fire, and roll it tomorrow. Roll the other six as normal.
+    python3 scripts/cron-prompt.py <watchdog|morning-scan|goodreads|comment-archive|recall-audit|evening-scan|sidebar>
+
+Pass that text to CronCreate verbatim. This replaced "carry the live prompt forward" on 2026-10-21, after all seven sections had drifted behind their in-memory versions and an earlier commit claimed a re-sync that had silently failed. The deeper reason is that a lesson living only in an in-memory cron dies with the session — the repo is what survives a change of machine, and the prompts were the one part that did not.
+
+So: when a scan learns something, EDIT docs/CRONS.md and commit it in that same turn. The next roll picks it up automatically. A lesson you do not write down is a lesson you lose at 8:17 tomorrow.
+
+STILL BE FAST. A cron cannot fire while a turn is running, so a long watchdog turn delays the 9:07 scan — it does not destroy it (due jobs queue: the probes fired 50 and 30 minutes late, well outside the documented 15-minute jitter cap), but a scan pushed toward 10:00 starts colliding with the next job. Finish STEP 1 in the first few minutes and do not start STEP 2 work that could still be running at 9:00; hand a slow backfill to the morning scan instead.
+
+Guard, untested and cheap: if you are already past 9:07 when you start, leave the morning scan alone so it can still fire, and roll it tomorrow. Roll the other six as normal.
 
 STEP 2 — only after all seven rolls are done.
 
@@ -72,7 +84,9 @@ runs went by without happening. "Nothing overdue" is the common case and one lin
 Anything it lists, run with a derived postedLimit (scan_state.choose_posted_limit)
 and dedup against data/archive/. NEVER conclude a job was missed from the absence
 of a dated archive file — two of the seven jobs are not daily, and on 2026-10-20 a
-Monday-only scan was reported missed on a Tuesday and re-run at real Apify cost.
+Monday-only scan was reported missed on a Tuesday and re-run at real Apify cost. Its grace window is 75 minutes because the scheduler really is that loose; a job inside that window is late, not missing.
+
+THE MORNING SCAN OF 2026-10-20 IS STILL UNEXPLAINED — due 9:07, turn ended 9:19, REPL idle until 11:38, nothing fired, while two probes created the same way both ran. Four explanations have collapsed. Do NOT ship a fifth; note a second instance if it recurs and let scan_catchup.py do the repair.
 
 Then the coverage check, which catches what the commit log hides:
 
@@ -101,7 +115,11 @@ Sources this cycle — run each with waitSecs:0, then scan-triage.py per the pro
 3. YouTube keyword (streamers/youtube-scraper, searchQueries=["Eric Ries Incorruptible"], maxResults=15, sortingOrder="date", dateFilter="week"). Do NOT pay for Apify subtitles — pull transcripts free with the youtube-transcript-api one-liner in the protocol. Confirm the video substantively discusses Incorruptible before shipping; a name-drop is not enough. Check the RSS feed or Apple Podcasts for the true original publication date — a YouTube upload can post an episode months after it aired.
 4. WebSearch for "Eric Ries" "Incorruptible" recent mentions.
 
-Also: pick 2-3 unimaged older entries from the backlog and source photos. Query for them with BOTH image and attribution_image null. THIS SEAM IS DRY as of 2026-10-17 — YouTube thumbnails exhausted; all 468 archived LinkedIn posts indexed by activity id against the 93 LinkedIn-sourced unimaged entries gave ZERO matches (they predate the archive); Luma publishes no og:image; the rest is paywalled (TIME, NYT) or small orgs with no social card. Report "no new image found" rather than forcing a weak one.
+BEFORE writing any entry, grep content/entries/ for BOTH the source_url and the author. On 2026-10-20 I shipped a Goodreads review that had been on the timeline since September; the duplicate-source-url lint warning caught it, but only after the entry and its card existed. Four of the five candidates I rated highest that day were already shipped. New-to-the-dataset is not new-to-the-timeline, and a "fresh since last pull" diff answers the wrong question.
+
+Weekdays are computed, never eyeballed: python3 -c "import datetime; print(datetime.date(Y,M,D).strftime('%A'))". Three weekday errors in one session on 2026-10-20, one of which put a wrong day on a live event entry.
+
+Also: pick 2-3 unimaged older entries from the backlog and source photos. Query for them with BOTH image and attribution_image null. The LinkedIn avatar archive gives ZERO matches for the old entries and YouTube thumbnails are exhausted — but the web is NOT dry for named executives. Speaker bureaus (speakabout.ai og:image, 1000x1000) and company newsrooms carry clean headshots; that is how Tatyana Mamut and Carolyn Groobey were sourced on 2026-10-20, and Matt Finnis was NOT, because cranlana.org.au returns 403 to a direct image fetch. Order to try: speaker bureau, company newsroom or about page, fellowship/award bio, personal site. Square-crop with `sips -c <h> <h>` then resize to 600. Stop when the name is ambiguous across several people — no image beats a wrong face. AFTER attaching any image, grep dist/ to confirm it renders: 58 reaction headshots sat unused until 2026-10-20 because the reaction list never rendered attribution_image at all. (Superseded note, kept for history: THIS SEAM IS DRY as of 2026-10-17 — YouTube thumbnails exhausted; all 468 archived LinkedIn posts indexed by activity id against the 93 LinkedIn-sourced unimaged entries gave ZERO matches (they predate the archive); Luma publishes no og:image; the rest is paywalled (TIME, NYT) or small orgs with no social card.) Report "no new image found" rather than forcing a weak one.
 
 Finish with backfill-quote-cards, backfill-source-texts, verify-quotes, lint, commit, push.
 ```
@@ -111,7 +129,9 @@ Finish with backfill-quote-cards, backfill-source-texts, verify-quotes, lint, co
 ```
 Goodreads review scan. Follow docs/SCAN-PROTOCOL.md for the shared rules (Apify waitSecs:0 pattern, entry/image/verify/ship steps, reporting format).
 
-Pull recent reviews via Apify: easyapi/goodreads-review-scraper with bookUrls=["https://www.goodreads.com/book/show/242970642-incorruptible"], maxItems=30. Use waitSecs:0, then curl the dataset and archive it to data/archive/goodreads/<YYYY-MM-DD>.json.
+Pull recent reviews via Apify: easyapi/goodreads-review-scraper with bookUrls=["https://www.goodreads.com/book/show/242970642-incorruptible"] and NOTHING ELSE. Do NOT pass maxItems in either place — this actor has two separate traps, both found 2026-10-20: callOptions {"maxItems": 30} sets a $0.09 charge ceiling the run hits at startup and aborts on, one second in, with zero items ("aborted because it reached its maximum cost of $0.09"); and maxItems:30 in the actor INPUT returns zero items while reporting SUCCEEDED with "Crawled 0/1 pages". Uncapped it returns 50 where the capped call returned 30 — the cap had been hiding 20 reviews, 15 never assessed, going back to May.
+
+DEDUP AGAINST content/entries/, NOT against yesterday's dataset. On 2026-10-20 I diffed the new pull against the previous pull, called 20 reviews "fresh", and shipped one already on the timeline since September. Use waitSecs:0, then curl the dataset and archive it to data/archive/goodreads/<YYYY-MM-DD>.json.
 
 Inclusion bar — the general rule in memory/feedback_entry_inclusion.md plus the loosened Goodreads-specific bar in memory/feedback_goodreads_inclusion.md: textReviewsCount>100 and followersCount>50 are heuristics, not gates. A low-volume reviewer (even 0 followers, 1 review) ships if the text is substantive — real analysis, distinctive framing, multiple paragraphs — or if their self-description signals unusual credibility (named investor, founder, professional in a relevant field).
 
@@ -157,6 +177,8 @@ Pass 1 — emit queue:
 
 Pass 2 — classify in-turn, no external API. Read .llm-queue.json and judge each candidate. Filter to kind=comment and drop identifiers already present in data/archive/linkedin-comments/*.json before reading — after a big event the queue runs to 200+ and most are repeats of the same week's items.
 
+WHAT QUALIFIES IS WIDER THAN PRAISE (Eric, 2026-10-20: "expand it to include cases like that"). A sharp observation that USES the book's argument qualifies with no praise and no engagement at all — the model is Kevin Payne's reply to Eric, "Metrics outlive principles. Once the dashboard rewards extraction, the people who remember why the company worked stop getting promoted." Engagement is not a gate on this lane: it feeds social posts, not the timeline. Beware the inverse though — a fluent sentence that restates the post's own thesis behind a "Spot on." opener is the AI-slop signature, not insight.
+
 KEEP short superlative fragments, including one-word ones — per Eric, 2026-10-03: "keep comments in the archive like 'astounding' (just that one word is enough, we dont need the rest for things like movie posters), same with 'worthy path toward building bigger' and 'this is amazing' kind of stuff." Set pull_quote to JUST the superlative fragment, not the surrounding sentence. These qualify even when the rest of the comment is a question, or when the praise is addressed to the poster rather than the book. See memory/feedback_comment_archive_fragments.md.
 
 A person whose POST was skipped can still have a keepable COMMENT — different lanes. Ed Magee's Oct 18 post was the textbook one-clause skip; his Oct 19 comment, "Eric's talk is still occupying mindspace, rent free", was a clean keep.
@@ -169,7 +191,10 @@ CRITICAL: when a candidate's relevance depends on the PARENT post, print the par
 
 For each YES write a verdict to /tmp/verdicts-<YYYY-MM-DD>.json with: identifier, kind, source_scan, text, pull_quote, permalink, posted_at, reactions, comments_count, author, parent_post — copied from the queue entry; only pull_quote needs judgment. Then:
   python3 scripts/archive-social-comments.py --apply-verdicts /tmp/verdicts-<YYYY-MM-DD>.json
-  python3 scripts/generate-comment-cards.py
+  python3 scripts/generate-comment-cards.py --all
+
+Then write the watermark so scan_catchup.py can see this job ran — it had none until 2026-10-20 and so reported as "never run" forever:
+  python3 -c "import sys,datetime; sys.path.insert(0,'scripts'); from scan_state import write_watermark; write_watermark('linkedin-comments', datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'))"
 
 Then write the watermark so scan_catchup.py can see that this job ran — it had none until 2026-10-20 and so reported as "never run" forever:
   python3 -c "import sys,datetime; sys.path.insert(0,'scripts'); from scan_state import write_watermark; write_watermark('linkedin-comments', datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'))"
@@ -200,6 +225,10 @@ Audit BOTH halves — recall and judgment. For every relevant post the productio
 
 Also audit COVERAGE, not just query shape: run `python3 scripts/scan-coverage.py --days 14` and report any day a daily source produced no archive file. These crons only fire while the REPL is idle, so a closed laptop skips a cycle silently. If a gap is real and still unbackfilled, do one catch-up pull with a derived postedLimit (scan_state.choose_posted_limit) and client-side dedup against data/archive/, then ack_gap it.
 
+Audit DEDUP too, which is the other direction of the same failure. On 2026-10-20 a Goodreads review already on the timeline since September was shipped again because the "fresh" check compared datasets instead of comparing against content/entries/. Run `npx tsx scripts/lint-entries.ts` and read its duplicate-source-url warnings; any pair it names is either a real duplicate to merge or a shared canonical URL to add to SHARED_CANONICAL_URLS in src/lib/source-url-integrity.ts.
+
+Also run `python3 scripts/scan_catchup.py` alongside the coverage check — it knows each job's cadence and reports scheduled runs that never happened, which the filename-based coverage check cannot.
+
 If a calibration change is warranted, update memory/feedback_linkedin_query_calibration.md, docs/SCAN-PROTOCOL.md and the affected prompt in docs/CRONS.md, then commit. Otherwise make no commit.
 ```
 
@@ -223,7 +252,7 @@ Per Eric 2026-10-20 ("you can add the twitter and cardono comments to the commen
 
 When an event Eric spoke at has just happened, check whether the organiser has published a post-event quote. The NACD entry carried only its pre-event agenda blurb until NACD's own account published what he actually said; swapping that in, moving the summary to past tense and dropping the "upcoming" tag is a real upgrade worth doing the morning after any major event.
 
-Reactions have NO numeric ceiling (Eric, 2026-10-14: "relax the five reactions ceiling from now on, if quality is high"). Quality is the only gate — if the single argument against shipping a reaction is that the parent already has N, ship it. Still skip the "great event!" class, which has two recurring shapes: a name-list where Eric is one of several speakers, and a post that gives him one clause before moving to a different session for its real takeaway (David Buck, 2026-10-17, is the textbook case).
+Reactions have NO numeric ceiling (Eric, 2026-10-14: "relax the five reactions ceiling from now on, if quality is high"). Quality is the only gate — if the single argument against shipping a reaction is that the parent already has N, ship it. Still skip the "great event!" class, which has two recurring shapes: a name-list where Eric is one of several speakers, and a post that gives him one clause before moving to a different session for its real takeaway (David Buck 2026-10-17, Ed Magee 2026-10-18 and Eva Zauke 2026-10-20 — one sentence among four speakers — are the textbook cases).
 
 But do NOT confuse that with a field observation. A credible practitioner reporting that the ideas are SPREADING — "more and more builders choosing public benefit missions" (Peter Ward, ex-Oura, 2026-10-17, which Eric reversed my skip on) — ships even as one paragraph inside an otherwise off-topic post with low engagement. Adoption evidence from someone with standing to see it is a category the timeline is short of, and the host post's topic is a weak signal against it. The test is whether the paragraph asserts something about the world or merely nods at the book. See memory/feedback_field_observations_ship.md.
 
@@ -249,12 +278,13 @@ Be conservative. Churn the featured set only for a clearly better candidate; a s
 
 Tiebreakers that have actually decided calls:
 - Composition. On 2026-10-16 the rail held three events, two media, two endorsements and zero podcasts, which is what sent a 15-day-old milestone out for a 38K-subscriber interview.
+- Scarcity can outrank composition. On 2026-10-20 Berkeley Newton went in as a FOURTH event, against the usual balance rule, because the tour is ending and forward-looking slots are now the scarce thing. Design Observer came out as the older of two media slots.
 - Reach, as a reason NOT to swap: a 1,570-subscriber podcast does not displace a 38,400-subscriber one just for being newer.
 - Quote strength over freshness. On 2026-10-18 Kim Scott — allowlisted heavyweight, same day — did not displace Alistair Croll, because "such an important book!" appended to a reshare is thinner than Croll giving away a dozen copies and calling it "an incredibly important reset for startups and capitalism itself".
 
 EVENT PIPELINE — answered, do not flag nightly. A targeted search on 2026-10-20 found no unscheduled dates; the tour is concluding by design and SOSV on Nov 4 is the last event. Raise it once when that slot empties, then stop. The rail will keep working as a momentum surface — the scan produced eleven standalone entries in the six days to Oct 19 — it just stops answering "where to see Eric next". See memory/project_event_pipeline_winding_down.md.
 
-HIGHLIGHTS (highlight) — GROWS, NEVER TRIMMED. Lint enforces a floor. Only ADD; never remove a highlight flag from any entry, including ones dropping out of What's New. The name must already be on HIGHLIGHT_ELIGIBLE_ENDORSERS in scripts/lint-entries.ts. Adding a new name is Eric's editorial call — ship such an entry with type_metadata.sidebar_quote instead and ask via AskUserQuestion, never in prose. The operative distinction is author tier versus CEO tier: a named author with a body of work (Steve Blank, Nir Eyal, Rory Sutherland, Raj Sisodia) is worth asking about; the CEO of a notable company is not, however on-thesis the endorsement (memory/feedback_highlights_row.md). Academic-publication credentials (a Springer monograph, a lectureship) are not the same as that body-of-work recognition, and neither is one leadership title alongside a board career — do not ask on those.
+HIGHLIGHTS (highlight) — GROWS, NEVER TRIMMED. Lint enforces a floor. Only ADD; never remove a highlight flag from any entry, including ones dropping out of What's New. The name must already be on HIGHLIGHT_ELIGIBLE_ENDORSERS in scripts/lint-entries.ts. Adding a new name is Eric's editorial call — ship such an entry with type_metadata.sidebar_quote instead and ask via AskUserQuestion, never in prose. The operative distinction is author tier versus CEO tier: a named author with a body of work (Steve Blank, Nir Eyal, Rory Sutherland, Raj Sisodia) is worth asking about; the CEO of a notable company is not, however on-thesis the endorsement (memory/feedback_highlights_row.md). Academic-publication credentials (a Springer monograph, a lectureship) are not the same as that body-of-work recognition, and neither is one leadership title alongside a board career — Michael Kobori, former Chief Sustainability Officer at Starbucks and a board director, was correctly NOT asked about on 2026-10-20.
 
 "Only ADD" does not mean add every eligible instance. Kim Scott is allowlisted and already carries three faces in the row; her 2026-10-18 one-liner was deliberately left unflagged because a fourth identical face with a weaker quote makes the row repetitive, not stronger. Declining to add is not trimming — the floor stays put.
 
@@ -268,7 +298,7 @@ Then verify, in this order:
   npx tsx scripts/lint-entries.ts
   npm run build
   grep the rendered dist/index.html to confirm the change actually reached the DOM
-Do not trust the JSON alone — twice, edits landed in a component that produces no output (memory/feedback_verify_in_dom.md). Confirm both that the new entry appears in What's New and that the Highlights carousel face count did not drop.
+Do not trust the JSON alone — twice, edits landed in a component that produces no output (memory/feedback_verify_in_dom.md). Confirm the new entry appears in the What's New block, and count `class="quote-card"` occurrences in dist/index.html against the number of entries flagged highlight; they should match (33 as of 2026-10-21) and must not drop.
 
 Then commit and push. If nothing changed, make no commit and say so. Set PATH="/opt/homebrew/opt/node@23/bin:$PATH" before npm/npx commands.
 ```
