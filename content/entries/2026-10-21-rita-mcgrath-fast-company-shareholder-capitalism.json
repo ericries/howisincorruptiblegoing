@@ -26,7 +26,8 @@
     "financial-gravity"
   ],
   "type_metadata": {
-    "audience": "Fast Company"
+    "audience": "Fast Company",
+    "featured": true
   },
   "scanner_source": "social-scan",
   "verified": false,
