@@ -195,10 +195,7 @@ For each YES write a verdict to /tmp/verdicts-<YYYY-MM-DD>.json with: identifier
   python3 scripts/archive-social-comments.py --apply-verdicts /tmp/verdicts-<YYYY-MM-DD>.json
   python3 scripts/generate-comment-cards.py --all
 
-The watermark writes itself when --apply-verdicts archives anything; there is no separate step to remember.
-
-Then write the watermark so scan_catchup.py can see that this job ran — it had none until 2026-10-20 and so reported as "never run" forever:
-  python3 -c "import sys,datetime; sys.path.insert(0,'scripts'); from scan_state import write_watermark; write_watermark('linkedin-comments', datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'))"
+The watermark writes itself when --apply-verdicts archives anything; there is no separate step. It had none at all until 2026-10-20, so scan_catchup.py reported this job as "never run" forever.
 
 Report: posts and comments scanned per source, each verified item as one line of "who + quote", the running total across all daily files, and the below-bar candidates with reasons. "No new superlatives this cycle" is fine on a quiet day.
 ```
@@ -259,7 +256,13 @@ But do NOT confuse that with a field observation. A credible practitioner report
 
 A promotional company post is often better used to ENRICH the parent entry than shipped as its own: SEEK Alabama's booth post documented that Innovate Alabama sponsored the Inc. 5000 book signing, which belonged in source_urls on the event, not on the timeline.
 
-Also: pick 2-3 unimaged older entries from the backlog and source photos. Query with BOTH image and attribution_image null. THIS SEAM IS DRY as of 2026-10-17 — YouTube thumbnails exhausted, LinkedIn archive avatars give zero matches for the old entries, Luma has no og:image, the rest is paywalled or small orgs. Say "no new image found" rather than forcing a weak one. Org and event logos go in /images/events/ — there is no /images/orgs/. Reject og:images that are grids of other people's faces.
+DEPTH CAN CARRY AN ENTRY WITHOUT PRAISE (Eric, 2026-10-19). A substantive argument that uses the book — even at 2-3 reactions — ships. The Christopher Marquis NYT op-ed on shutting down business schools has now pulled three separate people into citing Incorruptible as the answer. Michael Kobori naming it as the influence on his own governance series is the same shape, as is Mo Salah reading Red Bull's engine programme through it at zero reactions, and Logan Yonavjak's "structure constrains bad leaders without necessarily producing good ones" — a disagreement that engages rather than dismisses.
+
+Verify any named concept before attributing it to the book. Readers coin their own: "mission gravity" was Kevin Sam's inversion, not Eric's term, while "harder is easier" and "financial gravity" are his in his own words. Grep data/archive/source-texts/ and data/archive/transcripts/ before writing one into a summary.
+
+BEFORE writing any entry, grep content/entries/ for BOTH the source_url and the author. Same-type duplicates are now a lint failure so the worst case stops at the commit, but new-to-the-dataset is not new-to-the-timeline and the check should not be doing the thinking.
+
+Also: pick 2-3 unimaged older entries from the backlog and source photos. Query with BOTH image and attribution_image null. The LinkedIn avatar archive gives zero matches for the old entries and YouTube thumbnails are exhausted, but the web is NOT dry for named executives — speaker bureaus (speakabout.ai og:image, 1000x1000) and company newsrooms carry clean headshots, which is how Tatyana Mamut and Carolyn Groobey were sourced. Order to try: speaker bureau, company newsroom or about page, fellowship/award bio, personal site. Square-crop with `sips -c <h> <h>` then resize to 600. Stop when the name is ambiguous across several people — no image beats a wrong face, and "no new image found" is a fine answer. Org and event logos go in /images/events/ — there is no /images/orgs/. Reject og:images that are grids of other people's faces. AFTER attaching any image run `npm run build && python3 scripts/check-images-render.py`, which reports entry image paths reaching no HTML.
 
 Finish with backfill-quote-cards, backfill-source-texts, verify-quotes, lint, commit, push.
 ```
@@ -282,6 +285,8 @@ Tiebreakers that have actually decided calls:
 - Scarcity can outrank composition. On 2026-10-20 Berkeley Newton went in as a FOURTH event, against the usual balance rule, because the tour is ending and forward-looking slots are now the scarce thing. Design Observer came out as the older of two media slots.
 - Reach, as a reason NOT to swap: a 1,570-subscriber podcast does not displace a 38,400-subscriber one just for being newer.
 - Quote strength over freshness. On 2026-10-18 Kim Scott — allowlisted heavyweight, same day — did not displace Alistair Croll, because "such an important book!" appended to a reshare is thinner than Croll giving away a dozen copies and calling it "an incredibly important reset for startups and capitalism itself".
+
+CURRENT STATE (2026-10-21): 4 events, 1 podcast, 2 media, 1 endorsement — SOSV (11-04), Berkeley Newton (10-27), B Academics (10-23), Masters of Scale (10-22), NEW ECONOMIES podcast, Stanford eCorner and Rita McGrath's Fast Company piece, and Croll. Endorsement-light on purpose and briefly: Masters of Scale rotates out on the 23rd and B Academics on the 24th, which rebalances it without another churn. Keep this paragraph current — it is how the next run knows what it is looking at without re-deriving it.
 
 EVENT PIPELINE — answered, do not flag nightly. A targeted search on 2026-10-20 found no unscheduled dates; the tour is concluding by design and SOSV on Nov 4 is the last event. Raise it once when that slot empties, then stop. The rail will keep working as a momentum surface — the scan produced eleven standalone entries in the six days to Oct 19 — it just stops answering "where to see Eric next". See memory/project_event_pipeline_winding_down.md.
 
