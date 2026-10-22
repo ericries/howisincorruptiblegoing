@@ -1,0 +1,38 @@
+{
+  "id": "2026-10-22-giant-robots-628-incorruptible",
+  "date": "2026-10-22",
+  "type": "podcast",
+  "title": "Giant Robots #628 (thoughtbot) — Chad Pytel and Eric on why best practices can harm a company's longevity, and what employee ownership is worth",
+  "summary": "thoughtbot's long-running developer and founder podcast gives Eric a full hour, and the host turns the subject on his own company: Chad Pytel talks through thoughtbot's ownership structure alongside the book's case for employee ownership. The episode also covers why conventional best practices can work against a business's longevity and how corporate motivations shifted over the last century. thoughtbot's YouTube channel carries 34,200 subscribers.",
+  "blockquote": "Eric flips business on its head as he examines why best practices could actually be harmful to your business’ longevity, how the motivations of corporations have changed over the last century, why employee ownership is often more beneficial than you might think, and Chad talks about his own experience with thoughtbot’s ownership.",
+  "blockquote_source": "thoughtbot, Giant Robots episode 628 (show notes)",
+  "source_url": "https://podcast.thoughtbot.com/628",
+  "source_urls": [
+    {
+      "url": "https://www.youtube.com/watch?v=myeWA6ru1wU",
+      "label": "Full episode on thoughtbot's YouTube channel (58:29)"
+    },
+    {
+      "url": "https://www.linkedin.com/posts/thoughtbot-inc_weve-got-a-pretty-special-guest-on-giant-activity-7519068982532866048-KBhs",
+      "label": "thoughtbot announces the episode"
+    }
+  ],
+  "video_url": "https://www.youtube.com/watch?v=myeWA6ru1wU",
+  "image": "/images/podcasts/giant-robots.jpg",
+  "attribution": "Chad Pytel",
+  "attribution_title": "Host, Giant Robots Smashing Into Other Giant Robots · founder, thoughtbot",
+  "attribution_image": null,
+  "tags": [
+    "podcast",
+    "thoughtbot",
+    "employee-ownership",
+    "governance"
+  ],
+  "type_metadata": {
+    "audience": "thoughtbot YouTube 34,200 subscribers",
+    "episode_length": "58:29"
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-10-22T16:50:00Z"
+}
