@@ -3,30 +3,14 @@
   "date": "2026-10-23",
   "type": "media",
   "title": "Barnes & Noble names Incorruptible to The Best Books of 2026 — Business",
-  "summary": "Barnes & Noble's year-end Best Books of 2026 names Incorruptible in its Business category, and puts the cover on the category's own artwork — one of nine, alongside Open to Work, The Nerd Reich, The Forever Paycheck and 1873. It lands at the end of a year of best-of lists: Thinkers50's Best New Management Books, the Financial Times twice over for business summer reading, Adam Grant's top spring and summer read, the Masters of Scale summer list, Next Big Idea Club, Porchlight and HR Magazine. The individual verdicts have run further than any list: Steve Blank calls it the best startup or corporate book of the decade, Dan Heath the best and most important business book of the year, Don MacPherson the best he has read in twenty years, and Rebecca Henderson of Harvard her favourite business book of the last five.",
-  "blockquote": "Best start up / corporate book of the decade. Should be on everybody's reading list.",
-  "blockquote_source": "Steve Blank on X",
+  "summary": "Barnes & Noble's year-end Best Books of 2026 — the chain's flagship annual selection, the same programme whose overall Book of the Year is decided by a nationwide staff vote — names Incorruptible in its Business category. The book is one of nine titles B&N put on the category's cover artwork, alongside Ryan Roslansky and Aneesh Raman's Open to Work, Gil Duran's The Nerd Reich, Jean Chatzky's The Forever Paycheck and Liaquat Ahamed's 1873. B&N's own booksellers describe it by its argument rather than its author's reputation. This is the largest bookstore chain in the United States putting the book on the table at the front of the store, which is a different kind of reach from a review.",
+  "blockquote": "Author of The Lean Startup Eric Ries identifies the structural failures that cause corporate corruption and how to avoid these predictable pitfalls.",
+  "blockquote_source": "Barnes & Noble, The Best Business Books of 2026",
   "source_url": "https://www.barnesandnoble.com/blog/the-best-business-books-of-2026",
   "source_urls": [
     {
       "url": "https://www.barnesandnoble.com/w/incorruptible-eric-ries/1148773676",
-      "label": "B&N product page, carrying the Best Books of 2026 — Business collection"
-    },
-    {
-      "url": "https://twitter.com/sgblank/status/2073089903865315793",
-      "label": "Steve Blank — 'best start up / corporate book of the decade'"
-    },
-    {
-      "url": "https://www.linkedin.com/posts/dan-heath-aa5a63147_its-the-rare-business-book-that-inspires-activity-7452450645837713408-0rZp",
-      "label": "Dan Heath — 'the best and most important business book of the year'"
-    },
-    {
-      "url": "https://www.linkedin.com/posts/donmacpherson_incorruptible-is-the-best-business-book-activity-7495182204608729089-Mbzw",
-      "label": "Don MacPherson — 'the best business book I've read in 20 years'"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=iVrqHp33Tws",
-      "label": "Rebecca Henderson (Harvard) — 'my favorite business book of the last five years'"
+      "label": "B&N product page, which carries the Best Business Books of 2026 collection"
     }
   ],
   "video_url": null,
@@ -47,76 +31,7 @@
     "award_priority": 92,
     "featured": true,
     "image_fit": "contain",
-    "image_bg": "#3f72b3",
-    "recognitions": [
-      {
-        "curator": "Barnes & Noble",
-        "label": "The Best Books of 2026 — Business",
-        "date": "2026-10-23"
-      },
-      {
-        "curator": "Thinkers50",
-        "label": "Best New Management Books of 2026",
-        "date": "2026-05-04"
-      },
-      {
-        "curator": "Financial Times",
-        "label": "Best Business Books of Summer 2026",
-        "date": "2026-06-15"
-      },
-      {
-        "curator": "Financial Times",
-        "label": "Best Summer Books of 2026 — Business",
-        "date": "2026-08-05"
-      },
-      {
-        "curator": "Adam Grant",
-        "label": "Top Spring/Summer 2026 Read",
-        "date": "2026-05-02"
-      },
-      {
-        "curator": "Masters of Scale",
-        "label": "Summer Reading List 2026",
-        "date": "2026-06-22"
-      },
-      {
-        "curator": "Reid Hoffman",
-        "label": "Long Reids Summer Reading List 2026",
-        "date": "2026-06-17"
-      },
-      {
-        "curator": "Next Big Idea Club",
-        "label": "May 2026 Must-Read",
-        "date": "2026-05-01"
-      },
-      {
-        "curator": "HR Magazine",
-        "label": "Best of HR Books, June 2026",
-        "date": "2026-06-19"
-      }
-    ],
-    "superlatives": [
-      {
-        "who": "Steve Blank",
-        "quote": "Best start up / corporate book of the decade."
-      },
-      {
-        "who": "Dan Heath",
-        "quote": "the best and most important business book of the year"
-      },
-      {
-        "who": "Don MacPherson",
-        "quote": "the best business book I've read in 20 years"
-      },
-      {
-        "who": "Rebecca Henderson",
-        "quote": "my favorite business book of the last five years"
-      },
-      {
-        "who": "Tara Ceranic Salinas",
-        "quote": "Hands down the best business book I've ever read"
-      }
-    ]
+    "image_bg": "#3f72b3"
   },
   "scanner_source": "manual",
   "verified": false,
