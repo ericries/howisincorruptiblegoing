@@ -186,3 +186,44 @@ describe('social byline', () => {
     expect(marks.length).toBe(2);
   });
 });
+
+/**
+ * Publisher artwork must not be centre-cropped.
+ *
+ * The hero is a fixed 240px with object-fit: cover. At card width that is about
+ * 2.9:1 against a 16:9 source, which on the B&N "Best Books of 2026 · Business"
+ * graphic cut the title banner off the top and the bottom row of covers off the
+ * bottom — deleting the two things that made the image worth showing. Entries
+ * opt into letterboxing with type_metadata.image_fit = "contain".
+ */
+describe('hero image fit', () => {
+  const rule = (selector: string): string => {
+    const re = new RegExp(`${selector.replace('.', '\\.')}\\s*\\{[^}]+\\}`);
+    const m = timelineSource.match(re);
+    if (!m) throw new Error(`CSS rule for ${selector} not found in TimelineEntry.astro`);
+    return m[0];
+  };
+
+  it('offers a contain variant that preserves the whole image', () => {
+    expect(rule('.hero--contain .hero__img')).toMatch(/object-fit:\s*contain/);
+  });
+
+  it('gives the contain variant an aspect ratio instead of a fixed height', () => {
+    expect(rule('.hero--contain')).toMatch(/aspect-ratio:\s*16\s*\/\s*9/);
+    expect(rule('.hero--contain')).toMatch(/height:\s*auto/);
+  });
+
+  it('keeps cover as the default so other heroes are unaffected', () => {
+    expect(rule('.hero__img')).toMatch(/object-fit:\s*cover/);
+  });
+
+  it('is opt-in via type_metadata.image_fit, with a matte colour', () => {
+    expect(timelineSource).toMatch(/image_fit/);
+    expect(timelineSource).toMatch(/image_bg/);
+    expect(timelineSource).toMatch(/hero--contain/);
+  });
+
+  it('hides the overlay caption, since the artwork carries its own title', () => {
+    expect(timelineSource).toMatch(/\.hero--contain \.hero__overlay[\s\S]{0,80}display:\s*none/);
+  });
+});

@@ -77,6 +77,13 @@ const isFeaturedReview = isFeatured && !isEndorsement && entry.attribution && en
 // same as an unknown reviewer.
 const isAwardEndorsement = isFeatured && isEndorsement && !hasPhoto && !isReaderReview;
 const details = (entry.type_metadata as Record<string, unknown>)?.details as string | undefined;
+// Publisher artwork — a banner plus a grid of covers — is destroyed by the hero's
+// default object-fit: cover. At card width the 240px hero is roughly 2.9:1 against
+// a 16:9 source, which centre-crops the title band off the top and the bottom row
+// of covers off the bottom. Entries set type_metadata.image_fit = "contain" to be
+// letterboxed instead, with image_bg giving the matte colour.
+const imageFit = (entry.type_metadata as Record<string, unknown>)?.image_fit as string | undefined;
+const imageBg = ((entry.type_metadata as Record<string, unknown>)?.image_bg as string | undefined) || '#1a1e3a';
 
 // LinkedIn post detection
 // Which social platform the post lives on, or null. Was linkedin-only, which
@@ -303,7 +310,8 @@ const tiktokEmbed = (() => {
            button), so the card body below stays the canonical timeline view
            without duplicate content. */
         <Fragment>
-          <div class="hero">
+          <div class={`hero${imageFit === 'contain' ? ' hero--contain' : ''}`}
+               style={imageFit === 'contain' ? `background: ${imageBg};` : undefined}>
             <img class="hero__img" src={entry.image} alt={entry.title} loading="lazy" />
             <div class="hero__overlay"></div>
             <h3 class="hero__title">{entry.title}</h3>
@@ -1434,6 +1442,23 @@ const tiktokEmbed = (() => {
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+
+  /* Show the whole artwork, matted against its own background colour. */
+  .hero--contain {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .hero--contain .hero__img {
+    object-fit: contain;
+  }
+
+  /* The title band is part of the artwork here, so the overlay caption would
+     double up on it. */
+  .hero--contain .hero__overlay,
+  .hero--contain .hero__title {
+    display: none;
   }
 
   .hero__overlay {
