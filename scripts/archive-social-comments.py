@@ -404,7 +404,13 @@ def _apply_verdicts_mode(verdicts_path: Path) -> int:
             skipped_seen += 1
             continue
         substantive = _substantive_text(text)
-        if len(substantive) < 12:
+        # A verdict has already been through judgment in the cron turn, so this
+        # floor's only remaining job is to reject an empty or emoji-only record.
+        # It was 12 characters, which silently dropped "Great book!" (11) on
+        # 2026-10-23 after it had been judged a keeper — Eric: "please include
+        # all two-word superlatives for use in future social media posters.
+        # 'excellent book!!' definitely counts."
+        if len(substantive) < 4:
             skipped_short += 1
             continue
         quote = (v.get("pull_quote") or "").strip() or _sentence_span_containing(text, "")[:360]

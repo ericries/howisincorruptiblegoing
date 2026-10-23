@@ -252,3 +252,52 @@ def test_the_watermark_is_not_written_when_nothing_was_applied(tmp_path, monkeyp
                                "pull_quote": "x", "author": {}}]))
     asc._apply_verdicts_mode(vp)
     assert written == {}
+
+
+# --- two-word superlatives ---------------------------------------------------------
+
+def test_a_two_word_superlative_is_archived(tmp_path, monkeypatch):
+    """Eric, 2026-10-23: "please include all two-word superlatives for use in
+    future social media posters. 'excellent book!!' definitely counts."
+
+    The apply-verdicts path carried a 12-character floor, so "Great book!" (11)
+    was judged a keeper and then silently dropped by the length gate on
+    2026-10-23. A verdict has already been through judgment; the floor's only
+    remaining job is to reject an empty or emoji-only record.
+    """
+    monkeypatch.setattr(asc, "ARCHIVE_DIR", tmp_path)
+    monkeypatch.setattr(asc, "LLM_QUEUE_PATH", tmp_path / ".llm-queue.json")
+    monkeypatch.setattr(asc, "_load_seen_identifiers", lambda: set())
+    monkeypatch.setattr(asc, "_load_known_source_urls", lambda: set())
+    monkeypatch.setattr(asc, "_load_known_author_names", lambda: set())
+    monkeypatch.setattr(asc, "write_watermark", lambda *a, **k: None)
+
+    vp = tmp_path / "v.json"
+    vp.write_text(json.dumps([
+        {"identifier": "c:1", "kind": "comment", "text": "Great book!",
+         "pull_quote": "Great book!", "author": {"name": "A"}},
+        {"identifier": "c:2", "kind": "comment", "text": "excellent book!!",
+         "pull_quote": "excellent book!!", "author": {"name": "B"}},
+        {"identifier": "c:3", "kind": "comment", "text": "astounding",
+         "pull_quote": "astounding", "author": {"name": "C"}},
+    ]))
+    asc._apply_verdicts_mode(vp)
+    written = json.loads(next(tmp_path.glob("2*.json")).read_text())
+    assert {r["pull_quote"] for r in written} == {"Great book!", "excellent book!!", "astounding"}
+
+
+def test_an_emoji_only_comment_is_still_dropped(tmp_path, monkeypatch):
+    # The floor still has a job: 👏 on its own is not a superlative.
+    monkeypatch.setattr(asc, "ARCHIVE_DIR", tmp_path)
+    monkeypatch.setattr(asc, "LLM_QUEUE_PATH", tmp_path / ".llm-queue.json")
+    monkeypatch.setattr(asc, "_load_seen_identifiers", lambda: set())
+    monkeypatch.setattr(asc, "_load_known_source_urls", lambda: set())
+    monkeypatch.setattr(asc, "_load_known_author_names", lambda: set())
+    monkeypatch.setattr(asc, "write_watermark", lambda *a, **k: None)
+    vp = tmp_path / "v.json"
+    vp.write_text(json.dumps([{"identifier": "c:9", "kind": "comment",
+                               "text": " 👏 ", "pull_quote": "👏", "author": {}}]))
+    asc._apply_verdicts_mode(vp)
+    files = list(tmp_path.glob("2*.json"))
+    written = json.loads(files[0].read_text()) if files else []
+    assert written == []

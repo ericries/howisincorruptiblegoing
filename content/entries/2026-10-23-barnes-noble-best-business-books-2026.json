@@ -2,8 +2,8 @@
   "id": "2026-10-23-barnes-noble-best-business-books-2026",
   "date": "2026-10-23",
   "type": "media",
-  "title": "Barnes & Noble names Incorruptible one of the Best Business Books of 2026",
-  "summary": "The largest bookstore chain in the United States puts Incorruptible on its annual business list \u2014 31 titles, chosen by B&N's own editorial team, alongside Unreasonable Hospitality, Planet Money and The Nerd Reich. B&N's booksellers describe the book by its argument rather than its author's reputation: structural failures that cause corporate corruption, and how to avoid them. Retail curation of this kind reaches the shelf and the table rather than the trade press, which is a different kind of reach from a review.",
+  "title": "Barnes & Noble names Incorruptible to The Best Books of 2026 — Business",
+  "summary": "Barnes & Noble's year-end Best Books of 2026 — the chain's flagship annual selection, the same programme whose overall Book of the Year is decided by a nationwide staff vote — names Incorruptible in its Business category. The book is one of nine titles B&N put on the category's cover artwork, alongside Ryan Roslansky and Aneesh Raman's Open to Work, Gil Duran's The Nerd Reich, Jean Chatzky's The Forever Paycheck and Liaquat Ahamed's 1873. B&N's own booksellers describe it by its argument rather than its author's reputation. This is the largest bookstore chain in the United States putting the book on the table at the front of the store, which is a different kind of reach from a review.",
   "blockquote": "Author of The Lean Startup Eric Ries identifies the structural failures that cause corporate corruption and how to avoid these predictable pitfalls.",
   "blockquote_source": "Barnes & Noble, The Best Business Books of 2026",
   "source_url": "https://www.barnesandnoble.com/blog/the-best-business-books-of-2026",
@@ -14,9 +14,9 @@
     }
   ],
   "video_url": null,
-  "image": "/images/cards/2026-10-23-barnes-noble-best-business-books-2026.png",
+  "image": "/images/media/bn-best-books-2026-business.jpg",
   "attribution": "Barnes & Noble",
-  "attribution_title": "The Best Business Books of 2026 \u2014 the chain's annual editorial list, 31 titles",
+  "attribution_title": "The Best Books of 2026 · Business — the chain's year-end selection",
   "attribution_image": null,
   "tags": [
     "media",
@@ -27,8 +27,8 @@
   ],
   "type_metadata": {
     "award_curator": "Barnes & Noble",
-    "award_label": "The Best Business Books of 2026",
-    "award_priority": 85,
+    "award_label": "The Best Books of 2026 — Business",
+    "award_priority": 92,
     "featured": true
   },
   "scanner_source": "manual",
