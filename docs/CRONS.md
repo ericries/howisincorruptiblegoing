@@ -293,9 +293,9 @@ Tiebreakers that have actually decided calls:
 - Reach, as a reason NOT to swap: a 1,570-subscriber podcast does not displace a 38,400-subscriber one just for being newer.
 - Quote strength over freshness. On 2026-10-18 Kim Scott — allowlisted heavyweight, same day — did not displace Alistair Croll, because "such an important book!" appended to a reshare is thinner than Croll giving away a dozen copies and calling it "an incredibly important reset for startups and capitalism itself".
 
-CURRENT STATE (2026-10-22, unchanged from the 21st): 4 events, 1 podcast, 2 media, 1 endorsement — SOSV (11-04), Berkeley Newton (10-27), B Academics (10-23), Masters of Scale (10-22), NEW ECONOMIES podcast, Stanford eCorner and Rita McGrath's Fast Company piece, and Croll.
+CURRENT STATE (2026-10-23, after the B&N swap): 2 events, 3 media, 1 podcast, 1 endorsement — SOSV (11-04), Berkeley Newton (10-27), Barnes & Noble's Best Business Books of 2026 (10-23), B Academics (10-23), Rita McGrath's Fast Company piece, NEW ECONOMIES podcast, Stanford eCorner, and Croll. Masters of Scale concluded on the 22nd and was rotated out mid-day on the 23rd to make room for the B&N list at Eric's request. B Academics ran today and frees a slot tomorrow.
 
-QUEUED FOR THE NEXT FREE SLOT: Giant Robots #628 (thoughtbot, 2026-10-22). Deliberately not swapped in on the 22nd — Masters of Scale concluded that day and rotates out on the 23rd, freeing a slot without churning a second one, and at 34,200 subscribers it does not clear NEW ECONOMIES at 38,400 on the reach test. Put it in when Masters of Scale goes. B Academics frees another on the 24th; expect the rail to tilt toward media and reviews as the tour ends.
+QUEUED FOR THE NEXT FREE SLOT: Giant Robots #628 (thoughtbot, 2026-10-22) — it was queued for the Masters of Scale slot, which the B&N list took instead. Put it in when B Academics rotates out on the 24th.
 
 Keep these two paragraphs current — they are how the next run knows what it is looking at, and what the last run decided, without re-deriving either.
 
