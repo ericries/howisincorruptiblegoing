@@ -286,7 +286,11 @@ Tiebreakers that have actually decided calls:
 - Reach, as a reason NOT to swap: a 1,570-subscriber podcast does not displace a 38,400-subscriber one just for being newer.
 - Quote strength over freshness. On 2026-10-18 Kim Scott — allowlisted heavyweight, same day — did not displace Alistair Croll, because "such an important book!" appended to a reshare is thinner than Croll giving away a dozen copies and calling it "an incredibly important reset for startups and capitalism itself".
 
-CURRENT STATE (2026-10-21): 4 events, 1 podcast, 2 media, 1 endorsement — SOSV (11-04), Berkeley Newton (10-27), B Academics (10-23), Masters of Scale (10-22), NEW ECONOMIES podcast, Stanford eCorner and Rita McGrath's Fast Company piece, and Croll. Endorsement-light on purpose and briefly: Masters of Scale rotates out on the 23rd and B Academics on the 24th, which rebalances it without another churn. Keep this paragraph current — it is how the next run knows what it is looking at without re-deriving it.
+CURRENT STATE (2026-10-22, unchanged from the 21st): 4 events, 1 podcast, 2 media, 1 endorsement — SOSV (11-04), Berkeley Newton (10-27), B Academics (10-23), Masters of Scale (10-22), NEW ECONOMIES podcast, Stanford eCorner and Rita McGrath's Fast Company piece, and Croll.
+
+QUEUED FOR THE NEXT FREE SLOT: Giant Robots #628 (thoughtbot, 2026-10-22). Deliberately not swapped in on the 22nd — Masters of Scale concluded that day and rotates out on the 23rd, freeing a slot without churning a second one, and at 34,200 subscribers it does not clear NEW ECONOMIES at 38,400 on the reach test. Put it in when Masters of Scale goes. B Academics frees another on the 24th; expect the rail to tilt toward media and reviews as the tour ends.
+
+Keep these two paragraphs current — they are how the next run knows what it is looking at, and what the last run decided, without re-deriving either.
 
 EVENT PIPELINE — answered, do not flag nightly. A targeted search on 2026-10-20 found no unscheduled dates; the tour is concluding by design and SOSV on Nov 4 is the last event. Raise it once when that slot empties, then stop. The rail will keep working as a momentum surface — the scan produced eleven standalone entries in the six days to Oct 19 — it just stops answering "where to see Eric next". See memory/project_event_pipeline_winding_down.md.
 
