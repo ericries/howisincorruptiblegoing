@@ -3,7 +3,7 @@
   "date": "2026-10-22",
   "type": "event",
   "title": "Masters of Scale Summit (Presidio Theatre, SF) — Eric on 'a place for bold vision and the conviction to do what's right'",
-  "summary": "Masters of Scale — Reid Hoffman's flagship 800-attendee, invite-only summit — books Eric for Thursday October 22 at the Presidio Theatre in San Francisco (the summit runs Oct 20–22). He joins Reid Hoffman, Eric Schmidt, Kara Swisher, Reed Hastings, Van Jones, Maria Ressa (Nobel Peace Laureate), Meredith Whittaker (Signal), Matthew Prince (Cloudflare), Dr. Toyin Ajayi (Cityblock), Amjad Masad (Replit), Anjali Sud (Tubi), Baratunde Thurston, and Ariel Ekblaw (Aurelia Institute). Masters of Scale's own announcement calls Eric out as 'Eric Ries, Author, Incorruptible.'",
+  "summary": "Masters of Scale — Reid Hoffman's flagship 800-attendee, invite-only summit — closed its October 20–22 run at the Presidio Theatre with Eric in conversation with Krista Tippett of On Being. He shared the programme with Reid Hoffman, Eric Schmidt, Kara Swisher, Reed Hastings, Van Jones, Maria Ressa (Nobel Peace Laureate), Meredith Whittaker (Signal), Matthew Prince (Cloudflare), Dr. Toyin Ajayi (Cityblock), Amjad Masad (Replit), Anjali Sud (Tubi), Baratunde Thurston, and Ariel Ekblaw (Aurelia Institute). Madeline McIntosh — co-founder of Authors Equity and former chief executive of Penguin Random House US — called the Ries–Tippett conversation her personal highlight of the conference.",
   "blockquote": "The Masters of Scale Summit stage is a place for bold vision and the conviction to do what's right.\n\nThis October, these leaders will show us what it means to build and fight for the future we all want to see. \n\n❇️ Eric Schmidt, Former Google\n❇️ Maria Ressa, Nobel Prize Laureate\n❇️ Baratunde Thurston, Life With Machines\n❇️ Eric Ries, Author, Incorruptible\n❇️ Ariel Ekblaw, Aurelia Institute\n\nAlongside a lineup of the most iconic names in business.",
   "blockquote_source": "Masters of Scale on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/masters-of-scale_the-masters-of-scale-summit-stage-is-a-place-activity-7496290472164737025-cN3H",
@@ -15,6 +15,10 @@
     {
       "url": "https://www.summit.mastersofscale.com/speakers",
       "label": "Full speaker lineup"
+    },
+    {
+      "url": "https://www.linkedin.com/posts/madelinemcintosh_excellent-masters-of-scale-conference-with-activity-7519187117827330048-Q89X",
+      "label": "Madeline McIntosh (Authors Equity; ex-CEO, Penguin Random House US) names the Ries–Tippett conversation her highlight"
     }
   ],
   "video_url": null,
@@ -24,7 +28,6 @@
   "attribution_image": null,
   "tags": [
     "event",
-    "upcoming",
     "in-person",
     "conference",
     "masters-of-scale",
