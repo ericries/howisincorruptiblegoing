@@ -12,8 +12,14 @@
   "image": null,
   "attribution": "Garry Tan",
   "attribution_title": "President & CEO, Y Combinator",
-  "attribution_image": null,
-  "tags": ["social", "twitter", "garry-tan", "yc", "ai-tool"],
+  "attribution_image": "/images/people/garry-tan.jpg",
+  "tags": [
+    "social",
+    "twitter",
+    "garry-tan",
+    "yc",
+    "ai-tool"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,
