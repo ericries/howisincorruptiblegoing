@@ -13,7 +13,12 @@
   "attribution": "Eric Ries",
   "attribution_title": "LinkedIn Pulse, June 1, 2026",
   "attribution_image": null,
-  "tags": ["media", "linkedin", "pulse", "ai"],
+  "tags": [
+    "media",
+    "linkedin",
+    "pulse",
+    "ai"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

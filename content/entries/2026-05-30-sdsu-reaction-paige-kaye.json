@@ -13,8 +13,15 @@
   "image": null,
   "attribution": "Paige Kaye",
   "attribution_title": "Founder & CEO, PaigeKares",
-  "attribution_image": null,
-  "tags": ["reaction", "linkedin", "sdsu", "san-diego", "sdac", "book-signing"],
+  "attribution_image": "/images/people/paige-kaye.jpg",
+  "tags": [
+    "reaction",
+    "linkedin",
+    "sdsu",
+    "san-diego",
+    "sdac",
+    "book-signing"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

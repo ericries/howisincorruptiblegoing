@@ -7,7 +7,12 @@
   "blockquote": "I’m launching Institutions & Individuals, a new newsletter exploring how institutions shape, and are shaped by, human judgment.\n  \nThe first essay begins a four-part series prompted by Eric Ries’s Incorruptible and asks a question of institutional continuity:\nIf corporate purpose is meant to endure, what should protect it?",
   "blockquote_source": "Mohammed A. AlGhamdi on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/mohammedahgh_im-launching-institutions-individuals-activity-7509540056395796481-Ym9y",
-  "source_urls": null,
+  "source_urls": [
+    {
+      "url": "https://www.linkedin.com/posts/mohammedahgh_independent-judgment-requires-directors-to-activity-7519679553259270144-YHgD",
+      "label": "Essay 3 of the series (2026-10-24) — director judgment within the Saudi governance context"
+    }
+  ],
   "video_url": null,
   "image": "/images/cards/2026-09-26-mohammed-alghamdi-institutions-individuals-newsletter.png",
   "attribution": "Mohammed A. AlGhamdi",
