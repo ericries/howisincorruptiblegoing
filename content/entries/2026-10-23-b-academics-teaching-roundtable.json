@@ -35,9 +35,7 @@
     "teaching-roundtable",
     "education"
   ],
-  "type_metadata": {
-    "featured": true
-  },
+  "type_metadata": {},
   "scanner_source": "manual",
   "verified": false,
   "created_at": "2026-08-21T16:36:00Z",

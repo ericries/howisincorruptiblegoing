@@ -21,7 +21,8 @@
     "steward-ownership"
   ],
   "type_metadata": {
-    "sidebar_quote": "Jean-Philippe Courtois, former President and EVP of Microsoft: 'missions rarely die from bad intentions. They die from unprotected structures.'"
+    "sidebar_quote": "Jean-Philippe Courtois, former President and EVP of Microsoft: 'missions rarely die from bad intentions. They die from unprotected structures.'",
+    "featured": true
   },
   "scanner_source": "social-scan",
   "verified": false,
