@@ -20,6 +20,11 @@ export const SHARED_CANONICAL_URLS: readonly string[] = [
   'https://www.incorruptible.co',
   'https://www.amazon.com/Incorruptible-Good-Companies-Great-Stay/product-reviews/B0FWZZBPZB',
   'https://www.amazon.com/Incorruptible-Good-Companies-Great-Stay/dp/B0FWZZBPZB',
+  // The Eric Ries Show episode with Reid Hoffman. Legitimately shared: one entry
+  // is the episode itself (type=podcast), the other is a standout line from it
+  // (type=social), with different blockquotes. Resolved in the 2026-10-25 recall
+  // audit — a genuine shared canonical page, not a duplicate.
+  'https://www.youtube.com/watch?v=amMWk-Ky-EE',
 ];
 
 const PLACEHOLDER_TOKENS = [
