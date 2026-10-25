@@ -8,14 +8,22 @@
   "blockquote_source": "Roy E. Bahat on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/eries_incorruptible-a-conversation-with-eric-ries-activity-7455673256243515392-iKw3",
   "source_urls": [
-    {"url": "https://luma.com/3fapzmsn", "label": "Luma registration"}
+    {
+      "url": "https://luma.com/3fapzmsn",
+      "label": "Luma registration"
+    }
   ],
   "video_url": null,
   "image": null,
   "attribution": "Roy E. Bahat",
   "attribution_title": "Head of Bloomberg Beta",
-  "attribution_image": null,
-  "tags": ["event", "virtual", "venture-capital", "bloomberg-beta"],
+  "attribution_image": "/images/people/roy-bahat.jpg",
+  "tags": [
+    "event",
+    "virtual",
+    "venture-capital",
+    "bloomberg-beta"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": true,
