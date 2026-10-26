@@ -164,6 +164,8 @@ For each new review not already in content/entries/:
 - type=review, scanner_source="social-scan" (the schema permits only [web-search, social-scan, manual, rss] — "goodreads-scan" fails lint).
 - date = the review's own createdAt, not today.
 - verified:false, because Goodreads is JS-rendered and verify-quotes cannot see it.
+- A FACE IS AVAILABLE for every reviewer: `creator.imageUrlSquare` is a 200px crop, but stripping the size suffix from the filename gives the original — `.../users/<id>i/<user>.jpg` returned 900x900 on 2026-10-26 where the square variant was 200. Crop and resize to 600 as usual, and look at it.
+- `creator.isAuthor` tells you they have published something but NOT what; the `contributor.works.totalCount` is just a number. Fetch the Goodreads profile to find the title rather than inventing a credential — that is how Joshua Pritikin's Religion Unburdened by Belief was confirmed.
 - Title format: do NOT prefix with "Goodreads reviewer X —". The title is just the strongest pull quote in single quotes, capped at 200 characters; explain who the reviewer is in the summary and attribution fields. Lint hard-fails over 200, so count it.
 - Sidebar flags per memory/feedback_sidebar_flags.md. Note that lint forbids sidebar_quote and highlight on type=reaction entries, and HIGHLIGHT_ELIGIBLE_ENDORSERS gates the highlight flag — a Goodreads reviewer will almost never be on it. type=review has never been featured on the What's New rail either.
 

@@ -2,16 +2,21 @@
   "id": "2026-10-26-carol-van-den-hende-data-to-back-that",
   "date": "2026-10-26",
   "type": "endorsement",
-  "title": "Carol Van Den Hende, Mars Inc's Global AI Responsibility Chair \u2014 'This book is for any leader who's felt that purpose-driven businesses create more societal value and would like the data to back that'",
-  "summary": "Van Den Hende chairs AI responsibility globally at Mars, sits on boards, and writes fiction on the side. Marking the Barnes & Noble selection, she names the audience precisely: leaders who already believe purpose-driven companies produce more societal value and want evidence rather than conviction. Her verdict on the argument is that it is clear, compelling and actionable.",
-  "blockquote": "This book is for any leader who\u2019s felt that purpose-driven businesses create more societal value and would like the data to back that. The thesis is clear, compelling, and actionable.",
+  "title": "Carol Van Den Hende, Mars Inc's Global AI Responsibility Chair — 'This book is for any leader who's felt that purpose-driven businesses create more societal value and would like the data to back that'",
+  "summary": "Van Den Hende chairs AI responsibility globally at Mars, sits on boards, and writes fiction on the side. Marking the Barnes & Noble selection, she names the audience precisely: leaders who already believe purpose-driven companies produce more societal value and want evidence rather than conviction. Her verdict on the argument is that it is clear, compelling and actionable. In a fuller Goodreads review the same day she adds a disclosure: she met Eric while preparing his talk for a leadership summit at her company.",
+  "blockquote": "This book is for any leader who’s felt that purpose-driven businesses create more societal value and would like the data to back that. The thesis is clear, compelling, and actionable.",
   "blockquote_source": "Carol Van Den Hende on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/carolvandenhende_grateful-that-barnes-noble-has-named-incorruptible-activity-7520305758748545024-QSA3",
-  "source_urls": null,
+  "source_urls": [
+    {
+      "url": "https://www.goodreads.com/review/show/9054146288",
+      "label": "Her fuller Goodreads review the same day — 'What an important thesis, told with care and backed by data', with the disclosure that she met Eric preparing his talk for a leadership summit at her company"
+    }
+  ],
   "video_url": null,
   "image": "/images/cards/2026-10-26-carol-van-den-hende-data-to-back-that.png",
   "attribution": "Carol Van Den Hende",
-  "attribution_title": "Global AI Responsibility Chair, Mars Inc \u00b7 board trustee \u00b7 author",
+  "attribution_title": "Global AI Responsibility Chair, Mars Inc · board trustee · author",
   "attribution_image": "/images/people/carol-van-den-hende.jpg",
   "tags": [
     "endorsement",
