@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-27-itamar-gilad-interview-cost-of-a-wrong-turn",
+  "date": "2026-10-27",
+  "type": "media",
+  "title": "Itamar Gilad interviews Eric on AI and founder mode — 'the total cost of taking a wrong turn in terms of product, strategy, design or value proposition goes way up'",
+  "summary": "Gilad coaches product strategy, created the GIST framework and was a product manager at Google. His Q&A, 'Interview with Eric Ries: AI, Founder Mode, and Why Good Companies Go Bad', takes the Lean Startup fifteen years on and turns it toward AI: cheaper iteration does not make direction cheaper, it makes being wrong more expensive. Eric also grants the diagnosis that professional managers are captured by a gravitational field of best practices, and observes that executives are fired for it far less often than they should be. Gilad's own verdict is that the book challenges yet more corporate best practices.",
+  "blockquote": "As the cost of building individual iterations or features goes down, the total cost of taking a wrong turn in terms of product, strategy, design or value proposition goes way up.",
+  "blockquote_source": "Eric Ries, interviewed by Itamar Gilad",
+  "source_url": "https://itamargilad.com/eric-ries-incorruptible/",
+  "source_urls": [
+    {
+      "url": "https://x.com/ItamarGilad/status/2115051657482416148",
+      "label": "Gilad sharing it on X (2026-10-27) — 'The answers I got are anything but conventional wisdom'"
+    }
+  ],
+  "video_url": null,
+  "image": null,
+  "attribution": "Itamar Gilad",
+  "attribution_title": "Product strategy coach and author · creator of the GIST framework · ex-Google product manager",
+  "attribution_image": "/images/people/itamar-gilad.jpg",
+  "tags": [
+    "media",
+    "interview",
+    "ai",
+    "founder-mode",
+    "best-practices"
+  ],
+  "type_metadata": {
+    "audience": "itamargilad.com; 5,304 followers on X"
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-10-27T17:00:00Z"
+}
