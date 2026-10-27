@@ -192,6 +192,14 @@ Recurring traps, in short:
 - **Check the true publication date.** A YouTube upload can post an episode
   months after it aired; check the RSS feed or Apple Podcasts.
 - **No critical or mixed reviews.** The site tracks momentum.
+  The boundary case, settled by Eric 2026-10-27: M S Sriram (professor, IIM Bangalore) reviewed the book in
+  Business Standard, applied the governance-fortress framework to the Tata Sons crisis at length, called the
+  chapters on Ikea, Patagonia and Mondragon "the most valuable", and closed approvingly — but wrote that "the
+  problem with the book is the way it opens with contradictory outlandish claims". Eric: "nah let's skip it".
+  The distinction against Joshua Pritikin, shipped the day before on a disagreement: Pritikin called the
+  diagnosis good and built UPWARD from it; Sriram disputes the central empirical claim. Extending ships,
+  disputing the premise does not — however serious the outlet. Do not re-evaluate this piece; it is archived
+  at `data/archive/web-raw/2026-10-27-business-standard.json` and the answer is no.
 
 ### @ericriesactual TikTok — blocking rule
 
