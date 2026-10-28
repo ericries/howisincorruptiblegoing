@@ -35,6 +35,22 @@ if [ -n "$CHANGED_ENTRIES" ]; then
     exit 1
   fi
 
+  # A NEW entry must arrive with its evidence. 708 legacy entries have no
+  # captured source text and nothing can ever verify them; that gap exists
+  # because the capture was optional. Applies to added files only, so editing
+  # a legacy entry is not blocked by its own history.
+  ADDED_ENTRIES=$(git diff --cached --name-only --diff-filter=A -- 'content/entries/*.json')
+  if [ -n "$ADDED_ENTRIES" ]; then
+    python3 scripts/quote_integrity.py --require-capture --quiet $ADDED_ENTRIES
+    CAP_EXIT=$?
+    if [ $CAP_EXIT -ne 0 ]; then
+      echo ""
+      echo "⚠️  A new entry has a blockquote nothing can verify."
+      echo "   To skip this check: git commit --no-verify"
+      exit 1
+    fi
+  fi
+
   # Then the network check, for the changed entries only.
   echo "Verifying quotes against live source pages..."
   npx tsx scripts/verify-quotes.ts $CHANGED_ENTRIES

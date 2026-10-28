@@ -128,13 +128,25 @@ no capture to check against.
 
 ## Open items
 
-**708 entries have no captured source text**, so nothing can verify them
-offline, and 62% of all entries cite sources no fetch can read. The gap is at
-capture time, not check time — the fix is to save the source text for every
-entry at ship time, and for podcast and video entries to capture the page copy
-as well as the transcript, since the blockquote frequently comes from the
-former. `scripts/quote_integrity.py --min-checked` exists to ratchet the floor
-upward as that backfill happens. **Open.**
+**The forward gap is closed.** `quote_integrity.py --require-capture` runs in
+the pre-commit hook against newly ADDED entries: a new entry carrying a
+blockquote with no captured source text fails the commit. Saving the source
+text was already a standing instruction (`memory/project_source_text_archive`);
+it is now a mechanism, which is the distinction the 2026-10-21 postmortem was
+about. Waivers live in `data/no-capture-waivers.json` and require a stated
+reason — deliberately a committed file rather than a field on the entry,
+because a field flip is exactly what `verified: false` was. The gate is scoped
+to added files so that editing a legacy entry is not blocked by its own
+history.
+
+**The backlog remains open: 708 existing entries have no capture**, and 62% of
+all entries cite sources no fetch can read, so for most of them the text cannot
+now be recovered from the source at all. Where it can, backfilling is worth
+doing opportunistically — when an entry is next touched, or when a scan
+re-encounters the same post. For podcast and video entries, capture the page
+copy as well as the transcript: the blockquote frequently comes from the show
+notes, which is what produced all 69 `MEDIUM_MISMATCH` results.
+`--min-checked` exists to ratchet a floor upward as that happens. **Open.**
 
 The `verified` field is now vestigial: required by both validators and the TS
 type, written only as `false`, read by nothing. Removing it touches 871 entries

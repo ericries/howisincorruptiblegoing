@@ -195,6 +195,45 @@ def check_entry(entry: dict, archive_dir: Path = SOURCE_TEXTS) -> Result:
     return Result(entry_id, verdict, quote, entry.get("source_url", ""))
 
 
+# Entries allowed to ship with no captured source text, each with a stated
+# reason. Deliberately a committed file rather than a field on the entry: a
+# field flip is what `verified: false` was, and it ended up on 725 entries
+# because an error message named it. A waiver here is reviewable and countable.
+WAIVERS = REPO / "data" / "no-capture-waivers.json"
+
+
+def load_waivers(path: Path = WAIVERS) -> dict:
+    try:
+        return json.loads(Path(path).read_text())
+    except (json.JSONDecodeError, OSError):
+        return {}
+
+
+def missing_capture(entries: list[dict], archive_dir: Path = SOURCE_TEXTS,
+                    allowed: dict | None = None) -> list[str]:
+    """Entry ids that carry a blockquote but no evidence anyone could check.
+
+    708 entries are in this state, every one of them shippable because the
+    capture was optional. Fixing the checker cannot help an entry whose source
+    text was never saved, so the requirement belongs at ship time.
+
+    A waiver needs a non-empty reason. An empty one is a field flip wearing a
+    file's clothes.
+    """
+    allowed = load_waivers() if allowed is None else allowed
+    out = []
+    for e in entries:
+        eid = e.get("id", "")
+        if not (e.get("blockquote") or "").strip():
+            continue
+        if str(allowed.get(eid, "")).strip():
+            continue
+        if load_source_text(eid, archive_dir):
+            continue
+        out.append(eid)
+    return out
+
+
 def coverage(verdicts: list[Verdict]) -> dict:
     """How much of the corpus this run actually checked.
 
@@ -233,6 +272,8 @@ def _main() -> int:
     ap.add_argument("--min-checked", type=int, default=0,
                     help="fail if fewer than N entries could be checked")
     ap.add_argument("--quiet", action="store_true", help="only show problems")
+    ap.add_argument("--require-capture", action="store_true",
+                    help="fail if a listed entry has no captured source text")
     args = ap.parse_args()
 
     results = [check_entry(e) for e in _load_entries(args.files)]
@@ -251,6 +292,20 @@ def _main() -> int:
           f"({c['fraction']:.1%}) against captured source text")
     print(f"  exact {c['exact']}  normalised {c['normalised']}  "
           f"failures {c['failures']}  no capture {c['unverifiable']}")
+
+    if args.require_capture:
+        entries = _load_entries(args.files)
+        gaps = missing_capture(entries)
+        if gaps:
+            print(f"\nFAIL: {len(gaps)} entry(ies) have a blockquote but no captured "
+                  f"source text, so nothing can ever verify them:", file=sys.stderr)
+            for g in gaps:
+                print(f"  {g}", file=sys.stderr)
+            print("\nSave the full source to data/archive/source-texts/<id>.json "
+                  "as {\"entry_id\", \"source_url\", \"platform\", \"full_text\"}.\n"
+                  "If the source genuinely cannot be captured, add the id to "
+                  "data/no-capture-waivers.json WITH A REASON.", file=sys.stderr)
+            return 1
 
     if c["checked"] < args.min_checked:
         print(f"\nFAIL: only {c['checked']} entries could be checked, "

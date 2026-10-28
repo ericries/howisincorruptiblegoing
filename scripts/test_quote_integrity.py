@@ -279,3 +279,57 @@ def test_a_non_transcript_capture_still_refutes(tmp_path):
 def test_medium_mismatch_is_unverifiable_not_checked():
     c = coverage([Verdict.MEDIUM_MISMATCH, Verdict.EXACT])
     assert c["checked"] == 1 and c["unverifiable"] == 1 and c["failures"] == 0
+
+
+# --- a new entry must arrive with evidence -------------------------------------------
+
+def test_require_capture_rejects_an_entry_with_no_source_text(tmp_path):
+    """The open item: 708 entries nothing can ever check.
+
+    Every one was shippable because the capture was optional. Fixing the
+    checker does nothing for an entry whose evidence was never saved — the
+    gap is at capture time, so the gate belongs there.
+    """
+    from quote_integrity import missing_capture
+
+    entry = {"id": "new-one", "blockquote": "something quotable"}
+    assert missing_capture([entry], archive_dir=tmp_path, allowed={}) == ["new-one"]
+
+
+def test_require_capture_passes_when_the_text_was_saved(tmp_path):
+    from quote_integrity import missing_capture
+
+    (tmp_path / "new-one.json").write_text(json.dumps(
+        {"entry_id": "new-one", "full_text": "something quotable was said"}))
+    entry = {"id": "new-one", "blockquote": "something quotable"}
+    assert missing_capture([entry], archive_dir=tmp_path, allowed={}) == []
+
+
+def test_require_capture_honours_an_explicit_justified_waiver(tmp_path):
+    """An opt-out must be explicit, tracked and reasoned — never a field flip.
+
+    `verified: false` was a field flip advertised in an error message, and it
+    ended up on 725 entries. A waiver here costs a line in a committed file
+    with a reason attached, which is reviewable and countable.
+    """
+    from quote_integrity import missing_capture
+
+    entry = {"id": "paywalled", "blockquote": "q"}
+    allowed = {"paywalled": "FT paywall; quote transcribed from print edition"}
+    assert missing_capture([entry], archive_dir=tmp_path, allowed=allowed) == []
+
+
+def test_a_waiver_with_no_reason_does_not_count(tmp_path):
+    """An empty reason is a field flip wearing a file's clothes."""
+    from quote_integrity import missing_capture
+
+    entry = {"id": "lazy", "blockquote": "q"}
+    assert missing_capture([entry], archive_dir=tmp_path,
+                           allowed={"lazy": ""}) == ["lazy"]
+
+
+def test_entries_without_a_blockquote_need_no_capture(tmp_path):
+    from quote_integrity import missing_capture
+
+    assert missing_capture([{"id": "no-quote", "blockquote": ""}],
+                           archive_dir=tmp_path, allowed={}) == []
