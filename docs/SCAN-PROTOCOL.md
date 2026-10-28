@@ -181,6 +181,18 @@ authority:
 Recurring traps, in short:
 
 - **An @-tag is not a reference.** The body must engage with the book.
+- **Praise aimed at ERIC counts, not only praise aimed at the book** (Eric, 2026-10-28:
+  "it's ok to start expanding our praise criteria to include people who are praising eric
+  directly (so long as it's incorruptible-related) even if they only mention the book as one
+  component of that praise"). The test is whether the praise is Incorruptible-related, not
+  whether the book is its subject. Baratunde Thurston's Masters of Scale write-up is the
+  model: he names the book once, in passing, and the rest is about Eric owning his role in
+  what the first book helped create. That ships. This does NOT reopen the bare @-tag, the
+  name-list recap, or a Lean Startup story with no Incorruptible content — the connection to
+  this book still has to be there, it just no longer has to be the whole post.
+- **Quote the whole passage about Eric, not a tidy fragment of it** (same note). Where someone
+  writes a sustained paragraph, the blockquote is that paragraph, provided it is contiguous.
+  I had trimmed Thurston's to two sentences and Eric asked for all of it.
 - **Judge reach at the destination, not the referrer.** Resolve the link; check
   iTunes / `numberOfSubscribers` / the masthead. Record it in
   `type_metadata.audience`. Set `source_url` to the episode or article itself,
