@@ -19,13 +19,33 @@ fi
 # Quote verification for any NEW or MODIFIED entry files in this commit
 CHANGED_ENTRIES=$(git diff --cached --name-only -- 'content/entries/*.json')
 if [ -n "$CHANGED_ENTRIES" ]; then
-  echo "Verifying quotes for changed entries..."
-  npx tsx scripts/verify-quotes.ts
+  # Offline first: checks the blockquote against the source text the scanner
+  # already captured. No network, instant, and it is the ONLY check that works
+  # on LinkedIn and X — 62% of entries, which no anonymous fetch can read.
+  echo "Checking quotes against captured source text..."
+  python3 scripts/quote_integrity.py $CHANGED_ENTRIES
+  QI_EXIT=$?
+  if [ $QI_EXIT -ne 0 ]; then
+    echo ""
+    echo "⚠️  A blockquote does not match the source text we captured."
+    echo "   PARTIAL means the opening is real and the rest is not — that is the"
+    echo "   composited-quote signature, not a formatting nit. Re-read the capture"
+    echo "   in data/archive/source-texts/ and copy the span exactly."
+    echo "   To skip this check: git commit --no-verify"
+    exit 1
+  fi
+
+  # Then the network check, for the changed entries only.
+  echo "Verifying quotes against live source pages..."
+  npx tsx scripts/verify-quotes.ts $CHANGED_ENTRIES
   VERIFY_EXIT=$?
   if [ $VERIFY_EXIT -ne 0 ]; then
     echo ""
     echo "⚠️  Quote verification found issues (see above)."
-    echo "   Fix blockquotes to match source pages, or set verified: false."
+    echo "   Fix the blockquote so it matches the source page exactly."
+    echo "   Do NOT set verified:false to silence this. That field used to make"
+    echo "   this checker skip the entry, which is how 725 of 871 entries ended"
+    echo "   up unverified and the check fell to 2.9% coverage while exiting 0."
     echo "   To skip this check: git commit --no-verify"
     exit 1
   fi

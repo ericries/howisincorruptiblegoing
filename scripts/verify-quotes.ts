@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { isConclusive } from './quote-page-conclusive';
 
 /**
  * Verify that each entry's blockquote text actually appears
@@ -77,7 +78,14 @@ async function fetchPage(url: string): Promise<{ ok: boolean; text: string; stat
 }
 
 async function main() {
-  const files = fs.readdirSync(entriesDir).filter(f => f.endsWith('.json'));
+  // Only the files named on the command line, when any are given. The hook
+  // computed the changed entries and then called this with no arguments, so
+  // every commit re-fetched all 871 source pages. That made `verified: false`
+  // load-bearing as a speed escape, which is how it ended up on 725 entries.
+  const argv = process.argv.slice(2).filter(a => a.endsWith('.json'));
+  const files = argv.length
+    ? argv.map(a => path.basename(a))
+    : fs.readdirSync(entriesDir).filter(f => f.endsWith('.json'));
   let errors = 0;
   let warnings = 0;
   let passes = 0;
@@ -85,13 +93,6 @@ async function main() {
 
   for (const file of files.sort()) {
     const entry: Entry = JSON.parse(fs.readFileSync(path.join(entriesDir, file), 'utf-8'));
-
-    // Skip entries marked as unverified
-    if ((entry as any).verified === false) {
-      console.log(`⏭  ${file} — marked verified:false (skip)`);
-      skips++;
-      continue;
-    }
 
     // Skip endorsements that link to incorruptible.co — blurbs won't be on the homepage
     if (entry.type === 'endorsement' && entry.source_url === 'https://incorruptible.co') {
@@ -123,6 +124,15 @@ async function main() {
       continue;
     }
 
+    // A miss only refutes the entry if we actually received the document.
+    // Goodreads serves a 13KB JS shell that scored as "QUOTE NOT FOUND"
+    // against a sound entry on 2026-10-28 and blocked the commit.
+    if (!isConclusive(page.text, entry.blockquote, entry.attribution)) {
+      console.log(`⚠️  ${file} — ${entry.source_url} returned no usable document (JS shell, cookie wall or captcha) — NOT VERIFIED HERE`);
+      warnings++;
+      continue;
+    }
+
     // Check quote
     const result = findQuoteInPage(entry.blockquote, page.text);
 
@@ -130,10 +140,14 @@ async function main() {
       console.log(`✅ ${file} — quote verified`);
       passes++;
     } else if (result.partial) {
-      console.log(`⚠️  ${file} — PARTIAL match (first ${result.matchedChars} chars)`);
+      // A partial match means the opening is real and the rest is not. That is
+      // the composited-quote signature — the 2026-07 case had half a sentence
+      // belonging to Brian Chesky and survived three months. It is a failure,
+      // not a warning.
+      console.log(`❌ ${file} — PARTIAL match (first ${result.matchedChars} chars) — composite risk`);
       console.log(`   Quote: "${entry.blockquote.slice(0, 80)}..."`);
       console.log(`   URL: ${entry.source_url}`);
-      warnings++;
+      errors++;
     } else {
       console.log(`❌ ${file} — QUOTE NOT FOUND on page`);
       console.log(`   Quote: "${entry.blockquote.slice(0, 100)}..."`);
@@ -144,6 +158,10 @@ async function main() {
 
   console.log(`\n${'='.repeat(60)}`);
   console.log(`Results: ${passes} pass, ${warnings} warn, ${errors} FAIL, ${skips} skip`);
+  if (passes + errors === 0 && skips > 0) {
+    console.log(`\n⚠️  Nothing was actually verified — ${skips} entries skipped.`);
+    console.log(`   Run: python3 scripts/quote_integrity.py <files>  (offline, checks auth-walled sources)`);
+  }
   console.log(`${'='.repeat(60)}`);
 
   process.exit(errors > 0 ? 1 : 0);

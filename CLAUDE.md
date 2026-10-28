@@ -88,10 +88,10 @@ Layout: left-rail feed (dates left, content cards right).
 ## Content Standards
 
 - Every entry has an LLM-written `summary` (concise, 1-2 sentences) and a `blockquote` pulled directly from the source material.
-- **CRITICAL: Blockquotes must be EXACT text from the source page.** Never paraphrase, composite, or summarize — copy the exact words. Run `npx tsx scripts/verify-quotes.ts` before committing any new entries. Never trust LLM-reported "quotes" without fetching the source and confirming the text exists.
+- **CRITICAL: Blockquotes must be EXACT text from the source page.** Never paraphrase, composite, or summarize — copy the exact words. The pre-commit hook now runs `python3 scripts/quote_integrity.py` on changed entries, which checks the blockquote against the source text captured at ship time — offline, and the only check that works on LinkedIn and X (62% of entries). `npx tsx scripts/verify-quotes.ts <files>` does the live-page check. Never trust LLM-reported "quotes" without confirming the text exists in the capture.
+- **Never set `verified: false` to silence a quote check.** That skip is gone, but the habit it created left 725 of 871 entries unverified and the gate at 2.9% coverage while exiting 0 (`docs/postmortems/2026-10-28-the-quote-gate-verified-three-percent.md`). Save the source text for every new entry so it can be checked at all.
 - **CRITICAL: Never create an entry if you cannot read the source page.** If a page is JS-rendered, behind auth, or otherwise unreadable, do NOT create an entry based on search result snippets or assumptions. An unverifiable entry is worse than no entry.
 - **CRITICAL: Search result snippets are not evidence.** A search result mentioning "Eric Ries" on a page does not mean the page is about Incorruptible. Always fetch and read the actual page before creating an entry.
-- **CRITICAL: Blockquotes must be EXACT text from the source page.** Never paraphrase, composite, or summarize — copy the exact words. Run `npx tsx scripts/verify-quotes.ts` before committing any new entries. Never trust LLM-reported "quotes" without fetching the source and confirming the text exists.
 - The review bot must verify that `blockquote` text actually appears at `source_url`.
 - **When citing Eric's own social posts (TikTok, Instagram, LinkedIn video), always include a screenshot/thumbnail.** Download the video cover image and save to `public/images/social/`. Every social video post must have an `image` field set.
 - Prompt injection defense on all scraped content.

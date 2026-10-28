@@ -4,8 +4,18 @@
 Usage:
     python scripts/review_bot/verify_quotes.py content/entries/file1.json ...
 
-Warns (but does not fail) if the URL is unreachable.
-Exits 1 if a quote is NOT found on a reachable page.
+Warns (but does not fail) if the URL is unreachable, and says so in a closing
+summary. It cannot do better: 62% of entries cite LinkedIn or X, which no
+anonymous fetch can read, so failing on unreachable would block every PR.
+
+That means THIS IS NOT THE REAL QUOTE GATE for most entries. The real one is
+`scripts/quote_integrity.py`, which checks the blockquote against the source
+text the scanner captured at ship time. It runs in the pre-commit hook rather
+than here because `data/archive/` is gitignored and so does not exist in CI.
+
+Measured 2026-10-28: this script reported no failures on runs where it had
+verified nothing at all, because "could not fetch" printed WARN and continued.
+The summary below exists so that outcome can never again read as success.
 """
 
 import json
@@ -43,6 +53,38 @@ def fetch_page(url: str, timeout: int = 15) -> str | None:
         return None
 
 
+# Below this, a response cannot plausibly be an article, review or post body.
+# The Goodreads shell that produced a false FAIL on 2026-10-28 was 13KB of
+# markup carrying no review text.
+MIN_PLAUSIBLE_CHARS = 1200
+
+# A quote prefix shorter than this matches too much to prove we have the right
+# page — "astounding" appears in plenty of unrelated markup.
+MIN_PREFIX_SIGNAL = 25
+
+
+def is_conclusive(*, page: str, quote: str, attribution: str | None) -> bool:
+    """Is there positive evidence this response is the document we asked for?
+
+    A quote missing from a page only refutes the entry if we actually received
+    the page. A JS shell, cookie wall or captcha returns 200 with no article
+    body, and calling that "quote not found" blocks a sound entry — which is
+    what happened to a Goodreads review on 2026-10-28.
+
+    Two signals count, either alone: the author's name appears, or enough of
+    the quote's opening appears that we are plainly on the right text. Length
+    alone is not a signal — walls can be long — but being far too short rules
+    a response out.
+    """
+    if not page or len(page) < MIN_PLAUSIBLE_CHARS:
+        return False
+    low = page.lower()
+    if attribution and attribution.strip() and attribution.strip().lower() in low:
+        return True
+    prefix = normalize(quote or "")[:40]
+    return len(prefix) >= MIN_PREFIX_SIGNAL and prefix in normalize(page)
+
+
 def normalize(text: str) -> str:
     """Lowercase and collapse whitespace for fuzzy matching."""
     return re.sub(r"\s+", " ", text.lower()).strip()
@@ -56,6 +98,8 @@ def main() -> int:
         return 0
 
     has_failures = False
+    checked = 0
+    unreachable = 0
 
     for filepath in changed_files:
         if not os.path.isfile(filepath):
@@ -80,12 +124,21 @@ def main() -> int:
         page_content = fetch_page(source_url)
 
         if page_content is None:
-            print(f"WARN  Could not fetch {source_url} for {filepath} — skipping quote check")
+            print(f"WARN  Could not fetch {source_url} for {filepath} — NOT VERIFIED HERE")
+            unreachable += 1
+            continue
+
+        if not is_conclusive(page=page_content, quote=blockquote,
+                             attribution=data.get("attribution")):
+            print(f"WARN  {source_url} returned no usable document for {filepath} "
+                  f"(JS shell, cookie wall or captcha) — NOT VERIFIED HERE")
+            unreachable += 1
             continue
 
         normalized_quote = normalize(blockquote)
         normalized_page = normalize(page_content)
 
+        checked += 1
         if normalized_quote in normalized_page:
             print(f"OK    Quote verified in {filepath}")
         else:
@@ -93,6 +146,14 @@ def main() -> int:
             print(f"FAIL  Quote NOT found at source URL for {filepath}")
             print(f"      URL: {source_url}")
             print(f"      Quote: {blockquote[:200]}{'...' if len(blockquote) > 200 else ''}")
+
+    total = len(changed_files)
+    print(f"\nQuote check: verified {checked} of {total} changed entries "
+          f"against the live page; {unreachable} unreachable.")
+    if checked == 0 and total:
+        print("NOTE  Nothing was verified here. Auth-walled sources are covered "
+              "offline by scripts/quote_integrity.py in the pre-commit hook, "
+              "which cannot run in CI because data/archive/ is gitignored.")
 
     return 1 if has_failures else 0
 
