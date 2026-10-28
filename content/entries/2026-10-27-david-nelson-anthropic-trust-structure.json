@@ -1,0 +1,27 @@
+{
+  "id": "2026-10-27-david-nelson-anthropic-trust-structure",
+  "date": "2026-10-27",
+  "type": "review",
+  "title": "A founder reads Anthropic's S-1 through the book \u2014 'The shareholders don't control Anthropic. A mission-aligned trust does. Even the trustees don't own it'",
+  "summary": "Nelson runs FoundersForge and has started six companies. On the day Anthropic filed, he uses the book to explain why its structure interests him: ownership held by a mission-aligned trust whose trustees do not own it either, which he reads as a public benefit corporation design capable of resisting the short-term pressure that reshapes public companies. He cites a concrete test \u2014 Anthropic holding its position when the government pushed against its values \u2014 and is candid that the experiment is unproven and that data centres and job displacement remain unanswered. He opens by telling founders to read the book.",
+  "blockquote": "The shareholders don\u2019t control Anthropic. A mission-aligned trust does. Even the trustees don\u2019t own it.",
+  "blockquote_source": "David Nelson on LinkedIn",
+  "source_url": "https://www.linkedin.com/posts/davidrnelson_anthropic-filed-its-s-1-today-most-of-the-activity-7520809434126667776-vKLT",
+  "source_urls": null,
+  "video_url": null,
+  "image": "/images/cards/2026-10-27-david-nelson-anthropic-trust-structure.png",
+  "attribution": "David Nelson",
+  "attribution_title": "Executive Director, FoundersForge \u00b7 6x founder",
+  "attribution_image": "/images/people/david-nelson.jpg",
+  "tags": [
+    "review",
+    "linkedin",
+    "anthropic",
+    "public-benefit-corporation",
+    "governance"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-10-28T01:50:00Z"
+}
