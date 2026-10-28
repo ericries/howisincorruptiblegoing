@@ -36,6 +36,15 @@ Never conclude a job was missed from the absence of a dated archive file —
 2026-10-20 a Monday-only scan was reported missed on a Tuesday and re-run at real
 cost. Let the script decide.
 
+It now prints a second section, **Feed coverage**, because "did the job run" and
+"did the job's pull reach back to the previous one" are different questions and
+only the first was ever asked. A job can fire on time, write its watermark, and
+still never see a day — that cost 2026-10-24 and 2026-10-27 before anything
+detected it. `HOLE` means a date no pull covered: already lost, recoverable only
+by re-pulling with a wider `postedLimit`. `STARVED` is the one to act on — it
+means a cap bound before the post quota was met, and it fires *before* the next
+run leaves a hole.
+
 **Everything the scanner needs lives in this repository.** Keep it that way — no
 launchd agents, no system background items, no machine-local state, so the whole
 pipeline survives a change of platform or machine. The standing rules the jobs

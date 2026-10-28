@@ -32,6 +32,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parent.parent
 ENTRIES = REPO / "content/entries"
 API = "https://api.apify.com/v2/datasets/{}/items?format=json&clean=true"
+META = "https://api.apify.com/v2/datasets/{}"
 
 
 # ---------- url / dedupe helpers ----------
@@ -258,20 +259,97 @@ def render_full(rec: dict) -> str:
 
 # ---------- fetch ----------
 
-def fetch(dataset_id: str, expect: int = 1, tries: int = 20, delay: int = 10) -> list:
-    url = API.format(dataset_id)
+def _read_items(dataset_id: str) -> list:
+    with urllib.request.urlopen(API.format(dataset_id), timeout=60) as r:
+        return json.loads(r.read().decode())
+
+
+def dataset_meta(dataset_id: str) -> dict:
+    """The dataset's own record of how much it holds.
+
+    `itemCount` is the only authority on whether a read is complete. It is one
+    request away and was never asked for, which is how a 246-item dataset got
+    archived as 60 items on 2026-10-28.
+    """
+    with urllib.request.urlopen(META.format(dataset_id), timeout=60) as r:
+        return json.loads(r.read().decode()).get("data", {})
+
+
+def is_complete(*, n_read: int, item_count: int | None) -> bool:
+    """Did this read get everything the dataset says it holds?
+
+    Unknown (`None`) counts as complete: a metadata failure must not block a
+    scan. `n_read > item_count` is also complete — the items endpoint can run
+    ahead of the counter while a run is writing, and treating that as a failure
+    would reject good reads.
+    """
+    return item_count is None or n_read >= item_count
+
+
+def fetch(dataset_id: str, expect: int = 0, tries: int = 20, delay: int = 10) -> list:
+    """Poll until the read matches the dataset's itemCount, then return it.
+
+    The old stopping condition was `len(items) >= expect` with expect defaulting
+    to 1, which meant "return the moment anything exists". Against a run that
+    takes 65 seconds to write 246 items, the first poll lands on a partial
+    dataset and the script reports success. `expect` is kept as a floor for
+    callers who know they need at least N, but it is no longer what decides
+    completeness.
+    """
     last: list = []
     for i in range(tries):
         try:
-            with urllib.request.urlopen(url, timeout=60) as r:
-                last = json.loads(r.read().decode())
+            last = _read_items(dataset_id)
         except Exception as ex:
             print(f"  poll {i+1}: {ex}", file=sys.stderr)
             last = []
-        if len(last) >= expect:
+
+        try:
+            count = dataset_meta(dataset_id).get("itemCount")
+        except Exception:
+            count = None            # metadata is advisory; never block on it
+
+        # itemCount is read AFTER the items, deliberately. A run writing
+        # concurrently can add rows between the two calls; taking the count
+        # second means any such growth shows up as count > n_read and costs
+        # another poll, rather than being missed. The reverse order can call a
+        # read complete that was already stale when it landed.
+        if is_complete(n_read=len(last), item_count=count) and len(last) >= expect:
             return last
-        time.sleep(delay)
+        if i < tries - 1:
+            time.sleep(delay)
+
+    if not is_complete(n_read=len(last), item_count=count):
+        print(f"  WARNING: read {len(last)} of {count} items after {tries} polls",
+              file=sys.stderr)
     return last
+
+
+def archive(path, items: list, item_count: int | None = None) -> bool:
+    """Write the raw dataset, refusing to replace a fuller file with a thinner one.
+
+    The archive file is the record every later judgement reads — including
+    `feed_coverage`, whose job is spotting missing days. Overwriting 246 archived
+    items with a partial 60 destroys the evidence and leaves nothing that looks
+    wrong. Returns whether it wrote.
+    """
+    path = Path(path)
+    partial = not is_complete(n_read=len(items), item_count=item_count)
+    if partial:
+        print(f"  WARNING: partial read ({len(items)} of {item_count} items)",
+              file=sys.stderr)
+        if path.exists():
+            try:
+                existing = len(json.loads(path.read_text()))
+            except (json.JSONDecodeError, OSError):
+                existing = 0
+            if existing > len(items):
+                print(f"  REFUSED: {path} already holds {existing} items; "
+                      f"not overwriting with a partial read", file=sys.stderr)
+                return False
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(items, ensure_ascii=False, indent=1))
+    return True
 
 
 def main() -> int:
@@ -293,10 +371,12 @@ def main() -> int:
     elif args.dataset_id:
         items = fetch(args.dataset_id, expect=args.expect)
         if args.archive:
-            p = Path(args.archive)
-            p.parent.mkdir(parents=True, exist_ok=True)
-            p.write_text(json.dumps(items, ensure_ascii=False, indent=1))
-            print(f"archived {len(items)} items -> {args.archive}")
+            try:
+                count = dataset_meta(args.dataset_id).get("itemCount")
+            except Exception:
+                count = None
+            if archive(args.archive, items, item_count=count):
+                print(f"archived {len(items)} items -> {args.archive}")
     else:
         ap.error("need a dataset_id or --file")
 

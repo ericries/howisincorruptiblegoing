@@ -186,3 +186,33 @@ def test_every_job_has_a_schedule_and_an_evidence_rule():
 
 def test_job_table_covers_the_scanning_crons():
     assert {"morning-scan", "evening-scan", "goodreads", "comment-archive"} <= set(JOBS)
+
+
+# --- feed coverage is reported alongside missed runs --------------------------------
+
+def test_main_reports_feed_coverage(capsys, monkeypatch):
+    """The two checks answer different questions, so both must run unprompted.
+
+    A job can fire on schedule, write its watermark, and still miss a day
+    because its pull was truncated before reaching the previous one. Catch-up
+    called that "nothing overdue" twice — correctly, and uselessly. Session
+    start is the one moment guaranteed to happen, so the second check belongs
+    there too rather than in a prompt telling me to run it.
+    """
+    import feed_coverage
+    import scan_catchup as sc
+    monkeypatch.setattr(
+        feed_coverage, "report",
+        lambda *a, **k: (["  author   HOLE 2026-10-27 — between x and y"], 1))
+    sc._main()
+    out = capsys.readouterr().out
+    assert "Feed coverage" in out
+    assert "HOLE 2026-10-27" in out
+
+
+def test_main_still_prints_when_feed_coverage_is_clean(capsys, monkeypatch):
+    import feed_coverage
+    import scan_catchup as sc
+    monkeypatch.setattr(feed_coverage, "report", lambda *a, **k: ([], 0))
+    sc._main()
+    assert "Feed coverage" in capsys.readouterr().out

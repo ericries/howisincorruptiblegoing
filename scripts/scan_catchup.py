@@ -172,6 +172,26 @@ def overdue(now: _dt.datetime | None = None, jobs: dict | None = None,
     return out
 
 
+def _feed_coverage() -> None:
+    """Report truncated pulls alongside missed runs.
+
+    These are different failures and only one of them was ever checked. A job
+    can fire on time, write its watermark, and still never see a day of posts
+    because `callOptions.maxItems` truncated the interleaved post/comment stream
+    before it reached back to the previous pull. That happened on 2026-10-24 and
+    again on 2026-10-27; both times this module said "nothing overdue" and was
+    right. Session start is the one moment that reliably happens, so the second
+    question gets asked here rather than in a prompt asking me to remember it.
+    """
+    import feed_coverage
+
+    lines, problems = feed_coverage.report()
+    print(f"\nFeed coverage: {problems} problem(s)." if problems
+          else "\nFeed coverage: clean.")
+    for line in lines:
+        print(line)
+
+
 def _main() -> int:
     # Local-aware, because the cron expressions are local. Passing a UTC `now`
     # here built the slots in UTC and then shifted them again on display, which
@@ -183,6 +203,7 @@ def _main() -> int:
         for name, spec in JOBS.items():
             nxt = next_run_after(spec["cron"], now)
             print(f"  {name:16s} next {nxt:%a %H:%M}")
+        _feed_coverage()
         return 0
     print(f"Catch-up: {len(rows)} job(s) owe work.")
     for r in rows:
@@ -191,6 +212,7 @@ def _main() -> int:
         print(f"  {'':16s} missed: {when}")
     print("\nRun each with a derived postedLimit (scan_state.choose_posted_limit)")
     print("and dedup client-side against data/archive/.")
+    _feed_coverage()
     return 0
 
 

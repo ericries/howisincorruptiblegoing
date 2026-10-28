@@ -195,14 +195,20 @@ LinkedIn comment archive scan. Pull Eric's LinkedIn author feed plus the Incorru
 
 Use waitSecs:0 for both Apify calls, then curl the datasets (docs/SCAN-PROTOCOL.md section 1).
 
-COST CAP — this job was 50% of all Apify volume Oct 10-14 and ships nothing, which is why it moved to 3x/week on 2026-10-14. maxPosts is NOT honoured by the actor (30 was passed, 130 returned). Pass callOptions {"maxItems": 40} on BOTH calls. Both queries use postedLimit "week", so running 3x/week still sees every comment — just up to two days later.
+COST CAP — this job was 50% of all Apify volume Oct 10-14 and ships nothing, which is why it moved to 3x/week on 2026-10-14. Pass callOptions {"maxItems": 250} on BOTH calls. Both queries use postedLimit "week", so running 3x/week still sees every comment — just up to two days later.
 
-CHECK WHETHER THE CAP COST ANYTHING, and say so either way. Compare the oldest post in this pull against the newest in the previous run's archive file. On 2026-10-16 the author feed hit the cap and it cost nothing — the previous run already reached past the oldest item returned. On 2026-10-19 the keyword run hit the cap and DID leave a hole: it truncated to Oct 18 onward while the Oct 16 run reached only to Oct 14, so Oct 17 keyword-post comments were never covered. On 2026-10-21 both hit the cap and neither left a hole. On 2026-10-26 the author feed capped at 40 and reached back only to 10-25, while the previous run on 10-23 had reached forward only to 10-23 — so 2026-10-24 was never covered at all. Report the hole rather than silently raising the cap; this lane is archive-only, so a one-day gap is usually not worth extra spend. But if the hole appears most runs, the 3x/week cadence has fallen behind Eric's posting rate and that is worth raising with him rather than absorbing.
+maxPosts IS honoured — the note here claiming otherwise ("30 was passed, 130 returned") was counting comments as posts, and stood uncorrected for 14 days. The 10-14 pull was 30 posts and 100 comments: maxPosts:30 was obeyed exactly. The unbounded dimension was comments, never posts. That misreading is why a TOTAL-item cap of 40 went on this call, and the cap then starved the thing it was never aimed at: the actor emits one interleaved stream (a post, then its comments, then the next post), so comments on early posts eat the budget later posts needed. On 2026-10-28 a cap of 40 reached the 6th post of 30 and covered one day instead of a week. Cap each dimension at its own knob — maxPosts, maxComments — and leave maxItems as a backstop well clear of normal volume. ALSO pass callOptions {"maxTotalChargeUsd": 1.5} on both calls. This is not optional and it is not belt-and-braces: Apify applies a DEFAULT charge ceiling of $0.50 whether you set one or not (the run record shows "maxTotalChargeUsd": 0.5 with "isMaxTotalChargeUsdSetByUser": false). The 2026-10-28 recovery pull — 50 posts and 196 comments, a normal week — cost $0.49205. It finished $0.008 under a ceiling nobody chose, and a busier week silently truncates against it exactly as the 40-item cap did. An invisible default is still a cap; the only safe move is to set it where you want it.
 
-1. harvestapi/linkedin-post-search — Eric's author feed, callOptions {"maxItems": 40}:
-   {"authorUrls": ["https://www.linkedin.com/in/eries/"], "postedLimit": "week", "maxPosts": 30, "sortBy": "date", "scrapeComments": true, "commentsPostedLimit": "week", "maxComments": 30, "postNestedComments": true}
-2. harvestapi/linkedin-post-search — keyword, callOptions {"maxItems": 40}:
-   {"searchQueries": ["Incorruptible Ries"], "postedLimit": "week", "maxPosts": 40, "sortBy": "date", "scrapeComments": true, "commentsPostedLimit": "week", "maxComments": 30, "postNestedComments": true}
+Set it generously rather than tightly. A charge ceiling set too LOW aborts the run at startup with zero items, which is how the Goodreads scan returned nothing on 2026-10-20 — that failure was the ceiling being wrong, not the lever being wrong. maxItems truncates gracefully; a charge cap fails hard, so leave real headroom above the measured cost. At $0.002 per item, flat for posts and comments alike, the 40-item cap was saving about $5/month against a budget running $19 of $29 with the recent burn at $0.28/day.
+
+CHECK WHETHER THE CAP COST ANYTHING by running `python3 scripts/feed_coverage.py` after archiving the raw files — it compares each pull's post range against the previous one per lane and prints HOLE or STARVED. It is free and local. Do not eyeball the date ranges; that is how 2026-10-24 and 2026-10-27 were both lost while catch-up correctly reported "nothing overdue", and holes are only found by the comparison nobody runs. STARVED is the one to act on — it means the cap bound before the post quota was met, and it fires BEFORE the next run leaves a hole. On 2026-10-16 the author feed hit the cap and it cost nothing — the previous run already reached past the oldest item returned. On 2026-10-19 the keyword run hit the cap and DID leave a hole: it truncated to Oct 18 onward while the Oct 16 run reached only to Oct 14, so Oct 17 keyword-post comments were never covered. On 2026-10-21 both hit the cap and neither left a hole. On 2026-10-26 the author feed capped at 40 and reached back only to 10-25, while the previous run on 10-23 had reached forward only to 10-23 — so 2026-10-24 was never covered at all. Report the hole rather than silently raising the cap; this lane is archive-only, so a one-day gap is usually not worth extra spend. But if the hole appears most runs, the 3x/week cadence has fallen behind Eric's posting rate and that is worth raising with him rather than absorbing.
+
+1. harvestapi/linkedin-post-search — Eric's author feed, callOptions {"maxItems": 250, "maxTotalChargeUsd": 1.5}:
+   {"authorUrls": ["https://www.linkedin.com/in/eries/"], "postedLimit": "week", "maxPosts": 50, "sortBy": "date", "scrapeComments": true, "commentsPostedLimit": "week", "maxComments": 30, "postNestedComments": true}
+2. harvestapi/linkedin-post-search — keyword, callOptions {"maxItems": 250, "maxTotalChargeUsd": 1.5}:
+   {"searchQueries": ["Incorruptible Ries"], "postedLimit": "week", "maxPosts": 50, "sortBy": "date", "scrapeComments": true, "commentsPostedLimit": "week", "maxComments": 30, "postNestedComments": true}
+
+maxPosts is 50, not 30: at 30 posts the author feed reached back only about four days, against a Friday-to-Monday gap of three. That margin was the whole safety factor and it was never stated.
 
 Save each raw dataset to data/archive/linkedin-raw/<YYYY-MM-DD>-<name>.json, then:
 
@@ -250,7 +256,7 @@ Run all three over the same 7-day window, each with waitSecs:0 then scan-triage.
 2. ALTERNATE:  searchQueries=["Eric Ries Incorruptible"], same params
 3. BARE:       searchQueries=["Incorruptible"], same params
 
-maxPosts MUST be 100, not 40, and pass callOptions {"maxItems": 100} on each — maxPosts alone is a soft target the actor does not honour. On 2026-09-27 both queries hit the 40 cap, so the comparison was between two truncated lists and reported false agreement — that is how a Raj Sisodia endorsement went unseen for a week. Check and report whether any query hit the cap; if one did, its result is not a valid comparison input. This is the one job where 100 is justified: the comparison is worthless on truncated lists, and this audit is the designed backstop for everything the daily scans miss.
+maxPosts MUST be 100, not 40, and pass callOptions {"maxItems": 100} on each. (The earlier note here said maxPosts "is a soft target the actor does not honour"; that was the same miscount as in the comment-archive job — maxPosts is honoured. The cap still matters on this job because these queries are posts-only, so items and posts are the same number.) On 2026-09-27 both queries hit the 40 cap, so the comparison was between two truncated lists and reported false agreement — that is how a Raj Sisodia endorsement went unseen for a week. Check and report whether any query hit the cap; if one did, its result is not a valid comparison input. This is the one job where 100 is justified: the comparison is worthless on truncated lists, and this audit is the designed backstop for everything the daily scans miss.
 
 On 2026-10-25 the BARE query hit the 100 cap (production 43, alternate 42). If it caps again, consider narrowing its window to 3 days rather than raising the cap — the bare query's job is to surface what production misses, not to enumerate every adjectival use of the word, and a truncated 7-day list is worse for that than a complete 3-day one.
 
@@ -387,10 +393,20 @@ Then commit and push. If nothing changed, make no commit and say so. Set PATH="/
 - **2026-08-23** — added the weekly recall audit after discovering the 3-word query was missing most relevant posts.
 - **2026-08-31** — Amazon rank paused indefinitely.
 - **2026-10-14** — Apify hit 50% of its $29/month limit. Added hard `callOptions.maxItems`
-  caps (maxPosts is not honoured: 30 requested, 130 returned), moved the comment
+  caps (justified at the time by a miscount — see 2026-10-28), moved the comment
   archive to Mon/Wed/Fri, and made the TikTok pull Mon/Wed/Fri inside the evening
   scan. The comment archive was 50% of all Apify volume and ships nothing to the
   site. Eric's call on cadence; caps applied first.
+- **2026-10-28** — comment-archive `maxItems` 40 → 250 and `maxPosts` 30 → 50 on
+  both calls, after the 40-item cap was found to have starved the author feed of
+  posts for 14 days: the actor emits one interleaved post/comment stream, so a
+  TOTAL-item cap lets comments crowd out posts. It cost 2026-10-24 and 2026-10-27
+  entirely. The cap had been justified by a miscount (130 items read as 130 posts
+  when it was 30 posts + 100 comments) and was saving ~$5/month against a budget
+  at $19 of $29. Cadence was considered and declined — a starved pull covers one
+  day however often it runs. `scripts/feed_coverage.py` now detects both holes and
+  starvation, and runs at every session start via `scan_catchup`. Full analysis in
+  `docs/postmortems/2026-10-28-item-cap-starved-the-post-feed.md`.
 - **2026-10-20** — watchdog moved 8:37 → 8:17. Twice in two days the watchdog
   turn consumed the 9:07 morning-scan slot: on the 19th by doing slow work before
   the rolls, on the 20th by simply running long (8:37 → 9:14) — a cron cannot fire
