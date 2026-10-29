@@ -139,14 +139,23 @@ because a field flip is exactly what `verified: false` was. The gate is scoped
 to added files so that editing a legacy entry is not blocked by its own
 history.
 
-**The backlog remains open: 708 existing entries have no capture**, and 62% of
-all entries cite sources no fetch can read, so for most of them the text cannot
-now be recovered from the source at all. Where it can, backfilling is worth
-doing opportunistically — when an entry is next touched, or when a scan
-re-encounters the same post. For podcast and video entries, capture the page
-copy as well as the transcript: the blockquote frequently comes from the show
-notes, which is what produced all 69 `MEDIUM_MISMATCH` results.
-`--min-checked` exists to ratchet a floor upward as that happens. **Open.**
+**The backlog is now half closed.** `scripts/backfill_source_text.py` recovers
+captures cheapest-route-first: 8 from raw archives already on disk, 76 by plain
+HTTP fetch with text extraction, 185 LinkedIn posts via
+`apimaestro/linkedin-post-detail` for about $0.93. **Coverage went from 163 to
+385 of 871 entries (18.7% -> 44.2%).**
+
+486 entries still have none. 81 are genuinely unrecoverable and `--plan` names
+each reason: incorruptible.co publishes 4 of its 55 blurbs, Amazon/Forbes/
+USAToday return 403 to anonymous clients, NYT/FT are paywalled. The rest —
+YouTube transcripts, X, TikTok, the remaining ~135 LinkedIn posts — are
+tractable on the same routes and left for a later pass. **Open.**
+
+**And the backfill found what the checker was built for: 14 composited
+blockquotes**, built from real source spans in source order with the joins
+invisible. `scripts/repair_elisions.py` marked each cut with an ellipsis, but
+only where every segment is verbatim and in order; 33 remain that fragment past
+the safety limits and need a person. **Open.**
 
 The `verified` field is now vestigial: required by both validators and the TS
 type, written only as `false`, read by nothing. Removing it touches 871 entries
