@@ -333,3 +333,113 @@ def test_entries_without_a_blockquote_need_no_capture(tmp_path):
 
     assert missing_capture([{"id": "no-quote", "blockquote": ""}],
                            archive_dir=tmp_path, allowed={}) == []
+
+
+# --- not all captures are equally good evidence ---------------------------------------
+
+def test_a_miss_against_a_weak_backfilled_capture_is_not_a_failure(tmp_path):
+    """Backfilled HTML scrapes often contain only nav and headline.
+
+    Goodreads, Fortune and a thoughtbot podcast page each yielded 2-10KB of
+    chrome with no body, and each produced an ABSENT verdict against a sound
+    entry. We cannot tell "the entry is wrong" from "we only got the chrome",
+    so the capture must not be allowed to convict.
+
+    A url-keyed API capture is different: we asked for one post and got that
+    post's whole text. Those misses are real, and one of them was a genuine
+    composited quote.
+    """
+    (tmp_path / "e.json").write_text(json.dumps({
+        "entry_id": "e", "source_url": "https://example.com/a", "platform": "web",
+        "backfilled": True, "evidence": "weak",
+        "full_text": "Site nav | Subscribe | Home | Latest"}))
+    entry = {"id": "e", "source_url": "https://example.com/a",
+             "blockquote": "a quote that is not in this chrome at all"}
+    assert check_entry(entry, archive_dir=tmp_path).verdict is Verdict.WEAK_CAPTURE
+
+
+def test_a_hit_against_a_weak_capture_still_verifies(tmp_path):
+    """Positive evidence is positive however weak the route."""
+    (tmp_path / "e.json").write_text(json.dumps({
+        "entry_id": "e", "source_url": "https://example.com/a", "platform": "web",
+        "backfilled": True, "evidence": "weak",
+        "full_text": "nav nav the ratchet only turns one way nav"}))
+    entry = {"id": "e", "source_url": "https://example.com/a",
+             "blockquote": "the ratchet only turns one way"}
+    assert check_entry(entry, archive_dir=tmp_path).verdict is Verdict.EXACT
+
+
+def test_a_miss_against_a_strong_capture_is_still_a_failure(tmp_path):
+    """The relaxation must not swallow real findings."""
+    (tmp_path / "e.json").write_text(json.dumps({
+        "entry_id": "e", "source_url": "https://example.com/a", "platform": "linkedin",
+        "backfilled": True, "evidence": "strong",
+        "full_text": "The whole post text, which plainly says something else."}))
+    entry = {"id": "e", "source_url": "https://example.com/a",
+             "blockquote": "a quote that is definitely not present here at all"}
+    assert check_entry(entry, archive_dir=tmp_path).verdict is Verdict.ABSENT
+
+
+def test_captures_with_no_evidence_field_are_treated_as_strong(tmp_path):
+    """Ship-time captures predate the field and are the strongest evidence."""
+    (tmp_path / "e.json").write_text(json.dumps({
+        "entry_id": "e", "source_url": "https://example.com/a", "platform": "linkedin",
+        "full_text": "The whole post, saying something else entirely."}))
+    entry = {"id": "e", "source_url": "https://example.com/a",
+             "blockquote": "a quote that is definitely not present here at all"}
+    assert check_entry(entry, archive_dir=tmp_path).verdict is Verdict.ABSENT
+
+
+def test_weak_capture_counts_as_unverifiable():
+    c = coverage([Verdict.WEAK_CAPTURE, Verdict.EXACT])
+    assert c["checked"] == 1 and c["unverifiable"] == 1 and c["failures"] == 0
+
+
+# --- an ellipsis-marked quote is the correct form, and must verify --------------------
+
+SRC_ELLIPSIS = "He said the first part clearly. Then a tangent nobody needs. And the last part."
+
+
+def test_an_ellipsis_marked_quote_verifies_segment_by_segment():
+    """Repairing an elision must not leave the quote unverifiable.
+
+    `repair_elisions` rewrites a silently-cut quote into "A … B". That is the
+    honest form, so the checker has to understand it — otherwise the fix for a
+    composited quote makes the entry permanently fail.
+    """
+    quote = "He said the first part clearly. … And the last part."
+    assert match_quote(quote, SRC_ELLIPSIS) is Verdict.EXACT
+
+
+def test_an_ellipsis_quote_with_an_invented_segment_still_fails():
+    quote = "He said the first part clearly. … And something invented."
+    assert match_quote(quote, SRC_ELLIPSIS) is Verdict.ABSENT
+
+
+def test_an_ellipsis_quote_with_reordered_segments_fails():
+    """Order carries meaning; quoting B before A is a rewrite, not a trim."""
+    quote = "And the last part. … He said the first part clearly."
+    assert match_quote(quote, SRC_ELLIPSIS) is Verdict.ABSENT
+
+
+def test_ellipsis_segments_matching_only_after_normalising_say_so():
+    src = "He said the first part clearly. Tangent. And the last part."
+    quote = "He said the first part clearly. … And the last part."
+    assert match_quote(quote, src) is Verdict.EXACT
+
+
+def test_three_dot_ellipsis_is_treated_the_same_as_the_character():
+    quote = "He said the first part clearly. ... And the last part."
+    assert match_quote(quote, SRC_ELLIPSIS) is Verdict.EXACT
+
+
+def test_an_internal_ellipsis_that_the_author_wrote_is_not_a_segment_marker():
+    """Authors use "..." for trailing-off. Only a SPACED ellipsis marks a cut.
+
+    Brandon Fong's post contains "...and why success itself" inside one
+    sentence; treating that as a cut would split a contiguous quote for no
+    reason and then fail to find the halves.
+    """
+    src = "The reality is shocking... but the book isn't all doom and gloom."
+    quote = "The reality is shocking... but the book isn't all doom and gloom."
+    assert match_quote(quote, src) is Verdict.EXACT

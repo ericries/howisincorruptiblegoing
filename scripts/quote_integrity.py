@@ -54,6 +54,7 @@ class Verdict(enum.Enum):
     NO_SOURCE = "no-source"    # nothing captured to check against
     SOURCE_MISMATCH = "source-mismatch"  # capture is of a different document
     MEDIUM_MISMATCH = "medium-mismatch"  # capture is audio; quote may be page copy
+    WEAK_CAPTURE = "weak-capture"  # backfilled HTML scrape; may be only page chrome
 
     @property
     def is_failure(self) -> bool:
@@ -68,7 +69,7 @@ class Verdict(enum.Enum):
         coverage drift upward on evidence that proves nothing.
         """
         return self not in (Verdict.NO_SOURCE, Verdict.SOURCE_MISMATCH,
-                            Verdict.MEDIUM_MISMATCH)
+                            Verdict.MEDIUM_MISMATCH, Verdict.WEAK_CAPTURE)
 
 
 def normalise(text: str) -> str:
@@ -79,6 +80,40 @@ def normalise(text: str) -> str:
     text = text.replace("—", "--").replace("–", "-")
     text = text.replace("…", "...").replace(" ", " ")
     return re.sub(r"\s+", " ", text).strip()
+
+
+# A cut is marked by an ellipsis with space on BOTH sides. Authors write "..."
+# mid-sentence to trail off — Brandon Fong's post has "...and why success
+# itself" inside one clause — and treating that as a cut would split a
+# contiguous quote and then fail to find the halves.
+_CUT_RE = re.compile(r"\s+(?:…|\.\.\.)\s+")
+
+
+def _match_segmented(quote: str, source_text: str) -> Verdict | None:
+    """Verify an "A … B" quote segment by segment, in source order.
+
+    `repair_elisions` rewrites a silently-cut quote into this form, which is
+    the honest one. If the checker could not read it, repairing a composited
+    quote would make the entry fail forever — the fix would look like the bug.
+    """
+    parts = [p.strip() for p in _CUT_RE.split(quote) if p.strip()]
+    if len(parts) < 2:
+        return None
+
+    for text, verdict in ((source_text, Verdict.EXACT),
+                          (normalise(source_text), Verdict.NORMALISED)):
+        pos = -1
+        ok = True
+        for part in parts:
+            needle = part if verdict is Verdict.EXACT else normalise(part)
+            i = text.find(needle, pos + 1)
+            if i <= pos:
+                ok = False
+                break
+            pos = i
+        if ok:
+            return verdict
+    return Verdict.ABSENT
 
 
 def match_quote(quote: str, source_text: str) -> Verdict:
@@ -95,6 +130,10 @@ def match_quote(quote: str, source_text: str) -> Verdict:
 
     if quote in source_text:
         return Verdict.EXACT
+
+    segmented = _match_segmented(quote, source_text)
+    if segmented is not None:
+        return segmented
 
     nq, ns = normalise(quote), normalise(source_text)
     if not nq or not ns:
@@ -186,6 +225,14 @@ def check_entry(entry: dict, archive_dir: Path = SOURCE_TEXTS) -> Result:
         # rather than letting "unknown" excuse a miss on the only evidence held.
         if cap_url and entry_url and cap_url != entry_url:
             verdict = Verdict.SOURCE_MISMATCH
+        elif cap.get("evidence") == "weak":
+            # A backfilled HTML scrape frequently contains only nav and
+            # headline: Goodreads, Fortune and a podcast page each yielded
+            # 2-10KB of chrome with no body and convicted a sound entry. We
+            # cannot separate "the entry is wrong" from "we only got the
+            # chrome", so weak evidence does not get to convict. A url-keyed
+            # API capture is not weak and its misses are real findings.
+            verdict = Verdict.WEAK_CAPTURE
         elif cap.get("platform") == "transcript":
             # One url, two bodies of text: the spoken audio and the written
             # show notes. We capture the audio; blockquotes are often pulled

@@ -4,7 +4,7 @@
   "type": "social",
   "title": "Enrique Rubio: 'The Lean Startup changed how I think about building organizations'",
   "summary": "Hacking HR founder Enrique Rubio shares his personal connection to Eric's work ahead of their April 27 LinkedIn Live.",
-  "blockquote": "The Lean Startup changed how I think about building organizations and my own work as a startup leader. I have recommended it more times than I can count. And Eric Ries has shaped not only my life as an entrepreneur, but an entire generation of founders, operators, and leaders. This book asks questions that every business leader should be sitting with right now: Why do organizations that start with a clear mission, strong values, and real purpose slowly drift into something unrecognizable?",
+  "blockquote": "The Lean Startup changed how I think about building organizations and my own work as a startup leader. … I have recommended it more times than I can count. And Eric Ries has shaped not only my life as an entrepreneur, but an entire generation of founders, operators, and leaders. … This book asks questions that every business leader should be sitting with right now: Why do organizations that start with a clear mission, strong values, and real purpose slowly drift into something unrecognizable?",
   "blockquote_source": "Enrique Rubio on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/rubioenrique_the-lean-startup-changed-how-i-think-about-activity-7447349712061632512-y_bw",
   "source_urls": null,
@@ -13,7 +13,11 @@
   "attribution": "Enrique Rubio",
   "attribution_title": "Founder, Hacking HR",
   "attribution_image": "/images/people/enrique-rubio.jpg",
-  "tags": ["social", "linkedin", "hacking-hr"],
+  "tags": [
+    "social",
+    "linkedin",
+    "hacking-hr"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": true,
