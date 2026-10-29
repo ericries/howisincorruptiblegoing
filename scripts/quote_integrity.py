@@ -55,6 +55,7 @@ class Verdict(enum.Enum):
     SOURCE_MISMATCH = "source-mismatch"  # capture is of a different document
     MEDIUM_MISMATCH = "medium-mismatch"  # capture is audio; quote may be page copy
     WEAK_CAPTURE = "weak-capture"  # backfilled HTML scrape; may be only page chrome
+    COMMENT_MISMATCH = "comment-mismatch"  # capture is the post; quote is a reply to it
 
     @property
     def is_failure(self) -> bool:
@@ -69,7 +70,8 @@ class Verdict(enum.Enum):
         coverage drift upward on evidence that proves nothing.
         """
         return self not in (Verdict.NO_SOURCE, Verdict.SOURCE_MISMATCH,
-                            Verdict.MEDIUM_MISMATCH, Verdict.WEAK_CAPTURE)
+                            Verdict.MEDIUM_MISMATCH, Verdict.WEAK_CAPTURE,
+                            Verdict.COMMENT_MISMATCH)
 
 
 def normalise(text: str) -> str:
@@ -196,6 +198,41 @@ def load_capture(entry_id: str, archive_dir: Path = SOURCE_TEXTS) -> dict | None
         return None
 
 
+_HANDLE_RE = re.compile(r"linkedin\.com/posts/([^_/]+)_")
+
+
+def _quotes_a_comment(entry: dict) -> bool:
+    """Is the quoted person someone other than the author of the cited post?
+
+    A LinkedIn post capture contains the post body and not its replies, so when
+    an entry attributes the quote to anyone but the post's author, the words are
+    almost certainly a comment and the capture cannot speak to them. The author
+    is recoverable from the url slug: /posts/<handle>_...
+
+    Compared on letters only, because handles drop spaces and add digits —
+    "bobsutton1" is "Bob Sutton".
+    """
+    m = _HANDLE_RE.search(entry.get("source_url") or "")
+    attribution = entry.get("attribution") or ""
+    if not m or not attribution:
+        return False
+    handle = re.sub(r"[^a-z]", "", m.group(1).lower())
+    tokens = [re.sub(r"[^a-z]", "", t.lower()) for t in attribution.split()]
+    tokens = [t for t in tokens if t]
+    name = "".join(tokens)
+    if not handle or not name:
+        return False
+    if handle in name or name in handle:
+        return False
+    # Handles routinely compress the first name to an initial: "eries" is Eric
+    # Ries, "bobsutton1" is Bob Sutton. A surname of four or more letters
+    # appearing in the handle is a match; shorter ones match too much to trust.
+    surname = tokens[-1]
+    if len(surname) >= 4 and surname in handle:
+        return False
+    return True
+
+
 def check_entry(entry: dict, archive_dir: Path = SOURCE_TEXTS) -> Result:
     """Verify one entry against its capture.
 
@@ -225,6 +262,8 @@ def check_entry(entry: dict, archive_dir: Path = SOURCE_TEXTS) -> Result:
         # rather than letting "unknown" excuse a miss on the only evidence held.
         if cap_url and entry_url and cap_url != entry_url:
             verdict = Verdict.SOURCE_MISMATCH
+        elif cap.get("platform") == "linkedin" and _quotes_a_comment(entry):
+            verdict = Verdict.COMMENT_MISMATCH
         elif cap.get("evidence") == "weak":
             # A backfilled HTML scrape frequently contains only nav and
             # headline: Goodreads, Fortune and a podcast page each yielded

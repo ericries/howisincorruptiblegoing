@@ -443,3 +443,54 @@ def test_an_internal_ellipsis_that_the_author_wrote_is_not_a_segment_marker():
     src = "The reality is shocking... but the book isn't all doom and gloom."
     quote = "The reality is shocking... but the book isn't all doom and gloom."
     assert match_quote(quote, src) is Verdict.EXACT
+
+
+# --- a post capture cannot refute a quote taken from its comments ---------------------
+
+def test_a_quote_attributed_to_someone_other_than_the_post_author_is_unverifiable(tmp_path):
+    """Rebecca Mark's and Bob Sutton's entries quote COMMENTS on Eric's posts.
+
+    The LinkedIn post-detail actor returns the post body only, so the capture
+    is Eric's words and the quote is someone else's reply. Scoring that ABSENT
+    accuses a sound entry — the same category error as judging show-note copy
+    against a transcript.
+
+    The post author is recoverable from the url slug: /posts/<handle>_...
+    """
+    (tmp_path / "e.json").write_text(json.dumps({
+        "entry_id": "e", "platform": "linkedin",
+        "source_url": "https://www.linkedin.com/posts/eries_850-million-activity-7455-x",
+        "full_text": 'Nice to see the "financial gravity" concept being used in the wild!'}))
+    entry = {"id": "e", "attribution": "Rebecca Mark",
+             "source_url": "https://www.linkedin.com/posts/eries_850-million-activity-7455-x",
+             "blockquote": "Same problem. Same mission. Three completely different companies."}
+    assert check_entry(entry, archive_dir=tmp_path).verdict is Verdict.COMMENT_MISMATCH
+
+
+def test_a_quote_by_the_post_author_is_still_refutable(tmp_path):
+    """Eric quoted on Eric's own post must still be checked."""
+    (tmp_path / "e.json").write_text(json.dumps({
+        "entry_id": "e", "platform": "linkedin",
+        "source_url": "https://www.linkedin.com/posts/eries_something-activity-1-x",
+        "full_text": "A post that says one thing."}))
+    entry = {"id": "e", "attribution": "Eric Ries",
+             "source_url": "https://www.linkedin.com/posts/eries_something-activity-1-x",
+             "blockquote": "a quote that is definitely not present here at all"}
+    assert check_entry(entry, archive_dir=tmp_path).verdict is Verdict.ABSENT
+
+
+def test_handle_matching_tolerates_name_formatting(tmp_path):
+    """bobsutton1 vs "Bob Sutton" is the same person."""
+    (tmp_path / "e.json").write_text(json.dumps({
+        "entry_id": "e", "platform": "linkedin",
+        "source_url": "https://www.linkedin.com/posts/bobsutton1_x-activity-1-y",
+        "full_text": "A post saying one thing."}))
+    entry = {"id": "e", "attribution": "Bob Sutton",
+             "source_url": "https://www.linkedin.com/posts/bobsutton1_x-activity-1-y",
+             "blockquote": "a quote that is definitely not present here at all"}
+    assert check_entry(entry, archive_dir=tmp_path).verdict is Verdict.ABSENT
+
+
+def test_comment_mismatch_counts_as_unverifiable():
+    c = coverage([Verdict.COMMENT_MISMATCH, Verdict.EXACT])
+    assert c["checked"] == 1 and c["unverifiable"] == 1 and c["failures"] == 0
