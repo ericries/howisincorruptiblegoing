@@ -82,11 +82,13 @@ Standing caps (raise only with a reason, and say so in the report):
 
 | job | call | maxItems |
 |---|---|---|
-| comment archive | author feed | 40 |
-| comment archive | keyword | 40 |
+| comment archive | author feed | 250 |
+| comment archive | keyword | 250 |
 | morning scan | LinkedIn ×2 | 25 each |
 | evening scan | LinkedIn @-mentions | 25 |
 | weekly audit | each of 3 | 100 (needed for a valid comparison) |
+
+The comment-archive caps were 40 until 2026-10-28, when a total-item cap was found to be starving the author feed of POSTS — the stream interleaves posts with their comments, so comments crowded posts out and two days were never scanned. Cap each dimension at its own knob and keep `maxItems` clear of normal volume (`docs/postmortems/2026-10-28-item-cap-starved-the-post-feed.md`). Also set `maxTotalChargeUsd` explicitly: Apify applies an invisible $0.50 default.
 
 Apify is on a **$29/month** limit and hit 50% by Oct 14. When a scan's triage
 shows the cap was reached and the tail still looked relevant, say so in the

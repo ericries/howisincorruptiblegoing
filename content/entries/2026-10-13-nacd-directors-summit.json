@@ -8,16 +8,36 @@
   "blockquote_source": "NACD (National Association of Corporate Directors) on LinkedIn, quoting the Summit keynote",
   "source_url": "https://www.linkedin.com/posts/nacd-national-association-of-corporate-directors_nacdsummit-activity-7516124498421637121-72tm",
   "source_urls": [
-    {"url": "https://www.nacdonline.org/nacd-events/national-events/nacd-directors-summit-2026/nacd-directors-summit-2026-agenda/", "label": "NACD Summit 2026 agenda — session description"},
-    {"url": "https://www.nacdonline.org/nacd-events/national-events/nacd-directors-summit-2026/nacd-directors-summit-2026-speakers", "label": "NACD Summit 2026 speakers"},
-    {"url": "https://www.nacdonline.org/nacd-events/national-events/nacd-directors-summit-2026/", "label": "NACD Directors Summit 2026"}
+    {
+      "url": "https://www.nacdonline.org/nacd-events/national-events/nacd-directors-summit-2026/nacd-directors-summit-2026-agenda/",
+      "label": "NACD Summit 2026 agenda — session description"
+    },
+    {
+      "url": "https://www.nacdonline.org/nacd-events/national-events/nacd-directors-summit-2026/nacd-directors-summit-2026-speakers",
+      "label": "NACD Summit 2026 speakers"
+    },
+    {
+      "url": "https://www.nacdonline.org/nacd-events/national-events/nacd-directors-summit-2026/",
+      "label": "NACD Directors Summit 2026"
+    },
+    {
+      "url": "https://www.linkedin.com/posts/marcela-manjarrez-494b255_i-am-feeling-energized-and-definitely-better-activity-7521240918507683840-_2cT",
+      "label": "Marcela Manjarrez (Fortune 25 C-level executive, independent board director) recording the four-dimension governance model from the keynote — compliance, purpose, coherence and integrity"
+    }
   ],
   "video_url": null,
   "image": "/images/events/nacd-logo.png",
   "attribution": "National Association of Corporate Directors (NACD)",
   "attribution_title": "Directors Summit mainstage · National Harbor, MD · Tuesday October 13, 2026",
   "attribution_image": null,
-  "tags": ["event", "in-person", "nacd", "governance", "boards", "keynote"],
+  "tags": [
+    "event",
+    "in-person",
+    "nacd",
+    "governance",
+    "boards",
+    "keynote"
+  ],
   "type_metadata": {
     "city": "National Harbor, MD",
     "session": "Incorruptible: Why Good Companies Go Bad and How Great Companies Stay Great",
@@ -30,5 +50,7 @@
   "scanner_source": "manual",
   "verified": false,
   "created_at": "2026-10-05T17:00:00Z",
-  "appearance_dates": ["2026-10-13"]
+  "appearance_dates": [
+    "2026-10-13"
+  ]
 }
