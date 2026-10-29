@@ -4,7 +4,7 @@
   "type": "podcast",
   "title": "Giant Robots #628 (thoughtbot) — Chad Pytel and Eric on why best practices can harm a company's longevity, and what employee ownership is worth",
   "summary": "thoughtbot's long-running developer and founder podcast gives Eric a full hour, and the host turns the subject on his own company: Chad Pytel talks through thoughtbot's ownership structure alongside the book's case for employee ownership. The episode also covers why conventional best practices can work against a business's longevity and how corporate motivations shifted over the last century. thoughtbot's YouTube channel carries 34,200 subscribers.",
-  "blockquote": "Eric flips business on its head as he examines why best practices could actually be harmful to your business’ longevity, how the motivations of corporations have changed over the last century, why employee ownership is often more beneficial than you might think, and Chad talks about his own experience with thoughtbot’s ownership.",
+  "blockquote": "Eric flips business on it’s head as he examines why best practices could actually be harmful to your business’ longevity, how the motivations of corporations have changed over the last century, why employee ownership is often more beneficial than you might think, and Chad talks about his own experience with thoughtbot’s ownership.",
   "blockquote_source": "thoughtbot, Giant Robots episode 628 (show notes)",
   "source_url": "https://podcast.thoughtbot.com/628",
   "source_urls": [
@@ -34,7 +34,8 @@
   ],
   "type_metadata": {
     "audience": "thoughtbot YouTube 34,200 subscribers",
-    "episode_length": "58:29"
+    "episode_length": "58:29",
+    "featured": true
   },
   "scanner_source": "social-scan",
   "verified": false,
