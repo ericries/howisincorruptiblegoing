@@ -51,8 +51,8 @@ LANES: dict[str, str] = {
 # What the cron currently asks for, so starvation can be judged without the
 # caller having to know. Keep in step with docs/CRONS.md.
 LANE_REQUEST: dict[str, dict[str, int]] = {
-    "author": {"cap": 250, "max_posts": 50},
-    "keyword": {"cap": 250, "max_posts": 50},
+    "author": {"cap": 400, "max_posts": 50},
+    "keyword": {"cap": 400, "max_posts": 50},
 }
 
 _DATE_RE = re.compile(r"(\d{4}-\d{2}-\d{2})")
