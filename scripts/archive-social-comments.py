@@ -509,15 +509,49 @@ def main() -> int:
     return _persist_queue(llm_queue)
 
 
+def is_post(item: dict) -> bool:
+    """Posts carry an `author`; comments carry an `actor` and a `postId`.
+
+    harvestapi emits every comment TWICE — nested under its post, and again as
+    a flat top-level sibling. Both land in the same list, so the only reliable
+    way to tell them apart is the shape of the item itself.
+    """
+    return bool(item.get("author"))
+
+
+def count_by_shape(items: list[dict]) -> tuple[int, int]:
+    """(posts, comments) measured from the data, not from the list length.
+
+    The old counter was `scanned_posts += 1` inside `for post in items`, so it
+    reported "Scanned 250 posts" for a pull containing 40. The number took its
+    meaning from the loop variable's name rather than from anything observed.
+    """
+    posts = [i for i in items if is_post(i)]
+    nested = sum(len(p.get("comments") or []) for p in posts)
+    flat = sum(1 for i in items if not is_post(i))
+    # The two representations describe the same comments; count them once.
+    return len(posts), max(nested, flat)
+
+
 def queue_from_posts(items: list[dict], *, scan_source: str, seen: set[str],
                      verbose: bool = False) -> list[dict]:
     """Anchor-passing LinkedIn posts and comments, as queue records."""
-    scanned_posts = 0
-    scanned_comments = 0
+    scanned_posts, scanned_comments = count_by_shape(items)
     llm_queue: list[dict] = []
-    for post in items:
-        scanned_posts += 1
-        scanned_comments += len(post.get("comments") or [])
+
+    # Index posts by id first, so a flat comment encountered BEFORE its post
+    # can still resolve its parent. Previously the flat record was treated as a
+    # post, queued with parent_post None, and won the identifier dedup over the
+    # nested record that knew its parent — because the stream usually starts
+    # with a comment.
+    posts_by_id = {str(i.get("id")): i for i in items if is_post(i)}
+
+    for item in items:
+        if not is_post(item):
+            _queue_comment(item, posts_by_id.get(str(item.get("postId"))),
+                           scan_source=scan_source, seen=seen, queue=llm_queue)
+            continue
+        post = item
 
         post_text = post.get("content") or post.get("commentary") or ""
         if post_text and BOOK_ANCHOR_RE.search(post_text):
@@ -543,39 +577,77 @@ def queue_from_posts(items: list[dict], *, scan_source: str, seen: set[str],
                 })
 
         for cmt in post.get("comments") or []:
-            ctext = cmt.get("commentary") or cmt.get("text") or ""
-            # Comments on Eric's OWN feed inherit book context from the parent.
-            # On keyword scans, comments under a book-anchored parent post also
-            # inherit anchor. Otherwise, the comment itself must name the book.
-            comment_anchor = (
-                BOOK_ANCHOR_RE.search(ctext)
-                or scan_source.startswith("linkedin-author-eries")
-                or BOOK_ANCHOR_RE.search(post_text or "")
-            )
-            if ctext and comment_anchor:
-                cmt_permalink = _comment_permalink(cmt)
-                ident = _stable_identifier(
-                    kind="comment", permalink=cmt_permalink,
-                    raw_id=_get(cmt, "id", "urn"),
-                )
-                if ident and ident not in seen:
-                    llm_queue.append({
-                        "identifier": ident,
-                        "platform": "linkedin",
-                        "kind": "comment",
-                        "source_scan": scan_source,
-                        "text": ctext,
-                        "permalink": cmt_permalink,
-                        "posted_at": cmt.get("createdAt") or (cmt.get("postedAt") or {}).get("date"),
-                        "reactions": (cmt.get("engagement") or {}).get("likes"),
-                        "comments_count": (cmt.get("engagement") or {}).get("comments"),
-                        "author": _author_from(cmt.get("actor") or cmt.get("author")),
-                        "parent_post": normalize_post_meta(post),
-                    })
+            _queue_comment(cmt, post, scan_source=scan_source, seen=seen, queue=llm_queue)
 
     if verbose:
         print(f"Scanned {scanned_posts} posts / {scanned_comments} comments.")
+        orphans = [r for r in llm_queue
+                   if r.get("kind") == "comment" and not r.get("parent_post")]
+        if orphans:
+            # Loud, because an empty parent_post is indistinguishable at
+            # classification time from a comment that never needed context.
+            print(f"  WARNING: {len(orphans)} comment(s) have an unresolved parent "
+                  f"post — their postId was not in this pull:")
+            for r in orphans[:5]:
+                print(f"    {r.get('parent_post_id')}  {(r.get('text') or '')[:60]}")
     return llm_queue
+
+
+def _queue_comment(cmt: dict, post: dict | None, *, scan_source: str,
+                   seen: set[str], queue: list[dict]) -> None:
+    """Append one comment record, with its parent resolved where possible.
+
+    Called for BOTH representations the actor emits — the nested one and the
+    flat sibling. They produce the same stable identifier, so whichever arrives
+    first wins the dedup; both now carry the parent, so order no longer decides
+    whether context survives.
+    """
+    ctext = cmt.get("commentary") or cmt.get("text") or ""
+    if not ctext:
+        return
+    post_text = (post or {}).get("content") or (post or {}).get("commentary") or ""
+    # Comments on Eric's OWN feed inherit book context from the parent. On
+    # keyword scans, comments under a book-anchored parent post also inherit
+    # anchor. Otherwise, the comment itself must name the book.
+    comment_anchor = (
+        BOOK_ANCHOR_RE.search(ctext)
+        or scan_source.startswith("linkedin-author-eries")
+        or BOOK_ANCHOR_RE.search(post_text or "")
+    )
+    if not comment_anchor:
+        return
+
+    cmt_permalink = _comment_permalink(cmt)
+    ident = _stable_identifier(
+        kind="comment", permalink=cmt_permalink, raw_id=_get(cmt, "id", "urn"),
+    )
+    if not ident or ident in seen:
+        return
+    # Already queued from the other representation in this same pass.
+    if any(r.get("identifier") == ident for r in queue):
+        if post is not None:
+            for r in queue:
+                if r.get("identifier") == ident and not r.get("parent_post"):
+                    r["parent_post"] = normalize_post_meta(post)
+        return
+
+    queue.append({
+        "identifier": ident,
+        "platform": "linkedin",
+        "kind": "comment",
+        "source_scan": scan_source,
+        "text": ctext,
+        "permalink": cmt_permalink,
+        "posted_at": cmt.get("createdAt") or (cmt.get("postedAt") or {}).get("date"),
+        "reactions": (cmt.get("engagement") or {}).get("likes"),
+        "comments_count": (cmt.get("engagement") or {}).get("comments"),
+        "author": _author_from(cmt.get("actor") or cmt.get("author")),
+        "parent_post": normalize_post_meta(post) if post else None,
+        # Kept even when the post resolved, so a record whose parent could not
+        # be found says WHICH post is missing rather than looking like a
+        # comment nobody needed context for.
+        "parent_post_id": str(cmt.get("postId")) if cmt.get("postId") else None,
+    })
 
 
 def _persist_queue(llm_queue: list[dict]) -> int:
