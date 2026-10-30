@@ -257,6 +257,37 @@ npx tsx scripts/lint-entries.ts              # read the trailing summary line
 git add <specific paths> && git commit && git push
 ```
 
+**The quote gate is offline-first, and SAVING THE SOURCE TEXT is the job.** The
+pre-commit hook runs `python3 scripts/quote_integrity.py` on changed entries: it
+checks the blockquote against `data/archive/source-texts/<entry-id>.json`, which
+is the only check that works on LinkedIn and X — 62% of entries, which no
+anonymous fetch can read. `--require-capture` fails the commit for a NEW entry
+that has none. Write the capture as you ship, with `entry_id`, `source_url`,
+`platform` and `full_text`.
+
+Why this is a hard rule rather than a nicety: before 2026-10-28 the verifier
+checked **25 of 871 entries and exited 0**, because `verify-quotes.ts` skipped
+anything carrying `verified: false` and the hook's own failure message advertised
+setting that flag as the way to make a failing check pass. 725 entries took the
+hint. **Never set `verified: false` to silence a check** — the skip is gone and
+the field is inert, but the habit is the bug. See
+`docs/postmortems/2026-10-28-the-quote-gate-verified-three-percent.md`.
+
+Read the verdicts carefully, because three of the six are not failures:
+
+| verdict | meaning |
+|---|---|
+| `exact` / `normalised` | verified; `normalised` means byte-level drift (smart quotes, dashes, a newline joined) |
+| `partial` | **the composited-quote signature** — the opening is real and the rest is not. 14 were found and repaired on 2026-10-28 |
+| `absent` | the quote is not in the captured document |
+| `no-source` / `source-mismatch` / `medium-mismatch` / `weak-capture` / `comment-mismatch` | could not be checked, NOT a pass — a capture of the wrong url, a transcript judged against show-note copy, a scraped page that was only nav, or a post capture judged against a quote taken from its comments |
+
+If you trim a quote, mark the cut with ` … `. `scripts/repair_elisions.py` does it
+mechanically and refuses unless every segment is verbatim AND in source order;
+the checker then verifies `A … B` segment by segment. A bad capture is worse than
+none — never store a bare domain root, because the homepage served today is not
+the page the entry quoted months ago.
+
 For YouTube entries also save the transcript to
 `data/archive/transcripts/<entry-id>.txt`.
 
