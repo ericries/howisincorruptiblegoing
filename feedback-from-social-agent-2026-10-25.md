@@ -18,3 +18,9 @@ These are saved in apify/incorruptible-videos/posters/logos-adoption/ (Extern, F
 
 ## Speaker attribution fix (Eric, 2026-10-25)
 In the YC Main Function transcript (2026-05-22-yc-main-function-garry-tan, ~49:48), the closing line "I really think this is a message that YC founders need to hear and pay attention to" is **Garry Tan's**, per Eric, who was there. The caption turn-break makes it look like Eric's reply. Worth a standalone entry: it's Garry's strongest line about the book. YC's episode title is also quotable: "How The Best Companies Defend Against Mediocrity And Rot".
+
+## 2026-10-30: two new entries need to go live before 11/6
+The social agent created two entries from the 10/26 comment archive (quotes string-checked against `full_text`; cards rendered to public/images/cards/):
+- content/entries/2026-10-26-andrew-corcoran-fave-business-book.json (Bluesky post 11/6 links /e/<id>/)
+- content/entries/2026-10-26-daniel-sharp-important-book-this-time.json (X post 11/7 links /e/<id>/)
+They are untracked; please include them in your next content commit so the /e/ pages resolve before the posts fire.

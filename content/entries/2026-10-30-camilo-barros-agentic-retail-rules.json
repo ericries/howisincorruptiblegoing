@@ -1,0 +1,28 @@
+{
+  "id": "2026-10-30-camilo-barros-agentic-retail-rules",
+  "date": "2026-10-30",
+  "type": "reaction",
+  "parent_id": "2026-09-30-ai-conference-tim-oreilly-fireside",
+  "title": "Camilo Barros takes Eric's question from The AI Conference stage into agentic retail — 'essa resposta vai ficar escrita nas regras do agente'",
+  "summary": "Barros writes the Entre Futuros newsletter on AI and commerce. His piece analyses the 21 metrics Target published for judging its own shopping agent — open-sourcing the rules while keeping the agent closed, with safety and law ranked first and selling last — and sets Walmart and Amazon against it. He closes by taking the question Eric put from the same conference stage, who the company would rather die than betray, and arguing that in agentic retail the answer stops being a statement and becomes a rule the agent is judged against. The closing claim is his; the question is Eric's, confirmed across 48 archived sources.",
+  "blockquote": "No palco do mesmo evento, Eric Ries perguntou: quem a empresa prefere morrer a trair? No varejo agêntico, essa resposta vai ficar escrita nas regras do agente.",
+  "blockquote_source": "Camilo Barros on LinkedIn",
+  "source_url": "https://www.linkedin.com/posts/camilobarros_na-the-ai-conference-em-san-francisco-uma-activity-7521907114378731524-rzyn",
+  "source_urls": null,
+  "video_url": null,
+  "image": null,
+  "attribution": "Camilo Barros",
+  "attribution_title": "Writes the Entre Futuros newsletter on AI and commerce",
+  "attribution_image": "/images/people/camilo-barros.jpg",
+  "tags": [
+    "reaction",
+    "linkedin",
+    "ai-conference",
+    "agentic-retail",
+    "governance"
+  ],
+  "type_metadata": {},
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-10-31T01:33:28Z"
+}
