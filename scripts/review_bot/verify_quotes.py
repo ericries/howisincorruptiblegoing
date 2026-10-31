@@ -63,6 +63,25 @@ MIN_PLAUSIBLE_CHARS = 1200
 MIN_PREFIX_SIGNAL = 25
 
 
+_DROP_RE = re.compile(r"(?is)<(script|style|noscript|template)\b.*?</\1>")
+_TAG_RE = re.compile(r"(?s)<[^>]+>")
+
+
+def visible_text(raw: str) -> str:
+    """Text a reader would see, with script/style bodies and tags removed.
+
+    Both signals below must be read from THIS, not from raw markup. A YouTube
+    watch page is hundreds of KB of HTML — so a length floor applied to the raw
+    string always passes — and carries the channel name in metadata while the
+    transcript the quote came from is nowhere in the document. On 2026-10-30
+    that combination produced a confident FAIL against a sound entry whose
+    quote was sitting in the transcript archive all along.
+    """
+    if not raw:
+        return ""
+    return re.sub(r"\s+", " ", _TAG_RE.sub(" ", _DROP_RE.sub(" ", raw))).strip()
+
+
 def is_conclusive(*, page: str, quote: str, attribution: str | None) -> bool:
     """Is there positive evidence this response is the document we asked for?
 
@@ -76,6 +95,7 @@ def is_conclusive(*, page: str, quote: str, attribution: str | None) -> bool:
     alone is not a signal — walls can be long — but being far too short rules
     a response out.
     """
+    page = visible_text(page)
     if not page or len(page) < MIN_PLAUSIBLE_CHARS:
         return False
     low = page.lower()

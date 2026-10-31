@@ -60,3 +60,27 @@ describe('isConclusive', () => {
     expect(isConclusive(page, 'astounding', 'Nobody Here')).toBe(false);
   });
 });
+
+describe('isConclusive reads visible text, not markup', () => {
+  const YOUTUBE_SHELL =
+    '<html><head><meta name="author" content="Stanford eCorner">' +
+    '<script>var ytInitialData={"channel":"Stanford eCorner","x":"' + 'z'.repeat(40000) + '"};</script>' +
+    '</head><body><div id="app"></div></body></html>';
+
+  it('rejects a huge shell whose name is only in markup', () => {
+    // The 2026-10-30 false FAIL: raw HTML clears the length floor and the
+    // channel name sits in metadata, while the transcript the quote came from
+    // is not in the document at all.
+    expect(isConclusive(YOUTUBE_SHELL, QUOTE, 'Stanford eCorner')).toBe(false);
+  });
+
+  it('still accepts a real page whose name is in body text', () => {
+    const page = '<html><body><p>' + 'lorem ipsum '.repeat(300) + ' reviewed by Jeff Berman</p></body></html>';
+    expect(isConclusive(page, QUOTE, ATTRIB)).toBe(true);
+  });
+
+  it('does not let script bodies pad the length floor', () => {
+    const page = '<html><body><script>' + 'x'.repeat(50000) + '</script><p>hi</p></body></html>';
+    expect(isConclusive(page, QUOTE, ATTRIB)).toBe(false);
+  });
+});

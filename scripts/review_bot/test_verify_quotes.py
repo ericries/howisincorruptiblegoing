@@ -70,3 +70,36 @@ def test_very_short_quote_cannot_carry_the_prefix_signal():
     page = "q" * 3000 + " astounding "
     assert is_conclusive(page=page, quote="astounding",
                          attribution="Nobody Here") is False
+
+
+# --- the signals must be read from visible text, not from markup ---------------------
+
+YOUTUBE_SHELL = (
+    '<html><head><meta name="author" content="Stanford eCorner">'
+    '<script>var ytInitialData={"channel":"Stanford eCorner","x":"' + "z" * 40000 + '"};</script>'
+    '</head><body><div id="app"></div></body></html>'
+)
+
+
+def test_a_huge_shell_with_the_name_only_in_markup_is_inconclusive():
+    """The 2026-10-30 false FAIL, exactly.
+
+    A YouTube watch page is hundreds of KB of raw HTML, so the length floor
+    passes, and the channel name sits in metadata, so the attribution signal
+    fires — while the transcript the quote came from is nowhere in the HTML at
+    all. Both signals have to be read from VISIBLE text or markup answers for
+    the document.
+    """
+    assert is_conclusive(page=YOUTUBE_SHELL, quote=QUOTE,
+                         attribution="Stanford eCorner") is False
+
+
+def test_a_real_page_with_the_name_in_body_text_is_still_conclusive():
+    page = "<html><body><p>" + ("lorem ipsum " * 300) + " reviewed by Jeff Berman</p></body></html>"
+    assert is_conclusive(page=page, quote=QUOTE, attribution=ATTRIB) is True
+
+
+def test_script_bodies_do_not_pad_the_length_floor():
+    """A page that is all script and no prose cannot clear the floor."""
+    page = "<html><body><script>" + ("x" * 50000) + "</script><p>hi</p></body></html>"
+    assert is_conclusive(page=page, quote=QUOTE, attribution=ATTRIB) is False

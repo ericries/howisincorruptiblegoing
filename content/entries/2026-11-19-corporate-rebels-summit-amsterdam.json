@@ -27,7 +27,8 @@
     "upcoming"
   ],
   "type_metadata": {
-    "city": "Amsterdam"
+    "city": "Amsterdam",
+    "featured": true
   },
   "scanner_source": "social-scan",
   "verified": false,

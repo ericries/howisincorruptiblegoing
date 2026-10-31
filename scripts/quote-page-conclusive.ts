@@ -21,6 +21,24 @@ export const MIN_PLAUSIBLE_CHARS = 1200;
 /** A shorter quote prefix matches too much markup to prove anything. */
 export const MIN_PREFIX_SIGNAL = 25;
 
+/**
+ * Text a reader would see: script/style bodies and tags removed.
+ *
+ * Both signals below must be read from THIS, not from raw markup. A YouTube
+ * watch page is hundreds of KB of HTML, so a length floor on the raw string
+ * always passes, and it carries the channel name in metadata while the
+ * transcript the quote came from is nowhere in the document. On 2026-10-30
+ * that produced a confident FAIL against a sound entry.
+ */
+export function visibleText(raw: string): string {
+  if (!raw) return '';
+  return raw
+    .replace(/<(script|style|noscript|template)\b[\s\S]*?<\/\1>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 function fold(text: string): string {
   return text.toLowerCase().replace(/\s+/g, ' ').trim();
 }
@@ -35,6 +53,7 @@ export function isConclusive(
   quote: string,
   attribution: string | null | undefined
 ): boolean {
+  page = visibleText(page);
   if (!page || page.length < MIN_PLAUSIBLE_CHARS) return false;
 
   const low = page.toLowerCase();
