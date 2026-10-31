@@ -96,7 +96,9 @@ Monday-only scan was reported missed on a Tuesday and re-run at real Apify cost.
 
 It now also prints a FEED COVERAGE section, because "did the job run" and "did the job's pull reach back to the previous one" are different questions and only the first was ever asked. HOLE means a date no pull covered — already lost, recoverable only by re-pulling with a wider postedLimit. STARVED is the one to act on: a cap bound before the post quota was met, and it fires BEFORE the next run leaves a hole.
 
-THE MORNING SCAN OF 2026-10-20 IS STILL UNEXPLAINED — due 9:07, turn ended 9:19, REPL idle until 11:38, nothing fired, while two probes created the same way both ran. Four explanations have collapsed. Do NOT ship a fifth; note a second instance if it recurs and let scan_catchup.py do the repair.
+THE MORNING SCAN NON-FIRE HAS NOW HAPPENED TWICE, and it is still unexplained. 2026-10-20: due 9:07, watchdog turn ended 9:19, REPL idle until 11:38, nothing fired, while two probes created the same way both ran. 2026-10-31: due 9:07, watchdog turn ran 09:02-09:52, REPL idle from 09:52, still had not fired at 10:46 — CronList showed the job registered and healthy the whole time, and scan_catchup caught it once past the 75-minute grace. Four explanations collapsed after the first instance; do NOT ship a fifth.
+
+One FACTUAL property both instances share, recorded for pattern-matching and explicitly NOT advanced as a cause: on both days the morning-scan job was recreated by the watchdog shortly before its 9:07 match, and the watchdog turn was still running when the match passed. That is also true of many rolls that DID fire, and the 10-20 probes were created on the same lead times and ran, so it does not explain anything on its own — it is simply the first property the two instances have in common. Let scan_catchup.py do the repair, which it did on the 31st: four pulls with derived windows, youtube widened to a week because its watermark had been reset.
 
 Then the coverage check, which catches what the commit log hides:
 
