@@ -23,7 +23,10 @@
   ],
   "type_metadata": {
     "image_fit": "contain",
-    "image_bg": "#273a66"
+    "image_bg": "#273a66",
+    "language": "es",
+    "translator": "Eva Morón",
+    "publisher": "Deusto"
   },
   "scanner_source": "web-search",
   "verified": true,

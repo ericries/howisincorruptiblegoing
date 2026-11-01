@@ -231,6 +231,36 @@ reliable signal. The podcast-cutout pattern ("X and I discuss…") is animated b
 default. Photo slideshows (`isSlideshow: true`, duration 0) never qualify. If you
 cannot confirm on-camera, skip. This rule has been violated three times.
 
+### Foreign editions — every one, on its own publication date
+
+Eric, 2026-11-01: *"please include all foreign editions (tied to their publication
+date), track as they come up. fine to post in english announcing it but also include
+foreign-language material from the publisher when available. note translator as well
+as publisher."*
+
+So each translation is its own entry, `type: media`, **dated the edition's own
+publication date** — not the day it was found. The German edition published on
+2026-08-16 and was only noticed on 11-01; it is dated August.
+
+- **Title and summary in English.** The entry announces the edition to an
+  English-speaking timeline.
+- **Blockquote is the publisher's own copy, in the original language**, when the
+  publisher has any — attributed to the publisher, never to Eric. Verify it on the
+  publisher's own page, not a retailer's: retailers list the English edition under
+  local ISBNs constantly and look like translations in search results.
+- **Name the translator as well as the publisher.** Both go in
+  `attribution_title`, and in `type_metadata` as `language`, `translator`,
+  `publisher` so the set is queryable later.
+- **Cover art** to `/images/events/`, with `image_fit: contain` and an
+  `image_bg` sampled from the jacket.
+
+Known so far: German — REDLINE Verlag (Münchner Verlagsgruppe), trans. Jordan
+Wegberg, 2026-08-16. Spanish — *Incorruptibles*, Deusto (Grupo Planeta), trans. Eva
+Morón, 2026-11-25. The Goodreads editions page is the cheapest enumerator
+(`/work/editions/266561646-...?per_page=100`); it renders server-side and lists
+publisher and date per edition, which is how the German one surfaced. Re-check it
+periodically — translation deals land without announcement.
+
 ## 4. Writing an entry
 
 - Blockquote must be **exact, contiguous text** from the source. Never
