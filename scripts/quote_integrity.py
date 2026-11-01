@@ -75,11 +75,25 @@ class Verdict(enum.Enum):
 
 
 def normalise(text: str) -> str:
-    """Fold the differences that are typographic rather than substantive."""
+    """Fold the differences that are typographic rather than substantive.
+
+    Quote STYLE and dash STYLE fold away entirely, not merely curly-to-straight.
+    Every one of the 33 failures standing on 2026-11-01 came from a LinkedIn
+    capture, and the two commonest causes were a published quote carrying
+    'financial gravity' where the post had "financial gravity", and an em dash
+    where the post had a plain hyphen. Folding only curly-to-straight left both
+    of those convicting a sound entry — a false accusation of fabrication,
+    which is the costliest kind of wrong this checker can be.
+
+    Substance survives the fold: a substituted word still fails, which is how
+    2026-07-05-andrew-bond was caught publishing "meet the seriousness" where
+    its source says "meet the significance".
+    """
     text = text.lower()
-    text = re.sub(r"[‘’‛]", "'", text)
-    text = re.sub(r"[“”]", '"', text)
-    text = text.replace("—", "--").replace("–", "-")
+    # Any quote mark — single or double, curly or straight — becomes one marker.
+    text = re.sub(r"['‘’‛`´′\"“”„‟″]", "'", text)
+    # Any dash, or run of dashes, becomes one hyphen.
+    text = re.sub(r"[-—–‒―−]+", "-", text)
     text = text.replace("…", "...").replace(" ", " ")
     return re.sub(r"\s+", " ", text).strip()
 

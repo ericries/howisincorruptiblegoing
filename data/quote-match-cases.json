@@ -66,6 +66,36 @@
       "quote": "why success itself…and why it matters",
       "text": "He wrote: why success itself...and why it matters, at length.",
       "expect": "found"
+    },
+    {
+      "name": "single quotes against double quotes is typographic drift",
+      "quote": "he calls it 'financial gravity' — the silent pull",
+      "text": "He calls it \"financial gravity\" -- the silent pull of capital.",
+      "expect": "found"
+    },
+    {
+      "name": "em dash against a plain hyphen",
+      "quote": "Eric Ries — the father of The Lean Startup — released it",
+      "text": "Eric Ries - the father of The Lean Startup - released it today.",
+      "expect": "found"
+    },
+    {
+      "name": "en dash against an em dash",
+      "quote": "structure – not virtue",
+      "text": "structure — not virtue, is what holds.",
+      "expect": "found"
+    },
+    {
+      "name": "folding quote style does not fuse distinct words",
+      "quote": "the mission is the asset",
+      "text": "the mission is not the asset",
+      "expect": "absent"
+    },
+    {
+      "name": "a genuinely substituted word is still caught",
+      "quote": "tools that meet the seriousness of the lift ahead",
+      "text": "tools that meet the significance of the lift ahead",
+      "expect": "absent"
     }
   ]
 }

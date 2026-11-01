@@ -30,9 +30,15 @@ const CUT = /\s+(?:…|\.\.\.)\s+/;
 export function normalize(text: string): string {
   return text
     .toLowerCase()
-    .replace(/[‘’“”]/g, "'")   // smart quotes → straight
-    .replace(/—/g, '--')                       // em dash
-    .replace(/–/g, '-')                        // en dash
+    // Any quote mark — single or double, curly or straight — becomes one
+    // marker, and any dash or run of dashes becomes one hyphen. Folding only
+    // curly-to-straight left `'financial gravity'` convicting a post that
+    // wrote `"financial gravity"`, and an em dash convicting a plain hyphen.
+    // Both are typographic; a substituted word still fails. Mirrors
+    // `normalise` in scripts/quote_integrity.py — the shared corpus in
+    // data/quote-match-cases.json holds the cases that keep them in step.
+    .replace(/['‘’‛`´′"“”„‟″]/g, "'")
+    .replace(/[-—–‒―−]+/g, '-')
     // Folded AFTER the cut split in findQuoteInPage, so a spaced ' … ' is
     // already gone and only an author's own trailing-off ellipsis reaches
     // here. quote_integrity.py folds it too, and the shared corpus holds the
