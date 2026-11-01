@@ -1,0 +1,30 @@
+{
+  "comment-archive": [
+    {
+      "rolled_at": "2026-11-01T18:20:00Z",
+      "sha12": "bfc3fd4237ce",
+      "bytes": 14301
+    }
+  ],
+  "goodreads": [
+    {
+      "rolled_at": "2026-11-01T18:20:00Z",
+      "sha12": "e700ce4ab96f",
+      "bytes": 8521
+    }
+  ],
+  "recall-audit": [
+    {
+      "rolled_at": "2026-11-01T18:20:00Z",
+      "sha12": "49aa3a2e3f36",
+      "bytes": 8305
+    }
+  ],
+  "sidebar": [
+    {
+      "rolled_at": "2026-11-01T18:20:00Z",
+      "sha12": "e795f299ab72",
+      "bytes": 9721
+    }
+  ]
+}
