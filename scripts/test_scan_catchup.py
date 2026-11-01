@@ -17,9 +17,11 @@ depending on one particular cron being alive.
 """
 
 import datetime as dt
+import zoneinfo
 
 import pytest
 
+import scan_catchup as sc
 from scan_catchup import JOBS, missed_runs, next_run_after
 
 
@@ -216,3 +218,92 @@ def test_main_still_prints_when_feed_coverage_is_clean(capsys, monkeypatch):
     monkeypatch.setattr(feed_coverage, "report", lambda *a, **k: ([], 0))
     sc._main()
     assert "Feed coverage" in capsys.readouterr().out
+
+
+# --- the clocks change twice a year and the schedule does not -----------------
+
+def test_a_slot_before_a_dst_change_is_not_shifted_by_an_hour(tmp_path, monkeypatch):
+    """2026-11-01, the morning DST ended, reported two false misses.
+
+    `tz` defaulted to `datetime.now().astimezone().tzinfo`, which is a FIXED
+    offset — whatever the offset happens to be today. Building a fire time for
+    a date on the other side of a DST change with today's offset moves that
+    slot by an hour. The evening scan's 18:03 slot for Sat 31 Oct (PDT) was
+    constructed as 18:03 PST and rendered back as 19:03, so a run that had
+    happened at 18:55 PDT looked like it had missed a 19:03 slot that never
+    existed. Goodreads showed the same shift, 10:33 reported as 11:33.
+
+    Both were false, and acting on either means re-running a scan at real
+    Apify cost — which is exactly what the 2026-10-20 note in CLAUDE.md warns
+    about.
+
+    A real zone resolves the offset for the wall time being constructed, so a
+    slot keeps its stated local hour on both sides of the change.
+    """
+    zone = zoneinfo.ZoneInfo("America/Los_Angeles")
+    jobs = {"evening-scan": {"cron": "3 18 * * *", "label": "evening",
+                             "source": "evening-src"}}
+    # Written 2026-10-31 18:55 PDT, i.e. after that day's 18:03 slot.
+    monkeypatch.setattr(sc, "read_watermark", lambda src: "2026-11-01T01:55:00Z")
+
+    # The following morning, after the change: 08:11 PST.
+    now = dt.datetime(2026, 11, 1, 8, 11, tzinfo=zone)
+    rows = sc.overdue(now=now, jobs=jobs, tz=zone)
+    assert rows == [], f"false miss across the DST boundary: {rows}"
+
+
+def test_the_default_zone_is_dst_aware_not_a_fixed_offset():
+    """The bug lived in the DEFAULT, so the default is what must be checked.
+
+    A fixed-offset tzinfo has no notion of a transition; asking it for the
+    offset at a summer instant returns the winter one.
+    """
+    tz = sc._local_zone()
+    # datetime.timezone IS the fixed-offset class — the precise thing that was
+    # wrong. A real zone (zoneinfo.ZoneInfo) resolves the offset per instant.
+    assert not isinstance(tz, dt.timezone), (
+        f"_local_zone() returned a fixed offset ({tz!r}); a cron slot built with "
+        "it drifts an hour across a DST change"
+    )
+    summer = dt.datetime(2026, 7, 1, 12, 0, tzinfo=tz).utcoffset()
+    winter = dt.datetime(2026, 12, 1, 12, 0, tzinfo=tz).utcoffset()
+    if summer == winter:
+        import pytest
+        pytest.skip("machine is in a zone without DST; the offset check above still holds")
+    assert summer != winter
+
+
+def test_every_job_fires_at_the_local_hour_its_cron_states_year_round():
+    """The invariant that has teeth: convert the slot back to TRUE local time.
+
+    A cron expression names a local wall-clock time, so whatever the slot
+    machinery does internally, the fire time rendered in the machine's real
+    zone must land on exactly that hour and minute — on both sides of both DST
+    transitions.
+
+    A slot is only as good as the zone it is built in. `_slots` takes its zone
+    from `start.tzinfo`, so a caller handing it a fixed OFFSET rather than a
+    zone gets slots that drift an hour across a transition — which is exactly
+    what production did, and why `scan_catchup` printed "next Sun 19:03" for
+    `3 18 * * *` on 2026-11-01. That defect is pinned by the default-zone test
+    below; this one guards the machinery itself, year round.
+
+    Covers the whole JOBS table, so a job added later is checked for free.
+    """
+    zone = zoneinfo.ZoneInfo("America/Los_Angeles")
+    probes = [
+        dt.datetime(2026, 10, 30, 12, 0, tzinfo=zone),   # PDT
+        dt.datetime(2026, 11, 2, 12, 0, tzinfo=zone),    # PST, after fall-back
+        dt.datetime(2027, 3, 12, 12, 0, tzinfo=zone),    # PST
+        dt.datetime(2027, 3, 16, 12, 0, tzinfo=zone),    # PDT, after spring-forward
+    ]
+    for name, spec in JOBS.items():
+        minute, hour, _ = sc._parse(spec["cron"])
+        for when in probes:
+            nxt = next_run_after(spec["cron"], when)
+            local = nxt.astimezone(zone)
+            assert (local.hour, local.minute) == (hour, minute), (
+                f"{name} ({spec['cron']}) fires at {local:%H:%M %Z} "
+                f"when evaluated from {when:%Y-%m-%d}; "
+                f"expected {hour:02d}:{minute:02d} local"
+            )

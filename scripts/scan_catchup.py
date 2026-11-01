@@ -33,6 +33,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from scan_state import read_watermark  # noqa: E402
 
+import os as _os
+import zoneinfo as _zoneinfo
+from pathlib import Path as _Path
 UTC = _dt.timezone.utc
 
 # The documented 15-minute jitter cap is not the real bound. Two probe jobs on
@@ -143,6 +146,37 @@ def missed_runs(expr: str, last_seen: _dt.datetime | None, now: _dt.datetime,
 
 # --- applying it to the deployed jobs -----------------------------------------------
 
+def _local_zone() -> _dt.tzinfo:
+    """The machine's real, DST-aware zone — not today's fixed offset.
+
+    `_dt.datetime.now().astimezone().tzinfo` is a fixed offset: whatever the
+    offset happens to be at the moment it is called. Building a cron fire time
+    for a date on the other side of a DST change with today's offset moves that
+    slot by an hour, which on 2026-11-01 reported two jobs as having missed
+    slots that never existed — the 18:03 evening scan as 19:03 and the 10:33
+    Goodreads scan as 11:33. Acting on a false miss costs a re-run.
+
+    A real zone resolves the offset for the wall time being constructed, so a
+    slot keeps its stated local hour on both sides of the change.
+    """
+    name = _os.environ.get("TZ")
+    if name:
+        try:
+            return _zoneinfo.ZoneInfo(name)
+        except Exception:
+            pass
+    try:
+        parts = _Path("/etc/localtime").resolve().parts
+        if "zoneinfo" in parts:
+            key = "/".join(parts[parts.index("zoneinfo") + 1:])
+            return _zoneinfo.ZoneInfo(key)
+    except Exception:
+        pass
+    # No zone database reachable. A fixed offset is wrong across a transition
+    # but right the rest of the year, which beats refusing to report at all.
+    return _dt.datetime.now().astimezone().tzinfo
+
+
 def overdue(now: _dt.datetime | None = None, jobs: dict | None = None,
             tz: _dt.tzinfo | None = None) -> list[dict]:
     """Every job owing work, with the slots it missed. Empty list is the happy path.
@@ -154,7 +188,7 @@ def overdue(now: _dt.datetime | None = None, jobs: dict | None = None,
     evening scan into an 11:03 slot that looked missed at noon.
     """
     now = now or _dt.datetime.now(UTC)
-    tz = tz or _dt.datetime.now().astimezone().tzinfo
+    tz = tz or _local_zone()
     now = now.astimezone(tz)
     out = []
     for name, spec in (jobs or JOBS).items():
@@ -196,7 +230,7 @@ def _main() -> int:
     # Local-aware, because the cron expressions are local. Passing a UTC `now`
     # here built the slots in UTC and then shifted them again on display, which
     # printed the 9:07 morning scan as "next Wed 02:07".
-    now = _dt.datetime.now().astimezone()
+    now = _dt.datetime.now(_local_zone())
     rows = overdue(now)
     if not rows:
         print("Catch-up: nothing overdue.")
