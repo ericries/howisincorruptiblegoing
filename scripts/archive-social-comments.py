@@ -66,6 +66,17 @@ BOOK_ANCHOR_RE = re.compile(
 )
 
 LLM_QUEUE_PATH = ARCHIVE_DIR / ".llm-queue.json"
+# Candidates judged and rejected, with the reason. A skip used to be recorded
+# nowhere, so the same rejects returned to the queue every run and the cron
+# prompt had to ask for consistency across nights from memory. Recording the
+# judgment makes it structural, and gives `_apply_verdicts_mode` the evidence
+# it needs to tell "judged everything, kept nothing" from "called with
+# nothing" — see docs/postmortems/2026-10-31-the-sidebar-remembered-in-prose.md
+# Deliberately OUTSIDE data/archive/, which is gitignored. This is a judgment
+# ledger, not raw scraped material: it has to survive a change of machine, like
+# data/ondisk-image-skips.json, which is the same pattern for image matches.
+# CLAUDE.md: "Everything the scanner needs lives in this repository."
+SKIPPED_PATH = ROOT / "data" / "comment-skips.json"
 
 # Emoji ranges we care about (BMP + supplemental plane pictographs). Also
 # catches ⭐/🌟 (U+2B50/U+1F31F) and other common social punctuation.
@@ -341,6 +352,31 @@ def normalize_post_meta(post: dict) -> dict:
     }
 
 
+def _load_skipped() -> list[dict]:
+    """Previously judged-and-rejected candidates."""
+    try:
+        return json.loads(SKIPPED_PATH.read_text())
+    except (OSError, json.JSONDecodeError):
+        return []
+
+
+def _skipped_identifiers() -> set[str]:
+    return {r.get("identifier") for r in _load_skipped() if r.get("identifier")}
+
+
+def _record_skips(rows: list[dict]) -> int:
+    """Append skip judgments, newest last, without duplicating one."""
+    if not rows:
+        return 0
+    existing = _load_skipped()
+    known = {r.get("identifier") for r in existing}
+    fresh = [r for r in rows if r.get("identifier") not in known]
+    if fresh:
+        SKIPPED_PATH.parent.mkdir(parents=True, exist_ok=True)
+        SKIPPED_PATH.write_text(json.dumps(existing + fresh, indent=2, ensure_ascii=False))
+    return len(fresh)
+
+
 def _load_seen_identifiers() -> set[str]:
     """Return every `identifier` present in any archive file so far, so the
     same post/comment isn't re-captured on a later scan."""
@@ -391,6 +427,18 @@ def _apply_verdicts_mode(verdicts_path: Path) -> int:
     today = datetime.date.today().isoformat()
     archive_path = ARCHIVE_DIR / f"{today}.json"
     existing: list[dict] = json.loads(archive_path.read_text()) if archive_path.exists() else []
+
+    now_iso = (datetime.datetime.now(datetime.UTC)
+               .replace(microsecond=0, tzinfo=None).isoformat() + "Z")
+    skip_rows = [
+        {"identifier": v.get("identifier"),
+         "reason": (v.get("reason") or "").strip() or "(no reason given)",
+         "skipped_at": now_iso}
+        for v in verdicts
+        if v.get("decision") == "skip" and v.get("identifier")
+    ]
+    recorded_skips = _record_skips(skip_rows)
+    verdicts = [v for v in verdicts if v.get("decision") != "skip"]
 
     added = 0
     skipped_seen = 0
@@ -452,14 +500,18 @@ def _apply_verdicts_mode(verdicts_path: Path) -> int:
         LLM_QUEUE_PATH.unlink()
     print(
         f"Applied {added} LLM-verified records (skipped: seen={skipped_seen}, "
-        f"short={skipped_short}) to {_rel(archive_path)}. "
-        f"Queue cleared."
+        f"short={skipped_short}), recorded {recorded_skips} skip judgment(s) "
+        f"to {_rel(archive_path)}. Queue cleared."
     )
 
     # The job records its own completion rather than relying on a final
     # line of the prompt being read. The watermark was missing entirely
     # until 2026-10-20, so scan_catchup reported this job as never run.
-    if added:
+    #
+    # Evidence that judgment happened, which a keeper is only one form of. An
+    # all-skip cycle is a completed cycle and the common case for this lane; an
+    # empty verdicts file is not, and still claims nothing about the window.
+    if added or recorded_skips:
         write_watermark(
             "linkedin-comments",
             datetime.datetime.now(datetime.UTC)
@@ -660,6 +712,7 @@ def _persist_queue(llm_queue: list[dict]) -> int:
             existing_queue = []
     # Dedup queue by identifier across both scan sources.
     seen_q = {q.get("identifier") for q in existing_queue if q.get("identifier")}
+    seen_q |= _skipped_identifiers()
     merged_queue = existing_queue + [q for q in llm_queue if q.get("identifier") and q["identifier"] not in seen_q]
     LLM_QUEUE_PATH.write_text(json.dumps(merged_queue, indent=2, ensure_ascii=False))
     if merged_queue:

@@ -301,3 +301,86 @@ def test_an_emoji_only_comment_is_still_dropped(tmp_path, monkeypatch):
     files = list(tmp_path.glob("2*.json"))
     written = json.loads(files[0].read_text()) if files else []
     assert written == []
+
+
+# --- a skip is a judgment, and judgments must be recorded ----------------------
+
+def test_a_skip_verdict_is_recorded_so_it_stops_returning_to_the_queue(tmp_path, monkeypatch):
+    """A rejected candidate was recorded nowhere, so it came back every run.
+
+    The cron prompt carried the consequence as a standing instruction — "a
+    SKIPPED comment is recorded nowhere, so the same rejects return to the
+    queue every run — judge them consistently rather than drifting". That is
+    prose compensating for a missing mechanism: consistency was being asked of
+    my memory across nights instead of being made structural.
+
+    Recording the skip fixes that, and fixes a second thing with the same
+    cause. `_apply_verdicts_mode` could not tell "I judged eleven and kept
+    none" from "I was called with nothing", so the watermark was gated on
+    `added` and an all-skip cycle left no record the job had run. A recorded
+    skip is evidence of judgment, so the watermark can follow it.
+    """
+    monkeypatch.setattr(asc, "ARCHIVE_DIR", tmp_path)
+    monkeypatch.setattr(asc, "LLM_QUEUE_PATH", tmp_path / ".llm-queue.json")
+    monkeypatch.setattr(asc, "SKIPPED_PATH", tmp_path / ".skipped.json")
+    monkeypatch.setattr(asc, "_load_seen_identifiers", lambda: set())
+    monkeypatch.setattr(asc, "_load_known_source_urls", lambda: set())
+    monkeypatch.setattr(asc, "_load_known_author_names", lambda: set())
+    written = {}
+    monkeypatch.setattr(asc, "write_watermark", lambda src, when: written.update({src: when}))
+
+    vp = tmp_path / "v.json"
+    vp.write_text(json.dumps([
+        {"identifier": "tweet:1", "decision": "skip", "reason": "question, not an observation"},
+        {"identifier": "tweet:2", "decision": "skip", "reason": "quotes the book back"},
+    ]))
+    assert asc._apply_verdicts_mode(vp) == 0
+
+    skipped = json.loads((tmp_path / ".skipped.json").read_text())
+    assert {r["identifier"] for r in skipped} == {"tweet:1", "tweet:2"}
+    assert any("question" in r.get("reason", "") for r in skipped), "the reason is the point"
+
+    # Nothing was archived, but judgment happened, so the cycle is recorded.
+    assert written.get("linkedin-comments"), "a judged cycle must record that it ran"
+
+    # And the archive itself stays empty — a skip is not a keeper.
+    today = __import__("datetime").date.today().isoformat()
+    archive = tmp_path / f"{today}.json"
+    assert not archive.exists() or json.loads(archive.read_text()) == []
+
+
+def test_a_recorded_skip_is_excluded_from_a_later_queue(tmp_path, monkeypatch):
+    """The same reject must not come back for re-judgment next run."""
+    monkeypatch.setattr(asc, "ARCHIVE_DIR", tmp_path)
+    monkeypatch.setattr(asc, "LLM_QUEUE_PATH", tmp_path / ".llm-queue.json")
+    monkeypatch.setattr(asc, "SKIPPED_PATH", tmp_path / ".skipped.json")
+    (tmp_path / ".skipped.json").write_text(json.dumps(
+        [{"identifier": "tweet:1", "reason": "question", "skipped_at": "2026-10-31"}]))
+
+    asc._persist_queue([
+        {"identifier": "tweet:1", "full_text": "already judged and rejected"},
+        {"identifier": "tweet:9", "full_text": "genuinely new candidate"},
+    ])
+    queued = json.loads((tmp_path / ".llm-queue.json").read_text())
+    assert [q["identifier"] for q in queued] == ["tweet:9"]
+
+
+def test_an_empty_verdicts_file_still_writes_no_watermark(tmp_path, monkeypatch):
+    """No judgment happened, so nothing is claimed about the window.
+
+    This is the distinction the old `if added` gate was reaching for and could
+    not express.
+    """
+    monkeypatch.setattr(asc, "ARCHIVE_DIR", tmp_path)
+    monkeypatch.setattr(asc, "LLM_QUEUE_PATH", tmp_path / ".llm-queue.json")
+    monkeypatch.setattr(asc, "SKIPPED_PATH", tmp_path / ".skipped.json")
+    monkeypatch.setattr(asc, "_load_seen_identifiers", lambda: set())
+    monkeypatch.setattr(asc, "_load_known_source_urls", lambda: set())
+    monkeypatch.setattr(asc, "_load_known_author_names", lambda: set())
+    written = {}
+    monkeypatch.setattr(asc, "write_watermark", lambda src, when: written.update({src: when}))
+
+    vp = tmp_path / "v.json"
+    vp.write_text("[]")
+    asc._apply_verdicts_mode(vp)
+    assert written == {}

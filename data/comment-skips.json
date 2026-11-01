@@ -1,0 +1,57 @@
+[
+  {
+    "identifier": "tweet:2116606283050627120",
+    "reason": "question to Eric, not an observation of their own",
+    "skipped_at": "2026-11-01T05:48:05Z"
+  },
+  {
+    "identifier": "tweet:2116355058870694242",
+    "reason": "generic AI platitude from a promo account; does not use the book's argument",
+    "skipped_at": "2026-11-01T05:48:05Z"
+  },
+  {
+    "identifier": "tweet:2116244176215929248",
+    "reason": "question to Eric, not an observation of their own",
+    "skipped_at": "2026-11-01T05:48:05Z"
+  },
+  {
+    "identifier": "tweet:2115828627661271355",
+    "reason": "off-topic complaint about posting to X; no book content",
+    "skipped_at": "2026-11-01T05:48:05Z"
+  },
+  {
+    "identifier": "tweet:2115807545373683979",
+    "reason": "conversational — going to look for the book, has not read it",
+    "skipped_at": "2026-11-01T05:48:05Z"
+  },
+  {
+    "identifier": "tweet:2115784974720991392",
+    "reason": "quotes the book back rather than making a claim of their own",
+    "skipped_at": "2026-11-01T05:48:05Z"
+  },
+  {
+    "identifier": "tweet:2115473307894186318",
+    "reason": "shipped as a timeline entry instead (2026-10-28-bryan-cantrill-books-in-the-box-vi)",
+    "skipped_at": "2026-11-01T05:48:05Z"
+  },
+  {
+    "identifier": "tweet:2115181903489679667",
+    "reason": "about The Lean Startup, no Incorruptible content",
+    "skipped_at": "2026-11-01T05:48:05Z"
+  },
+  {
+    "identifier": "tweet:2115085643835388040",
+    "reason": "market-efficiency side debate; not the book's argument",
+    "skipped_at": "2026-11-01T05:48:05Z"
+  },
+  {
+    "identifier": "tweet:2115051657482416148",
+    "reason": "already on the timeline (2026-10-27-itamar-gilad-interview-cost-of-a-wrong-turn)",
+    "skipped_at": "2026-11-01T05:48:05Z"
+  },
+  {
+    "identifier": "tweet:2115038324582920354",
+    "reason": "a line he is quoting (James Goldman, The Lion in Winter), not making",
+    "skipped_at": "2026-11-01T05:48:05Z"
+  }
+]
