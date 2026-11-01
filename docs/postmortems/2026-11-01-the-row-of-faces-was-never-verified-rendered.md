@@ -102,10 +102,20 @@ forever while the seam is broken.
   them to `HIGHLIGHT_ELIGIBLE_ENDORSERS` is Eric's call — surfaced to him
   2026-11-01. Until then the F/M alternation in the back half of the row cannot
   work, because half its cards do not exist.
-- **The row now shows Sisodia at positions 8 and 10**, two cards apart, same
-  face. His stronger line leads, which is right, but the repetition I originally
-  flagged is real and now visible. The fixes available are to pin the October
-  card into the tail (which breaks the F/M alternation the tail list exists to
-  hold) or to drop its row card (which `feedback_highlights_row_grows` forbids:
-  *only ADD, never trim*). Both trade against a rule Eric set, so this is his
-  call too, and the page is the right place to judge it from.
+- ~~**The row showed Sisodia at positions 8 and 10**, two cards apart, same
+  face.~~ **Closed the same day.** Eric looked at the page, screenshotted the
+  duplicate and said *"remove the older sisodia"*, so the `highlight` came off
+  `2026-10-04-raj-sisodia-exceptional-and-essential` and the floor went back to
+  33. The row is 33 cards with one Sisodia at position 8, verified in
+  `dist/index.html`.
+
+  Worth recording *why this took a screenshot*: the duplication was predictable
+  from the data — two entries, one attribution, both flagged — and the first
+  thing anyone sees on the page. I had described it in prose in a report
+  instead. **Declined**: a lint rule failing on two highlights sharing an
+  `attribution`. It would have fired here, but the row is a collage of
+  endorsers and a second card from the same person is sometimes exactly right
+  — Eric decides that by looking, which took him one glance and cost nothing.
+  A rule would convert a judgement he makes well into a gate he has to argue
+  with. Noted in `memory/feedback_highlights_row_grows.md` instead, which is
+  the honest place for a judgement call.

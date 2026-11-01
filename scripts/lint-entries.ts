@@ -206,7 +206,13 @@ if (isMainModule) {
   // (do not lower it). See memory/feedback_highlights_row_grows.md and the
   // 2026-06-04 chat: "the top rows of highlights are meant to get longer
   // and longer, not be pruned".
-  const HIGHLIGHTS_FLOOR = 34;  // 34th: Raj Sisodia's second endorsement, 2026-11-01
+  const HIGHLIGHTS_FLOOR = 33;
+  // 2026-11-01: 33 → 34 when Sisodia's second endorsement joined the row, then
+  // back to 33 the same day. Eric saw the two Sisodia cards on the page and said
+  // "remove the older sisodia", so the 2026-10-04 card came out. The floor still
+  // forbids the scanner trimming the row on its own judgement — that rule was
+  // written because I did exactly that. It does not bind Eric, and it follows a
+  // removal he directs.
   let highlightsCount = 0;
   for (const f of files) {
     const data = JSON.parse(fs.readFileSync(path.join(entriesDir, f), 'utf-8'));
