@@ -1,0 +1,71 @@
+{
+  "_why": "One corpus, two checkers. scripts/quote_integrity.py (offline, against captured source text) and scripts/quote-match.ts (live, against the fetched page) each implement 'does this quote appear in this text', in different languages, and nothing made them agree. The ' … ' elision convention was added to the Python side on 2026-10-28 and the TypeScript side did not learn it until 2026-10-31, so for three days every one of the 23 entries carrying a marked cut would have been reported as a composite by the live gate. Both test suites load this file; a convention added to one language now fails the other language's tests until it is added there too. See docs/postmortems/2026-10-31-the-elision-convention-one-gate-never-learned.md",
+  "cases": [
+    {
+      "name": "contiguous quote present",
+      "quote": "the mission is the asset",
+      "text": "He said the mission is the asset, plainly.",
+      "expect": "found"
+    },
+    {
+      "name": "two segments in source order",
+      "quote": "every company that does these things … It's not just you",
+      "text": "every company that does these things feels bonkers. And this book helps. It's not just you and more.",
+      "expect": "found"
+    },
+    {
+      "name": "three segments in source order",
+      "quote": "every company … this book helps … It's not just you",
+      "text": "every company that does these things feels bonkers. And this book helps. It's not just you and more.",
+      "expect": "found"
+    },
+    {
+      "name": "segments out of source order",
+      "quote": "It's not just you … every company",
+      "text": "every company that does these things feels bonkers. It's not just you and more.",
+      "expect": "absent"
+    },
+    {
+      "name": "second segment invented — the composite must stay catchable",
+      "quote": "every company that does these things … so we sold to private equity",
+      "text": "every company that does these things feels bonkers. It's not just you.",
+      "expect": "absent"
+    },
+    {
+      "name": "'...' spelling of the cut, spaced, is a cut",
+      "quote": "every company ... It's not just you",
+      "text": "every company that does these things feels bonkers. It's not just you.",
+      "expect": "found"
+    },
+    {
+      "name": "unspaced '...' is an author trailing off, not a cut",
+      "quote": "why success itself...and why it matters",
+      "text": "He wrote: why success itself...and why it matters, at length.",
+      "expect": "found"
+    },
+    {
+      "name": "typographic drift folds — smart quote against straight",
+      "quote": "it’s not just you",
+      "text": "He said it's not just you, plainly.",
+      "expect": "found"
+    },
+    {
+      "name": "em dash folds",
+      "quote": "the mission — not the person",
+      "text": "the mission -- not the person, he said.",
+      "expect": "found"
+    },
+    {
+      "name": "quote simply absent",
+      "quote": "a sentence that appears nowhere",
+      "text": "He said the mission is the asset, plainly.",
+      "expect": "absent"
+    },
+    {
+      "name": "an unspaced ellipsis character folds to '...' as the page spells it",
+      "quote": "why success itself…and why it matters",
+      "text": "He wrote: why success itself...and why it matters, at length.",
+      "expect": "found"
+    }
+  ]
+}

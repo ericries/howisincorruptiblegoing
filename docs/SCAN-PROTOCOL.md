@@ -284,7 +284,11 @@ Read the verdicts carefully, because three of the six are not failures:
 
 If you trim a quote, mark the cut with ` … `. `scripts/repair_elisions.py` does it
 mechanically and refuses unless every segment is verbatim AND in source order;
-the checker then verifies `A … B` segment by segment. A bad capture is worse than
+the checker then verifies `A … B` segment by segment. **Both** checkers do — the live one
+did not until 2026-10-31, and for three days reported all 23 elided entries as
+composites. A new matching convention goes in `data/quote-match-cases.json`,
+which `tests/quote-match.test.ts` and `scripts/test_quote_match_cases.py` both
+load, so teaching one language and not the other fails the other's tests. A bad capture is worse than
 none — never store a bare domain root, because the homepage served today is not
 the page the entry quoted months ago.
 

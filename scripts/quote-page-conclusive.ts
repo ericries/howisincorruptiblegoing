@@ -36,6 +36,12 @@ export function visibleText(raw: string): string {
     .replace(/<(script|style|noscript|template)\b[\s\S]*?<\/\1>/gi, ' ')
     .replace(/<[^>]+>/g, ' ')
     .replace(/\s+/g, ' ')
+    // A tag becomes a space so a block boundary still separates words, but an
+    // INLINE element butts against punctuation: "<em>The Lean Startup</em>,"
+    // would otherwise read as "The Lean Startup ,", which no reader sees. That
+    // artefact failed a sound Porchlight entry on 2026-10-31.
+    .replace(/\s+([,.;:!?%)\]}])/g, '$1')
+    .replace(/([(\[{$])\s+/g, '$1')
     .trim();
 }
 

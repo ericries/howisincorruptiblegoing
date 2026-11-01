@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { isConclusive } from './quote-page-conclusive';
+import { findQuoteInPage } from './quote-match';
 
 /**
  * Verify that each entry's blockquote text actually appears
@@ -19,42 +20,6 @@ interface Entry {
   source_urls?: { url: string; label: string }[] | null;
   type: string;
   attribution?: string | null;
-}
-
-function normalize(text: string): string {
-  return text
-    .toLowerCase()
-    .replace(/[\u2018\u2019\u201C\u201D]/g, "'")  // smart quotes → straight
-    .replace(/\u2014/g, '--')                       // em dash
-    .replace(/\u2013/g, '-')                        // en dash
-    .replace(/\u2026/g, '...')                      // ellipsis
-    .replace(/\s+/g, ' ')                           // collapse whitespace
-    .trim();
-}
-
-// Check if quote appears in page content. We check substrings
-// of increasing length to find partial matches too.
-function findQuoteInPage(quote: string, pageText: string): { found: boolean; partial: boolean; matchedChars: number } {
-  const nq = normalize(quote);
-  const np = normalize(pageText);
-
-  if (np.includes(nq)) {
-    return { found: true, partial: false, matchedChars: nq.length };
-  }
-
-  // Try first 60 chars as a partial match
-  const shortQuote = nq.slice(0, 60);
-  if (np.includes(shortQuote)) {
-    return { found: false, partial: true, matchedChars: 60 };
-  }
-
-  // Try first 30 chars
-  const veryShort = nq.slice(0, 30);
-  if (np.includes(veryShort)) {
-    return { found: false, partial: true, matchedChars: 30 };
-  }
-
-  return { found: false, partial: false, matchedChars: 0 };
 }
 
 async function fetchPage(url: string): Promise<{ ok: boolean; text: string; status: number }> {
