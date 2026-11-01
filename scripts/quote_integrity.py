@@ -30,6 +30,7 @@ import argparse
 import enum
 import json
 import re
+import unicodedata as _ud
 import sys
 from pathlib import Path
 
@@ -89,6 +90,11 @@ def normalise(text: str) -> str:
     2026-07-05-andrew-bond was caught publishing "meet the seriousness" where
     its source says "meet the significance".
     """
+    # NFKC folds Unicode-styled letters back to plain ones. LinkedIn authors
+    # routinely set a line in mathematical bold — 𝗗𝗼𝗻'𝘁 𝗹𝗲𝘁 𝗰𝗲𝗿𝘁𝗮𝗶𝗻𝘁𝘆 𝗿𝗲𝗽𝗹𝗮𝗰𝗲
+    # 𝗰𝘂𝗿𝗶𝗼𝘀𝗶𝘁𝘆 — and the quote is transcribed in plain letters, so the two
+    # compared byte-for-byte look like different sentences entirely.
+    text = _ud.normalize("NFKC", text)
     text = text.lower()
     # Any quote mark — single or double, curly or straight — becomes one marker.
     text = re.sub(r"['‘’‛`´′\"“”„‟″]", "'", text)

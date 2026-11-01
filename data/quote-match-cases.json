@@ -96,6 +96,18 @@
       "quote": "tools that meet the seriousness of the lift ahead",
       "text": "tools that meet the significance of the lift ahead",
       "expect": "absent"
+    },
+    {
+      "name": "LinkedIn Unicode-bold text folds to plain letters",
+      "quote": "Don't let certainty replace curiosity.",
+      "text": "So I'm doing that here. 𝗗𝗼𝗻'𝘁 𝗹𝗲𝘁 𝗰𝗲𝗿𝘁𝗮𝗶𝗻𝘁𝘆 𝗿𝗲𝗽𝗹𝗮𝗰𝗲 𝗰𝘂𝗿𝗶𝗼𝘀𝗶𝘁𝘆. And more.",
+      "expect": "found"
+    },
+    {
+      "name": "Unicode-italic in the quote against plain text in the source",
+      "quote": "𝑠𝑡𝑟𝑢𝑐𝑡𝑢𝑟𝑒 outlives the founder",
+      "text": "structure outlives the founder, every time.",
+      "expect": "found"
     }
   ]
 }

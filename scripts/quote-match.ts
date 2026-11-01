@@ -29,6 +29,11 @@ const CUT = /\s+(?:…|\.\.\.)\s+/;
 
 export function normalize(text: string): string {
   return text
+    // NFKC folds Unicode-styled letters back to plain ones. LinkedIn
+    // authors routinely set a line in mathematical bold and the quote is
+    // transcribed in plain letters; compared raw they look like different
+    // sentences. Mirrors `normalise` in scripts/quote_integrity.py.
+    .normalize('NFKC')
     .toLowerCase()
     // Any quote mark — single or double, curly or straight — becomes one
     // marker, and any dash or run of dashes becomes one hyphen. Folding only
