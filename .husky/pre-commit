@@ -51,6 +51,23 @@ if [ -n "$CHANGED_ENTRIES" ]; then
     fi
   fi
 
+  # AI-ese in summaries. Scoped to summaries THIS commit writes: 404 of 889
+  # predate the rules, and failing on all of them would block every unrelated
+  # edit to an old entry. New drift is blocked; the backlog stays visible via
+  # `python3 scripts/summary_tics.py content/entries/*.json`. Eric, 2026-11-01:
+  # "careful about AI-ese, this reads like LLM speak." See docs/DRAFTING.md.
+  echo "Checking summaries for AI-ese..."
+  python3 scripts/summary_tics.py --vs-head $CHANGED_ENTRIES
+  TICS_EXIT=$?
+  if [ $TICS_EXIT -ne 0 ]; then
+    echo ""
+    echo "⚠️  A summary reads like LLM speak. See docs/DRAFTING.md."
+    echo "   The usual cause is a sentence that restates the blockquote printed"
+    echo "   below it, or one that narrates the research instead of reporting it."
+    echo "   To skip this check: git commit --no-verify"
+    exit 1
+  fi
+
   # Then the network check, for the changed entries only.
   echo "Verifying quotes against live source pages..."
   npx tsx scripts/verify-quotes.ts $CHANGED_ENTRIES

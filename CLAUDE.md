@@ -87,7 +87,13 @@ Layout: left-rail feed (dates left, content cards right).
 
 ## Content Standards
 
-- Every entry has an LLM-written `summary` (concise, 1-2 sentences) and a `blockquote` pulled directly from the source material.
+- Every entry has an LLM-written `summary` and a `blockquote` pulled directly from
+  the source material. **Summaries: 2 sentences, 60 words, no AI-ese.**
+  [`docs/DRAFTING.md`](docs/DRAFTING.md) has the rules and the worked example;
+  `scripts/summary_tics.py` enforces the objective half in the pre-commit hook.
+  "Concise, 1-2 sentences" was stated here in prose for a year and the median
+  drifted from 20 words to 102 without anyone deciding to — a rule with no
+  number attached has nothing to drift *from*. Run `--trend` to see the curve.
 - **CRITICAL: Blockquotes must be EXACT text from the source page.** Never paraphrase, composite, or summarize — copy the exact words. The pre-commit hook now runs `python3 scripts/quote_integrity.py` on changed entries, which checks the blockquote against the source text captured at ship time — offline, and the only check that works on LinkedIn and X (62% of entries). `npx tsx scripts/verify-quotes.ts <files>` does the live-page check. Never trust LLM-reported "quotes" without confirming the text exists in the capture.
 - **Never set `verified: false` to silence a quote check.** That skip is gone, but the habit it created left 725 of 871 entries unverified and the gate at 2.9% coverage while exiting 0 (`docs/postmortems/2026-10-28-the-quote-gate-verified-three-percent.md`). Save the source text for every new entry so it can be checked at all.
 - **CRITICAL: Never create an entry if you cannot read the source page.** If a page is JS-rendered, behind auth, or otherwise unreadable, do NOT create an entry based on search result snippets or assumptions. An unverifiable entry is worse than no entry.
