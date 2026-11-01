@@ -1,5 +1,6 @@
 {
   "2026-06-01-eric-linkedin-pulse-inspect-ai": "eric-ries.jpg matches, but type=media entries sourced to Eric render no attribution_image — wired 2026-10-24, check-images-render reported it reaching no HTML, reverted.",
   "2026-10-28-stephanie-pierucci-three-dozen-recommendations": "LinkedIn avatar is a mocked-up Business Insider magazine cover with masthead and overlay text, not a headshot; would read as a genuine BI cover on the timeline",
-  "2026-09-09-startup-leap-huckletree-oxford-circus": "attribution is two hosts (Yvonne Bajela & Maria Rotilu); maria-rotilu.jpg is on disk but showing one host's face for a two-person attribution misreads as sole credit. Needs event art or a two-up, not a single headshot."
+  "2026-09-09-startup-leap-huckletree-oxford-circus": "attribution is two hosts (Yvonne Bajela & Maria Rotilu); maria-rotilu.jpg is on disk but showing one host's face for a two-person attribution misreads as sole credit. Needs event art or a two-up, not a single headshot.",
+  "2026-10-31-james-brake-ikea-retrained-8500": "LinkedIn avatar carries the green #OPENTOWORK frame, which would publish his job-seeking status on the book's momentum page; dwalliance.com serves no og:image. type=social is not quote-card eligible, so the entry ships imageless rather than with a framed avatar."
 }
