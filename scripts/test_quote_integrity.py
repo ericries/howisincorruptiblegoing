@@ -26,6 +26,7 @@ import json
 
 import pytest
 
+import quote_integrity as qi
 from quote_integrity import (
     Verdict,
     check_entry,
@@ -494,3 +495,36 @@ def test_handle_matching_tolerates_name_formatting(tmp_path):
 def test_comment_mismatch_counts_as_unverifiable():
     c = coverage([Verdict.COMMENT_MISMATCH, Verdict.EXACT])
     assert c["checked"] == 1 and c["unverifiable"] == 1 and c["failures"] == 0
+
+
+# --- a failure must carry its own evidence -----------------------------------
+
+def test_divergence_points_at_where_the_quote_stops_matching():
+    """33 failures were carried as a NUMBER for four days.
+
+    Nobody read a divergence, so nobody noticed that eight of them were the
+    checker folding too little typography and one was a genuinely substituted
+    word. The count was treated as the finding.
+
+    A failure now reports where the quote stops matching and what each side
+    says next, so it cannot be read without its evidence.
+    """
+    src = "tools that meet the significance of the considerable lift ahead"
+    quote = "tools that meet the seriousness of the considerable lift"
+    d = qi.divergence(quote, src)
+    assert d["matched"] == len("tools that meet the ")
+    assert d["quote_next"].startswith("seriousness")
+    assert d["source_next"].startswith("significance")
+
+
+def test_divergence_on_a_quote_that_matches_entirely():
+    src = "the mission is the asset, and structure is how you keep it"
+    d = qi.divergence("the mission is the asset", src)
+    assert d["matched"] == len("the mission is the asset")
+    assert d["quote_next"] == ""
+
+
+def test_divergence_when_nothing_matches_says_so():
+    d = qi.divergence("a sentence from somewhere else", "unrelated source text")
+    assert d["matched"] == 0
+    assert d["source_next"] == ""

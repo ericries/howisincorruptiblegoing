@@ -44,6 +44,9 @@ SOURCE_TEXTS = REPO / "data" / "archive" / "source-texts"
 # inside plenty of unrelated prose.
 PARTIAL_WINDOW = 40
 
+# Below this, a "matching" prefix is coincidence rather than evidence.
+_MIN_ANCHOR = 8
+
 
 class Verdict(enum.Enum):
     """Four outcomes, because three of them are not "pass"."""
@@ -170,6 +173,53 @@ def match_quote(quote: str, source_text: str) -> Verdict:
         return Verdict.PARTIAL
 
     return Verdict.ABSENT
+
+
+def divergence(quote: str, source_text: str, context: int = 48) -> dict:
+    """Where a quote stops matching its source, and what each side says next.
+
+    A verdict on its own is a number, and a number gets carried in reports
+    instead of read. 33 failures stood for four days before anyone looked at a
+    single divergence; eight turned out to be typography the checker would not
+    fold, and one was a substituted word that had been live since July. The
+    evidence has to travel with the verdict.
+
+    Works on the normalised forms, because that is what the verdict is decided
+    on — showing raw bytes here would point at differences that were folded
+    away and did not cause the failure.
+    """
+    nq, ns = normalise(quote), normalise(source_text)
+    if not nq or not ns:
+        return {"matched": 0, "quote_next": nq[:context], "source_next": ""}
+
+    lo, hi = 0, len(nq)
+    while lo < hi:                      # longest verbatim prefix, by bisection
+        mid = (lo + hi + 1) // 2
+        if nq[:mid] in ns:
+            lo = mid
+        else:
+            hi = mid - 1
+
+    # Back off to a word boundary. Bisection stops mid-word wherever the two
+    # share a leading letter — "meet the s|eriousness" against "significance" —
+    # which is accurate and unreadable. A reader needs the whole word that
+    # differs.
+    if 0 < lo < len(nq) and not nq[lo].isspace():
+        space = nq.rfind(" ", 0, lo)
+        lo = space + 1 if space != -1 else 0
+
+    # A handful of characters match almost any prose — "a" is inside
+    # "unrelated". Reporting that as a partial match invites the reader to
+    # hunt for a near-miss that is not there.
+    if lo < _MIN_ANCHOR:
+        lo = 0
+
+    at = ns.find(nq[:lo]) + lo if lo else -1
+    return {
+        "matched": lo,
+        "quote_next": nq[lo:lo + context],
+        "source_next": ns[at:at + context] if at >= 0 else "",
+    }
 
 
 class Result:
@@ -388,7 +438,14 @@ def _main() -> int:
     for r in results:
         if r.verdict.is_failure:
             print(f"❌ {r.entry_id} — quote {r.verdict.value.upper()} in captured source")
-            print(f"   {r.quote[:110]}")
+            d = divergence(r.quote, load_source_text(r.entry_id) or "")
+            if d["matched"]:
+                print(f"   verbatim for {d['matched']} chars, then they part:")
+                print(f"     quote  → …{d['quote_next']}")
+                print(f"     source → …{d['source_next']}")
+            else:
+                print(f"   the quote's opening is not in the capture at all:")
+                print(f"     quote  → {r.quote[:96]}")
             print(f"   {r.source_url}")
         elif r.verdict is Verdict.NORMALISED and not args.quiet:
             print(f"⚠️  {r.entry_id} — matches only after normalising "
