@@ -1,0 +1,44 @@
+{
+  "id": "2026-10-28-bryan-cantrill-books-in-the-box-vi",
+  "date": "2026-10-28",
+  "type": "media",
+  "title": "'It's not just you' — Bryan Cantrill picks Incorruptible for Oxide and Friends' annual Books in the Box",
+  "summary": "Oxide and Friends runs an annual episode in which the hosts recommend the books they loved that year, and a companion list of ones they didn't. Cantrill, who co-founded Oxide and is its CTO, put Incorruptible in the first list and spent six minutes on it, calling it very germane for a company working through its own governance questions — 'it felt like, wow… is this book been sent to us from the future.' He walks through the foundation-controlled drugmaker whose structure preserved the research that became Ozempic, and the Twilio super-voting sunset as the cautionary case, flagging where his recall of each was shaky. The argument he lands on is the one above: founders attempting unusual structures think they are alone, and the book's work is showing them they are not. Co-host Adam Leventhal had already bought a physical copy on the strength of the recommendation — the library hold was 25 months. Cantrill says they will devote a full episode to it and hopes to have Eric on.",
+  "blockquote": "Every company that does some of these things like setting yourself up as a public benefit corporation and so on, feels like they're doing something completely bonkers that no one has ever conceived of before. And this book helps to stitch some of this together … people are doing things like this. It's not just you",
+  "blockquote_source": "Bryan Cantrill on Oxide and Friends, 'Books in the Box VI'",
+  "source_url": "https://oxide-and-friends.transistor.fm/episodes/books-in-the-box-vi/transcript",
+  "source_urls": [
+    {
+      "url": "https://oxide-and-friends.transistor.fm/episodes/books-in-the-box-vi",
+      "label": "The episode page and player, with the full Books in the Box VI recommendation list"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=59C8fnKGywg",
+      "label": "The episode on the Oxide Computer YouTube channel (8,120 subscribers)"
+    },
+    {
+      "url": "https://x.com/bcantrill/status/2115473307894186318",
+      "label": "Cantrill announcing the recording to 53,828 followers — 'books we loved'"
+    }
+  ],
+  "video_url": "https://www.youtube.com/watch?v=59C8fnKGywg",
+  "image": "/images/podcasts/oxide-and-friends.jpg",
+  "attribution": "Bryan Cantrill",
+  "attribution_title": "Co-founder & CTO, Oxide Computer",
+  "attribution_image": "/images/people/bryan-cantrill.jpg",
+  "tags": [
+    "media",
+    "podcast",
+    "governance",
+    "public-benefit-corporation",
+    "mission-lock",
+    "novo-nordisk",
+    "twilio"
+  ],
+  "type_metadata": {
+    "audience": "8,120 subscribers on the Oxide Computer channel; Cantrill announced it to 53,828 followers on X"
+  },
+  "scanner_source": "social-scan",
+  "verified": true,
+  "created_at": "2026-11-01T01:45:00Z"
+}
