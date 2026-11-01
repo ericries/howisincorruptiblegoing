@@ -227,3 +227,96 @@ describe('hero image fit', () => {
     expect(timelineSource).toMatch(/\.hero--contain \.hero__overlay[\s\S]{0,80}display:\s*none/);
   });
 });
+
+/**
+ * A pin in UpcomingStrip is inert on its own.
+ *
+ * QUOTE_FRONT_ORDER and QUOTE_TAIL_ORDER only REORDER cards that already
+ * exist — a card exists because its entry carries type_metadata.highlight.
+ * So pinning an id without setting the flag places nothing, silently, and
+ * nothing in the suite noticed. The same seam in reverse (an id pinned,
+ * then the entry renamed or the flag dropped) leaves a dead pin behind.
+ * This is the DOM-verification lesson as a test instead of a habit.
+ */
+describe('UpcomingStrip pins point at live cards', () => {
+  const entriesDir = path.join(process.cwd(), 'content/entries');
+
+  function extractIds(varName: string): string[] {
+    const idx = stripSource.indexOf(`const ${varName}`);
+    if (idx === -1) throw new Error(`${varName} not found`);
+    const end = stripSource.indexOf('];', idx);
+    const block = stripSource.slice(idx, end);
+    return [...block.matchAll(/'(2026-[\w-]+)'/g)].map((m) => m[1]);
+  }
+
+  function load(id: string): Record<string, any> | null {
+    const p = path.join(entriesDir, `${id}.json`);
+    return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
+  }
+
+  for (const varName of ['QUOTE_FRONT_ORDER', 'QUOTE_TAIL_ORDER', 'POSTER_PINS']) {
+    it(`every id in ${varName} is a real entry`, () => {
+      for (const id of extractIds(varName)) {
+        expect(load(id), `${varName} pins ${id}, which has no entry file`).not.toBeNull();
+      }
+    });
+  }
+
+  // Four of the nine tail pins have never rendered, and they are exactly the
+  // four women. Commit f4be76c was titled "hero: alternate F/M in the back
+  // half of the quote row" — so the alternation it was written to produce has
+  // never existed on the page; the back half has always been M,M,M,M,M. All
+  // four have a headshot on disk, and Solivan has a face_position of
+  // 'center top', a field ONLY the quote card reads: the intent to put them
+  // in the row is unambiguous and recorded twice over. What is missing is one
+  // thing the scanner must not do on its own — HIGHLIGHT_ELIGIBLE_ENDORSERS is
+  // Eric's editorial call, stated as such in scripts/lint-entries.ts. So this
+  // is carried as a known, named gap, surfaced to him on 2026-11-01, rather
+  // than fixed quietly or loosened away. The assertion below makes the
+  // exception self-retiring: the moment a name is allowlisted it fails, and
+  // the only way to pass is to set the flag and delete the name from here.
+  const PINNED_WITHOUT_A_FLAG = [
+    '2026-03-16-endorsement-leah-solivan',   // Founder of TaskRabbit
+    '2026-03-13-endorsement-kieran-snyder',  // Founder, Textio; VP AI Transformation, Microsoft
+    '2026-03-05-reader-denise-hearn',        // Director of Strategic Initiatives, The Long Now Foundation
+    '2026-01-20-endorsement-vlada-bortnik',  // Founder and CEO of Marco Polo
+  ];
+
+  for (const varName of ['QUOTE_FRONT_ORDER', 'QUOTE_TAIL_ORDER']) {
+    it(`every id in ${varName} carries type_metadata.highlight`, () => {
+      for (const id of extractIds(varName)) {
+        if (PINNED_WITHOUT_A_FLAG.includes(id)) continue;
+        const entry = load(id);
+        expect(
+          entry?.type_metadata?.highlight,
+          `${varName} pins ${id}, but that entry has no type_metadata.highlight — ` +
+            `the pin reorders a card that is never built, so it places nothing`,
+        ).toBeTruthy();
+      }
+    });
+  }
+
+  it('each pinned-without-a-flag name still has an unmade decision behind it', () => {
+    const lintSource = fs.readFileSync(
+      path.join(process.cwd(), 'scripts/lint-entries.ts'),
+      'utf-8',
+    );
+    for (const id of PINNED_WITHOUT_A_FLAG) {
+      const name = load(id)?.attribution?.toLowerCase();
+      expect(
+        lintSource.includes(`'${name}'`),
+        `${name} is now on HIGHLIGHT_ELIGIBLE_ENDORSERS, so the reason for ` +
+          `excusing ${id} is gone: set type_metadata.highlight on that entry ` +
+          `and delete it from PINNED_WITHOUT_A_FLAG.`,
+      ).toBe(false);
+    }
+  });
+
+  it('Raj Sisodia is pinned into the front block, not left to the date-desc middle', () => {
+    // 2026-11-01, Eric: "that sisodia endorsement is really strong, let's make
+    // sure it's sufficiently prominent". The row scrolls horizontally, so the
+    // middle bucket is off-screen on load.
+    const front = extractIds('QUOTE_FRONT_ORDER');
+    expect(front).toContain('2026-10-29-raj-sisodia-bookshelf-of-every-leader');
+  });
+});
