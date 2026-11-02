@@ -108,3 +108,52 @@ def test_possessive_pronouns_are_grammar_not_names():
     invented entity called 'Hers'."""
     for p in ["Hers", "Theirs", "Ours", "We", "Our"]:
         assert new_things(f"{p} came later.") == [], p
+
+
+# ── the symmetric check: what the rewrite THREW AWAY ─────────────────────
+def test_a_fact_dropped_from_the_summary_and_absent_from_the_quote_is_reported():
+    """Steve Blank's rewrite cut "intellectual godfather of the lean-startup
+    movement" and the judgment that the book is more important than Lean
+    Startup. Neither is in his blockquote, so a reader loses them entirely.
+    Trimming tics is the job; trimming facts is over-correction."""
+    got = sd.dropped(old="Blank is the intellectual godfather of the Lean Startup movement.",
+                     new="Blank pioneered customer development.",
+                     blockquote="Every once in a while a book comes along.")
+    assert "Lean Startup" in got
+
+
+def test_a_fact_still_carried_by_the_blockquote_is_not_reported():
+    """If the quote says it, the reader still gets it — cutting it from the
+    summary is exactly the echo rule working."""
+    got = sd.dropped(old="He says the causes are structural rather than incidental.",
+                     new="Van Brakel is CEO of RSF.",
+                     blockquote="The causes are structural rather than incidental.")
+    assert got == []
+
+
+def test_a_fact_kept_in_the_new_summary_is_not_reported():
+    assert sd.dropped(old="Blank teaches at Stanford.",
+                      new="Blank is an adjunct professor at Stanford.",
+                      blockquote="A quote.") == []
+
+
+def test_dropped_numbers_are_reported():
+    got = sd.dropped(old="The post drew 26 likes.", new="He posted about it.",
+                     blockquote="A quote.")
+    assert "26" in got
+
+
+def test_a_full_name_shortened_to_a_surname_is_not_a_dropped_fact():
+    """House style is surname-only after first reference. Reporting
+    "Chris Coleridge" as lost because the rewrite says "Coleridge" buried the
+    real losses under noise — 39 of 40 rewrites "dropped" something."""
+    assert sd.dropped(old="Chris Coleridge teaches at Cambridge.",
+                      new="Coleridge teaches at Cambridge.",
+                      blockquote="A quote.") == []
+
+
+def test_the_book_title_is_never_a_dropped_fact():
+    """Every entry is about it; "Incorruptible" -> "the book" is style."""
+    assert sd.dropped(old="She recommended Incorruptible on air.",
+                      new="She recommended the book on air.",
+                      blockquote="A quote.") == []

@@ -61,6 +61,10 @@ _OPENERS = {
 _ENTITY = re.compile(r"\b[A-Z][\w'’-]*(?:\s+(?:of|de|the|and)\s+[A-Z][\w'’-]*|\s+[A-Z][\w'’-]*)*")
 _NUMBER = re.compile(r"\b\d[\d,.]*\b")
 
+#: Never a "lost fact" when a rewrite stops saying it.
+_ALWAYS_KEPT = {"incorruptible", "eric", "ries", "eric ries",
+                "frames", "tags", "publishes", "says", "argues", "notes"}
+
 
 def _norm(tok: str) -> str:
     t = tok.strip().rstrip(".,;:")
@@ -124,6 +128,42 @@ def introduced(new: str, old: str | None = None, blockquote: str | None = None,
     for m in _NUMBER.finditer(new):
         raw = m.group(0).rstrip(".,;:")
         if _norm(raw).rstrip(".") not in hay_nums and raw not in out:
+            out.append(raw)
+    return out
+
+
+def dropped(old: str, new: str, blockquote: str | None = None) -> list[str]:
+    """Entities and numbers the rewrite threw away, that no quote preserves.
+
+    The mirror of `introduced`. The first rewrite pass padded; correcting the
+    brief made the second pass cut, and cutting is the harder failure to see —
+    a shorter summary always looks like progress. Steve Blank went 68 words to
+    28 and lost "intellectual godfather of the lean-startup movement" along
+    with the tics.
+
+    A fact still carried by the blockquote is not lost: dropping it from the
+    summary is the echo rule working as intended. Only facts that survive in
+    neither place are reported.
+    """
+    kept, _ = _haystack(new, blockquote)
+    kept_nums = _numbers(new) | _numbers(blockquote or "")
+    out: list[str] = []
+    for ent in _entities(old):
+        bare = _norm(ent)
+        if not bare or bare in kept or ent in out:
+            continue
+        # House style shortens to a surname after first reference, and every
+        # entry is about the book — neither is a lost fact. Without this the
+        # check reported something for 39 of 40 rewrites and buried the real
+        # losses (SVPG, Glitch CEO, NAMB, Wolfson College) in the noise.
+        if any(_norm(w) in kept for w in ent.split() if _norm(w)):
+            continue
+        if bare in _ALWAYS_KEPT:
+            continue
+        out.append(ent)
+    for m in _NUMBER.finditer(old):
+        raw = m.group(0).rstrip(".,;:")
+        if _norm(raw).rstrip(".") not in kept_nums and raw not in out:
             out.append(raw)
     return out
 
