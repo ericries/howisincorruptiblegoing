@@ -100,7 +100,8 @@ def introduced(new: str, old: str | None = None, blockquote: str | None = None,
                title: str | None = None, source_text: str | None = None,
                attribution: str | None = None,
                attribution_title: str | None = None,
-               blockquote_source: str | None = None) -> list[str]:
+               blockquote_source: str | None = None,
+               entry_date: str | None = None) -> list[str]:
     """Proper nouns and numbers in `new` that none of the sources contain.
 
     attribution and attribution_title were missing from this list at first,
@@ -110,7 +111,8 @@ def introduced(new: str, old: str | None = None, blockquote: str | None = None,
     the one thing a rewrite was not allowed to draw on.
     """
     hay, hay_nums = _haystack(old, blockquote, title, source_text,
-                              attribution, attribution_title, blockquote_source)
+                              attribution, attribution_title, blockquote_source,
+                              entry_date)
     out: list[str] = []
 
     for ent in _entities(new):
@@ -200,7 +202,8 @@ def check_entry_vs_head(path: Path) -> list[str] | None:
                       title=d.get("title"), source_text=capture_for(d["id"]),
                       attribution=d.get("attribution"),
                       attribution_title=d.get("attribution_title"),
-                      blockquote_source=d.get("blockquote_source"))
+                      blockquote_source=d.get("blockquote_source"),
+                      entry_date=d.get("date"))
 
 
 def _main() -> int:

@@ -262,30 +262,16 @@ describe('UpcomingStrip pins point at live cards', () => {
     });
   }
 
-  // Four of the nine tail pins have never rendered, and they are exactly the
-  // four women. Commit f4be76c was titled "hero: alternate F/M in the back
-  // half of the quote row" — so the alternation it was written to produce has
-  // never existed on the page; the back half has always been M,M,M,M,M. All
-  // four have a headshot on disk, and Solivan has a face_position of
-  // 'center top', a field ONLY the quote card reads: the intent to put them
-  // in the row is unambiguous and recorded twice over. What is missing is one
-  // thing the scanner must not do on its own — HIGHLIGHT_ELIGIBLE_ENDORSERS is
-  // Eric's editorial call, stated as such in scripts/lint-entries.ts. So this
-  // is carried as a known, named gap, surfaced to him on 2026-11-01, rather
-  // than fixed quietly or loosened away. The assertion below makes the
-  // exception self-retiring: the moment a name is allowlisted it fails, and
-  // the only way to pass is to set the flag and delete the name from here.
-  const PINNED_WITHOUT_A_FLAG = [
-    '2026-03-16-endorsement-leah-solivan',   // Founder of TaskRabbit
-    '2026-03-13-endorsement-kieran-snyder',  // Founder, Textio; VP AI Transformation, Microsoft
-    '2026-03-05-reader-denise-hearn',        // Director of Strategic Initiatives, The Long Now Foundation
-    '2026-01-20-endorsement-vlada-bortnik',  // Founder and CEO of Marco Polo
-  ];
+  // Resolved 2026-11-02: Eric allowlisted all four, and every id in both pin
+  // lists now carries a highlight. The exception block that carried them —
+  // PINNED_WITHOUT_A_FLAG, with an assertion that each name was still absent
+  // from HIGHLIGHT_ELIGIBLE_ENDORSERS — failed the moment the first name was
+  // added, which is what forced this deletion. An exception that cannot
+  // outlive its reason is not an escape hatch.
 
   for (const varName of ['QUOTE_FRONT_ORDER', 'QUOTE_TAIL_ORDER']) {
     it(`every id in ${varName} carries type_metadata.highlight`, () => {
       for (const id of extractIds(varName)) {
-        if (PINNED_WITHOUT_A_FLAG.includes(id)) continue;
         const entry = load(id);
         expect(
           entry?.type_metadata?.highlight,
@@ -295,22 +281,6 @@ describe('UpcomingStrip pins point at live cards', () => {
       }
     });
   }
-
-  it('each pinned-without-a-flag name still has an unmade decision behind it', () => {
-    const lintSource = fs.readFileSync(
-      path.join(process.cwd(), 'scripts/lint-entries.ts'),
-      'utf-8',
-    );
-    for (const id of PINNED_WITHOUT_A_FLAG) {
-      const name = load(id)?.attribution?.toLowerCase();
-      expect(
-        lintSource.includes(`'${name}'`),
-        `${name} is now on HIGHLIGHT_ELIGIBLE_ENDORSERS, so the reason for ` +
-          `excusing ${id} is gone: set type_metadata.highlight on that entry ` +
-          `and delete it from PINNED_WITHOUT_A_FLAG.`,
-      ).toBe(false);
-    }
-  });
 
   it('Raj Sisodia is pinned into the front block, not left to the date-desc middle', () => {
     // 2026-11-01, Eric: "that sisodia endorsement is really strong, let's make

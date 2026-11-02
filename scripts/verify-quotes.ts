@@ -57,7 +57,18 @@ async function main() {
   let skips = 0;
 
   for (const file of files.sort()) {
-    const entry: Entry = JSON.parse(fs.readFileSync(path.join(entriesDir, file), 'utf-8'));
+    // A deleted entry is still in `git diff --cached --name-only`, and reading
+    // it threw ENOENT and took the whole pre-commit hook down with it. Merging
+    // the duplicate Honeyman review on 2026-11-02 was the first time an entry
+    // had ever been deleted, so this had never fired. The hook now filters
+    // deletions out too; this is the belt to that braces.
+    const full = path.join(entriesDir, file);
+    if (!fs.existsSync(full)) {
+      console.log(`⏭  ${file} — deleted in this commit`);
+      skips++;
+      continue;
+    }
+    const entry: Entry = JSON.parse(fs.readFileSync(full, 'utf-8'));
 
     // Skip endorsements that link to incorruptible.co — blurbs won't be on the homepage
     if (entry.type === 'endorsement' && entry.source_url === 'https://incorruptible.co') {

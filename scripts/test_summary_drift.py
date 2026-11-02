@@ -157,3 +157,19 @@ def test_the_book_title_is_never_a_dropped_fact():
     assert sd.dropped(old="She recommended Incorruptible on air.",
                       new="She recommended the book on air.",
                       blockquote="A quote.") == []
+
+
+def test_the_entrys_own_date_is_a_source_for_a_year():
+    """A summary saying "published on 28 May 2026" had its "2026" reported as
+    unsourced, on an entry dated 2026-03-15. The entry's own date is evidence
+    for the year in its own summary."""
+    assert sd.introduced("Matt James announced the UK edition in 2026.",
+                         old="Matt James announced the UK edition.",
+                         entry_date="2026-03-15") == []
+
+
+def test_a_year_no_source_carries_is_still_reported():
+    got = sd.introduced("Matt James announced the UK edition in 2019.",
+                        old="Matt James announced the UK edition.",
+                        entry_date="2026-03-15")
+    assert "2019" in got

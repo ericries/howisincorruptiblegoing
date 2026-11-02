@@ -17,7 +17,11 @@ if [ $TEST_EXIT -ne 0 ]; then
 fi
 
 # Quote verification for any NEW or MODIFIED entry files in this commit
-CHANGED_ENTRIES=$(git diff --cached --name-only -- 'content/entries/*.json')
+# --diff-filter=d excludes DELETIONS. Without it a deleted entry reaches the
+# checkers as a path that no longer exists, and verify-quotes.ts died on ENOENT
+# and failed the whole hook. Found on 2026-11-02 merging a duplicate entry —
+# the first entry deletion the repo had ever had.
+CHANGED_ENTRIES=$(git diff --cached --name-only --diff-filter=d -- 'content/entries/*.json')
 if [ -n "$CHANGED_ENTRIES" ]; then
   # Offline first: checks the blockquote against the source text the scanner
   # already captured. No network, instant, and it is the ONLY check that works

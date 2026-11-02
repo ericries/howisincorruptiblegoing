@@ -7,11 +7,16 @@
   "blockquote": "The book drove home the stakes of not investing in early governance locks in both a compelling / cautionary and inspirational way.",
   "blockquote_source": "Reader review",
   "source_url": "https://incorruptible.co",
-  "source_urls": null,
+  "source_urls": [
+    {
+      "url": "https://longnow.org/people/denise-hearn/",
+      "label": "Her Long Now biography, which names both books"
+    }
+  ],
   "video_url": null,
   "image": "/images/cards/2026-03-05-reader-denise-hearn.png",
   "attribution": "Denise Hearn",
-  "attribution_title": "Director of Strategic Initiatives, The Long Now Foundation",
+  "attribution_title": "Co-author, The Myth of Capitalism and The Big Fix \u00b7 Director of Strategic Initiatives, The Long Now Foundation",
   "attribution_image": "/images/readers/denise-hearn.jpg",
   "tags": [
     "endorsement",
@@ -19,7 +24,9 @@
     "long-now",
     "governance"
   ],
-  "type_metadata": {},
+  "type_metadata": {
+    "highlight": "Denise Hearn: 'drove home the stakes of not investing in early governance locks'"
+  },
   "scanner_source": "manual",
   "verified": true,
   "created_at": "2026-04-12T23:00:00Z"

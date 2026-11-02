@@ -73,7 +73,8 @@ def verdict_for(entry_id: str, new: str, entries_dir: Path = ENTRIES) -> Verdict
                              title=d.get("title"), source_text=sd.capture_for(entry_id),
                              attribution=d.get("attribution"),
                              attribution_title=d.get("attribution_title"),
-                             blockquote_source=d.get("blockquote_source"))
+                             blockquote_source=d.get("blockquote_source"),
+                             entry_date=d.get("date"))
     if invented:
         v.ok = False
         v.problems.append("unsourced detail: " + ", ".join(repr(x) for x in invented))

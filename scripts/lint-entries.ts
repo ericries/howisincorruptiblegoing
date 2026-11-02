@@ -206,7 +206,7 @@ if (isMainModule) {
   // (do not lower it). See memory/feedback_highlights_row_grows.md and the
   // 2026-06-04 chat: "the top rows of highlights are meant to get longer
   // and longer, not be pruned".
-  const HIGHLIGHTS_FLOOR = 33;
+  const HIGHLIGHTS_FLOOR = 37;
   // 2026-11-01: 33 → 34 when Sisodia's second endorsement joined the row, then
   // back to 33 the same day. Eric saw the two Sisodia cards on the page and said
   // "remove the older sisodia", so the 2026-10-04 card came out. The floor still
@@ -274,6 +274,16 @@ if (isMainModule) {
     'alistair croll',    // Co-author, Lean Analytics (the Lean Series); founder, FWD50
     // Added 2026-10-10 at Eric's direction
     'christina wodtke',  // Radical Focus / The Team That Managed Itself; Stanford lecturer
+    // Added 2026-11-02 at Eric's direction. All four were pinned into
+    // QUOTE_TAIL_ORDER in f4be76c ("alternate F/M in the back half of the quote
+    // row") and never rendered, because a pin only reorders a card and a card
+    // needs this flag. The alternation that commit was written to produce had
+    // therefore never existed. Solivan's entry even carries a face_position, a
+    // field only the quote card reads.
+    'leah solivan',      // Founder, TaskRabbit
+    'kieran snyder',     // Founder, Textio; VP AI Transformation, Microsoft
+    'denise hearn',      // Co-author, The Myth of Capitalism (FT Best Book 2018) and The Big Fix
+    'vlada bortnik',     // Founder and CEO, Marco Polo
   ]);
   const normalize = (s: string) => s.toLowerCase().replace(/[‘’]/g, "'").trim();
   for (const f of files) {

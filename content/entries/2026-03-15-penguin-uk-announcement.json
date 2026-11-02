@@ -2,21 +2,25 @@
   "id": "2026-03-15-penguin-uk-announcement",
   "date": "2026-03-15",
   "type": "media",
-  "title": "Penguin UK Editor: 'a truly radical book'",
-  "summary": "Matt James is a commissioning editor at Bonnier Books UK. He announced the UK edition of Incorruptible, which publishes on 28 May, two days after the US launch.",
+  "title": "Penguin Life's Matt James announces the UK edition \u2014 'a truly radical book'",
+  "summary": "James is a senior commissioning editor at Penguin Life. He announced the UK edition, which Penguin Business published on 28 May 2026, two days after the US launch.",
   "blockquote": "This is a truly radical book which uncovers the urgent need for purpose-driven business in a world lacking integrity.",
-  "blockquote_source": "Matt James, Bonnier Books UK",
+  "blockquote_source": "Matt James, Penguin Life, on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/matt-james-_the-news-is-out-eric-ries-the-internationally-share-7425174453350735872-npOa/",
   "source_urls": [
     {
       "url": "https://www.penguin.co.uk/books/460881/incorruptible-by-ries-eric/9780241692028",
-      "label": "penguin.co.uk"
+      "label": "The UK edition on Penguin's own site: Penguin Business, 28 May 2026, 432 pages, ISBN 9780241692028"
+    },
+    {
+      "url": "https://www.thebookseller.com/news/matt-james-joins-penguin-life-as-senior-commissioning-editor",
+      "label": "The Bookseller on Matt James joining Penguin Life as senior commissioning editor"
     }
   ],
   "video_url": null,
   "image": "/images/events/penguin-uk-cover.jpg",
-  "attribution": null,
-  "attribution_title": null,
+  "attribution": "Matt James",
+  "attribution_title": "Senior Commissioning Editor, Penguin Life",
   "attribution_image": null,
   "tags": [
     "media",

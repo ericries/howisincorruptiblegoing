@@ -1,9 +1,9 @@
 {
   "2026-06-09-steve-blank-incorruptible": {
-    "bluesky": "2026-06-11T09:00:00-07:00",
-    "x": "2026-06-12T09:00:00-07:00",
+    "bluesky": "2026-07-06T22:12:00Z",
+    "x": "2026-07-02T19:12:00Z",
     "instagram": "2026-06-11T09:00:00-07:00",
-    "linkedin": "source"
+    "linkedin": "2026-07-03T15:12:00Z"
   },
   "2026-06-08-steen-thomsen-cbs-professor": {
     "bluesky": "2026-06-12T09:00:00-07:00",
@@ -12,9 +12,9 @@
     "linkedin": "source"
   },
   "2026-06-08-cnbc-squawk-box-ai-anthropic": {
-    "bluesky": null,
-    "x": null,
-    "instagram": null,
+    "bluesky": "2026-06-13T09:00:00-07:00",
+    "x": "2026-06-14T09:00:00-07:00",
+    "instagram": "2026-06-15T09:00:00-07:00",
     "linkedin": "source"
   },
   "2025-11-20-shaherose-linkedin-post": {
@@ -72,9 +72,9 @@
     "instagram": null
   },
   "2026-04-01-brandon-fong-red-pill": {
-    "linkedin": "source",
-    "x": null,
-    "bluesky": null,
+    "linkedin": "2026-06-29T15:12:00Z",
+    "x": "2026-06-30T19:12:00Z",
+    "bluesky": "2026-07-01T16:12:00Z",
     "instagram": null
   },
   "2026-04-01-new-books-network": {
@@ -594,9 +594,9 @@
     "instagram": null
   },
   "2026-05-16-frances-frei-incorruptible-comment": {
-    "linkedin": "source",
-    "x": null,
-    "bluesky": null,
+    "linkedin": "2026-07-02T15:12:00Z",
+    "x": "2026-07-06T19:12:00Z",
+    "bluesky": "2026-07-03T22:12:00Z",
     "instagram": null
   },
   "2026-05-16-nyt-dealbook-sarah-kessler": {
@@ -709,7 +709,7 @@
   },
   "2026-05-24-bob-sutton-tweet-capitalism-compassion": {
     "x": "source",
-    "linkedin": null,
+    "linkedin": "2026-08-01T08:47:00-07:00",
     "bluesky": null,
     "instagram": null
   },
@@ -1200,9 +1200,782 @@
     "instagram": null
   },
   "2026-06-26-cxotalk-michael-krigsman": {
+    "linkedin": "2026-07-09T15:12:00Z",
+    "x": "2026-07-12T19:12:00Z",
+    "bluesky": "2026-07-16T16:12:00Z"
+  },
+  "2026-01-18-reader-mark-selleck": {
+    "linkedin": "2026-06-30T15:12:00Z",
+    "x": "2026-06-29T19:12:00Z",
+    "bluesky": "2026-07-01T22:12:00Z"
+  },
+  "2026-06-23-raj-singh-purpose-app": {
+    "linkedin": "2026-07-06T15:12:00Z",
+    "x": "2026-07-03T19:12:00Z",
+    "bluesky": "2026-07-02T16:12:00Z"
+  },
+  "2026-06-26-dave-chase-incorruptible-punch-list": {
+    "linkedin": "2026-07-07T15:12:00Z",
+    "x": "2026-07-08T19:12:00Z",
+    "bluesky": "2026-07-09T16:12:00Z"
+  },
+  "2026-06-23-zita-cobb-shorefast": {
+    "x": "2026-07-07T19:12:00Z",
+    "bluesky": "2026-07-08T22:12:00Z",
+    "linkedin": "2026-07-28T16:47:00Z"
+  },
+  "2026-06-22-masters-of-scale-summer-reading": {
+    "x": "2026-07-09T19:12:00Z",
+    "bluesky": "2026-07-07T16:12:00Z",
+    "linkedin": "2026-07-27T16:47:00Z"
+  },
+  "2026-06-15-szabolcs-marka-columbia-research": {
+    "bluesky": "2026-07-10T16:12:00Z",
+    "x": "2026-07-13T19:12:00Z",
+    "linkedin": "2026-08-01T16:47:00Z"
+  },
+  "2026-06-24-ho-nam-altos-ventures": {
+    "bluesky": "2026-07-11T16:12:00Z",
+    "x": "source"
+  },
+  "2026-06-30-marty-cagan-svpg-great-products-bad-companies": {
+    "linkedin": "2026-07-08T15:12:00Z",
+    "x": "2026-07-04T19:12:00Z",
+    "bluesky": "2026-07-05T16:12:00Z",
+    "instagram": "2026-07-06T16:42:00Z"
+  },
+  "2026-06-19-brad-brisco-polaroid-churches": {
+    "bluesky": "2026-07-13T16:12:00Z",
     "x": "source",
-    "linkedin": null,
-    "bluesky": null,
-    "instagram": null
+    "linkedin": "2026-08-05T16:47:00Z"
+  },
+  "2026-06-24-jesse-chor-bruce-ai-interview": {
+    "x": "2026-07-11T19:12:00Z",
+    "bluesky": "2026-07-14T16:12:00Z",
+    "linkedin": "2026-07-30T16:47:00Z"
+  },
+  "2026-06-22-oliver-evans-kinn-for-good": {
+    "instagram": "2026-07-07T16:42:00Z",
+    "x": "2026-07-05T19:12:00Z",
+    "bluesky": "2026-07-28T19:12:00Z",
+    "linkedin": "2026-08-03T16:47:00Z"
+  },
+  "2026-06-26-worth-magazine-ashlock-review": {
+    "instagram": "2026-07-12T16:42:00Z",
+    "x": "2026-07-15T19:12:00Z",
+    "bluesky": "2026-07-27T16:42:00Z",
+    "linkedin": "2026-07-25T16:47:00Z"
+  },
+  "2026-06-15-hello-monday-jessi-hempel": {
+    "linkedin": "2026-07-11T15:12:00Z",
+    "x": "2026-07-17T19:12:00Z",
+    "bluesky": "2026-07-13T22:12:00Z"
+  },
+  "2026-06-28-sinead-clarkin-lean-startup-alum": {
+    "x": "2026-07-18T19:12:00Z",
+    "bluesky": "2026-08-17T12:07:00-07:00",
+    "linkedin": "2026-08-07T16:47:00Z"
+  },
+  "2026-07-04-haroon-meer-thinkst-canary-cyber": {
+    "x": "2026-07-22T19:12:00Z",
+    "bluesky": "2026-07-23T16:12:00Z"
+  },
+  "2026-06-30-sebastian-ross-iese-conscious-capitalism": {
+    "x": "2026-07-24T19:12:00Z",
+    "bluesky": "2026-07-25T16:12:00Z"
+  },
+  "2026-04-12-endorsement-reid-hoffman": {
+    "linkedin": "2026-07-26T09:47:00-07:00",
+    "instagram": "2026-08-23T16:39:00-07:00"
+  },
+  "2026-03-16-endorsement-leah-solivan": {
+    "bluesky": "2026-07-24T09:42:00-07:00",
+    "instagram": "2026-08-23T11:22:00-07:00",
+    "linkedin": "2026-09-22T09:12:00-07:00"
+  },
+  "2026-04-03-endorsement-frances-frei": {
+    "linkedin": "2026-08-22T16:39:00-07:00",
+    "bluesky": "2026-08-20T16:41:00-07:00",
+    "instagram": "2026-08-15T12:12:00-07:00"
+  },
+  "2026-04-07-endorsement-kim-scott": {
+    "linkedin": "2026-08-22T16:39:00-07:00",
+    "x": "2026-08-20T16:41:00-07:00",
+    "bluesky": "2026-08-21T16:38:00-07:00",
+    "instagram": "2026-10-31T11:22:00-07:00"
+  },
+  "2026-01-20-endorsement-vlada-bortnik": {
+    "linkedin": "2026-07-31T08:47:00-07:00",
+    "x": "2026-08-02T12:12:00-07:00"
+  },
+  "2026-04-08-endorsement-daniel-pink": {
+    "linkedin": "2026-08-02T15:47:00Z",
+    "x": "2026-08-19T12:12:00-07:00"
+  },
+  "2026-01-08-reader-jessica-jackley": {
+    "linkedin": "2026-08-03T15:47:00Z",
+    "x": "2026-08-20T12:12:00-07:00"
+  },
+  "2026-04-09-endorsement-seth-godin": {
+    "linkedin": "2026-08-04T15:47:00Z",
+    "x": "2026-08-22T16:39:00-07:00",
+    "instagram": "2026-08-20T16:41:00-07:00",
+    "bluesky": "2026-08-21T16:38:00-07:00"
+  },
+  "2026-03-19-reader-cate-hall": {
+    "linkedin": "2026-08-06T15:47:00Z",
+    "bluesky": "2026-08-18T09:12:00-07:00"
+  },
+  "2026-03-13-endorsement-kieran-snyder": {
+    "linkedin": "2026-08-07T15:47:00Z",
+    "x": "2026-08-21T12:12:00-07:00"
+  },
+  "2025-12-27-reader-emily-tate": {
+    "x": "2026-07-31T19:12:00Z",
+    "linkedin": "2026-08-21T08:47:00-07:00"
+  },
+  "2026-01-01-reader-federico-nusymowicz": {
+    "x": "2026-08-06T19:12:00Z"
+  },
+  "2025-12-24-reader-cecilia-macaulay": {
+    "bluesky": "2026-08-01T16:12:00Z"
+  },
+  "2026-04-12-reader-will-preble": {
+    "bluesky": "2026-08-03T16:12:00Z",
+    "instagram": "2026-08-10T12:22:00-07:00",
+    "linkedin": "2026-09-26T09:12:00-07:00"
+  },
+  "2026-03-21-reader-dmytro-grechko": {
+    "bluesky": "2026-08-05T16:12:00Z",
+    "linkedin": "2026-09-25T09:12:00-07:00"
+  },
+  "2026-03-06-reader-melissa-sherman": {
+    "bluesky": "2026-08-07T16:12:00Z"
+  },
+  "2026-02-27-endorsement-tim-oreilly": {
+    "linkedin": "2026-08-15T11:37:00-07:00",
+    "x": "2026-08-17T12:12:00-07:00",
+    "bluesky": "2026-08-21T09:12:00-07:00"
+  },
+  "2026-04-01-endorsement-ken-chenault": {
+    "linkedin": "2026-08-09T08:47:00-07:00",
+    "x": "2026-08-18T12:12:00-07:00"
+  },
+  "2026-03-26-endorsement-andy-rachleff": {
+    "x": "2026-08-16T13:07:00-07:00"
+  },
+  "2026-03-06-endorsement-seth-levine": {
+    "x": "2026-08-09T19:12:00Z"
+  },
+  "2026-01-09-reader-steve-kirkham": {
+    "bluesky": "2026-08-09T16:12:00Z"
+  },
+  "2026-03-24-reader-janice-fraser": {
+    "linkedin": "2026-08-10T15:47:00Z"
+  },
+  "2026-03-05-reader-denise-hearn": {
+    "x": "2026-08-10T19:12:00Z",
+    "instagram": "2026-10-05T12:15:00-07:00",
+    "linkedin": "2026-10-10T09:12:00-07:00"
+  },
+  "2026-04-08-reader-marco-marinucci": {
+    "bluesky": "2026-08-10T16:12:00Z",
+    "linkedin": "2026-08-15T08:47:00-07:00"
+  },
+  "2026-03-30-reader-leslie-feinzaig": {
+    "linkedin": "2026-08-11T15:47:00Z",
+    "bluesky": "2026-08-20T09:12:00-07:00",
+    "instagram": "2026-08-14T11:17:00-07:00"
+  },
+  "2026-02-22-reader-eddie-dedomenico": {
+    "x": "2026-08-11T19:12:00Z"
+  },
+  "2026-02-10-reader-tihomir-bajic": {
+    "bluesky": "2026-08-11T16:12:00Z"
+  },
+  "2026-02-13-endorsement-thomas-eisenmann": {
+    "linkedin": "2026-08-12T08:47:00-07:00",
+    "instagram": "2026-08-17T11:17:00-07:00",
+    "x": "2026-08-22T16:39:00-07:00"
+  },
+  "2026-04-06-reader-brady-forrest": {
+    "linkedin": "2026-08-13T08:47:00-07:00",
+    "instagram": "2026-08-09T10:47:00-07:00"
+  },
+  "2026-04-09-reader-rumman-chowdhury": {
+    "linkedin": "2026-08-14T08:47:00-07:00"
+  },
+  "2026-04-04-reader-jonah-lopin": {
+    "linkedin": "2026-08-16T08:47:00-07:00"
+  },
+  "2026-02-25-reader-hiten-shah": {
+    "x": "2026-08-13T12:12:00-07:00",
+    "instagram": "2026-08-12T11:22:00-07:00",
+    "bluesky": "2026-09-27T11:00:00-07:00"
+  },
+  "2026-04-10-reader-stephanie-lepp": {
+    "x": "2026-08-14T12:12:00-07:00"
+  },
+  "2026-02-08-reader-kent-beck": {
+    "x": "2026-08-15T12:12:00-07:00"
+  },
+  "2026-03-13-reader-esben-kran": {
+    "x": "2026-08-16T12:12:00-07:00"
+  },
+  "2025-12-24-reader-upendra-poranki": {
+    "bluesky": "2026-08-12T09:12:00-07:00"
+  },
+  "2026-03-02-reader-steve-newman": {
+    "bluesky": "2026-08-14T09:12:00-07:00",
+    "instagram": "2026-10-08T12:15:00-07:00",
+    "linkedin": "2026-10-09T09:12:00-07:00"
+  },
+  "2026-01-11-reader-sana-gabula": {
+    "bluesky": "2026-08-16T09:12:00-07:00"
+  },
+  "2026-01-02-reader-john-corcoran": {
+    "linkedin": "2026-08-17T08:47:00-07:00"
+  },
+  "2026-01-11-reader-amy-burkhart": {
+    "linkedin": "2026-08-18T08:47:00-07:00"
+  },
+  "2026-03-17-reader-curran-dwyer": {
+    "linkedin": "2026-08-19T08:47:00-07:00"
+  },
+  "2025-12-27-reader-silvia-calvet-martin": {
+    "linkedin": "2026-08-20T08:47:00-07:00"
+  },
+  "2026-02-28-reader-manan-mehta": {
+    "instagram": "2026-08-11T11:33:00-07:00"
+  },
+  "2026-03-21-endorsement-robert-sutton": {
+    "bluesky": "2026-08-23T16:39:00-07:00",
+    "linkedin": "2026-08-20T16:41:00-07:00",
+    "instagram": "2026-10-31T11:22:00-07:00"
+  },
+  "2026-03-19-endorsement-matt-blumberg": {
+    "instagram": "2026-08-16T11:27:00-07:00"
+  },
+  "2026-04-10-endorsement-mark-cuban": {
+    "bluesky": "2026-08-15T12:37:00-07:00",
+    "linkedin": "2026-11-03T09:12:00-08:00",
+    "instagram": "2026-10-31T11:22:00-07:00"
+  },
+  "2026-03-10-endorsement-eli-luberoff": {
+    "bluesky": "2026-08-19T12:07:00-07:00",
+    "x": "2026-09-25T11:15:00-07:00"
+  },
+  "2026-04-06-endorsement-scott-cook": {
+    "linkedin": "2026-08-22T09:12:00-07:00"
+  },
+  "2026-01-12-reader-rand-fishkin": {
+    "instagram": "2026-08-22T11:22:00-07:00"
+  },
+  "2026-03-25-ari-shapiro-review": {
+    "linkedin": "2026-08-23T09:12:00-07:00"
+  },
+  "2025-12-23-reader-zubin-desai": {
+    "x": "2026-08-22T13:12:00-07:00"
+  },
+  "2025-12-28-reader-manisha-snoyer": {
+    "linkedin": "2026-08-20T10:08:00-07:00"
+  },
+  "2026-04-21-boardy-substack-review": {
+    "x": "2026-08-20T10:08:00-07:00"
+  },
+  "2026-08-01-erine-gray-16-year-founder-timeless": {
+    "linkedin": "2026-08-21T09:12:00-07:00"
+  },
+  "2026-07-03-steve-blank-tweet-decade": {
+    "linkedin": "2026-08-22T10:12:00-07:00"
+  },
+  "2026-08-22-mike-salguero-required-reading": {
+    "linkedin": "2026-08-23T09:22:00-07:00",
+    "instagram": "2026-08-23T16:39:00-07:00"
+  },
+  "2026-08-19-mike-salguero-butcherbox-life-changing": {
+    "linkedin": "2026-08-23T09:22:00-07:00"
+  },
+  "2026-06-23-julie-stuecken-prenup": {
+    "x": "2026-08-23T20:46:00-07:00",
+    "bluesky": "2026-09-23T11:00:00-07:00"
+  },
+  "2026-07-13-naama-moran-cheetah-autopsy": {
+    "bluesky": "2026-08-23T20:46:00-07:00"
+  },
+  "2026-06-19-nicki-tessler-behavioral-health": {
+    "x": "2026-08-23T20:46:00-07:00",
+    "bluesky": "2026-09-22T11:00:00-07:00"
+  },
+  "2026-06-16-anthony-englert-cried-literal-tears": {
+    "x": "2026-08-23T21:12:00-07:00"
+  },
+  "2026-06-04-federica-goodreads": {
+    "linkedin": "2026-08-24T10:05:00-07:00"
+  },
+  "2026-06-10-david-bauman-business-ethics": {
+    "linkedin": "2026-08-24T10:05:00-07:00"
+  },
+  "2026-08-20-jesse-hormachea-building-an-incorruptible-company": {
+    "bluesky": "2026-08-24T16:43:00-07:00"
+  },
+  "2026-06-04-bridget-harris-goodreads": {
+    "instagram": "2026-08-24T16:43:00-07:00"
+  },
+  "2026-06-15-naotake-murayama-goodreads": {
+    "linkedin": "2026-08-25T09:12:00-07:00"
+  },
+  "2026-06-24-alexandra-rusu-growth-chick": {
+    "x": "2026-08-25T20:19:00-07:00"
+  },
+  "2026-07-01-rob-moore-goodreads-favourite-in-years": {
+    "linkedin": "2026-08-25T20:19:00-07:00"
+  },
+  "2026-06-22-eddie-flaisler-engineering-leaders": {
+    "x": "2026-08-25T20:19:00-07:00"
+  },
+  "2026-05-27-ryan-b-corp-handbook-author-goodreads": {
+    "linkedin": "2026-08-25T20:19:00-07:00",
+    "x": "2026-11-04T19:42:00Z"
+  },
+  "2026-05-27-sudha-shankar-goodreads-engineering-failure": {
+    "linkedin": "2026-08-25T20:19:00-07:00"
+  },
+  "2026-07-11-nils-goodreads-false-proxies": {
+    "linkedin": "2026-08-26T10:04:00-07:00"
+  },
+  "2026-06-15-manuj-lal-pwc-privacy-governance": {
+    "x": "2026-08-26T10:04:00-07:00"
+  },
+  "2026-07-08-george-koomullil-ascendr-pbc": {
+    "bluesky": "2026-08-26T16:39:00-07:00"
+  },
+  "2026-05-12-cindy-goodreads-enshittification": {
+    "bluesky": "2026-08-26T16:39:00-07:00"
+  },
+  "2026-08-19-isabell-springer-incorruptible-leaders-born-or-developed": {
+    "x": "2026-08-27T10:09:00-07:00"
+  },
+  "2026-06-09-jean-hammond-edtech": {
+    "x": "2026-08-27T10:09:00-07:00"
+  },
+  "2026-07-18-james-cracknell-goodreads-corker": {
+    "instagram": "2026-09-01T11:22:00-07:00",
+    "bluesky": "2026-09-25T11:00:00-07:00",
+    "linkedin": "2026-10-07T09:12:00-07:00"
+  },
+  "2026-08-19-nathalie-molina-nino-profits-attract-predators": {
+    "instagram": "2026-09-02T11:22:00-07:00"
+  },
+  "2026-05-24-steve-brock-stevos-book-of-the-week": {
+    "x": "2026-09-04T11:10:00-07:00"
+  },
+  "2026-07-22-ron-scheese-goodreads-thought-provoking": {
+    "bluesky": "2026-09-03T12:20:00-07:00",
+    "linkedin": "2026-10-06T09:12:00-07:00"
+  },
+  "2026-08-03-daniel-goodreads-9-of-10-ethos-integrity": {
+    "bluesky": "2026-09-04T12:20:00-07:00",
+    "x": "2026-10-06T11:15:00-07:00"
+  },
+  "2026-07-31-chris-ertel-most-important-in-a-decade": {
+    "x": "2026-09-08T11:20:00-07:00"
+  },
+  "2026-07-14-joel-silverberg-goodreads-inspiring": {
+    "bluesky": "2026-09-06T12:20:00-07:00"
+  },
+  "2026-06-14-abigail-munro-goodreads-beacon": {
+    "bluesky": "2026-09-05T12:20:00-07:00"
+  },
+  "2026-08-11-colleen-hendry-boailoop-favorite-in-a-while": {
+    "bluesky": "2026-09-07T12:20:00-07:00"
+  },
+  "2026-07-13-jose-aguilar-barroso-players-system": {
+    "bluesky": "2026-09-09T12:20:00-07:00"
+  },
+  "2026-07-28-rich-robinson-financial-gravity-must-read": {
+    "x": "2026-09-10T11:15:00-07:00"
+  },
+  "2026-07-15-sarah-brinton-bamboohr-obsessed": {
+    "bluesky": "2026-09-02T12:20:00-07:00"
+  },
+  "2026-08-14-mohammad-mesgarpour-drift-thesis": {
+    "bluesky": "2026-09-08T12:20:00-07:00"
+  },
+  "2026-06-22-daniil-lanovyi-goodreads-decade-defining": {
+    "linkedin": "2026-09-12T09:30:00-07:00"
+  },
+  "2026-08-31-jeff-berman-goodreads-60-years-shareholder-fetish": {
+    "x": "2026-09-12T11:15:00-07:00"
+  },
+  "2026-05-28-one-of-one-darren-gold-soulcraft": {
+    "linkedin": "2026-09-13T09:30:00-07:00"
+  },
+  "2026-07-01-half-baked-10-lessons-founder-book": {
+    "bluesky": "2026-09-10T12:20:00-07:00"
+  },
+  "2026-07-09-stuart-decew-yale-cbey": {
+    "bluesky": "2026-09-11T12:20:00-07:00"
+  },
+  "2026-07-14-mette-norgaard-counterforce-aliveness": {
+    "bluesky": "2026-09-12T12:20:00-07:00"
+  },
+  "2026-06-30-andrew-blum-trium-ceo-salon": {
+    "bluesky": "2026-09-13T12:20:00-07:00"
+  },
+  "2026-08-12-jacqueline-keidel-martinez-favorite-2026": {
+    "bluesky": "2026-09-14T12:20:00-07:00"
+  },
+  "2026-05-26-reader-dorie-clark": {
+    "linkedin": "2026-09-14T09:30:00-07:00"
+  },
+  "2026-06-28-randall-bennett-ai-alignment": {
+    "linkedin": "2026-09-15T09:30:00-07:00"
+  },
+  "2026-07-21-jeffrey-hollender-seventh-generation-review": {
+    "x": "2026-09-15T11:15:00-07:00"
+  },
+  "2026-07-16-dave-whorton-tugboat-institute": {
+    "bluesky": "2026-09-15T12:20:00-07:00"
+  },
+  "2026-06-13-peter-trizuliak-goodreads": {
+    "linkedin": "2026-09-16T09:30:00-07:00"
+  },
+  "2026-08-10-jeffrey-golby-most-important-business-book": {
+    "x": "2026-09-16T11:15:00-07:00"
+  },
+  "2026-08-17-julie-fleischer-forbes-cmo-provocative-compelling": {
+    "bluesky": "2026-09-16T12:20:00-07:00"
+  },
+  "2026-07-29-james-boyle-sustainability-review": {
+    "x": "2026-09-17T11:15:00-07:00"
+  },
+  "2026-09-03-jouko-vyorykka-changed-my-perspective": {
+    "x": "2026-09-13T11:15:00-07:00"
+  },
+  "2026-09-06-michelle-christian-blueprint": {
+    "x": "2026-09-14T11:15:00-07:00"
+  },
+  "2026-09-10-lizzie-wilson-mishcon": {
+    "x": "2026-09-18T11:15:00-07:00"
+  },
+  "2026-06-15-ft-best-business-books-summer": {
+    "linkedin": "2026-09-19T09:30:00-07:00"
+  },
+  "2026-08-25-dave-kellogg-clayton-christensen-comparison": {
+    "x": "2026-09-20T11:15:00-07:00"
+  },
+  "2026-09-15-zachary-perkins-most-important-generation": {
+    "x": "2026-09-21T11:15:00-07:00"
+  },
+  "2026-08-19-fredy-vargas-lama-public-sector-governance": {
+    "bluesky": "2026-09-18T11:00:00-07:00"
+  },
+  "2026-08-16-maciej-szymaszek-astrazeneca-institutional-architecture": {
+    "bluesky": "2026-09-20T11:00:00-07:00"
+  },
+  "2026-09-08-katie-goodreads-meta-cynic-thawed": {
+    "linkedin": "2026-09-21T09:12:00-07:00"
+  },
+  "2026-05-26-bridget-harris-goodreads-7-years-investment": {
+    "linkedin": "2026-09-23T09:12:00-07:00"
+  },
+  "2026-09-15-liz-mcbeth-hubris-syndrome": {
+    "x": "2026-09-24T11:15:00-07:00"
+  },
+  "2026-09-17-michael-sliwinski-nozbe": {
+    "x": "2026-09-26T11:15:00-07:00"
+  },
+  "2026-09-22-federica-torgneur-reveevo": {
+    "x": "2026-09-27T11:15:00-07:00"
+  },
+  "2026-05-26-leanblog-mark-graban-practitioner-view": {
+    "linkedin": "2026-09-28T09:12:00-07:00"
+  },
+  "2026-06-29-randall-goodreads-corruption-default": {
+    "linkedin": "2026-09-29T09:12:00-07:00"
+  },
+  "2026-07-08-julian-dunn-goodreads-meaty-book": {
+    "linkedin": "2026-09-30T09:12:00-07:00"
+  },
+  "2026-06-09-aleksandr-yampolskiy-securityscorecard": {
+    "x": "2026-09-30T11:15:00-07:00"
+  },
+  "2026-08-04-william-milisic-review-european-case-studies": {
+    "bluesky": "2026-09-28T11:00:00-07:00"
+  },
+  "2026-07-16-liz-rockett-mission-lock-healthcare": {
+    "bluesky": "2026-09-29T11:00:00-07:00"
+  },
+  "2026-08-31-jamie-bowen-goodreads-greed-is-not-good": {
+    "bluesky": "2026-09-30T11:00:00-07:00"
+  },
+  "2026-04-14-venky-goodreads-review": {
+    "linkedin": "2026-10-01T09:12:00-07:00"
+  },
+  "2026-09-04-nikolaus-lang-bcg-henderson-reading-list": {
+    "x": "2026-10-01T11:15:00-07:00"
+  },
+  "2026-08-03-david-bauman-goodreads-ethics-professor": {
+    "linkedin": "2026-10-02T09:12:00-07:00"
+  },
+  "2026-08-26-jason-fagone-woman-who-smashed-codes": {
+    "x": "2026-10-02T11:15:00-07:00"
+  },
+  "2026-06-04-leah-solivan-precedent-collective": {
+    "bluesky": "2026-10-02T11:00:00-07:00"
+  },
+  "2026-06-25-henny-portman-review": {
+    "linkedin": "2026-10-03T09:12:00-07:00"
+  },
+  "2026-08-04-jenny-kassan-incorruptible-company-blog": {
+    "x": "2026-10-03T11:15:00-07:00"
+  },
+  "2026-08-05-gerald-lackey-phd-blueprint-beyond-primacy": {
+    "bluesky": "2026-10-10T10:30:00-07:00"
+  },
+  "2026-08-22-paul-graham-third-base": {
+    "_excluded": "Eric 2026-10-02: never promote (double-edged sword). Do not post on any channel."
+  },
+  "2026-07-22-drew-schiller-validic-founder-recommendation": {
+    "x": "2026-10-04T11:15:00-07:00"
+  },
+  "2026-07-05-andrew-bond-well-health-canada": {
+    "bluesky": "2026-10-04T11:00:00-07:00"
+  },
+  "2026-08-10-shiv-shivakumar-endorsement": {
+    "x": "2026-10-05T11:15:00-07:00"
+  },
+  "2026-08-12-asya-paloni-anarchist-scifi-financial-infrastructure": {
+    "bluesky": "2026-10-05T10:30:00-07:00"
+  },
+  "2026-08-10-john-goodreads-biblical-organization": {
+    "linkedin": "2026-10-05T09:12:00-07:00"
+  },
+  "2026-08-10-josh-bell-goodreads-shorefast-education": {
+    "bluesky": "2026-10-06T10:30:00-07:00"
+  },
+  "2026-08-11-forbes-rodger-dean-duncan-inside-the-building": {
+    "x": "2026-10-07T11:15:00-07:00"
+  },
+  "2026-07-09-gapingvoid-culture-bank-insufficient-funds": {
+    "bluesky": "2026-10-07T11:00:00-07:00"
+  },
+  "archive-comment:2026-10-01:abdulrahman-alhamali": {
+    "x": "2026-10-08T11:15:00-07:00"
+  },
+  "archive-comment:2026-10-01:dan-williams": {
+    "bluesky": "2026-10-08T11:00:00-07:00"
+  },
+  "2026-05-01-demetri-papadimitropoulos-goodreads": {
+    "linkedin": "2026-10-04T09:12:00-07:00",
+    "x": "2026-10-11T11:15:00-07:00"
+  },
+  "2026-04-06-kieran-goodreads": {
+    "linkedin": "2026-10-08T09:12:00-07:00",
+    "bluesky": "2026-10-09T10:30:00-07:00"
+  },
+  "2026-05-30-federica-goodreads-early-founder-mission-protected": {
+    "x": "2026-10-09T11:15:00-07:00",
+    "bluesky": "2026-10-11T10:30:00-07:00"
+  },
+  "2026-10-02-charlotte-levitt-change-org-100m": {
+    "linkedin": "2026-10-06T12:15:00-07:00",
+    "x": "2026-10-06T12:45:00-07:00",
+    "bluesky": "2026-10-06T13:15:00-07:00",
+    "_note": "news-hook #2 (Eric go 2026-10-03)"
+  },
+  "2026-10-03-extraordinary-life-stories-bloomberg-tv": {
+    "linkedin": "2026-10-03T13:00:00-07:00",
+    "x": "2026-10-03T13:30:00-07:00",
+    "bluesky": "2026-10-03T14:00:00-07:00",
+    "_note": "news-hook #1"
+  },
+  "2026-10-02-grace-heiderscheidt-want-to-build-again": {
+    "x": "2026-10-10T11:15:00-07:00",
+    "bluesky": "2026-10-13T10:30:00-07:00"
+  },
+  "2026-05-16-curtis-mason-goodreads": {
+    "linkedin": "2026-10-11T10:00:00-07:00",
+    "bluesky": "2026-10-25T10:30:00-07:00"
+  },
+  "2026-10-04-raj-sisodia-exceptional-and-essential": {
+    "linkedin": "2026-10-05T17:00:00-07:00"
+  },
+  "2026-10-05-alistair-croll-dozen-copies": {
+    "x": "2026-10-10T16:00:00-07:00",
+    "bluesky": "2026-10-11T15:00:00-07:00"
+  },
+  "2026-10-06-lindsey-grossman-wakeup-call-incorporation-docs": {
+    "bluesky": "2026-10-10T15:00:00-07:00",
+    "x": "2026-10-11T16:00:00-07:00"
+  },
+  "2026-05-26-slightly-smarter-newsletter": {
+    "linkedin": "2026-10-17T09:30:00-07:00",
+    "bluesky": "2026-10-18T10:30:00-07:00"
+  },
+  "2026-07-14-eric-goodreads-enshittification-question": {
+    "bluesky": "2026-10-17T10:30:00-07:00",
+    "x": "2026-10-18T11:15:00-07:00"
+  },
+  "2026-09-29-sami-makelainen-children-of-the-magenta-review": {
+    "x": "2026-10-17T11:15:00-07:00",
+    "linkedin": "2026-10-18T09:30:00-07:00"
+  },
+  "2026-10-09-sivaraman-lakshmipathy-everlaw-book-club": {
+    "bluesky": "2026-10-19T10:30:00-07:00"
+  },
+  "2026-10-10-secret-cfo-best-business-book": {
+    "linkedin": "2026-10-20T09:30:00-07:00",
+    "bluesky": "2026-10-20T10:30:00-07:00"
+  },
+  "2026-09-28-trent-wakenight-responsive-graphic-recording": {
+    "x": "2026-10-20T11:15:00-07:00"
+  },
+  "2026-05-26-seth-godin-blog-launch-day": {
+    "bluesky": "2026-10-24T10:30:00-07:00",
+    "linkedin": "2026-10-25T09:30:00-07:00",
+    "x": "2026-10-25T11:15:00-07:00"
+  },
+  "2026-05-26-reader-sonali-kothari": {
+    "linkedin": "2026-10-24T09:30:00-07:00",
+    "x": "2026-10-24T11:15:00-07:00",
+    "bluesky": "2026-10-26T10:30:00-07:00"
+  },
+  "2026-10-18-kim-scott-such-an-important-book": {
+    "bluesky": "2026-10-23T14:00:00-07:00",
+    "x": "2026-10-23T14:30:00-07:00"
+  },
+  "2026-10-17-peter-ward-builders-choosing-pbc": {
+    "bluesky": "2026-10-28T14:00:00-07:00"
+  },
+  "2026-10-19-dave-reilly-not-the-classroom-the-structure": {
+    "x": "2026-10-29T11:15:00-07:00"
+  },
+  "2026-10-19-christopher-williams-favorite-mainstage-talk": {
+    "linkedin": "2026-10-27T09:30:00-07:00"
+  },
+  "2026-10-18-khwaja-shaik-architecture-not-ethics": {
+    "linkedin": "2026-10-27T09:30:00-07:00"
+  },
+  "2026-10-13-tatyana-mamut-nacd-group-chat-lit-up": {
+    "linkedin": "2026-10-27T09:30:00-07:00"
+  },
+  "2026-10-18-stephen-straus-urged-nacd-to-invite-eric": {
+    "linkedin": "2026-10-27T09:30:00-07:00"
+  },
+  "2026-10-16-daniel-dobrygowski-book-swap-nacd": {
+    "linkedin": "2026-10-27T09:30:00-07:00"
+  },
+  "2026-10-20-peter-trizuliak-update-the-standard-advice": {
+    "linkedin": "2026-10-29T09:30:00-07:00",
+    "x": "2026-10-30T11:15:00-07:00"
+  },
+  "2026-10-20-lavanya-good-intentions-and-hard-work-alone": {
+    "bluesky": "2026-10-29T10:30:00-07:00",
+    "linkedin": "2026-10-30T09:30:00-07:00"
+  },
+  "2026-10-20-esther-notice-the-mission-now": {
+    "bluesky": "2026-10-30T10:30:00-07:00"
+  },
+  "2026-10-20-michael-kobori-financial-architecture-inverted": {
+    "bluesky": "2026-10-31T10:30:00-07:00",
+    "x": "2026-10-31T11:15:00-07:00"
+  },
+  "2026-10-22-toronto-book-group-becomes-organising": {
+    "bluesky": "2026-11-01T10:30:00-08:00",
+    "x": "2026-11-01T11:15:00-08:00"
+  },
+  "2026-10-23-barnes-noble-best-business-books-2026": {
+    "linkedin": "2026-10-25T14:00:00-07:00",
+    "bluesky": "2026-10-25T15:00:00-07:00",
+    "x": "2026-10-25T15:30:00-07:00"
+  },
+  "2026-10-24-jean-philippe-courtois-unprotected-structures": {
+    "bluesky": "2026-11-02T10:30:00-08:00",
+    "x": "2026-11-02T11:15:00-08:00"
+  },
+  "2026-10-23-erik-visser-truvalu-mission-drift-after-exit": {
+    "bluesky": "2026-11-03T10:30:00-08:00",
+    "x": "2026-11-03T11:15:00-08:00"
+  },
+  "2026-10-01-brian-behm-wild-construct-board-metrics": {
+    "bluesky": "2026-10-27T07:40:00-07:00",
+    "x": "2026-10-28T11:20:00-07:00"
+  },
+  "2026-10-20-ollie-forsyth-values-in-your-structure": {
+    "x": "2026-10-27T08:10:00-07:00"
+  },
+  "2026-09-28-marty-cagan-better-than-lean-startup": {
+    "linkedin": "2026-10-28T09:15:00-07:00"
+  },
+  "2026-10-11-alejandro-goodreads-google-first-row-seat": {
+    "bluesky": "2026-10-29T15:30:00-07:00"
+  },
+  "2026-09-24-rebecca-henderson-favorite-business-book-five-years": {
+    "linkedin": "2026-11-05T10:15:00-08:00"
+  },
+  "2026-10-26-carol-van-den-hende-data-to-back-that": {
+    "x": "2026-11-05T10:20:00-08:00"
+  },
+  "2026-05-01-next-big-idea-club-may-must-read": {
+    "linkedin": "2026-11-01T10:15:00-08:00"
+  },
+  "2026-10-28-baratunde-thurston-favorite-speaker": {
+    "bluesky": "2026-11-05T11:00:00-08:00",
+    "x": "2026-11-06T10:30:00-08:00"
+  },
+  "2026-10-26-andrew-corcoran-fave-business-book": {
+    "bluesky": "2026-11-06T12:37:00-08:00"
+  },
+  "2026-10-26-daniel-sharp-important-book-this-time": {
+    "x": "2026-11-07T11:15:00-08:00"
+  },
+  "2026-06-05-esben-goodreads": {
+    "bluesky": "2026-11-04T21:18:00Z"
+  },
+  "2026-10-29-tim-olaore-economic-gravitational-forces": {
+    "bluesky": "2026-11-07T10:42:00-08:00"
+  },
+  "2026-10-29-diederick-janse-steward-ownership-self-management": {
+    "x": "2026-11-08T11:16:00-08:00",
+    "bluesky": "2026-11-09T10:28:00-08:00"
+  },
+  "2026-10-28-bryan-cantrill-books-in-the-box-vi": {
+    "x": "2026-11-09T18:45:00Z",
+    "linkedin": "2026-11-10T17:20:00Z",
+    "bluesky": "2026-11-10T20:40:00Z"
+  },
+  "2026-10-21-cranlana-defying-gravity-global-ethics-day": {
+    "linkedin": "2026-11-06T18:20:00Z",
+    "bluesky": "2026-11-08T19:05:00Z",
+    "x": "2026-11-11T18:35:00Z"
+  },
+  "2026-05-26-reader-lisa-brennan-jobs": {
+    "linkedin": "2026-11-09T18:10:00Z",
+    "x": "2026-11-10T18:50:00Z",
+    "bluesky": "2026-11-11T19:20:00Z"
+  },
+  "2026-08-05-ft-best-summer-books-2026-business": {
+    "linkedin": "2026-11-12T17:35:00Z",
+    "x": "2026-11-12T19:40:00Z",
+    "bluesky": "2026-11-13T18:25:00Z"
+  },
+  "2026-11-25-incorruptibles-deusto-spanish-edition": {
+    "linkedin": "2026-11-25T16:45:00Z",
+    "x": "2026-11-25T17:30:00Z",
+    "bluesky": "2026-11-25T18:05:00Z"
+  },
+  "2026-10-29-david-banks-adventhealth-mission-dna": {
+    "linkedin": "2026-11-03T20:20:00Z"
+  },
+  "2026-08-16-incorruptible-redline-german-edition": {
+    "linkedin": "2026-12-16T16:30:00Z",
+    "x": "2026-12-16T17:10:00Z",
+    "bluesky": "2026-12-16T17:40:00Z"
+  },
+  "2026-10-29-raj-sisodia-bookshelf-of-every-leader": {
+    "x": "2026-11-06T22:50:00Z",
+    "bluesky": "2026-11-07T21:30:00Z"
   }
 }
