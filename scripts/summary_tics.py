@@ -43,9 +43,34 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
-#: CLAUDE.md's "concise, 1-2 sentences", given numbers so it can be checked.
-MAX_SENTENCES = 2
-MAX_WORDS = 60
+#: Length targets by tier. Eric, 2026-11-01: "1-2 sentences is not a hard rule.
+#: we want to make them as good as is appropriate, with the more important
+#: milestones getting more attention. but the focus shuld still be on a concise
+#: description tha tmakes clear what's going on to someone who may not have the
+#: context needed."
+#:
+#: So length is a WARNING against a tier target, not a failure. What a machine
+#: can still be sure about is bloat: past HARD_CEILING nothing is earning its
+#: words, and the original 127-word offender sat under it, so the ceiling is
+#: not the real check — the tics and the tier target are.
+TIER_TARGET = {
+    "major": 110,    # milestones, flagged endorsements, anything in the rails
+    "standard": 75,  # reviews, podcasts, media, events
+    "brief": 55,     # reactions, social, passing mentions
+}
+HARD_CEILING = 150
+
+#: Types that get the standard target when nothing flags them as major.
+_STANDARD_TYPES = {"review", "podcast", "media", "event", "endorsement", "milestone"}
+
+
+def tier_for(entry: dict) -> str:
+    tm = entry.get("type_metadata") or {}
+    if tm.get("highlight") or tm.get("featured") or tm.get("sidebar_quote"):
+        return "major"
+    if entry.get("type") == "milestone":
+        return "major"
+    return "standard" if entry.get("type") in _STANDARD_TYPES else "brief"
 
 #: Corporate AI-ese. Short on purpose — a blacklist that grows past what is
 #: genuinely dead gives false positives on ordinary words, and this site's
@@ -76,6 +101,21 @@ _ANTITHESIS = [
 # apostrophe far more often than a quote mark, and treating it as one made
 # "isn't a note — it's the argument" strip down to "isn s the argument",
 # silently disabling every other rule on any summary with two apostrophes.
+#: Words that were true the day the summary was written and wrong ever after.
+#: An entry is a dated record sitting next to its own date, so a relative time
+#: word freezes into it. "upcoming" did exactly that in six entries whose events
+#: happened months ago, and "last Thursday" went into a rewrite on 2026-11-01.
+#: Use the absolute date, or say nothing.
+_RELATIVE_TIME = re.compile(
+    r"\b(?:"
+    r"upcoming|tomorrow|yesterday|recently|currently|nowadays|"
+    r"(?:just|only)\s+(?:now|today)|right\s+now|these\s+days|at\s+present|"
+    r"(?:last|next|this)\s+(?:week|month|year|night|spring|summer|autumn|fall|winter|"
+    r"monday|tuesday|wednesday|thursday|friday|saturday|sunday)|"
+    r"this\s+(?:coming|past)|a\s+few\s+(?:days|weeks|months)\s+ago|"
+    r"(?:earlier|later)\s+(?:this|next|last)\s+(?:week|month|year)"
+    r")\b", re.I)
+
 _QUOTED = re.compile(r"\"[^\"]{3,}?\"|“[^”]{3,}?”|«[^»]{3,}?»|‘[^’]{3,}?’")
 
 
@@ -102,19 +142,27 @@ def _shingles(text: str, n: int = 6) -> set[tuple[str, ...]]:
     return {tuple(w[i:i + n]) for i in range(len(w) - n + 1)}
 
 
-def check(summary: str, blockquote: str | None = None) -> list[Finding]:
+def check(summary: str, blockquote: str | None = None,
+          tier: str = "standard") -> list[Finding]:
     out: list[Finding] = []
     if not summary or not summary.strip():
         return out
     unquoted = _strip_quoted(summary)
 
     n_sent, n_word = len(sentences(summary)), len(summary.split())
-    if n_sent > MAX_SENTENCES or n_word > MAX_WORDS:
+    target = TIER_TARGET.get(tier, TIER_TARGET["standard"])
+    if n_word > HARD_CEILING:
         out.append(Finding(
             "length", "fail",
-            f"{n_sent} sentences / {n_word} words; the cap is "
-            f"{MAX_SENTENCES} sentences and {MAX_WORDS} words. Cut the sentence "
-            f"that restates the blockquote and the one that narrates your research."))
+            f"{n_sent} sentences / {n_word} words. Past {HARD_CEILING} nothing is "
+            f"earning its words. Cut the sentence restating the blockquote and the "
+            f"one narrating your research, then judge the rest."))
+    elif n_word > target:
+        out.append(Finding(
+            "length", "warn",
+            f"{n_sent} sentences / {n_word} words against a {tier} target of "
+            f"{target}. Fine if every word orients a reader with no context; "
+            f"not fine if it summarises the source instead of introducing it."))
 
     for rx in _ANTITHESIS:
         m = rx.search(unquoted)
@@ -125,6 +173,13 @@ def check(summary: str, blockquote: str | None = None) -> list[Finding]:
                 "recognisable LLM tell. Say the thing you mean and drop the "
                 "half you don't.", m.group(0).strip()))
             break
+
+    m = _RELATIVE_TIME.search(unquoted)
+    if m:
+        out.append(Finding(
+            "relative-time", "fail",
+            "a relative time word freezes into a dated record and is wrong from "
+            "the next day on. Use the absolute date, or drop it.", m.group(0)))
 
     low = unquoted.lower()
     for w in BUZZWORDS:
@@ -171,7 +226,7 @@ def check(summary: str, blockquote: str | None = None) -> list[Finding]:
 
 def check_entry(path: Path) -> list[Finding]:
     d = json.loads(Path(path).read_text())
-    return check(d.get("summary") or "", d.get("blockquote"))
+    return check(d.get("summary") or "", d.get("blockquote"), tier_for(d))
 
 
 def _head_summary(path: Path) -> str | None:
@@ -203,7 +258,7 @@ def check_file_vs_head(path: Path) -> list[Finding] | None:
     summary = d.get("summary") or ""
     if summary == _head_summary(path):
         return None
-    return check(summary, d.get("blockquote"))
+    return check(summary, d.get("blockquote"), tier_for(d))
 
 
 def _trend() -> int:

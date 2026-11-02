@@ -60,6 +60,42 @@ At 53 words:
 
 Nothing factual was lost. The Yaniv Bernstein check still happened.
 
+## Tense: an entry is a dated record sitting next to its own date
+
+Eric, 2026-11-01, on a draft that ran "Eric **spoke** at the Long Now
+Foundation… The subject **is** how to build accountability": *"spoke (past
+tense) is (present tense). please rethink this."*
+
+One slip, but it pointed at a class. Six entries still say "upcoming" about
+events that happened months ago, and the fix for the Long Now sentence went
+into a draft that itself said "last Thursday".
+
+1. **What someone did → past tense.** It happened on the date printed beside
+   it, and it stays happened. *"Courtois queued at the summit, then wrote up
+   what he had seen."*
+2. **Who someone is → present tense.** Roles and standing facts don't expire.
+   *"Barros writes Entre Futuros."* *"Courtois chairs SKEMA Business School."*
+3. **Keep one frame per sentence**, and don't drift between sentences. The
+   failure Eric caught is an action sentence in the past followed by a
+   description of the same event in the present. If the second sentence is
+   about the event, it stays past: *"He argued that accountability has to be
+   built into the structure."*
+4. **A scheduled event takes present tense with an absolute date**, which reads
+   correctly before and after it happens: *"The summit takes place in Amsterdam
+   on 19 November."* Never *"Eric will speak next week."*
+5. **No relative time words. Ever.** upcoming, tomorrow, yesterday, next week,
+   last Thursday, recently, currently, this month. They were true for one day.
+   Use the absolute date — and if the source only gives you a relative one you
+   cannot resolve, **cut it**: the entry's date already carries the when.
+   Balayan's source says *"el jueves pasado"*, which is either the Thursday
+   just gone or the one before, so the summary says neither.
+6. **Reporting a claim about the future is not a relative time word.** *"He
+   says the book will change how founders think"* is his claim, in past-tense
+   reporting, and is fine.
+
+`summary_tics.py` fails on rule 5. Rules 1–3 are read, not regexed — a tense
+checker that is wrong 10% of the time is worse than none.
+
 ## Rules
 
 ### Hard — `summary_tics.py` fails the commit

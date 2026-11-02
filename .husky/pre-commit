@@ -68,6 +68,20 @@ if [ -n "$CHANGED_ENTRIES" ]; then
     exit 1
   fi
 
+  # A rewritten summary must not contain facts its sources don't. Catches a
+  # subagent supplying the clarity it needs — a title, a company, a round
+  # number — that nothing in the entry supports.
+  echo "Checking rewritten summaries for invented detail..."
+  python3 scripts/summary_drift.py $CHANGED_ENTRIES
+  DRIFT_EXIT=$?
+  if [ $DRIFT_EXIT -ne 0 ]; then
+    echo ""
+    echo "⚠️  A rewritten summary introduces detail no source carries."
+    echo "   Check it against data/archive/source-texts/<id>.json, or cut it."
+    echo "   To skip this check: git commit --no-verify"
+    exit 1
+  fi
+
   # Then the network check, for the changed entries only.
   echo "Verifying quotes against live source pages..."
   npx tsx scripts/verify-quotes.ts $CHANGED_ENTRIES

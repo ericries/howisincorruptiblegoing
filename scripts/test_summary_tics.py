@@ -43,18 +43,50 @@ def warns(summary, **kw):
 
 # ── length ───────────────────────────────────────────────────────────────
 def test_a_two_sentence_summary_under_the_cap_is_clean():
+    """Originally written with "on air last Thursday", which the relative-time
+    rule later caught. The source says "el jueves pasado", which can mean this
+    past Thursday or the one before; unresolvable, so it is cut rather than
+    guessed. The entry's own date already carries the when."""
     s = ("Balayan runs Maure Inmobiliaria in Buenos Aires and has a standing books "
-         "slot on Neura, where she recommended Incorruptible on air last Thursday. "
+         "slot on Neura, where she recommended Incorruptible on air. "
          "Her written summary tracks the book closely.")
     assert st.check(s) == []
 
 
-def test_more_than_two_sentences_fails():
-    assert "length" in fails("One thing. Two things. Three things. Four.")
+def test_more_than_two_sentences_no_longer_fails():
+    """Eric, 2026-11-01: "1-2 sentences is not a hard rule. we want to make them
+    as good as is appropriate, with the more important milestones getting more
+    attention." Length became a tiered warning; only absurd bloat still fails."""
+    assert "length" not in fails("One thing. Two things. Three things. Four.")
 
 
-def test_over_the_word_cap_fails():
-    assert "length" in fails("word " * 80)
+def test_over_the_tier_target_warns():
+    assert "length" in warns("word " * 80, tier="brief")
+
+
+def test_a_major_entry_may_run_long_without_a_warning():
+    """A Courtois-scale endorsement earns its detail."""
+    assert "length" not in warns("word " * 100, tier="major")
+
+
+def test_the_same_length_warns_for_a_passing_reaction():
+    assert "length" in warns("word " * 100, tier="brief")
+
+
+def test_absurd_bloat_still_fails_at_every_tier():
+    assert "length" in fails("word " * 200, tier="major")
+
+
+def test_tier_is_derived_from_the_entry(tmp_path):
+    import json
+    major = tmp_path / "m.json"
+    major.write_text(json.dumps(
+        {"type": "endorsement", "summary": "word " * 100,
+         "type_metadata": {"highlight": "X: 'y'"}}))
+    assert "length" not in {f.rule for f in st.check_entry(major)}
+    plain = tmp_path / "p.json"
+    plain.write_text(json.dumps({"type": "reaction", "summary": "word " * 100}))
+    assert "length" in {f.rule for f in st.check_entry(plain)}
 
 
 def test_the_cap_counts_sentences_not_full_stops_inside_abbreviations():
@@ -203,3 +235,36 @@ def test_two_separate_asides_still_warn():
 def test_three_dashes_in_one_sentence_warn():
     s = "She runs the firm — a small one — and reviewed it — on air — last Thursday."
     assert "em-dash" in warns(s)
+
+
+# ── tense: an entry is a dated record, so it must not drift ──────────────
+def test_a_relative_time_word_fails():
+    """'upcoming' froze into six entries whose events happened months ago."""
+    assert "relative-time" in fails("He flags Eric's upcoming NACD mainstage session.")
+
+
+def test_next_week_fails():
+    assert "relative-time" in fails("She announces Eric is joining the podcast next week.")
+
+
+def test_last_thursday_fails():
+    """My own rewrite, one hour old: 'she recommended it on air last Thursday'."""
+    assert "relative-time" in fails("She recommended Incorruptible on air last Thursday.")
+
+
+def test_an_absolute_date_is_fine():
+    assert "relative-time" not in fails("The summit takes place in Amsterdam on 19 November.")
+
+
+def test_last_as_an_ordinary_adjective_is_not_a_time_word():
+    assert "relative-time" not in fails("He returns to it in the last chapter of the book.")
+
+
+def test_a_relative_time_word_inside_a_quote_is_the_speaker_s():
+    s = 'He wrote that he would "finish it next week" and posted a photo.'
+    assert "relative-time" not in fails(s)
+
+
+def test_will_reporting_a_claim_is_not_a_relative_time_word():
+    """'the book will change how founders think' is a reported claim, not a date."""
+    assert "relative-time" not in fails("He says the book will change how founders think.")
