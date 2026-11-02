@@ -146,6 +146,19 @@
       "quote": "he called it “structure & nerve”",
       "text": "<p>he called it &ldquo;structure &amp; nerve&rdquo;</p>",
       "expect": "found"
+    },
+    {
+      "name": "spaced dash in the quote, tight dash on the page",
+      "quote": "the three levers - governance, incentives and metrics - decide it",
+      "text": "<p>the three levers-governance, incentives and metrics-decide it</p>",
+      "expect": "found",
+      "why": "normalize folded dash CHARACTERS but not the spaces around them, so a quote transcribed with ' - ' could not match a page rendering '-'. Two entries failed on this alone."
+    },
+    {
+      "name": "tight dash in the quote, spaced em dash on the page",
+      "quote": "purpose-not because of bad people",
+      "text": "<p>purpose — not because of bad people</p>",
+      "expect": "found"
     }
   ]
 }

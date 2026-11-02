@@ -107,8 +107,9 @@ def normalise(text: str) -> str:
     text = text.lower()
     # Any quote mark — single or double, curly or straight — becomes one marker.
     text = re.sub(r"['‘’‛`´′\"“”„‟″]", "'", text)
-    # Any dash, or run of dashes, becomes one hyphen.
-    text = re.sub(r"[-—–‒―−]+", "-", text)
+    # Any dash, or run of dashes, becomes one hyphen — and so do the spaces
+    # around it: "levers - governance" and "levers-governance" read the same.
+    text = re.sub(r"\s*[-—–‒―−]+\s*", "-", text)
     text = text.replace("…", "...").replace(" ", " ")
     text = re.sub(r"\s+", " ", text).strip()
     # Space before punctuation, and after an opening bracket, is typography

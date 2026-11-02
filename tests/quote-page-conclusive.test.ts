@@ -26,9 +26,17 @@ describe('isConclusive', () => {
     ).toBe(false);
   });
 
-  it('accepts a page that names the author', () => {
+  // Superseded 2026-11-02. The author's name alone WAS the accept signal, and
+  // the reasoning was sound as far as it went: a real page names its author.
+  // But a Goodreads profile and an Apple Podcasts page also name their author,
+  // in the navigation, while the review or description is drawn by JavaScript
+  // and never reaches the HTML. On those the checker declared the page readable
+  // and then reported "composite risk" against text it had never seen. Six
+  // entries were accused that way, so the name is no longer sufficient on its
+  // own; some window of the quote has to be visible.
+  it('a page that names the author but carries none of the quote is inconclusive', () => {
     const page = 'x'.repeat(3000) + ' A review by Jeff Berman about something else.';
-    expect(isConclusive(page, QUOTE, ATTRIB)).toBe(true);
+    expect(isConclusive(page, QUOTE, ATTRIB)).toBe(false);
   });
 
   it('accepts a page carrying the quote opening, so composites stay catchable', () => {
@@ -50,7 +58,7 @@ describe('isConclusive', () => {
     expect(isConclusive(page, QUOTE, null)).toBe(true);
   });
 
-  it('matches the author name case-insensitively', () => {
+  it.skip('matches the author name case-insensitively (name signal retired 2026-11-02)', () => {
     const page = 'w'.repeat(3000) + ' reviewed by JEFF BERMAN here';
     expect(isConclusive(page, QUOTE, ATTRIB)).toBe(true);
   });
@@ -74,7 +82,7 @@ describe('isConclusive reads visible text, not markup', () => {
     expect(isConclusive(YOUTUBE_SHELL, QUOTE, 'Stanford eCorner')).toBe(false);
   });
 
-  it('still accepts a real page whose name is in body text', () => {
+  it.skip('still accepts a real page whose name is in body text (name signal retired 2026-11-02)', () => {
     const page = '<html><body><p>' + 'lorem ipsum '.repeat(300) + ' reviewed by Jeff Berman</p></body></html>';
     expect(isConclusive(page, QUOTE, ATTRIB)).toBe(true);
   });
@@ -82,5 +90,41 @@ describe('isConclusive reads visible text, not markup', () => {
   it('does not let script bodies pad the length floor', () => {
     const page = '<html><body><script>' + 'x'.repeat(50000) + '</script><p>hi</p></body></html>';
     expect(isConclusive(page, QUOTE, ATTRIB)).toBe(false);
+  });
+});
+
+describe('a page is conclusive only when the quote is actually visible on it', () => {
+  // The author's name alone used to be enough. On a Goodreads profile or an
+  // Apple Podcasts page the name sits in the navigation while the review or
+  // description is rendered by JavaScript and never reaches the HTML, so the
+  // checker declared the page readable and then reported the quote PARTIAL —
+  // "composite risk" — against a quote it had never actually looked at. Six
+  // entries were accused that way.
+  const QUOTE =
+    'I have been teaching college business ethics and individual choice takes center stage, but other forces matter more';
+
+  it('a navigation-only page is inconclusive even when the author is named', () => {
+    const nav =
+      ('<p>David Bauman Home My Books Browse Recommendations Choice Awards Genres ' +
+       'Giveaways New Releases Lists Explore News Interviews Community Groups Quotes ' +
+       'Ask the Author Sign in Join</p>').repeat(8);
+    expect(isConclusive(nav, QUOTE, 'David Bauman')).toBe(false);
+  });
+
+  it('a page carrying a real run of the quote is conclusive', () => {
+    const page = `<p>${'Some review prose. '.repeat(80)} ${QUOTE.slice(20, 90)} and so on.</p>`;
+    expect(isConclusive(page, QUOTE, 'David Bauman')).toBe(true);
+  });
+
+  it('a run from the MIDDLE of the quote counts, not only the opening', () => {
+    // Bauman's page says "over 18 years" where the quote says "15 years", so
+    // the opening diverges while the rest is plainly the same text. That is a
+    // real divergence to report, not a page we failed to read.
+    const page = `<p>${'Some review prose. '.repeat(80)} over 18 years, ${QUOTE.slice(60)} ...</p>`;
+    expect(isConclusive(page, QUOTE, 'David Bauman')).toBe(true);
+  });
+
+  it('a page too short to be anything is still inconclusive', () => {
+    expect(isConclusive('<p>Just a moment...</p>', QUOTE, 'David Bauman')).toBe(false);
   });
 });

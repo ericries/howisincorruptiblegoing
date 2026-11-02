@@ -89,10 +89,27 @@ export function isConclusive(
   page = visibleText(page);
   if (!page || page.length < MIN_PLAUSIBLE_CHARS) return false;
 
-  const low = page.toLowerCase();
-  const name = (attribution ?? '').trim().toLowerCase();
-  if (name && low.includes(name)) return true;
+  // The author's name used to be enough on its own. It is not: on a Goodreads
+  // profile or an Apple Podcasts page the name sits in the navigation while
+  // the review or description is rendered by JavaScript and never reaches the
+  // HTML. The checker then declared the page readable and reported the quote
+  // PARTIAL — "composite risk" — against text it had never actually seen. Six
+  // entries were accused that way before 2026-11-02.
+  //
+  // What counts is positive evidence that the quote's own text is on the page:
+  // some window of it, from anywhere, not only the opening. Bauman's review now
+  // reads "over 18 years" where the entry says "15 years", so his opening
+  // diverges while the rest is plainly the same text — a real divergence to
+  // report. A Goodreads nav bar carries no window of the quote at all, and the
+  // honest answer there is that we could not read the page.
+  const folded = fold(page);
+  const q = fold(quote ?? '');
+  if (q.length < MIN_PREFIX_SIGNAL) return false;
 
-  const prefix = fold(quote ?? '').slice(0, 40);
-  return prefix.length >= MIN_PREFIX_SIGNAL && fold(page).includes(prefix);
+  const window = Math.max(MIN_PREFIX_SIGNAL, 40);
+  if (q.length <= window) return folded.includes(q);
+  for (let i = 0; i + window <= q.length; i++) {
+    if (folded.includes(q.slice(i, i + window))) return true;
+  }
+  return false;
 }

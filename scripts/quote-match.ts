@@ -43,7 +43,10 @@ export function normalize(text: string): string {
     // `normalise` in scripts/quote_integrity.py — the shared corpus in
     // data/quote-match-cases.json holds the cases that keep them in step.
     .replace(/['‘’‛`´′"“”„‟″]/g, "'")
-    .replace(/[-—–‒―−]+/g, '-')
+    // Spaces around a dash are typography too: a quote transcribed as
+    // 'levers - governance' could not match a page rendering
+    // 'levers-governance', which failed two sound entries on its own.
+    .replace(/\s*[-—–‒―−]+\s*/g, '-')
     // Folded AFTER the cut split in findQuoteInPage, so a spaced ' … ' is
     // already gone and only an author's own trailing-off ellipsis reaches
     // here. quote_integrity.py folds it too, and the shared corpus holds the
