@@ -53,5 +53,1215 @@
     "identifier": "tweet:2115038324582920354",
     "reason": "a line he is quoting (James Goldman, The Lion in Winter), not making",
     "skipped_at": "2026-11-01T05:48:05Z"
+  },
+  {
+    "identifier": "comment:7523081963189071872",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523068617085706240",
+    "reason": "Eric's own comment",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523091110731096064",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523083241067753473",
+    "reason": "congratulations",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523098904431779840",
+    "reason": "congratulations",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523090384596676609",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523060892108849152",
+    "reason": "congratulations on an unrelated product launch",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523067929437831168",
+    "reason": "congratulations on an unrelated product launch",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523063615487188993",
+    "reason": "congratulations",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523086953966206976",
+    "reason": "congratulations on an unrelated product launch",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523059210884890624",
+    "reason": "congratulations on an unrelated product launch",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523074370358009858",
+    "reason": "congratulations",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523099645909118976",
+    "reason": "congratulations on an unrelated product launch",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523058951400300544",
+    "reason": "congratulations on an unrelated product launch",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523057389747552256",
+    "reason": "too thin to use",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523056644994285568",
+    "reason": "congratulations on an unrelated product launch",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523038567082766336",
+    "reason": "congratulations on an unrelated product launch",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523035878395539457",
+    "reason": "congratulations on an unrelated product launch",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523052642693214208",
+    "reason": "congratulations on an unrelated product launch",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523035832316985345",
+    "reason": "too thin to use",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523035753493299200",
+    "reason": "congratulations on an unrelated product launch",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523035155532509184",
+    "reason": "congratulations on an unrelated product launch",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523033587080650752",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523031546031955968",
+    "reason": "congratulations",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523031422412947457",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523029683483910144",
+    "reason": "congratulations",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523031527073595392",
+    "reason": "congratulations",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523029657554952193",
+    "reason": "too thin to use",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523026756661047296",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523025911206825985",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523025436126367744",
+    "reason": "congratulations on an unrelated product launch",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523025136564862977",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523024547923537920",
+    "reason": "congratulations",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522801896596779008",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523049671687340032",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523066614892814336",
+    "reason": "too thin to use",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522992395156692992",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522883611059118080",
+    "reason": "too thin to use",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522815940569300992",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523030833415311360",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522788800729731073",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523056141711478784",
+    "reason": "too thin to use",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523081685609918464",
+    "reason": "haven't-read-it",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523095407191642112",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523059260780371968",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523047702318854145",
+    "reason": "haven't-read-it",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523088182951804929",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523065442731495424",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523053790032220160",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523092049194123264",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523096087889428480",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523099284079247361",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523087814385684481",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523079681114361856",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522296489591771136",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522241373933035520",
+    "reason": "link-only or promotional",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523084709128626176",
+    "reason": "haven't-read-it",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522656822508584960",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522681049068466176",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522394087493365760",
+    "reason": "congratulations",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522368591036338176",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522360775110385664",
+    "reason": "congratulations",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522621858752598016",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522415946997874688",
+    "reason": "congratulations",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523072895300866049",
+    "reason": "too thin to use",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523024591800348672",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522952725584658434",
+    "reason": "link-only or promotional",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522787188242083840",
+    "reason": "Eric's own comment",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521671457911889921",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522743222746386432",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522766938184441856",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522735657035685888",
+    "reason": "too thin to use",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522652966382882816",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523046405825949696",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522083394500022273",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522029213231591424",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522733511129341952",
+    "reason": "Eric's own comment",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522345843463532544",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521900600620412929",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521980980618944512",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521718068859973632",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521748494269853698",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521713052275220480",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521697827278819328",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521672530542129156",
+    "reason": "link-only or promotional",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521624178257752064",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521657065195446272",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521651798315708416",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521645007590809601",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521613207329800193",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521600872275963908",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521599252423245825",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521603057340723200",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522943026315329537",
+    "reason": "too thin to use",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522722991168843776",
+    "reason": "Eric's own comment",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522514222820380672",
+    "reason": "congratulations",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522345505826271233",
+    "reason": "Eric's own comment",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522152993127993344",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521999569199476736",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521972227177721856",
+    "reason": "Eric's own comment",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521568864091115544",
+    "reason": "link-only or promotional",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521538491277541378",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521522043910078465",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521531432767500288",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521543648170172416",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521835485854461954",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521670226757918720",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521526782307594240",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521538019812638722",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521519279515561984",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521521845536239616",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521521751617605633",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521514021955653632",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521509419428519936",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521505926852431872",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521504901089210368",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521504544439214080",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521504279623544834",
+    "reason": "congratulations",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521504223784583168",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521504024198729728",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521503958297657345",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521503984042459137",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521503787325227008",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521503764206374913",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521503877855289345",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521503705431457792",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521503461604118530",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521654732860317697",
+    "reason": "Eric's own comment",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521685777311870978",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521938873954811906",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522236446011957248",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521609779941863424",
+    "reason": "Eric's own comment",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521650226533875713",
+    "reason": "too thin to use",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521385636008857600",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521405946154074112",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522423716673314816",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521516144931893248",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521535447169249280",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521904532017270784",
+    "reason": "link-only or promotional",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521795691510419457",
+    "reason": "too thin to use",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521344865398562816",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522786577811660800",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521315227502538752",
+    "reason": "Eric's own comment",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521618935805423616",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521311399495659520",
+    "reason": "praise aimed at another speaker, not the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522097288316514304",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521310126465675264",
+    "reason": "praise aimed at another speaker, not the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521401783911399424",
+    "reason": "praise aimed at another speaker, not the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521308259169918976",
+    "reason": "too thin to use",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521602736023310336",
+    "reason": "praise aimed at another speaker, not the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521365561486921728",
+    "reason": "praise aimed at another speaker, not the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521601008263806976",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521265346025132032",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521267824196079616",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521457887915761665",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521254347624599553",
+    "reason": "link-only or promotional",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521250500986503168",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521107509433057282",
+    "reason": "link-only or promotional",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522061650464559105",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521243345516490753",
+    "reason": "Eric's own comment",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521636771638472705",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521434335917297664",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521770887642140672",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521314263278379008",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521333683530919936",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521236873214615552",
+    "reason": "praise aimed at another speaker, not the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521238800728047616",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521618515515330560",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521326788707524608",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521235368126545921",
+    "reason": "Eric's own comment",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521231100505989120",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521247683391705088",
+    "reason": "congratulations",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522066183760838656",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521556891563532288",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521274047180046338",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521285525270429696",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521421963819614208",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521307057543671808",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521251144405487617",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521281721816866816",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521236848522829826",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521236186238132224",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521235216477298690",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521231545861578752",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521233209691492354",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521224110572572672",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521218575660077057",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521212145611726848",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521047004525989888",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7520957888362852352",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7520952539236773888",
+    "reason": "Eric's own comment",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7520899757356269568",
+    "reason": "Eric's own comment",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7520888258520875008",
+    "reason": "Eric's own comment",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523095275423313920",
+    "reason": "congratulations",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523077018159366144",
+    "reason": "congratulations",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523061445639561216",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523007374836674560",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522839013460717569",
+    "reason": "link-only or promotional",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522652506573754368",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522911339091001346",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522642516672884736",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522713115772305408",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522921333622501376",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523083318507155456",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7523066437230493697",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522935154063949824",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522642877194256385",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522591618957283328",
+    "reason": "too thin to use",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521918677244448769",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522739467779112960",
+    "reason": "Eric's own comment",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521933661038907392",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521775784697442304",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521621921529208832",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521771794404499456",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521889378562985984",
+    "reason": "haven't-read-it",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521530926288351233",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7522262061037281282",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521558713493557248",
+    "reason": "haven't-read-it",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521533817606557699",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521534315269132288",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521755415244836864",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521529502338940930",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521530845577240576",
+    "reason": "too thin to use",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521949529386991616",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521539949121384448",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521523107585761281",
+    "reason": "link-only or promotional",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521636679418290176",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521753916150173696",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521310998310428672",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521364620847202304",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521621964764119040",
+    "reason": "too thin to use",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521385768372621313",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521301948579422208",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521318229559103489",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7521347678723829761",
+    "reason": "too thin to use",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7520897859060305920",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7520886469406916608",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7520866469954646034",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7520869240325787648",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7520890054160994304",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7520866710200053760",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "comment:7520872501703393281",
+    "reason": "below bar: conversational, or praise aimed at something other than the book",
+    "skipped_at": "2026-11-02T19:42:30Z"
   }
 ]

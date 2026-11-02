@@ -232,7 +232,15 @@ CHECK WHETHER THE CAP COST ANYTHING by running `python3 scripts/feed_coverage.py
 
 maxPosts is 50, not 30: at 30 posts the author feed reached back only about four days, against a Friday-to-Monday gap of three. That margin was the whole safety factor and it was never stated.
 
-Save each raw dataset to data/archive/linkedin-raw/<YYYY-MM-DD>-<name>.json, then:
+Save each raw dataset to data/archive/linkedin-raw/<YYYY-MM-DD>-comments-author.json and
+<YYYY-MM-DD>-comments-keyword.json. THE FILENAME IS LOAD-BEARING and this line used to
+say only "<name>.json". feed_coverage.py matches `-(comments|recovery)-author.json` and
+the keyword equivalent; on 2026-11-02 the files went down as `-author-eries.json` and
+`-kw-comments.json`, so the coverage check could not see the pull at all and reported
+CLEAN against the previous run's dates. A false clean is worse than a HOLE, because a
+HOLE gets acted on. Renaming the two files made it report the real ranges immediately.
+
+Then:
 
 Pass 1 — emit queue:
   python3 scripts/archive-social-comments.py /tmp/eries-feed.json --scan-source=linkedin-author-eries
@@ -254,7 +262,7 @@ One more skip class worth naming, because it is tempting: a sharp line the comme
 
 The archive holds COMMENTS only — every record to date is item_kind "comment". The queue also surfaces posts; skip those. The queue builder now routes items BY SHAPE (`author` present = post), because the actor emits every comment twice — nested under its post and again as a flat sibling carrying `postId` — and the flat ones used to be read as posts and queued with no parent. It prints `Scanned N posts / M comments` as a real measurement now; it previously reported the list length, saying "250 posts" for 40. If it warns that comments have an unresolved parent, their postId was outside this pull — usually a truncated window, not a bug. But a comment can still yield a CONTENT-side find worth acting on: on 2026-10-19 Ash Wallington posted her article URL in comments, which completed an entry shipped the day before when the link was unreachable. When you go looking for such a URL, grep the RAW archive file rather than walking the parsed structure — the queue preview truncates at 150 characters and the comment nesting is not where you expect.
 
-CRITICAL: when a candidate's relevance depends on the PARENT post, print the parent post IN FULL before deciding. `parent_post` is populated on every comment record as of 2026-10-30; if one is empty, check `parent_post_id` and say so rather than inferring the parent. Two inference methods both gave WRONG parents that day — the postId field is the only thing that resolves reliably (258/258). A lowercase or adjectival "incorruptible" near the top of a post is a reason to keep reading, not to dismiss — people routinely use the word casually and credit the book further down. This is how the Paige Kaye entry was nearly lost (memory/feedback_read_whole_parent_post.md).
+CRITICAL: when a candidate's relevance depends on the PARENT post, print the parent post IN FULL before deciding. `parent_post` is populated on every comment record as of 2026-10-30 — EXCEPT that on 2026-11-02 it was empty on every one of 253 fresh candidates, so treat the field as unreliable rather than fixed. The repair is cheap and is the route this prompt already calls the only reliable one: index the RAW archive by post `id` and look up `parent_post_id`. That resolved all nine ambiguous candidates in one pass, and it is what separated a keeper (Zevi Sukenik, under David Banks's AdventHealth post) from a skip (Jane Milovanova, under a local-economy post that never mentions the book). If one is empty, check `parent_post_id` and say so rather than inferring the parent. Two inference methods both gave WRONG parents that day — the postId field is the only thing that resolves reliably (258/258). A lowercase or adjectival "incorruptible" near the top of a post is a reason to keep reading, not to dismiss — people routinely use the word casually and credit the book further down. This is how the Paige Kaye entry was nearly lost (memory/feedback_read_whole_parent_post.md).
 
 For each YES write a verdict to /tmp/verdicts-<YYYY-MM-DD>.json with: identifier, platform, kind, source_scan, text, pull_quote, permalink, posted_at, reactions, comments_count, author, parent_post — copied from the queue entry; only pull_quote needs judgment.
 
