@@ -75,6 +75,31 @@ export interface Candidate {
  * hand-kept prose had The Fourth Effect at "THREE consecutive pass-overs" when
  * the recorded figure was two.
  */
+/**
+ * The day a candidate became available to the rail.
+ *
+ * This decided the pass-over counts, and a future-dated entry used to be given
+ * the START OF THE WINDOW — so an entry that shipped this morning was reported
+ * as passed over by every change since. On 2026-11-01 the Spanish edition,
+ * committed that day, topped the list at 20x, which is exactly the number of
+ * recorded changes and therefore the maximum the report can produce. The
+ * report's strongest signal was manufactured, and it pointed at the newest
+ * entries instead of the longest-waiting ones.
+ *
+ * The honest answer is the day the entry shipped — an entry cannot be passed
+ * over before it exists. That also fixes the quieter case in the other
+ * direction: Kass Lazerow is dated 10-07 and was committed on the 9th, so two
+ * changes were being counted against an entry nobody could have chosen.
+ */
+export function availableFrom(
+  entry: { id: string; date: string; shipped?: string },
+  since: string,
+  today: string
+): string {
+  if (entry.shipped) return entry.shipped > entry.date ? entry.shipped : entry.date;
+  return entry.date > today ? today : entry.date;
+}
+
 export function passOverCounts(
   candidates: Candidate[],
   changes: RailChange[]
@@ -142,6 +167,20 @@ function git(...args: string[]): string {
 }
 
 /** Rail membership at each commit that touched an entry, reduced to changes. */
+
+/** The day an entry file was first committed, or undefined if git cannot say. */
+function shippedOn(id: string): string | undefined {
+  try {
+    const out = execSync(
+      `git log --diff-filter=A --format=%ad --date=short -- content/entries/${id}.json`,
+      { cwd: ROOT, encoding: 'utf-8' }
+    ).trim().split('\n').filter(Boolean);
+    return out.length ? out[out.length - 1] : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 function railHistory(since: string): { changes: RailChange[]; everFeatured: Set<string> } {
   const log = git(
     'log', `--since=${since}`, '--format=%H|%ad', '--date=format:%Y-%m-%d',
@@ -202,8 +241,10 @@ function main(): void {
     .filter((e) => !isFeatured(e) && STANDALONE.has(e.type))
     .filter((e) => !isSelfAmplification(e as never))
     .filter((e) => e.date >= since)
-    // A future-dated event was available from the day it shipped, not its date.
-    .map((e) => ({ id: e.id, available: e.date > today ? since : e.date }));
+    .map((e) => ({
+      id: e.id,
+      available: availableFrom({ id: e.id, date: e.date, shipped: shippedOn(e.id) }, since, today),
+    }));
 
   const live = excludeRetired(candidates, everFeatured);
   const counts = passOverCounts(live, changes);

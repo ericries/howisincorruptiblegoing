@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import {
+  availableFrom,
   composition,
   passOverCounts,
   railInvariantProblems,
@@ -152,5 +153,35 @@ describe('the committed rail', () => {
     // of the quote gate that verified 25 of 871 entries and exited 0.
     expect(entries.length).toBeGreaterThan(500);
     expect(railInvariantProblems(entries)).toEqual([]);
+  });
+});
+
+describe('when a candidate became available to the rail', () => {
+  // `available` decided pass-over counts, and for a future-dated entry it was
+  // set to the START OF THE WINDOW — so an entry that shipped today was
+  // reported as passed over by every change since 1 October. On 2026-11-01 the
+  // Spanish edition, committed that morning, topped the list at 20x: the exact
+  // number of recorded changes, i.e. the maximum the report can produce. The
+  // strongest signal in the report was manufactured, and it pointed at the
+  // newest entries rather than the longest-waiting ones.
+  it('a future-dated entry is available from the day it shipped, not the window start', () => {
+    expect(availableFrom({ id: 'x', date: '2026-11-25' }, '2026-10-01', '2026-11-01'))
+      .toBe('2026-11-01');
+  });
+
+  it('an entry shipped later than its own date is available from the ship day', () => {
+    // Kass Lazerow is dated 2026-10-07 and was committed on the 9th.
+    expect(availableFrom({ id: 'x', date: '2026-10-07', shipped: '2026-10-09' },
+                         '2026-10-01', '2026-11-01')).toBe('2026-10-09');
+  });
+
+  it('an entry shipped the day it happened is available that day', () => {
+    expect(availableFrom({ id: 'x', date: '2026-10-05', shipped: '2026-10-05' },
+                         '2026-10-01', '2026-11-01')).toBe('2026-10-05');
+  });
+
+  it('falls back to the entry date when the ship day is unknown', () => {
+    expect(availableFrom({ id: 'x', date: '2026-10-05' }, '2026-10-01', '2026-11-01'))
+      .toBe('2026-10-05');
   });
 });
