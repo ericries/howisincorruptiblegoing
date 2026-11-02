@@ -42,8 +42,20 @@ _NUM_WORDS = {
     "thousand": "1000", "million": "1000000", "billion": "1000000000",
 }
 
-#: Capitalised words that start a sentence are not evidence of a name.
+#: Sentence-initial capitals are usually grammar, not names — but nearly every
+#: summary here OPENS with a name, so skipping them wholesale left the commonest
+#: position unchecked. Only these ordinary openers are excused; anything else in
+#: that slot is still tested against the sources, and an ordinary word passes
+#: simply by appearing in them.
 _SENT_START = re.compile(r"(?:^|[.!?:;]\s+|—\s+)([A-Z])")
+_OPENERS = {
+    "the", "a", "an", "he", "she", "it", "they", "his", "her", "their", "its",
+    "this", "that", "these", "those", "there", "here", "in", "on", "at", "by",
+    "for", "from", "with", "when", "while", "after", "before", "both", "but",
+    "and", "as", "if", "so", "then", "one", "two", "three", "each", "every",
+    "no", "not", "all", "some", "most", "many", "what", "where", "who", "how",
+    "writing", "speaking", "asked", "posting", "reading", "published", "called",
+}
 #: A run of capitalised tokens: "Sequoia Capital", "Jean-Philippe Courtois".
 _ENTITY = re.compile(r"\b[A-Z][\w'’-]*(?:\s+(?:of|de|the|and)\s+[A-Z][\w'’-]*|\s+[A-Z][\w'’-]*)*")
 _NUMBER = re.compile(r"\b\d[\d,.]*\b")
@@ -67,8 +79,9 @@ def _entities(text: str) -> list[str]:
     starts = {m.start(1) for m in _SENT_START.finditer(text)}
     found = []
     for m in _ENTITY.finditer(text):
-        if m.start() in starts and " " not in m.group(0):
-            continue        # a lone sentence-initial capital
+        if (m.start() in starts and " " not in m.group(0)
+                and _norm(m.group(0)) in _OPENERS):
+            continue        # ordinary grammar, not a name
         found.append(m.group(0).strip())
     return found
 

@@ -67,3 +67,18 @@ def test_multiword_names_are_reported_whole():
 
 def test_a_possessive_matches_its_bare_form():
     assert new_things("Microsoft's scale was the point.") == []
+
+
+def test_an_invented_name_at_the_start_of_a_sentence_is_caught():
+    """Nearly every summary opens with a name, so skipping sentence-initial
+    capitals wholesale left the commonest position unchecked."""
+    assert "Salesforce" in new_things("Salesforce is the subject of the piece.")
+
+
+def test_a_known_name_at_the_start_of_a_sentence_is_allowed():
+    assert new_things("Microsoft is the subject of the piece.") == []
+
+
+def test_common_sentence_openers_are_not_treated_as_names():
+    for opener in ["The", "He", "She", "They", "After", "His", "Both", "When", "It"]:
+        assert new_things(f"{opener} post ran long.") == [], opener
