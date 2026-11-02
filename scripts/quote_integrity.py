@@ -30,6 +30,7 @@ import argparse
 import enum
 import json
 import re
+import html as _html
 import unicodedata as _ud
 import sys
 from pathlib import Path
@@ -97,6 +98,11 @@ def normalise(text: str) -> str:
     # routinely set a line in mathematical bold — 𝗗𝗼𝗻'𝘁 𝗹𝗲𝘁 𝗰𝗲𝗿𝘁𝗮𝗶𝗻𝘁𝘆 𝗿𝗲𝗽𝗹𝗮𝗰𝗲
     # 𝗰𝘂𝗿𝗶𝗼𝘀𝗶𝘁𝘆 — and the quote is transcribed in plain letters, so the two
     # compared byte-for-byte look like different sentences entirely.
+    # Entities first. A capture scraped from HTML can carry "&rsquo;" or
+    # "&amp;" verbatim, and the live checker decodes them, so folding them
+    # here is what keeps the two sides answering the same question. The
+    # shared corpus in data/quote-match-cases.json pins both.
+    text = _html.unescape(text)
     text = _ud.normalize("NFKC", text)
     text = text.lower()
     # Any quote mark — single or double, curly or straight — becomes one marker.
@@ -104,7 +110,15 @@ def normalise(text: str) -> str:
     # Any dash, or run of dashes, becomes one hyphen.
     text = re.sub(r"[-—–‒―−]+", "-", text)
     text = text.replace("…", "...").replace(" ", " ")
-    return re.sub(r"\s+", " ", text).strip()
+    text = re.sub(r"\s+", " ", text).strip()
+    # Space before punctuation, and after an opening bracket, is typography
+    # and not substance. Steve Blank's post renders "after the next financial
+    # crash ." with a space; the TypeScript side folded that away and this one
+    # did not, so the two checkers disagreed on identical text. The shared
+    # corpus in data/quote-match-cases.json now pins both to the same answer.
+    text = re.sub(r"\s+([,.;:!?%)\]}])", r"\1", text)
+    text = re.sub(r"([(\[{$])\s+", r"\1", text)
+    return text
 
 
 # A cut is marked by an ellipsis with space on BOTH sides. Authors write "..."

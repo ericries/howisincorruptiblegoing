@@ -30,11 +30,38 @@ export const MIN_PREFIX_SIGNAL = 25;
  * transcript the quote came from is nowhere in the document. On 2026-10-30
  * that produced a confident FAIL against a sound entry.
  */
+/**
+ * Decode the HTML entities a reader never sees as entities.
+ *
+ * visibleText stripped tags and stopped there, so a WordPress page rendering
+ * "you&rsquo;re" produced text that could never match "you're". Ten entries —
+ * every one a blog, Substack or Goodreads page, which are the formats that
+ * emit entities — were reported as composites, the gravest verdict this
+ * checker has. LinkedIn and X are skipped by the live checker, which is why
+ * the cluster read as a vintage rather than as a format.
+ */
+function decodeEntities(text: string): string {
+  const named: Record<string, string> = {
+    amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ',
+    rsquo: '\u2019', lsquo: '\u2018', rdquo: '\u201d', ldquo: '\u201c',
+    mdash: '\u2014', ndash: '\u2013', hellip: '\u2026', bull: '\u2022',
+    middot: '\u00b7', eacute: '\u00e9', egrave: '\u00e8', agrave: '\u00e0',
+    ccedil: '\u00e7', uuml: '\u00fc', ouml: '\u00f6', auml: '\u00e4',
+    szlig: '\u00df', ntilde: '\u00f1', iacute: '\u00ed', oacute: '\u00f3',
+    aacute: '\u00e1', uacute: '\u00fa', deg: '\u00b0', trade: '\u2122',
+    copy: '\u00a9', reg: '\u00ae', euro: '\u20ac', pound: '\u00a3',
+  };
+  return text
+    .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(parseInt(d, 10)))
+    .replace(/&([a-z]+);/gi, (m, n) => named[n.toLowerCase()] ?? m);
+}
+
 export function visibleText(raw: string): string {
   if (!raw) return '';
-  return raw
+  return decodeEntities(raw
     .replace(/<(script|style|noscript|template)\b[\s\S]*?<\/\1>/gi, ' ')
-    .replace(/<[^>]+>/g, ' ')
+    .replace(/<[^>]+>/g, ' '))
     .replace(/\s+/g, ' ')
     // A tag becomes a space so a block boundary still separates words, but an
     // INLINE element butts against punctuation: "<em>The Lean Startup</em>,"

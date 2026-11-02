@@ -108,6 +108,44 @@
       "quote": "𝑠𝑡𝑟𝑢𝑐𝑡𝑢𝑟𝑒 outlives the founder",
       "text": "structure outlives the founder, every time.",
       "expect": "found"
+    },
+    {
+      "name": "space before a full stop in the source",
+      "quote": "the book that will rebuild the corporate and startup world after the next financial crash.",
+      "text": "But what they'll miss is that this is the book that will rebuild the corporate and startup world after the next financial crash . That's exactly what happened.",
+      "expect": "found",
+      "why": "Steve Blank's post renders 'crash .' with a space. quote-page-conclusive stripped space-before-punctuation and quote-match did not, so the live checker called ten entries PARTIAL — the composite signature — for a typographic difference. One rule, two implementations, again."
+    },
+    {
+      "name": "space inside an opening bracket in the source",
+      "quote": "the structure (a public benefit corporation) holds.",
+      "text": "He argued the structure ( a public benefit corporation ) holds.",
+      "expect": "found"
+    },
+    {
+      "name": "space before a comma in the source",
+      "quote": "mission, governance and capital",
+      "text": "They changed mission , governance and capital together.",
+      "expect": "found"
+    },
+    {
+      "name": "html entity apostrophe on the live page",
+      "quote": "if you're considering starting a company, then reading this book",
+      "text": "<p>If you&rsquo;re considering starting a company, then reading this book</p>",
+      "expect": "found",
+      "why": "visibleText stripped tags but never decoded entities, so a WordPress page reading 'you&rsquo;re' could not match 'you're'. Ten entries — every one a blog, Substack or Goodreads page, the formats that emit entities — were reported as composites, which is the gravest verdict this checker has. LinkedIn and X are skipped by the live checker, which is why the cluster looked like a vintage rather than a format."
+    },
+    {
+      "name": "numeric html entity",
+      "quote": "the mission isn't negotiable",
+      "text": "<p>the mission isn&#8217;t negotiable</p>",
+      "expect": "found"
+    },
+    {
+      "name": "named entities for quotes and ampersand",
+      "quote": "he called it “structure & nerve”",
+      "text": "<p>he called it &ldquo;structure &amp; nerve&rdquo;</p>",
+      "expect": "found"
     }
   ]
 }

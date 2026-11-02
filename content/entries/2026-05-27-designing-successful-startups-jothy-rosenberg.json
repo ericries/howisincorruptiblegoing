@@ -2,8 +2,8 @@
   "id": "2026-05-27-designing-successful-startups-jothy-rosenberg",
   "date": "2026-05-27",
   "type": "podcast",
-  "title": "Designing Successful Startups (Jothy Rosenberg) — Eric: 'If all the entrepreneurs in the world went on strike, it would be a disaster'",
-  "summary": "Jothy Rosenberg — 9X founder, Tech Startup Toolkit author, Silicon Catalyst advisor — releases a launch-week conversation framing Incorruptible's deeper claim: founders are the structural foundation of the economy, and the system as currently designed is hollowing them out.",
+  "title": "Designing Successful Startups (Jothy Rosenberg) \u2014 Eric: 'If all the entrepreneurs in the world went on strike, it would be a disaster'",
+  "summary": "Rosenberg is a nine-time founder who wrote Tech Startup Toolkit and advises Silicon Catalyst. Eric was his guest for episode 111 of Designing Successful Startups, arguing that mission is what makes a startup worth investing in and what attracts its talent.",
   "blockquote": "We who create new companies are the foundation of our entire economic system. If all the entrepreneurs in the world went on strike, it would be a disaster.",
   "blockquote_source": "Eric Ries on Designing Successful Startups",
   "source_url": "https://www.youtube.com/watch?v=xggydkiGGM8",
@@ -13,7 +13,11 @@
   "attribution": "Designing Successful Startups",
   "attribution_title": "Podcast hosted by Jothy Rosenberg, 9X founder",
   "attribution_image": null,
-  "tags": ["podcast", "youtube", "launch-week"],
+  "tags": [
+    "podcast",
+    "youtube",
+    "launch-week"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

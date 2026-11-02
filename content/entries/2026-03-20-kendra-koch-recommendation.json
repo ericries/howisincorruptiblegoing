@@ -3,7 +3,7 @@
   "date": "2026-03-20",
   "type": "social",
   "title": "Kendra Koch: 'the best work coming out of Silicon Valley'",
-  "summary": "Divergently founder and TEDx speaker Kendra Koch calls Incorruptible the best work coming out of Silicon Valley today, referencing Patagonia and Costco as proof that companies can do good while being successful.",
+  "summary": "Kendra Koch founded Divergently and speaks at TEDx events. She recommended Incorruptible on LinkedIn.",
   "blockquote": "The best work coming out of Silicon Valley today is Eric Ries' new book, Incorruptible: Why Good Companies Go Bad.",
   "blockquote_source": "Kendra Koch on LinkedIn",
   "source_url": "https://www.linkedin.com/in/itskendrakoch/",
@@ -11,7 +11,11 @@
   "attribution": "Kendra Koch",
   "attribution_title": "Founder, Divergently",
   "attribution_image": "/images/people/kendra-koch.jpg",
-  "tags": ["social", "linkedin", "recommendation"],
+  "tags": [
+    "social",
+    "linkedin",
+    "recommendation"
+  ],
   "type_metadata": {},
   "scanner_source": "web-search",
   "verified": false,

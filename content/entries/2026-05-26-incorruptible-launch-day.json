@@ -3,8 +3,8 @@
   "date": "2026-05-26",
   "type": "event",
   "title": "Incorruptible Launch Day",
-  "summary": "Incorruptible: Why Good Companies Go Bad… and How Great Companies Stay Great is officially out everywhere books are sold.",
-  "blockquote": "Incorruptible: Why Good Companies Go Bad… and How Great Companies Stay Great is officially out everywhere books are sold.",
+  "summary": "Incorruptible went on sale in bookshops and online retailers.",
+  "blockquote": "Incorruptible: Why Good Companies Go Bad\u2026 and How Great Companies Stay Great is officially out everywhere books are sold.",
   "blockquote_source": "Incorruptible launch",
   "source_url": "https://incorruptible.co",
   "source_urls": null,
@@ -13,8 +13,13 @@
   "attribution": null,
   "attribution_title": null,
   "attribution_image": null,
-  "tags": ["event", "launch-event"],
-  "type_metadata": {"city": "Launch Day"},
+  "tags": [
+    "event",
+    "launch-event"
+  ],
+  "type_metadata": {
+    "city": "Launch Day"
+  },
   "scanner_source": "manual",
   "verified": true,
   "created_at": "2026-05-24T20:45:00Z"

@@ -3,7 +3,7 @@
   "date": "2026-04-13",
   "type": "event",
   "title": "IO2026 Summit: Virtual Fireside Chat",
-  "summary": "Eric joins the Inside Outside Innovation Summit at the Sheldon Museum of Art in Lincoln, Nebraska for a virtual fireside chat, unpacking the principles behind building organizations where mission is embedded in the operating system rather than added as an afterthought.",
+  "summary": "The IO2026 Summit is Brian Ardinger's Inside Outside Innovation gathering, held at the Sheldon Museum of Art in Lincoln, Nebraska. Eric joined by video for a twenty-minute session titled 'Becoming Incorruptible.'",
   "blockquote": "The challenge of building companies where mission is embedded in the operating system, rather than added as an afterthought.",
   "blockquote_source": "IO2026 Summit",
   "source_url": "https://www.theiosummit.com/agenda",
@@ -11,7 +11,11 @@
   "attribution": null,
   "attribution_title": null,
   "attribution_image": null,
-  "tags": ["speaking", "conference", "lincoln-nebraska"],
+  "tags": [
+    "speaking",
+    "conference",
+    "lincoln-nebraska"
+  ],
   "type_metadata": {},
   "scanner_source": "web-search",
   "verified": true,

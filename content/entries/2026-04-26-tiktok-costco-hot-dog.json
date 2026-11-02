@@ -3,8 +3,8 @@
   "date": "2026-04-26",
   "type": "social",
   "title": "Eric Ries on TikTok: 'Costco's founder, when his COO suggested raising the hot dog price...'",
-  "summary": "Eric tells the Costco hot dog story — what happened when the COO floated raising the price during the 2008 financial crisis. Costco is a featured case study in Incorruptible.",
-  "blockquote": "Costco's founder, when his COO suggested raising the hot dog price during the 2008 financial crisis…",
+  "summary": "Eric told the Costco hot dog story on his own TikTok account. Costco is one of Incorruptible's case studies.",
+  "blockquote": "Costco's founder, when his COO suggested raising the hot dog price during the 2008 financial crisis\u2026",
   "blockquote_source": "Eric Ries on TikTok",
   "source_url": "https://www.tiktok.com/@ericriesactual/video/7633168657589325069",
   "source_urls": null,
@@ -13,8 +13,16 @@
   "attribution": null,
   "attribution_title": null,
   "attribution_image": null,
-  "tags": ["social", "tiktok", "video", "costco", "case-study"],
-  "type_metadata": { "weight": 1 },
+  "tags": [
+    "social",
+    "tiktok",
+    "video",
+    "costco",
+    "case-study"
+  ],
+  "type_metadata": {
+    "weight": 1
+  },
   "scanner_source": "social-scan",
   "verified": false,
   "created_at": "2026-04-27T02:25:00Z"

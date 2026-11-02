@@ -2,9 +2,9 @@
   "id": "2026-10-03-extraordinary-life-stories-bloomberg-tv",
   "date": "2026-10-03",
   "type": "podcast",
-  "title": "Extraordinary Life Stories (Bloomberg TV) — Eric on delegating thought to AI: 'What a scandal — an industrial-scale scandal'",
-  "summary": "Eric's episode of Extraordinary Life Stories aired Saturday morning on Bloomberg TV (Sky 502) and is now published in full. Host John Reynolds draws out the AI argument: professors watching students delegate their thinking, and the one-word change Eric proposes — ask the AI to teach you the task rather than do it. He also lands on trust as the number one asset a leader can have, and on business best practices that treat it as disposable.",
-  "blockquote": "I know a lot of college professors who say that AI is robbing their students of the ability to learn because they don't read. They just ask for the summary. They delegate their thinking to the AI. Everyone's so excited about the possibility of replacing human creativity with AI. What a scandal — an industrial-scale scandal. Instead, we should use AI to augment creativity. So next time you're tempted to ask AI to make an artifact for you — write me a novel, write me a poem, write me a piece of software — just one subtle change: ask the AI to teach you how to do the task instead.",
+  "title": "Extraordinary Life Stories (Bloomberg TV) \u2014 Eric on delegating thought to AI: 'What a scandal \u2014 an industrial-scale scandal'",
+  "summary": "John Reynolds is an entrepreneur and investor whose show Extraordinary Life Stories airs on Bloomberg TV and draws on what guests got wrong before it worked. Eric talked about his own failures, named trust as the asset a leader most needs, and turned to what AI is doing to the way people learn.",
+  "blockquote": "I know a lot of college professors who say that AI is robbing their students of the ability to learn because they don't read. They just ask for the summary. They delegate their thinking to the AI. Everyone's so excited about the possibility of replacing human creativity with AI. What a scandal \u2014 an industrial-scale scandal. Instead, we should use AI to augment creativity. So next time you're tempted to ask AI to make an artifact for you \u2014 write me a novel, write me a poem, write me a piece of software \u2014 just one subtle change: ask the AI to teach you how to do the task instead.",
   "blockquote_source": "Eric Ries on Extraordinary Life Stories with John Reynolds",
   "source_url": "https://www.youtube.com/watch?v=aobQIEU5dhE",
   "source_urls": [
@@ -20,7 +20,7 @@
   "video_url": "https://www.youtube.com/watch?v=aobQIEU5dhE",
   "image": "/images/podcasts/extraordinary-life-stories.jpg",
   "attribution": "John Reynolds",
-  "attribution_title": "Host, Extraordinary Life Stories · Entrepreneur and investor",
+  "attribution_title": "Host, Extraordinary Life Stories \u00b7 Entrepreneur and investor",
   "attribution_image": "/images/people/john-reynolds.jpg",
   "tags": [
     "podcast",
@@ -30,7 +30,7 @@
     "failure"
   ],
   "type_metadata": {
-    "audience": "Bloomberg TV (Sky 502) · 2,910 YouTube subscribers · Spotify"
+    "audience": "Bloomberg TV (Sky 502) \u00b7 2,910 YouTube subscribers \u00b7 Spotify"
   },
   "scanner_source": "social-scan",
   "verified": false,

@@ -3,18 +3,30 @@
   "date": "2026-03-15",
   "type": "media",
   "title": "Penguin UK Editor: 'a truly radical book'",
-  "summary": "Matt James, Commissioning Editor at Bonnier Books UK, announces the Penguin Random House UK edition of Incorruptible, calling it 'a truly radical book which uncovers the urgent need for purpose-driven business in a world lacking integrity.' The UK edition publishes May 28, two days after the US launch.",
+  "summary": "Matt James is a commissioning editor at Bonnier Books UK. He announced the UK edition of Incorruptible, which publishes on 28 May, two days after the US launch.",
   "blockquote": "This is a truly radical book which uncovers the urgent need for purpose-driven business in a world lacking integrity.",
   "blockquote_source": "Matt James, Bonnier Books UK",
   "source_url": "https://www.linkedin.com/posts/matt-james-_the-news-is-out-eric-ries-the-internationally-share-7425174453350735872-npOa/",
-  "source_urls": [{"url": "https://www.penguin.co.uk/books/460881/incorruptible-by-ries-eric/9780241692028", "label": "penguin.co.uk"}],
+  "source_urls": [
+    {
+      "url": "https://www.penguin.co.uk/books/460881/incorruptible-by-ries-eric/9780241692028",
+      "label": "penguin.co.uk"
+    }
+  ],
   "video_url": null,
   "image": "/images/events/penguin-uk-cover.jpg",
   "attribution": null,
   "attribution_title": null,
   "attribution_image": null,
-  "tags": ["media", "publishing", "uk", "penguin"],
-  "type_metadata": { "weight": 1 },
+  "tags": [
+    "media",
+    "publishing",
+    "uk",
+    "penguin"
+  ],
+  "type_metadata": {
+    "weight": 1
+  },
   "scanner_source": "web-search",
   "verified": true,
   "created_at": "2026-04-12T23:00:00Z"

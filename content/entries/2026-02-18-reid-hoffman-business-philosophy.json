@@ -2,9 +2,9 @@
   "id": "2026-02-18-reid-hoffman-business-philosophy",
   "date": "2026-02-18",
   "type": "social",
-  "title": "Reid Hoffman: 'not just a super important business book — a work of business philosophy'",
-  "summary": "In their YouTube conversation, Reid Hoffman says Incorruptible has the gravitas of Built to Last but goes further — into a philosophical vision of humanist capitalism and what we're trying to do as human beings.",
-  "blockquote": "Reading this book, I realized it has the gravitas of a super important business book — like Built to Last. How do you build companies that really endure and make a big difference for humanity, for society, not just for shareholders and employees? But it also had me thinking about how we help capitalism evolve in the next century. The humanist capitalism running through the book is extremely important. It has the gravitas of a really important business book, but in the last chapters it also becomes philosophical: here is what we're trying to do as human beings.",
+  "title": "Reid Hoffman: 'not just a super important business book \u2014 a work of business philosophy'",
+  "summary": "Reid Hoffman co-founded LinkedIn and wrote Superagency. He joined Eric on The Eric Ries Show for the livestream where Eric held up the book for the first time, and his opening praise left Eric saying he would try to live up to it.",
+  "blockquote": "Reading this book, I realized it has the gravitas of a super important business book \u2014 like Built to Last. How do you build companies that really endure and make a big difference for humanity, for society, not just for shareholders and employees? But it also had me thinking about how we help capitalism evolve in the next century. The humanist capitalism running through the book is extremely important. It has the gravitas of a really important business book, but in the last chapters it also becomes philosophical: here is what we're trying to do as human beings.",
   "blockquote_source": "Reid Hoffman on The Eric Ries Show (YouTube)",
   "source_url": "https://www.youtube.com/watch?v=amMWk-Ky-EE",
   "source_urls": null,
@@ -13,8 +13,15 @@
   "attribution": "Reid Hoffman",
   "attribution_title": "Co-Founder of LinkedIn, bestselling author of Superagency",
   "attribution_image": "/images/people/reid-hoffman.jpg",
-  "tags": ["social", "video", "reid-hoffman", "youtube"],
-  "type_metadata": {"sidebar_quote": "It has the gravitas of a super important business book — like Built to Last. But it also becomes philosophical: here is what we're trying to do as human beings."},
+  "tags": [
+    "social",
+    "video",
+    "reid-hoffman",
+    "youtube"
+  ],
+  "type_metadata": {
+    "sidebar_quote": "It has the gravitas of a super important business book \u2014 like Built to Last. But it also becomes philosophical: here is what we're trying to do as human beings."
+  },
   "scanner_source": "manual",
   "verified": false,
   "created_at": "2026-04-17T12:00:00Z"

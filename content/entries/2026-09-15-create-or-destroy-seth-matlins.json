@@ -2,18 +2,21 @@
   "id": "2026-09-15-create-or-destroy-seth-matlins",
   "date": "2026-09-15",
   "type": "podcast",
-  "title": "Create or Destroy (Seth Matlins · Vox Media Podcast Network) — 'Making Money But Creating No Value' with Eric Ries",
-  "summary": "Seth Matlins — marketer, host of Create or Destroy: Reimagining Marketing (Vox Media Podcast Network) — releases a 55-minute Eric Ries conversation covering Sol Price's Costco origin, why profit ≠ value, the 78% of CFOs who admit killing profitable projects to hit quarterly targets, and why 'culture can walk out the door when people leave, but architecture endures.' Positioned as required listening for every CMO, CEO, CFO, and board member.",
-  "blockquote": "In a study of 401 CFOs, 78% admitted they'd cancel profitable projects to hit quarterly targets, which means they're knowingly destroying the value they were hired to create. And yet the companies that resist this — Costco, Patagonia, Vanguard, Novo Nordisk — don't share culture or brand or geography or personality. What they share is governance architecture, structural protections that keep the short-term from cannibalizing the long-term, because as Eric puts it, culture can walk out the door when people leave, but architecture endures.",
+  "title": "Create or Destroy (Seth Matlins \u00b7 Vox Media Podcast Network) \u2014 'Making Money But Creating No Value' with Eric Ries",
+  "summary": "Matlins hosts Create or Destroy: Reimagining Marketing on the Vox Media Podcast Network. His 55-minute conversation with Eric starts from Sol Price's founding of Costco and is pitched at marketing chiefs, chief executives and boards.",
+  "blockquote": "In a study of 401 CFOs, 78% admitted they'd cancel profitable projects to hit quarterly targets, which means they're knowingly destroying the value they were hired to create. And yet the companies that resist this \u2014 Costco, Patagonia, Vanguard, Novo Nordisk \u2014 don't share culture or brand or geography or personality. What they share is governance architecture, structural protections that keep the short-term from cannibalizing the long-term, because as Eric puts it, culture can walk out the door when people leave, but architecture endures.",
   "blockquote_source": "Seth Matlins on Create or Destroy (Vox Media)",
   "source_url": "https://www.youtube.com/watch?v=PppHv9FlTi0",
   "source_urls": [
-    {"url": "https://www.linkedin.com/posts/seth-matlins_best-known-for-the-lean-startup-i-talked-activity-7505619693647437824-HmAP", "label": "Seth Matlins announcement on LinkedIn"}
+    {
+      "url": "https://www.linkedin.com/posts/seth-matlins_best-known-for-the-lean-startup-i-talked-activity-7505619693647437824-HmAP",
+      "label": "Seth Matlins announcement on LinkedIn"
+    }
   ],
   "video_url": "https://www.youtube.com/watch?v=PppHv9FlTi0",
   "image": "/images/podcasts/create-or-destroy.jpg",
   "attribution": "Seth Matlins",
-  "attribution_title": "Host, Create or Destroy: Reimagining Marketing · Vox Media Podcast Network",
+  "attribution_title": "Host, Create or Destroy: Reimagining Marketing \u00b7 Vox Media Podcast Network",
   "attribution_image": null,
   "tags": [
     "podcast",
