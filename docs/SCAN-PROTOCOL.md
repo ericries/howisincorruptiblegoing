@@ -101,10 +101,24 @@ report rather than silently raising it.
        --archive data/archive/<src>-raw/<YYYY-MM-DD>-<scan>.json
 ```
 
-Step 2 polls until the dataset is populated, archives the raw items (this is what
-satisfies the full-source-text requirement in §5), and prints a compact triage
-table. **Never use `get-dataset-items` or `get-actor-run`** — `scan-triage.py`
-replaces both.
+Step 2 polls until the read matches the dataset's `itemCount`, archives the raw
+items (this is what satisfies the full-source-text requirement in §5), and prints
+a compact triage table. **Never use `get-dataset-items` or `get-actor-run`** —
+`scan-triage.py` replaces both.
+
+**And never hand-roll the fetch either.** On 2026-11-02 two jobs in one session
+wrote their own poll loop that stopped at the FIRST non-empty response. The
+Goodreads scan archived 30 items and reported on them; the dataset held 50, and
+the run was still writing. Twenty reviews went unassessed — the same twenty-review
+loss the removed `maxItems` cap used to cause, reproduced by hand on the day the
+cap was correctly left off. The comment-archive pull was worse: 2 items and 1
+item against eventual counts of 98 and 60.
+
+A non-empty dataset is not a finished dataset. `scan-triage.py`'s `fetch()` is
+the only sanctioned reader because `itemCount` is the authority and it waits for
+the read to match; a run in RUNNING state is still writing. If a job genuinely
+cannot use the script, read the run's status to a terminal value FIRST and then
+compare `len(items)` against `itemCount` — and say both numbers in the report.
 
 Useful flags: `--since YYYY-MM-DD`, `--new-only`, `--width N`.
 
