@@ -4,6 +4,18 @@
       "rolled_at": "2026-11-01T18:20:00Z",
       "sha12": "bfc3fd4237ce",
       "bytes": 14301
+    },
+    {
+      "rolled_at": "2026-11-02T16:48:29Z",
+      "sha12": "bfc3fd4237ce",
+      "bytes": 14301
+    }
+  ],
+  "evening-scan": [
+    {
+      "rolled_at": "2026-11-02T16:48:29Z",
+      "sha12": "7814c0fb71ef",
+      "bytes": 23895
     }
   ],
   "goodreads": [
@@ -11,6 +23,18 @@
       "rolled_at": "2026-11-01T18:20:00Z",
       "sha12": "e700ce4ab96f",
       "bytes": 8521
+    },
+    {
+      "rolled_at": "2026-11-02T16:48:29Z",
+      "sha12": "e700ce4ab96f",
+      "bytes": 8521
+    }
+  ],
+  "morning-scan": [
+    {
+      "rolled_at": "2026-11-02T16:48:20Z",
+      "sha12": "8c8eba771061",
+      "bytes": 12749
     }
   ],
   "recall-audit": [
@@ -18,6 +42,16 @@
       "rolled_at": "2026-11-01T18:20:00Z",
       "sha12": "49aa3a2e3f36",
       "bytes": 8305
+    },
+    {
+      "rolled_at": "2026-11-02T16:48:29Z",
+      "sha12": "82b59d8fca44",
+      "bytes": 9515
+    },
+    {
+      "rolled_at": "2026-11-02T16:51:42Z",
+      "sha12": "b098991a91ab",
+      "bytes": 10174
     }
   ],
   "sidebar": [
@@ -25,6 +59,28 @@
       "rolled_at": "2026-11-01T18:20:00Z",
       "sha12": "e795f299ab72",
       "bytes": 9721
+    },
+    {
+      "rolled_at": "2026-11-02T16:48:29Z",
+      "sha12": "e795f299ab72",
+      "bytes": 9721
+    },
+    {
+      "rolled_at": "2026-11-02T16:50:46Z",
+      "sha12": "8196745e287f",
+      "bytes": 10684
+    }
+  ],
+  "watchdog": [
+    {
+      "rolled_at": "2026-11-02T16:48:29Z",
+      "sha12": "88f31db4ceeb",
+      "bytes": 18507
+    },
+    {
+      "rolled_at": "2026-11-02T16:54:56Z",
+      "sha12": "49fd755e249d",
+      "bytes": 18524
     }
   ]
 }
