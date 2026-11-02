@@ -4,7 +4,7 @@
   "type": "reaction",
   "parent_id": "2026-05-28-station-dc-ari-shapiro-fireside",
   "title": "Lyubomira 'Val' Buresch on the page-25 passage Eric read at STATION DC",
-  "summary": "Lyubomira Buresch — author, leader, facilitator — says the passage Eric read on page 25 stayed with her after the STATION DC fireside.",
+  "summary": "Buresch is an author and coach and founded Polygon Research, which builds mortgage market data infrastructure. At the STATION DC talk she heard Eric read the bridge-collapse passage, and asked afterwards what an organization's equivalent load factors are.",
   "blockquote": "Last night at Station DC, I heard Eric Ries and Ari Shapiro discuss Eric's new book Incorruptible.\n\nThe passage that Eric read on page 25 stayed with me.",
   "blockquote_source": "Lyubomira Buresch on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/buresch_last-night-at-station-dc-i-heard-eric-ries-activity-7466144896270106625-_DEF",
@@ -14,7 +14,12 @@
   "attribution": "Lyubomira 'Val' Buresch",
   "attribution_title": "Author, leader, facilitator, trainer, coach",
   "attribution_image": null,
-  "tags": ["reaction", "linkedin", "station-dc", "washington-dc"],
+  "tags": [
+    "reaction",
+    "linkedin",
+    "station-dc",
+    "washington-dc"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

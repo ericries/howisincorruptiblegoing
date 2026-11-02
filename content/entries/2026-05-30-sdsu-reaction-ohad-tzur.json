@@ -4,7 +4,7 @@
   "type": "reaction",
   "parent_id": "2026-05-29-sdsu-san-diego-angel-conference",
   "title": "Ohad Tzur (AI founder/investor, ex-Google) on Eric's SDSU keynote",
-  "summary": "Ohad Tzur — AI founder turned investor, ex-Google, MIT — calls out Eric's SDSU keynote on founder mindset, fiduciary duty to customers, and long-term company building.",
+  "summary": "Tzur is a two-time AI founder turned investor who previously worked at Google. He spent a day at the finals of the SDSU San Diego Angel Conference, where Eric gave the keynote.",
   "blockquote": "Great keynote from Eric Ries (Author of The Lean Startup and Incorruptible) reflecting on founder mindset, fiduciary duty to customers and long-term company building.",
   "blockquote_source": "Ohad Tzur on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/ohadtzur_spent-yesterday-at-the-finals-of-the-sdsu-activity-7466590450284564480-umOl",
@@ -14,7 +14,13 @@
   "attribution": "Ohad Tzur",
   "attribution_title": "2X AI founder turned investor; ex-Google; MIT",
   "attribution_image": null,
-  "tags": ["reaction", "linkedin", "sdsu", "san-diego", "sdac"],
+  "tags": [
+    "reaction",
+    "linkedin",
+    "sdsu",
+    "san-diego",
+    "sdac"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

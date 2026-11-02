@@ -4,8 +4,8 @@
   "type": "reaction",
   "parent_id": "2026-05-10-lennys-podcast-rachitsky",
   "title": "Bhavesh Busa on Lenny's Podcast with Eric Ries",
-  "summary": "TrackGenie co-founder hears Eric on Lenny's Podcast, orders the book by the end of the episode.",
-  "blockquote": "I came across it through Lenny Rachitsky's Podcast – a long conversation with Eric that's worth the full listen. By the end of the episode, I had the book on order.",
+  "summary": "Busa co-founded TrackGenie and keeps a signed copy of The Lean Startup on his shelf. He found Incorruptible through Eric's conversation with Lenny Rachitsky and ordered it.",
+  "blockquote": "I came across it through Lenny Rachitsky's Podcast \u2013 a long conversation with Eric that's worth the full listen. By the end of the episode, I had the book on order.",
   "blockquote_source": "Bhavesh Busa on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/bhaveshbusa_the-lean-startup-sits-on-my-shelf-with-eric-activity-7460281609859092480-sboY",
   "source_urls": null,
@@ -14,7 +14,11 @@
   "attribution": "Bhavesh Busa",
   "attribution_title": "Co-founder, TrackGenie",
   "attribution_image": null,
-  "tags": ["reaction", "linkedin", "lennys-podcast"],
+  "tags": [
+    "reaction",
+    "linkedin",
+    "lennys-podcast"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,
