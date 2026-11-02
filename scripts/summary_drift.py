@@ -51,6 +51,7 @@ _SENT_START = re.compile(r"(?:^|[.!?:;]\s+|—\s+)([A-Z])")
 _OPENERS = {
     "the", "a", "an", "he", "she", "it", "they", "his", "her", "their", "its",
     "this", "that", "these", "those", "there", "here", "in", "on", "at", "by",
+    "hers", "theirs", "ours", "mine", "we", "our", "my", "him", "them", "us",
     "for", "from", "with", "when", "while", "after", "before", "both", "but",
     "and", "as", "if", "so", "then", "one", "two", "three", "each", "every",
     "no", "not", "all", "some", "most", "many", "what", "where", "who", "how",
@@ -92,9 +93,20 @@ def _haystack(*sources: str | None) -> tuple[str, set[str]]:
 
 
 def introduced(new: str, old: str | None = None, blockquote: str | None = None,
-               title: str | None = None, source_text: str | None = None) -> list[str]:
-    """Proper nouns and numbers in `new` that none of the sources contain."""
-    hay, hay_nums = _haystack(old, blockquote, title, source_text)
+               title: str | None = None, source_text: str | None = None,
+               attribution: str | None = None,
+               attribution_title: str | None = None,
+               blockquote_source: str | None = None) -> list[str]:
+    """Proper nouns and numbers in `new` that none of the sources contain.
+
+    attribution and attribution_title were missing from this list at first,
+    which cost six rewrites their orienting detail — "Founder (YC S18); former
+    PM at Airbnb and Google" and the like. Those fields are part of the entry
+    and are printed on the card, so the most orienting text on the page was
+    the one thing a rewrite was not allowed to draw on.
+    """
+    hay, hay_nums = _haystack(old, blockquote, title, source_text,
+                              attribution, attribution_title, blockquote_source)
     out: list[str] = []
 
     for ent in _entities(new):
@@ -145,7 +157,10 @@ def check_entry_vs_head(path: Path) -> list[str] | None:
     if old is None or new == old:
         return None
     return introduced(new, old=old, blockquote=d.get("blockquote"),
-                      title=d.get("title"), source_text=capture_for(d["id"]))
+                      title=d.get("title"), source_text=capture_for(d["id"]),
+                      attribution=d.get("attribution"),
+                      attribution_title=d.get("attribution_title"),
+                      blockquote_source=d.get("blockquote_source"))
 
 
 def _main() -> int:

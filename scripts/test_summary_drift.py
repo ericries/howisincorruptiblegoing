@@ -82,3 +82,29 @@ def test_a_known_name_at_the_start_of_a_sentence_is_allowed():
 def test_common_sentence_openers_are_not_treated_as_names():
     for opener in ["The", "He", "She", "They", "After", "His", "Both", "When", "It"]:
         assert new_things(f"{opener} post ran long.") == [], opener
+
+
+def test_the_attribution_fields_are_legitimate_sources():
+    """A rewriter dropped "Founder (YC S18); former PM at Airbnb and Google",
+    "Foundry VC", "The No Asshole Rule" and three more, because the drift rule
+    named four sources and attribution_title was not among them. Those fields
+    are part of the entry and are printed on the card — the most orienting
+    detail on the page was the one thing a rewrite could not use."""
+    got = sd.introduced("Kirkham founded a YC S18 company and was a PM at Airbnb.",
+                        old="A reader posted about the book.",
+                        blockquote="A quote.", title="A title",
+                        attribution="Josh Kirkham",
+                        attribution_title="Founder (YC S18); former PM at Airbnb and Google")
+    assert got == []
+
+
+def test_attribution_name_is_a_source_too():
+    assert sd.introduced("Honeyman wrote the review.", old="A reader posted.",
+                         attribution="Ryan Honeyman") == []
+
+
+def test_possessive_pronouns_are_grammar_not_names():
+    """"Hers is one of the reader reactions collected on the site" read as an
+    invented entity called 'Hers'."""
+    for p in ["Hers", "Theirs", "Ours", "We", "Our"]:
+        assert new_things(f"{p} came later.") == [], p

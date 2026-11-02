@@ -139,6 +139,29 @@ checker that is wrong 10% of the time is worse than none.
 - **Uniform rhythm.** Three sentences of the same length in a row is the
   [rhythm tell][oliviacal]. Vary deliberately.
 
+## When the only source is the blockquote
+
+Blurb endorsements — Sutton, O'Reilly, Levine, Blumberg and the rest of the
+incorruptible.co set — have no captured source beyond the quote itself. The
+first rewrite pass grew nine of them by an average of 24 words, and every added
+word was a paraphrase of the quote printed directly below it. It passed the
+echo check because a paraphrase shares no six-word run with its original.
+
+**Do not write toward the target length.** The target is what a rich entry can
+afford, not a quota. An entry with one sentence of source has one sentence of
+summary in it.
+
+For a blurb, the summary answers only: **who is this person, and where did this
+appear.** It never characterises the quote. Sutton:
+
+> Sutton is Professor Emeritus at Stanford and wrote The No Asshole Rule. His
+> endorsement is among the blurbs on incorruptible.co.
+
+Twenty-one words, and a reader who has never heard of him now knows why his
+opinion carries. The previous version — "says Incorruptible destroys the myth
+that only sleazy founders get rich" — spent its whole length restating what
+the reader was about to read anyway.
+
 ## What this does not apply to
 
 Blockquotes, titles and `attribution_title` are **source text or close to it**

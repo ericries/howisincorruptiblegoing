@@ -70,7 +70,10 @@ def verdict_for(entry_id: str, new: str, entries_dir: Path = ENTRIES) -> Verdict
             v.warnings.append(f"[{f.rule}] {f.message}")
 
     invented = sd.introduced(new, old=d.get("summary"), blockquote=d.get("blockquote"),
-                             title=d.get("title"), source_text=sd.capture_for(entry_id))
+                             title=d.get("title"), source_text=sd.capture_for(entry_id),
+                             attribution=d.get("attribution"),
+                             attribution_title=d.get("attribution_title"),
+                             blockquote_source=d.get("blockquote_source"))
     if invented:
         v.ok = False
         v.problems.append("unsourced detail: " + ", ".join(repr(x) for x in invented))
