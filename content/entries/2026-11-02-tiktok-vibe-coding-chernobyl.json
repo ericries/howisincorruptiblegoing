@@ -1,0 +1,39 @@
+{
+  "id": "2026-11-02-tiktok-vibe-coding-chernobyl",
+  "date": "2026-11-02",
+  "type": "social",
+  "title": "Eric Ries on TikTok: 'We are vibe coding our way towards a Chernobyl level disaster'",
+  "summary": "A direct-to-camera piece arguing that AI is not the problem and that the danger starts when people ship software they have not reviewed and could not fix. Five people took it up on X, several disputing the premise \u2014 one that the blame belongs with the managers setting the deadlines, another that the fix will be vibe coded too.",
+  "blockquote": "We are vibe coding our way towards a Chernobyl level disaster.",
+  "blockquote_source": "Eric Ries on TikTok",
+  "source_url": "https://www.tiktok.com/@ericriesactual/video/7703604533741604109",
+  "source_urls": [
+    {
+      "url": "https://x.com/antopatrex1/status/2117330215554969661",
+      "label": "@antopatrex1 (3,023 followers): \"vibe coding anything that touches the physical world is how you buy a very expensive lesson\""
+    },
+    {
+      "url": "https://x.com/pomonaappster/status/2117334655250956661",
+      "label": "@pomonaappster: the blame belongs with management setting the deadlines, not the engineers"
+    }
+  ],
+  "video_url": "https://www.tiktok.com/@ericriesactual/video/7703604533741604109",
+  "image": "/images/social/2026-11-02-tiktok-vibe-coding-chernobyl.jpg",
+  "attribution": null,
+  "attribution_title": null,
+  "attribution_image": null,
+  "tags": [
+    "social",
+    "tiktok",
+    "video",
+    "ai",
+    "accountability"
+  ],
+  "type_metadata": {
+    "weight": 1,
+    "audience": "558 plays, 39 likes, 4 comments"
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-11-03T02:35:32Z"
+}

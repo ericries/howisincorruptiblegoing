@@ -1263,5 +1263,45 @@
     "identifier": "comment:7520872501703393281",
     "reason": "below bar: conversational, or praise aimed at something other than the book",
     "skipped_at": "2026-11-02T19:42:30Z"
+  },
+  {
+    "identifier": "tweet:2117414771884699808",
+    "reason": "off-topic (education savings accounts)",
+    "skipped_at": "2026-11-03T02:37:16Z"
+  },
+  {
+    "identifier": "tweet:2117414068050948232",
+    "reason": "recounted story, no usable standalone line",
+    "skipped_at": "2026-11-03T02:37:16Z"
+  },
+  {
+    "identifier": "tweet:2117413801272234369",
+    "reason": "recounted story, no usable standalone line",
+    "skipped_at": "2026-11-03T02:37:16Z"
+  },
+  {
+    "identifier": "tweet:2117352185528975704",
+    "reason": "off-topic (alt ed)",
+    "skipped_at": "2026-11-03T02:37:16Z"
+  },
+  {
+    "identifier": "tweet:2117337567372984799",
+    "reason": "thin agreement",
+    "skipped_at": "2026-11-03T02:37:16Z"
+  },
+  {
+    "identifier": "tweet:2117293556729549243",
+    "reason": "link promo",
+    "skipped_at": "2026-11-03T02:37:16Z"
+  },
+  {
+    "identifier": "tweet:2117273359314747700",
+    "reason": "conversational thanks",
+    "skipped_at": "2026-11-03T02:37:16Z"
+  },
+  {
+    "identifier": "tweet:2117168074382246381",
+    "reason": "spam",
+    "skipped_at": "2026-11-03T02:37:16Z"
   }
 ]
