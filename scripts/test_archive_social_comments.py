@@ -384,3 +384,47 @@ def test_an_empty_verdicts_file_still_writes_no_watermark(tmp_path, monkeypatch)
     vp.write_text("[]")
     asc._apply_verdicts_mode(vp)
     assert written == {}
+
+
+# --- quotes_the_book carries the verdict's judgment ---------------------------------
+
+def test_a_verdict_can_mark_that_the_pull_quote_is_the_books_own_words(tmp_path, monkeypatch):
+    # FORMAT-NOTES item 6 asks for this field because it changes how the social
+    # agent attributes the card. It was written as a literal False on every
+    # record, so 200 of 208 said "their own opinion" without anything having
+    # looked. Rajen Sanghvi (2026-11-03) opened a post on a sentence he credited
+    # to the book — the exact case the field was requested for.
+    monkeypatch.setattr(asc, "ARCHIVE_DIR", tmp_path)
+    monkeypatch.setattr(asc, "LLM_QUEUE_PATH", tmp_path / ".llm-queue.json")
+    monkeypatch.setattr(asc, "_load_seen_identifiers", lambda: set())
+    monkeypatch.setattr(asc, "_load_known_source_urls", lambda: set())
+    monkeypatch.setattr(asc, "_load_known_author_names", lambda: set())
+
+    vp = tmp_path / "v.json"
+    vp.write_text(json.dumps([{
+        "identifier": "activity:1", "kind": "post", "source_scan": "linkedin-keyword",
+        "text": "“Trust creates alignment. Alignment enables speed.” We talk about trust a lot here.",
+        "pull_quote": "Trust creates alignment. Alignment enables speed.",
+        "quotes_the_book": True,
+        "author": {"name": "Rajen Sanghvi"},
+    }]))
+    assert asc._apply_verdicts_mode(vp) == 0
+    assert json.loads(next(tmp_path.glob("2*.json")).read_text())[-1]["quotes_the_book"] is True
+
+
+def test_quotes_the_book_defaults_to_false_when_the_verdict_is_silent(tmp_path, monkeypatch):
+    monkeypatch.setattr(asc, "ARCHIVE_DIR", tmp_path)
+    monkeypatch.setattr(asc, "LLM_QUEUE_PATH", tmp_path / ".llm-queue.json")
+    monkeypatch.setattr(asc, "_load_seen_identifiers", lambda: set())
+    monkeypatch.setattr(asc, "_load_known_source_urls", lambda: set())
+    monkeypatch.setattr(asc, "_load_known_author_names", lambda: set())
+
+    vp = tmp_path / "v.json"
+    vp.write_text(json.dumps([{
+        "identifier": "activity:2", "kind": "post", "source_scan": "linkedin-keyword",
+        "text": "Best business book I have read in years, no question about it.",
+        "pull_quote": "Best business book I have read in years",
+        "author": {"name": "Someone Else"},
+    }]))
+    assert asc._apply_verdicts_mode(vp) == 0
+    assert json.loads(next(tmp_path.glob("2*.json")).read_text())[-1]["quotes_the_book"] is False

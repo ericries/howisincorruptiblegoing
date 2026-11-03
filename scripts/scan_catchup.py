@@ -206,6 +206,91 @@ def overdue(now: _dt.datetime | None = None, jobs: dict | None = None,
     return out
 
 
+ROOT = Path(__file__).resolve().parent.parent
+RAW_DIR = ROOT / "data" / "archive" / "linkedin-raw"
+COMMENT_ARCHIVE_DIR = ROOT / "data" / "archive" / "linkedin-comments"
+COMMENT_SKIPS = ROOT / "data" / "comment-skips.json"
+
+
+def _judged_ids(archive_dir: Path, skips_path: Path) -> set[str]:
+    """Every post/comment id this repo has a recorded judgment for.
+
+    A keep lands in the dated archive; a skip lands in data/comment-skips.json.
+    Both are judgments, and an all-skip cycle is a completed cycle.
+    """
+    import json as _json
+
+    ids: set[str] = set()
+    for path in sorted(archive_dir.glob("*.json")) if archive_dir.is_dir() else []:
+        try:
+            rows = _json.loads(path.read_text())
+        except (ValueError, OSError):
+            continue
+        ids.update(str(r.get("identifier", "")).split(":")[-1]
+                   for r in rows if isinstance(r, dict))
+    if skips_path.is_file():
+        try:
+            for r in _json.loads(skips_path.read_text()):
+                if isinstance(r, dict):
+                    ids.add(str(r.get("identifier", "")).split(":")[-1])
+        except (ValueError, OSError):
+            pass
+    ids.discard("")
+    return ids
+
+
+def unjudged_pulls(raw_dir: Path = RAW_DIR,
+                   archive_dir: Path = COMMENT_ARCHIVE_DIR,
+                   skips_path: Path = COMMENT_SKIPS) -> list[dict]:
+    """Keyword datasets already on disk whose posts nobody ever judged.
+
+    The morning scan pulls the keyword feed every day and asks one question of
+    it — does anything here belong on the timeline. The superlative archive asks
+    a different one, and is fed by the comment-archive cron, which runs three
+    days a week off its own (capped, paid) pull. On the other four days the
+    morning scan's dataset sits on disk, free, already paid for, and reaches
+    the archive only if someone thinks to feed it in.
+
+    On 2026-11-03 nobody did, and Kathleen Egan calling Incorruptible "my
+    favorite current bedside book" went unarchived until Eric asked where the
+    small quotes were. Feeding it costs nothing and needs no network; the only
+    thing missing was anything that noticed. This is that.
+    """
+    import json as _json
+    import re as _re
+
+    if not raw_dir.is_dir():
+        return []
+    judged = _judged_ids(archive_dir, skips_path)
+    out: list[dict] = []
+    for path in sorted(raw_dir.glob("*-keyword*.json")):
+        date = path.name[:10]
+        if not _re.fullmatch(r"\d{4}-\d{2}-\d{2}", date):
+            continue
+        try:
+            rows = _json.loads(path.read_text())
+        except (ValueError, OSError):
+            continue
+        items = rows if isinstance(rows, list) else rows.get("items", [])
+        ids = {str(r.get("id") or "") for r in items if isinstance(r, dict)}
+        ids.discard("")
+        if ids and not (ids & judged):
+            out.append({"date": date, "file": path.name, "posts": len(ids)})
+    return out
+
+
+def _unjudged_section() -> None:
+    stale = unjudged_pulls()
+    if not stale:
+        print("\nSuperlative archive: every keyword pull judged.")
+        return
+    print(f"\nSuperlative archive: {len(stale)} keyword pull(s) never judged.")
+    for s in stale:
+        print(f"  {s['date']}  {s['posts']} posts  {s['file']}")
+    print("  python3 scripts/archive-social-comments.py "
+          "data/archive/linkedin-raw/<file> --scan-source=linkedin-keyword")
+
+
 def _feed_coverage() -> None:
     """Report truncated pulls alongside missed runs.
 
@@ -238,6 +323,7 @@ def _main() -> int:
             nxt = next_run_after(spec["cron"], now)
             print(f"  {name:16s} next {nxt:%a %H:%M}")
         _feed_coverage()
+        _unjudged_section()
         return 0
     print(f"Catch-up: {len(rows)} job(s) owe work.")
     for r in rows:
@@ -247,6 +333,7 @@ def _main() -> int:
     print("\nRun each with a derived postedLimit (scan_state.choose_posted_limit)")
     print("and dedup client-side against data/archive/.")
     _feed_coverage()
+    _unjudged_section()
     return 0
 
 

@@ -307,3 +307,50 @@ def test_every_job_fires_at_the_local_hour_its_cron_states_year_round():
                 f"when evaluated from {when:%Y-%m-%d}; "
                 f"expected {hour:02d}:{minute:02d} local"
             )
+
+
+# --- a pulled dataset that nobody judged --------------------------------------------
+
+def _write(p, obj):
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(__import__("json").dumps(obj))
+
+
+def test_a_keyword_pull_nobody_judged_is_reported(tmp_path):
+    # The morning scan pulls the keyword feed daily; the comment-archive cron
+    # pulls its own, 3x/week. On the other four days the morning scan's posts
+    # are on disk, free, and reach the superlative archive only if someone
+    # thinks to feed them in. On 2026-11-03 nobody did, and Eric noticed that
+    # "my favorite current bedside book" had gone unarchived.
+    _write(tmp_path / "raw" / "2026-11-03-keyword.json",
+           [{"id": "7523301213409542145"}, {"id": "7523191482929815552"}])
+    stale = sc.unjudged_pulls(raw_dir=tmp_path / "raw",
+                              archive_dir=tmp_path / "arch",
+                              skips_path=tmp_path / "skips.json")
+    assert [s["date"] for s in stale] == ["2026-11-03"]
+
+
+def test_a_pull_whose_posts_were_judged_is_not_reported(tmp_path):
+    _write(tmp_path / "raw" / "2026-11-03-keyword.json", [{"id": "7523301213409542145"}])
+    _write(tmp_path / "arch" / "2026-11-03.json",
+           [{"identifier": "activity:7523301213409542145"}])
+    assert sc.unjudged_pulls(raw_dir=tmp_path / "raw",
+                             archive_dir=tmp_path / "arch",
+                             skips_path=tmp_path / "skips.json") == []
+
+
+def test_judging_everything_as_a_skip_also_counts_as_judged(tmp_path):
+    # An all-skip cycle is a completed cycle and the common case for this lane.
+    _write(tmp_path / "raw" / "2026-11-03-keyword-bare.json", [{"id": "999"}])
+    _write(tmp_path / "skips.json", [{"identifier": "activity:999", "reason": "word collision"}])
+    assert sc.unjudged_pulls(raw_dir=tmp_path / "raw",
+                             archive_dir=tmp_path / "arch",
+                             skips_path=tmp_path / "skips.json") == []
+
+
+def test_non_keyword_pulls_are_not_this_lanes_business(tmp_path):
+    # The author feed belongs to the comment-archive cron, which pulls its own.
+    _write(tmp_path / "raw" / "2026-11-03-author-eries.json", [{"id": "123"}])
+    assert sc.unjudged_pulls(raw_dir=tmp_path / "raw",
+                             archive_dir=tmp_path / "arch",
+                             skips_path=tmp_path / "skips.json") == []

@@ -476,7 +476,11 @@ def _apply_verdicts_mode(verdicts_path: Path) -> int:
             "superlative_matches": ["<llm>"],
             "full_text": text,
             "pull_quote": quote,
-            "quotes_the_book": False,
+            # Carried from the verdict, not assumed. FORMAT-NOTES item 6 asks
+            # for this because it changes how the social agent attributes the
+            # card; writing a literal False made it an untrue field rather
+            # than a missing one, on 200 of 208 records.
+            "quotes_the_book": bool(v.get("quotes_the_book")),
             "has_emoji": has_emoji(text),
             "low_confidence": len(substantive) < 40,
             "already_have": _already_have(

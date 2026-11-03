@@ -1303,5 +1303,85 @@
     "identifier": "tweet:2117168074382246381",
     "reason": "spam",
     "skipped_at": "2026-11-03T02:37:16Z"
+  },
+  {
+    "identifier": "activity:7523431913316044800",
+    "reason": "Eric's own account relaying the Mark Cuban blurb, already on the timeline",
+    "skipped_at": "2026-11-03T18:14:30Z"
+  },
+  {
+    "identifier": "activity:7523114309355425794",
+    "reason": "Eric's own account — the five-months-in wall of practitioners",
+    "skipped_at": "2026-11-03T18:14:30Z"
+  },
+  {
+    "identifier": "activity:7523387322835427328",
+    "reason": "Brady CFO spotlight: book named on a shelf, no line about it",
+    "skipped_at": "2026-11-03T18:14:30Z"
+  },
+  {
+    "identifier": "activity:7523087564883365890",
+    "reason": "STVP institutional promo for the ETL episode already shipped 10-07/10-08",
+    "skipped_at": "2026-11-03T18:14:30Z"
+  },
+  {
+    "identifier": "activity:7523181355296251904",
+    "reason": "Bhargava gift guide lists the book among twelve; no sentence about it",
+    "skipped_at": "2026-11-03T18:14:30Z"
+  },
+  {
+    "identifier": "activity:7523421688114368513",
+    "reason": "word collision — AI infrastructure manifesto",
+    "skipped_at": "2026-11-03T18:14:30Z"
+  },
+  {
+    "identifier": "activity:7523180282896769024",
+    "reason": "word collision — Spanish-language labour-systems post",
+    "skipped_at": "2026-11-03T18:14:30Z"
+  },
+  {
+    "identifier": "activity:7523340312971452419",
+    "reason": "word collision — Nigerian congratulatory message",
+    "skipped_at": "2026-11-03T18:14:30Z"
+  },
+  {
+    "identifier": "activity:7523317218387030016",
+    "reason": "word collision — 1 Peter 1:23 scripture post",
+    "skipped_at": "2026-11-03T18:14:30Z"
+  },
+  {
+    "identifier": "activity:7523326911453003776",
+    "reason": "word collision — Grover Beach ballot slate",
+    "skipped_at": "2026-11-03T18:14:30Z"
+  },
+  {
+    "identifier": "activity:7523142860414717952",
+    "reason": "word collision — quantum defence chip marketing",
+    "skipped_at": "2026-11-03T18:14:30Z"
+  },
+  {
+    "identifier": "activity:7523149094291316737",
+    "reason": "word collision — OpenAI proofs post",
+    "skipped_at": "2026-11-03T18:14:30Z"
+  },
+  {
+    "identifier": "activity:7523381550105645056",
+    "reason": "word collision — political administration essay",
+    "skipped_at": "2026-11-03T18:14:30Z"
+  },
+  {
+    "identifier": "activity:7523278690265477121",
+    "reason": "word collision — Nigerian civil service reform headline",
+    "skipped_at": "2026-11-03T18:14:30Z"
+  },
+  {
+    "identifier": "activity:7523260231863345152",
+    "reason": "adjectival use — Mostböck on capital being 'neutral and incorruptible'",
+    "skipped_at": "2026-11-03T18:14:30Z"
+  },
+  {
+    "identifier": "post:7523347422970851328",
+    "reason": "adjectival use — Dachau ground as 'the last, incorruptible witness'",
+    "skipped_at": "2026-11-03T18:14:30Z"
   }
 ]
