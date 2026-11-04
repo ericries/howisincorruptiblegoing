@@ -2033,5 +2033,485 @@
     "identifier": "tweet:2117555393756848143",
     "reason": "same promo headline and link from a different account",
     "skipped_at": "2026-11-04T02:38:38Z"
+  },
+  {
+    "identifier": "comment:7523798957605437440",
+    "reason": "Eric's own comment, a bare link",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523795332900552704",
+    "reason": "encouragement to Eric, no new claim",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523794812148527104",
+    "reason": "Eric's own comment",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523808283753893888",
+    "reason": "AI-slop: restates the post's thesis back at it",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523687769844588544",
+    "reason": "unrelated business solicitation",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523530723031576576",
+    "reason": "Eric's own comment, a bare link",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523670988874723328",
+    "reason": "Corporate Rebels Summit excitement, nothing about the book",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523367450227318784",
+    "reason": "name list",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523367092587335680",
+    "reason": "name list",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523367660773089280",
+    "reason": "name list",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523375709793296384",
+    "reason": "event excitement",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523368464007356416",
+    "reason": "event excitement",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523631652300951553",
+    "reason": "event excitement, wish-I-could-be-there",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523504371385401344",
+    "reason": "about her own post being reshared",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523709736685502465",
+    "reason": "just started the book, no claim",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523565074729312256",
+    "reason": "thanks for the recommendation; has not read it",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523483864271429633",
+    "reason": "summit excitement, the praise is for Ricardo Semler's book",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523808306004525056",
+    "reason": "Norwegian, wishes he were going",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523381941350424576",
+    "reason": "event congratulation",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523410407286296576",
+    "reason": "looking forward to meeting",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523418053116776448",
+    "reason": "Norwegian, event excitement",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523368369954193408",
+    "reason": "event logistics",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523405958329528320",
+    "reason": "event remark",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523368988664332288",
+    "reason": "one word, envy, not about the book",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523495563716112384",
+    "reason": "generic reflection on learning from failure",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523479221613125633",
+    "reason": "Eric's own comment, a bare link",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523431915396292609",
+    "reason": "Eric's own comment, a bare link",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523114311179948032",
+    "reason": "Eric's own comment",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523119453874597888",
+    "reason": "a proposed local collaboration, not a claim about the book",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523269992759382016",
+    "reason": "two names tagged",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523247993639133184",
+    "reason": "thin: 'great to see ideas turning into real action'",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523300118129745921",
+    "reason": "AI-slop, opens 'Spot on.'",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523128101778841602",
+    "reason": "AI-slop, second from the same account this pull",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523230857688506369",
+    "reason": "congratulation on the Masters of Scale stage",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523118525851394048",
+    "reason": "wish-I-could-be-there",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523350676454678528",
+    "reason": "Y Combinator launch post, unrelated",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523208859688304641",
+    "reason": "Y Combinator launch post, unrelated",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523325063606251520",
+    "reason": "name tag on an unrelated post",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523608769126182912",
+    "reason": "Y Combinator launch post, unrelated",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523445467054260224",
+    "reason": "Y Combinator launch post, unrelated",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523785899495780352",
+    "reason": "Y Combinator launch post, unrelated",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523153243485425664",
+    "reason": "name tag on an unrelated post",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523226033530114048",
+    "reason": "Y Combinator launch post, unrelated",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523138429480693760",
+    "reason": "Y Combinator launch post, unrelated",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523217683023245312",
+    "reason": "a technical question on an unrelated post",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523101278483333120",
+    "reason": "one-word congratulation",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523116869021765632",
+    "reason": "Y Combinator launch post, unrelated",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523640936824958976",
+    "reason": "apology for missing an event",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523537840891428864",
+    "reason": "'looking forward to reading this book' — has not read it",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523358069980966912",
+    "reason": "recommends his own portfolio company",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523110613552734209",
+    "reason": "career history, no claim about the book",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523511837980811264",
+    "reason": "four words, no claim",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523133020716048384",
+    "reason": "warm Radio Flyer reply, no claim about the book",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523326483092725760",
+    "reason": "good wishes to Radio Flyer, speculative",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523111027119394817",
+    "reason": "warm Radio Flyer reply",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523774355860815872",
+    "reason": "a plug for the Ada programming language",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523443856093118465",
+    "reason": "same thread, narrower engineering point",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523158700111417344",
+    "reason": "generic developer-practice list",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523378742539235328",
+    "reason": "generic safety sentiment",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523230062628843520",
+    "reason": "AI-slop, 'a powerful wake-up call'",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523384435732508672",
+    "reason": "same thread, narrower on-call point",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523146965862408192",
+    "reason": "a question put to Eric",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523125782437601280",
+    "reason": "same thread, a cost argument about models rather than accountability",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523117891421122561",
+    "reason": "three words",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523219166359617536",
+    "reason": "recommending a different book entirely",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523821455327932416",
+    "reason": "wish-I-could-have-attended",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523790924842184704",
+    "reason": "chapter thanks, no claim",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523805327847501824",
+    "reason": "congratulation from the externship provider",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523367567735042048",
+    "reason": "liking by association, no claim",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523193786009726989",
+    "reason": "congratulation",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523112420538732544",
+    "reason": "nice-to-meet-you",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523367930718494720",
+    "reason": "congratulation",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523469262267584513",
+    "reason": "congratulation from a fellow externship participant",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523738945340248064",
+    "reason": "adds other books to a reading list",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523622311594344448",
+    "reason": "adds another framework",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523724261719683072",
+    "reason": "adds other books to a reading list",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523299226303295488",
+    "reason": "promotes his own book",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523609687171366912",
+    "reason": "adds other books to a reading list",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523694189285482496",
+    "reason": "adds other books to a reading list",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523306823488143361",
+    "reason": "adds other books to a reading list",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523793776943906816",
+    "reason": "thanks-for-attending",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "comment:7523801191307329536",
+    "reason": "podcast promo for his own show",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "activity:7523794810508394496",
+    "reason": "a post, not a comment; this archive holds comments only",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "activity:7523530721127473153",
+    "reason": "a post, not a comment; this archive holds comments only",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "activity:7523366041486307328",
+    "reason": "a post, not a comment; this archive holds comments only",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "post:7523482362404478976",
+    "reason": "a post, not a comment; this archive holds comments only",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "activity:7523409771211780096",
+    "reason": "a post, not a comment; this archive holds comments only",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "activity:7523366551908089860",
+    "reason": "a post, not a comment; this archive holds comments only",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "activity:7523481866780225536",
+    "reason": "a post, not a comment; this archive holds comments only",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "post:7523052876391350273",
+    "reason": "a post, not a comment; this archive holds comments only",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "activity:7522342714244284416",
+    "reason": "a post, not a comment; this archive holds comments only",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "activity:7523795023008731136",
+    "reason": "a post, not a comment; this archive holds comments only",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "activity:7523787263302881280",
+    "reason": "a post, not a comment; this archive holds comments only",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "activity:7523502718808842241",
+    "reason": "a post, not a comment; this archive holds comments only",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "activity:7523701189675417600",
+    "reason": "a post, not a comment; this archive holds comments only",
+    "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "activity:7523496892954050561",
+    "reason": "a post, not a comment; this archive holds comments only",
+    "skipped_at": "2026-11-04T19:58:55Z"
   }
 ]
