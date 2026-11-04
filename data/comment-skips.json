@@ -2013,5 +2013,25 @@
     "identifier": "activity:7522956984648765440",
     "reason": "word collision — 'incorruptible' as an ordinary adjective, scripture or politics",
     "skipped_at": "2026-11-03T18:21:58Z"
+  },
+  {
+    "identifier": "tweet:2117775689869062405",
+    "reason": "conversational dotcom-era anecdote about his first startup; no Incorruptible content",
+    "skipped_at": "2026-11-04T02:38:38Z"
+  },
+  {
+    "identifier": "tweet:2117694768901931402",
+    "reason": "a question put to the author, not an observation",
+    "skipped_at": "2026-11-04T02:38:38Z"
+  },
+  {
+    "identifier": "tweet:2117565715599290631",
+    "reason": "promo post — a headline, a link and an @-tag",
+    "skipped_at": "2026-11-04T02:38:38Z"
+  },
+  {
+    "identifier": "tweet:2117555393756848143",
+    "reason": "same promo headline and link from a different account",
+    "skipped_at": "2026-11-04T02:38:38Z"
   }
 ]
