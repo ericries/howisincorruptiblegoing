@@ -11,9 +11,13 @@
     {
       "url": "https://www.linkedin.com/posts/mckinsey-strategy-corporate-finance_mckinsey-company-senior-partner-ryan-davies-activity-7523502718808842241-5fBX",
       "label": "McKinsey Strategy & Corporate Finance announcing the episode"
+    },
+    {
+      "url": "https://www.linkedin.com/posts/guillaumedegantes_one-idea-stands-out-in-this-thought-provoking-activity-7523602839005442048-eFbp",
+      "label": "Guillaume de Gantes, a second McKinsey senior partner, picking out financial gravity as the idea that stands out"
     }
   ],
-  "video_url": null,
+  "video_url": "https://www.youtube.com/watch?v=xtF2H39Pt1g",
   "image": "/images/podcasts/inside-the-strategy-room.jpg",
   "attribution": "Inside the Strategy Room, McKinsey & Company",
   "attribution_title": "Episode 329 · with senior partner Ryan Davies · host Sean Brown",
@@ -26,7 +30,7 @@
     "costco"
   ],
   "type_metadata": {
-    "audience": "Inside the Strategy Room — 469 episodes; McKinsey & Company's strategy podcast",
+    "audience": "Inside the Strategy Room — 469 episodes; McKinsey & Company's strategy podcast. The video is on McKinsey's YouTube channel, 204,000 subscribers.",
     "featured": true
   },
   "scanner_source": "social-scan",

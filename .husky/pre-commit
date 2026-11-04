@@ -26,6 +26,12 @@ if [ -n "$CHANGED_ENTRIES" ]; then
   # Offline first: checks the blockquote against the source text the scanner
   # already captured. No network, instant, and it is the ONLY check that works
   # on LinkedIn and X — 62% of entries, which no anonymous fetch can read.
+  # A LinkedIn URL is knowable from the raw archive: the activity id is
+  # canonical, so a mismatch means the URL was typed rather than copied. Two in
+  # two days (a tweet id with no digits, a Burka slug and id both invented).
+  echo "Checking source URLs against the raw archive..."
+  python3 scripts/check_source_urls.py $CHANGED_ENTRIES || exit 1
+
   echo "Checking quotes against captured source text..."
   python3 scripts/quote_integrity.py $CHANGED_ENTRIES
   QI_EXIT=$?
