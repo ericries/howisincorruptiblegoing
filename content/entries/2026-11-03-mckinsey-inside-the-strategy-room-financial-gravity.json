@@ -25,7 +25,10 @@
     "governance",
     "costco"
   ],
-  "type_metadata": {},
+  "type_metadata": {
+    "audience": "Inside the Strategy Room — 469 episodes; McKinsey & Company's strategy podcast",
+    "featured": true
+  },
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-11-04T02:45:00Z"
