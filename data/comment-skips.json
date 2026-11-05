@@ -2513,5 +2513,15 @@
     "identifier": "activity:7523496892954050561",
     "reason": "a post, not a comment; this archive holds comments only",
     "skipped_at": "2026-11-04T19:58:55Z"
+  },
+  {
+    "identifier": "tweet:2118056697436741901",
+    "reason": "describes an AI product workflow; no claim about the book or Eric's argument",
+    "skipped_at": "2026-11-05T02:07:41Z"
+  },
+  {
+    "identifier": "tweet:2118032251984425026",
+    "reason": "a rocket emoji",
+    "skipped_at": "2026-11-05T02:07:41Z"
   }
 ]

@@ -2,12 +2,17 @@
   "id": "2026-11-04-pete-stewart-achene-structure-resists-drift",
   "date": "2026-11-04",
   "type": "review",
-  "title": "A founder builds the no-commission rule into his platform \u2014 'the structure has to resist that drift'",
-  "summary": "Stewart founded Achene, an online course platform. He set a pricing rule that charges for resources that cost the company something rather than for access to features, and built the engineering \u2014 zero-egress storage, free transcription \u2014 that lets him hold it.",
+  "title": "A founder builds the no-commission rule into his platform — 'the structure has to resist that drift'",
+  "summary": "Stewart founded Achene, an online course platform. He set a pricing rule that charges for resources that cost the company something rather than for access to features, and built the engineering — zero-egress storage, free transcription — that lets him hold it.",
   "blockquote": "It's also the practical side of an idea from Eric Ries's Incorruptible: businesses drift from their customers under growth pressure, so the structure has to resist that drift. Efficient architecture gives us room to keep prices fair.",
   "blockquote_source": "Pete Stewart on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/pjstew_cloudflare-buildinpublic-edtech-activity-7523663311918440448-otkw",
-  "source_urls": null,
+  "source_urls": [
+    {
+      "url": "https://x.com/pj_stew/status/2117940482483408902",
+      "label": "Stewart on X: has read the book repeatedly since publication, and links the Achene write-up"
+    }
+  ],
   "video_url": null,
   "image": "/images/cards/2026-11-04-pete-stewart-achene-structure-resists-drift.png",
   "attribution": "Pete Stewart",
