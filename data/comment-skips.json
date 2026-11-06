@@ -2538,5 +2538,85 @@
     "identifier": "tweet:2118364917057421503",
     "reason": "a question put to Eric about AI and experimentation",
     "skipped_at": "2026-11-06T02:34:56Z"
+  },
+  {
+    "identifier": "activity:7523866830743072770",
+    "reason": "Eric's own account",
+    "skipped_at": "2026-11-06T17:00:30Z"
+  },
+  {
+    "identifier": "activity:7524096989958066176",
+    "reason": "relays the book's own definition; a card would attribute Eric's words to him",
+    "skipped_at": "2026-11-06T17:00:30Z"
+  },
+  {
+    "identifier": "activity:7523889519595528192",
+    "reason": "promo for a company Eric advises",
+    "skipped_at": "2026-11-06T17:00:30Z"
+  },
+  {
+    "identifier": "activity:7524141872907280384",
+    "reason": "word collision — cash-register anniversary, scripture or adjectival use",
+    "skipped_at": "2026-11-06T17:00:30Z"
+  },
+  {
+    "identifier": "activity:7524063655764627456",
+    "reason": "word collision — cash-register anniversary, scripture or adjectival use",
+    "skipped_at": "2026-11-06T17:00:30Z"
+  },
+  {
+    "identifier": "activity:7524117233833242624",
+    "reason": "word collision — cash-register anniversary, scripture or adjectival use",
+    "skipped_at": "2026-11-06T17:00:30Z"
+  },
+  {
+    "identifier": "activity:7523819273610321920",
+    "reason": "word collision — cash-register anniversary, scripture or adjectival use",
+    "skipped_at": "2026-11-06T17:00:30Z"
+  },
+  {
+    "identifier": "activity:7524050404125376513",
+    "reason": "scripture devotional; anchor matched a word, not the book",
+    "skipped_at": "2026-11-06T17:00:30Z"
+  },
+  {
+    "identifier": "activity:7523964849081511937",
+    "reason": "word collision — cash-register anniversary, scripture or adjectival use",
+    "skipped_at": "2026-11-06T17:00:30Z"
+  },
+  {
+    "identifier": "activity:7524022439270436864",
+    "reason": "word collision — cash-register anniversary, scripture or adjectival use",
+    "skipped_at": "2026-11-06T17:00:30Z"
+  },
+  {
+    "identifier": "activity:7524036235443478529",
+    "reason": "word collision — cash-register anniversary, scripture or adjectival use",
+    "skipped_at": "2026-11-06T17:00:30Z"
+  },
+  {
+    "identifier": "activity:7523837508787339265",
+    "reason": "a third McKinsey partner amplifying the episode, but restates its description with no line of his own",
+    "skipped_at": "2026-11-06T17:00:30Z"
+  },
+  {
+    "identifier": "activity:7523844233737363456",
+    "reason": "word collision — cash-register anniversary, scripture or adjectival use",
+    "skipped_at": "2026-11-06T17:00:30Z"
+  },
+  {
+    "identifier": "activity:7523889493448335360",
+    "reason": "word collision — cash-register anniversary, scripture or adjectival use",
+    "skipped_at": "2026-11-06T17:00:30Z"
+  },
+  {
+    "identifier": "activity:7523989659702521857",
+    "reason": "word collision — cash-register anniversary, scripture or adjectival use",
+    "skipped_at": "2026-11-06T17:00:30Z"
+  },
+  {
+    "identifier": "activity:7523861057006657536",
+    "reason": "word collision — cash-register anniversary, scripture or adjectival use",
+    "skipped_at": "2026-11-06T17:00:30Z"
   }
 ]
