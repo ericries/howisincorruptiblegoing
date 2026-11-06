@@ -2618,5 +2618,420 @@
     "identifier": "activity:7523861057006657536",
     "reason": "word collision — cash-register anniversary, scripture or adjectival use",
     "skipped_at": "2026-11-06T17:00:30Z"
+  },
+  {
+    "identifier": "activity:7524440146767970304",
+    "reason": "post already on the timeline, or its own promo",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524467875915456512",
+    "reason": "congratulation or emoji, no claim",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524371513723006976",
+    "reason": "conversational reply, event excitement or restates the post's thesis",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524530164039528448",
+    "reason": "congratulation or emoji, no claim",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524477113949655040",
+    "reason": "congratulation or emoji, no claim",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524388891580071936",
+    "reason": "conversational reply, event excitement or restates the post's thesis",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524408943461277696",
+    "reason": "conversational reply, event excitement or restates the post's thesis",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524542206645301248",
+    "reason": "conversational reply, event excitement or restates the post's thesis",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "activity:7524541079430348801",
+    "reason": "post already on the timeline, or its own promo",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524538988662185984",
+    "reason": "congratulation or emoji, no claim",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524536202851500032",
+    "reason": "Eric's own comment or post",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "activity:7524536201580666880",
+    "reason": "Eric's own comment or post",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524533722990460928",
+    "reason": "congratulation on the Mast PBC announcement",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524508637860560896",
+    "reason": "Eric's own comment or post",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "activity:7524508635222151168",
+    "reason": "Eric's own comment or post",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524486516861997057",
+    "reason": "Eric's own comment or post",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "activity:7524486515394031618",
+    "reason": "Eric's own comment or post",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524240599734996992",
+    "reason": "conversational reply, event excitement or restates the post's thesis",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524198373965492224",
+    "reason": "conversational reply, event excitement or restates the post's thesis",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "post:7524198724856770560",
+    "reason": "post already on the timeline, or its own promo",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524194846375436288",
+    "reason": "Eric's own comment or post",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524328629242249216",
+    "reason": "conversational reply, event excitement or restates the post's thesis",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "activity:7524194844571885570",
+    "reason": "Eric's own comment or post",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524250585190141952",
+    "reason": "conversational reply, event excitement or restates the post's thesis",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524202219370561536",
+    "reason": "the host or organiser promoting their own episode or event",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524069357090410496",
+    "reason": "the host or organiser promoting their own episode or event",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "post:7524191745899872256",
+    "reason": "post already on the timeline, or its own promo",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "post:7524191412939063296",
+    "reason": "post already on the timeline, or its own promo",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524202654089109506",
+    "reason": "the host or organiser promoting their own episode or event",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524058446736846848",
+    "reason": "the host or organiser promoting their own episode or event",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "post:7524190271040045057",
+    "reason": "post already on the timeline, or its own promo",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524232457274208257",
+    "reason": "conversational reply, event excitement or restates the post's thesis",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524183879495286784",
+    "reason": "Eric's own comment or post",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524273382381584384",
+    "reason": "congratulation or emoji, no claim",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524181604861382656",
+    "reason": "congratulation or emoji, no claim",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524172602634846210",
+    "reason": "Eric's own comment or post",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "activity:7524172601045385216",
+    "reason": "Eric's own comment or post",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524129572716494848",
+    "reason": "conversational reply, event excitement or restates the post's thesis",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "post:7524144199450030080",
+    "reason": "post already on the timeline, or its own promo",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7523883838159179776",
+    "reason": "conversational reply, event excitement or restates the post's thesis",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "post:7524144033917681664",
+    "reason": "post already on the timeline, or its own promo",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524403183436201985",
+    "reason": "congratulation on the Mast PBC announcement",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524211929893068801",
+    "reason": "congratulation on the Mast PBC announcement",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524205559554965504",
+    "reason": "congratulation or emoji, no claim",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524265934006431744",
+    "reason": "congratulation on the Mast PBC announcement",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524300093022380033",
+    "reason": "congratulation on the Mast PBC announcement",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524344327410593792",
+    "reason": "congratulation or emoji, no claim",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524171152982724610",
+    "reason": "congratulation on the Mast PBC announcement",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524199004709027840",
+    "reason": "congratulation or emoji, no claim",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524167823833661440",
+    "reason": "congratulation or emoji, no claim",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524165559765061632",
+    "reason": "congratulation on the Mast PBC announcement",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524168059486388224",
+    "reason": "conversational reply, event excitement or restates the post's thesis",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524167123745705984",
+    "reason": "congratulation or emoji, no claim",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524147905947914240",
+    "reason": "congratulation or emoji, no claim",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7523833691631108096",
+    "reason": "conversational reply, event excitement or restates the post's thesis",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7523851078522519553",
+    "reason": "conversational reply, event excitement or restates the post's thesis",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7523832007030841344",
+    "reason": "Eric's own comment or post",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524100499005100032",
+    "reason": "conversational reply, event excitement or restates the post's thesis",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7523857051509305346",
+    "reason": "conversational reply, event excitement or restates the post's thesis",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524124802198978560",
+    "reason": "conversational reply, event excitement or restates the post's thesis",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7523861263991558144",
+    "reason": "the host or organiser promoting their own episode or event",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524124272114577408",
+    "reason": "conversational reply, event excitement or restates the post's thesis",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "activity:7524547915424464896",
+    "reason": "post already on the timeline, or its own promo",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524535833618653184",
+    "reason": "congratulation or emoji, no claim",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524535042967166976",
+    "reason": "networking replies under his own conference recap",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524535612486569986",
+    "reason": "networking replies under his own conference recap",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524532726805266432",
+    "reason": "networking replies under his own conference recap",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524533173805056000",
+    "reason": "networking replies under his own conference recap",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "activity:7524507626429108224",
+    "reason": "post already on the timeline, or its own promo",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "activity:7524527633200709632",
+    "reason": "post already on the timeline, or its own promo",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524282118613663744",
+    "reason": "congratulation or emoji, no claim",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524335236898467840",
+    "reason": "congratulation on the Mast PBC announcement",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524313561095979009",
+    "reason": "congratulation or emoji, no claim",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524501956984246273",
+    "reason": "congratulation or emoji, no claim",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524417392634933249",
+    "reason": "congratulation or emoji, no claim",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524298954423951360",
+    "reason": "congratulation or emoji, no claim",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524281536293126144",
+    "reason": "congratulation or emoji, no claim",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524282137383055360",
+    "reason": "congratulation or emoji, no claim",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "activity:7524279033166024704",
+    "reason": "post already on the timeline, or its own promo",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524095171731369984",
+    "reason": "a list of association members, no claim",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7524143367455170560",
+    "reason": "a list of association members, no claim",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7523918385907445763",
+    "reason": "conversational reply, event excitement or restates the post's thesis",
+    "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "comment:7523898195370786817",
+    "reason": "congratulation or emoji, no claim",
+    "skipped_at": "2026-11-06T19:21:43Z"
   }
 ]

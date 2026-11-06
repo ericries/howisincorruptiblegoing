@@ -175,3 +175,55 @@ def test_archive_writes_when_no_file_exists_even_if_short(tmp_path, capsys):
     target = tmp_path / "new.json"
     assert scan_triage.archive(target, [item(1)], item_count=99) is True
     assert "partial" in capsys.readouterr().err.lower()
+
+
+# --- the dataset alone cannot tell you the run has finished -------------------------
+
+def test_fetch_waits_for_the_run_to_reach_a_terminal_state(monkeypatch):
+    """itemCount agreeing with the read does NOT mean the run is done.
+
+    On 2026-11-06 the comment-archive job read 16 items from a dataset whose
+    run was still RUNNING; itemCount was also 16 at that instant, so the match
+    held and fetch() returned. The run finished 75 seconds later with 272. The
+    archive went down at 16, and feed_coverage — reading that archive — reported
+    a HOLE on a day that was never actually missing.
+
+    A concurrent writer makes itemCount a moving target, so matching it proves
+    only that the read caught up with a moment, not with the run. The run's own
+    status is the authority, and the dataset metadata carries actRunId.
+    """
+    reads = [list(range(16)), list(range(16)), list(range(272))]
+    counts = [16, 16, 272]
+    statuses = ["RUNNING", "RUNNING", "SUCCEEDED"]
+    calls = {"n": 0}
+
+    def fake_read(_id):
+        return reads[min(calls["n"], len(reads) - 1)]
+
+    def fake_meta(_id):
+        return {"itemCount": counts[min(calls["n"], len(counts) - 1)],
+                "actRunId": "RUN123"}
+
+    def fake_status(_run_id):
+        s = statuses[min(calls["n"], len(statuses) - 1)]
+        calls["n"] += 1
+        return s
+
+    monkeypatch.setattr(scan_triage, "_read_items", fake_read)
+    monkeypatch.setattr(scan_triage, "dataset_meta", fake_meta)
+    monkeypatch.setattr(scan_triage, "run_status", fake_status, raising=False)
+    monkeypatch.setattr(scan_triage.time, "sleep", lambda _s: None)
+
+    got = scan_triage.fetch("DS", tries=5, delay=0)
+    assert len(got) == 272, f"returned {len(got)} items while the run was still writing"
+
+
+def test_fetch_returns_when_status_is_unavailable(monkeypatch):
+    """A status lookup failure must not block a scan — the count still decides."""
+    monkeypatch.setattr(scan_triage, "_read_items", lambda _i: list(range(40)))
+    monkeypatch.setattr(scan_triage, "dataset_meta", lambda _i: {"itemCount": 40})
+    monkeypatch.setattr(scan_triage, "run_status",
+                        lambda _r: (_ for _ in ()).throw(RuntimeError("no net")),
+                        raising=False)
+    monkeypatch.setattr(scan_triage.time, "sleep", lambda _s: None)
+    assert len(scan_triage.fetch("DS", tries=3, delay=0)) == 40

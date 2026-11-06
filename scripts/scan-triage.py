@@ -275,6 +275,21 @@ def dataset_meta(dataset_id: str) -> dict:
         return json.loads(r.read().decode()).get("data", {})
 
 
+TERMINAL = {"SUCCEEDED", "FAILED", "ABORTED", "TIMED-OUT", "TIMED_OUT"}
+
+
+def run_status(run_id: str) -> str:
+    """The run's own status — the only thing that knows it has stopped writing.
+
+    itemCount cannot answer this. It is a moving target while an actor writes,
+    so a read can match it exactly and still be mid-run, which is what happened
+    on 2026-11-06: 16 items read, itemCount 16, status RUNNING, final count 272.
+    """
+    url = f"https://api.apify.com/v2/actor-runs/{run_id}"
+    with urllib.request.urlopen(url, timeout=60) as r:
+        return json.loads(r.read().decode()).get("data", {}).get("status", "")
+
+
 def is_complete(*, n_read: int, item_count: int | None) -> bool:
     """Did this read get everything the dataset says it holds?
 
@@ -305,16 +320,28 @@ def fetch(dataset_id: str, expect: int = 0, tries: int = 20, delay: int = 10) ->
             last = []
 
         try:
-            count = dataset_meta(dataset_id).get("itemCount")
+            meta = dataset_meta(dataset_id)
+            count = meta.get("itemCount")
         except Exception:
-            count = None            # metadata is advisory; never block on it
+            meta, count = {}, None  # metadata is advisory; never block on it
 
         # itemCount is read AFTER the items, deliberately. A run writing
         # concurrently can add rows between the two calls; taking the count
         # second means any such growth shows up as count > n_read and costs
         # another poll, rather than being missed. The reverse order can call a
         # read complete that was already stale when it landed.
-        if is_complete(n_read=len(last), item_count=count) and len(last) >= expect:
+        # The count is necessary but not sufficient. A run still writing can
+        # report a count that equals what we just read, so ask the run itself.
+        # A status lookup that fails is advisory only — never block a scan on it.
+        settled = True
+        run_id = (meta or {}).get("actRunId")
+        if run_id:
+            try:
+                settled = run_status(run_id) in TERMINAL
+            except Exception:
+                settled = True
+
+        if settled and is_complete(n_read=len(last), item_count=count) and len(last) >= expect:
             return last
         if i < tries - 1:
             time.sleep(delay)
