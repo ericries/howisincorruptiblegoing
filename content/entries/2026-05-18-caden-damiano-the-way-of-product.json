@@ -8,14 +8,22 @@
   "blockquote_source": "Eric Ries, quoted by Caden Damiano",
   "source_url": "https://www.linkedin.com/pulse/eric-ries-why-good-companies-go-bad-how-great-stay-caden-damiano--pcglc",
   "source_urls": [
-    {"url": "https://www.linkedin.com/posts/caden-damiano_were-a-few-minutes-into-our-conversation-activity-7462139977464848384-Zinb", "label": "Caden's preview post on LinkedIn"}
+    {
+      "url": "https://www.linkedin.com/posts/caden-damiano_were-a-few-minutes-into-our-conversation-activity-7462139977464848384-Zinb",
+      "label": "Caden's preview post on LinkedIn"
+    }
   ],
   "video_url": null,
-  "image": null,
+  "image": "/images/podcasts/the-way-of-product.jpg",
   "attribution": "Caden Damiano",
   "attribution_title": "Software designer; host of The Way of Product podcast",
   "attribution_image": null,
-  "tags": ["media", "linkedin", "interview", "the-way-of-product"],
+  "tags": [
+    "media",
+    "linkedin",
+    "interview",
+    "the-way-of-product"
+  ],
   "type_metadata": {},
   "scanner_source": "social-scan",
   "verified": false,

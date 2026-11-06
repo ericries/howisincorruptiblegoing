@@ -2523,5 +2523,20 @@
     "identifier": "tweet:2118032251984425026",
     "reason": "a rocket emoji",
     "skipped_at": "2026-11-05T02:07:41Z"
+  },
+  {
+    "identifier": "tweet:2118414636890644551",
+    "reason": "four words on a photo, no claim",
+    "skipped_at": "2026-11-06T02:34:56Z"
+  },
+  {
+    "identifier": "tweet:2118408321401319612",
+    "reason": "the journal's own contents listing, not a comment",
+    "skipped_at": "2026-11-06T02:34:56Z"
+  },
+  {
+    "identifier": "tweet:2118364917057421503",
+    "reason": "a question put to Eric about AI and experimentation",
+    "skipped_at": "2026-11-06T02:34:56Z"
   }
 ]
