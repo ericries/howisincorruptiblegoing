@@ -131,3 +131,67 @@ export function findSameTypeDuplicates(
   }
   return out.sort((a, b) => b.files.length - a.files.length);
 }
+
+/** Activity id out of a LinkedIn post URL — the only canonical part of one. */
+export function activityId(url: string): string | null {
+  const m = /activity[-:](\d{10,})/i.exec(url || '');
+  return m ? m[1] : null;
+}
+
+/**
+ * Two entries citing one piece of writing, where one of them cites a RESHARE
+ * of the other's source.
+ *
+ * findSameTypeDuplicates compares source_url literally, which is blind to this:
+ * on 2026-11-06 a "Hard Problems publishes a review" entry was written from the
+ * publisher's LinkedIn post, two sentences long, announcing Daniel Burka's
+ * review — already on the timeline since the 3rd. Different URL, same review.
+ *
+ * `reshares` maps a reshare's activity id to the activity id it reshared; the
+ * caller builds it from the raw archive, where harvestapi records the original
+ * under `repost.linkedinUrl`. Unlike findSameTypeDuplicates this ignores type:
+ * a publisher's announcement is often filed under a different one.
+ */
+export function findReshareDuplicates(
+  entries: Array<{
+    file: string;
+    source_url?: string | null;
+    source_urls?: Array<{ url?: string | null } | string> | null;
+  }>,
+  reshares: Map<string, string>
+): DuplicateGroup[] {
+  const idsOf = (e: (typeof entries)[number]): Set<string> => {
+    const urls = [e.source_url, ...(e.source_urls || []).map((s) => (typeof s === 'string' ? s : s?.url))];
+    const out = new Set<string>();
+    for (const u of urls) {
+      const url = String(u || '');
+      // A comment permalink — /feed/update/urn:li:activity:<PARENT>?commentUrn=…
+      // — carries its PARENT post's id, not the commenter's. Reading it as the
+      // entry's own source made three endorsements left under one post look like
+      // duplicates of the entry that reshared that post (first run, 2026-11-06),
+      // which is the same trap check_source_urls.py fell into on 2026-11-04.
+      if (/commentUrn=/i.test(url)) continue;
+      const id = activityId(url);
+      if (id) out.add(id);
+    }
+    return out;
+  };
+
+  const ids = entries.map((e) => ({ file: e.file, ids: idsOf(e) }));
+  const out: DuplicateGroup[] = [];
+
+  for (const e of ids) {
+    for (const id of e.ids) {
+      const original = reshares.get(id);
+      if (!original) continue;
+      // The entry citing both the reshare and what it reshared is coherent, not
+      // a duplicate — that is exactly how a reshare SHOULD be recorded.
+      if (e.ids.has(original)) continue;
+      const others = ids.filter((o) => o.file !== e.file && o.ids.has(original));
+      for (const o of others) {
+        out.push({ url: `activity:${id} reshares activity:${original}`, files: [o.file, e.file].sort() });
+      }
+    }
+  }
+  return out;
+}

@@ -1,10 +1,39 @@
 import { validateEntry } from '../src/lib/validate';
 import { scanEntry } from '../src/lib/injection';
-import { looksFabricated, findDuplicateSourceUrls, findSameTypeDuplicates } from '../src/lib/source-url-integrity';
+import { looksFabricated, findDuplicateSourceUrls, findSameTypeDuplicates, findReshareDuplicates, activityId } from '../src/lib/source-url-integrity';
 import { findWeekdayMismatches } from '../src/lib/weekday-consistency';
 import type { ValidationResult } from '../src/lib/schema';
 import * as fs from 'fs';
 import * as path from 'path';
+
+/**
+ * reshare activity id -> the activity id it reshared, read off the raw archive.
+ * harvestapi puts the reshared post under `repost`, so a reshare record knows
+ * its original even when the two were pulled in different scans.
+ */
+function reshareMap(): Map<string, string> {
+  const out = new Map<string, string>();
+  const dir = path.join(process.cwd(), 'data', 'archive', 'linkedin-raw');
+  if (!fs.existsSync(dir)) return out;
+  for (const name of fs.readdirSync(dir)) {
+    if (!name.endsWith('.json')) continue;
+    let rows: unknown;
+    try {
+      rows = JSON.parse(fs.readFileSync(path.join(dir, name), 'utf8'));
+    } catch {
+      continue;
+    }
+    const items = Array.isArray(rows) ? rows : ((rows as { items?: unknown[] })?.items ?? []);
+    for (const r of items as Array<Record<string, unknown>>) {
+      if (!r || typeof r !== 'object') continue;
+      const repost = r.repost as { linkedinUrl?: string } | null | undefined;
+      const mine = activityId(String(r.linkedinUrl ?? r.url ?? ''));
+      const theirs = repost ? activityId(String(repost.linkedinUrl ?? '')) : null;
+      if (mine && theirs && mine !== theirs) out.set(mine, theirs);
+    }
+  }
+  return out;
+}
 
 // Read PNG/JPEG dimensions from file header without external deps.
 function readImageDimensions(filePath: string): { width: number; height: number } | null {
@@ -381,6 +410,47 @@ if (isMainModule) {
         `duplicate source_url shared with the same type: ${g.url}`,
         `also in: ${others}`,
         'Merge them, or correct the mis-sourced one. If the URL is genuinely a shared canonical page, add it to SHARED_CANONICAL_URLS in src/lib/source-url-integrity.ts.',
+      ],
+    });
+  }
+
+  // A reshare is not a second source. The raw archive records what a post
+  // reshared under `repost.linkedinUrl`; resolve through it so an entry built on
+  // the reshare collides with the entry built on the original.
+  const reshares = reshareMap();
+  // Report coverage, not just failures. A guard that reads a data file can pass
+  // vacuously when the file moves or the actor renames a field, and silence is
+  // indistinguishable from a clean run — the lesson of the quote gate sitting at
+  // 2.9% coverage while exiting 0. An empty map with a populated archive is the
+  // only shape that can't be a true negative, so it fails rather than prints.
+  const rawDir = path.join(process.cwd(), 'data', 'archive', 'linkedin-raw');
+  const rawCount = fs.existsSync(rawDir)
+    ? fs.readdirSync(rawDir).filter((f) => f.endsWith('.json')).length
+    : 0;
+  if (rawCount > 0 && reshares.size === 0) {
+    failures.push({
+      file: 'data/archive/linkedin-raw',
+      errors: [
+        `reshare index is empty across ${rawCount} raw archive file(s)`,
+        'The reshare duplicate check cannot fire. Has `repost.linkedinUrl` been renamed by the actor, or the archive moved?',
+      ],
+    });
+  }
+  console.log(`Reshare index: ${reshares.size} pair(s) from ${rawCount} raw archive file(s).`);
+  const reshareGroups = findReshareDuplicates(
+    allEntries.map((e) => ({
+      file: e.file,
+      source_url: (e as { source_url?: string }).source_url,
+      source_urls: (e as { source_urls?: Array<{ url?: string }> }).source_urls,
+    })),
+    reshares
+  );
+  for (const g of reshareGroups) {
+    failures.push({
+      file: g.files[1],
+      errors: [
+        `source is a reshare of the source already cited by ${g.files[0]}: ${g.url}`,
+        'One piece of writing, one entry. Fold the reshare into the existing entry as a source_urls item.',
       ],
     });
   }
