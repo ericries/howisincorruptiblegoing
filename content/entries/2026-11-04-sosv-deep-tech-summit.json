@@ -2,8 +2,8 @@
   "id": "2026-11-04-sosv-deep-tech-summit",
   "date": "2026-11-04",
   "type": "event",
-  "title": "SOSV Deep Tech Summit — Eric Ries and Steve Blank on how AI is changing the way startups are built",
-  "summary": "SOSV's Deep Tech Summit runs free and virtual from 4 to 6 November, with 100 speakers across climate tech, human health and AI for the physical world. Eric appears alongside Steve Blank, who launched his Lean LaunchPad methodology at Stanford 15 years ago and has since rebuilt it around AI.",
+  "title": "SOSV Deep Tech Summit — Eric Ries interviews Steve Blank on how AI forced him to rebuild the Lean LaunchPad",
+  "summary": "SOSV's Deep Tech Summit ran free and virtual from 4 to 6 November, with 100 speakers across climate tech, human health and AI for the physical world. Eric interviewed Steve Blank about rebuilding the Lean LaunchPad course he launched at Stanford 15 years ago, after AI made a polished prototype the easy part.",
   "blockquote": "Steve will be joining our 𝐒𝐎𝐒𝐕 𝐃𝐞𝐞𝐩 𝐓𝐞𝐜𝐡 𝐒𝐮𝐦𝐦𝐢𝐭 (Nov. 4-6) to discuss startups in the new AI era, alongside Eric Ries, author of The Lean Startup and Incorruptible.",
   "blockquote_source": "SOSV on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/sosv_steve-blank-launched-his-lean-launchpad-activity-7513236843467956224-7zFe",
@@ -15,16 +15,19 @@
     {
       "url": "https://www.linkedin.com/posts/steveblank_steve-blank-launched-his-lean-launchpad-activity-7514006291585966080-J5F0",
       "label": "Steve Blank: 'Looking forward to this fireside chat with Eric Ries'"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=YM20ef5hnew",
+      "label": "The session recording on SOSV's channel (36:47) — 'Who better to interview Blank about the upheaval than Eric Ries'"
     }
   ],
-  "video_url": null,
+  "video_url": "https://www.youtube.com/watch?v=YM20ef5hnew",
   "image": "/images/events/sosv-deep-tech-summit-2026.jpg",
   "attribution": "SOSV Deep Tech Summit",
-  "attribution_title": "Free and virtual · November 4–6, 2026 · with Steve Blank",
+  "attribution_title": "Free and virtual · November 4–6, 2026 · Eric in conversation with Steve Blank",
   "attribution_image": null,
   "tags": [
     "event",
-    "upcoming",
     "virtual",
     "sosv",
     "steve-blank",
@@ -32,7 +35,7 @@
     "ai"
   ],
   "type_metadata": {
-    "audience": "SOSV Deep Tech Summit — 100 speakers, 5,000+ attendees expected; free and virtual",
+    "audience": "SOSV Deep Tech Summit — 100 speakers; free and virtual. The session recording is on SOSV's YouTube channel, 4,510 subscribers.",
     "co_speakers": [
       "Steve Blank"
     ]

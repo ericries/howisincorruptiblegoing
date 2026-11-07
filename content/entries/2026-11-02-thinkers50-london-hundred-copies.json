@@ -7,7 +7,12 @@
   "blockquote": "And it seems that copies of 'Incorruptible' by Eric Ries were a very hot ticket. We sent 100 copies but most were gone by 10am!",
   "blockquote_source": "Matt James, Penguin Life, on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/matt-james-_a-great-day-at-the-thinkers50-london-summit-activity-7523047748330307584-iF63",
-  "source_urls": null,
+  "source_urls": [
+    {
+      "url": "https://www.linkedin.com/posts/drgarycrotaz_newbooks-thinkers50-theunlockmoment-activity-7524886950764277762-fxJD",
+      "label": "Dr Gary Crotaz, launching his own book at the Summit, lists Incorruptible in the pile he carried home"
+    }
+  ],
   "video_url": null,
   "image": "/images/cards/2026-11-02-thinkers50-london-hundred-copies.png",
   "attribution": "Matt James",

@@ -74,12 +74,23 @@ def _save(path: Path, data) -> None:
 
 
 def _parse(ts: str) -> _dt.datetime | None:
+    """Parse a timestamp to an AWARE datetime, assuming UTC when none is given.
+
+    Every timestamp this module writes carries a trailing Z, so a naive input is
+    a caller typing `datetime.now().isoformat()` — which is the obvious thing to
+    type and used to raise TypeError inside choose_posted_limit's subtraction,
+    taking the whole scan down before a single pull was launched. A function
+    whose job is to self-heal after a missed cycle must not be what ends one.
+    """
     if not ts:
         return None
     try:
-        return _dt.datetime.fromisoformat(str(ts).replace("Z", "+00:00"))
+        parsed = _dt.datetime.fromisoformat(str(ts).replace("Z", "+00:00"))
     except ValueError:
         return None
+    if parsed.tzinfo is None:
+        return parsed.replace(tzinfo=_dt.UTC)
+    return parsed
 
 
 # --- self-healing window -----------------------------------------------------------

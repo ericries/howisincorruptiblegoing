@@ -254,3 +254,31 @@ def test_ack_records_why_so_the_history_is_auditable(tmp_path):
     assert rec["source"] == "mentions"
     assert rec["date"] == "2026-10-12"
     assert "catch-up" in rec["note"]
+
+
+def test_naive_now_does_not_abort_the_cycle():
+    """A naive `now` must not raise. Every watermark on disk is UTC-aware
+    (written with a trailing Z), so `datetime.now().isoformat()` — the obvious
+    thing for a caller to type — used to raise TypeError inside the subtraction
+    and take the whole scan down before a single pull was launched. It cost a
+    retry on 2026-11-07. A function whose entire job is self-healing after a
+    missed cycle must not be the thing that ends one.
+    """
+    aware = "2026-11-06T17:50:00Z"
+    naive = "2026-11-07T17:37:31"  # same instant, no offset
+    assert choose_posted_limit(aware, naive) == "24h"
+
+
+def test_naive_and_aware_agree_on_the_same_instant():
+    assert choose_posted_limit(
+        "2026-11-01T00:00:00Z", "2026-11-07T00:00:00"
+    ) == choose_posted_limit(
+        "2026-11-01T00:00:00Z", "2026-11-07T00:00:00Z"
+    )
+
+
+def test_a_naive_watermark_against_an_aware_now_also_holds():
+    """The mirror case: an older watermark written before the Z suffix existed."""
+    assert choose_posted_limit(
+        "2026-11-06T17:50:00", "2026-11-07T17:37:31Z"
+    ) == "24h"
