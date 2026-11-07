@@ -126,6 +126,51 @@ export function excludeRetired(candidates: Candidate[], everFeatured: Set<string
  * Ways the flagged set and the rendered rail can disagree. Each one renders as
  * a silently short rail, because index.astro filters and then slices.
  */
+/**
+ * The order the report prints candidates in: newest first, every one of them.
+ *
+ * It used to sort by pass-over count descending, drop anything at zero, and
+ * slice to twelve — which hid the nine newest candidates on 2026-11-06,
+ * Thinkers50 among them, on the night it was the right pick. Sorting by count
+ * puts a fresh entry last by definition, and the prompt is explicit that the
+ * count is a prompt to re-derive a reason, never a ranking. So the count is an
+ * annotation here, not the sort key, and nothing is cut.
+ */
+/**
+ * `null` when the candidate listing accounts for every standalone entry in the
+ * window; otherwise the discrepancy, in words.
+ *
+ * Every standalone entry in the window is either on the rail, retired from it,
+ * or a candidate — there is no fourth bucket. If the listing does not satisfy
+ * that, rows were dropped on the way to the page, and nothing else about the
+ * report would show it.
+ */
+export function candidateReconciliation(n: {
+  standalone: number;
+  featured: number;
+  retired: number;
+  shown: number;
+}): string | null {
+  const expected = n.standalone - n.featured - n.retired;
+  if (expected === n.shown) return null;
+  const verb = n.shown < expected ? 'missing' : 'surplus';
+  return (
+    `candidate listing does not reconcile: ${n.standalone} standalone ` +
+    `− ${n.featured} featured − ${n.retired} retired = ${expected}, ` +
+    `but ${n.shown} shown (${Math.abs(expected - n.shown)} ${verb})`
+  );
+}
+
+export function rankForReport(
+  candidates: Candidate[],
+  counts: Record<string, number>
+): Candidate[] {
+  void counts;
+  return [...candidates].sort(
+    (a, b) => b.available.localeCompare(a.available) || a.id.localeCompare(b.id)
+  );
+}
+
 export function railInvariantProblems(entries: EntryLike[]): string[] {
   const flagged = entries.filter(isFeatured);
   const problems: string[] = [];
@@ -248,14 +293,30 @@ function main(): void {
 
   const live = excludeRetired(candidates, everFeatured);
   const counts = passOverCounts(live, changes);
-  const ranked = live
-    .filter((c) => counts[c.id] > 0)
-    .sort((a, b) => counts[b.id] - counts[a.id] || a.available.localeCompare(b.available));
+  const ranked = rankForReport(live, counts);
 
-  console.log('\nPASSED OVER — un-featured standalone candidates, by recorded rail changes since available');
-  for (const c of ranked.slice(0, 12)) {
+  const standaloneInWindow = entries.filter(
+    (e) => e.date >= since && STANDALONE.has(e.type) && !isSelfAmplification(e as never)
+  ).length;
+  const discrepancy = candidateReconciliation({
+    standalone: standaloneInWindow,
+    featured: entries.filter((e) => isFeatured(e) && e.date >= since).length,
+    retired: candidates.length - live.length,
+    shown: ranked.length,
+  });
+  if (discrepancy) {
+    console.log(`\nCANDIDATE LISTING ✗  ${discrepancy}`);
+    process.exitCode = 1;
+  }
+
+  console.log(
+    `\nCANDIDATES — ${ranked.length} un-featured standalone entries, newest first.` +
+      '\n(N× = recorded rail changes that have passed it over since it became available)'
+  );
+  for (const c of ranked) {
     const e = entries.find((x) => x.id === c.id)!;
-    console.log(`  ${String(counts[c.id]).padStart(2)}×  ${e.type.padEnd(11)} ${c.id}`);
+    const n = counts[c.id] ?? 0;
+    console.log(`  ${e.date}  ${String(n).padStart(2)}×  ${e.type.padEnd(11)} ${c.id}`);
   }
   console.log(
     '\nA count is changes recorded in git, not nights the job ran; a quiet night\n' +

@@ -2,7 +2,7 @@
   "id": "2026-11-02-thinkers50-london-hundred-copies",
   "date": "2026-11-02",
   "type": "media",
-  "title": "Penguin sent 100 copies to the Thinkers50 London Summit \u2014 'most were gone by 10am'",
+  "title": "Penguin sent 100 copies to the Thinkers50 London Summit — 'most were gone by 10am'",
   "summary": "James is the senior commissioning editor at Penguin Life who acquired the UK edition. He reported from the Thinkers50 London Summit at the Guildhall, where Jesper Brodin and Erin Meyer also spoke, that the copies Penguin sent ran out within the first two hours.",
   "blockquote": "And it seems that copies of 'Incorruptible' by Eric Ries were a very hot ticket. We sent 100 copies but most were gone by 10am!",
   "blockquote_source": "Matt James, Penguin Life, on LinkedIn",
@@ -20,7 +20,9 @@
     "uk",
     "thinkers50"
   ],
-  "type_metadata": {},
+  "type_metadata": {
+    "featured": true
+  },
   "scanner_source": "social-scan",
   "verified": true,
   "created_at": "2026-11-02T17:40:08Z"

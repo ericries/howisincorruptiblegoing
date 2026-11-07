@@ -4,6 +4,8 @@ import {
   composition,
   passOverCounts,
   railInvariantProblems,
+  rankForReport,
+  candidateReconciliation,
   RAIL_SIZE,
 } from '../scripts/sidebar-state';
 
@@ -183,5 +185,80 @@ describe('when a candidate became available to the rail', () => {
   it('falls back to the entry date when the ship day is unknown', () => {
     expect(availableFrom({ id: 'x', date: '2026-10-05' }, '2026-10-01', '2026-11-01'))
       .toBe('2026-10-05');
+  });
+});
+
+/**
+ * On 2026-11-06 the report's candidate list showed twelve rows, the oldest
+ * entry on it dated 2026-10-29, and nine un-featured standalone entries newer
+ * than that did not appear at all — including the Thinkers50 London Summit
+ * entry that took the slot SOSV vacated that night. Two filters combined to do
+ * it: `counts[id] > 0` dropped anything no recorded rail change had yet passed
+ * over, and `slice(0, 12)` on a list sorted by count descending cut from the
+ * fresh end. A report built so the rail could not go stale was hiding the
+ * newest candidates by construction.
+ *
+ * So: every candidate, newest first, count as annotation — which is what the
+ * prompt already says the count is.
+ */
+describe('rankForReport', () => {
+  const cands = [
+    { id: '2026-11-02-thinkers50', available: '2026-11-02' },
+    { id: '2026-10-05-amazon-1', available: '2026-10-05' },
+    { id: '2026-11-05-wgbt', available: '2026-11-05' },
+  ];
+  const counts = { '2026-11-02-thinkers50': 2, '2026-10-05-amazon-1': 18, '2026-11-05-wgbt': 0 };
+
+  it('keeps a candidate no rail change has passed over yet', () => {
+    expect(rankForReport(cands, counts).map((c) => c.id)).toContain('2026-11-05-wgbt');
+  });
+
+  it('returns every candidate, with nothing truncated', () => {
+    expect(rankForReport(cands, counts)).toHaveLength(3);
+  });
+
+  it('orders newest first, not by pass-over count', () => {
+    expect(rankForReport(cands, counts).map((c) => c.id)).toEqual([
+      '2026-11-05-wgbt',
+      '2026-11-02-thinkers50',
+      '2026-10-05-amazon-1',
+    ]);
+  });
+
+  it('breaks a date tie on id so the order is stable run to run', () => {
+    const tied = [
+      { id: '2026-11-02-zzz', available: '2026-11-02' },
+      { id: '2026-11-02-aaa', available: '2026-11-02' },
+    ];
+    expect(rankForReport(tied, { '2026-11-02-zzz': 1, '2026-11-02-aaa': 1 }).map((c) => c.id)).toEqual([
+      '2026-11-02-aaa',
+      '2026-11-02-zzz',
+    ]);
+  });
+});
+
+/**
+ * A report that omits a candidate produces no symptom. On 2026-11-06 the rail
+ * was full, the invariant passed, and nine candidates were missing from the
+ * listing — visible only by enumerating the entries independently, which is the
+ * work the report exists to replace. So the report states its own arithmetic and
+ * fails when the parts do not add up, the same way the quote gate had to start
+ * reporting coverage rather than only failures.
+ */
+describe('candidateReconciliation', () => {
+  it('reconciles when every standalone entry is accounted for', () => {
+    expect(
+      candidateReconciliation({ standalone: 38, featured: 8, retired: 17, shown: 13 })
+    ).toBeNull();
+  });
+
+  it('reports the shortfall when candidates went missing', () => {
+    const problem = candidateReconciliation({ standalone: 38, featured: 8, retired: 17, shown: 4 });
+    expect(problem).toMatch(/9/);
+    expect(problem).toMatch(/13/);
+  });
+
+  it('reports a surplus too — a double-counted candidate is just as wrong', () => {
+    expect(candidateReconciliation({ standalone: 38, featured: 8, retired: 17, shown: 20 })).toBeTruthy();
   });
 });
