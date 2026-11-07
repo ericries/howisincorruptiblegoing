@@ -145,7 +145,9 @@ HTTP fetch with text extraction, 185 LinkedIn posts via
 `apimaestro/linkedin-post-detail` for about $0.93. **Coverage went from 163 to
 385 of 871 entries (18.7% -> 44.2%).**
 
-486 entries still have none. 81 are genuinely unrecoverable and `--plan` names
+469 entries still have none (486 at the time of writing; new entries ship with a
+capture, which is the only thing that moves the number). 81 are genuinely
+unrecoverable and `--plan` names
 each reason: incorruptible.co publishes 4 of its 55 blurbs, Amazon/Forbes/
 USAToday return 403 to anonymous clients, NYT/FT are paywalled. The rest —
 YouTube transcripts, X, TikTok, the remaining ~135 LinkedIn posts — are
@@ -154,8 +156,20 @@ tractable on the same routes and left for a later pass. **Open.**
 **And the backfill found what the checker was built for: 14 composited
 blockquotes**, built from real source spans in source order with the joins
 invisible. `scripts/repair_elisions.py` marked each cut with an ellipsis, but
-only where every segment is verbatim and in order; 33 remain that fragment past
-the safety limits and need a person. **Open.**
+only where every segment is verbatim and in order; 16 remain that fragment past
+the safety limits and need a person — 33 until the 2026-11-01 triage found a
+third of them were the checker rather than the entries. **Open.**
+
+**A third number nobody was counting: 112 of the 445 checkable entries match
+only after NORMALISATION.** The gate folds quote style, dash style, Unicode bold
+and whitespace before comparing, so these pass — but a quarter of everything we
+can check is not byte-exact against its source, against a standard that says
+blockquotes must be. One was found by hand on 2026-11-06: the SOSV blockquote had
+a plain space where LinkedIn's markup has U+00A0, reported as `normalised` and
+fixed to exact. The count has been printing on every run since the gate was
+built and has never been part of this backlog, because the backlog was defined as
+failures plus no-captures. Whether 112 is worth a pass is Eric's call — it is
+reported to him rather than silently absorbed. **Open.**
 
 The `verified` field is now vestigial: required by both validators and the TS
 type, written only as `false`, read by nothing. Removing it touches 871 entries
