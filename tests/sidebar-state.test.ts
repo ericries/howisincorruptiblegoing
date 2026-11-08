@@ -6,6 +6,7 @@ import {
   railInvariantProblems,
   rankForReport,
   candidateReconciliation,
+  isWithinCurationWindow,
   RAIL_SIZE,
 } from '../scripts/sidebar-state';
 
@@ -260,5 +261,36 @@ describe('candidateReconciliation', () => {
 
   it('reports a surplus too — a double-counted candidate is just as wrong', () => {
     expect(candidateReconciliation({ standalone: 38, featured: 8, retired: 17, shown: 20 })).toBeTruthy();
+  });
+});
+
+/**
+ * The job's own scope is "the past 30 days of content/entries/", but the
+ * candidate listing is built from `since` (1 October, the rail-history window),
+ * so it offers entries the job may not promote. On 2026-11-07 the two highest
+ * pass-over counts on the list — Amazon #1 Startups at 19× (2026-10-05, 33 days)
+ * and Worthy for Thirty at 15× (2026-10-07, 31 days) — had simply aged out, and
+ * a high count is the most eye-catching thing on the row.
+ *
+ * They are MARKED rather than removed. Hiding a candidate is the mistake the
+ * 11-06 fix was about, and the reconciliation counts them; the curator needs to
+ * see that the count is an artifact of age, not a stated objection re-applied.
+ */
+describe('isWithinCurationWindow', () => {
+  it('admits an entry inside the 30-day window', () => {
+    expect(isWithinCurationWindow('2026-10-17', '2026-11-07')).toBe(true);
+  });
+
+  it('rejects the two that had aged out on 2026-11-07', () => {
+    expect(isWithinCurationWindow('2026-10-05', '2026-11-07')).toBe(false);
+    expect(isWithinCurationWindow('2026-10-07', '2026-11-07')).toBe(false);
+  });
+
+  it('treats exactly 30 days as still inside', () => {
+    expect(isWithinCurationWindow('2026-10-08', '2026-11-07')).toBe(true);
+  });
+
+  it('admits a future-dated entry — a forward-looking slot has not aged out', () => {
+    expect(isWithinCurationWindow('2026-11-25', '2026-11-07')).toBe(true);
   });
 });

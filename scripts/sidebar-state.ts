@@ -145,6 +145,30 @@ export function excludeRetired(candidates: Candidate[], everFeatured: Set<string
  * that, rows were dropped on the way to the page, and nothing else about the
  * report would show it.
  */
+/** The job curates "the past 30 days of content/entries/". */
+export const CURATION_WINDOW_DAYS = 30;
+
+/**
+ * Whether an entry is still promotable by date.
+ *
+ * The candidate listing is built from `since` — the rail-HISTORY window, 1
+ * October — which is a longer reach than the job's own 30-day curation scope.
+ * So the list offers entries that may not be promoted, and because pass-over
+ * counts only ever climb, the aged-out ones drift to the top of the count
+ * column: on 2026-11-07 the two highest, 19x and 15x, were both simply too old.
+ *
+ * A future date is inside the window — a forward-looking slot has not aged out.
+ */
+export function isWithinCurationWindow(
+  date: string,
+  today: string,
+  days: number = CURATION_WINDOW_DAYS
+): boolean {
+  const ms = Date.parse(`${today}T00:00:00Z`) - Date.parse(`${date}T00:00:00Z`);
+  if (Number.isNaN(ms)) return true; // unparseable: do not hide it on a guess
+  return ms / 86_400_000 <= days;
+}
+
 export function candidateReconciliation(n: {
   standalone: number;
   featured: number;
@@ -313,10 +337,21 @@ function main(): void {
     `\nCANDIDATES — ${ranked.length} un-featured standalone entries, newest first.` +
       '\n(N× = recorded rail changes that have passed it over since it became available)'
   );
+  let agedOut = 0;
   for (const c of ranked) {
     const e = entries.find((x) => x.id === c.id)!;
     const n = counts[c.id] ?? 0;
-    console.log(`  ${e.date}  ${String(n).padStart(2)}×  ${e.type.padEnd(11)} ${c.id}`);
+    const stale = !isWithinCurationWindow(e.date, today);
+    if (stale) agedOut++;
+    const mark = stale ? '  — outside the 30-day window, not promotable' : '';
+    console.log(`  ${e.date}  ${String(n).padStart(2)}×  ${e.type.padEnd(11)} ${c.id}${mark}`);
+  }
+  if (agedOut) {
+    console.log(
+      `\n  ${agedOut} candidate(s) above have aged out of the 30-day curation window.` +
+        '\n  Their pass-over counts keep climbing and mean nothing; they are listed,' +
+        '\n  not hidden, so the reconciliation still balances.'
+    );
   }
   console.log(
     '\nA count is changes recorded in git, not nights the job ran; a quiet night\n' +
