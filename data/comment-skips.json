@@ -3033,5 +3033,30 @@
     "identifier": "comment:7523898195370786817",
     "reason": "congratulation or emoji, no claim",
     "skipped_at": "2026-11-06T19:21:43Z"
+  },
+  {
+    "identifier": "tweet:2119080454397551060",
+    "reason": "bare link share, no words of their own",
+    "skipped_at": "2026-11-08T02:35:51Z"
+  },
+  {
+    "identifier": "tweet:2119079501434900857",
+    "reason": "Portuguese recap of Eric's SOSV session with Steve Blank, not the poster's own claim about the book",
+    "skipped_at": "2026-11-08T02:35:51Z"
+  },
+  {
+    "identifier": "activity:7524886950764277762",
+    "reason": "Thinkers50 reading list; the one superlative is about the pile of books, not about Incorruptible",
+    "skipped_at": "2026-11-08T02:35:51Z"
+  },
+  {
+    "identifier": "activity:7524824388723085312",
+    "reason": "praise aimed at a story Eric told, not at the book or the talk",
+    "skipped_at": "2026-11-08T02:35:51Z"
+  },
+  {
+    "identifier": "activity:7524865417471856640",
+    "reason": "PM reading list pivoting to self-promotion; the book is named without comment",
+    "skipped_at": "2026-11-08T02:35:51Z"
   }
 ]
