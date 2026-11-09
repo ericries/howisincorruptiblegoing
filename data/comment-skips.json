@@ -3058,5 +3058,10 @@
     "identifier": "activity:7524865417471856640",
     "reason": "PM reading list pivoting to self-promotion; the book is named without comment",
     "skipped_at": "2026-11-08T02:35:51Z"
+  },
+  {
+    "identifier": "tweet:2119467746781954527",
+    "reason": "newsletter issue title plus a bare @-tag; no words of his own about the book",
+    "skipped_at": "2026-11-09T02:38:41Z"
   }
 ]
