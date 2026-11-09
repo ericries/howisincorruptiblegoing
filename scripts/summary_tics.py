@@ -174,7 +174,13 @@ def check(summary: str, blockquote: str | None = None,
                 "half you don't.", m.group(0).strip()))
             break
 
-    m = _RELATIVE_TIME.search(unquoted)
+    # "Tomorrow's Company" is an organisation Mark Goyder founded in 1996, not a
+    # relative time word, and on 2026-11-09 this rule failed a summary for naming
+    # it. A gate that cannot tell a proper noun from a time word pushes the writer
+    # to mangle the name to satisfy it. Possessive-capitalised use is a name.
+    _PROPER = re.compile(r"\b(?:Tomorrow|Yesterday)'s\s+[A-Z]")
+    scanned = _PROPER.sub("", unquoted)
+    m = _RELATIVE_TIME.search(scanned)
     if m:
         out.append(Finding(
             "relative-time", "fail",

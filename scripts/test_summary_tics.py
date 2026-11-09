@@ -268,3 +268,20 @@ def test_a_relative_time_word_inside_a_quote_is_the_speaker_s():
 def test_will_reporting_a_claim_is_not_a_relative_time_word():
     """'the book will change how founders think' is a reported claim, not a date."""
     assert "relative-time" not in fails("He says the book will change how founders think.")
+
+
+def test_tomorrows_company_is_a_proper_noun_not_a_relative_time():
+    """On 2026-11-09 the Drucker Forum summary was failed for the word
+    "Tomorrow" — in "Tomorrow's Company", the organisation Mark Goyder founded
+    in 1996. A gate that cannot tell a company name from a relative-time word
+    pushes the writer to mangle a proper noun to satisfy it, which is the gate
+    making the entry worse. Possessive-capitalised use is a name.
+    """
+    s = ("Goyder founded Tomorrow's Company in 1996 after Charles Handy sent him "
+         "to the RSA, then turned to the book for how governance holds a mission.")
+    assert [f for f in st.check(s) if f.rule == "relative-time"] == []
+
+
+def test_a_real_relative_time_word_still_fails():
+    s = "He recently read the book and will speak about it tomorrow."
+    assert [f for f in st.check(s) if f.rule == "relative-time"]
