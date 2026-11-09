@@ -428,3 +428,37 @@ def test_quotes_the_book_defaults_to_false_when_the_verdict_is_silent(tmp_path, 
     }]))
     assert asc._apply_verdicts_mode(vp) == 0
     assert json.loads(next(tmp_path.glob("2*.json")).read_text())[-1]["quotes_the_book"] is False
+
+
+def test_apply_verdicts_refuses_a_pull_quote_that_is_not_verbatim(tmp_path, monkeypatch):
+    """The prompt has said since October that "a one-line `assert pq in text` in
+    the verdict-writing script makes this impossible to get wrong" — but that
+    script is a scratch file written fresh each cycle, so it is a habit, not a
+    mechanism. On 2026-11-09 the habit held in the scratch script and the apply
+    ran anyway, writing a quote with a curly apostrophe the source spells
+    straight. An audit then found 16 older records the same way: spans lifted and
+    tidied with a capital letter or a full stop the writer never used. The tool
+    refuses them now.
+    """
+
+    v = [{"identifier": "comment:1", "decision": "keep",
+          "text": "He said it starts in a company's genesis.",
+          "pull_quote": "it starts in a company’s genesis.",   # curly, source is straight
+          "author": {"name": "T"}, "permalink": "x", "kind": "comment"}]
+    p = tmp_path / "v.json"
+    p.write_text(json.dumps(v))
+    monkeypatch.setattr(asc, "ARCHIVE_DIR", tmp_path)
+    rc = asc._apply_verdicts_mode(p)
+    assert rc != 0, "a non-verbatim pull_quote must fail the apply"
+
+
+def test_apply_verdicts_accepts_a_verbatim_pull_quote(tmp_path, monkeypatch):
+
+    v = [{"identifier": "comment:2", "decision": "keep",
+          "text": "He said it starts in a company's genesis.",
+          "pull_quote": "it starts in a company's genesis.",
+          "author": {"name": "T"}, "permalink": "x", "kind": "comment"}]
+    p = tmp_path / "v.json"
+    p.write_text(json.dumps(v))
+    monkeypatch.setattr(asc, "ARCHIVE_DIR", tmp_path)
+    assert asc._apply_verdicts_mode(p) == 0

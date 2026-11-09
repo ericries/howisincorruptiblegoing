@@ -420,6 +420,29 @@ def _apply_verdicts_mode(verdicts_path: Path) -> int:
         print("verdicts JSON must be a list", file=sys.stderr)
         return 2
 
+    # A pull_quote that is not a substring of its own text is a quote the person
+    # did not write. The prompt has said since October that an assert in the
+    # verdict-writing script makes this impossible — but that script is a scratch
+    # file rewritten every cycle, so it was a habit, not a mechanism. On
+    # 2026-11-09 the habit held and the apply ran anyway (a curly apostrophe
+    # against a straight one), and an audit then found 16 older records the same
+    # way: spans lifted and tidied with a capital or a full stop the writer never
+    # used. Refuse the whole file rather than write a partial batch.
+    nonverbatim = [
+        (v.get("identifier"), v.get("pull_quote"))
+        for v in verdicts
+        if v.get("decision") != "skip"
+        and (v.get("pull_quote") or "").strip()
+        and (v.get("pull_quote") or "").strip() not in (v.get("text") or "")
+    ]
+    if nonverbatim:
+        for ident, pq in nonverbatim:
+            print(f"NOT VERBATIM {ident}: {pq!r} is not a substring of its own text",
+                  file=sys.stderr)
+        print(f"Refusing all {len(verdicts)} verdict(s). Slice the span out of the "
+              f"text by index rather than retyping it.", file=sys.stderr)
+        return 1
+
     known_urls = _load_known_source_urls()
     known_names = _load_known_author_names()
     seen_identifiers = _load_seen_identifiers()

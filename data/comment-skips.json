@@ -3063,5 +3063,310 @@
     "identifier": "tweet:2119467746781954527",
     "reason": "newsletter issue title plus a bare @-tag; no words of his own about the book",
     "skipped_at": "2026-11-09T02:38:41Z"
+  },
+  {
+    "identifier": "comment:7525620842353836032",
+    "reason": "Eric's own comment, a link to our own site",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "activity:7525618427034546176",
+    "reason": "Eric's own post",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7525277859158851584",
+    "reason": "generic moralising; frames corruption as ethical decay, which is the opposite of the book's structural claim",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7525272290767429633",
+    "reason": "Eric's own comment, a link to our own site",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7525599305341038592",
+    "reason": "AI-slop: fluent generality with no specific claim",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "activity:7525272288724811776",
+    "reason": "Eric's own post",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7525025255837425664",
+    "reason": "praise for how someone looks in a photo",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7525208242981969920",
+    "reason": "praise aimed at Springer rather than the book",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7525236155357900800",
+    "reason": "praise aimed at Springer's company",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524957638196015104",
+    "reason": "AI-slop: fluent generality with no specific claim",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524897382119940096",
+    "reason": "Eric's own comment, a link to our own site",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "activity:7524897380324995073",
+    "reason": "Eric's own post",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524814324155039744",
+    "reason": "lukewarm interest, and the sentence is unfinished",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7525571622922072064",
+    "reason": "a question about B Corp versus PBC",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524762138628767744",
+    "reason": "thanks for an invitation",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524618986559275009",
+    "reason": "tagging friends, no content",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524638207947300864",
+    "reason": "purchase note",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "activity:7524616456408481793",
+    "reason": "already a source_url on the Janice Fraser entry",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524554093810315264",
+    "reason": "opens on the slop signature and the middle sentence garbles financial gravity",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7525132412758994944",
+    "reason": "event hype",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524560387904598016",
+    "reason": "event hype",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524564771296272384",
+    "reason": "event hype",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7525113007677489152",
+    "reason": "event hype",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524554076987162624",
+    "reason": "event hype",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7525100606357889024",
+    "reason": "a question - what is a public benefit corporation",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524893985723682816",
+    "reason": "about the investor relationship, not the book",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7525617345587920896",
+    "reason": "excitement, no content",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524897363438661632",
+    "reason": "promotional DM about episode promotion",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524552571349475328",
+    "reason": "congratulation on attending Thinkers50",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7525597349729968128",
+    "reason": "congratulation to Grant Canary; the Climate CEOs podcast mention is a lead, not a quote",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7525133216068866048",
+    "reason": "congratulation",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524691699533778944",
+    "reason": "congratulation",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7525156633623162880",
+    "reason": "congratulation",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "activity:7525600395738497024",
+    "reason": "shipped as an entry on 2026-11-09",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7525595974921166848",
+    "reason": "podcast scheduling; a lead rather than a quote",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "activity:7525531012840427520",
+    "reason": "shipped as an entry on 2026-11-09",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "activity:7525554703569698817",
+    "reason": "already a source_url on the Drucker Forum entry",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7525516517283778560",
+    "reason": "tags only",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7525502272949129216",
+    "reason": "thanks for Goyder's own book, not about Incorruptible",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "activity:7525418496743301123",
+    "reason": "shipped as an entry on 2026-11-09",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "activity:7525501768168812545",
+    "reason": "shipped as an entry on 2026-11-09",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "activity:7525482534160248832",
+    "reason": "Extern week-three completion with no company analysis",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7525623088793862144",
+    "reason": "one word, no content",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524933667530493952",
+    "reason": "a URL",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7525015298073055232",
+    "reason": "thanks for raising the issue",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7525353942646448128",
+    "reason": "sharp on disclosure rules but carries no connection to the book's argument",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "activity:7524933398465863680",
+    "reason": "shipped as an entry on 2026-11-07",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7525146281896239104",
+    "reason": "congratulation",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7525085952726290433",
+    "reason": "congratulation",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524942869522993152",
+    "reason": "thanks for inclusion in a book pile",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524925802359009280",
+    "reason": "congratulation",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524889232285376512",
+    "reason": "thanks for inclusion in a book pile",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524894714853097472",
+    "reason": "thanks for inclusion in a book pile",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524888315079229440",
+    "reason": "congratulation",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524896669252055042",
+    "reason": "congratulation",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524561461898149888",
+    "reason": "congratulation",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7525573049463709696",
+    "reason": "host thanking an attendee",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524567808710496256",
+    "reason": "congratulation",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524572745968365569",
+    "reason": "thanks for sharing",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524961536436523008",
+    "reason": "congratulation",
+    "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "comment:7524576948052824064",
+    "reason": "congratulation",
+    "skipped_at": "2026-11-09T19:20:21Z"
   }
 ]
