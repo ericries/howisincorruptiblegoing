@@ -3368,5 +3368,45 @@
     "identifier": "comment:7524576948052824064",
     "reason": "congratulation",
     "skipped_at": "2026-11-09T19:20:21Z"
+  },
+  {
+    "identifier": "tweet:2119761090284302735",
+    "reason": "conversational reply in a thread where Eric is only tagged",
+    "skipped_at": "2026-11-10T02:36:49Z"
+  },
+  {
+    "identifier": "tweet:2119709330727440508",
+    "reason": "newsletter issue title plus a bare @-tag; no words of his own about the book",
+    "skipped_at": "2026-11-10T02:36:49Z"
+  },
+  {
+    "identifier": "tweet:2119707318036148298",
+    "reason": "the same newsletter title reposted by a second account",
+    "skipped_at": "2026-11-10T02:36:49Z"
+  },
+  {
+    "identifier": "tweet:2119632432324571567",
+    "reason": "business conversation about a service provider, Eric only tagged",
+    "skipped_at": "2026-11-10T02:36:49Z"
+  },
+  {
+    "identifier": "tweet:2119632210290753893",
+    "reason": "sales reply, Eric only tagged",
+    "skipped_at": "2026-11-10T02:36:49Z"
+  },
+  {
+    "identifier": "tweet:2119631395207430629",
+    "reason": "business conversation about a waiting list, Eric only tagged",
+    "skipped_at": "2026-11-10T02:36:49Z"
+  },
+  {
+    "identifier": "tweet:2119630879228359086",
+    "reason": "business conversation about accounting providers, Eric only tagged",
+    "skipped_at": "2026-11-10T02:36:49Z"
+  },
+  {
+    "identifier": "tweet:2119629775803482228",
+    "reason": "three words, Eric only tagged",
+    "skipped_at": "2026-11-10T02:36:49Z"
   }
 ]
