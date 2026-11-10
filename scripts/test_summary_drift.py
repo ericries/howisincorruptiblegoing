@@ -13,6 +13,7 @@ title, or the captured source text. New entities are reported for a human.
 
 from __future__ import annotations
 
+import json
 import sys
 from pathlib import Path
 
@@ -173,3 +174,28 @@ def test_a_year_no_source_carries_is_still_reported():
                         old="Matt James announced the UK edition.",
                         entry_date="2026-03-15")
     assert "2019" in got
+
+
+def test_capture_includes_corroborating_sources(tmp_path, monkeypatch):
+    """A second source on the entry is evidence too.
+
+    An entry that gains a corroborating source_url — an organiser's own
+    programme page confirming a workshop first seen in a participant's post —
+    can honestly say more than its one capture carries. Before this, every
+    such upgrade read as invented detail and the only ways past were to cut
+    the fact or to merge two sources into one `full_text`, which is the
+    mis-sourced-capture failure this repo has already paid for once.
+    """
+    monkeypatch.setattr(sd, "CAPTURES", tmp_path)
+    (tmp_path / "e1.json").write_text(json.dumps({
+        "entry_id": "e1",
+        "source_url": "https://example.com/post",
+        "full_text": "Mark opened the workshop.",
+        "corroborating_sources": [
+            {"url": "https://druckerforum.org/2026/pre-events/",
+             "text": "The Maria Theresian Apartment, The Hofburg, Vienna."},
+        ],
+    }))
+    hay = sd.capture_for("e1")
+    assert "Hofburg" in hay
+    assert "Mark opened the workshop." in hay

@@ -189,7 +189,18 @@ def capture_for(entry_id: str) -> str | None:
         d = json.loads(p.read_text())
     except json.JSONDecodeError:
         return None
-    return d.get("full_text") or d.get("text") or None
+    text = d.get("full_text") or d.get("text") or None
+    # An entry can gain a second source after it ships — an organiser's own
+    # programme page confirming a workshop first seen in a participant's post.
+    # That is evidence, so the summary may rest on it; it is kept OUT of
+    # `full_text` because `quote_integrity` checks the blockquote against the
+    # one source it was taken from, and merging two would mis-source it.
+    extra = [str(c.get("text") or "") for c in (d.get("corroborating_sources") or [])
+             if isinstance(c, dict)]
+    extra = [t for t in extra if t.strip()]
+    if not extra:
+        return text
+    return "\n\n".join([t for t in [text, *extra] if t])
 
 
 def check_entry_vs_head(path: Path) -> list[str] | None:
