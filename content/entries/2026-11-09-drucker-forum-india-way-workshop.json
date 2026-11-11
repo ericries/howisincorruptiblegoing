@@ -31,7 +31,8 @@
     "family-business"
   ],
   "type_metadata": {
-    "audience": "38 reactions on LinkedIn"
+    "audience": "38 reactions on LinkedIn",
+    "featured": true
   },
   "scanner_source": "social-scan",
   "verified": false,

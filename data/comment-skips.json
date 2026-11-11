@@ -3408,5 +3408,10 @@
     "identifier": "tweet:2119629775803482228",
     "reason": "three words, Eric only tagged",
     "skipped_at": "2026-11-10T02:36:49Z"
+  },
+  {
+    "identifier": "tweet:2120127085440061932",
+    "reason": "a line he is quoting (attributed to Fractal Quant), not his own",
+    "skipped_at": "2026-11-11T17:04:46Z"
   }
 ]
