@@ -2,12 +2,16 @@
   "id": "2026-10-23-b-academics-teaching-roundtable",
   "date": "2026-10-23",
   "type": "event",
-  "title": "B Academics Teaching Roundtable 2026 — Eric joins the global B Corp educator network's fall gathering",
-  "summary": "B Academics — the global network of educators, researchers, students, and practitioners studying B Lab, B Corp certification, and benefit corporations — hosts its 2026 Teaching Roundtable virtually on Friday October 23 (11 AM–2 PM EDT). Eric joins as a featured speaker. The event brings faculty, students, B Corp representatives, aspiring B corps, and B Lab employees together for the year's flagship teaching-focused convening. Planning committee spans University of Central Oklahoma, University of Maryland, NC State University, and Greater Victoria School District.",
-  "blockquote": "Join us for the B Academics Teaching Roundtable 2026! More details on topics and speakers are coming soon.",
-  "blockquote_source": "B Academics event page",
-  "source_url": "https://bacademics.org/event/teaching-roundtable-2026/",
+  "title": "B Academics Teaching Roundtable 2026 — Eric's keynote brought the network one of its biggest audiences ever",
+  "summary": "B Academics, the global network of educators and researchers studying B Lab, B Corp certification and benefit corporations, held its fifth annual Teaching Roundtable online on Friday 23 October, and says it was its highest attended to date. Eric gave the featured keynote, alongside mini keynotes from LIFT Economy's Ryan Honeyman and B Lab's Erik Kivimaki.",
+  "blockquote": "Our featured keynote speaker, Eric Ries, blew our audience away with a candid discussion on what it takes for an organization #ForGood to become truly #Incorruptible, bringing together one of B Academics’ biggest audiences ever.",
+  "blockquote_source": "B Academics on LinkedIn",
+  "source_url": "https://www.linkedin.com/posts/bacademics_forgood-incorruptible-bacademics-activity-7526006948295651329-3gT4",
   "source_urls": [
+    {
+      "url": "https://bacademics.org/event/teaching-roundtable-2026/",
+      "label": "B Academics — the roundtable's own event page"
+    },
     {
       "url": "https://bacademics.org/",
       "label": "B Academics — global B Corp educator network"
@@ -28,7 +32,6 @@
   "attribution_image": null,
   "tags": [
     "event",
-    "upcoming",
     "virtual",
     "b-academics",
     "b-corp",
