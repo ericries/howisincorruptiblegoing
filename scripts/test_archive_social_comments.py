@@ -462,3 +462,25 @@ def test_apply_verdicts_accepts_a_verbatim_pull_quote(tmp_path, monkeypatch):
     p.write_text(json.dumps(v))
     monkeypatch.setattr(asc, "ARCHIVE_DIR", tmp_path)
     assert asc._apply_verdicts_mode(p) == 0
+
+
+def test_queue_message_counts_what_was_actually_added(tmp_path, monkeypatch, capsys):
+    """"N new candidates added" must mean N, not N-before-dedup.
+
+    On 2026-11-10 the X lane printed "15 new candidates added (1 total
+    pending)" — two numbers that cannot both be true of the same run. Fourteen
+    had been judged on earlier cycles and were correctly dropped, but the
+    message reported the pre-dedup count under the word "added", so the run
+    read as though fourteen candidates had vanished between one clause and the
+    next. A cycle was spent proving nothing was lost. The count has to be of
+    what crossed the boundary, which is the same lesson as `count_by_shape`:
+    a number takes its meaning from what was measured, not from the variable
+    it was nearest.
+    """
+    monkeypatch.setattr(asc, "LLM_QUEUE_PATH", tmp_path / ".llm-queue.json")
+    monkeypatch.setattr(asc, "_skipped_identifiers", lambda: {"a", "b"})
+    asc._persist_queue([{"identifier": "a"}, {"identifier": "b"}, {"identifier": "c"}])
+    out = capsys.readouterr().out
+    assert "1 new candidate" in out, out
+    assert "15 new candidates" not in out
+    assert "(1 total pending)" in out, out

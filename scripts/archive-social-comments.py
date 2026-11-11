@@ -740,11 +740,21 @@ def _persist_queue(llm_queue: list[dict]) -> int:
     # Dedup queue by identifier across both scan sources.
     seen_q = {q.get("identifier") for q in existing_queue if q.get("identifier")}
     seen_q |= _skipped_identifiers()
-    merged_queue = existing_queue + [q for q in llm_queue if q.get("identifier") and q["identifier"] not in seen_q]
+    fresh = [q for q in llm_queue if q.get("identifier") and q["identifier"] not in seen_q]
+    merged_queue = existing_queue + fresh
     LLM_QUEUE_PATH.write_text(json.dumps(merged_queue, indent=2, ensure_ascii=False))
     if merged_queue:
+        # COUNT WHAT CROSSED THE BOUNDARY, not what was offered. This said
+        # len(llm_queue) until 2026-11-11, so a run that built 15 candidates and
+        # admitted 1 printed "15 new candidates added (1 total pending)" — two
+        # numbers that cannot both be true, which cost a cycle proving that the
+        # other fourteen had merely been judged on earlier days. Same lesson as
+        # count_by_shape: a number means what was measured, not what it sat next to.
+        dropped = len(llm_queue) - len(fresh)
+        seen_note = f", {dropped} already judged" if dropped else ""
         print(
-            f"LLM queue: {len(llm_queue)} new candidates added ({len(merged_queue)} total pending). "
+            f"LLM queue: {len(fresh)} new candidate{'' if len(fresh) == 1 else 's'} added"
+            f"{seen_note} ({len(merged_queue)} total pending). "
             f"Claude should now classify {_rel(LLM_QUEUE_PATH)} and re-run with "
             f"--apply-verdicts <path-to-verdicts.json>."
         )
