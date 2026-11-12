@@ -1,0 +1,34 @@
+{
+  "id": "2026-11-11-wesley-knight-recommended-during-interviews",
+  "date": "2026-11-11",
+  "type": "review",
+  "title": "A support engineer was handed the book during his Oxide interviews \u2014 'Incorruptible totally changed my assumptions on how a company could be built'",
+  "summary": "Knight read it on a recommendation made while he was interviewing at Oxide Computer, whose co-founder and CTO Bryan Cantrill picked the book for the Oxide and Friends annual books episode. He has since recommended it to friends of his own.",
+  "blockquote": "Incorruptible totally changed my assumptions on how a company could be built. It gave me faith that the current corporate climate of shareholder primacy can be overcome long term, if we so choose.",
+  "blockquote_source": "Wesley Knight on LinkedIn",
+  "source_url": "https://www.linkedin.com/posts/wesley-knight_bryan-cantrill-co-founder-and-cto-of-oxide-activity-7526400728039493633-1kD3",
+  "source_urls": [
+    {
+      "url": "https://oxide-and-friends.transistor.fm/episodes/books-in-the-box-vi",
+      "label": "Books in the Box VI \u2014 the Oxide and Friends episode where Cantrill picked it"
+    }
+  ],
+  "video_url": null,
+  "image": "/images/cards/2026-11-11-wesley-knight-recommended-during-interviews.png",
+  "attribution": "Wesley Knight",
+  "attribution_title": "Support Engineer, Oxide Computer Company",
+  "attribution_image": null,
+  "tags": [
+    "review",
+    "linkedin",
+    "shareholder-primacy",
+    "oxide",
+    "hiring"
+  ],
+  "type_metadata": {
+    "audience": "7 reactions on LinkedIn"
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-11-12T19:01:08Z"
+}
