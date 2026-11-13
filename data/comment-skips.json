@@ -3918,5 +3918,40 @@
     "identifier": "comment:7525765481480257538",
     "reason": "congratulations on Rand Fishkin's game launch, off-topic",
     "skipped_at": "2026-11-11T19:20:50Z"
+  },
+  {
+    "identifier": "tweet:2120728352822878598",
+    "reason": "name-list promo for a mentoring programme",
+    "skipped_at": "2026-11-13T02:36:27Z"
+  },
+  {
+    "identifier": "tweet:2120630146054902085",
+    "reason": "name-list promo for a mentoring programme",
+    "skipped_at": "2026-11-13T02:36:27Z"
+  },
+  {
+    "identifier": "tweet:2120489858300842259",
+    "reason": "cold outreach to a third party",
+    "skipped_at": "2026-11-13T02:36:27Z"
+  },
+  {
+    "identifier": "tweet:2114772918454653165",
+    "reason": "crypto mint-pass spam",
+    "skipped_at": "2026-11-13T02:36:27Z"
+  },
+  {
+    "identifier": "tweet:2112361972394070487",
+    "reason": "crypto mint-pass spam",
+    "skipped_at": "2026-11-13T02:36:27Z"
+  },
+  {
+    "identifier": "tweet:2112089650785317155",
+    "reason": "conversational reply, no observation",
+    "skipped_at": "2026-11-13T02:36:27Z"
+  },
+  {
+    "identifier": "tweet:2110504330423861453",
+    "reason": "conversational reply in an unrelated thread",
+    "skipped_at": "2026-11-13T02:36:27Z"
   }
 ]
