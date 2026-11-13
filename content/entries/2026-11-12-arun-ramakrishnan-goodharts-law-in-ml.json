@@ -1,0 +1,29 @@
+{
+  "id": "2026-11-12-arun-ramakrishnan-goodharts-law-in-ml",
+  "date": "2026-11-12",
+  "type": "review",
+  "title": "A CTO reads the call-time example as reward hacking \u2014 'a model gets better at the metric it's optimising for without getting better at what we actually care about'",
+  "summary": "Ramakrishnan is building Tenax ai with Elyse Myrans and says the book is what he turned to in thinking about the company it should become. He takes the book's customer-service example, where calls get shorter and service gets worse, through Goodhart's law and into his own field. He borrowed the copy from a UK public library.",
+  "attribution": "Arun Kishore Ramakrishnan",
+  "attribution_title": "CTO and co-founder, Tenax ai",
+  "tags": [
+    "review",
+    "linkedin",
+    "financial-gravity",
+    "metrics",
+    "machine-learning"
+  ],
+  "blockquote": "When a measure becomes a target it stops being a good measure. We see a version of this in machine learning when a model gets better at the metric it\u2019s optimising for without getting better at what we actually care about.",
+  "blockquote_source": "Arun Kishore Ramakrishnan on LinkedIn",
+  "source_url": "https://www.linkedin.com/posts/arun-kishore-ramakrishnan-110ab216_startups-leadership-companybuilding-activity-7526746184338567171-enfo",
+  "source_urls": [],
+  "video_url": null,
+  "image": "/images/cards/2026-11-12-arun-ramakrishnan-goodharts-law-in-ml.png",
+  "attribution_image": "/images/people/arun-ramakrishnan.jpg",
+  "type_metadata": {
+    "audience": "13 reactions on LinkedIn"
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-11-13T17:39:27Z"
+}
