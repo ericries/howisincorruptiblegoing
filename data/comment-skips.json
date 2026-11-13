@@ -3953,5 +3953,365 @@
     "identifier": "tweet:2110504330423861453",
     "reason": "conversational reply in an unrelated thread",
     "skipped_at": "2026-11-13T02:36:27Z"
+  },
+  {
+    "identifier": "activity:7525719526676725761",
+    "reason": "post judged in the content scan",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7527017563533262848",
+    "reason": "conversational reply or thanks, no observation",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7527053911594147841",
+    "reason": "conversational reply or thanks, no observation",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "activity:7526977337750368256",
+    "reason": "post judged in the content scan",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "activity:7527017383794765824",
+    "reason": "post judged in the content scan",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "post:7527037238296363009",
+    "reason": "post judged in the content scan",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "post:7526728209892024320",
+    "reason": "post judged in the content scan",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526986280342224897",
+    "reason": "quotes Eric's own line back, then thanks",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526420642661978112",
+    "reason": "too short to carry an observation",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "post:7526727719150338048",
+    "reason": "post judged in the content scan",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "post:7526727820467929088",
+    "reason": "post judged in the content scan",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526606348877209600",
+    "reason": "conversational reply or thanks, no observation",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "post:7526727244539674624",
+    "reason": "post judged in the content scan",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526967147613417472",
+    "reason": "too short to carry an observation",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526699188349280257",
+    "reason": "conversational reply or thanks, no observation",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "activity:7526699186709282817",
+    "reason": "post judged in the content scan",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "post:7526402319798816768",
+    "reason": "post judged in the content scan",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526990705278365696",
+    "reason": "a copywriting line he is quoting, not making",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526575990790176768",
+    "reason": "AI-slop — 'Spot on.' opener restating the post",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526590795966210048",
+    "reason": "conversational reply or thanks, no observation",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526426219337211904",
+    "reason": "conversational reply or thanks, no observation",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526562590483824640",
+    "reason": "AI-slop — 'Spot on.' opener restating the post",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526387935991062530",
+    "reason": "quoting Eric's phrase back",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "post:7526401919112683522",
+    "reason": "post judged in the content scan",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526385303138373633",
+    "reason": "conversational reply or thanks, no observation",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7527049691713208320",
+    "reason": "congratulations on Rand Fishkin's game launch, off-topic",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526962840268632064",
+    "reason": "congratulations on Rand Fishkin's game launch, off-topic",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526768511889711104",
+    "reason": "congratulations on Rand Fishkin's game launch, off-topic",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526967261845405696",
+    "reason": "congratulations on Rand Fishkin's game launch, off-topic",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526767092608458752",
+    "reason": "conversational reply or thanks, no observation",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526648066687438848",
+    "reason": "congratulations on Rand Fishkin's game launch, off-topic",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526750558091730945",
+    "reason": "congratulations on Rand Fishkin's game launch, off-topic",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526773256310194176",
+    "reason": "congratulations on Rand Fishkin's game launch, off-topic",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526739931314937856",
+    "reason": "congratulations on Rand Fishkin's game launch, off-topic",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526704014890008576",
+    "reason": "congratulations on Rand Fishkin's game launch, off-topic",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526612744423239683",
+    "reason": "conversational reply or thanks, no observation",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526604527135907840",
+    "reason": "congratulations on Rand Fishkin's game launch, off-topic",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526457299792592896",
+    "reason": "congratulations on Rand Fishkin's game launch, off-topic",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526420425543729152",
+    "reason": "conversational reply or thanks, no observation",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526416150574972928",
+    "reason": "congratulations on Rand Fishkin's game launch, off-topic",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526381717503492096",
+    "reason": "congratulations on Rand Fishkin's game launch, off-topic",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526371168325566464",
+    "reason": "conversational reply or thanks, no observation",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526461027337822208",
+    "reason": "conversational reply or thanks, no observation",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7527085647417933824",
+    "reason": "too short to carry an observation",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "activity:7527065589283020802",
+    "reason": "post judged in the content scan",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7527045129665363968",
+    "reason": "haven't-read-it — 'I want to read that book!'",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "activity:7527044062969880576",
+    "reason": "post judged in the content scan",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7527056175494746112",
+    "reason": "conversational reply or thanks, no observation",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7527064736987873280",
+    "reason": "AI-slop — fluent restatement of the post's own reflection",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7527070351609057280",
+    "reason": "conversational reply or thanks, no observation",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7527050345785622530",
+    "reason": "conversational reply or thanks, no observation",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7527046222302404608",
+    "reason": "conversational reply or thanks, no observation",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "activity:7527034813904625665",
+    "reason": "post judged in the content scan",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "activity:7527031362990624770",
+    "reason": "post judged in the content scan",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "activity:7527028938875789312",
+    "reason": "post judged in the content scan",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7527029295362277376",
+    "reason": "an article title plus link, crude framing",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "activity:7526978939769094144",
+    "reason": "post judged in the content scan",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "activity:7527026631157350400",
+    "reason": "post judged in the content scan",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526910889728565248",
+    "reason": "conversational reply or thanks, no observation",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "activity:7526746184338567171",
+    "reason": "post judged in the content scan",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "activity:7526904448233877504",
+    "reason": "post judged in the content scan",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "activity:7526908715896238080",
+    "reason": "post judged in the content scan",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "activity:7526677904278237184",
+    "reason": "post judged in the content scan",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "activity:7526471352464101376",
+    "reason": "post judged in the content scan",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "activity:7526565839337308161",
+    "reason": "post judged in the content scan",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "activity:7526604133487788032",
+    "reason": "post judged in the content scan",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526673057784975360",
+    "reason": "congratulations on Rand Fishkin's game launch, off-topic",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526374369699323904",
+    "reason": "conversational reply or thanks, no observation",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526431072629448704",
+    "reason": "'He' has no referent outside the parent post; unusable standalone",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7527023121497751552",
+    "reason": "conversational reply or thanks, no observation",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526683263231479810",
+    "reason": "conversational reply or thanks, no observation",
+    "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "comment:7526654864215576577",
+    "reason": "conversational reply or thanks, no observation",
+    "skipped_at": "2026-11-13T19:20:00Z"
   }
 ]
