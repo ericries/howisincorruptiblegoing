@@ -4313,5 +4313,30 @@
     "identifier": "comment:7526654864215576577",
     "reason": "conversational reply or thanks, no observation",
     "skipped_at": "2026-11-13T19:20:00Z"
+  },
+  {
+    "identifier": "tweet:2121336119715299769",
+    "reason": "organiser promo post, enriches the event entry rather than the archive",
+    "skipped_at": "2026-11-14T02:36:26Z"
+  },
+  {
+    "identifier": "tweet:2121314447247741088",
+    "reason": "appreciation aimed at Buffer, not the book",
+    "skipped_at": "2026-11-14T02:36:26Z"
+  },
+  {
+    "identifier": "tweet:2121211479378776364",
+    "reason": "promo for his own podcast episode",
+    "skipped_at": "2026-11-14T02:36:26Z"
+  },
+  {
+    "identifier": "tweet:2121171365286019526",
+    "reason": "a bare title plus links",
+    "skipped_at": "2026-11-14T02:36:26Z"
+  },
+  {
+    "identifier": "tweet:2121127310070030729",
+    "reason": "every usable span carries an @handle mid-sentence; unusable on a card",
+    "skipped_at": "2026-11-14T02:36:26Z"
   }
 ]
