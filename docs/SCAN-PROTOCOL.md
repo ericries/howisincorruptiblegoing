@@ -370,10 +370,44 @@ seconds** (measured 2026-10-04). Never `--no-verify`.
 
 ## 6. Reporting
 
-Lead with the biggest signal of the cycle, not the logistics. Quote the punchy
-line. Then: what shipped, what was skipped **and why** (every below-bar candidate
-gets a verbatim or paraphrase line plus a concise reason), and anything held for
-verification. Corrections to earlier reports go near the top, stated plainly.
+**Open with the count: "Shipped N."** Eric, 2026-11-13: "sometimes it's not clear
+which entries you shipped vs skipped." A report that opens on the best quote and
+never states a total leaves the reader counting paragraphs to work out what
+happened. State the number first, then lead with the biggest signal.
+
+**Every candidate named — shipped OR skipped — carries its URL and an excerpt of
+the actual words.** Eric, 2026-11-13: "in many of these cases, I dont knwo what
+you're talking about... I do like your summaries I just also like to see the raw
+text you're referring to (or an excerpt thereof)." A name and a verdict are not
+reviewable: "Lorcan O. — reading-list post, skipped" asks him to take it on
+trust. The excerpt is what makes a wrong call visible, and the URL is what lets
+him go and look. Summarise freely, but never INSTEAD of the raw line — and
+quote it exactly, because an excerpt paraphrased into a skip reason is the same
+failure as a composited blockquote, one surface over.
+
+Then: anything held for verification, and corrections to earlier reports near
+the top, stated plainly.
+
+### A zero-match grep is not evidence of absence
+
+**There is no manuscript in this repo.** `data/archive/source-texts/` holds
+captures of other people's social posts; `data/archive/transcripts/` holds 90
+podcast and interview transcripts. Neither is the book. So the
+verify-a-concept-before-attributing-it rule is asymmetric and only ever was:
+
+- A **hit** is real evidence — it shows Eric using the phrase in his own words,
+  which is what let "financial gravity", "mission lock" and "rather die than
+  betray" through.
+- A **zero says nothing at all** about what is in the book. It says the phrase is
+  absent from a corpus that was never the book.
+
+On 2026-11-13 that asymmetry was ignored and the miss was written into a live
+entry as fact: Anna Kocsis's Rune Kvist example returned 0 files, the entry
+claimed it was "an example the book does not carry", and Eric corrected it —
+Kvist IS in the book. Three other zeros the same week were reported as
+"unverifiable", which was the right word, but the habit underneath was the same.
+Where a claim about the book's contents actually matters, the only authority is
+the book; ask rather than infer from a grep.
 
 ## 7. Sourcing a face
 
