@@ -2,12 +2,17 @@
   "id": "2026-02-08-reader-kent-beck",
   "date": "2026-02-08",
   "type": "endorsement",
-  "title": "Kent Beck endorses Incorruptible",
-  "summary": "Kent Beck read an advance copy.",
-  "blockquote": "Reviewing Incorruptible got me thinking about the connection between my purpose ('help geeks feel safe in the world') and Eric's mission to make companies safe for their missions.",
-  "blockquote_source": "Reader review",
-  "source_url": "https://incorruptible.co",
-  "source_urls": null,
+  "title": "Kent Beck — “Eric's mission to make companies safe for their missions”",
+  "summary": "Beck, who created Extreme Programming and test-driven development, read an advance copy and drew a line between his own stated purpose and the book's. Eric published the line on LinkedIn.",
+  "blockquote": "Reviewing Incorruptible got me thinking about the connection between my purpose (‘help geeks feel safe in the world’) and Eric’s mission to make companies safe for their missions.",
+  "blockquote_source": "Kent Beck, quoted by Eric Ries on LinkedIn",
+  "source_url": "https://www.linkedin.com/posts/eries_reviewing-incorruptible-got-me-thinking-activity-7527108123820539905-BkEn",
+  "source_urls": [
+    {
+      "url": "https://incorruptible.co",
+      "label": "Incorruptible — endorsements"
+    }
+  ],
   "video_url": null,
   "image": "/images/cards/2026-02-08-reader-kent-beck.png",
   "attribution": "Kent Beck",
