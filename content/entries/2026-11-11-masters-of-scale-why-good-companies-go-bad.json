@@ -1,0 +1,35 @@
+{
+  "id": "2026-11-11-masters-of-scale-why-good-companies-go-bad",
+  "date": "2026-11-11",
+  "type": "podcast",
+  "title": "Masters of Scale releases Eric and Krista Tippett from the Summit stage — “companies rated as having good governance have actually performed worse”",
+  "summary": "Reid Hoffman's Masters of Scale has published the Summit conversation between Eric and On Being's Krista Tippett, recorded live in San Francisco. The episode notes lead on Costco and Patagonia scoring badly under conventional governance ratings, and on Eric's case that shareholder primacy is a far newer idea than most leaders realize.",
+  "attribution": "Masters of Scale",
+  "attribution_title": "Hosted by Reid Hoffman · recorded live at Masters of Scale Summit, San Francisco",
+  "tags": [
+    "podcast",
+    "youtube",
+    "masters-of-scale",
+    "krista-tippett",
+    "governance",
+    "summit"
+  ],
+  "blockquote": "Costco has terrible governance. By conventional ratings, Patagonia would score even worse. And since 2008, companies rated as having good governance have actually performed worse for their shareholders.",
+  "blockquote_source": "Masters of Scale episode notes",
+  "source_url": "https://www.youtube.com/watch?v=MRpB1XGG7Po",
+  "source_urls": [
+    {
+      "url": "https://podcasts.apple.com/us/podcast/masters-of-scale/id1227971746?i=1000801894762",
+      "label": "Apple Podcasts — ‘The “best practices” corrupting business, with Eric Ries and Krista Tippett’, released 14 November"
+    }
+  ],
+  "video_url": "https://www.youtube.com/watch?v=MRpB1XGG7Po",
+  "image": "/images/podcasts/masters-of-scale.jpg",
+  "attribution_image": null,
+  "type_metadata": {
+    "audience": "161,000 subscribers on YouTube"
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-11-15T17:55:00Z"
+}
