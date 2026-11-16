@@ -199,17 +199,24 @@ if (isMainModule) {
   const allEntries = files
     .map((f) => {
       const data = JSON.parse(fs.readFileSync(path.join(entriesDir, f), 'utf-8'));
+      // Spread the WHOLE entry, not a hand-listed projection.
+      //
+      // This used to name six fields, and that list was the shape every check
+      // below saw. A check needing anything else received `undefined` and
+      // reported "no findings" — silently, because absent and empty look the
+      // same. On 2026-11-16 the new book-tour strip check read
+      // `type_metadata`, which was not in the list, so it flagged all three
+      // future events including the two that had just been given a city, and
+      // the only tell was blank titles in its own output. Six unit tests on
+      // synthetic objects with the right shape passed throughout.
+      //
+      // The explicit fields stay because existing checks rely on their
+      // null-coalescing; the spread means the next check cannot hit this.
       return {
+        ...data,
         file: f, type: data.type, date: data.date, id: data.id,
         parent_id: data.parent_id ?? null,
         source_url: data.source_url ?? null,
-        // Added 2026-11-16 for the book-tour strip check. This projection is
-        // the shape every check below sees, so a field missing here reads as
-        // absent in the entry — which made the strip check flag all three
-        // future events, including the two that did have a city.
-        title: data.title ?? null,
-        attribution_title: data.attribution_title ?? null,
-        type_metadata: data.type_metadata ?? null,
       };
     })
     .sort((a, b) => {
@@ -476,14 +483,30 @@ if (isMainModule) {
     })),
     reshares
   );
+  // Severity follows the same policy as duplicate source_urls: a SAME-type
+  // pair is one piece of writing split in two and fails; a MIXED-type pair is
+  // often legitimate — a podcast and a reaction to it are different entries by
+  // design, and the resharer's own words are the whole point of the reaction
+  // lane. This check could not tell them apart because it never saw `type`,
+  // and it never ran at all before 2026-11-16: `source_urls` was missing from
+  // the entry projection, so it had no second id to match on.
+  const typeOf = new Map(allEntries.map((e) => [e.file, (e as { type?: string }).type]));
   for (const g of reshareGroups) {
-    failures.push({
-      file: g.files[1],
-      errors: [
-        `source is a reshare of the source already cited by ${g.files[0]}: ${g.url}`,
-        'One piece of writing, one entry. Fold the reshare into the existing entry as a source_urls item.',
-      ],
-    });
+    const sameType = typeOf.get(g.files[0]) === typeOf.get(g.files[1]);
+    if (sameType) {
+      failures.push({
+        file: g.files[1],
+        errors: [
+          `source is a reshare of the source already cited by ${g.files[0]}: ${g.url}`,
+          'One piece of writing, one entry. Fold the reshare into the existing entry as a source_urls item.',
+        ],
+      });
+    } else {
+      console.warn(`\n⚠️  ${g.files[1]} reshares a source cited by ${g.files[0]} ` +
+                   `(${typeOf.get(g.files[1])} vs ${typeOf.get(g.files[0])}): ${g.url}`);
+      console.warn(`   Mixed types, so probably legitimate — check the reshare adds ` +
+                   `its own words rather than republishing the original's.`);
+    }
   }
 
   // A weekday named in a title or attribution must match the entry's date. Three
