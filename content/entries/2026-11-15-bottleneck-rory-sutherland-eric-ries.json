@@ -1,0 +1,39 @@
+{
+  "id": "2026-11-15-bottleneck-rory-sutherland-eric-ries",
+  "date": "2026-11-15",
+  "type": "podcast",
+  "title": "Eric joins Rory Sutherland on The Bottleneck — “we reward people for cutting costs without ever holding them accountable for what happens downstream”",
+  "summary": "Rory Sutherland and Elfried Samba hosted Eric for a 97-minute episode of The Bottleneck, published on 15 November. The show says Eric picked out one of Sutherland's own ideas, that cost-cutting is rewarded while downstream consequences go unaccounted for, and the episode also covers Costco's $1.50 hot dog and what profit really means.",
+  "attribution": "The Bottleneck Podcast",
+  "attribution_title": "Hosted by Rory Sutherland and Elfried Samba · 3,800 subscribers on YouTube",
+  "tags": [
+    "podcast",
+    "youtube",
+    "linkedin",
+    "rory-sutherland",
+    "behavioural-science",
+    "profit"
+  ],
+  "blockquote": "In this clip, Eric picks out one of his favourite Rory ideas: we reward people for cutting costs without ever holding them accountable for what happens downstream.",
+  "blockquote_source": "The Bottleneck Podcast on LinkedIn",
+  "source_url": "https://www.linkedin.com/posts/bottleneck-podcast_all-the-dashboards-are-green-activity-7528065662015987713-BCs_",
+  "source_urls": [
+    {
+      "url": "https://www.youtube.com/watch?v=Vke3WzmxhZU",
+      "label": "The Bottleneck — full 97-minute episode on YouTube"
+    },
+    {
+      "url": "https://anchor.fm/s/10ab91b48/podcast/rss",
+      "label": "Show feed — episode published Sun 15 Nov 2026"
+    }
+  ],
+  "video_url": "https://www.youtube.com/watch?v=Vke3WzmxhZU",
+  "image": "/images/podcasts/the-bottleneck.jpg",
+  "attribution_image": null,
+  "type_metadata": {
+    "audience": "3,800 subscribers on YouTube"
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-11-16T17:45:00Z"
+}
