@@ -230,9 +230,107 @@ def check(summary: str, blockquote: str | None = None,
     return out
 
 
+# --- titles ---------------------------------------------------------------------
+#
+# Measured 2026-11-16 across the whole corpus: the median title ran 32-42
+# characters from December to March and 141 in September, while the em dash
+# went from 0% of titles to 87% and a parenthetical from 0% to 82%. Summaries
+# had a prose rule and drifted five-fold; titles had no rule at all and drifted
+# the same way. Eric saw it on the book-tour cards, which clamp to two lines
+# and so cut the explanatory tail mid-clause: "ugly with the extraneous text
+# and emdashes".
+#
+# The shape to keep is Eric's own (memory/feedback_entry_titles.md): lead with
+# the person's words, `Name — "quote"`. The shape that drifted in is a name, a
+# parenthetical repeating fields the card already renders, an em dash, and then
+# a clause explaining the entry to the reader. The quote earns the dash; the
+# explanation does not.
+
+TITLE_FAIL_CHARS = 130
+TITLE_WARN_CHARS = 95
+# Below this, an em dash is a caption ("Stanford ETL — Eric Ries"), not an
+# explainer, so the tail rule does not apply.
+TITLE_EXPLAINER_MIN = 80
+
+_TITLE_EM = re.compile(r"\s+[\u2014\u2013]\s+")
+_TITLE_QUOTEMARK = re.compile(r"[\"'\u2018\u2019\u201c\u201d]")
+_MONTHS = ("January|February|March|April|May|June|July|August|September|"
+           "October|November|December|Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Oct|Nov|Dec")
+# A four-digit year, not any four-digit number -- "course 1757" is a course
+# number and flagging it would make the rule a nuisance on its first outing.
+_TITLE_DATEISH = re.compile(rf"\b(19|20)\d{{2}}\b|\b({_MONTHS})\b", re.I)
+
+
+def check_title(title: str, city: str | None = None) -> list[Finding]:
+    """AI-ese in an entry title. Same split as summaries: length is objective
+    and fails; devices that are fine once and a tell when they saturate warn."""
+    out: list[Finding] = []
+    if not title or not title.strip():
+        return out
+    n = len(title)
+    if n > TITLE_FAIL_CHARS:
+        out.append(Finding("title-length", "fail",
+                           f"title is {n} characters; the cap is {TITLE_FAIL_CHARS}. "
+                           f"The card clamps to two lines, so the tail is cut mid-clause."))
+    elif n > TITLE_WARN_CHARS:
+        out.append(Finding("title-length", "warn",
+                           f"title is {n} characters; the median was 32-42 before the drift."))
+
+    parts = _TITLE_EM.split(title)
+    if len(parts) > 1 and n >= TITLE_EXPLAINER_MIN:
+        tail = parts[-1]
+        if not _TITLE_QUOTEMARK.search(tail):
+            out.append(Finding("title-explainer", "warn",
+                               "an em dash followed by explanation rather than a quote. "
+                               "Lead with the person's words, or stop at the name.",
+                               span=tail[:70]))
+
+    for m in re.finditer(r"\(([^)]{2,60})\)", title):
+        inner = m.group(1)
+        redundant = (city and city.lower() in inner.lower()) or _TITLE_DATEISH.search(inner)
+        if redundant:
+            out.append(Finding("title-redundant-paren", "warn",
+                               "a parenthetical repeating the city or date, which the "
+                               "card already renders from its own fields.",
+                               span=inner))
+    return out
+
+
+def _head_title(path: Path) -> str | None:
+    """The title as committed, or None if the file is new."""
+    import subprocess
+    try:
+        rel = Path(path).resolve().relative_to(ROOT)
+    except ValueError:
+        return None
+    out = subprocess.run(["git", "show", f"HEAD:{rel}"],
+                         cwd=ROOT, capture_output=True)
+    if out.returncode != 0:
+        return None
+    try:
+        return json.loads(out.stdout).get("title")
+    except json.JSONDecodeError:
+        return None
+
+
 def check_entry(path: Path) -> list[Finding]:
     d = json.loads(Path(path).read_text())
-    return check(d.get("summary") or "", d.get("blockquote"), tier_for(d))
+    out = check(d.get("summary") or "", d.get("blockquote"), tier_for(d))
+
+    meta = d.get("type_metadata") or {}
+    city = meta.get("city") if isinstance(meta.get("city"), str) else None
+    title = d.get("title") or ""
+    found = check_title(title, city)
+
+    # 244 of ~960 titles were over the cap the day it was written. A hard fail
+    # on all of them would tax every unrelated edit -- adding a city to an old
+    # event, repairing a blockquote -- and the first response to a rule that
+    # taxes unrelated work is --no-verify. So the cap bites on a title you
+    # actually wrote: unchanged ones still report, at warn.
+    if title and title == _head_title(path):
+        found = [Finding(f.rule, "warn", f.message, f.span)
+                 if f.severity == "fail" else f for f in found]
+    return out + found
 
 
 def _head_summary(path: Path) -> str | None:

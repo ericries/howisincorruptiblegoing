@@ -115,6 +115,43 @@ checker that is wrong 10% of the time is worse than none.
   "landscape of". Words inside quotation marks are exempt — someone else may
   well have said "testament", and reporting it is not writing it.
 
+### Titles — `summary_tics.py`, same split
+
+Measured across the whole corpus on 2026-11-16. The median title ran 32–42
+characters from December to March and **141 in September**; the em dash went
+from 0% of titles to **87%**, a parenthetical from 0% to **82%**. Summaries had
+a prose rule and drifted five-fold. Titles had no rule at all and drifted the
+same way, unnoticed until the book-tour cards — which clamp to two lines — began
+cutting the tail off mid-clause and Eric said they looked "ugly with the
+extraneous text and emdashes".
+
+- **130 characters, hard.** Over that fails. Over 95 warns. The number matters
+  more than its exact value: a rule with no number has nothing to drift from,
+  which is the entire lesson of the summary measurement above. The cap applies
+  to a title you wrote or changed — 244 of ~960 were already over it, and a
+  rule that taxes unrelated edits gets bypassed rather than followed.
+- **An em dash must be followed by a quote, not an explanation.** The shape to
+  keep is Eric's own: `Name — "their words"`. The shape that drifted in is
+  `Thing (Place, Date) — a clause telling the reader what the entry is about`.
+  The quote earns the dash. The explanation is the summary's job, and the
+  card never shows it.
+- **No parenthetical repeating a field.** `(Tokyo)` beside `city: Tokyo`,
+  `(New Haven, 2 December)` beside a city and a date. The card renders those
+  from its own fields, so the parenthetical is duplicated on screen and wasted
+  in the clamp.
+
+Three worked examples, all shortened on the day the rule was written:
+
+| was | now |
+|---|---|
+| ZEBRAHOOD 2026 (Tokyo) — Eric joins the Zebras and Company gathering on whether a company can hold its mission as it grows *(122)* | ZEBRAHOOD 2026: Eric takes the keynote *(38)* |
+| Yale SOM 50 (New Haven, 2 December) — a 50th-anniversary session on what pushes companies "away from their original purpose" *(124)* | Yale SOM 50: how to build and sustain a mission-driven company *(62)* |
+| Corporate Rebels Summit, Amsterdam — Eric joins Ricardo Semler and Bill Anderson on a lineup… *(127)* | Corporate Rebels Summit: Eric and Ricardo Semler *(48)* |
+
+Note what the short versions do: they name the thing and stop. Every one of the
+long versions was trying to be the summary as well as the title, and the summary
+is directly underneath on the entry page.
+
 ### Soft — reported, your judgement
 
 - **More than one em dash.** One sharp aside is good writing; a second usually

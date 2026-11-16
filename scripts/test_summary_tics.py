@@ -21,6 +21,7 @@ checker reports them and leaves the judgement to a person.
 
 from __future__ import annotations
 
+import json
 import sys
 from pathlib import Path
 
@@ -285,3 +286,80 @@ def test_tomorrows_company_is_a_proper_noun_not_a_relative_time():
 def test_a_real_relative_time_word_still_fails():
     s = "He recently read the book and will speak about it tomorrow."
     assert [f for f in st.check(s) if f.rule == "relative-time"]
+
+
+# --- titles ---------------------------------------------------------------------
+#
+# Titles had no rule and no check. Measured 2026-11-16: the median title ran
+# 32-42 characters from December to March and 141 in September, with the em
+# dash going from 0% of titles to 87%. The same drift the summaries had, in a
+# field nothing watched. Eric saw it as "ugly with the extraneous text and
+# emdashes" on the book-tour cards, which clamp to two lines and so truncate
+# the explanatory tail mid-clause.
+#
+# The sanctioned pattern is Eric's own (feedback_entry_titles.md): lead with
+# the person's words, "Name — 'quote'". What drifted in is a different shape:
+# a name, a parenthetical repeating fields the card already renders, an em
+# dash, then a clause explaining the entry. That tail is the tell.
+
+def test_a_quote_after_the_em_dash_is_the_sanctioned_shape():
+    t = "Kent Beck — “Eric’s mission to make companies safe for their missions”"
+    assert not [f for f in st.check_title(t) if f.rule == "title-explainer"]
+
+
+def test_an_explanatory_tail_after_the_em_dash_is_flagged():
+    t = ("ZEBRAHOOD 2026 (Tokyo) — Eric joins the Zebras and Company gathering "
+         "on whether a company can hold its mission as it grows")
+    assert [f for f in st.check_title(t) if f.rule == "title-explainer"]
+
+
+def test_a_short_title_with_an_em_dash_is_left_alone():
+    # "Thing — place" is a caption, not an explainer.
+    assert not [f for f in st.check_title("Stanford ETL — Eric Ries") if f.rule == "title-explainer"]
+
+
+def test_an_over_long_title_fails():
+    t = "x" * 150
+    f = [f for f in st.check_title(t) if f.rule == "title-length"]
+    assert f and f[0].severity == "fail"
+
+
+def test_a_title_near_the_old_median_passes_cleanly():
+    assert st.check_title("Yale SOM 50: how to build and sustain a mission-driven company") == []
+
+
+def test_a_parenthetical_repeating_the_city_is_flagged():
+    t = "Yale SOM 50 (New Haven, 2 December) — a 50th-anniversary session"
+    assert [f for f in st.check_title(t, city="New Haven") if f.rule == "title-redundant-paren"]
+
+
+def test_a_parenthetical_that_is_not_metadata_is_left_alone():
+    t = "Launching Tech Ventures (course 1757)"
+    assert not [f for f in st.check_title(t, city="Boston") if f.rule == "title-redundant-paren"]
+
+
+def test_an_unchanged_legacy_title_does_not_block_an_unrelated_edit(tmp_path, monkeypatch):
+    # 244 of ~960 entries exceeded the cap the day it was written. Blocking a
+    # commit that only adds a city to one of them would make the rule a tax on
+    # unrelated work, and the first response to that is --no-verify.
+    long_title = "A legacy title that runs well past the cap " + "x" * 110
+    p = tmp_path / "e.json"
+    p.write_text(json.dumps({
+        "title": long_title, "summary": "Short enough.", "type": "review",
+        "blockquote": "q", "type_metadata": {},
+    }))
+    monkeypatch.setattr(st, "_head_title", lambda _p: long_title)   # unchanged
+    sev = {f.severity for f in st.check_entry(p) if f.rule == "title-length"}
+    assert sev == {"warn"}
+
+
+def test_a_newly_written_long_title_still_fails(tmp_path, monkeypatch):
+    long_title = "A brand new title that runs well past the cap " + "x" * 110
+    p = tmp_path / "e.json"
+    p.write_text(json.dumps({
+        "title": long_title, "summary": "Short enough.", "type": "review",
+        "blockquote": "q", "type_metadata": {},
+    }))
+    monkeypatch.setattr(st, "_head_title", lambda _p: None)          # new file
+    sev = {f.severity for f in st.check_entry(p) if f.rule == "title-length"}
+    assert sev == {"fail"}
