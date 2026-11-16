@@ -1,0 +1,35 @@
+{
+  "id": "2026-11-27-zebrahood-2026-tokyo",
+  "date": "2026-11-27",
+  "type": "event",
+  "title": "ZEBRAHOOD 2026 (Tokyo) — Eric joins the Zebras and Company gathering on whether a company can hold its mission as it grows",
+  "summary": "Zebras and Company and Tokyo Zebras Unite have confirmed Eric for the keynote at ZEBRAHOOD 2026, a one-day gathering in Setagaya for owners, workers, researchers, officials and financiers who question what a company is. The organisers say he will use the new book as the starting point for governance that keeps a mission intact.",
+  "attribution": "Zebras and Company · Tokyo Zebras Unite",
+  "attribution_title": "ZEBRAHOOD 2026 keynote · Home Work Village, Setagaya, Tokyo · Friday November 27, 2026 · 9:30–18:00 JST",
+  "tags": [
+    "event",
+    "japan",
+    "tokyo",
+    "zebrahood",
+    "zebras-and-company",
+    "upcoming"
+  ],
+  "blockquote": "ゼブラアンドカンパニーがTokyo Zebras Uniteとともに開催する「ZEBRAHOOD 2026」に、エリック・リース氏が登壇することが決定しました。",
+  "blockquote_source": "Zebras and Company on X",
+  "source_url": "https://x.com/zebrasandco/status/2122121825971007620",
+  "source_urls": [
+    {
+      "url": "https://prtimes.jp/main/html/rd/p/000000068.000081881.html",
+      "label": "Zebras and Company's own release — ZEBRAHOOD 2026, 27 November, Home Work Village, 9:30–18:00, with the pre-entry form"
+    }
+  ],
+  "video_url": null,
+  "image": "/images/events/zebrahood-2026/key-visual.jpg",
+  "attribution_image": null,
+  "type_metadata": {
+    "audience": "announced by the organisers on X"
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-11-16T03:30:00Z"
+}
