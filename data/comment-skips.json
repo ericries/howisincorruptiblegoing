@@ -4338,5 +4338,100 @@
     "identifier": "tweet:2121127310070030729",
     "reason": "every usable span carries an @handle mid-sentence; unusable on a card",
     "skipped_at": "2026-11-14T02:36:26Z"
+  },
+  {
+    "identifier": "activity:7527776694687145984",
+    "reason": "descriptive, not a superlative or an argument",
+    "skipped_at": "2026-11-15T19:50:55Z"
+  },
+  {
+    "identifier": "activity:7527669850740240384",
+    "reason": "word collision — bitcoin/hydroponics, not the book",
+    "skipped_at": "2026-11-15T19:50:55Z"
+  },
+  {
+    "identifier": "activity:7527425212967989249",
+    "reason": "Eric relaying an endorsement already on the timeline",
+    "skipped_at": "2026-11-15T19:50:55Z"
+  },
+  {
+    "identifier": "activity:7527750686923444224",
+    "reason": "the sharp line is N.R. Narayana Murthy’s, not the poster’s",
+    "skipped_at": "2026-11-15T19:50:55Z"
+  },
+  {
+    "identifier": "activity:7527525480166756353",
+    "reason": "word collision — scripture on incorruptible resurrection",
+    "skipped_at": "2026-11-15T19:50:55Z"
+  },
+  {
+    "identifier": "activity:7527728414708092928",
+    "reason": "word collision — KJV verse list",
+    "skipped_at": "2026-11-15T19:50:55Z"
+  },
+  {
+    "identifier": "activity:7527587636274839552",
+    "reason": "word collision — devotional",
+    "skipped_at": "2026-11-15T19:50:55Z"
+  },
+  {
+    "identifier": "activity:7527460068435435520",
+    "reason": "word collision — Nigerian politics",
+    "skipped_at": "2026-11-15T19:50:55Z"
+  },
+  {
+    "identifier": "activity:7527755341552574464",
+    "reason": "word collision — painter’s statement",
+    "skipped_at": "2026-11-15T19:50:55Z"
+  },
+  {
+    "identifier": "activity:7527624315765178368",
+    "reason": "word collision — Nigerian politics",
+    "skipped_at": "2026-11-15T19:50:55Z"
+  },
+  {
+    "identifier": "activity:7527508928616615936",
+    "reason": "word collision — scripture",
+    "skipped_at": "2026-11-15T19:50:55Z"
+  },
+  {
+    "identifier": "activity:7527510667893919744",
+    "reason": "word collision — scripture (duplicate)",
+    "skipped_at": "2026-11-15T19:50:55Z"
+  },
+  {
+    "identifier": "activity:7527634712291483648",
+    "reason": "word collision — scripture",
+    "skipped_at": "2026-11-15T19:50:55Z"
+  },
+  {
+    "identifier": "activity:7527692931856760832",
+    "reason": "word collision — Nigerian politics",
+    "skipped_at": "2026-11-15T19:50:55Z"
+  },
+  {
+    "identifier": "tweet:2122121825971007620",
+    "reason": "organiser event announcement — shipped as an entry instead",
+    "skipped_at": "2026-11-16T03:10:55Z"
+  },
+  {
+    "identifier": "tweet:2121730256167932094",
+    "reason": "conversational joke about the tracker site",
+    "skipped_at": "2026-11-16T03:10:55Z"
+  },
+  {
+    "identifier": "tweet:2121520688632590443",
+    "reason": "conversational agreement, no argument of its own",
+    "skipped_at": "2026-11-16T03:10:55Z"
+  },
+  {
+    "identifier": "tweet:2121468943634436136",
+    "reason": "one-word filler",
+    "skipped_at": "2026-11-16T03:10:55Z"
+  },
+  {
+    "identifier": "tweet:2121436540190790047",
+    "reason": "purchase note — has not read it yet",
+    "skipped_at": "2026-11-16T03:10:55Z"
   }
 ]
