@@ -100,3 +100,59 @@ def test_rolled_bytes_differing_from_the_token_is_an_unwritten_enrichment(tmp_pa
 def test_verify_rolled_on_an_unrolled_job_says_so(tmp_path):
     log = tmp_path / "roll-log.json"
     assert cr.verify_rolled("sidebar", 10, path=log).startswith("never-rolled")
+
+
+# --- pointer rolls --------------------------------------------------------------
+
+def test_pointer_text_is_what_gets_rolled(tmp_path):
+    # The token must cover the payload actually handed to CronCreate. Logging it
+    # over the full prompt while handing over a pointer would make --rolled
+    # report ENRICHED on every correct roll.
+    for job in cr.JOBS:
+        p = cr.pointer_text(job)
+        assert f"cron-prompt.py {job}" in p, job
+        assert len(p.encode()) < 1000, job
+
+
+def test_rolling_a_pointer_verifies_against_the_pointer_length(tmp_path):
+    job = "sidebar"
+    p = cr.pointer_text(job)
+    now = "2026-11-16T21:00:00Z"
+    cr.record(job, p, now, path=tmp_path / "log.json")
+    assert cr.verify_rolled(job, len(p.encode()), path=tmp_path / "log.json") == "ok"
+
+
+def test_rolling_a_pointer_rejects_the_old_full_prompt_length(tmp_path):
+    # Guards the migration itself: if someone rolls a pointer but reports the
+    # byte count from the prompt-payload era, that has to fail loudly.
+    job = "sidebar"
+    p = cr.pointer_text(job)
+    log = tmp_path / "log.json"
+    cr.record(job, p, "2026-11-16T21:00:00Z", path=log)
+    verdict = cr.verify_rolled(job, 16691, path=log)
+    assert verdict != "ok"
+    assert "ENRICHED" in verdict or "enrich" in verdict.lower()
+
+
+def test_check_compares_pointers_not_prompts_after_the_conversion(tmp_path):
+    # The conversion broke --check: it recorded the ~500-byte pointer but kept
+    # comparing against the full prompt, so every one of the seven read
+    # "file-ahead" immediately after a correct roll. A check that cries wolf on
+    # every run is worse than no check, because it gets ignored.
+    log = tmp_path / "log.json"
+    job = "goodreads"
+    p = cr.pointer_text(job)
+    cr.record(job, p, "2026-11-16T21:00:00Z", path=log)
+
+    assert cr.check({job: p}, path=log)[job]["status"] == "in-sync"
+    # And the old comparison is what produced the false alarm:
+    assert cr.check({job: cr.prompt_text(job)}, path=log)[job]["status"] == "file-ahead"
+
+
+def test_the_check_cli_reports_every_job_in_sync_right_after_a_pointer_roll(tmp_path,
+                                                                            capsys):
+    log = tmp_path / "log.json"
+    for job in cr.JOBS:
+        cr.record(job, cr.pointer_text(job), "2026-11-16T21:00:00Z", path=log)
+    rows = cr.check({j: cr.pointer_text(j) for j in cr.JOBS}, path=log)
+    assert {r["status"] for r in rows.values()} == {"in-sync"}

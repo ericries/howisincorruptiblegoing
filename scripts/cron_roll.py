@@ -123,12 +123,46 @@ def prompt_text(job: str) -> str:
     return out.stdout.decode("utf-8")
 
 
+def pointer_text(job: str) -> str:
+    """The pointer payload for `job`, read from cron-prompt.py.
+
+    Rolled instead of the full prompt since 2026-11-16. The token is recorded
+    over THIS text, because the token has to cover what was actually handed to
+    CronCreate — logging it over the full prompt while handing over a pointer
+    would make `--rolled` report ENRICHED on every correct roll.
+    """
+    out = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "cron-prompt.py"), "--pointer", job],
+        capture_output=True)
+    if out.returncode != 0:
+        raise SystemExit(out.stderr.decode() or f"cron-prompt.py --pointer failed for {job}")
+    return out.stdout.decode("utf-8")
+
+
+def cron_expr(job: str) -> str:
+    """The schedule for `job`, taken from docs/CRONS.md rather than CronList.
+
+    On 2026-11-16 the live evening scan was at 18:37 and the sidebar at 21:23,
+    because a roll had taken each schedule from CronList and every roll since
+    copied the drift forward. The file and the JOBS table both said otherwise
+    and nothing compared them. Reading it here removes the judgment call.
+    """
+    out = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "cron-prompt.py"), "--cron", job],
+        capture_output=True)
+    if out.returncode != 0:
+        raise SystemExit(out.stderr.decode() or f"cron-prompt.py --cron failed for {job}")
+    return out.stdout.decode("utf-8").strip()
+
+
 def _main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("job", nargs="?", choices=JOBS)
     ap.add_argument("--check", action="store_true")
     ap.add_argument("--rolled", nargs=2, metavar=("JOB", "BYTES"))
+    ap.add_argument("--pointer", action="store_true",
+                    help="roll the pointer payload instead of the whole prompt")
     args = ap.parse_args()
 
     if args.rolled:
@@ -138,7 +172,12 @@ def _main() -> int:
         return 0 if verdict == "ok" else 1
 
     if args.check:
-        rows = check({j: prompt_text(j) for j in JOBS})
+        # Pointers, not prompts. The payload handed to CronCreate is the
+        # pointer, so that is what the token covers and what `--check` has to
+        # compare. Comparing against the full prompt made all seven read
+        # "file-ahead" the moment the conversion landed, which is a check
+        # crying wolf on every run — the fastest way to make one ignored.
+        rows = check({j: pointer_text(j) for j in JOBS})
         worst = 0
         for job in JOBS:
             r = rows[job]
@@ -150,6 +189,20 @@ def _main() -> int:
 
     if not args.job:
         ap.error("give a job name, --check, or --rolled JOB BYTES")
+
+    if args.pointer:
+        text = pointer_text(args.job)
+        now = _dt.datetime.now(_dt.UTC).replace(microsecond=0, tzinfo=None).isoformat() + "Z"
+        entry = record(args.job, text, now)
+        print(f"--- CRON {cron_expr(args.job)}")
+        print("--- POINTER PAYLOAD (hand everything below to CronCreate) ---")
+        sys.stdout.write(text)
+        if not text.endswith("\n"):
+            sys.stdout.write("\n")
+        print(f"--- ROLL TOKEN {args.job} {entry['sha12']} {entry['bytes']} bytes ---")
+        print(f"Verify with: python3 scripts/cron_roll.py --rolled {args.job} "
+              f"{entry['bytes']}")
+        return 0
 
     text = prompt_text(args.job)
     now = _dt.datetime.now(_dt.UTC).replace(microsecond=0, tzinfo=None).isoformat() + "Z"

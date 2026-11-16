@@ -64,6 +64,36 @@ def prompt_for(job: str, doc: Path = DOC) -> str:
     return m.group(1)
 
 
+def pointer_for(job: str, root: Path = ROOT) -> str:
+    """The short text handed to CronCreate, instead of the whole prompt.
+
+    The watchdog used to paste each job's full prompt into the call, which made
+    it a hand transcription of ~114k bytes every morning: the composed-lesson
+    violations, the self-referential byte count and the honour-system `--rolled`
+    check all existed to police that copy. A pointer removes the copy. The live
+    cron holds a command; `docs/CRONS.md` holds the job; nothing can drift
+    between them because there is only one of them.
+
+    Deliberately NOT in here: anything a scan could learn. `test_cron_prompt.py`
+    fails on a date in a pointer, because every lesson in CRONS.md is anchored
+    to the day it was learned, so a date is the signature of one leaking back
+    into the payload.
+    """
+    spec = JOBS[job]                      # KeyError on an unknown job, deliberately
+    title = spec["heading"].split(". ", 1)[1]
+    return (
+        f"{title}. Read your instructions now and follow them exactly:\n"
+        f"\n"
+        f"    cd {root} && python3 scripts/cron-prompt.py {job}\n"
+        f"\n"
+        f"That prints the whole job from docs/CRONS.md, which is the only copy. "
+        f"This prompt carries no instructions of its own on purpose, so that a "
+        f"lesson lives in version control rather than in a cron that dies with "
+        f"the session. If the command fails or prints nothing, STOP and report "
+        f"that — do not reconstruct the job from memory.\n"
+    )
+
+
 def schedule_table(doc: Path = DOC) -> dict[str, str]:
     """Map each job heading to the cron expression in its own `## N. …` line."""
     out: dict[str, str] = {}
@@ -80,6 +110,15 @@ def _main(argv: list[str]) -> int:
     if not argv or argv[0] in ("--list", "-l"):
         for job, spec in JOBS.items():
             print(f"{job:16s} {spec['cron']}")
+        return 0
+    if argv[0] in ("--pointer", "--cron"):
+        if len(argv) < 2 or argv[1] not in JOBS:
+            print(f"{argv[0]} needs a job name; try --list", file=sys.stderr)
+            return 2
+        if argv[0] == "--cron":
+            print(JOBS[argv[1]]["cron"])
+        else:
+            sys.stdout.write(pointer_for(argv[1]))
         return 0
     job = argv[0]
     if job not in JOBS:

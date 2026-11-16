@@ -86,3 +86,82 @@ def test_the_file_has_exactly_one_fenced_block_per_job_section():
         nxt = text.find("\n## ", start + 1)
         body = text[start: nxt if nxt != -1 else len(text)]
         assert body.count("```") == 2, f"{job} section must hold exactly one fenced block"
+
+
+# --- pointer prompts ------------------------------------------------------------
+#
+# Why these exist. Carrying each job's full prompt as the CronCreate payload made
+# the watchdog retype ~114k bytes by hand every morning. That is a transcription
+# machine, and it produced exactly the errors it was bound to: five "composed a
+# lesson straight into the call" violations in four days, a self-referential byte
+# count that had to be converged to a fixed point, and an honour-system --rolled
+# check that cannot see the payload. A pointer moves the lessons out of the
+# payload entirely: the live cron holds a command, docs/CRONS.md holds the job,
+# and there is no second copy to drift.
+
+import re
+
+
+def test_every_job_has_a_pointer():
+    for job in cp.JOBS:
+        assert cp.pointer_for(job).strip(), job
+
+
+def test_the_pointer_names_the_exact_command_for_its_own_job():
+    for job in cp.JOBS:
+        assert f"cron-prompt.py {job}" in cp.pointer_for(job), job
+
+
+def test_the_pointer_carries_an_absolute_repo_path():
+    # A cron fires with no guaranteed working directory.
+    for job in cp.JOBS:
+        p = cp.pointer_for(job)
+        assert "/Users/EricRies2/Projects/howisincorruptiblegoing" in p, job
+
+
+def test_a_pointer_stays_small():
+    # The whole point. If a pointer ever approaches prompt size, someone has
+    # started appending lessons to it again.
+    for job in cp.JOBS:
+        assert len(cp.pointer_for(job).encode()) < 1000, job
+
+
+def test_a_pointer_carries_no_dated_lesson():
+    # Every lesson in CRONS.md is anchored to the date it was learned, so a
+    # date in a pointer is the signature of a lesson leaking back into the
+    # payload. This is the guard that prose in capitals failed to be.
+    for job in cp.JOBS:
+        assert not re.search(r"20\d\d-\d\d-\d\d", cp.pointer_for(job)), job
+
+
+def test_a_pointer_refuses_to_improvise():
+    for job in cp.JOBS:
+        assert "STOP" in cp.pointer_for(job), job
+
+
+def test_pointers_are_distinct_per_job():
+    seen = {cp.pointer_for(j) for j in cp.JOBS}
+    assert len(seen) == len(cp.JOBS)
+
+
+def test_an_unknown_job_has_no_pointer():
+    with pytest.raises(KeyError):
+        cp.pointer_for("not-a-job")
+
+
+def test_the_command_in_each_pointer_actually_prints_that_job():
+    # The acceptance test for the whole conversion. A pointer is worthless if
+    # the command inside it does not resolve to the job, and that failure would
+    # only show up when a cron fired with nobody watching.
+    import shlex
+    import subprocess
+
+    for job, spec in cp.JOBS.items():
+        line = next(l.strip() for l in cp.pointer_for(job).splitlines()
+                    if "cron-prompt.py" in l)
+        cmd = shlex.split(line.split("&&", 1)[1].strip())
+        out = subprocess.run(cmd, capture_output=True, cwd=cp.ROOT)
+        assert out.returncode == 0, (job, out.stderr.decode())
+        printed = out.stdout.decode("utf-8")
+        assert spec["signature"] in printed, job
+        assert printed == cp.prompt_for(job), job
