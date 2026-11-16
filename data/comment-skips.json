@@ -4433,5 +4433,245 @@
     "identifier": "tweet:2121436540190790047",
     "reason": "purchase note — has not read it yet",
     "skipped_at": "2026-11-16T03:10:55Z"
+  },
+  {
+    "identifier": "comment:7528149991320805376",
+    "reason": "Eric's own post linking a timeline entry",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "activity:7528143753262370816",
+    "reason": "Eric's own post",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527818807558467586",
+    "reason": "about The Startup Way's German translation, not this book",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "activity:7527862752158121984",
+    "reason": "publisher re-promo of an episode already on the timeline",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7528065931445661696",
+    "reason": "podcast promo, episode shipped as an entry",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "post:7528128612437417986",
+    "reason": "podcast promo; the sharp line is Rory Sutherland's own, relayed by his own show",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "activity:7528049551098703872",
+    "reason": "usable span is thin; the praise carries asterisks and mid-sentence hashtags",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527994915939815424",
+    "reason": "says the book sounds like a timely read — has not read it",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7528117710870978561",
+    "reason": "Eric's own post",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "activity:7528117708249378816",
+    "reason": "Eric's own post",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7528127746376515584",
+    "reason": "thin agreement",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7528123357054074882",
+    "reason": "name tags only",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7528119508704821249",
+    "reason": "points at his own write-up; no quotable span of its own",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7528107817178910720",
+    "reason": "the two sharp lines are Birchler's, quoted back at him",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "activity:7528107092008726528",
+    "reason": "Eric's own post",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527859034176262144",
+    "reason": "company account asking a question",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527787608333094912",
+    "reason": "Eric's own post",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7528105240961757185",
+    "reason": "one-word exclamation",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527714468345081856",
+    "reason": "under Eric's government-technology post, not about the book",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527600606753107968",
+    "reason": "conversational aside",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527525439037231104",
+    "reason": "conversational question",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527440859693404160",
+    "reason": "off-topic political aside",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527414256703545344",
+    "reason": "under the government-technology post",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527496017093627905",
+    "reason": "emoji only",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527420111205367808",
+    "reason": "under the government-technology post",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527457375868366848",
+    "reason": "under the government-technology post",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527380963333414913",
+    "reason": "long investing digression, no usable span, and ends in a question to the poster",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "post:7527440756786044928",
+    "reason": "his own post, already shipped as an entry",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527425214805295104",
+    "reason": "Eric's own post",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527170336422010880",
+    "reason": "generic restatement of the post's thesis",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7528099545918959616",
+    "reason": "emoji praise",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "post:7527128270685896705",
+    "reason": "publisher promo for an event already on the timeline",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "activity:7527125672360591361",
+    "reason": "her own post, already shipped as an entry",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527108829008891905",
+    "reason": "“Timely book” is lukewarm rather than superlative",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527108125452148736",
+    "reason": "Eric's own post",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "activity:7527108123820539905",
+    "reason": "Eric's own post relaying a shipped endorsement",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7528083582523817984",
+    "reason": "anticipatory, has not attended",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527314843402403840",
+    "reason": "emoji only",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527326057235046401",
+    "reason": "show subscription promo",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527504846690787328",
+    "reason": "name tag only",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527327605637947392",
+    "reason": "AI-slop signature — fluent restatement of the post's own thesis",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527504742114308096",
+    "reason": "name tag only",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527312809416835073",
+    "reason": "about Gekko and Wall Street under a Big Think+ post, not the book",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527265739888656384",
+    "reason": "“organizational deconstruction” is not a verified book term, and the comment is thin",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527639363623624704",
+    "reason": "a different book launch entirely",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527121960615604225",
+    "reason": "a different book launch entirely",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527150878143893504",
+    "reason": "a different book launch entirely",
+    "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "comment:7527387297210597376",
+    "reason": "about AI as a phase shift, not about the book",
+    "skipped_at": "2026-11-16T20:00:10Z"
   }
 ]
