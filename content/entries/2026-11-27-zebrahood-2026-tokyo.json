@@ -27,7 +27,8 @@
   "image": "/images/events/zebrahood-2026/key-visual.jpg",
   "attribution_image": null,
   "type_metadata": {
-    "audience": "announced by the organisers on X"
+    "audience": "announced by the organisers on X",
+    "featured": true
   },
   "scanner_source": "social-scan",
   "verified": false,
