@@ -4673,5 +4673,15 @@
     "identifier": "comment:7527387297210597376",
     "reason": "about AI as a phase shift, not about the book",
     "skipped_at": "2026-11-16T20:00:10Z"
+  },
+  {
+    "identifier": "goodreads:8918986055",
+    "reason": "praise is immediately negated — she abandoned it halfway, so the fragment would misrepresent her",
+    "skipped_at": "2026-11-16T20:28:42Z"
+  },
+  {
+    "identifier": "goodreads:8585310769",
+    "reason": "“amazing” describes the companies, not the book",
+    "skipped_at": "2026-11-16T20:28:42Z"
   }
 ]

@@ -484,3 +484,33 @@ def test_queue_message_counts_what_was_actually_added(tmp_path, monkeypatch, cap
     assert "1 new candidate" in out, out
     assert "15 new candidates" not in out
     assert "(1 total pending)" in out, out
+
+
+def test_a_goodreads_review_can_enter_the_archive(tmp_path, monkeypatch):
+    # Eric, 2026-11-16: a Goodreads review that misses the timeline bar but
+    # carries praise ("best read", "couldn't put it down") belongs in the
+    # archive rather than being dropped. The archive had only two platforms,
+    # so this asserts a third round-trips with its platform and quote intact.
+    monkeypatch.setattr(asc, "ARCHIVE_DIR", tmp_path)
+    monkeypatch.setattr(asc, "LLM_QUEUE_PATH", tmp_path / ".llm-queue.json")
+    monkeypatch.setattr(asc, "_load_seen_identifiers", lambda: set())
+    monkeypatch.setattr(asc, "_load_known_source_urls", lambda: set())
+    monkeypatch.setattr(asc, "_load_known_author_names", lambda: set())
+
+    vp = tmp_path / "verdicts.json"
+    vp.write_text(json.dumps([{
+        "identifier": "goodreads:8776524423", "platform": "goodreads",
+        "kind": "review", "source_scan": "goodreads-scan",
+        "text": "My best read on entrepreneurship in recent times. Loved it !",
+        "pull_quote": "My best read on entrepreneurship in recent times.",
+        "permalink": "https://www.goodreads.com/review/show/8776524423",
+        "author": {"name": "Hiren"},
+    }]))
+    assert asc._apply_verdicts_mode(vp) == 0
+
+    written = json.loads(next(tmp_path.glob("2*.json")).read_text())
+    rec = written[-1]
+    assert rec["platform"] == "goodreads"
+    assert rec["item_kind"] == "review"
+    assert rec["pull_quote"] == "My best read on entrepreneurship in recent times."
+    assert rec["pull_quote"] in rec["full_text"]
