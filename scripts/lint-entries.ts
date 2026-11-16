@@ -2,6 +2,7 @@ import { validateEntry } from '../src/lib/validate';
 import { scanEntry } from '../src/lib/injection';
 import { looksFabricated, findDuplicateSourceUrls, findSameTypeDuplicates, findReshareDuplicates, activityId } from '../src/lib/source-url-integrity';
 import { findWeekdayMismatches } from '../src/lib/weekday-consistency';
+import { findEventsMissingFromStrip } from '../src/lib/event-strip-coverage';
 import type { ValidationResult } from '../src/lib/schema';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -202,6 +203,13 @@ if (isMainModule) {
         file: f, type: data.type, date: data.date, id: data.id,
         parent_id: data.parent_id ?? null,
         source_url: data.source_url ?? null,
+        // Added 2026-11-16 for the book-tour strip check. This projection is
+        // the shape every check below sees, so a field missing here reads as
+        // absent in the entry — which made the strip check flag all three
+        // future events, including the two that did have a city.
+        title: data.title ?? null,
+        attribution_title: data.attribution_title ?? null,
+        type_metadata: data.type_metadata ?? null,
       };
     })
     .sort((a, b) => {
@@ -389,6 +397,29 @@ if (isMainModule) {
       console.warn(`   ${g.url}`);
       for (const f of g.files) console.warn(`      ${f}`);
     }
+  }
+
+  // A future event with no `type_metadata.city` will not render in the
+  // book-tour strip, and will look correct everywhere else — its own page, the
+  // What's New rail, the timeline. That is how the strip quietly stopped
+  // updating: two events shipped on 2026-11-16 with the field unset, leaving
+  // one future card. A warning rather than a failure because the right fix is
+  // sometimes "this one really is virtual".
+  const stripGaps = findEventsMissingFromStrip(
+    allEntries.map((e) => ({
+      file: e.file,
+      ...(e as unknown as Record<string, unknown>),
+    })) as never,
+    new Date().toISOString().slice(0, 10),
+  );
+  if (stripGaps.length > 0) {
+    console.warn(`\n⚠️  ${stripGaps.length} future event(s) with no type_metadata.city — ` +
+                 `they will not appear in the book-tour strip:`);
+    for (const g of stripGaps) {
+      console.warn(`   ${g.date}  ${g.file}  ${g.title.slice(0, 60)}`);
+    }
+    console.warn(`   Add a city (and signup_url if there is an RSVP page), or ` +
+                 `say "virtual" in the title or attribution_title if it has no venue.`);
   }
 
   // Same-type collisions are not ambiguous the way mixed-type ones are, so this
