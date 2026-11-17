@@ -4683,5 +4683,25 @@
     "identifier": "goodreads:8585310769",
     "reason": "“amazing” describes the companies, not the book",
     "skipped_at": "2026-11-16T20:28:42Z"
+  },
+  {
+    "identifier": "tweet:2122487019289055319",
+    "reason": "about Solveit and Answer.AI, where Eric is a co-founder — not about the book",
+    "skipped_at": "2026-11-17T17:04:50Z"
+  },
+  {
+    "identifier": "tweet:2122451898691358984",
+    "reason": "publisher re-promo of an episode already on the timeline",
+    "skipped_at": "2026-11-17T17:04:50Z"
+  },
+  {
+    "identifier": "tweet:2122418320385159428",
+    "reason": "AI-slop signature — restates the post's own thesis back at it",
+    "skipped_at": "2026-11-17T17:04:50Z"
+  },
+  {
+    "identifier": "tweet:2122247983496671725",
+    "reason": "the substance is Eric's own text quoted from p.183; the poster's own line is one clause with an emoji inside it",
+    "skipped_at": "2026-11-17T17:04:50Z"
   }
 ]

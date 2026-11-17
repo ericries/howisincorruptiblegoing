@@ -27,7 +27,8 @@
   "image": "/images/podcasts/masters-of-scale.jpg",
   "attribution_image": null,
   "type_metadata": {
-    "audience": "161,000 subscribers on YouTube"
+    "audience": "161,000 subscribers on YouTube",
+    "featured": true
   },
   "scanner_source": "social-scan",
   "verified": false,
