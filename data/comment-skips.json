@@ -4718,5 +4718,460 @@
     "identifier": "tweet:2122764638068642159",
     "reason": "a quip about insurers; no use of the book's argument",
     "skipped_at": "2026-11-18T17:37:48Z"
+  },
+  {
+    "identifier": "comment:7527736015634022401",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "activity:7528374841889062912",
+    "reason": "about The Lean Startup, not Incorruptible",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "activity:7528632211957358593",
+    "reason": "about The Lean Startup, not Incorruptible",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528590662250819584",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528517739137794048",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528455121429598209",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528451797095538688",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528451653612744704",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528498307992702976",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528459023151583232",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528539842339835905",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528458170504101888",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528538861187158016",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528450306871992320",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528441116816482304",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528450119944503296",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528441247506673664",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528432825411407872",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528430681069334529",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528429686507409409",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528429501375082497",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528428068693172224",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528419984084226048",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528419133370081280",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528425198329524225",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528414576841752577",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528413834626105344",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528413608406384641",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528418736064712704",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528413345104748544",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528411852842770433",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528411136162140161",
+    "reason": "generic engagement on the eight-book list, or about another title on it",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "activity:7528388016290217985",
+    "reason": "the poster's own account, not a reader",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "activity:7528820537817452544",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528808627722211329",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528754332402360320",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "post:7528881056909910017",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528851626481160192",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528850435588333569",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528863787332943872",
+    "reason": "the poster's own account, not a reader",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "post:7528880677056958464",
+    "reason": "about The Lean Startup, not Incorruptible",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528852708192256002",
+    "reason": "the poster's own account, not a reader",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "activity:7528848548038119424",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528869772088889344",
+    "reason": "the poster's own account, not a reader",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "activity:7528869769899470848",
+    "reason": "the poster's own account, not a reader",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528856516980953088",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528845320173113344",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "activity:7528743984312098817",
+    "reason": "the poster's own account, not a reader",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528534071858339842",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528215135983824897",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528207988055183360",
+    "reason": "the poster's own account, not a reader",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "activity:7528207984871600128",
+    "reason": "about The Lean Startup, not Incorruptible",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528434840719933440",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "activity:7528878029679292416",
+    "reason": "externship start announcement — belongs in the rolling entry, not the archive",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528860872975380480",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "activity:7528860038673825793",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "activity:7528640724523978752",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "activity:7528715395160059904",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "activity:7528630571477086208",
+    "reason": "the poster's own account, not a reader",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528660758478639104",
+    "reason": "the poster's own account, not a reader",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "activity:7528484623807430656",
+    "reason": "externship start announcement — belongs in the rolling entry, not the archive",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528486626759516160",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528429107332825088",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "activity:7528429046150594560",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528395948520009729",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "activity:7528394004514811904",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "activity:7528227016962134016",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "activity:7528161017890148353",
+    "reason": "externship start announcement — belongs in the rolling entry, not the archive",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528462331832504321",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528368293942939649",
+    "reason": "the poster's own account, not a reader",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528152314310787073",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528318477128945665",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528070057269231616",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "activity:7527995880503951360",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "activity:7528065662015987713",
+    "reason": "about The Lean Startup, not Incorruptible",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "activity:7527368216738746369",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7527343568747782144",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528800359537086464",
+    "reason": "the poster's own account, not a reader",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528194627238199297",
+    "reason": "a thread about one company's Friday Forum, not the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528870096883077120",
+    "reason": "a thread about one company's Friday Forum, not the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528169091971403776",
+    "reason": "a thread about one company's Friday Forum, not the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7528124297408565250",
+    "reason": "a thread about one company's Friday Forum, not the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7527159611653705728",
+    "reason": "a thread about one company's Friday Forum, not the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7527406141665034240",
+    "reason": "a thread about one company's Friday Forum, not the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7527503552764837888",
+    "reason": "a thread about one company's Friday Forum, not the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7527401953438466048",
+    "reason": "a thread about one company's Friday Forum, not the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7527153150760484864",
+    "reason": "a thread about one company's Friday Forum, not the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7527171223479537664",
+    "reason": "a thread about one company's Friday Forum, not the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7527139640647270400",
+    "reason": "a thread about one company's Friday Forum, not the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7527147913307791360",
+    "reason": "a thread about one company's Friday Forum, not the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "comment:7527089112898555905",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-18T19:21:30Z"
   }
 ]
