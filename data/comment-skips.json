@@ -4703,5 +4703,20 @@
     "identifier": "tweet:2122247983496671725",
     "reason": "the substance is Eric's own text quoted from p.183; the poster's own line is one clause with an emoji inside it",
     "skipped_at": "2026-11-17T17:04:50Z"
+  },
+  {
+    "identifier": "tweet:2122833441314193718",
+    "reason": "about Solveit and Answer.AI, not the book",
+    "skipped_at": "2026-11-18T17:37:48Z"
+  },
+  {
+    "identifier": "tweet:2122802078825189554",
+    "reason": "quoting Eric's own line back — confirmed his language, but not the poster's observation",
+    "skipped_at": "2026-11-18T17:37:48Z"
+  },
+  {
+    "identifier": "tweet:2122764638068642159",
+    "reason": "a quip about insurers; no use of the book's argument",
+    "skipped_at": "2026-11-18T17:37:48Z"
   }
 ]
