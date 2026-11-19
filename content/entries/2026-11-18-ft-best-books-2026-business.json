@@ -29,8 +29,7 @@
     "award_curator": "Financial Times",
     "award_label": "Best books of 2026 — Business",
     "award_priority": 95,
-    "featured": true,
-    "award_side": "left"
+    "featured": true
   },
   "scanner_source": "web-search",
   "verified": false,

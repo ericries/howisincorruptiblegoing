@@ -2,10 +2,10 @@
   "id": "2026-11-18-john-stepper-best-business-book",
   "date": "2026-11-18",
   "type": "endorsement",
-  "title": "John Stepper: \u2018The best business book I've ever read\u2019",
+  "title": "John Stepper: ‘The best business book I've ever read’",
   "summary": "Stepper, who created the Working Out Loud method, says financial gravity answered questions he had not been able to frame about why firms tend toward what he calls cancerous growth. He credits the book with technical detail on preserving a mission rather than case studies alone.",
   "attribution": "John Stepper",
-  "attribution_title": "Founder, Working Out Loud\u00ae",
+  "attribution_title": "Founder, Working Out Loud®",
   "tags": [
     "endorsement",
     "linkedin",
@@ -21,7 +21,8 @@
   "attribution_image": "/images/people/john-stepper.jpg",
   "type_metadata": {
     "audience": "6 reactions on LinkedIn",
-    "sidebar_quote": true
+    "sidebar_quote": true,
+    "featured": true
   },
   "scanner_source": "social-scan",
   "verified": false,

@@ -5173,5 +5173,90 @@
     "identifier": "comment:7527089112898555905",
     "reason": "no praise and no observation of its own about the book",
     "skipped_at": "2026-11-18T19:21:30Z"
+  },
+  {
+    "identifier": "tweet:2123281781604671535",
+    "reason": "a recommendation aimed at another account, with no words of its own about the book",
+    "skipped_at": "2026-11-19T16:03:31Z"
+  },
+  {
+    "identifier": "tweet:2123135184426185057",
+    "reason": "a one-word reply on an unrelated thread",
+    "skipped_at": "2026-11-19T16:03:31Z"
+  },
+  {
+    "identifier": "tweet:2123092015760212155",
+    "reason": "a question, not an observation",
+    "skipped_at": "2026-11-19T16:03:31Z"
+  },
+  {
+    "identifier": "tweet:2122999288339054614",
+    "reason": "an emoji reply",
+    "skipped_at": "2026-11-19T16:03:31Z"
+  },
+  {
+    "identifier": "tweet:2122981111068565770",
+    "reason": "a note about regional Kindle pricing",
+    "skipped_at": "2026-11-19T16:03:31Z"
+  },
+  {
+    "identifier": "tweet:2122763376552214531",
+    "reason": "a one-word reply",
+    "skipped_at": "2026-11-19T16:03:31Z"
+  },
+  {
+    "identifier": "tweet:2122333912450191492",
+    "reason": "generic founder sentiment, no tie to the book",
+    "skipped_at": "2026-11-19T16:03:31Z"
+  },
+  {
+    "identifier": "activity:7528950034365784064",
+    "reason": "a joke about Eric's voice, not about the book",
+    "skipped_at": "2026-11-19T16:03:31Z"
+  },
+  {
+    "identifier": "activity:7528080975432646657",
+    "reason": "an acknowledgements list where Eric is one name among many",
+    "skipped_at": "2026-11-19T16:03:31Z"
+  },
+  {
+    "identifier": "activity:7527908832451153920",
+    "reason": "already on the timeline; this post is about grant funding",
+    "skipped_at": "2026-11-19T16:03:31Z"
+  },
+  {
+    "identifier": "activity:7528513029844639744",
+    "reason": "about thumbnail design for a podcast episode",
+    "skipped_at": "2026-11-19T16:03:31Z"
+  },
+  {
+    "identifier": "activity:7528846776099966977",
+    "reason": "about The Lean Startup and the MVP, not Incorruptible",
+    "skipped_at": "2026-11-19T16:03:31Z"
+  },
+  {
+    "identifier": "activity:7528551338990018560",
+    "reason": "Spanish, and about Lean Startup validation",
+    "skipped_at": "2026-11-19T16:03:31Z"
+  },
+  {
+    "identifier": "activity:7528851591378976768",
+    "reason": "the same Gapingvoid text already kept in yesterday's archive",
+    "skipped_at": "2026-11-19T16:03:31Z"
+  },
+  {
+    "identifier": "activity:7528402927670161409",
+    "reason": "a community announcement that tags Eric without discussing the book",
+    "skipped_at": "2026-11-19T16:03:31Z"
+  },
+  {
+    "identifier": "activity:7528917601914277888",
+    "reason": "a reaction to being reposted, not to the book",
+    "skipped_at": "2026-11-19T16:03:31Z"
+  },
+  {
+    "identifier": "activity:7528754175980027905",
+    "reason": "the FT listing — shipped as an entry today, with this post as its second source",
+    "skipped_at": "2026-11-19T16:03:31Z"
   }
 ]
