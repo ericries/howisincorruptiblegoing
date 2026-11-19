@@ -14,7 +14,7 @@
     }
   ],
   "video_url": null,
-  "image": null,
+  "image": "/images/events/corporate-rebels-logo.jpg",
   "attribution": "Corporate Rebels",
   "attribution_title": "Corporate Rebels Summit · Amsterdam · 19–20 November 2026 · Eric joining virtually",
   "attribution_image": null,
@@ -28,7 +28,9 @@
   ],
   "type_metadata": {
     "city": "Amsterdam",
-    "featured": true
+    "featured": true,
+    "image_fit": "contain",
+    "image_bg": "#ffffff"
   },
   "scanner_source": "social-scan",
   "verified": false,
