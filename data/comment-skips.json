@@ -5388,5 +5388,85 @@
     "identifier": "tweet:2123378671369048363",
     "reason": "same author, same thread as the fragment kept",
     "skipped_at": "2026-11-20T02:36:49Z"
+  },
+  {
+    "identifier": "activity:7529548093432852480",
+    "reason": "shipped as an entry today",
+    "skipped_at": "2026-11-20T17:41:13Z"
+  },
+  {
+    "identifier": "activity:7529412646215852033",
+    "reason": "shipped as a reaction under the summit today",
+    "skipped_at": "2026-11-20T17:41:13Z"
+  },
+  {
+    "identifier": "activity:7529264035121258496",
+    "reason": "shipped as an entry today",
+    "skipped_at": "2026-11-20T17:41:13Z"
+  },
+  {
+    "identifier": "activity:7529524389407526912",
+    "reason": "a fifty-books challenge list; the book is one title among many",
+    "skipped_at": "2026-11-20T17:41:13Z"
+  },
+  {
+    "identifier": "activity:7529363464880902144",
+    "reason": "Ritty's Incorruptible Cashier — a cash-register history, word collision",
+    "skipped_at": "2026-11-20T17:41:13Z"
+  },
+  {
+    "identifier": "activity:7529258369614876672",
+    "reason": "an academic paper using the phrase as its own title",
+    "skipped_at": "2026-11-20T17:41:13Z"
+  },
+  {
+    "identifier": "activity:7529584091948539905",
+    "reason": "scripture, politics or security; 'incorruptible' as an ordinary word",
+    "skipped_at": "2026-11-20T17:41:13Z"
+  },
+  {
+    "identifier": "activity:7529335116821651457",
+    "reason": "scripture, politics or security; 'incorruptible' as an ordinary word",
+    "skipped_at": "2026-11-20T17:41:13Z"
+  },
+  {
+    "identifier": "activity:7529366055434108928",
+    "reason": "scripture, politics or security; 'incorruptible' as an ordinary word",
+    "skipped_at": "2026-11-20T17:41:13Z"
+  },
+  {
+    "identifier": "activity:7529574301457354752",
+    "reason": "scripture, politics or security; 'incorruptible' as an ordinary word",
+    "skipped_at": "2026-11-20T17:41:13Z"
+  },
+  {
+    "identifier": "activity:7529291256598880257",
+    "reason": "scripture, politics or security; 'incorruptible' as an ordinary word",
+    "skipped_at": "2026-11-20T17:41:13Z"
+  },
+  {
+    "identifier": "activity:7529278279132864512",
+    "reason": "scripture, politics or security; 'incorruptible' as an ordinary word",
+    "skipped_at": "2026-11-20T17:41:13Z"
+  },
+  {
+    "identifier": "activity:7529519430817628160",
+    "reason": "scripture, politics or security; 'incorruptible' as an ordinary word",
+    "skipped_at": "2026-11-20T17:41:13Z"
+  },
+  {
+    "identifier": "activity:7529477492538048512",
+    "reason": "scripture, politics or security; 'incorruptible' as an ordinary word",
+    "skipped_at": "2026-11-20T17:41:13Z"
+  },
+  {
+    "identifier": "activity:7529384071173660672",
+    "reason": "scripture, politics or security; 'incorruptible' as an ordinary word",
+    "skipped_at": "2026-11-20T17:41:13Z"
+  },
+  {
+    "identifier": "activity:7529291626381217792",
+    "reason": "scripture, politics or security; 'incorruptible' as an ordinary word",
+    "skipped_at": "2026-11-20T17:41:13Z"
   }
 ]
