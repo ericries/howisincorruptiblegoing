@@ -5328,5 +5328,65 @@
     "identifier": "activity:7528895381708050433",
     "reason": "scripture or politics; 'incorruptible' as an ordinary word",
     "skipped_at": "2026-11-19T17:39:33Z"
+  },
+  {
+    "identifier": "activity:7529365298483961858",
+    "reason": "Lean Educators Conference; the book is not mentioned",
+    "skipped_at": "2026-11-20T02:36:49Z"
+  },
+  {
+    "identifier": "activity:7529351013787508737",
+    "reason": "externship start — belongs in the rolling entry",
+    "skipped_at": "2026-11-20T02:36:49Z"
+  },
+  {
+    "identifier": "activity:7529280122416373760",
+    "reason": "the Tippett conversation already on the timeline from 10-22",
+    "skipped_at": "2026-11-20T02:36:49Z"
+  },
+  {
+    "identifier": "activity:7529256951994695680",
+    "reason": "shipped as an entry tonight",
+    "skipped_at": "2026-11-20T02:36:49Z"
+  },
+  {
+    "identifier": "activity:7529280893576728576",
+    "reason": "a Lean LaunchPad pedagogy thread; the book never appears",
+    "skipped_at": "2026-11-20T02:36:49Z"
+  },
+  {
+    "identifier": "activity:7529200987157344256",
+    "reason": "a fashion-show post, word collision only",
+    "skipped_at": "2026-11-20T02:36:49Z"
+  },
+  {
+    "identifier": "activity:7529232783043461120",
+    "reason": "an unrelated personal milestone",
+    "skipped_at": "2026-11-20T02:36:49Z"
+  },
+  {
+    "identifier": "activity:7529219863655907331",
+    "reason": "about Lean AI and the Lean Startup series, not Incorruptible",
+    "skipped_at": "2026-11-20T02:36:49Z"
+  },
+  {
+    "identifier": "tweet:2123589809188827499",
+    "reason": "resurfacing the April salon; the quote is already on the timeline",
+    "skipped_at": "2026-11-20T02:36:49Z"
+  },
+  {
+    "identifier": "tweet:2123560310602936472",
+    "reason": "the same Anthropic post as his LinkedIn one, kept once",
+    "skipped_at": "2026-11-20T02:36:49Z"
+  },
+  {
+    "identifier": "tweet:2123514216644514160",
+    "reason": "the same Masters of Scale post on X",
+    "skipped_at": "2026-11-20T02:36:49Z"
+  },
+  {
+    "identifier": "tweet:2123378671369048363",
+    "reason": "same author, same thread as the fragment kept",
+    "skipped_at": "2026-11-20T02:36:49Z"
   }
 ]
