@@ -318,7 +318,8 @@ standing rulings:
 
 - Long Now, Entangled Intelligences (2026-11-10): DECLINED. Do not ship it
   and do not re-surface it.
-- One Step Closer CEO Virtual Event (2026-11-12): not yet ruled on.
+- One Step Closer CEO Virtual Event (2026-11-12): DECLINED (Eric, 2026-11-20).
+  Same as Long Now. Do not ship it and do not re-surface it.
 
 A virtual event a third party publicised clears the normal bar on its own
 and needs no ask; the ask is for ones surfaced privately.
