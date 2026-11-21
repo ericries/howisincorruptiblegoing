@@ -31,7 +31,8 @@
   "type_metadata": {
     "audience": "open to the Yale and SOM communities",
     "city": "New Haven",
-    "signup_url": "https://groups.som.yale.edu/DeansOffice/rsvp?id=2259748"
+    "signup_url": "https://groups.som.yale.edu/DeansOffice/rsvp?id=2259748",
+    "featured": true
   },
   "scanner_source": "web-search",
   "verified": false,

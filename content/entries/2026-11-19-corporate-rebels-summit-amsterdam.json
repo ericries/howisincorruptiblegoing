@@ -28,7 +28,6 @@
   ],
   "type_metadata": {
     "city": "Amsterdam",
-    "featured": true,
     "image_fit": "contain",
     "image_bg": "#ffffff"
   },
