@@ -5693,5 +5693,35 @@
     "identifier": "comment:7529000316445315073",
     "reason": "no praise and no observation of its own about the book",
     "skipped_at": "2026-11-20T19:21:36Z"
+  },
+  {
+    "identifier": "activity:7529681649727590400",
+    "reason": "Lean Educator Conference; the book is not mentioned",
+    "skipped_at": "2026-11-21T20:43:11Z"
+  },
+  {
+    "identifier": "activity:7529431640314642432",
+    "reason": "about the MVP and The Lean Startup",
+    "skipped_at": "2026-11-21T20:43:11Z"
+  },
+  {
+    "identifier": "activity:7529651087910305792",
+    "reason": "externship recognition — belongs in the rolling entry",
+    "skipped_at": "2026-11-21T20:43:11Z"
+  },
+  {
+    "identifier": "activity:7529434927105220608",
+    "reason": "a strategy-frameworks comparison citing The Lean Startup",
+    "skipped_at": "2026-11-21T20:43:11Z"
+  },
+  {
+    "identifier": "activity:7529514248520220672",
+    "reason": "the show's own account quoting Eric; the episode shipped 11-15",
+    "skipped_at": "2026-11-21T20:43:11Z"
+  },
+  {
+    "identifier": "activity:7529379400841232384",
+    "reason": "Spanish, an agile workshop citing The Lean Startup",
+    "skipped_at": "2026-11-21T20:43:11Z"
   }
 ]

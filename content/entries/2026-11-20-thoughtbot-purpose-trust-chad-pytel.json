@@ -1,0 +1,38 @@
+{
+  "id": "2026-11-20-thoughtbot-purpose-trust-chad-pytel",
+  "date": "2026-11-20",
+  "type": "podcast",
+  "title": "thoughtbot moves into a purpose trust, and its CEO explains the transaction",
+  "summary": "Pytel took the software consultancy he has run for over twenty years into a purpose trust, structuring a deal that paid shareholders while putting the mission beyond its founders. He walks through the reasoning with Eric, alongside what AI is doing to consulting.",
+  "attribution": "Chad Pytel",
+  "attribution_title": "Founder and CEO, thoughtbot",
+  "tags": [
+    "podcast",
+    "purpose-trust",
+    "ownership",
+    "governance",
+    "adoption"
+  ],
+  "blockquote": "They also discuss another big decision: moving thoughtbot into a purpose trust. Chad shares how the company structured a transaction that paid its shareholders while protecting its independence and mission beyond its founders.",
+  "blockquote_source": "The Eric Ries Show, episode announcement",
+  "source_url": "https://www.youtube.com/watch?v=4ZkQ3xrs4ZE",
+  "source_urls": [
+    {
+      "url": "https://www.linkedin.com/posts/eries_when-days-of-work-take-minutes-what-are-activity-7529225241043288064-hF6B",
+      "label": "Eric's episode announcement"
+    },
+    {
+      "url": "https://www.linkedin.com/posts/peterkoehler_when-days-of-work-take-minutes-what-are-activity-7529607647969300480-1KNv",
+      "label": "Peter Koehler of Stronghold Ownership, who advised the transition"
+    }
+  ],
+  "video_url": "https://www.youtube.com/watch?v=4ZkQ3xrs4ZE",
+  "image": null,
+  "attribution_image": null,
+  "type_metadata": {
+    "audience": "The Eric Ries Show"
+  },
+  "scanner_source": "social-scan",
+  "verified": false,
+  "created_at": "2026-11-21T17:50:00Z"
+}
