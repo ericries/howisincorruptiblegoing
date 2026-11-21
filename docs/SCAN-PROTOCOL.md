@@ -297,6 +297,48 @@ Morón, 2026-11-25. The Goodreads editions page is the cheapest enumerator
 publisher and date per edition, which is how the German one surfaced. Re-check it
 periodically — translation deals land without announcement.
 
+### Events, virtual ones, and what the calendar is for
+
+Every event on the timeline arrived because a third party publicised it.
+That is the whole visibility: the scanners read LinkedIn, X, YouTube and the
+web, so an appearance that generates no public post does not exist to them.
+On 2026-11-16 Eric asked why his HBS class was missing and the honest answer
+was that nothing could have seen it.
+
+When he points at one, his calendar is a POINTER, NEVER A SOURCE. Find what
+the institution published and cite that. Yale SOM 50 went up entirely from
+Yale's own event page, which the calendar only told us to go and look for.
+Nothing from a calendar invite -- a venue, a time, an attendee, a meeting
+link -- belongs in an entry, a capture, or a commit. Do not cache calendar
+data to disk (Eric, 2026-11-17).
+
+ASK ERIC BEFORE SHIPPING A VIRTUAL EVENT surfaced privately (Eric,
+2026-11-17: "need to ask me each time"). He judges them case by case. Two
+standing rulings:
+
+- Long Now, Entangled Intelligences (2026-11-10): DECLINED. Do not ship it
+  and do not re-surface it.
+- One Step Closer CEO Virtual Event (2026-11-12): not yet ruled on.
+
+A virtual event a third party publicised clears the normal bar on its own
+and needs no ask; the ask is for ones surfaced privately.
+
+The strip does not show virtual events at all -- UpcomingStrip.astro filters
+on type_metadata.city, which is the in-person test. An event with no city is
+a timeline entry and not a tour stop, which is right for SOSV and for a
+Zoom guest slot. Lint warns on any FUTURE event missing a city.
+
+### The externship is one rolling entry
+
+Extern's Corporate Strategy Externship produces a steady stream of students
+posting about the four weeks, and nine had accumulated by 2026-11-17, four
+in that week alone. Eric's call: ONE ROLLING ENTRY, updated as participants
+appear, not one per student. Eight were folded into
+2026-11-17-extern-corporate-strategy-externship with each student's post
+kept as a labelled source_urls item, so no citation was lost. Add new
+participants there; do not create another. Eric's own Extern appearances are
+a different thing and stay separate.
+
 ## 4. Writing an entry
 
 - Blockquote must be **exact, contiguous text** from the source. Never
