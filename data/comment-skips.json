@@ -5723,5 +5723,80 @@
     "identifier": "activity:7529379400841232384",
     "reason": "Spanish, an agile workshop citing The Lean Startup",
     "skipped_at": "2026-11-21T20:43:11Z"
+  },
+  {
+    "identifier": "activity:7529812213067571200",
+    "reason": "shipped as a reaction under the FT entry today",
+    "skipped_at": "2026-11-21T20:47:25Z"
+  },
+  {
+    "identifier": "activity:7529706813907177472",
+    "reason": "a podcast channel announcement, no book content",
+    "skipped_at": "2026-11-21T20:47:25Z"
+  },
+  {
+    "identifier": "activity:7529970928320094208",
+    "reason": "an externship capstone — belongs in the rolling entry",
+    "skipped_at": "2026-11-21T20:47:25Z"
+  },
+  {
+    "identifier": "activity:7529941647338577921",
+    "reason": "about an AI proof and verification, word collision",
+    "skipped_at": "2026-11-21T20:47:25Z"
+  },
+  {
+    "identifier": "activity:7529885589416923136",
+    "reason": "Anthropic explaining its own structure, not commentary on the book",
+    "skipped_at": "2026-11-21T20:47:25Z"
+  },
+  {
+    "identifier": "activity:7529734060827676672",
+    "reason": "about risk-register rounding; no tie to the book confirmed",
+    "skipped_at": "2026-11-21T20:47:25Z"
+  },
+  {
+    "identifier": "activity:7529987537092698113",
+    "reason": "scripture or devotional; 'incorruptible' as an ordinary word",
+    "skipped_at": "2026-11-21T20:47:25Z"
+  },
+  {
+    "identifier": "activity:7529863104252420096",
+    "reason": "scripture or devotional; 'incorruptible' as an ordinary word",
+    "skipped_at": "2026-11-21T20:47:25Z"
+  },
+  {
+    "identifier": "activity:7529761399950987264",
+    "reason": "scripture or devotional; 'incorruptible' as an ordinary word",
+    "skipped_at": "2026-11-21T20:47:25Z"
+  },
+  {
+    "identifier": "activity:7529985989419868160",
+    "reason": "scripture or devotional; 'incorruptible' as an ordinary word",
+    "skipped_at": "2026-11-21T20:47:25Z"
+  },
+  {
+    "identifier": "activity:7529893507373744128",
+    "reason": "scripture or devotional; 'incorruptible' as an ordinary word",
+    "skipped_at": "2026-11-21T20:47:25Z"
+  },
+  {
+    "identifier": "activity:7529847857483436032",
+    "reason": "scripture or devotional; 'incorruptible' as an ordinary word",
+    "skipped_at": "2026-11-21T20:47:25Z"
+  },
+  {
+    "identifier": "activity:7529896968521965568",
+    "reason": "scripture or devotional; 'incorruptible' as an ordinary word",
+    "skipped_at": "2026-11-21T20:47:25Z"
+  },
+  {
+    "identifier": "activity:7529796663339646976",
+    "reason": "scripture or devotional; 'incorruptible' as an ordinary word",
+    "skipped_at": "2026-11-21T20:47:25Z"
+  },
+  {
+    "identifier": "activity:7529755964225388544",
+    "reason": "scripture or devotional; 'incorruptible' as an ordinary word",
+    "skipped_at": "2026-11-21T20:47:25Z"
   }
 ]

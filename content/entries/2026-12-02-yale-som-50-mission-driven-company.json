@@ -13,7 +13,8 @@
     "som-50",
     "social-impact-week",
     "upcoming",
-    "governance"
+    "governance",
+    "in-person"
   ],
   "blockquote": "Many companies are founded with a mission. But success brings new challenges—investors, incentives, and expanding systems—that can push growing companies away from their original purpose.",
   "blockquote_source": "Yale SOM events calendar",
@@ -37,5 +38,6 @@
   "created_at": "2026-11-16T20:30:00Z",
   "appearance_dates": [
     "2026-12-02"
-  ]
+  ],
+  "prominence": 2
 }
