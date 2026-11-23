@@ -15,7 +15,12 @@
   "blockquote": "It gave me hope that a better capitalism is not only possible but exists now. And his last chapter motivated me to make better choices as a consumer.",
   "blockquote_source": "John Stepper on LinkedIn",
   "source_url": "https://www.linkedin.com/posts/johnstepper_workingoutloud-wol-activity-7528820537817452544-BTkr",
-  "source_urls": [],
+  "source_urls": [
+    {
+      "url": "https://www.goodreads.com/review/show/9089266714",
+      "label": "The same review on Goodreads"
+    }
+  ],
   "video_url": null,
   "image": "/images/cards/2026-11-18-john-stepper-best-business-book.png",
   "attribution_image": "/images/people/john-stepper.jpg",
