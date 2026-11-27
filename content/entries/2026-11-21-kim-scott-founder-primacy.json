@@ -21,7 +21,8 @@
   "image": null,
   "attribution_image": "/images/people/kim-scott.jpg",
   "type_metadata": {
-    "audience": "14 reactions on LinkedIn"
+    "audience": "14 reactions on LinkedIn",
+    "featured": true
   },
   "scanner_source": "social-scan",
   "verified": false,
