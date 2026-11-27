@@ -7183,5 +7183,75 @@
     "identifier": "activity:7530216685845286912",
     "reason": "no praise and no observation of its own about the book",
     "skipped_at": "2026-11-27T19:55:50Z"
+  },
+  {
+    "identifier": "comment:7531912229491736576",
+    "reason": "a congratulation or tag, no observation",
+    "skipped_at": "2026-11-27T20:02:27Z"
+  },
+  {
+    "identifier": "comment:7531766096887152641",
+    "reason": "Eric's own account",
+    "skipped_at": "2026-11-27T20:02:27Z"
+  },
+  {
+    "identifier": "comment:7531819935266836481",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-27T20:02:27Z"
+  },
+  {
+    "identifier": "comment:7531822108335824896",
+    "reason": "a congratulation or tag, no observation",
+    "skipped_at": "2026-11-27T20:02:27Z"
+  },
+  {
+    "identifier": "post:7531614201237340160",
+    "reason": "shipped as an entry today",
+    "skipped_at": "2026-11-27T20:02:27Z"
+  },
+  {
+    "identifier": "comment:7531626221219037184",
+    "reason": "a congratulation or tag, no observation",
+    "skipped_at": "2026-11-27T20:02:27Z"
+  },
+  {
+    "identifier": "comment:7532029920823246848",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-27T20:02:27Z"
+  },
+  {
+    "identifier": "comment:7531748336408883200",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-27T20:02:27Z"
+  },
+  {
+    "identifier": "comment:7532116240216166400",
+    "reason": "a congratulation or tag, no observation",
+    "skipped_at": "2026-11-27T20:02:27Z"
+  },
+  {
+    "identifier": "comment:7531695991817900032",
+    "reason": "about another book on a shared list",
+    "skipped_at": "2026-11-27T20:02:27Z"
+  },
+  {
+    "identifier": "comment:7532151113635033089",
+    "reason": "a congratulation or tag, no observation",
+    "skipped_at": "2026-11-27T20:02:27Z"
+  },
+  {
+    "identifier": "comment:7531747262188908544",
+    "reason": "about another book on a shared list",
+    "skipped_at": "2026-11-27T20:02:27Z"
+  },
+  {
+    "identifier": "comment:7531761832085209088",
+    "reason": "about another book on a shared list",
+    "skipped_at": "2026-11-27T20:02:27Z"
+  },
+  {
+    "identifier": "comment:7531907654365917184",
+    "reason": "about another book on a shared list",
+    "skipped_at": "2026-11-27T20:02:27Z"
   }
 ]
