@@ -7253,5 +7253,45 @@
     "identifier": "comment:7531907654365917184",
     "reason": "about another book on a shared list",
     "skipped_at": "2026-11-27T20:02:27Z"
+  },
+  {
+    "identifier": "tweet:2125606697653743737",
+    "reason": "about The Lean Startup",
+    "skipped_at": "2026-11-28T02:35:45Z"
+  },
+  {
+    "identifier": "tweet:2125372436862451956",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-28T02:35:45Z"
+  },
+  {
+    "identifier": "tweet:2125368456430395413",
+    "reason": "a three-book reply list",
+    "skipped_at": "2026-11-28T02:35:45Z"
+  },
+  {
+    "identifier": "tweet:2125318565159125053",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-28T02:35:45Z"
+  },
+  {
+    "identifier": "tweet:2124728341571727407",
+    "reason": "quoting Eric's own line back",
+    "skipped_at": "2026-11-28T02:35:45Z"
+  },
+  {
+    "identifier": "tweet:2124639070538330116",
+    "reason": "the Interintellect salon, on the timeline since 04-21",
+    "skipped_at": "2026-11-28T02:35:45Z"
+  },
+  {
+    "identifier": "tweet:2124458281980551208",
+    "reason": "no praise and no observation of its own about the book",
+    "skipped_at": "2026-11-28T02:35:45Z"
+  },
+  {
+    "identifier": "tweet:2124453343422541875",
+    "reason": "about The Lean Startup",
+    "skipped_at": "2026-11-28T02:35:45Z"
   }
 ]
